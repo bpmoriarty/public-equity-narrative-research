@@ -16,6 +16,32 @@ asserted. Update this file when the source, universe, or as-of date changes.
 | Universe | One company at a time, per `config/company.toml` |
 | Window | Five fiscal years, per `config/company.toml` `[window]` |
 
+## Subject relationship (current run: MORN)
+
+The analyst is an employee of the subject company, Morningstar, Inc.
+
+This is not a compliance concern — every input is a public SEC filing, and no
+non-public information enters the pipeline at any stage. It is recorded because
+it cuts both ways analytically, and the second direction is the one this project
+is built to resist:
+
+- **An asset for validation.** Familiarity with the company makes it possible to
+  catch a subtly wrong extraction that would pass unnoticed for an unfamiliar
+  company — a misattributed leadership change, a segment renamed in fact but not
+  in the filings, a boundary failure that produced plausible-looking nonsense.
+
+- **A source of exactly the bias the traceability rule exists to prevent.**
+  Knowing the answer makes it easy to read a gap in the filings as though the
+  filings had addressed it. CLAUDE.md's rule is absolute here and its cost is
+  highest on a company the analyst knows well: if a claim cannot be traced to
+  `(form, fiscal year, accession number)`, it does not go in the output — no
+  matter how confident the analyst is that it is true.
+
+Practical consequence: where the filings are silent or ambiguous, the outputs
+must say so. "The filings do not address X" is a valid and useful finding.
+Substituting internal knowledge for a citation is not, and would make the
+outputs indefensible to any reader who cannot see what the analyst knows.
+
 ## Known limitations
 
 These are properties of the source, not bugs to fix. Any claim the outputs make

@@ -11,25 +11,49 @@
 [company]
 # The ticker is the ONLY identifier you should have to supply. The CIK gets
 # resolved from the SEC company_tickers.json file and cached below.
-ticker = "REPLACE_ME"
+ticker = "MORN"
 
 # Leave cik empty on a new company. Stage 1 (discovery) resolves it from the
 # ticker and writes it back here so later stages don't re-resolve on every run.
 # Never type a CIK straight in from memory — CLAUDE.md forbids hardcoded CIKs
 # in source, and a wrong one silently pulls the wrong company's filings.
-cik = ""
+cik = "0001289419"
 
 # Filled in by discovery, purely so a human reading this file can confirm the
 # CIK resolved to the company they meant.
-resolved_name = ""
+resolved_name = "Morningstar, Inc."
+
+# Provenance for the two values above: resolved from
+# https://www.sec.gov/files/company_tickers.json on 2026-08-04. MORN matched
+# exactly one row, and the resolved CIK matched the one supplied by hand — so
+# the CIK here is verified against the SEC's own mapping, not typed from memory.
 
 [window]
-# Five fiscal years, inclusive on both ends (SPEC.md section 1).
-# These are FISCAL years, not filing years — a FY2024 10-K may be filed in 2025.
-# Discovery reports the mapping between the two and flags any fiscal-year-end
-# change, which shifts what "FY2022" even means.
-fiscal_year_start = 2021
-fiscal_year_end = 2025
+# WHICH five fiscal years to cover — two YEAR NUMBERS, inclusive on both ends
+# (SPEC.md section 1). Not dates. 2021 and 2025 means FY2021, 2022, 2023, 2024,
+# FY2025 — five years.
+#
+# Do not confuse these with the fiscal year END DATE (the month/day the books
+# close), which is `fiscal_year_end_month_day` below and is discovered from
+# EDGAR, never typed in.
+#
+# These are FISCAL years, not FILING years — a FY2024 10-K is typically filed in
+# early 2025. Discovery reports the fiscal-to-filing-date mapping so you can
+# confirm the window covers the calendar period you intended.
+first_fiscal_year = 2021
+last_fiscal_year = 2025
+
+# Filled in by discovery, as "MM-DD" (e.g. "12-31" for a December year-end,
+# "09-28" for Apple's late-September one). Read from the SEC submissions API,
+# never typed in by hand.
+#
+# It is here because it determines what the window above means in calendar time:
+# with a September year-end, FY2021-FY2025 covers Oct 2020 through Sep 2025, not
+# Jan 2021 through Dec 2025. Discovery also flags any CHANGE to this date inside
+# the window — a company that moves its year-end produces a short stub period,
+# which makes one "year" a few months long and breaks naive year-over-year
+# comparison.
+fiscal_year_end_month_day = ""
 
 # A cushion, in days, added to each end of the EDGAR filing-date query. A 10-K
 # for the last fiscal year in the window lands roughly 60-90 days after
