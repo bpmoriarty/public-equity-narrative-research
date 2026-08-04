@@ -135,7 +135,34 @@ has to survive them.
    in tone between FY2021 and FY2022 must not be read as a real change — the
    FY2021 baseline is simply missing.
 
-9. **Section extraction is lossy by design.** Only the sections in
+9. **Two proxy sections have unverified boundaries.** Everything extracted from
+   the 10-Ks is boundary-verified (structural item map, identical across all five
+   years), as are the proxy CD&A and incentive tables. Two are not:
+
+   - **`DEF14A_director_bios`** — FY2025 is known wrong: it begins at the
+     front-of-proxy voting summary rather than at the director biographies. The
+     other four years are plausible in size but unchecked.
+   - **`DEF14A_proposals_and_votes`** — FY2022 was checked and is correct at
+     6,883 characters; the other four years run 21k–25k, which suggests those
+     over-capture rather than FY2022 being short.
+
+   Both fail the same way: a heading appears once in the front-of-proxy summary
+   and again at the real section, and no single global rule separated them across
+   all sections and years (three were tried; each fixed one section and broke
+   another). See the KNOWN LIMITS note in `src/extract_sections.py`.
+
+   **Consequence, and how it is handled:** every ledger field carries a
+   `confidence` marker, and anything sourced from these two sections is recorded
+   as `low` with the reason attached. Affected content is board composition and
+   tenure only. Vote OUTCOMES are not affected, because the proxy is the wrong
+   source for them regardless — a DEF 14A solicits a vote, it does not report the
+   result. Say-on-pay and proposal tallies come from the **8-K Item 5.07**
+   filings, which are extracted whole and need no boundary detection.
+
+   Any claim in the outputs that rests on a `low`-confidence field must say so,
+   or be dropped.
+
+10. **Section extraction is lossy by design.** Only the sections in
    `config/sections.toml` are extracted; the rest of each filing is discarded.
    A fact stated only in, say, Item 3 (Legal Proceedings) will not appear in the
    outputs. Where a boundary validation fails, that section is skipped for that

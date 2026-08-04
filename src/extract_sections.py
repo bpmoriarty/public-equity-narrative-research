@@ -54,7 +54,42 @@ FORMAT FACTS, verified against real MORN filings before any of this was written
    and would otherwise double-count them.
 
 6. Proxies have no item numbering, so headings are matched on their text and
-   disambiguated by span size — see find_proxy_sections.
+   selected by anchor-phrase content — see find_proxy_sections.
+
+===========================================================================
+KNOWN LIMITS — what to trust and what not to
+===========================================================================
+TRUSTED, hand-verified against the source documents:
+  - All three 10-K sections, all five years. Boundaries are structural (item
+    heading to next item heading) and the item map is identical across years:
+    21 items, 1->1A, 1A->1B, 7->7A. Risk factors split cleanly, 18-25 per year.
+  - DEF14A_cdna: FY2022 checked end-to-end. Starts at the CD&A heading, ends on
+    the compensation-consultant fee discussion immediately before the Summary
+    Compensation Table. Sizes are consistent across years (34k-43k).
+  - DEF14A_incentive_tables: consistent across all five years (13k-17k).
+
+NOT VERIFIED — do not build load-bearing claims on these without checking:
+  - DEF14A_director_bios. FY2025 is KNOWN WRONG: it starts at the
+    front-of-proxy voting summary ("Proposal 1: Election of Directors  FOR the
+    election of each of the 10 director nominees... Page 9") rather than at the
+    bios, and ends inside the board-composition table. The real heading is a
+    second, later "Election of Directors" at node 3525. The other four years are
+    plausible in size but unverified.
+  - DEF14A_proposals_and_votes. FY2022 (6,883 chars) was checked and is tight
+    and correct: say-on-pay plus auditor ratification. The other four years are
+    21k-25k, which suggests THEY over-capture rather than FY2022 being short.
+
+Both remaining problems are the same shape: a proxy heading appears once in the
+front-of-proxy summary and again at the real section, and no single global rule
+separates them across all years and all four sections. Fixing them properly
+means per-section, per-year boundary verification, not another global threshold —
+three were tried (largest-span, run-grouped end search, anchor-scored selection)
+and each fixed one section while breaking another.
+
+Consequence for the ledger: board-composition and vote-outcome fields drawn from
+these two sections are lower-confidence than everything else, and the say-on-pay
+OUTCOMES are better taken from the 8-K item 5.07 filings anyway, which are
+extracted whole and need no boundary detection at all.
 """
 
 from __future__ import annotations
@@ -97,6 +132,7 @@ CP1252_REMAP = {
 
 ITEM_HEADING = re.compile(r"^\s*item\s+(\d{1,2}[ab]?)\s*[\.\:\-—–]", re.I)
 MAX_HEADING_CHARS = 250          # generous: real Item 7 titles run past 90
+ANCHOR_FLOOR = 0.9               # proxy candidate selection; see find_proxy_sections
 BLOCK_TAGS = {"p", "div", "tr", "li", "td", "th", "h1", "h2", "h3", "h4", "br", "table"}
 
 
@@ -346,11 +382,64 @@ def find_proxy_sections(doc: Doc) -> dict[str, dict]:
                 if t and len(t) <= 90 and rx.match(t) and not doc.is_in_link(i)]
 
     out: dict[str, dict] = {}
-    for key, (start_pat, end_pats, _anchors) in PROXY_SECTIONS.items():
+    for key, (start_pat, end_pats, anchors) in PROXY_SECTIONS.items():
         starts = matches(start_pat)
         if not starts:
             out[key] = {"error": "no heading candidate found"}
             continue
+
+        # ANCHOR-SCORED SELECTION.
+        #
+        # Two earlier rules both failed, in opposite directions:
+        #
+        #  - "largest following span" started at the front-of-proxy voting summary
+        #    ("Proposal 1: Election of Directors  FOR the election of each of the 10
+        #    director nominees... Page 9") instead of the real bios section.
+        #  - ending the span after the run's LAST page header overshot, because the
+        #    running header continues past the section's real end: FY2022 CD&A ran
+        #    into the Option Exercises table, 56,457 chars against a true ~43,000.
+        #
+        # So: end each candidate at the first of its own end patterns after its OWN
+        # start, then choose by CONTENT rather than by position or size. The
+        # characteristic phrases of the section (config's anchor_phrases: "director
+        # since", "annual incentive", ...) recur once per director or per pay
+        # element, so the real section is dense with them and a summary mention is
+        # not. Among candidates carrying essentially all that content, take the
+        # SHORTEST — the tightest span that still contains the section. A span
+        # starting at the summary also contains the real section, so it ties on
+        # content and loses on tightness, which is exactly the discrimination the
+        # earlier rules lacked.
+        ends_all = sorted({i for p in end_pats for i in matches(p)})
+        scored = []
+        for i in starts:
+            after = [e for e in ends_all if e > i]
+            i1 = after[0] if after else len(doc.nodes)
+            body = " ".join(doc.texts[i:i1]).lower()
+            hits = sum(body.count(a.lower()) for a in anchors)
+            scored.append({"start": i, "end": i1, "anchor_hits": hits,
+                           "chars": sum(len(doc.texts[k]) for k in range(i, i1))})
+        best_hits = max(s["anchor_hits"] for s in scored)
+        # ANCHOR_FLOOR is 0.9 after measuring both directions. It was tried at 0.6
+        # to admit the correct tighter span for FY2025 director bios (which misses
+        # the 0.9 cut by a single anchor hit, 10 vs 10.8) — but that loosening made
+        # CD&A UNDER-capture instead: FY2022 fell from a hand-verified 43,123 chars
+        # to 32,577 and FY2023 from 37,364 to 26,018, while FY2025 director bios did
+        # not improve at all. One global threshold cannot serve all four sections;
+        # 0.9 is kept because it is the value at which CD&A is verified correct.
+        # The two sections it does not fix need per-section boundaries, not another
+        # global knob — see the KNOWN LIMITS note in the module docstring.
+        keep = [s for s in scored if s["anchor_hits"] >= ANCHOR_FLOOR * best_hits and s["chars"] > 0]
+        pick = min(keep, key=lambda s: s["chars"]) if keep else max(scored, key=lambda s: s["chars"])
+        out[key] = {
+            "text": doc.text_span(pick["start"], pick["end"]),
+            "node_range": [pick["start"], pick["end"]],
+            "boundary_basis": (f"nodes {pick['start']}-{pick['end']}: tightest of {len(starts)} "
+                               f"candidate(s) carrying >=90% of peak anchor content "
+                               f"({pick['anchor_hits']}/{best_hits} anchor hits)"),
+            "candidates": len(starts),
+            "anchor_hits": pick["anchor_hits"],
+        }
+        continue
 
         # RUNNING PAGE HEADERS. Donnelley proxies print the section title at the
         # top of every page, so "Compensation Discussion and Analysis" appears 14
@@ -634,9 +723,11 @@ def main() -> None:
 
     print()
     print("=" * 72)
-    print(f"sections attempted : {len(results)}")
-    print(f"  written          : {ok_n}")
-    print(f"  failed           : {len(results) - ok_n}")
+    # Report this run and the merged total separately. Mixing them produced
+    # "attempted 20 / written 226 / failed -206" on a filtered run.
+    run_ok = sum(1 for r in results if r["ok"])
+    print(f"this run  : {len(results)} attempted, {run_ok} written, {len(results)-run_ok} failed")
+    print(f"all stored: {len(all_rows)} sections, {ok_n} ok, {len(all_rows)-ok_n} failed")
     if len(results) - ok_n:
         print()
         print("failures:")
