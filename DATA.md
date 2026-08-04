@@ -94,12 +94,40 @@ has to survive them.
    chosen, not sampled, so nothing generalizes beyond it. No cross-company
    comparison in the outputs is supported by this data.
 
-7. **One document is PDF-only.** The FY2022 shareholder letter (`ARS`,
-   accession 0001104659-23-039633) was filed as a PDF; FY2023–FY2025 are HTML.
-   HTML-first parsing cannot read it, so extracting it needs either a PDF text
-   library or manual handling. Until then, FY2022 leadership-voice evidence is
-   unavailable even though the document is cached. The six `UPLOAD` PDFs are
-   unaffected — the SEC files a `.txt` twin of each, which is what gets parsed.
+7. **The FY2022 shareholder letter text is a RECONSTRUCTION, not a direct read.**
+   That letter (`ARS`, accession 0001104659-23-039633) was filed as a PDF;
+   FY2023–FY2025 are HTML. The PDF embeds a subsetted font with no ToUnicode
+   CMap — it records glyph *ids* with no table saying which characters they are.
+   `src/pdf_text.py` recovers the text by deriving the glyph-to-character offset
+   from the document itself (+29 for this font, derived from the space glyph's
+   frequency, not hardcoded) and validating the result against English sentinel
+   words. The decode reported 0 unmapped glyphs, 0 undecoded markers, and a
+   99.93% printable ratio.
+
+   Two residual imperfections, both deliberate and neither affecting meaning:
+   - **Ligatures** `fi`, `fl`, `ff` are reconstructed from single glyphs.
+   - **One glyph serves as both em dash and minus sign** in this font. It is
+     mapped to ASCII `-`, so a negative figure like `-38.1%` reads correctly
+     while an em dash in prose renders as a hyphen (`Index-a benchmark`). The
+     tie was broken toward the numbers on purpose: a hyphen for an em dash is
+     cosmetic, whereas a lost minus sign silently inverts a fact.
+
+   Consequence for the outputs: any FY2022 letter passage quoted verbatim has
+   passed through this decode. It is faithful and validated, but it is not a
+   byte-for-byte read of the filing the way the HTML sources are. Flag it if a
+   quotation from that letter carries analytical weight.
+
+   The six `UPLOAD` PDFs are unaffected — the SEC files a `.txt` twin of each,
+   and those PDFs have proper font encoding anyway (verified: the decoder
+   correctly detects it and passes them through untouched).
+
+   **`pypdf` was tried first and rejected.** It coerces unmapped glyphs toward
+   whitespace, which turned every digit in the letter into a space: "the index
+   fell 15% for the full year" came out as "fell for the full year". Plausible
+   prose with the facts silently deleted — the worst possible failure here,
+   because nothing downstream could have detected it. `pdfminer.six` preserves
+   unmapped ids as `(cid:N)` markers instead, so nothing is destroyed. Prefer a
+   library that preserves what it cannot interpret over one that guesses.
 
 8. **The FY2021 shareholder letter does not exist on EDGAR.** Verified, not
    assumed: no `ARS` was filed for FY2021, and no `EX-13` exhibit appears in any

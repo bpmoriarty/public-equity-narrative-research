@@ -20,13 +20,15 @@ dependencies = [
     "beautifulsoup4>=4.14",   # section boundary location and text cleanup
     "lxml>=6.1",              # fast, lenient HTML parser backend for BeautifulSoup
     # --- structured intermediate layer ---
-    "pydantic>=2.13",         # validates the year-ledger schema (SPEC.md section 3); a
-                              # malformed record fails loudly instead of reaching the outputs
+    # NOTE: keep every comment below on ONE line. `uv add` rewrites this array and
+    # flattens the indentation of continuation comments, which mangles them.
+    "pydantic>=2.13",         # validates the year-ledger schema (SPEC.md s3) so a bad record crashes loudly
     # --- narrative signal extraction ---
     "anthropic>=0.116",       # Claude API: strategic priorities, incentive metrics, notable language
     # --- year-over-year risk factor diffing (SPEC.md section 2, "Risk") ---
-    "rapidfuzz>=3.14",        # fuzzy match risk factors across years to separate
-                              # "materially reworded" from unchanged boilerplate
+    "rapidfuzz>=3.14",        # fuzzy-match risk factors across years: reworded vs unchanged boilerplate
+    # --- PDF fallback (added 2026-08-04; pypdf tried first and rejected) ---
+    "pdfminer-six>=20260107", # FY2022 MORN letter is PDF-only; see src/pdf_text.py for why not pypdf
     # --- environment / platform ---
     "truststore>=0.10",       # use the Windows cert store, fixes corporate-SSL failures in httpx
     "python-dotenv>=1.0",     # load EDGAR_IDENTITY and ANTHROPIC_API_KEY from .env

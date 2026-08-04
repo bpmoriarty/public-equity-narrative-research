@@ -26,7 +26,7 @@ they anchor a narrative claim.
 
 ### What's Working
 
-- **Environment.** Python 3.13.14, 8 declared dependencies, `uv sync` rebuilds
+- **Environment.** Python 3.13.14, 9 declared dependencies, `uv sync` rebuilds
   from `uv.lock`. API key verified against the Anthropic API at zero token cost
 - **Config.** Three TOML files; all parse, all regexes compile, all section keys
   have matching validation bands
@@ -40,14 +40,15 @@ they anchor a narrative claim.
   32.8 MB, **zero failures**. Verified: every filing got its primary document,
   every on-disk SHA-256 matches the manifest, no zero-byte or truncated files.
   Re-run downloads 0 — the cache holds
+- **PDF extraction** (`src/pdf_text.py`). The FY2022 shareholder letter is
+  PDF-only with a broken font encoding; the decoder derives the glyph offset
+  from the document and validates the result. Self-test passes: 0 unmapped
+  glyphs, 890 digits recovered. Verified it leaves well-behaved PDFs untouched
 - **Coverage.** 10-K and DEF 14A complete for all five fiscal years
 
 ### What's Broken or Incomplete
 
 - **No section extraction yet.** Milestone 3 not started. `data/sections/` empty
-- **FY2022 shareholder letter is a PDF** — `tm2310844d1_ars.pdf`. HTML-first
-  parsing cannot read it. Needs a decision: add a PDF text library, or handle
-  manually, or accept the gap. FY2023–FY2025 are HTML
 - **FY2021 has no shareholder letter at all.** Verified absent, not a lookup
   failure: no ARS filed, and no EX-13 in any of the five 10-Ks
 - **Section patterns are unvalidated against real filings.** Written from
@@ -89,6 +90,9 @@ are processed.
 | 2026-08-04 | Document selection **errs toward keeping** | Re-fetching is what the cache exists to prevent. This retained EX-97 (clawback policy) and EX-19.1 (insider trading policy) — both governance-relevant |
 | 2026-08-04 | Skip XBRL/rendering assets and compliance boilerplate | 2,693 of 2,894 documents. EX-21/23/24/31/32 are certifications and consents with no narrative content |
 | 2026-08-04 | Document types come from submission SGML via `edgartools` | EDGAR's `index.json` `type` field is the *icon filename* (`text.gif`), not the document type — useless for identifying exhibits |
+| 2026-08-04 | `pdfminer.six`, **not** `pypdf`, for PDF text | pypdf coerces unmapped glyphs toward whitespace, turning every digit in the FY2022 letter into a space — "fell 15%" became "fell". pdfminer preserves them as `(cid:N)`. Prefer the library that preserves what it can't interpret |
+| 2026-08-04 | Glyph offset **derived**, not hardcoded | Taken from the space glyph's frequency and validated against English sentinel words, so the decoder isn't silently wrong on a different company's font |
+| 2026-08-04 | The dual em-dash/minus glyph maps to ASCII `-` | One glyph serves both. A hyphen for an em dash is cosmetic; a lost minus sign inverts a fact |
 | 2026-08-04 | Force UTF-8 on stdout in every script | Windows console cp1252 cannot encode characters common in filings; printing one killed a completed run |
 
 ---
@@ -99,8 +103,8 @@ are processed.
 2. [x] Create `.env`, verify both credentials
 3. [x] **Milestone 1 — Discovery.** Complete, committed `ba24893`
 4. [x] **Milestone 2 — Fetch and cache.** 201 docs, 127 filings, verified
-5. [ ] **Decide on the FY2022 PDF letter** — add a PDF text library, handle
-       manually, or accept and document the gap
+5. [x] **FY2022 PDF letter** — resolved. `pdfminer.six` + `src/pdf_text.py`,
+       decode validated, 890 digits recovered
 6. [ ] **Milestone 3 — Section extraction** to `data/sections/`. Validate the
        `config/sections.toml` patterns against real MORN HTML; expect the
        DEF 14A patterns to need revision. *Review one section end-to-end before
@@ -126,6 +130,7 @@ are processed.
 | `config/sections.toml` | Section boundary regexes, anchor phrases, validation rules |
 | `src/discover.py` | Milestone 1. Inventory and gap analysis. No documents downloaded |
 | `src/fetch.py` | Milestone 2. Cache-first document downloader. `--dry-run`, `--limit` |
+| `src/pdf_text.py` | PDF text extraction with subsetted-font glyph decoding. `--selftest` |
 | `data/discovery/inventory.json` | **Machine source of truth** for what's in scope. Later stages read this, not config |
 | `data/discovery/discovery-report.md` | The human-readable inventory and gap analysis |
 | `data/raw/FY*/…` | Cached documents by fiscal year and form. Never delete — rebuilding means re-hitting EDGAR for all 201 |
@@ -172,6 +177,8 @@ are processed.
 - Mapped the format landscape before writing the fetcher: found EDGAR's
   `index.json` type field is useless, that one ARS is PDF-only, and that the
   FY2021 shareholder letter does not exist on EDGAR at all
-- Next: decide how to handle the FY2022 PDF letter, then milestone 3 (section
-  extraction) — where `config/sections.toml` meets real filing HTML for the
-  first time
+- Solved the FY2022 PDF letter. Added `pypdf`, found it destroys digits,
+  removed it, and adopted `pdfminer.six` with a validated glyph decoder in
+  `src/pdf_text.py`. All four available shareholder letters are now readable
+- Next: milestone 3 (section extraction) — where `config/sections.toml` meets
+  real filing HTML for the first time
