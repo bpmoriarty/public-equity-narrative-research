@@ -1,0 +1,37 @@
+# Project manifest — declares every third-party package the pipeline imports, so
+# the environment rebuilds from a clean checkout with `uv sync`. uv.lock pins the
+# exact resolved versions; the floors below say "at least this, newer is fine."
+#
+# Floors rather than exact pins (==) because this project is being built now, not
+# reproducing a validated historical run. Once the pipeline has been hand-checked
+# against a real company end-to-end, tighten the extraction-critical packages
+# (edgartools, beautifulsoup4, lxml) to == so a silent parser change can't move
+# section boundaries under you.
+[project]
+name = "public-equity-research"
+version = "0.1.0"
+description = "Five-year narrative history of a public company from its SEC filings: narrative brief, timeline, discussion points"
+requires-python = ">=3.13"
+
+dependencies = [
+    # --- EDGAR access ---
+    "edgartools>=5.35",       # ticker -> CIK, submissions API, filing HTML + accession metadata
+    # --- HTML-first section extraction (see CLAUDE.md: parse HTML, not .txt renditions) ---
+    "beautifulsoup4>=4.14",   # section boundary location and text cleanup
+    "lxml>=6.1",              # fast, lenient HTML parser backend for BeautifulSoup
+    # --- structured intermediate layer ---
+    "pydantic>=2.13",         # validates the year-ledger schema (SPEC.md section 3); a
+                              # malformed record fails loudly instead of reaching the outputs
+    # --- narrative signal extraction ---
+    "anthropic>=0.116",       # Claude API: strategic priorities, incentive metrics, notable language
+    # --- year-over-year risk factor diffing (SPEC.md section 2, "Risk") ---
+    "rapidfuzz>=3.14",        # fuzzy match risk factors across years to separate
+                              # "materially reworded" from unchanged boilerplate
+    # --- environment / platform ---
+    "truststore>=0.10",       # use the Windows cert store, fixes corporate-SSL failures in httpx
+    "python-dotenv>=1.0",     # load EDGAR_IDENTITY and ANTHROPIC_API_KEY from .env
+]
+
+[tool.uv]
+# A collection of runnable pipeline scripts, not an installable library.
+package = false

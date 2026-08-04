@@ -1,0 +1,36 @@
+# Virtual environment — regenerates from uv.lock via `uv sync`
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS / OneDrive files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets — EDGAR_IDENTITY and ANTHROPIC_API_KEY live here, never in git.
+# .env.example IS committed as the template.
+.env
+
+# Claude Code persistent memory (local only)
+memory/
+
+# --- Generated pipeline artifacts ---
+# data/raw/ is deliberately NOT ignored below in spirit, but it is large and
+# re-fetchable. See DATA.md: the cache is precious locally (never re-hit EDGAR)
+# but it is a *copy* of public EDGAR documents, so it does not belong in git.
+data/raw/
+
+# Extracted sections and ledger records regenerate from data/raw/
+data/sections/
+data/ledger/
+
+# Final deliverables regenerate from data/ledger/
+output/
+
+# Per-run logs
+logs/
+*.log

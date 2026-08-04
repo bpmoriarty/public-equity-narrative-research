@@ -1,0 +1,249 @@
+# WHAT THIS FILE IS
+# Where each target section starts and stops, and how to tell whether the
+# extraction actually worked. Every pattern here is a REGEX, written in TOML
+# single quotes ('...') so backslashes pass through literally — in double quotes
+# TOML would eat them and \s+ would silently become s+.
+#
+# HOW EXTRACTION USES THIS (CLAUDE.md: "section-targeted, not linear")
+#   1. find `start_patterns` in the filing HTML  -> section begins here
+#   2. find `end_patterns` after that point      -> section ends here
+#   3. run the [validation] checks on the span   -> pass, or fail LOUDLY
+# A 10-K runs 250+ pages; the in-scope sections are a fraction of it. Locate,
+# extract the span, discard the rest. Never send a whole filing to a model.
+#
+# THE TABLE-OF-CONTENTS TRAP — the single most common failure in 10-K parsing:
+# "Item 1A. Risk Factors" appears at least twice in every 10-K. The first hit is
+# the table of contents; the real section is later. Taking the first match
+# yields a section two lines long. Hence `min_chars` in [validation] and
+# `skip_toc_matches` below — both exist to catch exactly this.
+
+[defaults]
+# Ignore case and let . match across newlines when applying patterns.
+case_insensitive = true
+
+# How many leading matches to treat as table-of-contents noise. Standard
+# practice: take the LAST match of a start pattern, not the first, then confirm
+# with min_chars. Set per-section if a filing needs different handling.
+skip_toc_matches = 1
+
+# Whitespace in filing HTML is chaotic — non-breaking spaces, line breaks inside
+# item headings, tab-indented tables. Normalize before matching or patterns that
+# look correct will silently miss.
+normalize_whitespace = true
+
+# ===========================================================================
+# 10-K  (SPEC.md section 1: Item 1, Item 1A, Item 7)
+# ===========================================================================
+# Note each section ends where the NEXT item begins. Item 1A is listed as an end
+# pattern for Item 1, etc. Some filers order Item 1B/1C differently or omit
+# them, so each end_patterns list carries several candidates — use the earliest
+# one that appears after the start.
+
+[[sections]]
+key = "10-K_item1_business"
+form = "10-K"
+label = "Item 1 — Business"
+start_patterns = [
+    'item\s*1\s*[\.\:\-—–]?\s*business',
+    'item\s*1\s*[\.\:\-—–]?\s*[\r\n\s]*business',
+]
+end_patterns = [
+    'item\s*1a\s*[\.\:\-—–]?\s*risk\s*factors',
+    'item\s*1b\s*[\.\:\-—–]?\s*unresolved\s*staff\s*comments',
+    'item\s*2\s*[\.\:\-—–]?\s*propert',
+]
+# Phrases that should appear somewhere inside a correctly captured Item 1. If
+# none appear, the span is probably the wrong region of the document.
+anchor_phrases = ["our business", "we offer", "competition", "employees", "human capital"]
+# Signals to extract from this section, per SPEC.md section 2.
+extract_signals = ["strategic_priorities", "segments", "headcount"]
+
+[[sections]]
+key = "10-K_item1a_risk_factors"
+form = "10-K"
+label = "Item 1A — Risk Factors"
+start_patterns = [
+    'item\s*1a\s*[\.\:\-—–]?\s*risk\s*factors',
+]
+end_patterns = [
+    'item\s*1b\s*[\.\:\-—–]?\s*unresolved\s*staff\s*comments',
+    'item\s*1c\s*[\.\:\-—–]?\s*cybersecurity',
+    'item\s*2\s*[\.\:\-—–]?\s*propert',
+]
+anchor_phrases = ["risk", "could", "adversely affect"]
+extract_signals = ["risk_factors"]
+# Risk factors are the one section extracted as a LIST of individually
+# delimited items, not one text blob — SPEC.md requires diffing them year over
+# year, which needs per-factor granularity. Individual factors are almost
+# always bold or heading-styled subheads inside the section.
+split_into_items = true
+item_heading_selectors = ["b", "strong", "h3", "h4", "p > b", "span[style*='bold']"]
+
+[[sections]]
+form = "10-K"
+key = "10-K_item7_mdna"
+label = "Item 7 — Management's Discussion and Analysis"
+start_patterns = [
+    "item\\s*7\\s*[\\.\\:\\-—–]?\\s*management['’]?s?\\s*discussion",
+    'item\s*7\s*[\.\:\-—–]?\s*management.{0,3}s\s*discussion',
+]
+end_patterns = [
+    'item\s*7a\s*[\.\:\-—–]?\s*quantitative\s*and\s*qualitative',
+    'item\s*8\s*[\.\:\-—–]?\s*financial\s*statements',
+]
+anchor_phrases = ["compared to", "increase", "decrease", "results of operations"]
+extract_signals = ["strategic_priorities", "segments", "events", "notable_language"]
+
+# ===========================================================================
+# DEF 14A  (SPEC.md section 1)
+# ===========================================================================
+# Proxies have no standardized item numbering — unlike a 10-K there is no
+# "Item 7" to anchor on. Section titles are conventional but not mandated, so
+# these patterns are looser and the validation bounds are wider. Expect more
+# boundary failures here than in 10-Ks; that is normal and is why every failure
+# is logged rather than swallowed.
+
+[[sections]]
+key = "DEF14A_cdna"
+form = "DEF 14A"
+label = "Compensation Discussion & Analysis"
+start_patterns = [
+    'compensation\s*discussion\s*and\s*analysis',
+    'compensation\s*discussion\s*&\s*analysis',
+    '\bCD&A\b',
+]
+end_patterns = [
+    'summary\s*compensation\s*table',
+    'compensation\s*committee\s*report',
+    'potential\s*payments\s*upon\s*termination',
+]
+anchor_phrases = ["annual incentive", "performance", "target", "compensation committee"]
+extract_signals = ["incentive_metrics", "notable_language"]
+
+[[sections]]
+key = "DEF14A_incentive_tables"
+form = "DEF 14A"
+label = "Incentive metric tables"
+start_patterns = [
+    'summary\s*compensation\s*table',
+    'grants\s*of\s*plan[\-\s]based\s*awards',
+]
+end_patterns = [
+    'outstanding\s*equity\s*awards',
+    'director\s*compensation',
+    'pay\s*(versus|vs\.?)\s*performance',
+]
+anchor_phrases = ["salary", "stock awards", "option awards"]
+extract_signals = ["incentive_metrics"]
+# These are genuine HTML tables. Preserve table structure rather than
+# flattening to text — CLAUDE.md's reason for HTML-first parsing.
+preserve_tables = true
+
+[[sections]]
+key = "DEF14A_director_bios"
+form = "DEF 14A"
+label = "Director bios and tenure"
+start_patterns = [
+    'election\s*of\s*directors',
+    'nominees\s*for\s*(election\s*(as|to)\s*)?director',
+    'our\s*board\s*of\s*directors',
+]
+end_patterns = [
+    'corporate\s*governance',
+    'audit\s*committee\s*report',
+    'director\s*compensation',
+]
+anchor_phrases = ["director since", "age", "committee"]
+extract_signals = ["board"]
+
+[[sections]]
+key = "DEF14A_proposals_and_votes"
+form = "DEF 14A"
+label = "Shareholder proposals and vote results"
+start_patterns = [
+    'shareholder\s*proposal',
+    'stockholder\s*proposal',
+    'advisory\s*vote\s*(to\s*approve|on)\s*executive\s*compensation',
+    'say[\-\s]on[\-\s]pay',
+]
+end_patterns = [
+    'other\s*(business|matters)',
+    'additional\s*information',
+    'appendix',
+]
+anchor_phrases = ["proposal", "board recommends", "vote"]
+extract_signals = ["board", "notable_language"]
+# Say-on-pay and proposal OUTCOMES are not in the DEF 14A — the proxy solicits
+# the vote, it does not report it. Actual tallies appear in the 8-K Item 5.07
+# filed after the meeting. Both sources are needed for the full picture.
+outcome_source = "8-K item 5.07"
+
+# ===========================================================================
+# Shareholder / annual letter
+# ===========================================================================
+
+[[sections]]
+key = "letter_full_text"
+form = "ARS"
+label = "Shareholder letter — full text"
+# Letters are short enough to take whole (SPEC.md: "Full text (usually short)"),
+# so no start/end patterns. The work here is LOCATING the letter, not bounding
+# it: it may be a standalone ARS, an EX-13 to the 10-K, or an 8-K exhibit.
+take_full_document = true
+anchor_phrases = ["dear", "shareholders", "fellow"]
+extract_signals = ["strategic_priorities", "notable_language"]
+
+# ===========================================================================
+# Boundary validation  (CLAUDE.md: "Log failures loudly rather than silently
+# emitting a truncated or over-captured section")
+# ===========================================================================
+# Both bounds matter and they catch opposite failures:
+#   TOO SHORT -> matched the table of contents, or the end pattern fired
+#               immediately after the start
+#   TOO LONG  -> the end pattern never matched, so the span ran to the end of
+#               the document and swallowed the financial statements
+# A silently over-captured section is the more dangerous of the two: it looks
+# like a successful extraction and quietly costs a fortune in tokens downstream.
+
+[validation]
+
+# Global floor. A section under this is a failure regardless of type — no real
+# 10-K item is 500 characters.
+min_chars = 2000
+
+# Per-section plausible length bands, in characters. Deliberately wide: these
+# catch catastrophic failure, not stylistic variation. Tighten only after you
+# have seen the real distribution for a given company.
+[validation.expected_chars]
+"10-K_item1_business"        = { min = 8000,  max = 250000 }
+"10-K_item1a_risk_factors"   = { min = 15000, max = 400000 }
+"10-K_item7_mdna"            = { min = 10000, max = 300000 }
+"DEF14A_cdna"                = { min = 8000,  max = 250000 }
+"DEF14A_incentive_tables"    = { min = 2000,  max = 120000 }
+"DEF14A_director_bios"       = { min = 3000,  max = 150000 }
+"DEF14A_proposals_and_votes" = { min = 1500,  max = 120000 }
+"letter_full_text"           = { min = 1000,  max = 80000  }
+
+[validation.checks]
+# Require at least this many of the section's anchor_phrases to be present.
+min_anchor_phrases = 2
+
+# Reject a span that contains these — a reliable sign the end pattern failed and
+# the capture ran on into the financial statements.
+overcapture_markers = [
+    'report\s*of\s*independent\s*registered\s*public\s*accounting\s*firm',
+    'consolidated\s*balance\s*sheets?',
+    'notes\s*to\s*consolidated\s*financial\s*statements',
+]
+
+# Refuse to write a section whose text is byte-identical to a different year's.
+# Year-over-year sections are always similar and sometimes 95%+ identical, which
+# is a real finding — but EXACTLY identical means the same file got processed
+# twice under two years' labels.
+reject_exact_duplicate_across_years = true
+
+# On failure: write nothing, log the section key, form, fiscal year, accession
+# number, which check failed, and the observed vs expected value. Then continue
+# to the next section — one bad boundary must not kill the run, but it must
+# never pass silently either.
+on_failure = "log_and_skip"

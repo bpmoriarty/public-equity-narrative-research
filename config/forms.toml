@@ -1,0 +1,100 @@
+# WHAT THIS FILE IS
+# Which filings enter the pipeline at all. Encodes SPEC.md section 1: the four
+# in-scope form types, and the 8-K item filter that keeps a large filer's dozens
+# of routine 8-Ks per year from drowning the signal.
+
+# ---------------------------------------------------------------------------
+# In-scope forms
+# ---------------------------------------------------------------------------
+# EDGAR treats "10-K" and "10-K/A" (an amendment) as different form types.
+# include_amendments controls whether the /A variants come along. Amendments
+# matter here: a restated 10-K is itself a narrative event.
+
+[[forms]]
+form = "10-K"
+why = "Management's own account of strategy and risk"
+include_amendments = true
+cadence = "annual"
+
+[[forms]]
+form = "DEF 14A"
+why = "What the board actually incentivizes; board composition"
+include_amendments = true
+cadence = "annual"
+
+[[forms]]
+form = "ARS"
+why = "Annual report to shareholders — the leadership letter, unfiltered by disclosure convention"
+include_amendments = false
+cadence = "annual"
+# ARS is filed inconsistently. Many companies furnish the shareholder letter as
+# an EX-13 exhibit to the 10-K, or as a 8-K/ARS combination, or not to EDGAR at
+# all. Discovery must report which of these applies rather than assume ARS
+# exists. If it does not, the letter may be recoverable from a 10-K exhibit.
+fallback = "10-K exhibit EX-13"
+optional = true
+
+[[forms]]
+form = "8-K"
+why = "Discrete material events between annual filings"
+include_amendments = true
+cadence = "event-driven"
+# 8-Ks are the one form type that MUST be filtered. See [eight_k] below.
+requires_item_filter = true
+
+# ---------------------------------------------------------------------------
+# 8-K item filter (SPEC.md section 1, "8-K filtering")
+# ---------------------------------------------------------------------------
+# Only 8-Ks reporting one or more of these items get fetched and processed.
+# EDGAR's submissions JSON exposes an "items" field per 8-K, so this filter can
+# be applied at the metadata stage — before downloading anything.
+
+[eight_k]
+
+# Items that put an 8-K in scope for full processing.
+include_items = [
+    "1.01",  # entry into a material definitive agreement
+    "1.02",  # termination of a material definitive agreement
+    "2.01",  # completion of acquisition or disposition of assets
+    "2.05",  # costs associated with exit or disposal activities (restructuring)
+    "5.02",  # departure/appointment/election of directors and officers
+    "5.07",  # submission of matters to a vote of security holders
+]
+
+# Items that are in scope only conditionally — the item number alone does not
+# tell you whether the content is strategic. 7.01 (Reg FD) and 8.01 (other
+# events) carry both major strategic announcements and wholly routine press
+# releases. These get fetched, then triaged on the exhibit's content.
+# Log every triage decision; a silent drop here loses real events.
+conditional_items = [
+    "7.01",  # Regulation FD disclosure
+    "8.01",  # other events
+]
+
+# Items logged for their DATE ONLY — never fetched, never processed. The
+# earnings-release cadence is timeline context (a missed or delayed release is
+# itself a signal), but the releases themselves are financial, not narrative,
+# and this is not a financial-extraction project.
+date_only_items = [
+    "2.02",  # results of operations and financial condition (earnings release)
+]
+
+# ---------------------------------------------------------------------------
+# Gap-analysis signals (PROMPT.md milestone 1)
+# ---------------------------------------------------------------------------
+# Forms NOT processed for content, but whose mere presence in the window must be
+# surfaced during discovery because it reframes everything else. An S-4 in the
+# window means M&A; an NT 10-K means the company missed a filing deadline.
+
+[gap_signals]
+flag_forms = [
+    "S-1",     # registration statement — IPO or major securities offering
+    "S-4",     # registration for a merger/exchange offer — strong M&A signal
+    "S-3",     # shelf registration — financing capacity
+    "NT 10-K", # notification of late filing — a governance/controls signal
+    "NT 10-Q",
+    "8-K12B",  # succession of a new issuer, e.g. reincorporation or holdco
+    "25-NSE",  # exchange delisting notice
+    "SC 13D",  # activist stake — often precedes the changes this pipeline tracks
+    "SC 14D9", # response to a tender offer
+]
