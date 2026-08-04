@@ -3,7 +3,7 @@
 - CIK: `0001289419` (resolved from the SEC ticker map, not hardcoded)
 - Fiscal year end: **12-31**
 - Window: **FY2021–FY2025** = 2021-01-01 .. 2025-12-31
-- Submissions index as of: 2026-08-04T18:03:55Z
+- Submissions index as of: 2026-08-04T18:08:03Z
 - Total filings in index: 1000 (reaching back to 2019-07-26)
 
 No filing documents were downloaded. This is metadata only.
@@ -126,19 +126,13 @@ Listed so every exclusion is visible. None of these are in SPEC.md's scope.
 | `10-Q` | 15 | quarterly report — out of scope, this is an annual-narrative project |
 | `SC 13G/A` | 13 | passive institutional stake, amended |
 | `4/A` | 9 | insider transaction report, amended |
-| `CORRESP` | 8 | correspondence with SEC staff |
-| `DEFA14A` | 6 | additional proxy soliciting material |
-| `UPLOAD` | 6 | SEC staff comment letter to the company |
 | `SC 13G` | 5 | passive institutional stake (index funds); 13D would be the activist form |
 | `3` | 3 | initial insider holdings |
 | `SCHEDULE 13G/A` | 3 | passive institutional stake, amended |
 | `5` | 2 | annual insider holdings |
 | `S-8` | 1 | employee benefit plan share registration |
 
-Two of these are worth a decision rather than a shrug:
-
-- **`DEFA14A`** — additional proxy soliciting material. Sometimes carries supplemental compensation disclosure or vote-related communication that does not appear in the DEF 14A itself. Currently out of scope.
-- **`UPLOAD` / `CORRESP`** — SEC staff comment letters and the company's replies. Directly relevant to a governance narrative (the SEC questioning a disclosure is a real signal) but not in SPEC.md's scope. Currently out of scope.
+`DEFA14A`, `UPLOAD`, and `CORRESP` were moved INTO scope on 2026-08-04 as a deliberate extension beyond SPEC.md's four form types — see the scope-extension block in `config/forms.toml`. They no longer appear in the table above.
 
 ## Gaps and warnings
 
@@ -149,9 +143,12 @@ Two of these are worth a decision rather than a shrug:
 
 ## What milestone 2 would fetch
 
-**106 documents.** At the configured 0.15s delay between requests (6.7/sec, inside the SEC's 10/sec limit), that is at least 16s of deliberate waiting, plus download time.
+**127 documents.** At the configured 0.15s delay between requests (6.7/sec, inside the SEC's 10/sec limit), that is at least 19s of deliberate waiting, plus download time.
 
 - 10-K: 5
 - 8-K: 92
 - ARS: 4
+- CORRESP: 8
 - DEF 14A: 5
+- DEFA14A: 7
+- UPLOAD: 6

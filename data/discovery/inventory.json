@@ -1,5 +1,5 @@
 {
-  "as_of_utc": "2026-08-04T18:03:55Z",
+  "as_of_utc": "2026-08-04T18:08:03Z",
   "ticker": "MORN",
   "cik": "0001289419",
   "company_name": "Morningstar, Inc.",
@@ -1538,10 +1538,10 @@
       "items": [],
       "primary_doc": "a20-1992_4defa14a.htm",
       "description": "DEFA14A",
-      "fiscal_year": 2020,
-      "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "DEFA14A not an in-scope form",
+      "fiscal_year": 2019,
+      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "disposition": "in_scope",
+      "reason": "DEFA14A in scope",
       "in_window": false
     },
     {
@@ -1625,10 +1625,10 @@
       "items": [],
       "primary_doc": "tm2016664-1_defa14a.htm",
       "description": "DEFA14A",
-      "fiscal_year": 2020,
-      "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "DEFA14A not an in-scope form",
+      "fiscal_year": 2019,
+      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "disposition": "in_scope",
+      "reason": "DEFA14A in scope",
       "in_window": false
     },
     {
@@ -1639,10 +1639,10 @@
       "items": [],
       "primary_doc": "tm2016664-2_defa14a.htm",
       "description": "DEFA14A",
-      "fiscal_year": 2020,
-      "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "DEFA14A not an in-scope form",
+      "fiscal_year": 2019,
+      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "disposition": "in_scope",
+      "reason": "DEFA14A in scope",
       "in_window": false
     },
     {
@@ -2098,8 +2098,8 @@
       "description": "",
       "fiscal_year": 2020,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "UPLOAD not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "UPLOAD in scope",
       "in_window": false
     },
     {
@@ -2168,8 +2168,8 @@
       "description": "",
       "fiscal_year": 2020,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "CORRESP not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "CORRESP in scope",
       "in_window": false
     },
     {
@@ -2313,8 +2313,8 @@
       "description": "",
       "fiscal_year": 2020,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "UPLOAD not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "UPLOAD in scope",
       "in_window": false
     },
     {
@@ -3826,11 +3826,11 @@
       "items": [],
       "primary_doc": "a21-2384_3defa14a.htm",
       "description": "DEFA14A",
-      "fiscal_year": 2021,
-      "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "DEFA14A not an in-scope form",
-      "in_window": true
+      "fiscal_year": 2020,
+      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "disposition": "in_scope",
+      "reason": "DEFA14A in scope",
+      "in_window": false
     },
     {
       "accession": "0001289419-21-000071",
@@ -6383,10 +6383,10 @@
       "items": [],
       "primary_doc": "d248717ddefa14a.htm",
       "description": "DEFA14A",
-      "fiscal_year": 2022,
-      "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "DEFA14A not an in-scope form",
+      "fiscal_year": 2021,
+      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "disposition": "in_scope",
+      "reason": "DEFA14A in scope",
       "in_window": true
     },
     {
@@ -8503,10 +8503,10 @@
       "items": [],
       "primary_doc": "d364908ddefa14a.htm",
       "description": "DEFA14A",
-      "fiscal_year": 2023,
-      "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "DEFA14A not an in-scope form",
+      "fiscal_year": 2022,
+      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "disposition": "in_scope",
+      "reason": "DEFA14A in scope",
       "in_window": true
     },
     {
@@ -8551,8 +8551,8 @@
       "description": "",
       "fiscal_year": 2023,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "UPLOAD not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "UPLOAD in scope",
       "in_window": true
     },
     {
@@ -8583,8 +8583,8 @@
       "description": "",
       "fiscal_year": 2023,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "CORRESP not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "CORRESP in scope",
       "in_window": true
     },
     {
@@ -8839,8 +8839,8 @@
       "description": "",
       "fiscal_year": 2023,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "CORRESP not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "CORRESP in scope",
       "in_window": true
     },
     {
@@ -8939,8 +8939,8 @@
       "description": "",
       "fiscal_year": 2023,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "UPLOAD not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "UPLOAD in scope",
       "in_window": true
     },
     {
@@ -9112,8 +9112,8 @@
       "description": "",
       "fiscal_year": 2023,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "CORRESP not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "CORRESP in scope",
       "in_window": true
     },
     {
@@ -9473,8 +9473,8 @@
       "description": "",
       "fiscal_year": 2023,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "UPLOAD not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "UPLOAD in scope",
       "in_window": true
     },
     {
@@ -9551,8 +9551,8 @@
       "description": "",
       "fiscal_year": 2023,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "CORRESP not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "CORRESP in scope",
       "in_window": true
     },
     {
@@ -9607,8 +9607,8 @@
       "description": "",
       "fiscal_year": 2023,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "CORRESP not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "CORRESP in scope",
       "in_window": true
     },
     {
@@ -9709,8 +9709,8 @@
       "description": "",
       "fiscal_year": 2023,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "UPLOAD not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "UPLOAD in scope",
       "in_window": true
     },
     {
@@ -9891,8 +9891,8 @@
       "description": "",
       "fiscal_year": 2023,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "CORRESP not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "CORRESP in scope",
       "in_window": true
     },
     {
@@ -9950,8 +9950,8 @@
       "description": "",
       "fiscal_year": 2023,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "CORRESP not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "CORRESP in scope",
       "in_window": true
     },
     {
@@ -10069,8 +10069,8 @@
       "description": "",
       "fiscal_year": 2024,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "UPLOAD not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "UPLOAD in scope",
       "in_window": true
     },
     {
@@ -10209,8 +10209,8 @@
       "description": "",
       "fiscal_year": 2024,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "CORRESP not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "CORRESP in scope",
       "in_window": true
     },
     {
@@ -10270,8 +10270,8 @@
       "description": "",
       "fiscal_year": 2024,
       "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "UPLOAD not an in-scope form",
+      "disposition": "in_scope",
+      "reason": "UPLOAD in scope",
       "in_window": true
     },
     {
@@ -10489,10 +10489,10 @@
       "items": [],
       "primary_doc": "d673923ddefa14a.htm",
       "description": "DEFA14A",
-      "fiscal_year": 2024,
-      "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "DEFA14A not an in-scope form",
+      "fiscal_year": 2023,
+      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "disposition": "in_scope",
+      "reason": "DEFA14A in scope",
       "in_window": true
     },
     {
@@ -12443,10 +12443,10 @@
       "items": [],
       "primary_doc": "tm2510342d2_defa14a.htm",
       "description": "DEFA14A",
-      "fiscal_year": 2025,
-      "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "DEFA14A not an in-scope form",
+      "fiscal_year": 2024,
+      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "disposition": "in_scope",
+      "reason": "DEFA14A in scope",
       "in_window": true
     },
     {
@@ -12471,10 +12471,10 @@
       "items": [],
       "primary_doc": "d895979ddefa14a.htm",
       "description": "DEFA14A",
-      "fiscal_year": 2025,
-      "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "DEFA14A not an in-scope form",
+      "fiscal_year": 2024,
+      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "disposition": "in_scope",
+      "reason": "DEFA14A in scope",
       "in_window": true
     },
     {
@@ -13907,11 +13907,11 @@
       "items": [],
       "primary_doc": "tm269740d2_defa14a.htm",
       "description": "DEFA14A",
-      "fiscal_year": 2026,
-      "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "DEFA14A not an in-scope form",
-      "in_window": false
+      "fiscal_year": 2025,
+      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "disposition": "in_scope",
+      "reason": "DEFA14A in scope",
+      "in_window": true
     },
     {
       "accession": "0000102909-26-001889",
@@ -13949,11 +13949,11 @@
       "items": [],
       "primary_doc": "d65355ddefa14a.htm",
       "description": "DEFA14A",
-      "fiscal_year": 2026,
-      "fy_basis": "fiscal year containing filingDate",
-      "disposition": "out_of_scope",
-      "reason": "DEFA14A not an in-scope form",
-      "in_window": false
+      "fiscal_year": 2025,
+      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "disposition": "in_scope",
+      "reason": "DEFA14A in scope",
+      "in_window": true
     },
     {
       "accession": "0001289419-26-000017",

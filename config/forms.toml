@@ -43,6 +43,38 @@ cadence = "event-driven"
 requires_item_filter = true
 
 # ---------------------------------------------------------------------------
+# SCOPE EXTENSION beyond SPEC.md section 1
+# ---------------------------------------------------------------------------
+# SPEC.md names four in-scope forms. The three below were added deliberately on
+# 2026-08-04 after discovery surfaced them, and are NOT part of the original
+# spec. They are recorded here rather than in code so the widened scope is
+# visible and reversible — delete these three blocks to return to spec scope.
+#
+# Consequence for the outputs: coverage claims must say "the seven form types in
+# config/forms.toml", not "the forms in SPEC.md".
+
+[[forms]]
+form = "DEFA14A"
+why = "Additional proxy soliciting material. Carries supplemental compensation disclosure and vote-related communication that does not appear in the DEF 14A itself"
+include_amendments = false
+cadence = "annual"
+optional = true
+
+[[forms]]
+form = "UPLOAD"
+why = "SEC staff comment letter to the company. The regulator formally questioning a disclosure is a governance signal, and the topic questioned is itself narrative evidence"
+include_amendments = false
+cadence = "event-driven"
+optional = true
+
+[[forms]]
+form = "CORRESP"
+why = "The company's written reply to SEC staff comments. Management explaining its own disclosure choices, in its own words, under regulatory pressure"
+include_amendments = false
+cadence = "event-driven"
+optional = true
+
+# ---------------------------------------------------------------------------
 # 8-K item filter (SPEC.md section 1, "8-K filtering")
 # ---------------------------------------------------------------------------
 # Only 8-Ks reporting one or more of these items get fetched and processed.

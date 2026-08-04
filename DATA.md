@@ -12,9 +12,24 @@ asserted. Update this file when the source, universe, or as-of date changes.
 | Filing metadata | EDGAR submissions JSON API (`data.sec.gov/submissions/CIK##########.json`) |
 | Documents | Filing HTML as filed, retrieved via `edgartools` |
 | Access library | `edgartools` (version pinned in `uv.lock`) |
-| As-of date | *(set when discovery runs — the date the submissions index was pulled)* |
+| As-of date | **2026-08-04** — submissions index pulled 2026-08-04T18:08Z; documents fetched same day |
 | Universe | One company at a time, per `config/company.toml` |
 | Window | Five fiscal years, per `config/company.toml` `[window]` |
+| Subject | MORN / Morningstar, Inc., CIK 0001289419, FY2021–FY2025 |
+| Retrieved | 201 documents across 127 filings, 32.8 MB — see `data/raw/fetch-manifest.json` |
+
+The manifest records a SHA-256 for every document, so the cache can be verified
+against what was actually downloaded rather than assumed intact.
+
+### Scope extension beyond SPEC.md
+
+SPEC.md §1 names four in-scope forms. Three more were added on 2026-08-04:
+`DEFA14A` (supplemental proxy material), and `UPLOAD` / `CORRESP` (SEC staff
+comment letters and the company's replies). Recorded in `config/forms.toml`
+under an explicit scope-extension block.
+
+Coverage claims must therefore say "the seven form types in `config/forms.toml`",
+not "the forms in SPEC.md".
 
 ## Subject relationship (current run: MORN)
 
@@ -79,7 +94,20 @@ has to survive them.
    chosen, not sampled, so nothing generalizes beyond it. No cross-company
    comparison in the outputs is supported by this data.
 
-7. **Section extraction is lossy by design.** Only the sections in
+7. **One document is PDF-only.** The FY2022 shareholder letter (`ARS`,
+   accession 0001104659-23-039633) was filed as a PDF; FY2023–FY2025 are HTML.
+   HTML-first parsing cannot read it, so extracting it needs either a PDF text
+   library or manual handling. Until then, FY2022 leadership-voice evidence is
+   unavailable even though the document is cached. The six `UPLOAD` PDFs are
+   unaffected — the SEC files a `.txt` twin of each, which is what gets parsed.
+
+8. **The FY2021 shareholder letter does not exist on EDGAR.** Verified, not
+   assumed: no `ARS` was filed for FY2021, and no `EX-13` exhibit appears in any
+   of the five 10-Ks. So FY2021 has no leadership-voice source. An apparent shift
+   in tone between FY2021 and FY2022 must not be read as a real change — the
+   FY2021 baseline is simply missing.
+
+9. **Section extraction is lossy by design.** Only the sections in
    `config/sections.toml` are extracted; the rest of each filing is discarded.
    A fact stated only in, say, Item 3 (Legal Proceedings) will not appear in the
    outputs. Where a boundary validation fails, that section is skipped for that

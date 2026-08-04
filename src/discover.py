@@ -328,7 +328,7 @@ def assign_fiscal_year(row: dict, fye: tuple[int, int]) -> tuple[int | None, str
             return rd.year, "reportDate.year (period end is OFF-CYCLE — check)"
         return fy_containing(fd, fye), "filingDate (no reportDate)"
 
-    if form in ("DEF 14A", "ARS"):
+    if form in ("DEF 14A", "DEFA14A", "ARS"):
         if period_fy is not None:
             return period_fy, "reportDate (verified period end)"
         # reportDate was a meeting date or a copy of the filing date — useless.
@@ -744,14 +744,9 @@ def build_report(inv: dict, rows: list[dict], fy_range: list[int], fye) -> str:
     for form, n in Counter(r["form"] for r in inw if r["disposition"] == "out_of_scope").most_common():
         add(f"| `{form}` | {n} | {known.get(form, '—')} |")
     add("")
-    add("Two of these are worth a decision rather than a shrug:")
-    add("")
-    add("- **`DEFA14A`** — additional proxy soliciting material. Sometimes carries "
-        "supplemental compensation disclosure or vote-related communication that "
-        "does not appear in the DEF 14A itself. Currently out of scope.")
-    add("- **`UPLOAD` / `CORRESP`** — SEC staff comment letters and the company's "
-        "replies. Directly relevant to a governance narrative (the SEC questioning "
-        "a disclosure is a real signal) but not in SPEC.md's scope. Currently out of scope.")
+    add("`DEFA14A`, `UPLOAD`, and `CORRESP` were moved INTO scope on 2026-08-04 as a "
+        "deliberate extension beyond SPEC.md's four form types — see the scope-extension "
+        "block in `config/forms.toml`. They no longer appear in the table above.")
     add("")
 
     # --- warnings ---------------------------------------------------------
