@@ -1,0 +1,80 @@
+{
+  "fiscal_year": 2023,
+  "task": "investor_qa",
+  "unit": "0001104659-23-006197",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:07:47Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 4812,
+    "output_tokens": 1714
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-23-006197",
+      "form": "8-K",
+      "filing_date": "2023-01-24",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 7344,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Product delivery architecture and shift to cloud for Data, Direct, and Advisor Workstation",
+        "stated_position": "Direct remains a Windows desktop application connecting to databases hosted primarily in Morningstar data centers, but \"Over time, we expect the balance of back-end services to shift to the cloud,\" with most future enhancements delivered using modern web components within the legacy application; Analytics Lab is 100% web-based in AWS.",
+        "kind": "segment_or_product",
+        "quote": "Over time, we expect the balance of back-end services to shift to the cloud. A large portion of Direct\u2019s features and functionality, as well as, we expect, most future enhancements, will be delivered using modern web components and frameworks delivered within the legacy application."
+      },
+      {
+        "topic": "Sales and renewal process for license-based products",
+        "stated_position": "Management describes a \"structured and well-defined approach\" for identifying sales opportunities, notes \"The vast majority of the contracts for our license-based products include auto-renew provisions,\" a dedicated renewal team, and heavier sales team involvement for the largest clients.",
+        "kind": "strategy",
+        "quote": "The vast majority of the contracts for our license-based products include auto-renew provisions. Throughout the term of the agreement, the sales and marketing teams will attempt to sell additional products and services to the client. When it comes to the renewal, there is a dedicated renewal team that works with the client to renew the agreement."
+      },
+      {
+        "topic": "Minimum cash retained on the balance sheet",
+        "stated_position": "\"While there is no minimum level of cash needed for operational purposes, we do maintain an appropriate cushion throughout the year to manage working capital needs,\" to avoid frequently drawing on the revolving credit facility; regulated subsidiaries held less than $50 million to meet capital requirements as of 9/30/22.",
+        "kind": "capital_allocation",
+        "quote": "While there is no minimum level of cash needed for operational purposes, we do maintain an appropriate cushion throughout the year to manage working capital needs. This ensures we are not frequently drawing on our revolving credit facility."
+      },
+      {
+        "topic": "Potential UK/EU regulation of ESG data and rating providers' pricing",
+        "stated_position": "Frameworks are \"in early stages of development\"; regulations mirroring credit rating agency pricing requirements \"would impose additional compliance costs on Morningstar Sustainalytics,\" but it is difficult to accurately predict scope and impact.",
+        "kind": "competition_or_market",
+        "quote": "Adoption of regulations applicable to ESG data product and rating providers that mirror the existing regulatory requirements on credit rating agencies with respect to pricing, including creation of cost-based pricing policies and practices that are not discriminatory, would impose additional compliance costs on Morningstar Sustainalytics."
+      },
+      {
+        "topic": "Possible SEC regulation of index providers as investment advisers",
+        "stated_position": "\"we do not anticipate a material impact on our index business,\" citing three SEC registered investment advisors, DBRS Morningstar's NRSRO registration, and existing EU/UK regulation of the index business as \"substantial experience operating within a regulated environment.\"",
+        "kind": "competition_or_market",
+        "quote": "In a scenario where the SEC regulates index providers as investment advisory companies, we do not anticipate a material impact on our index business. Morningstar currently operates three SEC registered investment advisors as well as DBRS Morningstar, which is registered with the SEC as a Nationally Recognized Statistical Rating Organization, so we have substantial experience operating within a regulated environment in the United States."
+      },
+      {
+        "topic": "LCD indexes and assets benchmarked to them",
+        "stated_position": "Management characterises the reach of the acquired LCD index franchise: one investable product directly tracks a Morningstar (formerly S&P) loan index, and roughly $75 billion in open-end fund and ETF assets use a Morningstar or Morningstar LSTA loan index as a primary prospectus benchmark.",
+        "kind": "segment_or_product",
+        "quote": "As of that date, open-end mutual funds and ETFs that use a Morningstar or Morningstar LSTA loan index as a primary prospectus benchmark, had roughly $75 billion in assets under management (including Invesco Senior Loan ETF)."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "The following information is included in this Current Report on Form 8-K as a result of Morningstar, Inc.\u2019s policy regarding public disclosure of corporate information.",
+        "why_notable": "Recurring framing of the monthly investor Q&A as a matter of company disclosure policy rather than a required filing."
+      },
+      {
+        "quote": "That said, it is difficult to accurately predict the scope and impact of potential future regulations on ESG data product and ESG rating providers at this time.",
+        "why_notable": "An explicit hedge immediately after acknowledging additional compliance costs for Sustainalytics."
+      },
+      {
+        "quote": "Direct is a Windows desktop application that is installed locally on users\u2019 computers.",
+        "why_notable": "Unusually direct admission that a flagship institutional product remains a legacy desktop application, in a year when management emphasises cloud migration."
+      }
+    ]
+  }
+}

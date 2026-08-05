@@ -1,0 +1,88 @@
+{
+  "fiscal_year": 2022,
+  "task": "investor_qa",
+  "unit": "0001104659-22-095136",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:01:57Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 7751,
+    "output_tokens": 2583
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-22-095136",
+      "form": "8-K",
+      "filing_date": "2022-08-26",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 16797,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Investment priorities and timing of returns on investment spending",
+        "stated_position": "\"This year, our investment priorities include Wealth, ESG / Morningstar Sustainalytics, and PitchBook in addition to addressing key infrastructure needs to help us scale.\" Management said it cannot guide to a specific inflection point in profitability, expects adjusted operating margins this year to be lower than a typical year, and is \"focused on getting back on a path toward levels seen in recent historical peaks,\" noting different time horizons for returns \\u2014 shorter-term for Morningstar Sustainalytics and PitchBook, longer for Wealth (direct indexing and open architecture TAMP expansion).",
+        "kind": "strategy",
+        "quote": "As we noted in our annual meeting earlier this year, we are investing in key areas of the business to address market opportunities. This year, our investment priorities include Wealth, ESG / Morningstar Sustainalytics, and PitchBook in addition to addressing key infrastructure needs to help us scale."
+      },
+      {
+        "topic": "Sales and marketing spending discipline and operating leverage",
+        "stated_position": "\"We believe that as we grow, we will have the opportunity to generate operating leverage in our sales and marketing activities. That said, we will continue to spend prudently in sales and marketing activities where we see the potential to generate attractive returns, which could result in higher levels of spend in certain periods.\"",
+        "kind": "strategy",
+        "quote": "We believe that as we grow, we will have the opportunity to generate operating leverage in our sales and marketing activities. That said, we will continue to spend prudently in sales and marketing activities where we see the potential to generate attractive returns, which could result in higher levels of spend in certain periods."
+      },
+      {
+        "topic": "Restructuring of China operations",
+        "stated_position": "Morningstar \"made the decision to strategically shift our China operations to focus entirely on the China domestic market,\" requiring it to \"streamline the team in Shenzhen accordingly over the next 12 months.\" Non-China-market-focused work is being shifted to alternate locations, \"so this decision is not a cost-savings measure,\" and Morningstar \"remains committed to its long-term presence and is in the process of redefining its strategy to capitalize on the growing potential within the domestic market.\"",
+        "kind": "strategy",
+        "quote": "After careful consideration, we have made the decision to strategically shift our China operations to focus entirely on the China domestic market. This requires us to streamline the team in Shenzhen accordingly over the next 12 months."
+      },
+      {
+        "topic": "Increased appetite for large M&A and how acquisitions fit the existing business",
+        "stated_position": "\"When it comes to capital allocation, our primary emphasis is supporting organic growth; however, we will continue to pursue acquisitions opportunistically.\" Over the past 10 years it completed 39 transactions; growing scale, profitability and cash flow \"expanded our capacity to do larger cash and debt-financed transactions,\" and it has \"tended to focus on larger acquisitions, which have a more substantial impact.\" But \"we do not pursue M&A simply because we have the capacity to do so; all transactions need to have strategic merit, offer compelling long-term returns, and create value.\" Each of the four largest deals since end-2016 (PitchBook, DBRS, Sustainalytics, LCD) strengthened the existing business.",
+        "kind": "capital_allocation",
+        "quote": "When it comes to capital allocation, our primary emphasis is supporting organic growth; however, we will continue to pursue acquisitions opportunistically where we identify opportunities that enhance our ability to empower investor success and create value for shareholders."
+      },
+      {
+        "topic": "Independent investigation into Morningstar Sustainalytics' research practices and alleged anti-Israel bias",
+        "stated_position": "\"neither Morningstar nor Morningstar Sustainalytics supports the anti-Israel BDS campaign. However, in retrospect, our initial review was overly dismissive of the serious bias concerns raised by the organization JLens, the Illinois Investment Policy Board (IIPB), and other entities.\" A working group led by independent directors Steve Kaplan and Gail Landis engaged White & Case in October 2021; the 117-page report found no evidence of pervasive or systemic bias but identified one product that exhibited bias in its outcomes; Morningstar \"committed to adopt in full\" the recommendations and plans to complete implementation by June 2023.",
+        "kind": "governance_or_management",
+        "quote": "However, in retrospect, our initial review was overly dismissive of the serious bias concerns raised by the organization JLens, the Illinois Investment Policy Board (IIPB), and other entities. We consider bias unacceptable in any form and concluded that the concerns warranted a thorough, independent review."
+      },
+      {
+        "topic": "Joe Mansueto's pledged shares and new pledging policy",
+        "stated_position": "As of December 31, 2021 Joe Mansueto had pledged 1,800,000 shares as security under a bank credit agreement, down from 3,000,000 a year earlier, representing about 10% of his beneficially owned shares and 4% of total shares outstanding; the pledge \"was arranged to provide Joe some opportunity to diversify his assets, consistent with the advice Morningstar often gives investors.\" Effective July 2022 the Code of Ethics was amended to prohibit pledging more than 15% of beneficially owned Morningstar securities, with Audit Committee review; the Audit Committee determined Joe's arrangements \"do not present a significant risk of a margin call or subsequent foreclosure sale.\"",
+        "kind": "governance_or_management",
+        "quote": "Effective July 2022, Morningstar has amended its Code of Ethics to prohibit employees and board members from pledging more than 15% of the total number of Morningstar securities (such as shares of Morningstar stock) which they beneficially own as collateral for a loan or holding more than that number of Morningstar securities in a margin account."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "in retrospect, our initial review was overly dismissive of the serious bias concerns raised by the organization JLens, the Illinois Investment Policy Board (IIPB), and other entities",
+        "why_notable": "Unusually direct admission of a management failing, reversing the company's earlier public posture on the Sustainalytics bias allegations."
+      },
+      {
+        "quote": "We are shifting non-China-market-focused work to alternate locations, so this decision is not a cost-savings measure.",
+        "why_notable": "Pre-empts the framing of the Shenzhen reductions as cost cutting; a deliberate characterisation of a headcount reduction as strategy rather than savings."
+      },
+      {
+        "quote": "However, we do not pursue M&A simply because we have the capacity to do so; all transactions need to have strategic merit, offer compelling long-term returns, and create value.",
+        "why_notable": "Defensive framing in response to investor concern about a sharp step-up in deal size; recurring 'strategic merit / long-term returns' formulation for capital allocation discipline."
+      },
+      {
+        "quote": "While we cannot guide to a specific inflection point in profitability, we expect that adjusted operating margins this year will be lower than a typical year and we are focused on getting back on a path toward levels seen in recent historical peaks.",
+        "why_notable": "An explicit hedge on margin recovery timing while still committing directionally to prior peak levels."
+      },
+      {
+        "quote": "PitchBook\\u2019s best-in-class coverage of the private markets complements Morningstar\\u2019s legacy public company datasets; together they are key to building one of the most comprehensive multi-asset datasets in the industry.",
+        "why_notable": "Self-characterisation of competitive position, and the framing of Morningstar's original business as 'legacy' public company data."
+      }
+    ]
+  }
+}

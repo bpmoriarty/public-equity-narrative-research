@@ -22,7 +22,7 @@ they anchor a narrative claim.
 
 **Last Session:** 2026-08-05
 
-**Overall Health:** 🟢 Working — milestones 1–4 complete; 8-K triage done; 665 facts, every quote verified
+**Overall Health:** 🟢 Working — milestones 1–4 complete; 8-K triage and all five years of investor Q&A done; 1,329 facts
 
 ### What's Working
 
@@ -70,10 +70,14 @@ they anchor a narrative claim.
   filings judged deterministically, with the evidence for every decision
   recorded: **60 read, 15 date_only**, and all 15 drops are quarterly dividend
   declarations. Config-driven patterns; no model calls
-- **Reg FD investor Q&A is now in the ledger for FY2025** — 186 facts from 11
-  filings, in its own `investor_qa` field. MORN publishes written answers to
+- **Reg FD investor Q&A is in the ledger for all five years** — 850 facts from
+  54 filings, in its own `investor_qa` field. MORN publishes written answers to
   investor questions roughly monthly, and nothing else in the corpus carries
   management's voice on strategy at that frequency
+- **The cache now verifies its input** (`--refresh-stale`). "A completed task is
+  never re-run" is only safe while its input is unchanged, and a filename cannot
+  know what it was computed from. Each cached result stores its `source_chars`,
+  and a mismatch stops the run rather than passing as done
 - **The quote verifier now has a committed test** (`tests/test_verify_quote.py`).
   Six pass-cases and six reject-cases, run with one command. It exists because
   the normalization has been loosened three times and each loosening is exactly
@@ -89,10 +93,17 @@ they anchor a narrative claim.
   marking, not fixed — see Recent Decisions
 - **FY2021 has no shareholder letter at all.** Verified absent, not a lookup
   failure: no ARS filed, and no EX-13 in any of the five 10-Ks
-- **`investor_qa` is populated for FY2025 only.** FY2021–FY2024 have triage
-  decisions but no extraction, so those years read as empty for a reason that is
-  NOT absence of disclosure — the filings exist and are cached. No cross-year
-  comparison of this field is valid yet. See DATA.md limitation 15
+- **3 unverified quotes, and one is a real paraphrase** (0.23% of 1,329). The
+  FY2022 case turned "we are gaining traction and seeing increased interest BUT
+  have not yet seen significant adoption" into "WE have not yet seen significant
+  adoption", dropping the offsetting half — the check earning its keep. The other
+  two are false negatives left in place on purpose: recovering them would mean
+  tolerating a 12-character tail or gaps in the source, and the second would
+  dismantle the stitched-quote defence. See DATA.md, Quote verification
+- **`investor_qa` counts are not a series.** FY2023's 231 against FY2021's 113
+  reflects how many questions were asked and how long the answers ran, not
+  anything about strategy that year. Use the field for what was said, never as a
+  trend. See DATA.md limitation 15
 - **The 15 dividend drops should be re-read by eye before publication.** The
   classifier is tuned to be wrong in the cheap direction, but the drop list is
   the actual safety net and reading it takes about a minute:
@@ -120,14 +131,19 @@ they anchor a narrative claim.
 The 8-K triage is done and FY2025's investor Q&A is extracted, at the review gate
 the user set: one year first, then decide about the other four.
 
-**The review question, with the evidence in hand.** The Q&A material is
-substantive — management on why PitchBook renewal rates fell ("We have not seen a
-material change in the competitive environment"), on Addepar not being a
-competitor, on conceding that basic reference data will be commoditized in an
-AI-first world, and on tying the TAMP sale, the Morningstar Office wind-down and
-the CRSP acquisition into one portfolio-realignment story that the 10-K does not
-tell in that form. FY2025 cost **$1.53** for 11 calls; the remaining four years
-are roughly 42 filings and ~$4.
+**All five years are extracted.** The Q&A material is substantive — management on
+why PitchBook renewal rates fell ("We have not seen a material change in the
+competitive environment"), on Addepar not being a competitor, on conceding that
+basic reference data will be commoditized in an AI-first world, and on tying the
+TAMP sale, the Morningstar Office wind-down and the CRSP acquisition into one
+portfolio-realignment story that the 10-K does not tell in that form.
+
+The ledger on disk represents 88 calls and **$11.33**; total outlay was ~$14,
+because a boilerplate-stripping bug (DATA.md limitation 16) invalidated 24 cached
+results that had to be re-run. That bug is the main lesson of the session: it
+deleted the entire Q&A from eleven filings, and those filings then dropped out of
+the extraction plan **without a message** — the run reported 32 successes out of
+32 while being 11 short. Both halves are now guarded.
 
 **What triage found that changes a documented assumption.** There are zero Item
 2.01 filings in the entire window, despite two completed acquisitions, a
@@ -180,6 +196,10 @@ across 34 calls). Milestones 1–3 cost nothing.
 | 2026-08-04 | `pdfminer.six`, **not** `pypdf`, for PDF text | pypdf coerces unmapped glyphs toward whitespace, turning every digit in the FY2022 letter into a space — "fell 15%" became "fell". pdfminer preserves them as `(cid:N)`. Prefer the library that preserves what it can't interpret |
 | 2026-08-04 | Glyph offset **derived**, not hardcoded | Taken from the space glyph's frequency and validated against English sentinel words, so the decoder isn't silently wrong on a different company's font |
 | 2026-08-04 | The dual em-dash/minus glyph maps to ASCII `-` | One glyph serves both. A hyphen for an em dash is cosmetic; a lost minus sign inverts a fact |
+| 2026-08-05 | The boilerplate stripper **fails toward keeping text** | It previously assumed an unterminated forward-looking caution ran to the end of the document. In eleven filings the caution was terminated by the Q&A heading instead, so the stripper deleted ~8,700 of ~9,000 characters. Stripping boilerplate is a cost optimization and losing content is a correctness failure; when the two conflict, the optimization loses |
+| 2026-08-05 | A filing routed to a task but yielding **no readable document is fatal**, not skipped | This is how the eleven went missing: `read_section_keys` came back empty, the loop moved on, and the run reported 32 of 32 successful while being 11 short. Nothing anywhere looked wrong. Triage saying "this carries content" and extraction finding none is a contradiction, and a contradiction has to stop the run |
+| 2026-08-05 | The cache **verifies its input**, not just its filename | Fixing the stripper changed the source text under 24 already-cached results, silently. A cache keyed on a filename cannot know what it was computed from, so each result stores its `source_chars` and a mismatch is reported and refused rather than treated as done |
+| 2026-08-05 | Near-miss tolerance stays at **3 characters** despite two known false negatives | Widening it to 12 would recover a `_PLACEHOLDER` artifact and also admit genuinely paraphrased endings. The real FY2022 paraphrase found this session is 96% character-exact — the margin between artifact and paraphrase is thin, and the conservative side of it is the useful one |
 | 2026-08-05 | Triage is allowed to be confident **only about "read"** | The two errors do not cost the same. A false read costs a fraction of a cent; a false date_only deletes a corporate event from a five-year history and nothing downstream can detect it. So `date_only` needs positive evidence of a routine filing AND no material signal anywhere, and anything unrecognised is read |
 | 2026-08-05 | Match **position** is recorded, not just match presence | A keyword scan flagged 42 of 75 filings as deal-related against roughly 6 that announce a transaction — because the investor Q&A discusses past acquisitions at length. A press release states its subject in the headline, so a match inside the first 1,200 chars scores `strong` and a later one `mention`. Only strong matches drive routing |
 | 2026-08-05 | Triage routes **documents**, not filings | The Q&A text is inline in the 8-K body for FY2021–FY2023 and an EX-99.1 exhibit from FY2024 on. A filing-level decision plus the existing bodies-only rule would have read the early years and silently read nothing for the late ones, while reporting the same filings processed |
@@ -224,9 +244,7 @@ across 34 calls). Milestones 1–3 cost nothing.
        confidence, vote outcomes from 8-K 5.07
 8. [x] **8-K triage.** All 75 judged, 60 read / 15 date_only, decisions and
        evidence in `data/triage/`
-9. [ ] **Decide on the remaining four years of investor Q&A** (~42 filings,
-       ~$4). FY2025 is done and reviewable; FY2021–FY2024 are triaged but not
-       extracted
+9. [x] **Investor Q&A, all five years.** 850 facts from 54 filings
 10. [ ] **Milestone 5 — Three outputs** to `output/`, derived only from the
         ledger
 11. [ ] Optional, if the board narrative proves load-bearing: per-year verified
@@ -388,3 +406,36 @@ across 34 calls). Milestones 1–3 cost nothing.
   acquisitions and a divestiture — MORN furnishes deal news under 7.01. The
   configured item filter contributed no transaction coverage at all
 - Next: user's call on the remaining four years of Q&A (~$4), then milestone 5
+
+### 2026-08-05 (continued) — investor Q&A, all five years
+
+- **850 Q&A facts from 54 filings across FY2021–FY2025.** Ledger now 1,329 facts,
+  3 unverified quotes, 54 low
+- **Found a bug that had silently deleted eleven filings.** The boilerplate
+  stripper assumed an unterminated forward-looking caution ran to the end of the
+  document; in FY2021–FY2022 the caution is followed directly by the Q&A heading,
+  so it discarded ~8,700 of ~9,000 characters. Those filings then fell below the
+  stub threshold and dropped out of the extraction plan **with no message** — the
+  run reported 32 of 32 successful while being 11 short. FY2022's readable content
+  went from 85,502 to 230,221 chars once fixed
+- Fixed both halves, because either alone would have left the fault silent: the
+  stripper now keeps everything when it cannot locate the end of a block, and a
+  filing that triage routed to a task but that yields no readable document is now
+  a fatal error
+- **Discovered the cache had gone stale under 24 results.** Fixing the stripper
+  changed their input text without changing their filenames. Added an input check:
+  each result stores its `source_chars`, a mismatch stops the run, and
+  `--refresh-stale` rebuilds only those. Re-ran the 24; one failed on a genuine
+  generation degeneration (`of.of.of.of…`, unclosed JSON) and succeeded on retry
+- **Found the project's first genuine paraphrase.** A FY2022 quote turned "we are
+  gaining traction and seeing increased interest BUT have not yet seen significant
+  adoption" into "WE have not yet seen significant adoption" — subordinate clause
+  promoted to a sentence, offsetting half dropped, and the fact then called it "a
+  direct admission... hedging a growth narrative." Two words, and the claim got
+  stronger than the filing supports. It is 96% character-exact, which is why the
+  3-character tolerance stays where it is. Added to the test file as a regression
+  case drawn from real output
+- Left two false negatives in place deliberately and recorded why: recovering them
+  would mean tolerating a 12-character tail or gaps in the source, and the latter
+  would dismantle the defence against stitched quotes
+- Next: milestone 5, the three outputs

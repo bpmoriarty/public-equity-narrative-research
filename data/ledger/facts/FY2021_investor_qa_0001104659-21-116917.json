@@ -1,0 +1,116 @@
+{
+  "fiscal_year": 2021,
+  "task": "investor_qa",
+  "unit": "0001104659-21-116917",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:01:44Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 9138,
+    "output_tokens": 3020
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-21-116917",
+      "form": "8-K",
+      "filing_date": "2021-09-17",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 21964,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Reliance on third-party distributors/redistributors for data products",
+        "stated_position": "\"We do not consider ourselves reliant on third-party distribution. In aggregate, redistributors generate a relatively small portion of our consolidated revenue.\" Management says it aims to deliver its IP wherever clients work, and believes it has \"struck the right balance\" between direct sales and redistributors.",
+        "kind": "strategy",
+        "quote": "Overall, we believe we have struck the right balance between selling directly to investors and using redistributors to reach investors we wouldn\u2019t ordinarily reach on our own while capturing the appropriate value."
+      },
+      {
+        "topic": "Pricing strategy for ESG data \u2014 basic vs. premium",
+        "stated_position": "Basic ESG data and insights are \"value-added enhancements within our software platforms\" included in the software license and \"essentially baked into our year-over-year price increases, allowing us to negotiate from a point of strength,\" while more granular ESG data sets are sold as add-ons via entitlements.",
+        "kind": "segment_or_product",
+        "quote": "This data set is included in our software license and is essentially baked into our year-over-year price increases, allowing us to negotiate from a point of strength. More granular ESG data sets are sold as add-ons, accessed through an entitlement on our platforms."
+      },
+      {
+        "topic": "Sustainalytics' competitive advantages and vision",
+        "stated_position": "Key differentiator is the ability to work with investors across the whole investment value chain, plus a differentiated research methodology underpinning the ESG Risk Rating capturing managed and unmanaged risk, and a large responsive customer service organization. Larger competitors can bundle ESG as an add-on; being part of Morningstar gives more bundling opportunities to extend reach, particularly in retail wealth.",
+        "kind": "competition_or_market",
+        "quote": "With Sustainalytics now a part of the larger Morningstar organization, we have more opportunities to bundle complementary offerings, and believe that this strategy can ultimately help Sustainalytics extend its reach to new customers, particularly in retail wealth."
+      },
+      {
+        "topic": "Regulation as a barrier to entry in indexes and ESG ratings",
+        "stated_position": "Management argues benchmark regulation raises barriers to entry, benefiting existing index providers and making self-indexing less economically attractive; owning the underlying ESG data (Sustainalytics) plus portfolio calculation expertise gives Morningstar \"a significant advantage.\" It views emerging ESG regulation as \"a floor, rather than ceiling\" and cites the Moorgate Benchmarks acquisition as bolstering its position as a registered benchmark administrator in the UK and EU.",
+        "kind": "competition_or_market",
+        "quote": "We believe that the increased regulatory and administrator burden, and the significant financial sanctions that apply under the BMRs, mean self-indexing is a less attractive option economically, benefiting existing index providers such as Morningstar."
+      },
+      {
+        "topic": "Managing conflicts of interest in independent research",
+        "stated_position": "\"Morningstar has a long history of managing conflicts related to running a business based on independent research.\" It applies the same standards to ESG research as to mutual fund ratings, and its Code of Ethics prohibits salespeople from contacting mutual fund and equity analysts.",
+        "kind": "governance_or_management",
+        "quote": "Our Morningstar Code of Ethics specifically prohibits salespeople from contacting mutual fund and equity analysts. Our practices are thoroughly documented in our policies and procedures, which are reviewed by compliance as well as applicable regulatory authorities."
+      },
+      {
+        "topic": "Biggest obstacle to faster PitchBook growth",
+        "stated_position": "Talent is the common denominator; \"perhaps the biggest near-term challenge is to hire quickly enough at the quality we expect to meet the demand for our solutions.\" Management intends to continue to invest heavily in PitchBook's go-to-market and product development strategy.",
+        "kind": "segment_or_product",
+        "quote": "At PitchBook, and across Morningstar, perhaps the biggest near-term challenge is to hire quickly enough at the quality we expect to meet the demand for our solutions."
+      },
+      {
+        "topic": "How the board and management prioritise projects and allocate capital",
+        "stated_position": "Management names the areas it has \"called out\" as best long-run growth opportunities \u2014 Morningstar Data, Morningstar Direct, DBRS Morningstar, PitchBook, Investment Management, Workplace, and Indexes \u2014 with ESG now another key area of focus and investment. Uses the OKR framework Kunal described in his annual shareholder letter; management and Board attend an annual off-site strategy meeting; investment philosophy characterized as \"long-term oriented in nature.\"",
+        "kind": "capital_allocation",
+        "quote": "These include Morningstar Data, Morningstar Direct, DBRS Morningstar, PitchBook, Investment Management, Workplace, and Indexes. With the addition of Sustainalytics, ESG is another key area of focus and investment."
+      },
+      {
+        "topic": "Cost growth versus revenue growth and level of investment spend",
+        "stated_position": "\"Our goal over the long-term is to grow revenue in excess of expense growth and expand our adjusted operating margin,\" with the belief the opportunity set is significant and that the company is \"moving with speed to increase our leadership position in areas such as ESG.\"",
+        "kind": "strategy",
+        "quote": "Our belief remains that our opportunity set is significant, and we are moving with speed to increase our leadership position in areas such as ESG. Our goal over the long-term is to grow revenue in excess of expense growth and expand our adjusted operating margin."
+      },
+      {
+        "topic": "Profitability by division and organizational structure",
+        "stated_position": "\"We do not run our business by division and are organized around products to support our mission and growth objectives.\" License-based products tend to have the highest margins, followed by asset-based and transaction-based; management agrees competitors like MSCI in Indexes or Moody's in credit ratings have size and scale advantages.",
+        "kind": "governance_or_management",
+        "quote": "We do not run our business by division and are organized around products to support our mission and growth objectives. In the past, we\u2019ve stated that our license-based products tend to have the highest margins, followed by asset-based and transaction-based."
+      },
+      {
+        "topic": "Capital return versus M&A",
+        "stated_position": "\"Our capital allocation priorities haven\u2019t changed over the course of our company\u2019s history.\" Organic investment is top priority; acquisitions when a capability can be added at a price justifying a strong future return; consistent dividend policy and approach to buybacks; \"we don\u2019t prioritize acquisitions for the sake of activity.\"",
+        "kind": "capital_allocation",
+        "quote": "Our strong free cash flow generation gives us the capability to continuously invest in the company for organic growth, which is top priority for us. We will acquire companies when we have an opportunity to add a capability to our firm at a price that would justify a strong future return, and we have remained fairly consistent in our dividend policy and approach to buybacks."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "There is a lot to unpack in this question; however, we agree that Morningstar has many attractive opportunities to fund, and we\u2019re thrilled to have that particular challenge.",
+        "why_notable": "Management reframes a pointed question about an oversized executive team and competing internal ambitions as a happy problem, sidestepping the governance premise of the question."
+      },
+      {
+        "quote": "You are correct that we will make outsized investments in the short-term if we believe that we will receive good returns on that investment over the long-run; and yes, occasionally we might see some \u201clow-hanging fruit\u201d that will prompt us to invest our capital quickly in order to realize faster returns; however, the same discipline applies in such a scenario. The opportunity has to be good for the business over the long-run. We won\u2019t do it just to generate a quick return.",
+        "why_notable": "An unusually direct statement of investment discipline and long-term orientation, framed as a rebuttal to the suggestion of short-term opportunism."
+      },
+      {
+        "quote": "Importantly, our focus on organic growth means that we don\u2019t prioritize acquisitions for the sake of activity .",
+        "why_notable": "Emphatic disclaimer on M&A appetite, notable in a year featuring the Sustainalytics and Moorgate Benchmarks acquisitions."
+      },
+      {
+        "quote": "The Sustainalytics\u2019 research team is now more than 500 people, which gives you a sense of the scale.",
+        "why_notable": "A concrete scale claim used to defend research quality as the coverage universe expanded rapidly."
+      },
+      {
+        "quote": "We believe emerging regulation is a meaningful starting point, serving as a floor, rather than ceiling of expectations and requirements.",
+        "why_notable": "Positions the company as welcoming ESG ratings regulation \u2014 a stance that doubles as a moat argument."
+      },
+      {
+        "quote": "We do not consider ourselves reliant on third-party distribution.",
+        "why_notable": "A flat denial of the questioner's premise, notable because the same answer concedes redistribution is a higher percentage of revenue for Morningstar Data and Morningstar Research."
+      }
+    ]
+  }
+}

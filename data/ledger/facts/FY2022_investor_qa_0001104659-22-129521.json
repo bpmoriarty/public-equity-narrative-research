@@ -1,0 +1,120 @@
+{
+  "fiscal_year": 2022,
+  "task": "investor_qa",
+  "unit": "0001104659-22-129521",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:02:23Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 8470,
+    "output_tokens": 3096
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-22-129521",
+      "form": "8-K",
+      "filing_date": "2022-12-22",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 19519,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Headcount growth plans going into 2023",
+        "stated_position": "\"Heading into 2023, we are slowing headcount growth except in our fastest growing product areas. Additionally, we are adding headcount in Wealth Management to support direct indexing and develop our open architecture TAMP, although at a slowing rate.\" The reduction and shift of China operations is expected to be substantially complete by the end of the third quarter of 2023.",
+        "kind": "strategy",
+        "quote": "Heading into 2023, we are slowing headcount growth except in our fastest growing product areas. Additionally, we are adding headcount in Wealth Management to support direct indexing and develop our open architecture TAMP, although at a slowing rate."
+      },
+      {
+        "topic": "Pricing strategy and pricing power across the portfolio",
+        "stated_position": "\"Pricing has been a priority focus for us as we enter 2023 given the inflationary environment.\" Most success achieving price increases with license-based products; maturity of product does not generally factor into assessments; increases ranging from mid-single-digits to high-single-digits/low-double-digits; harder to raise prices in asset-based areas with \"widespread fee compression in the industry.\"",
+        "kind": "strategy",
+        "quote": "We are generally implementing higher-than-typical annual price increases for 2023 where appropriate, reflecting the increased value we\u2019re providing as well as increased input costs. Given these factors, we\u2019re instituting price increases ranging from mid-single-digits for certain products to high-single-digits to low-double-digits for other products."
+      },
+      {
+        "topic": "Relative importance of corporate versus institutional investor clients for Morningstar Sustainalytics",
+        "stated_position": "\"We view the institutional investor and corporate issuer client segments as equally important for the future growth and success of Sustainalytics and believe that they are interdependent.\" Success with institutional investors drives demand from corporate issuers licensing the ESG rating.",
+        "kind": "segment_or_product",
+        "quote": "We view the institutional investor and corporate issuer client segments as equally important for the future growth and success of Sustainalytics and believe that they are interdependent."
+      },
+      {
+        "topic": "Sustainalytics differentiation through proprietary data",
+        "stated_position": "\"Morningstar Sustainalytics offers both proprietary ESG product methodologies and proprietary data sets. The ESG information generally available in the market is unstructured, incomplete, and sometimes of low quality.\" Data sets cover a 16,000-company universe with current and historical data.",
+        "kind": "segment_or_product",
+        "quote": "Morningstar Sustainalytics offers both proprietary ESG product methodologies and proprietary data sets. The ESG information generally available in the market is unstructured, incomplete, and sometimes of low quality."
+      },
+      {
+        "topic": "DBRS Morningstar competitive position in corporate ratings by geography",
+        "stated_position": "In Canada, \"we have a leading market position with a strong presence in corporate ratings with little client turnover\"; in the U.S. primarily active in private/middle market; the public investment-grade sector \"is dominated by Moody's and S&P\" and \"it remains difficult for DBRS Morningstar to compete\"; in Europe the markets are more open with a growing position.",
+        "kind": "competition_or_market",
+        "quote": "By contrast, the public investment-grade sector in the U.S. is dominated by Moody\u2019s and S&P, and, given that most non-insurance institutional mandates reference ratings provided by Moody\u2019s, S&P, and Fitch, and use benchmarks that rely on these ratings, it remains difficult for DBRS Morningstar to compete."
+      },
+      {
+        "topic": "PitchBook's importance to future growth and product bundling",
+        "stated_position": "\"We view PitchBook as important to Morningstar's future growth given the continued convergence of private and public markets, and the increased importance of private debt, which was a driver of our acquisition of LCD.\" Starting to bundle Morningstar public equity data and ESG ratings into PitchBook, plus the Morningstar Unicorn Index built on PitchBook and Morningstar Indexes capabilities.",
+        "kind": "strategy",
+        "quote": "We view PitchBook as important to Morningstar\u2019s future growth given the continued convergence of private and public markets, and the increased importance of private debt, which was a driver of our acquisition of LCD. As a result, we have made significant ongoing investments to support its growth."
+      },
+      {
+        "topic": "PitchBook total addressable market",
+        "stated_position": "TAM built from number of qualifying firms and estimated average account revenue rather than total licenses; \"You can see from the large TAM ($4.9 billion) and our market share estimate that we have a lot of room for growth.\"",
+        "kind": "competition_or_market",
+        "quote": "You can see from the large TAM ($4.9 billion) and our market share estimate that we have a lot of room for growth."
+      },
+      {
+        "topic": "Cash management and capital allocation approach",
+        "stated_position": "\"We continue to balance capital allocation priorities, and our approach has not changed. Historically, we have taken a conservative approach to managing cash and favor short-duration, high-quality, liquid investments.\" In the current rate environment, also \"remain focused on repayment of debt to minimize interest expense.\"",
+        "kind": "capital_allocation",
+        "quote": "We continue to balance capital allocation priorities, and our approach has not changed. Historically, we have taken a conservative approach to managing cash and favor short-duration, high-quality, liquid investments."
+      },
+      {
+        "topic": "Dividend policy and payout ratio",
+        "stated_position": "\"Dividends have consistently been an important part of our capital allocation policy and we are proud to have raised the dividend every year since its inception.\" No specific payout target; average adjusted payout ratio since 2018 is in the mid-20s; announced a 4.2% quarterly dividend increase and a new $500 million share repurchase program replacing the January 2021 program.",
+        "kind": "capital_allocation",
+        "quote": "Dividends have consistently been an important part of our capital allocation policy and we are proud to have raised the dividend every year since its inception. We review our dividend policy and capital allocation regularly with our board. We just announced a 4.2% increase in our quarterly dividend payable in 2023 and a new $500 million share repurchase program (replacing the existing program from January 2021)."
+      },
+      {
+        "topic": "Bonus plan design",
+        "stated_position": "Bonus pool funding based on performance relative to financial targets tied to the annual budget, using adjusted revenue and adjusted EBITDA, \"with a floor at 60% funding and no cap.\"",
+        "kind": "governance_or_management",
+        "quote": "The bonus plan calculation is based on two performance measures: adjusted revenue and adjusted EBITDA (earnings before interest, taxes, depreciation, and amortization). If adjusted revenue and adjusted EBITDA are realized at 100% of target, the bonus is funded at 100%. The pool increases or decreases based on performance against these goals, with a floor at 60% funding and no cap."
+      },
+      {
+        "topic": "Founder Joe Mansueto family holdings",
+        "stated_position": "\"All of Joe's holdings are disclosed annually in Morningstar's proxy statement and in Schedule 13G filed with the SEC.\"",
+        "kind": "governance_or_management",
+        "quote": "All of Joe\u2019s holdings are disclosed annually in Morningstar\u2019s proxy statement and in Schedule 13G filed with the SEC."
+      },
+      {
+        "topic": "Employee turnover trends",
+        "stated_position": "Trailing 12-month average turnover was 18.5% as of December 2021, up from 11.8% in 2020; through the first 11 months of 2022 the annualized rate is similar to full-year 2021; \"relatively high turnover in the Morningstar Sustainalytics product area given strong demand for ESG expertise.\"",
+        "kind": "governance_or_management",
+        "quote": "We\u2019ve also continued to experience relatively high turnover in the Morningstar Sustainalytics product area given strong demand for ESG expertise. We will report full-year turnover in our 2022 Enterprise Sustainability Report."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "In general, it\u2019s more difficult to raise prices in the asset-based areas of the business where we\u2019re getting paid in basis points on assets under management or advisement and where there\u2019s widespread fee compression in the industry.",
+        "why_notable": "Unusually direct admission of limited pricing power in the asset-based businesses, contrasted with the confident tone about license-based pricing."
+      },
+      {
+        "quote": "We\u2019ve not observed this trend in the corporate markets we\u2019re active in.",
+        "why_notable": "Flat rejection of the premise of an investor question about consolidation of rating agency mandates, immediately followed by a nuanced concession about U.S. competitiveness."
+      },
+      {
+        "quote": "Encouragingly, we\u2019ve seen voluntary attrition decline in most markets, with a few exceptions, including our India office, which is experiencing higher turnover than the rest of our employee population.",
+        "why_notable": "Hedged positive framing on turnover while naming specific problem areas \u2014 a candid qualification within an optimistic answer."
+      },
+      {
+        "quote": "Both Morningstar and our clients see attractive opportunities to expand through the bundling of products and associated pricing strategies.",
+        "why_notable": "Signals an emerging cross-portfolio bundling strategy, a shift in how the product portfolio is characterised."
+      }
+    ]
+  }
+}

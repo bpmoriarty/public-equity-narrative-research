@@ -1,0 +1,83 @@
+{
+  "fiscal_year": 2024,
+  "task": "investor_qa",
+  "unit": "0001289419-24-000081",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:44:41Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 5880,
+    "output_tokens": 1804
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-24-000081",
+      "form": "8-K",
+      "filing_date": "2024-08-26",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001289419-24-000081",
+      "form": "8-K",
+      "filing_date": "2024-08-26",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 10673,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Disclosure of financial impact of the AssetMark strategic alliance",
+        "stated_position": "Management pointed to the updated Investor FAQ for context on the expected financial impact and said: \"Beyond this, we are not disclosing further details related to the transaction, including the exact anticipated impact on operating expense or operating income from the transaction.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "Beyond this, we are not disclosing further details related to the transaction, including the exact anticipated impact on operating expense or operating income from the transaction.>"
+      },
+      {
+        "topic": "Relative size of the seven primary customer groups",
+        "stated_position": "Management declined to give revenue percentages but ranked its five largest customer groups by annual contract value through June 2024, from largest to smallest: private market investors; advisors and wealth managers; asset managers; fixed-income security issuers and arrangers; retirement market participants. It noted \"We track customer groups by opportunity, not client.\"",
+        "kind": "segment_or_product",
+        "quote": "Our five largest customer groups by annual contract value through June 2024 are, from largest to smallest: \u2022 Private market investors \u2022 Advisors and wealth managers (including independent financial advisors and those affiliated with Register Investment Advisors (RIAs), broker dealers, and other intermediaries) \u2022 Asset managers \u2022 Fixed-income security issuers and arrangers \u2022 Retirement market participants"
+      },
+      {
+        "topic": "Further M&A in private markets, and whether Preqin would have complemented PitchBook",
+        "stated_position": "Management said that while Preqin is a competitor to PitchBook, \"we did not see its capabilities as additive to the PitchBook platform,\" claimed competitiveness on fund and benchmark data and a \"market-leading position\" in broader global private market coverage, and reiterated that reduced leverage \"alone is not a catalyst for M&A.\" It remains \"opportunistic\" subject to strategic objectives and IRR hurdles, but \"our focus right now is on organic growth opportunities across the business.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "As we discussed in more detail in a May 2024 response to a related question, while the recent reduction in leverage gives us flexibility, that alone is not a catalyst for M&A. At the company level, we continue to remain opportunistic with respect to M&A activity and will seek to pursue opportunities that arise that meet our strategic objectives and IRR hurdles. That said, our focus right now is on organic growth opportunities across the business, and we are confident in our ability to drive sustainable growth and value creation with our current portfolio and markets that we serve."
+      },
+      {
+        "topic": "Long-term decline in Morningstar.com US memberships since 2007",
+        "stated_position": "Management acknowledged memberships \"peaked at roughly 180,000 in December 2007 and declined to roughly 100,000 by December 2023,\" attributing the decline to the aftermath of the global financial crisis, the move toward passive investing shifting focus from investment selection, increased competition from other financial websites and online brokerage platforms \"many of whom license our data and research to fuel their offerings,\" and price increases (prices up more than 50% since 2007). It said that since late 2023 it has \"started to see early signs of an encouraging trend in subscriptions, driven in part by our strategic focus on search engine marketing and enhanced targeting programs.\"",
+        "kind": "segment_or_product",
+        "quote": "Memberships peaked at roughly 180,000 in December 2007 and declined to roughly 100,000 by December 2023. The decline over this time period can be traced to several factors."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "While Preqin is a competitor to PitchBook, we did not see its capabilities as additive to the PitchBook platform. We believe that we are competitive with Preqin when it comes to fund and benchmark data and related product capabilities, and we continue to have a market- leading position with respect to our broader global private market coverage.",
+        "why_notable": "An unusually direct competitive assessment of a named rival acquired by BlackRock, framing a lost asset as not additive while asserting market leadership."
+      },
+      {
+        "quote": "That said, our focus right now is on organic growth opportunities across the business, and we are confident in our ability to drive sustainable growth and value creation with our current portfolio and markets that we serve.",
+        "why_notable": "Explicit tilt away from M&A toward organic growth despite acknowledged balance-sheet flexibility; a recurring hedge against deal speculation."
+      },
+      {
+        "quote": "We\u2019ve also experienced increased competition from other financial websites and online brokerage platforms\u2014many of whom license our data and research to fuel their offerings.",
+        "why_notable": "Candid admission that Morningstar's own licensing business arms the competitors of its direct-to-individual subscription product."
+      },
+      {
+        "quote": "Since late 2023, we\u2019ve started to see early signs of an encouraging trend in subscriptions, driven in part by our strategic focus on search engine marketing and enhanced targeting programs.",
+        "why_notable": "Hedged optimism ('early signs') on a business in a 16-year membership decline \u2014 worth tracking against later years."
+      }
+    ]
+  }
+}

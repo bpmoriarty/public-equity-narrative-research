@@ -1,0 +1,89 @@
+{
+  "fiscal_year": 2024,
+  "task": "investor_qa",
+  "unit": "0001289419-24-000121",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:44:54Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 5294,
+    "output_tokens": 1548
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-24-000121",
+      "form": "8-K",
+      "filing_date": "2024-11-12",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001289419-24-000121",
+      "form": "8-K",
+      "filing_date": "2024-11-12",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 9018,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Sale of Morningstar Commodity and Energy Data business to ZEMA Global Data Corporation",
+        "stated_position": "Management said the business \"was not material relative to the broader Data and Analytics segment,\" that associated revenue will be excluded from organic revenue growth calculations starting in Q4 2024, that the divestiture is expected to be \"slightly dilutive to Data and Analytics margins,\" and that while they do not share transaction multiples, they \"believe we achieved a positive result and unlocked value for a non-core business.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "While we do not share transaction multiples, we believe we achieved a positive result and unlocked value for a non-core business."
+      },
+      {
+        "topic": "Whether PitchBook competes with Hamilton Lane's Cobalt; market share",
+        "stated_position": "Management views Cobalt as complementary to PitchBook, and although it lacks detailed market share data, believes PitchBook is the market leader in private market data based on the breadth and depth of its coverage.",
+        "kind": "competition_or_market",
+        "quote": "We view Hamilton Lane\u2019s Cobalt product offering as complementary to PitchBook given their strengths in monitoring private market activity and commitment to providing transparency to asset owners. We do not have detailed market share data; however, we believe that PitchBook is the market leader in private market data based on the breadth and depth of our coverage."
+      },
+      {
+        "topic": "Independence of Sustainalytics ESG ratings and separation of analytical from commercial staff",
+        "stated_position": "Morningstar Sustainalytics has developed a conflicts of interest framework and maintains a governance structure with clear reporting lines and separation of analytical and commercial activities, with personnel physically separated and using segregated IT systems and data subject to different access control protocols.",
+        "kind": "governance_or_management",
+        "quote": "More specifically, Morningstar Sustainalytics maintains a governance structure with clear reporting lines, roles, and responsibilities and separation of analytical and commercial activities."
+      },
+      {
+        "topic": "Data center energy use, AI scaling, and net zero goals",
+        "stated_position": "The company is reducing its data center footprint to gain energy efficiencies in the public cloud, expects emissions to shift from scope 2 to scope 3, prioritizes cloud providers committed to net zero and renewable energy, and says scaling AI will require greater emphasis on data center energy efficiency and partner selection for both net zero goals and operational cost control.",
+        "kind": "strategy",
+        "quote": "We are in the process of reducing our data center footprint which is expected to allow us to take advantage of meaningful energy efficiencies in the public cloud."
+      },
+      {
+        "topic": "Board independence and refreshment in light of ICGN independence criteria",
+        "stated_position": "The Board believes independent directors should account for a substantial majority of the Board, but also that it is useful and appropriate to have key members of management, such as the Chairman and CEO, as directors; all standing committees are led by and composed entirely of independent directors, and the company evaluates skills and ongoing board refreshment annually.",
+        "kind": "governance_or_management",
+        "quote": "Morningstar\u2019s Board of Directors believes that independent directors should account for a substantial majority of the Board, but also that it is useful and appropriate to have key members of management, such as our Chairman and our CEO, as directors."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "we believe we achieved a positive result and unlocked value for a non-core business",
+        "why_notable": "Recharacterizes a business Morningstar owned as \"non-core,\" framing the divestiture as value creation while declining to disclose the multiple."
+      },
+      {
+        "quote": "We understand that as we scale our AI capabilities, we will need to place an even greater emphasis on data center energy efficiency and our selection of public cloud partners.",
+        "why_notable": "An unusually direct acknowledgment that AI expansion creates tension with sustainability commitments; links net zero goals to \"operational cost control.\""
+      },
+      {
+        "quote": "As a result, we expect to increasingly depend on the substantial emissions reduction commitments of key suppliers to mitigate our footprint in this domain.",
+        "why_notable": "A hedge: emissions responsibility shifts from Morningstar's own scope 2 to reliance on third-party supplier commitments."
+      },
+      {
+        "quote": "We monitor and assess the independence of each of our directors and director nominees under Nasdaq listing rules, which contain very similar independence criteria as the International Corporate Governance Network",
+        "why_notable": "Deflects the investor's premise by asserting equivalence between Nasdaq rules and the ICGN criteria, rather than addressing tenure or significant-shareholder concerns directly."
+      }
+    ]
+  }
+}

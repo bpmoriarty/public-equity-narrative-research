@@ -1,0 +1,46 @@
+{
+  "fiscal_year": 2021,
+  "task": "investor_qa",
+  "unit": "0001104659-21-105166",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:01:44Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 3758,
+    "output_tokens": 765
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-21-105166",
+      "form": "8-K",
+      "filing_date": "2021-08-13",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 3942,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Drivers of asset-based revenue growth and competitive position in Morningstar Indexes",
+        "stated_position": "Management said market performance \"was not the sole contributor\" to asset-based revenue, pointing to AUM growth in Workplace Solutions \"aided by growth in new plans and participants, and new funds being added to existing plans,\" \"strengthening flows in Managed Portfolios within Investment Management and momentum in Morningstar Indexes as clients continue to seek alternative index providers.\"",
+        "kind": "competition_or_market",
+        "quote": "Since last year, AUM growth in Workplace Solutions has also been aided by growth in new plans and participants, and new funds being added to existing plans. We\u2019ve also experienced strengthening flows in Managed Portfolios within Investment Management and momentum in Morningstar Indexes as clients continue to seek alternative index providers."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "So while in 2021 we did benefit from positive market conditions relative to the prior-year period (during the height of the pandemic), we also believe that broad-based demand for our products and services contributed to our strong revenue performance in the second quarter of 2021.",
+        "why_notable": "A hedged framing that concedes the benefit of favorable markets while asserting underlying demand \u2014 the recurring claim that growth is not merely market-driven."
+      },
+      {
+        "quote": "It\u2019s difficult to measure exactly how much of our year-over-year revenue growth was directly related to the economic recovery that followed the onset of the COVID pandemic.",
+        "why_notable": "Unusually direct refusal to quantify the COVID-recovery contribution investors asked about."
+      }
+    ]
+  }
+}

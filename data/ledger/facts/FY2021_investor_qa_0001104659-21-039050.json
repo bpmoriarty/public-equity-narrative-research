@@ -1,0 +1,113 @@
+{
+  "fiscal_year": 2021,
+  "task": "investor_qa",
+  "unit": "0001104659-21-039050",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:41:49Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 7958,
+    "output_tokens": 2578
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-21-039050",
+      "form": "8-K",
+      "filing_date": "2021-03-19",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001104659-21-039050",
+      "form": "8-K",
+      "filing_date": "2021-03-19",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 14029,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Capital allocation between organic investment and M&A",
+        "stated_position": "Morningstar states it \"prioritize[s] organic growth initiatives and remain[s] opportunistic with M&A.\"",
+        "kind": "capital_allocation",
+        "quote": "We prioritize organic growth initiatives and remain opportunistic with M&A"
+      },
+      {
+        "topic": "Balance sheet and financial flexibility",
+        "stated_position": "Management frames strong free cash flow and low leverage as supporting \"financial flexibility to pursue growth both organically and inorganically.\"",
+        "kind": "capital_allocation",
+        "quote": "Strong free cash flow and low leverage supports financial flexibility to pursue growth both organically and inorganically"
+      },
+      {
+        "topic": "Rationale for acquisitions (DBRS Morningstar, Sustainalytics)",
+        "stated_position": "Stated rationales are \"mission-driven culture, unique capabilities, and expectations for strong returns on investment,\" with the credit ratings thesis being a \"Long-term opportunity to improve transparency of the credit ratings industry\" and the transaction building \"scale and increases diversification in credit ratings across markets and asset classes.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "Rationales include mission-driven culture, unique capabilities, and expectations for strong returns on investment Morningstar sector thesis Long-term opportunity to improve transparency of the credit ratings industry"
+      },
+      {
+        "topic": "ESG strategy and positioning",
+        "stated_position": "Management says ESG \"has become an essential part of long-term investing, which creates a need for an independent source of data and research on ESG risk factors,\" and that the ESG transaction \"Advances Morningstar's leadership in innovative ESG data and research while improving the accessibility of ESG-related content for all investors.\"",
+        "kind": "strategy",
+        "quote": "ESG has become an essential part of long-term investing, which creates a need for an independent source of data and research on ESG risk factors"
+      },
+      {
+        "topic": "ESG capabilities integrated across the firm",
+        "stated_position": "\"We are aligned across Morningstar to meet investor needs for ESG data, research, ratings, and solutions\" \u2014 spanning license-based, asset-based, and transaction-based offerings.",
+        "kind": "segment_or_product",
+        "quote": "Integrated ESG Data and Research for All Investors We are aligned across Morningstar to meet investor needs for ESG data, research, ratings, and solutions"
+      },
+      {
+        "topic": "Target markets identified for growth",
+        "stated_position": "Morningstar says it participates in large, growing markets and has \"identified these markets as particularly favorable for longer-term growth,\" listing financial data/analysis, private capital markets data, managed accounts AUM, global credit ratings, global indexes, sustainable funds AUM, and sustainable bond/loan issuance.",
+        "kind": "competition_or_market",
+        "quote": "We Participate in Large, Growing Markets We\u2019ve identified these markets as particularly favorable for longer-term growth"
+      },
+      {
+        "topic": "Products expected to drive growth",
+        "stated_position": "Management identifies Morningstar Data, Morningstar Direct, PitchBook, Investment Management, Workplace Solutions and DBRS Morningstar as key solutions and says \"We expect these solutions to provide a greater contribution to growth over the long-run.\"",
+        "kind": "segment_or_product",
+        "quote": "Key Products / Solutions Drive Outsized Growth for the Firm We expect these solutions to provide a greater contribution to growth over the long-run"
+      },
+      {
+        "topic": "Competitive differentiation and brand",
+        "stated_position": "Differentiators cited include \"Largest Independent Analyst Research Staff,\" high-quality data, goals-based investing, design, enabling technology and investor advocacy.",
+        "kind": "competition_or_market",
+        "quote": "The qualities that set us apart support brand awareness Largest Independent Analyst Research Staff High-Quality Data Goals-Based Investing Design that Simplifies Technology that Enables Workflows Investor Advocacy"
+      },
+      {
+        "topic": "Revenue mix and diversification",
+        "stated_position": "Management presents revenue and geographic diversification as providing \"many avenues for growth and profitability,\" and says high license-based renewal rates support revenue predictability with \"all categories important to growth and profitability.\"",
+        "kind": "strategy",
+        "quote": "High license-based renewal rates support revenue predictability; all categories important to growth and profitability"
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "Morningstar is a Mission-Driven Firm Our mission fuels our strategy, gives meaning to our work, resonates with clients, and strengthens our brand",
+        "why_notable": "Mission-first framing placed ahead of strategy and financials; \"Financial success\" appears last in the list of values, an ordering the company repeats across years."
+      },
+      {
+        "quote": "Empowering Investor Success Since 1984 We\u2019ve continuously innovated and acquired capabilities to illuminate many aspects of an investor\u2019s portfolio, starting with mutual funds and evolving to include stocks, bonds, private market investments, and ESG factors",
+        "why_notable": "Self-description that puts acquired capabilities on equal footing with innovation, and places ESG at the end of the expansion narrative."
+      },
+      {
+        "quote": "2020 Financial Performance Our business showed resilience in 2020",
+        "why_notable": "Choice of \"resilience\" rather than growth as the characterisation of the pandemic year, despite double-digit reported increases."
+      },
+      {
+        "quote": "Focused and Consistent Long-term Growth Strategy Diversification Across Product Portfolio Sizable Recurring Revenue Base Operating Leverage Leads to Strong Cash Flow Balance Sheet Provides Financial Flexibility",
+        "why_notable": "The investment-highlights framing emphasises consistency, recurring revenue and operating leverage \u2014 the language of a mature compounder rather than a growth story."
+      }
+    ]
+  }
+}

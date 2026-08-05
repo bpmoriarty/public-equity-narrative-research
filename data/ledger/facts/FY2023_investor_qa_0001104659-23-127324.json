@@ -1,0 +1,150 @@
+{
+  "fiscal_year": 2023,
+  "task": "investor_qa",
+  "unit": "0001104659-23-127324",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:09:15Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 11754,
+    "output_tokens": 3842
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-23-127324",
+      "form": "8-K",
+      "filing_date": "2023-12-19",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 30551,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Budgeting and long-range planning process; approach to cost and cost of capital",
+        "stated_position": "Management said its process \"is linked to our strategic objectives and designed to support long-term value creation,\" focused on \"generating strong returns on invested capital, supported by sustainable growth with increases in revenues and improvements in operating margins over time,\" with planning annual (June to December) and planning cycles focused on three-year periods; recent increases in the cost of capital \"have translated into higher hurdle rates for investment opportunities.\"",
+        "kind": "strategy",
+        "quote": "The cost of capital is an important input to the process, and we regularly review and update our cost of capital estimates based on changes in interest rates and expected market returns. Recent increases in the cost of capital have translated into higher hurdle rates for investment opportunities, impacting our view of their relative attractiveness."
+      },
+      {
+        "topic": "Margin goal and treatment of slower-growing businesses",
+        "stated_position": "Management stated it is their goal to return margins to historical levels of 20%-25%, and that businesses in the portfolio exhibiting slowing growth are expected to increase margins and be run accordingly, citing the Sustainalytics \"pivot\" as an example.",
+        "kind": "strategy",
+        "quote": "Yes, as we have shared, it is our goal to get our margins back to the historical scenarios you cite. While we currently continue to have attractive growth opportunities, to the extent that businesses in our portfolio exhibit slowing growth, we do expect them to increase margins and run them accordingly. Our recent pivot with Sustainalytics is a good example of this, where lower-than-anticipated growth led us to reduce the cost base of the business with the goal of increasing its contribution to our bottom line."
+      },
+      {
+        "topic": "Headcount reductions in specific business units",
+        "stated_position": "Management said it reduced headcount in the second and third quarters of 2023 in Morningstar Sustainalytics, Morningstar Wealth, and DBRS Morningstar \"based on our careful assessment of the current operating environment and progress against our expectations,\" and is \"taking a cautionary approach to hiring\" and managing backfills with prudence.",
+        "kind": "strategy",
+        "quote": "We are taking a cautionary approach to hiring and continue to manage backfills with prudence."
+      },
+      {
+        "topic": "Real estate footprint optimization and hybrid work policy",
+        "stated_position": "Morningstar has a three-day minimum in-office hybrid work policy and is looking for ways to optimize its global real estate footprint on an ongoing basis, including consolidating two London offices, downsizing Shenzhen, and reducing space in Chicago.",
+        "kind": "strategy",
+        "quote": "Morningstar has a three-day minimum in-office hybrid work policy, although some teams require additional in-office attendance. As we see the impacts of that policy, our workforce strategy, and capacity needs, we are looking for ways to optimize our global real estate footprint."
+      },
+      {
+        "topic": "Capital allocation priorities: debt paydown vs. buybacks vs. M&A",
+        "stated_position": "Management said it continues to take a balanced approach with a near-to-intermediate term focus on paying down debt; debt reduction remains a priority given variable-rate exposure, with share repurchases and M&A evaluated on relative return, cash-on-cash returns and internal rates of return.",
+        "kind": "capital_allocation",
+        "quote": "We continue to take a balanced approach to capital allocation with a near-to-intermediate term focus on paying down debt."
+      },
+      {
+        "topic": "SBTi validation commitment and climate targets",
+        "stated_position": "Management said long-term goals include certification by the SBTi \"but we have not yet committed to a timeline,\" and near-term goals include publishing a first TCFD-aligned report as part of its Net Zero Financial Service Providers Alliance commitment.",
+        "kind": "strategy",
+        "quote": "Our long-term goals include certification of our efforts by the SBTi, but we have not yet committed to a timeline."
+      },
+      {
+        "topic": "Linking executive remuneration to decarbonization milestones",
+        "stated_position": "Management said it is considering what additional forward-looking milestones would be appropriate and that \"Presently, we do not tie executive remuneration to our emissions milestones.\"",
+        "kind": "governance_or_management",
+        "quote": "We are in the process of considering what additional, forward-looking milestones would be appropriate for our decarbonization journey and appreciate your feedback. Presently, we do not tie executive remuneration to our emissions milestones."
+      },
+      {
+        "topic": "Positioning in the private credit market",
+        "stated_position": "With LCD integration nearing completion, PitchBook can address multiple private credit data and analytics use cases; and Morningstar also serves private credit through DBRS Morningstar, where it sees good opportunities to expand its presence in private and middle-market credit in the U.S. and Europe.",
+        "kind": "segment_or_product",
+        "quote": "As we look to build and diversify our credit ratings business, we see good opportunities to expand our presence in private (and middle-market) credit in the U.S. and Europe."
+      },
+      {
+        "topic": "PitchBook competitive environment and growth deceleration",
+        "stated_position": "Management attributed slower organic growth primarily to the global decline in private capital invested and said \"We do not see any material recent change in the competitive environment,\" while asserting PitchBook's growth \"remains strong on an absolute basis relative to any notable peer.\"",
+        "kind": "competition_or_market",
+        "quote": "The global decline in private capital invested has been the primary driver of PitchBook\u2019s slower organic growth, although with revenues up 21.7% through the first nine months of 2023 on an organic basis, PitchBook\u2019s growth remains strong on an absolute basis relative to any notable peer."
+      },
+      {
+        "topic": "PitchBook business model: new clients vs. expansion of existing clients",
+        "stated_position": "Management described the foundation of PitchBook's business model as selling to new customers and then increasing licensed users within those organizations, and said the growth opportunity with existing clients has surpassed that of new client sales.",
+        "kind": "segment_or_product",
+        "quote": "This is the foundation of PitchBook\u2019s business model: We sell to new customers and then increase the number of licensed users within those organizations. While sales to new clients have continued to be very healthy, with our large and growing customer base and high renewal and net renewal rates, the growth opportunity with existing clients has surpassed that of new client sales."
+      },
+      {
+        "topic": "Cloud transition out of own data centers",
+        "stated_position": "Management said it is increasingly shifting data collection and storage to the cloud as part of a broader cloud transition out of its data centers, working with multiple cloud vendors, with lower capex on on-premises hardware but higher operating expenses from cloud costs on initial migration.",
+        "kind": "strategy",
+        "quote": "This evolution is part of our broader cloud transition out of our data centers, which also includes a focus on developing new products and capabilities in the cloud. We work with multiple cloud vendors."
+      },
+      {
+        "topic": "Board oversight of cybersecurity",
+        "stated_position": "Management said the Audit Committee has oversight of cybersecurity risk exposures and regularly reviews and discusses cybersecurity risks with management; a chief information security officer leads a dedicated team responsible for the information security program.",
+        "kind": "governance_or_management",
+        "quote": "At the board level, our Audit Committee has oversight of our cybersecurity risk exposures and regularly reviews and discusses risks related to our cybersecurity practices with management."
+      },
+      {
+        "topic": "Sustainalytics second-party opinion market share and competitive response",
+        "stated_position": "Management acknowledged SPO market share has fallen since 2020 primarily due to increasing competition (S&P Global's acquisition of Cicero Shades of Green, Moody's integration of Vigeo Eiris, MSCI and Sustainable Fitch entering), and said it is focusing activities on areas with the most attractive growth opportunities including the U.S. securitized bond market, investing in a dedicated SPO sales effort and consolidating regional reporting structures.",
+        "kind": "competition_or_market",
+        "quote": "That said, we acknowledge that Morningstar Sustainalytics market share in SPOs has fallen since 2020, primarily due to increasing competition as major players have focused on the SPO market."
+      },
+      {
+        "topic": "Where Sustainalytics missed expectations \u2014 demand vs. execution",
+        "stated_position": "Management said growth \"meaningfully lagged our expectations,\" driven partly by reduced ESG product demand and partly by execution challenges: significant sales-team turnover in the first half, failure to deliver the Impact Ratings launch (methodology being revisited), and competitors having invested ahead of Morningstar in climate solutions.",
+        "kind": "segment_or_product",
+        "quote": "Execution-related challenges also contributed to the shortfall. In the first half of the year, we experienced significant turnover in the Morningstar Sustainalytics sales team as demand for professionals with ESG experience surged, with particularly significant impacts on our U.S., UK, and Asia Pacific businesses."
+      },
+      {
+        "topic": "Morningstar Wealth TAMP value proposition and differentiation",
+        "stated_position": "Management said it believes its platform \"is at parity with or exceeds the experience offered by many of our competitors,\" and that the offering is differentiated by the strength of Morningstar's brand with advisors and independent research, data, and insights.",
+        "kind": "competition_or_market",
+        "quote": "We believe our platform is at parity with or exceeds the experience offered by many of our competitors, and our investments over the past couple of years have been designed to enhance that value."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We didn\u2019t deliver on our Impact Ratings launch this year and are revisiting this methodology.",
+        "why_notable": "An unusually direct admission of product failure and methodology retreat, stated without hedging."
+      },
+      {
+        "quote": "Our key competitors had invested ahead of us in this area, and we directed considerable investment over the past couple of years to developing our solution.",
+        "why_notable": "Rare concession that competitors moved first in climate solutions \u2014 a shift from Morningstar's usual framing as a leader in ESG."
+      },
+      {
+        "quote": "We believe that shorter term fluctuations in market share are not meaningful given the relative immaturity of the market.",
+        "why_notable": "A hedge that softens a market-share decline immediately before management concedes the decline is real and competition-driven."
+      },
+      {
+        "quote": "Our recent pivot with Sustainalytics is a good example of this, where lower-than-anticipated growth led us to reduce the cost base of the business with the goal of increasing its contribution to our bottom line.",
+        "why_notable": "Characterises a growth-investment business as a margin-harvest candidate \u2014 a notable shift in how Sustainalytics is described."
+      },
+      {
+        "quote": "Still, a significant portion of our debt is variable rate, and our cost of borrowing has increased with the rise in interest rates. As a result, debt reduction remains a priority.",
+        "why_notable": "Explicit subordination of buybacks and M&A to deleveraging, tied to the rate environment."
+      },
+      {
+        "quote": "The global drop in private capital invested contributed to this softening in new client sales, with an outsized impact on fair-weather market participants including opportunistic corporates and non-traditional asset managers.",
+        "why_notable": "The phrase \"fair-weather market participants\" is unusually pointed language characterising a portion of PitchBook's client base."
+      },
+      {
+        "quote": "One of Morningstar\u2019s most valuable assets is the trust we\u2019ve built with our stakeholders.",
+        "why_notable": "A recurring self-characterisation of trust as the core asset, here deployed in the cybersecurity context."
+      }
+    ]
+  }
+}

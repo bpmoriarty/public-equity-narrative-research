@@ -1,0 +1,79 @@
+{
+  "fiscal_year": 2024,
+  "task": "investor_qa",
+  "unit": "0001289419-24-000042",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:44:19Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 5188,
+    "output_tokens": 1818
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-24-000042",
+      "form": "8-K",
+      "filing_date": "2024-06-14",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001289419-24-000042",
+      "form": "8-K",
+      "filing_date": "2024-06-14",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 8065,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Stagnating Morningstar Direct license growth and the 2023 decline in U.S. licenses",
+        "stated_position": "Management attributed it to a deliberate pricing decision: \"During 2023, we instituted a meaningful price increase for Morningstar Direct licenses. With the increase, some large asset managers (especially in the U.S.) reduced their licenses.\" It argued that \"Direct license counts do not tell the full story of how clients access our data and research,\" noting several clients who cut Direct licenses \"also increased the scope of reporting and distribution licenses at renewal,\" revenue for which sits in Morningstar Data and Analytics rather than the Morningstar Direct product area.",
+        "kind": "segment_or_product",
+        "quote": "During 2023, we instituted a meaningful price increase for Morningstar Direct licenses. With the increase, some large asset managers (especially in the U.S.) reduced their licenses. This contributed to the slower growth in overall licenses you observe as well as the modest decline in US licenses over the year."
+      },
+      {
+        "topic": "Difference between Advisor Workstation and the Morningstar Wealth segment, which both serve advisors",
+        "stated_position": "Management characterized its advisor offering as \"a connected suite of tools spanning proposal creation, investment research, investment management, and retirement services built on Morningstar research designed to empower great advice,\" delivered through three segments, and said the two products \"both serve advisors, with a focus on different use cases\": Advisor Workstation is \"well suited to meet the needs of financial professionals at larger wealth firms, broker dealers, or wirehouses\" with their own tech stack and \"is not a trading/execution platform,\" while the Morningstar Wealth Platform supports firms \"looking to license a more 'all-in-one' solution that encompasses rebalancing, trading/clearing/custody, and performance reporting.\"",
+        "kind": "segment_or_product",
+        "quote": "Morningstar Advisor Workstation is well suited to meet the needs of financial professionals at larger wealth firms, broker dealers, or wirehouses where the firm has built a robust, customized tech stack and requires a targeted Morningstar solution to support investment research, portfolio analytics, and proposal generation. Morningstar Advisor Workstation is not a trading/execution platform, and advisors using it typically implement their investment recommendations through a separately chosen managed account platform."
+      },
+      {
+        "topic": "At what scale Sustainalytics and Indexes would become separate reportable segments",
+        "stated_position": "Management said neither business \"individually meets the qualitative or quantitative segment reporting thresholds as per the accounting standards outlined in ASC 280, which include individually contributing more than 10% to either consolidated revenue or consolidated adjusted operating income,\" and added: \"We continue to assess our reportable segments on an ongoing basis.\"",
+        "kind": "governance_or_management",
+        "quote": "Neither Morningstar Sustainalytics nor Morningstar Indexes individually meets the qualitative or quantitative segment reporting thresholds as per the accounting standards outlined in ASC 280, which include individually contributing more than 10% to either consolidated revenue or consolidated adjusted operating income. We continue to assess our reportable segments on an ongoing basis."
+      },
+      {
+        "topic": "Whether group adjusted operating margin can surpass 30% over the medium to long term",
+        "stated_position": "Management declined to give a target but restated a standing priority: \"While we don't provide margin targets, we have stated that we are focused on increasing margins to recent historical peaks and higher over time. We remain focused on sustainable growth and increasing revenue faster than expenses, while continuing to invest appropriately across the business to create value.\"",
+        "kind": "strategy",
+        "quote": "While we don\u2019t provide margin targets, we have stated that we are focused on increasing margins to recent historical peaks and higher over time. We remain focused on sustainable growth and increasing revenue faster than expenses, while continuing to invest appropriately across the business to create value."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "Direct license counts do not tell the full story of how clients access our data and research.",
+        "why_notable": "Management redirects attention away from a headline metric it has historically disclosed, after that metric turned negative in the U.S. \u2014 a shift in which measure is presented as meaningful."
+      },
+      {
+        "quote": "we instituted a meaningful price increase for Morningstar Direct licenses",
+        "why_notable": "Unusually direct admission that a company-initiated price increase, not market conditions, caused client attrition in a flagship product."
+      },
+      {
+        "quote": "We remain focused on sustainable growth and increasing revenue faster than expenses, while continuing to invest appropriately across the business to create value.",
+        "why_notable": "Recurring formulation of the margin-expansion priority that hedges any numeric commitment while preserving room to keep spending."
+      }
+    ]
+  }
+}

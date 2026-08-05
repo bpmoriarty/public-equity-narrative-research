@@ -1,0 +1,88 @@
+{
+  "fiscal_year": 2022,
+  "task": "investor_qa",
+  "unit": "0001104659-22-035590",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:07:19Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 6975,
+    "output_tokens": 2468
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-22-035590",
+      "form": "8-K",
+      "filing_date": "2022-03-18",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 14387,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Direct exposure to Russia, Ukraine, and China; operations and vendor relationships",
+        "stated_position": "Existing sales in Russia are immaterial and no clients in Ukraine; \"We have recently stopped delivery of most services to Russian clients.\" A long-standing third-party vendor in Ukraine provides contract labor supporting PitchBook development and is considered \"an important part of the Morningstar group,\" with the company working to provide financial help. External sales in China are not material; operations there \"primarily support our global business,\" with a substantial number of employees in a data and technology development center in Shenzhen.",
+        "kind": "strategy",
+        "quote": "Our existing sales in Russia are immaterial to the overall business and we currently do not have any clients procuring our products or services in Ukraine. We have recently stopped delivery of most services to Russian clients. We do have a long-standing relationship with a third-party vendor in Ukraine which provides contract labor in support of development efforts at PitchBook and consider them an important part of the Morningstar group."
+      },
+      {
+        "topic": "Integration of Sustainalytics ESG research across the business and ESG market opportunity",
+        "stated_position": "Management states the overall objective is \"to establish leading ESG positions across our business areas,\" pulling ESG data and research across Morningstar, with particular focus on enabling ESG adoption in the wealth space; direct indexing for advisors will feature Sustainalytics data at its core, and indexes/software offerings now carry ESG Risk Ratings. Market size estimates range from several hundred million to several billion dollars, suggesting the market \"hasn't yet been consistently defined.\"",
+        "kind": "segment_or_product",
+        "quote": "While we are pleased with the performance of Sustainalytics, our overall objective is to establish leading ESG positions across our business areas, and we are making good progress in pulling through ESG-related data and research across Morningstar. We are particularly focused on enabling the adoption and implementation of ESG in the wealth space as we believe that doing so unlocks new personalization and impact tools for advisors and individuals."
+      },
+      {
+        "topic": "PitchBook growth drivers and total addressable market",
+        "stated_position": "Growth comes from three main drivers: increasing the core customer user base, expansion into \"adjacent\" customer segments, and innovation and product upgrades. Over half of 2021 growth was from new sales, but management expects the proportion of growth from existing clients to increase over time. TAM estimated at $3.5 billion globally, consistent with prior disclosure, based on use-case assumptions.",
+        "kind": "segment_or_product",
+        "quote": "Our growth continues to come from three main drivers: Increasing the core customer user base (i.e., private equity and venture capital firms and institutional investors), increasing the user base through \u201cadjacent\u201d customer segments (i.e., corporate M&A teams, investment banks, and service providers), and innovation and product upgrades that add value and allow customers to use PitchBook more often to meet their needs."
+      },
+      {
+        "topic": "Morningstar Indexes growth drivers and long-term opportunity; competitive position versus entrenched index providers",
+        "stated_position": "New client wins were the largest contributing factor, including a large client that converted from MSCI. Longer term the same factors should contribute, particularly in ESG, thematics, and private equity. Management characterises the index licensed data market as \"ripe for disruption,\" with industry consolidation causing increased pricing by entrenched competitors and pushing clients to alternatives.",
+        "kind": "competition_or_market",
+        "quote": "In addition to expanded opportunities in AUM-linked revenue, we believe that the market for Index licensed data continues to be ripe for disruption. Industry consolidation has resulted in increased pricing by entrenched competitors leading clients to look for alternatives. In fact, in 2021, licensed data was the fastest growing part of our indexes business, and we expect that to continue."
+      },
+      {
+        "topic": "Employee turnover and initiatives to reduce attrition",
+        "stated_position": "Attrition rose across all regions and business lines, consistent with most industries; management describes three key initiatives: re-engineering the exit interview process, greater investment in base compensation increases in 2021 and 2022 versus 2020, and investing in internal career mobility.",
+        "kind": "governance_or_management",
+        "quote": "We have three key initiatives underway to bring attrition down. First, we re-engineered our exit interview process to gain better insights into why people are leaving. We are using that information to inform our countermeasures. Second, we invested much more in base compensation increases in 2021 and 2022 compared with 2020. Third, we are investing in improving internal career mobility opportunities for our people."
+      },
+      {
+        "topic": "Advisor Workstation client decline and product direction",
+        "stated_position": "The client decline was primarily a result of industry consolidation, and management says \"we are not immune to M&A activity in the wealth management sector\" given its enterprise client base; it maintained relationships with nearly all newly combined organizations. Product enhancements center on personalization (risk tolerance, risk capacity, ESG preferences), a modernized user experience, and capabilities like financial planning and compliance/regulatory needs in the US and Canada.",
+        "kind": "segment_or_product",
+        "quote": "The decline in clients for Advisor Workstation was primarily a result of industry consolidation. Given the number of enterprise clients that we serve, we are not immune to M&A activity in the wealth management sector. Despite this activity, we maintained relationships with nearly all of the newly combined organizations and continued to see strong trends in users across our client base."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We believe we are building world-class index capabilities and our success in 2021 is the latest evidence of our ambition in this space.",
+        "why_notable": "Unusually assertive self-characterisation of the indexes business as \"world-class\" and framing of \"ambition,\" signalling strategic emphasis on a business competing with MSCI."
+      },
+      {
+        "quote": "We are h elping to shape the market with our products and services and continue to refine as the industry grows and matures.",
+        "why_notable": "Positions Morningstar as a market-shaper rather than participant in ESG, while conceding the industry's \"relative nascency\" \u2014 a claim paired with a hedge on market size."
+      },
+      {
+        "quote": "We\u2019ve seen estimates for ESG market size that range from several hundred million to several billion U.S. dollars, which suggests the scope of the market hasn\u2019t yet been consistently defined given the relative nascency of this fast-growing industry.",
+        "why_notable": "A notably wide hedge: management declines to size the ESG opportunity it says it is investing heavily in."
+      },
+      {
+        "quote": "For historical context, our attrition from 2017-2019 averaged 16.6%, which we consider a more normalized number than what we experienced during the period following the start of the pandemic.",
+        "why_notable": "Reframes a sharp turnover increase as a return to normal rather than a problem, a direct attempt to reset the baseline investors judge it against."
+      },
+      {
+        "quote": "While we do not forecast a tax rate, it is helpful to look back prior to the Sustainalytics acquisition. Our effective rate in 2019 was 23.1%. Every year tends to be different given discrete items that impact our rate (for instance, M&A activity). Our expectation is that a go-forward rate could be closer to the rate in 2019, absent discrete items.",
+        "why_notable": "A hedged forward statement \u2014 the company disclaims forecasting while nonetheless offering a go-forward expectation qualified twice."
+      }
+    ]
+  }
+}

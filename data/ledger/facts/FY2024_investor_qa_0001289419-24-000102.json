@@ -1,0 +1,211 @@
+{
+  "fiscal_year": 2024,
+  "task": "investor_qa",
+  "unit": "0001289419-24-000102",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:44:52Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 16877,
+    "output_tokens": 6318
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-24-000102",
+      "form": "8-K",
+      "filing_date": "2024-10-01",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001289419-24-000102",
+      "form": "8-K",
+      "filing_date": "2024-10-01",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 45797,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Trade-off between revenue growth and margin expansion at PitchBook",
+        "stated_position": "Management says it focuses on maximizing long-term value creation, sees \"meaningful opportunity for additional growth and steady margin expansion\" at PitchBook, monitors SaaS metrics such as customer acquisition costs and customer lifetime value, and does not believe it faces a binary choice between revenue and margin growth today.",
+        "kind": "strategy",
+        "quote": "In balancing revenue growth and margin expansion across the business, we focus on maximizing long-term value creation. In the case of PitchBook specifically, we see meaningful opportunity for additional growth and steady margin expansion."
+      },
+      {
+        "topic": "Whether another large investment cycle should be expected; margin volatility",
+        "stated_position": "Management acknowledges recent margin volatility came from investments in Morningstar Wealth and Morningstar Sustainalytics plus market headwinds, and says growth ahead is expected to be \"largely self-funded,\" i.e. revenues increasing faster than expenses with increasing adjusted operating margins over time.",
+        "kind": "strategy",
+        "quote": "As we look across our segments, we believe that we have good opportunities for organic growth and, as we noted at the annual shareholders meeting, we expect that growth to be largely self-funded. That means we are focused on increasing revenues at a faster rate than expenses with increasing adjusted operating margins over time."
+      },
+      {
+        "topic": "Termination of the PitchBook management bonus plan following the founder's departure",
+        "stated_position": "Following the departure of John Gabbert, PitchBook's founder and former CEO, the company terminated the PitchBook management bonus plan in Q3 24, stating the plan \"was designed primarily as a compensation vehicle for John,\" and that its termination eliminates an important driver of volatility in PitchBook's adjusted operating margins.",
+        "kind": "governance_or_management",
+        "quote": "Following the departure of John Gabbert, PitchBook\u2019s founder and former CEO, we terminated the PitchBook management bonus plan in Q3 24. The plan was designed primarily as a compensation vehicle for John."
+      },
+      {
+        "topic": "Weak corporate client segment at PitchBook and change in sales approach",
+        "stated_position": "Management says it has reevaluated sales and customer support strategies for corporates with limited use cases and higher churn, so PitchBook can prioritize prospects and clients with stronger use cases and higher customer lifetime value.",
+        "kind": "strategy",
+        "quote": "Given the softness in new sales and client retention within the client segment, we\u2019ve reevaluated sales and customer support strategies for corporates with limited use cases who tend to have higher churn over time and lower lifetime customer value. This will allow PitchBook to prioritize prospects and clients with stronger use cases and the potential for higher customer lifetime value."
+      },
+      {
+        "topic": "Competitive position versus Preqin after BlackRock's acquisition",
+        "stated_position": "Management claims PitchBook is \"the market leader in private market data based on the breadth and depth of our coverage,\" says coverage of private fund and benchmark data is comparable to Preqin's, declines to comment on BlackRock's plans, and says it remains focused on its long-term strategy and intensely focused on servicing customers as a core competitive advantage.",
+        "kind": "competition_or_market",
+        "quote": "While we\u2019re not in a position to comment on BlackRock\u2019s plans for Preqin, we remain focused on our long-term strategy for PitchBook of delivering value to customers and continue to see a strong runway for growth."
+      },
+      {
+        "topic": "\"Rule of 40\" and PitchBook profitability discipline",
+        "stated_position": "Management agrees it is necessary to strike a balance between revenue growth and profitability to generate long-term value for shareholders, declines to disclose incremental margins, and says it is committed to balancing the right level of investment in data, research, and platform capabilities.",
+        "kind": "strategy",
+        "quote": "We are committed to balancing the right level of investment in data, research, and platform capabilities to capitalize on what we still believe is a significant global market opportunity."
+      },
+      {
+        "topic": "Investment plans and market-share ambition for Morningstar Credit",
+        "stated_position": "Management says it did not make significant investments in H1 24 and headcount was lower, but in H2 24 it is adding analyst capacity in private and middle market credit, \"esoteric\" asset-backed securities, project finance and infrastructure; and as a challenger to incumbents it sees opportunity for continued growth and margin expansion over time.",
+        "kind": "segment_or_product",
+        "quote": "In H2 24, we are adding analyst capacity in a few key targeted areas including private and middle market credit and \u201cesoteric\u201d asset-backed securities, as well as project finance and infrastructure."
+      },
+      {
+        "topic": "Approach to credit market cyclicality",
+        "stated_position": "Management says it is difficult to provide a \"normalized\" growth rate given cyclicality and rate sensitivity, and states the aim is to grow market share regardless of the environment.",
+        "kind": "strategy",
+        "quote": "Given the cyclicality and sensitivity of credit markets to the interest rate and spread environment, it\u2019s difficult to provide a \u201cnormalized\u201d growth rate. Our aim is to grow market share regardless of the environment."
+      },
+      {
+        "topic": "De-emphasis of the exchange market data \"broadcast feed\" product",
+        "stated_position": "Management states it has been less focused on the broadcast feed product because it does not align as well with Morningstar's other core data sets.",
+        "kind": "segment_or_product",
+        "quote": "Meanwhile, exchange market data performance reflected softness especially in our \u201cbroadcast feed\u201d product. We have not been as focused on this product given that it does not align as well with our other core data sets."
+      },
+      {
+        "topic": "Competitors in managed investment, market and equity data",
+        "stated_position": "Management names FE fundinfo and LSEG (Refinitiv) as main global competitors for managed investment data, plus smaller local/regional players, and Bloomberg, FactSet, ICE Data Services, LSEG (Refinitiv), and S&P Global for market and equity data.",
+        "kind": "competition_or_market",
+        "quote": "Our main global competitors for managed investment data, including mutual fund data, include FE fundinfo and LSEG (Refinitiv). We also compete against smaller players that focus on local or regional information. For market and equity data, we primarily compete with Bloomberg, FactSet, ICE Data Services, LSEG (Refinitiv), and S&P Global."
+      },
+      {
+        "topic": "Morningstar Retirement margin ceiling and growth outlook",
+        "stated_position": "Management describes margins as reflecting successful scaling of the business and distribution model built with recordkeepers since 2000/2003, and says while there are future margin opportunities, \"they are not as meaningful as the potential expansion in other parts of our business.\"",
+        "kind": "segment_or_product",
+        "quote": "While we also have future opportunities for margin growth in Morningstar Retirement, they are not as meaningful as the potential expansion in other parts of our business."
+      },
+      {
+        "topic": "Near-term priorities for Morningstar Sustainalytics",
+        "stated_position": "Management highlights three near-term priorities: climate (regulatory/reporting use cases and banking clients), broader data set improvements including CSRD support, and strengthening the second-party opinion product and leveraging it in investor solutions, especially for banks exploring transition financing.",
+        "kind": "strategy",
+        "quote": "Finally, we are committed to strengthening our market-leading second party-opinion product (SPOs) and finding opportunities to leverage our strength there in investor solutions, especially in supporting banks exploring transition-financing investment opportunities."
+      },
+      {
+        "topic": "Sustainalytics differentiation versus MSCI and other ESG providers",
+        "stated_position": "Management says the key differentiator is connecting ESG data and analytics strengths with capabilities elsewhere in Morningstar, notes it is one of the leading providers of ESG data, and says it is \"winning some deals and losing others\" with no strong directional trend in market share.",
+        "kind": "competition_or_market",
+        "quote": "In general, it\u2019s our observation that we\u2019re winning some deals and losing others, but we haven\u2019t seen a strong trend in one direction to suggest our market share has changed materially."
+      },
+      {
+        "topic": "Winding down the bespoke on-demand licensed ratings product in corporate solutions",
+        "stated_position": "Management says it concluded the bespoke, on-demand ratings product was not scalable, is winding it down, and is instead focusing on licensing existing ratings, underlying data, benchmarking and tools to corporates \u2014 a strategy it believes it can scale successfully over time.",
+        "kind": "segment_or_product",
+        "quote": "Historically, we offered a bespoke, on-demand ratings product that we ultimately concluded was not scalable. We\u2019re winding down that offering and instead focusing on licensing the use and distribution of existing ratings and underlying data, benchmarking, and tools to corporates to help them make decisions, compare themselves to peers, and use in marketing materials."
+      },
+      {
+        "topic": "\"Right-sizing\" Morningstar Wealth and the AssetMark TAMP transaction",
+        "stated_position": "Management defines right-sizing as growing sustainably with margin improvement toward profitability; it announced AssetMark will acquire roughly $12 billion of assets on the Morningstar TAMP and that Morningstar planned to sunset its TAMP, with a negative short-term profitability impact and a positive run-rate impact after the 12-month transition.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "Subsequent to the annual shareholders meeting, we announced that AssetMark will be acquiring roughly $12 billion in assets administered on the Morningstar Turnkey Asset Management Platform (TAMP) and that we planned to sunset our TAMP."
+      },
+      {
+        "topic": "SMArtX minority investment and commercial relationship",
+        "stated_position": "Management declines to comment on the operating performance of minority investments and says the commercial relationship with SMArtX is expected to wind down as accounts transition to the AssetMark platform.",
+        "kind": "segment_or_product",
+        "quote": "We do not comment on the operating performance of our minority investments. Morningstar\u2019s commercial relationship with SMArtX is expected to wind down as we transition accounts from our platform to the AssetMark platform."
+      },
+      {
+        "topic": "Integration progress on the Praemium acquisition",
+        "stated_position": "Management says the acquired U.K. and international business is performing well and helping drive underlying growth in Morningstar Wealth, listing milestones including full functional team integration, technology split from the parent with no downtime, launching Morningstar portfolios on the International Wealth Platform, merging fund ranges, cloud migration, and an enhanced retirement proposition.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "We have hit several key milestones since the acquisition of Praemium\u2019s U.K. and international business, which is performing well and helping to drive underlying growth in our Morningstar Wealth segment."
+      },
+      {
+        "topic": "Product roadmap for Morningstar Indexes",
+        "stated_position": "Management says it continues to focus on investable products and growing the benchmark data product, and that its near-to-midterm roadmap will leverage unique IP from the broader Morningstar enterprise, including differentiated private markets offerings through collaboration with PitchBook.",
+        "kind": "strategy",
+        "quote": "We will continue to build on our strengths in these core areas while our near-to-midterm new product roadmap will continue to leverage the unique IP presented by the broader Morningstar enterprise including differentiated offerings in private markets through our collaboration with PitchBook."
+      },
+      {
+        "topic": "Differentiation of Morningstar Indexes versus S&P Global, MSCI and other incumbents",
+        "stated_position": "Management points to combining indexing experience and independent global calculation capability with Morningstar's research, data and IP, and describes Morningstar Indexes as \"a highly flexible challenger brand\" better positioned to meet client needs and provide better value.",
+        "kind": "competition_or_market",
+        "quote": "Further, as a highly flexible challenger brand, we believe that Morningstar Indexes is often better positioned to meet the needs of financial service providers and their investors and provide better value to clients, as evidenced by our continued success in securing benchmark switches and new mandates."
+      },
+      {
+        "topic": "Rationale for floating- versus fixed-rate debt",
+        "stated_position": "Management says the 2019 DBRS acquisition ($669 million total consideration) was funded with floating-rate debt to give prepayment and refinancing flexibility, that the strategy was successful given the 2020 $350 million private placement at a 2.32% coupon, that current mix is roughly 60% floating and 40% fixed, and it remains open to adding longer-term fixed-rate debt.",
+        "kind": "capital_allocation",
+        "quote": "Our current mix is roughly 60% floating and 40% fixed. While we value the flexibility to prepay without penalty offered by our bank debt, we remain open to future opportunities to add longer-term fixed-rate debt to the capital structure."
+      },
+      {
+        "topic": "Leverage policy and target",
+        "stated_position": "Management states it has no leverage target but has always sought a strong balance sheet for capital allocation flexibility, notes the leverage ratio fell from 2.5x at March 31, 2023 to 1.4x at June 30, 2024, and says it remains open to increasing leverage if deemed the right thing to do to generate returns, within a 3.5x covenant.",
+        "kind": "capital_allocation",
+        "quote": "While we do not have a leverage target, we have always sought to maintain a strong balance sheet to allow for capital allocation flexibility. That has allowed us to invest in the business, be opportunistic with acquisitions (PitchBook, DBRS, and LCD), and return cash to shareholders."
+      },
+      {
+        "topic": "Why share repurchases have not restarted and dividend growth",
+        "stated_position": "Management says buybacks and dividends are an important part of capital allocation strategy but the recent focus has been on paying down debt; the dividend was increased in 2024 from 37.5 cents to 40.5 cents per share, with roughly 9% CAGR over ten years.",
+        "kind": "capital_allocation",
+        "quote": "While both share repurchases and dividends are an important part of our capital allocation strategy (as noted in a related question this month), our recent focus has been on paying down debt. In 2024, we increased our dividend from 37.5 cents per share to 40.5 cents per share."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We remain focused on making the right trade-offs but don\u2019t believe we face a binary choice between revenue and margin growth today.",
+        "why_notable": "Direct rejection of the framing of the question, with a time-limited hedge (\"today\") that leaves room for a different answer later."
+      },
+      {
+        "quote": "We acknowledge that much of the recent margin volatility has come from investments within certain areas including Morningstar Wealth and Morningstar Sustainalytics.",
+        "why_notable": "An unusually direct admission naming the two segments responsible for margin compression."
+      },
+      {
+        "quote": "From a product perspective, we\u2019ve lagged our competitors in climate as we work to enhance our climate offering to better meet client needs with a focus on regulatory workflows and addressing gaps in our data.",
+        "why_notable": "Explicit concession of a competitive shortfall and data gaps in a growth area management had previously emphasised."
+      },
+      {
+        "quote": "Historically, we offered a bespoke, on-demand ratings product that we ultimately concluded was not scalable.",
+        "why_notable": "Rare admission that a launched product was strategically wrong, followed by a wind-down."
+      },
+      {
+        "quote": "We believe this strategy will position us for long-term success, supported by the rationalization of providers, greater personalization in investment products, and a less contentious political environment in the future.",
+        "why_notable": "Sustainalytics thesis now rests partly on an assumed change in the political climate \u2014 an external condition outside management's control."
+      },
+      {
+        "quote": "However, the UBS Credit Suisse merger in particular did not create a material headwind. We look forward to growing our global UBS relationship in the years ahead.",
+        "why_notable": "Differentiates Morningstar from peers who flagged the merger, while framing client consolidation as an opportunity."
+      },
+      {
+        "quote": "In the future, we remain open to increasing leverage if it is deemed to be the right thing to do to generate returns.",
+        "why_notable": "After several quarters of deleveraging, management explicitly leaves the door open to re-levering \u2014 a signal on future M&A or buyback capacity."
+      },
+      {
+        "quote": "PitchBook is the market leader in private market data based on the breadth and depth of our coverage, which spans venture capital, private equity, private credit and bank loans, and merger and acquisition activities.",
+        "why_notable": "Self-characterisation as market leader, asserted in the same answer that concedes coverage is only \"comparable\" to Preqin's in private fund and benchmark data."
+      },
+      {
+        "quote": "as Kunal noted at the annual shareholders meeting, as we start to get to scale in certain areas of the business where we are challengers to the incumbents, including Morningstar Credit, we see opportunity for continued growth and margin expansion over time",
+        "why_notable": "Recurring \"challenger to incumbents\" framing, used for both Credit and Indexes in the same filing."
+      }
+    ]
+  }
+}

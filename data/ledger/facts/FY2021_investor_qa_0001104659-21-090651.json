@@ -1,0 +1,86 @@
+{
+  "fiscal_year": 2021,
+  "task": "investor_qa",
+  "unit": "0001104659-21-090651",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:07:19Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 5495,
+    "output_tokens": 2056
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-21-090651",
+      "form": "8-K",
+      "filing_date": "2021-07-09",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 9555,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Competitive landscape and churn drivers for Morningstar Data and Direct",
+        "stated_position": "Management said the primary driver of churn is client consolidation/restructuring, not competitive losses, and that it has \"a long, successful history of competing with various data and platform providers\" and typically wins and retains clients \"based on the unique attributes of the products and services we provide.\"",
+        "kind": "competition_or_market",
+        "quote": "We believe that the primary driver of churn in these product areas is client consolidation/ restructuring. We have a long, successful history of competing with various data and platform providers and typically win and retain clients based on the unique attributes of the products and services we provide."
+      },
+      {
+        "topic": "Morningstar Data's competitive strengths",
+        "stated_position": "Management characterizes Morningstar Data's advantage as proprietary datasets, like managed fund data, that competitors have historically been unable to replicate at similar breadth and depth, conceding local competitors like Financial Express can occasionally offer a competitive dataset for a particular country.",
+        "kind": "competition_or_market",
+        "quote": "We believe that Morningstar Data\u2019s competitive strengths lie in its proprietary datasets, like managed fund data, that competitors have historically been unable to replicate at a similar breadth and depth. Occasionally, companies like Financial Express can offer a competitive dataset for a particular country or geographical area due to their local presences, but we tend to retain clients that rely on the more comprehensive offering that we provide."
+      },
+      {
+        "topic": "What growth in Morningstar Direct depends on",
+        "stated_position": "Management states that growth ultimately hinges on the ability to build new datasets and deliver efficiencies in clients' workflows, with client retention driven by proprietary datasets and ease of incorporating clients' own data.",
+        "kind": "strategy",
+        "quote": "Ultimately, growth in Morningstar Direct hinges on our ability to build new datasets and deliver efficiencies in our clients\u2019 workflows. Clients tend to stay with us because of the proprietary datasets they consume through the platform, as well as the ease of incorporating their own proprietary data sets into our custom calculations and templates."
+      },
+      {
+        "topic": "ESG demand and integration of Sustainalytics into Morningstar Direct",
+        "stated_position": "Management reports growing client demand for ESG-related datasets, particularly in Europe due to the Sustainable Finance Disclosure Regulation, and says it has continued to pull Sustainalytics functionality into Morningstar Direct, most recently company-level ESG Risk Ratings.",
+        "kind": "segment_or_product",
+        "quote": "Recently, we\u2019ve seen growing demand from clients for ESG-related datasets, which give Morningstar Direct users specific information regarding a fund\u2019s sustainability factors. This functionality has particularly resonated in Europe due to the recently enacted Sustainable Finance Disclosure Regulation, but we have also seen interest rise in other markets. We\u2019ve also continued to pull functionality from Sustainalytics into Morningstar Direct, most recently displaying company-level ESG Risk Ratings next to companies that are covered by a Sustainalytics analyst."
+      },
+      {
+        "topic": "Impact of the shift from active to passive management",
+        "stated_position": "Management argues assets under active management are not in decline \"despite the headlines\" and that as long as actively-managed assets continue to show growth, active managers will continue to rely on Morningstar's services; it declines to give an apples-to-apples revenue comparison because passive AUM growth \"does not represent a perfect negative correlation with revenue on the active management side.\"",
+        "kind": "competition_or_market",
+        "quote": "First, while we agree that passive management is a clear source of growth in the market, our data suggests that assets under active management are not in decline despite the headlines."
+      },
+      {
+        "topic": "Automation versus passive investing as a threat to seat growth",
+        "stated_position": "Management suspects automation across financial services has a greater impact on platform seat growth than passive investing, and says that even if clients reduce Direct seats, Morningstar often picks up business from the same client through data licenses or redistribution rights.",
+        "kind": "competition_or_market",
+        "quote": "If anything, we suspect that the rise of automation across the financial services industry has a greater impact on platform seat growth than passive investing; however, even if clients reduce seats of Direct due to automating parts of their business, we often pick up business from the same client through Morningstar Data by offering them data licenses or redistribution rights."
+      },
+      {
+        "topic": "Product offerings aimed at passive investors",
+        "stated_position": "Management says it has added solutions specifically meeting the needs of passive investors, such as Morningstar Indexes, private equity and ESG data and analytics, and positions itself as agnostic: \"We are here to serve our clients' needs no matter what method of investing is in favor.\"",
+        "kind": "strategy",
+        "quote": "Moreover, we\u2019ve added solutions across our product offerings that specifically meet the needs of passive investors, such as Morningstar Indexes, which has shown healthy levels of growth, as well as private equity and ESG data and analytics. We are here to serve our clients\u2019 needs no matter what method of investing is in favor."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "Our most typical non-renewal scenario for Morningstar Data involves redistributors and fintech clients. These firms will occasionally cancel as a result of strategic pivots, price sensitivity, or simply going out of business.",
+        "why_notable": "An unusually specific and candid characterization of where the business loses customers, naming price sensitivity among the causes."
+      },
+      {
+        "quote": "We believe the pandemic had little impact on Morningstar Direct\u2019s revenue renewal rate in 2020, nor have we seen any material impact to date in 2021.",
+        "why_notable": "A direct denial that the pandemic affected retention, attributing decline instead to client consolidation."
+      },
+      {
+        "quote": "Whether active or passive, we believe that our data and IP help clients evaluate the merits of managed investments in consistent and meaningful ways across strategies. Even though ETFs are used more frequently in portfolio construction these days, those portfolios still need to be analyzed.",
+        "why_notable": "Frames the business as structurally indifferent to the active/passive shift \u2014 a recurring defensive claim worth tracking across years."
+      }
+    ]
+  }
+}

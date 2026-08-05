@@ -1,6 +1,6 @@
 # Year ledger
 
-Generated 2026-08-05T18:17:29Z. MORN (Morningstar, Inc.), CIK 0001289419.
+Generated 2026-08-05T19:30:36Z. MORN (Morningstar, Inc.), CIK 0001289419.
 
 Every fact carries its source filing, an exact quote from that filing, and a confidence marker. `low` means the source section's boundaries are unverified, or the quote could not be found verbatim — see `confidence_reason` on the fact. **Any claim in the outputs resting on a `low` fact must say so, or be dropped.**
 
@@ -17,7 +17,7 @@ Every fact carries its source filing, an exact quote from that filing, and a con
 | vote_results | 12 | 13 | 12 | 12 | 12 |
 | events | 15 | 15 | 13 | 14 | 17 |
 | notable_language | 17 | 26 | 28 | 28 | 26 |
-| investor_qa | 0 | 0 | 0 | 0 | 186 |
+| investor_qa | 113 | 157 (1 low) | 231 (1 low) | 163 (1 low) | 186 |
 | risk_deltas (added/removed/reworded) | baseline | +5/-5/~7 | +7/-0/~12 | +1/-2/~14 | +1/-3/~17 |
 | segments basis | **product areas** | **product areas** | reportable | reportable | reportable |
 
@@ -25,16 +25,15 @@ Every fact carries its source filing, an exact quote from that filing, and a con
 
 ## Source sections used
 
-- **FY2021**: 10-K_item1_business, 10-K_item7_mdna, 8-K_8-K_whole, DEF14A_cdna, DEF14A_director_bios, DEF14A_incentive_tables
+- **FY2021**: 10-K_item1_business, 10-K_item7_mdna, 8-K_8-K_whole, 8-K_EX-99-1_whole, DEF14A_cdna, DEF14A_director_bios, DEF14A_incentive_tables
 - **FY2022**: 10-K_item1_business, 10-K_item7_mdna, 8-K_8-K_whole, DEF14A_cdna, DEF14A_director_bios, letter_full_text
 - **FY2023**: 10-K_item1_business, 10-K_item7_mdna, 8-K-A_8-K-A_whole, 8-K_8-K_whole, DEF14A_cdna, DEF14A_director_bios, DEF14A_incentive_tables, letter_full_text
-- **FY2024**: 10-K_item1_business, 10-K_item7_mdna, 8-K_8-K_whole, DEF14A_cdna, DEF14A_director_bios, letter_full_text
+- **FY2024**: 10-K_item1_business, 10-K_item7_mdna, 8-K_8-K_whole, 8-K_EX-99-1_whole, 8-K_EX-99-2_whole, DEF14A_cdna, DEF14A_director_bios, letter_full_text
 - **FY2025**: 10-K_item1_business, 10-K_item7_mdna, 8-K_8-K_whole, 8-K_EX-99-1_whole, DEF14A_cdna, DEF14A_director_bios, letter_full_text
 
 ## Warnings
 
-- FY2021: extraction task 'investor_qa' has no result file — run src/extract_facts.py --fy 2021 --task investor_qa
 - FY2021: extraction task 'letter' has no result file — run src/extract_facts.py --fy 2021 --task letter
-- FY2022: extraction task 'investor_qa' has no result file — run src/extract_facts.py --fy 2022 --task investor_qa
-- FY2023: extraction task 'investor_qa' has no result file — run src/extract_facts.py --fy 2023 --task investor_qa
-- FY2024: extraction task 'investor_qa' has no result file — run src/extract_facts.py --fy 2024 --task investor_qa
+- FY2022 investor_qa: unverified quote (8-K_8-K_whole: not found in the source section)
+- FY2023 investor_qa: unverified quote (8-K_8-K_whole: diverges after 205 of 217 characters (94%) — the openin)
+- FY2024 investor_qa: unverified quote (8-K_8-K_whole: diverges after 69 of 209 characters (33%) — the opening)

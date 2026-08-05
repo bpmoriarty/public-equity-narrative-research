@@ -1,0 +1,160 @@
+{
+  "fiscal_year": 2022,
+  "task": "investor_qa",
+  "unit": "0001104659-22-102681",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:02:06Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 17252,
+    "output_tokens": 6429
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-22-102681",
+      "form": "8-K",
+      "filing_date": "2022-09-23",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 47819,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Return on capital in M&A and the price paid for the LCD acquisition",
+        "stated_position": "\"We evaluate the returns of any potential M&A transaction relative to expected returns for other uses of capital. In determining the price we pay for acquisitions, we focus on cash-on-cash returns and internal rates of return.\" For LCD, management said low historical investment was insufficient to realize its \"significant growth potential, especially given secular tailwinds for private credit,\" and that it is \"confident in our ability to realize value and excess returns as we invest in the integration.\"",
+        "kind": "capital_allocation",
+        "quote": "We evaluate the returns of any potential M&A transaction relative to expected returns for other uses of capital. In determining the price we pay for acquisitions, we focus on cash-on-cash returns and internal rates of return. Our acquisition planning is informed by comprehensive diligence and the value we expect to deliver through integrating acquisitions into our business."
+      },
+      {
+        "topic": "Confidence that profitability will recover and improve after margin erosion",
+        "stated_position": "Management restated its position that \"there is inherent leverage in the business\" and that current investments will drive long-term returns and margin improvement, naming \"Morningstar Sustainalytics, Wealth, and PitchBook\" as the key opportunity areas; returns in Sustainalytics climate/impact metrics and PitchBook equity data are expected to materialize more quickly, while Wealth (direct indexing, open architecture TAMP) \"will take more time to materialize.\"",
+        "kind": "strategy",
+        "quote": "As we\u2019ve stated previously, we believe that there is inherent leverage in the business and that the investments that we\u2019re making will help drive attractive long-term returns and margin improvements. We are focused on growth and scale and shared some of those comparisons at our 2022 annual meeting. We believe significant opportunity exists in key areas including Morningstar Sustainalytics, Wealth, and PitchBook."
+      },
+      {
+        "topic": "Changes to incentive compensation structure and merit increases",
+        "stated_position": "The \"most notable change in the 2022 compensation structure was the increase in our merit pool,\" roughly double the prior year's rate and \"almost double the weighted average market rate across our global footprint as we were focused on retaining talent in a highly competitive environment.\" Additional compensation was invested in salaries and bonuses \"to close the adjusted gender pay gap identified in a 2021 review,\" and in geographies/product areas with higher turnover (India, Morningstar Sustainalytics, DBRS Morningstar, PitchBook). Management is \"keeping a careful eye on inflation globally in our approach to 2023.\"",
+        "kind": "governance_or_management",
+        "quote": "The most notable change in the 2022 compensation structure was the increase in our merit pool with a budgeted global weighted average percentage increase adjusted for headcount that was roughly double the rate in the prior year; we believe that the budgeted increase was also almost double the weighted average market rate across our global footprint as we were focused on retaining talent in a highly competitive environment."
+      },
+      {
+        "topic": "Decision to stop reporting certain KPIs (Direct/PitchBook licenses, Morningstar.com premium subscribers, Advisor Workstation clients)",
+        "stated_position": "KPIs were moved to the Supplemental Deck; premium website subscriptions will be published annually rather than quarterly \"as it does not rank among our top products\"; and the company \"made the recent decision to stop disclosing the number of Advisor Workstation clients,\" concluding \"it was not as relevant a metric and not highly correlated to revenue given the heterogeneity of our client contracts.\"",
+        "kind": "governance_or_management",
+        "quote": "We also made the recent decision to stop disclosing the number of Advisor Workstation clients. We came to the conclusion that it was not as relevant a metric and not highly correlated to revenue given the heterogeneity of our client contracts, and specifically, the wide variation in advisor user counts and size from client to client."
+      },
+      {
+        "topic": "Why the company does not disclose more detail on investment spending at DBRS and PitchBook",
+        "stated_position": "Management said it has \"given directional guidelines on comparative margins within our portfolio\" in the past and \"will consider how we can better characterize and explain incremental investments going forward.\"",
+        "kind": "governance_or_management",
+        "quote": "In the past, we have given directional guidelines on comparative margins within our portfolio. In response to a related question published this month, we have provided more detail on investments we\u2019re making in headcount in product areas targeted for growth. We will consider how we can better characterize and explain incremental investments going forward."
+      },
+      {
+        "topic": "Currency in which PitchBook and other license-based products are priced",
+        "stated_position": "PitchBook contracts are priced in USD while other licensed-based products are \"generally priced in the local market currency\"; the company is \"in the process of transitioning the pricing of PitchBook products to local currencies and expect to complete this project by the end of 2023.\"",
+        "kind": "segment_or_product",
+        "quote": "You are correct that PitchBook contracts are priced in USD. Our other licensed-based products are generally priced in the local market currency, with a few exceptions to accommodate client preferences. We are in the process of transitioning the pricing of PitchBook products to local currencies and expect to complete this project by the end of 2023."
+      },
+      {
+        "topic": "How hiring priorities have changed over time",
+        "stated_position": "\"At any given time, our hiring priorities reflect our strategic priorities.\" In 2022 there was greater focus on \"Wealth, PitchBook, ESG/Morningstar Sustainalytics and DBRS Morningstar as well as on the infrastructure to help us scale,\" largely similar to 2021; the company hires \"more heavily in years after acquisitions to drive our investment thesis and returns.\"",
+        "kind": "strategy",
+        "quote": "At any given time, our hiring priorities reflect our strategic priorities. In 2022, there has been a greater focus on Wealth, PitchBook, ESG/Morningstar Sustainalytics and DBRS Morningstar as well as on the infrastructure to help us scale. Those priorities are largely similar to 2021. In many cases, we hire more heavily in years after acquisitions to drive our investment thesis and returns."
+      },
+      {
+        "topic": "Scale of investment in Morningstar Sustainalytics and expected pace ahead",
+        "stated_position": "Management is \"investing heavily in Morningstar Sustainalytics,\" hiring to expand research IP \"particularly in the new areas of impact and climate,\" with new products to come to market in 2023; \"The pace of Sustainalytics hiring is expected to slow in 2023.\" It states dollar costs are growing faster than organic revenues and that Sustainalytics' margins \"are a drag on our overall margins,\" but are expected over time to reach levels in line with the licensed-based product group average.",
+        "kind": "segment_or_product",
+        "quote": "The pace of hiring to support these two new research capabilities was intensive in 2021 and 2022 as the business built up the expertise required to bring new impact and climate products to market in 2023. We also meaningfully invested to support the research needed to address clients\u2019 compliance requirements related to the EU Action Plan regulation. The pace of Sustainalytics hiring is expected to slow in 2023."
+      },
+      {
+        "topic": "Implications of ESG regulation and political backlash, including state Attorneys General inquiries",
+        "stated_position": "\"We do not anticipate a material impact to Morningstar Sustainalytics or its clients from the recent inquiries initiated by the Attorney Generals of several U.S. states or more broadly from heightened scrutiny of ESG in the United States. If that were to change, we would disclose accordingly.\" Management frames Morningstar's role as providing \"the independent data and insights that make those conversations more informed.\"",
+        "kind": "competition_or_market",
+        "quote": "We do not anticipate a material impact to Morningstar Sustainalytics or its clients from the recent inquiries initiated by the Attorney Generals of several U.S. states or more broadly from heightened scrutiny of ESG in the United States. If that were to change, we would disclose accordingly. There are differing views on the merits of sustainable investing, but global investor interest in it has become mainstream"
+      },
+      {
+        "topic": "Comparison of Sustainalytics margins with MSCI's ESG & Climate segment",
+        "stated_position": "Management declined the comparison \u2014 \"We\u2019re not familiar with the particulars of how MSCI handles its segment-level reporting\" \u2014 while acknowledging Sustainalytics \"currently has the lowest margins of our licensed-based products\" and is expected over time to approach the others.",
+        "kind": "competition_or_market",
+        "quote": "We\u2019re not familiar with the particulars of how MSCI handles its segment-level reporting, so it\u2019s difficult for us to directly compare the profitability of MSCI\u2019s ESG and Climate segment to Morningstar Sustainalytics\u2019 margins. That said, given our substantial investments in Sustainalytics, that product group currently has the lowest margins of our licensed-based products."
+      },
+      {
+        "topic": "Plan for integrating LCD into PitchBook and Morningstar Indexes",
+        "stated_position": "The plan is to \"integrate Leveraged Commentary & Data ( LCD) data, analytics, and research with PitchBook\u2019s to offer a consolidated workflow for public and private capital and debt market research,\" with LCD staff moved onto PitchBook teams; on the Indexes side, operations are transitioning from S&P to Morningstar, the LCD indexes have been renamed under the Morningstar brand, and the Indexes sales team has been trained on the suite.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "We plan to integrate Leveraged Commentary & Data ( LCD) data, analytics, and research with PitchBook\u2019s to offer a consolidated workflow for public and private capital and debt market research. LCD datasets will enrich the overall PitchBook platform adding comprehensive coverage of leveraged loans, high-yield bonds, and more."
+      },
+      {
+        "topic": "Motivation for the LCD acquisition and target customer types",
+        "stated_position": "The acquisition \"was motivated by the value that we see in Leveraged Commentary & Data\u2019s ( LCD) capabilities in private credit and leveraged loan data, research, and indexes against the backdrop of attractive secular tailwinds for private credit,\" and management has \"confirmed the private credit use cases in our total addressable market (TAM)\" after a full review of LCD's clients.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "The acquisition was motivated by the value that we see in Leveraged Commentary & Data\u2019s ( LCD) capabilities in private credit and leveraged loan data, research, and indexes against the backdrop of attractive secular tailwinds for private credit. Adding LCD\u2019s coverage to PitchBook\u2019s institutional-grade coverage of the public and private equity markets creates a comprehensive data and research tool."
+      },
+      {
+        "topic": "Investment in the LCD product versus letting margin fall to the bottom line",
+        "stated_position": "\"As we manage through that process, we will invest to maximize long-term returns.\" PitchBook \"plans to make important investments to improve the LCD product, the LCD data set within the PitchBook platform, and our support of LCD customers, which we believe will help to accelerate growth and enhance margins.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "As we integrate LCD into the business, PitchBook plans to make important investments to improve the LCD product, the LCD data set within the PitchBook platform, and our support of LCD customers, which we believe will help to accelerate growth and enhance margins."
+      },
+      {
+        "topic": "DBRS Morningstar headcount strategy and strategic initiatives through the credit cycle",
+        "stated_position": "The company continues \"to invest in analytical and operations staff globally to maintain/defend the existing business, but more importantly to continue to grow the business globally,\" with initiatives in US middle market and European corporates, growing the data business, and technology investments for operational scalability. Given issuance volatility, \"we manage our headcount by slowing hiring in times of lower issuance\" but \"don\u2019t downsize or stop hiring completely.\"",
+        "kind": "segment_or_product",
+        "quote": "Given the volatility of credit issuance levels, we manage our headcount by slowing hiring in times of lower issuance and managing attrition accordingly. We don\u2019t downsize or stop hiring completely since we need to be adequately staffed for when issuance volumes normalize/pick-up and we continue to invest in the business, consistent with our long-term growth plans."
+      },
+      {
+        "topic": "Approach to the public cloud migration and its cost profile",
+        "stated_position": "Management said it does not have an R&D expense line and capitalizes software development costs, follows either a \"lift and shift model\" or an \"optimize first\" model, and does \"not anticipate increased expenses to support two code bases\" because cost duplication is short. Over time it expects \"a decline in capex and related depreciation associated with the purchase and maintenance of on-premise servers and an increase in operating expenses related to our use of cloud services.\"",
+        "kind": "segment_or_product",
+        "quote": "Over time, as we continue our transition from on-premise servers to the cloud, we expect to see a decline in capex and related depreciation associated with the purchase and maintenance of on-premise servers and an increase in operating expenses related to our use of cloud services."
+      },
+      {
+        "topic": "Retention of LCD talent and onboarding",
+        "stated_position": "\"The onboarding process has been very successful, and we have seen minimal attrition.\" The company spent the first several months understanding roles and has begun transitioning the LCD reporting structure to the relevant PitchBook or Morningstar teams, adding resources in research, support, and account management.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "The onboarding process has been very successful, and we have seen minimal attrition. We took the first several months following the acquisition to fully understand the roles and responsibilities of the Leveraged Commentary & Data (LCD) team."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "In the case of Leveraged Commentary & Data (LCD), we believe that low levels of historical investment in the business were not sufficient to realize what we see as its significant growth potential, especially given secular tailwinds for private credit.",
+        "why_notable": "A pointed characterisation of the acquired asset as under-invested by its prior owner \u2014 the recurring justification for both the price paid and the planned spending, repeated nearly verbatim later in the same filing."
+      },
+      {
+        "quote": "As a result, Sustainalytics\u2019 margins have been the lowest in our licensed-based product group and are a drag on our overall margins.",
+        "why_notable": "An unusually direct admission about a business the company elsewhere describes as a core growth priority."
+      },
+      {
+        "quote": "Within our licensed-based products, the margins for Direct and Data are the highest and Morningstar Sustainalytics has the lowest product margins; PitchBook\u2019s margins are higher than those generated by Sustainalytics but below those for Data and Direct.",
+        "why_notable": "An explicit ranking of internal product-level profitability that the company normally declines to disclose; sets a benchmark against which later statements can be measured."
+      },
+      {
+        "quote": "We do not anticipate a material impact to Morningstar Sustainalytics or its clients from the recent inquiries initiated by the Attorney Generals of several U.S. states or more broadly from heightened scrutiny of ESG in the United States. If that were to change, we would disclose accordingly.",
+        "why_notable": "Management's first-order framing of the ESG political backlash as immaterial, with a conditional disclosure hedge attached."
+      },
+      {
+        "quote": "We came to the conclusion that it was not as relevant a metric and not highly correlated to revenue given the heterogeneity of our client contracts",
+        "why_notable": "The stated reason for reducing a long-running disclosure; the rationale is worth preserving because the disclosure itself disappeared."
+      },
+      {
+        "quote": "we believe that the budgeted increase was also almost double the weighted average market rate across our global footprint as we were focused on retaining talent in a highly competitive environment",
+        "why_notable": "Frames an above-market pay increase as a deliberate retention strategy rather than cost inflation \u2014 a shift in emphasis on compensation."
+      },
+      {
+        "quote": "we invested additional compensation in salaries and bonus levels to close the adjusted gender pay gap identified in a 2021 review",
+        "why_notable": "A direct acknowledgement of an identified pay gap and remedial spending, cross-referenced to the Enterprise Sustainability Report."
+      },
+      {
+        "quote": "As we\u2019ve stated previously, we believe that there is inherent leverage in the business and that the investments that we\u2019re making will help drive attractive long-term returns and margin improvements.",
+        "why_notable": "A claim explicitly flagged as recurring (\"as we've stated previously\"), offered in answer to a question noting profitability had fallen back to 2010 levels."
+      }
+    ]
+  }
+}

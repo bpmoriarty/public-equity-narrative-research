@@ -1,0 +1,135 @@
+{
+  "fiscal_year": 2024,
+  "task": "investor_qa",
+  "unit": "0001289419-24-000049",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:44:40Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 12419,
+    "output_tokens": 2949
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-24-000049",
+      "form": "8-K",
+      "filing_date": "2024-07-18",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001289419-24-000049",
+      "form": "8-K",
+      "filing_date": "2024-07-18",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 31323,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Long-term margin goal \u2014 whether historical peak margins can be exceeded",
+        "stated_position": "Management said Jason's goal at the Annual Shareholder Meeting was to increase adjusted operating margins to \"recent historical peaks and higher,\" with recent peaks in the low 20's percent range, and that over the long term the focus is on increasing revenues faster than adjusted operating expense growth.",
+        "kind": "strategy",
+        "quote": "During his presentation at the Annual Shareholder Meeting, Jason noted that our goal was to increase our adjusted operating margins to recent historical peaks and higher. Recent peaks have been in the low 20's percent range."
+      },
+      {
+        "topic": "Disclosure practices on expense categories",
+        "stated_position": "Management declined to give quantitative guidance but said it is considering possible enhancements, including more disclosure in certain expense categories, in response to shareholder feedback.",
+        "kind": "governance_or_management",
+        "quote": "We continue to assess our disclosure practices in alignment with our mission and policies and in response to shareholder feedback, and are considering possible enhancements, including more disclosure in certain expense categories."
+      },
+      {
+        "topic": "PitchBook pricing philosophy",
+        "stated_position": "Pricing philosophy is \"simple, all-inclusive pricing\"; management prioritizes growing with clients over steeper short-term price increases, and expects significant revenue growth from continuing to move firms onto firmwide (enterprise) licenses.",
+        "kind": "segment_or_product",
+        "quote": "At the same time, we put a high priority on ensuring that we can grow with our clients, which shows up in renewal rates and an increased user base and, we believe, creates more value in the long term than might be offered by steeper, short-term increases in price."
+      },
+      {
+        "topic": "LCD integration and transition of clients off the legacy product",
+        "stated_position": "With the LCD integration substantially complete, the focus is on moving clients off the legacy LCD product onto the PitchBook platform, on track to be fully complete by the end of the year.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "With the substantial completion of the LCD integration, LCD news, data, and research is available on the PitchBook platform, and we are now focused on moving clients off the legacy LCD product and onto the PitchBook platform. PitchBook is on track to fully complete this transition by the end of the year."
+      },
+      {
+        "topic": "LCD acquisition outcome and pricing decision post-acquisition",
+        "stated_position": "Management said it deliberately did not raise pricing as much as it might have following LCD, focusing instead on introducing both client groups to the broader data sets; and acknowledged limited client overlap resulted in \"a small amount of expected customer leakage.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "Specific to the LCD transaction and integration, we did not increase pricing as much as we might have been able given the expanded data and research available to both legacy LCD and PitchBook clients following the acquisition."
+      },
+      {
+        "topic": "PitchBook long-term margin potential and reinvestment tradeoff",
+        "stated_position": "Management believes PitchBook can approach Data and Analytics margins over time but remains focused on the long term and balancing investment in data, research, and platform capabilities against a significant global market opportunity.",
+        "kind": "segment_or_product",
+        "quote": "While we think PitchBook can approach Data and Analytics margins over time, we remain focused on the long term and continuing to balance the right level of investment in data, research, and platform capabilities to capitalize on what we still believe is a significant global market opportunity."
+      },
+      {
+        "topic": "PitchBook leadership transition from John Gabbert to Rod Diefendorf",
+        "stated_position": "Management said strategic plans are designed so that \"a leadership transition alone does not lead to a strategy change,\" anticipating no material changes in strategy or prioritization; Rod, PitchBook's COO since 2016, provides \"stability and continuity.\"",
+        "kind": "governance_or_management",
+        "quote": "One of the key goals of our strategic planning process is that the resulting plans should be durable and long-term oriented. This means that our goal is to ensure that a leadership transition alone does not lead to a strategy change. In that vein, we anticipate no material changes in strategy or prioritization with Rod stepping in to lead PitchBook."
+      },
+      {
+        "topic": "PitchBook strategic priorities under new leadership",
+        "stated_position": "Central strategy is to lead in all areas of private market data and research by expanding breadth and depth of data, including global coverage in APAC and emerging markets, and building unique analytics, IP and market intelligence.",
+        "kind": "strategy",
+        "quote": "Central to that strategy is to lead in all areas of private market data and research by continually expanding the breadth and depth of our data and product capabilities to meet evolving private market investor needs. Current priorities in support of that strategy include continuing to expand our coverage of private companies, credit, and funds, in part through bolstering our global coverage, most notably in APAC and emerging markets."
+      },
+      {
+        "topic": "PitchBook management bonus plan following Gabbert departure",
+        "stated_position": "John was the primary beneficiary of the PitchBook management bonus plan, forfeited his unvested shares on departure, and the company plans to terminate the plan.",
+        "kind": "governance_or_management",
+        "quote": "John was the primary beneficiary of the PitchBook management bonus plan, and, with his departure he forfeited his unvested shares. With his departure and Rod's promotion to President of PitchBook we are planning to terminate the plan."
+      },
+      {
+        "topic": "Morningstar Credit competitive position vs larger rating agencies",
+        "stated_position": "Management sees opportunity for mid-sized credit rating agencies such as Morningstar DBRS to gain market coverage in private credit and esoteric ABS, where it believes it competes better than in public corporate bond markets.",
+        "kind": "competition_or_market",
+        "quote": "Despite the first quarter trend, we continue to see opportunity for mid-sized credit rating agencies such as Morningstar DBRS to gain market coverage, with good growth opportunities in areas including private credit and esoteric asset-backed securities, where we believe we're better able to compete with the larger credit agencies compared to the public corporate bond markets with its prevailing index eligibility guidelines."
+      },
+      {
+        "topic": "Reinvestment in Morningstar Credit capacity",
+        "stated_position": "Management said it is prudently reinvesting to support future growth, particularly in Europe and the U.S. with a focus on corporates and structured finance, building capacity to expand coverage and capabilities.",
+        "kind": "strategy",
+        "quote": "Importantly, we are prudently reinvesting in some areas to support future growth, particularly in Europe and the U.S. with a focus on corporates and areas of structured finance. Here, we are building capacity to expand coverage and capabilities."
+      },
+      {
+        "topic": "Real estate footprint and capital expenditures",
+        "stated_position": "Management expects capex headwinds from future real estate decisions as it consolidates certain locations, including Canada, New York, and Mumbai, reducing rent but requiring capital to remodel or refit.",
+        "kind": "capital_allocation",
+        "quote": "As we look to optimize our real estate footprint, we are consolidating certain locations which will reduce rent but require capital to remodel or refit new or existing locations. We expect this activity will include some of our larger markets including Canada, New York, and Mumbai."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We are very pleased with PitchBook's growth and profitability since our acquisition and the resulting value creation.",
+        "why_notable": "Unusually direct self-congratulation on an acquisition outcome, offered alongside more hedged commentary on LCD."
+      },
+      {
+        "quote": "In some cases, this resulted in a small amount of expected customer leakage. In addition, as we transitioned legacy LCD clients to PitchBook contracts and seat-based pricing we also saw some clients reevaluate and rationalize user counts.",
+        "why_notable": "An admission of client loss from the LCD acquisition, framed as expected and repeatedly minimized as 'small.'"
+      },
+      {
+        "quote": "LCD has performed in line with our expectations, but did not contribute meaningfully to overall PitchBook segment growth in 2023.",
+        "why_notable": "A notable hedge: performance defended as meeting expectations while conceding no meaningful growth contribution."
+      },
+      {
+        "quote": "Corporates had the lowest annual revenue renewal rates by a significant margin with the lowest rates for corporates in our small and medium sized business client group; asset managers had the next lowest rates.",
+        "why_notable": "Unusually granular admission of weakness in a specific client segment, beyond the company's normal disclosure level."
+      },
+      {
+        "quote": "As per our policy, we do not provide quantitative guidance or projections of expense trends.",
+        "why_notable": "Recurring policy refrain used to decline investor requests for cost detail, immediately followed by a concession that more disclosure is being considered."
+      }
+    ]
+  }
+}

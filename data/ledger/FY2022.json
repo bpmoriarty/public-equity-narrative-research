@@ -2125,7 +2125,3032 @@
       "quote_check": "verbatim match"
     }
   ],
-  "investor_qa": [],
+  "investor_qa": [
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Rationale for the reorganization creating Morningstar Wealth Management, led by Daniel Needham, and how it involves Managed Portfolios, Retail (Morningstar.com), Direct Indexing, and ByAllAccounts",
+        "stated_position": "Management said changing investor demographics and preferences, advancing technological capabilities, and increasing investment options are significantly impacting the advisor client segment, and that the intent to bring these capabilities together \"is all about removing friction and making it easier for advisors to respond to evolving end investor expectations.\" The launch of Morningstar Wealth Management combines Morningstar Managed Portfolios, Morningstar Office, ByAllAccounts, and Morningstar.com; management noted the initiative began in 2020 by bringing Morningstar Investment Management together with Office and ByAllAccounts to enhance practice management workflows.",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-025145",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-02-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "By launching Morningstar Wealth Management with the combined solution-set of Morningstar Managed Portfolios, Morningstar Office, ByAllAccounts, and Morningstar.com we feel we are doing just that. Candidly, we\u2019ve talked about doing this internally for a while now. In 2020, we began executing this initiative by bringing Morningstar Investment Management together with Office and ByAllAccounts to enhance practice management workflows so that advisors could increase their focus on delivering great financial advice.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Plans to address the direct indexing market",
+        "stated_position": "Management stated it plans to launch direct indexing capabilities through Morningstar Wealth Management's turnkey asset management platform (TAMP) later in 2022, \"tapping into capabilities delivered through Morningstar Indexes and Sustainalytics,\" and anticipates the platform will be \"a significant driver of growth for Morningstar in the years ahead.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-025145",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-02-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We plan to launch direct indexing capabilities through Morningstar Wealth Management\u2019s turnkey asset management platform (TAMP) later in 2022, tapping into capabilities delivered through Morningstar Indexes and Sustainalytics.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Characterisation of advisor client preferences and competitive positioning of an all-in-one platform",
+        "stated_position": "Management observed that independent advisors in particular favor \"all-in-one\" technology platforms that include practice, portfolio, and investment management/execution, allowing them to scale practices quickly and making it an easy way to transition businesses for those breaking away from a wirehouse.",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-025145",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-02-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We\u2019ve observed that independent advisors, in particular, favor \u201call-in-one\" technology platforms that include practice, portfolio, and investment management/execution. By doing so, they can scale their practices quickly, and for those who are breaking away from a wirehouse, it\u2019s an easy way to transition their businesses.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Direct exposure to Russia, Ukraine, and China; operations and vendor relationships",
+        "stated_position": "Existing sales in Russia are immaterial and no clients in Ukraine; \"We have recently stopped delivery of most services to Russian clients.\" A long-standing third-party vendor in Ukraine provides contract labor supporting PitchBook development and is considered \"an important part of the Morningstar group,\" with the company working to provide financial help. External sales in China are not material; operations there \"primarily support our global business,\" with a substantial number of employees in a data and technology development center in Shenzhen.",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-035590",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-03-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Our existing sales in Russia are immaterial to the overall business and we currently do not have any clients procuring our products or services in Ukraine. We have recently stopped delivery of most services to Russian clients. We do have a long-standing relationship with a third-party vendor in Ukraine which provides contract labor in support of development efforts at PitchBook and consider them an important part of the Morningstar group.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Integration of Sustainalytics ESG research across the business and ESG market opportunity",
+        "stated_position": "Management states the overall objective is \"to establish leading ESG positions across our business areas,\" pulling ESG data and research across Morningstar, with particular focus on enabling ESG adoption in the wealth space; direct indexing for advisors will feature Sustainalytics data at its core, and indexes/software offerings now carry ESG Risk Ratings. Market size estimates range from several hundred million to several billion dollars, suggesting the market \"hasn't yet been consistently defined.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-035590",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-03-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "While we are pleased with the performance of Sustainalytics, our overall objective is to establish leading ESG positions across our business areas, and we are making good progress in pulling through ESG-related data and research across Morningstar. We are particularly focused on enabling the adoption and implementation of ESG in the wealth space as we believe that doing so unlocks new personalization and impact tools for advisors and individuals.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "PitchBook growth drivers and total addressable market",
+        "stated_position": "Growth comes from three main drivers: increasing the core customer user base, expansion into \"adjacent\" customer segments, and innovation and product upgrades. Over half of 2021 growth was from new sales, but management expects the proportion of growth from existing clients to increase over time. TAM estimated at $3.5 billion globally, consistent with prior disclosure, based on use-case assumptions.",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-035590",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-03-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Our growth continues to come from three main drivers: Increasing the core customer user base (i.e., private equity and venture capital firms and institutional investors), increasing the user base through \u201cadjacent\u201d customer segments (i.e., corporate M&A teams, investment banks, and service providers), and innovation and product upgrades that add value and allow customers to use PitchBook more often to meet their needs.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Morningstar Indexes growth drivers and long-term opportunity; competitive position versus entrenched index providers",
+        "stated_position": "New client wins were the largest contributing factor, including a large client that converted from MSCI. Longer term the same factors should contribute, particularly in ESG, thematics, and private equity. Management characterises the index licensed data market as \"ripe for disruption,\" with industry consolidation causing increased pricing by entrenched competitors and pushing clients to alternatives.",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-035590",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-03-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In addition to expanded opportunities in AUM-linked revenue, we believe that the market for Index licensed data continues to be ripe for disruption. Industry consolidation has resulted in increased pricing by entrenched competitors leading clients to look for alternatives. In fact, in 2021, licensed data was the fastest growing part of our indexes business, and we expect that to continue.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Employee turnover and initiatives to reduce attrition",
+        "stated_position": "Attrition rose across all regions and business lines, consistent with most industries; management describes three key initiatives: re-engineering the exit interview process, greater investment in base compensation increases in 2021 and 2022 versus 2020, and investing in internal career mobility.",
+        "kind": "governance_or_management"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-035590",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-03-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We have three key initiatives underway to bring attrition down. First, we re-engineered our exit interview process to gain better insights into why people are leaving. We are using that information to inform our countermeasures. Second, we invested much more in base compensation increases in 2021 and 2022 compared with 2020. Third, we are investing in improving internal career mobility opportunities for our people.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Advisor Workstation client decline and product direction",
+        "stated_position": "The client decline was primarily a result of industry consolidation, and management says \"we are not immune to M&A activity in the wealth management sector\" given its enterprise client base; it maintained relationships with nearly all newly combined organizations. Product enhancements center on personalization (risk tolerance, risk capacity, ESG preferences), a modernized user experience, and capabilities like financial planning and compliance/regulatory needs in the US and Canada.",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-035590",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-03-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The decline in clients for Advisor Workstation was primarily a result of industry consolidation. Given the number of enterprise clients that we serve, we are not immune to M&A activity in the wealth management sector. Despite this activity, we maintained relationships with nearly all of the newly combined organizations and continued to see strong trends in users across our client base.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Capturing share of the RIA advisor market and evolving advisor-facing solutions",
+        "stated_position": "Management says advisor-facing solutions \"must evolve\" as the RIA value proposition shifts toward personalization, financial planning, behavioral coaching, wellness, and tax planning, and that Morningstar is \"fully engaging here across our solutions,\" including UMA functionality, embedding the Risk Ecosystem in Morningstar Office, embedding sustainability offerings across all advisor-facing products, models, and a proprietary direct indexing pilot beginning in Q2 2022 with a select group of financial advisors.",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "As the value proposition of independent RIAs continues to shift toward areas like personalization, financial planning, behavioral coaching, wellness, and tax planning, advisor-facing solutions must evolve with respect to core portfolio management activities as well as these new areas of focus. We are fully engaging here across our solutions, integrating existing capabilities and developing new capabilities to address the changing needs of the investors they serve.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Creation of the Morningstar Wealth Management product grouping under Daniel Needham",
+        "stated_position": "Management describes uniting Managed Portfolios, Morningstar Office, ByAllAccounts, and Morningstar.com into a wealth management solutions product grouping, with the pending Praemium U.K./international acquisition also sitting within this group; the aim is \"not\" merely more advisors but \"increasing the connectivity of our advisor solutions and increasing revenue per advisor.\"",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "While adding more advisors is important, our aim is to continue increasing the connectivity of our advisor solutions and increasing revenue per advisor as a result.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Competitive position of Morningstar's TAMP versus Envestnet and other larger TAMPs",
+        "stated_position": "Management believes its platform \"is at parity with or exceeds the experience offered by many of our competitors,\" continues to invest, and cites being voted the number-one TAMP by advisors for service and performance in The Wealth Advisor's America's Best TAMPs, 2022 edition.",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We believe our platform is at parity with or exceeds the experience offered by many of our competitors, and we continue to invest to enhance the experience.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Differentiation of personalized portfolios; proprietary data sets",
+        "stated_position": "Management points to independent research, proprietary data, and technology platforms, citing a proprietary direct indexing solution launching in beta in Q2 2022 combining Morningstar Sustainalytics metrics and Morningstar Indexes, and a new Target Date Plus service with Capital Group described as \"a significant leap forward in the personalization of target-date funds.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We believe this is a significant leap forward in the personalization of target-date funds and will be appealing to investors.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Operating leverage and margins in the asset-based/Investment Management business",
+        "stated_position": "Management declines to provide forward guidance on margins but says it is experiencing positive operating leverage as products attract assets, excluding the impact of \"the disclosed client losses that were a result of our strategy shift,\" and is focusing on growing AUM.",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "While we cannot provide forward guidance on margins, we are experiencing positive operating leverage as our products and investment strategies within Investment Management attract assets. That was indeed the case last year within Managed Portfolios, if we exclude the impact of the disclosed client losses that were a result of our strategy shift.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Loss of the TD Ameritrade relationship and remaining large Investment Management contracts",
+        "stated_position": "Management states the Managed Portfolios asset decrease from $48.6 billion in Q4 2019 to $23.1 billion in Q1 2020 is largely explained by the TD Ameritrade client loss, that TD Ameritrade switched to a fixed-fee arrangement as it transitioned the business in house and terminated the agreement following its merger with Charles Schwab, and that there are no remaining $10 million-plus clients in Investment Management revenue \"as we shift away from consulting work to focus on direct relationships with advisors.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "There are no $10 million-plus clients contributing to Investment Management revenue as we shift away from consulting work to focus on direct relationships with advisors.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Moving upmarket in Workplace/retirement plan managed accounts",
+        "stated_position": "Management says small and midsize plans have \"traditionally been the sweet spot\" but it has built out a direct-to-plan sales team for larger plans, a consultant relations team, a specialized engagement team, and is building a call center; it says the investment \"has started to pay off,\" citing Raytheon as its most recent large plan win.",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The small and midsize plan market has traditionally been the sweet spot for our managed accounts service. However, in the past few years we have built out the infrastructure to better serve and support larger plans.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Adoption of managed accounts as a QDIA",
+        "stated_position": "Management concedes it is \"gaining traction and seeing increased interest but have not yet seen significant adoption\" of managed accounts as a default option, particularly where recordkeepers have proprietary target-date funds they are encouraged to sell.",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We are gaining traction and seeing increased interest but have not yet seen significant adoption of managed accounts as a default option in the plans we work with, especially when distributed by recordkeepers that that have proprietary target-date funds that they are encouraged to sell to plans.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Disclosure of Indexes revenue and possible reclassification of licensed data revenue",
+        "stated_position": "Management says Indexes revenue is not disclosed separately \"as it has not reached the size of our 'top' product categories,\" confirms the investor's derivation is \"within a reasonable range,\" and says it will consider reclassifying licensed data product revenue within Indexes to the licensed-based category in the future.",
+        "kind": "other"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We do not currently disclose the Index revenue separately as it has not reached the size of our \"top\" product categories, but your derivation of Index revenue is within a reasonable range.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Justification for the price paid for Leveraged Commentary & Data (LCD)",
+        "stated_position": "Management says it focuses on overall cash returns and expects the acquisition \"to generate strong returns well above our cost of capital,\" plans to enhance a core product that \"hasn't been updated in years\" and sell it to PitchBook clients, and notes the divestiture was triggered by regulatory requirements from S&P Global's IHS Markit merger; on competitiveness of the process it says \"While the process was likely competitive, we ran our own race.\"",
+        "kind": "acquisition_or_divestiture"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Through our extensive diligence and evaluation of how we will integrate LCD into Morningstar, we expect the acquisition to generate strong returns well above our cost of capital. We have significant opportunity to grow the product.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "LCD growth profile, accretion, and planned investment",
+        "stated_position": "Management states LCD has experienced steady mid- to high-single-digit revenue growth, supported by \"differentiated, hard-to-find data,\" that the transaction is expected to be accretive to adjusted net income per share in the first year after closing and to adjusted operating margins, and that it plans to invest behind the acquisition with much of that focused on integration into the PitchBook platform.",
+        "kind": "acquisition_or_divestiture"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We have plans to invest behind the acquisition to support future growth, with much of that focused on integration into the PitchBook platform. We expect our integration efforts to include more substantial product development activity and greater emphasis and resources to expand the go-to-market approach.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Expected synergies from LCD across PitchBook, Indexes, and DBRS Morningstar",
+        "stated_position": "Management declines to quantify but says there are \"significant opportunities\" particularly within PitchBook and Indexes that were factored into expected returns, including better penetration of the addressable market, new investable products based on LCD data, cross-selling, and support for DBRS Morningstar credit analysts.",
+        "kind": "acquisition_or_divestiture"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We believe there are significant opportunities across our business, particularly within PitchBook and Indexes, that were factored into our analysis and expected returns from the transaction.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Margin pressure and willingness to invest ahead of growth; strategic priorities",
+        "stated_position": "Management said it is \"intent on balancing short- and long-term tradeoffs which can impact margins in periods of heavier investment,\" that this is the case today, and identified key strategic priorities as \"delivering insights to public and private market investors, growing our ESG leadership position, capitalizing on wealth segment opportunities and scaling to support growth.\"",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-065899",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "As we often say, we are intent on balancing short- and long-term tradeoffs which can impact margins in periods of heavier investment. That is the case today, as we continue to have opportunities to deliver outsized revenue growth in the large and expanding addressable markets in which we serve investors. Our key strategic priorities include delivering insights to public and private market investors, growing our ESG leadership position, capitalizing on wealth segment opportunities and scaling to support growth.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Stock-based compensation philosophy versus peers and whether it will converge",
+        "stated_position": "Management defended stock awards as \"an important part of our compensation philosophy to reward and incentivize our team members and align with our value creation objectives over time\" and an important tool for attracting talent against fintech competitors; it declined to forecast convergence with peer metrics, saying it would not speculate on others' practices, and said awards will continue to be used \"prudently.\"",
+        "kind": "capital_allocation"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-065899",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We cannot forecast convergence of metrics as we would not want to speculate on the objectives and compensation practices of others. Stock awards will continue to be an important part of our compensation structure and we will utilize them prudently to ensure they continue to achieve their intended purpose in incentivizing our team members.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Employee attrition and retention initiatives",
+        "stated_position": "Management disclosed attrition rose from 12.0% in 2020 to 18.5% in 2021 (vs a 2017-2019 average of 16.6% considered \"more normalized\") and described three initiatives: re-engineering the exit interview process, more investment in base compensation increases, and \"investing in improving internal career mobility opportunities for our people\" via a \"more robust internal career marketplace.\"",
+        "kind": "governance_or_management"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-065899",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We have three initiatives underway focused on bringing attrition back to a more normalized number. First, we re-engineered our exit interview process to gain better insights into why people are leaving. We are using that information to inform our countermeasures. Second, we invested more in base compensation increases in 2021 and 2022 compared with 2020. Third, we are investing in improving internal career mobility opportunities for our people.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Where headcount is concentrated across product areas",
+        "stated_position": "Management declined to give workforce levels by product but stated: \"Across our product areas and functions, the largest concentrations of headcount are currently in PitchBook, Morningstar Sustainalytics, our Wealth product areas, Data and Direct, and DBRS Morningstar,\" supported by large research and data collection teams, and acknowledged \"we are investing more heavily in recent periods, given our higher rates of headcount growth relative to our peers.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-065899",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Across our product areas and functions, the largest concentrations of headcount are currently in PitchBook, Morningstar Sustainalytics, our Wealth product areas, Data and Direct, and DBRS Morningstar. Additionally, supporting these products and other areas are large teams within our research and data collection functions.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Industry consolidation and whether Morningstar has the scale to compete",
+        "stated_position": "Management said consolidation \"creates both challenges and opportunities,\" that it is \"often excited when larger competitors are distracted by large integrations,\" that \"insights are not fungible\" and investors value Morningstar's unique perspective, and that it will continue to invest in differentiated data sets; it expects added scale in credit ratings and wealth management \"should be a positive for margins.\"",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-065899",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In terms of scale, our growth suggests we are having success competing with larger firms. We believe insights are not fungible and investors value Morningstar\u2019s unique perspective and the tools we provide to enable their workflows. As we have since the company was founded, we will continue to invest in and expand our differentiated data sets and analytics to meet evolving investor needs.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "DBRS Morningstar competitive position and investment in corporate ratings",
+        "stated_position": "Management said DBRS Morningstar \"currently has limited presence in the leveraged finance sector (bank loans and CLOs) and the U.S. investment grade corporate market,\" that \"We are investing to grow our corporate presence in both the U.S. and Europe,\" and attributed share gains to \"quality of our ratings and our quick and efficient responsiveness to market participants that surpasses some of our competitors.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-065899",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "DBRS Morningstar currently has limited presence in the leveraged finance sector (bank loans and CLOs) and the U.S. investment grade corporate market. That can help our relative growth rate in periods of market volatility and negatively impact the comparisons in periods of significant corporate issuance. We are investing to grow our corporate presence in both the U.S. and Europe.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Disclosure practices \u2014 profitability by line of business",
+        "stated_position": "Management said it continually evaluates disclosures and appreciates suggestions but \"we do not anticipate disclosing our profitability by line of business,\" while noting it may consider replicating the directional margin analysis given at the 2020 Annual Meeting.",
+        "kind": "governance_or_management"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-065899",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We continually evaluate our disclosures and what information could be useful to our shareholders and appreciate the suggestions you are making although we do not anticipate disclosing our profitability by line of business.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Adjusted EBITDA as used for executive bonus purposes",
+        "stated_position": "Management explained that its Adjusted EBITDA measures the business on a \"pre-bonus\" basis, excluding the large variable incentive compensation component, and that it is \"an annual measurement used solely for bonus purposes and is reviewed and approved annually by the Compensation Committee of the Board of Directors.\"",
+        "kind": "governance_or_management"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-065899",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We do not calculate Adjusted EBITDA quarterly as it is an annual measurement used solely for bonus purposes and is reviewed and approved annually by the Compensation Committee of the Board of Directors.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Long-term profitability targets and investment priorities",
+        "stated_position": "Management confirmed it is \"investing heavily in the business, reflecting the opportunities we see to deliver outsized revenue growth in the large and expanding addressable markets in which we serve investors,\" naming Pitchbook, DBRS Morningstar, Morningstar Sustainalytics, Indexes, and Wealth Management as the largest investment areas, and said that while it does not disclose long-term margin targets, \"our goal is to improve margins over time as we scale and benefit from operating leverage.\"",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-072402",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-06-17"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "While we do not disclose our long-term margin targets, our goal is to improve margins over time as we scale and benefit from operating leverage and the investments we are making in the business.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Sustainalytics differentiation and value proposition",
+        "stated_position": "Management said its key differentiator is the ability \"to inform investors throughout the investment lifecycle from pre-investment analysis and screens, through the investment decision itself, to the post-investment stage,\" and pointed to the ESG Risk Rating's \"focus on absolute rather than relative risk,\" the EU Action Plan solution set, and \"our large and responsive customer service organization.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-072402",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-06-17"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We believe that one of our key differentiators and an important part of our value proposition is our ability to inform investors throughout the investment lifecycle from pre-investment analysis and screens, through the investment decision itself, to the post-investment stage, when our data helps clients vote on shareholder resolutions and engage with companies in their portfolios.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "New climate ratings planned for late 2022",
+        "stated_position": "Management stated it continues to invest in new data and analytics \"with a recent focus on climate and impact data\" and will debut new physical risk and transition risk ratings in late 2022.",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-072402",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-06-17"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In late 2022, we will debut new ratings that help investors more directly understand how the changing climate could affect a company (physical risk) and how a company is adapting to the shift toward a low-carbon economy (transition risk).",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Growth drivers and target customers for Sustainalytics",
+        "stated_position": "Asset managers and asset owners account for the largest share of Sustainalytics revenue; growth drivers cited are \"the evolving global regulatory environment as well as the opportunity to expand our penetration within large asset managers and to reach more middle market clients, especially in the United States,\" plus corporate licensed ratings and second-party opinions for green and sustainability bonds.",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-072402",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-06-17"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Growth drivers include the evolving global regulatory environment as well as the opportunity to expand our penetration within large asset managers and to reach more middle market clients, especially in the United States.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Competitive position in green bond verification",
+        "stated_position": "Management cited being named by the Climate Bonds Initiative as \"the Largest Verifier for Certified Climate Bonds for a fifth consecutive year\" and described a \"strong competitive position\" in second-party opinions for green and sustainability bonds.",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-072402",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-06-17"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In June 2022, the Climate Bonds Initiative (CBI) named Morningstar Sustainalytics the Largest Verifier for Certified Climate Bonds for a fifth consecutive year, while noting that in 2021 the market for green bonds nearly doubled in volume to more than USD 1.1 trillion compared to 2020.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Firm-wide ESG objective",
+        "stated_position": "Management stated the \"overall objective is to establish leading ESG positions across Morningstar,\" leveraging Sustainalytics data, research, and ratings across products including direct indexing for advisors and a new Sustainability hub in Direct.",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-072402",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-06-17"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "More broadly, our overall objective is to establish leading ESG positions across Morningstar. We are leveraging Sustainalytics data, research, and ratings to meet that goal.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "PitchBook addressable market and penetration",
+        "stated_position": "Management stated the total addressable market for PitchBook is 114,000 firms against 8,000 firms served today, leaving \"considerable room for growth, especially as we integrate the capabilities of our recently acquired Leveraged Commentary & Data product area.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-072402",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-06-17"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "As we discussed at our Annual Shareholder Meeting, we view the total addressable market for PitchBook to be 114,000 firms. We serve 8,000 firms today.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "ESG assessment of private companies",
+        "stated_position": "Management said Sustainalytics offers a pre-IPO ESG assessment service but \"does not otherwise proactively rate private companies at this time,\" and is evaluating opportunities to expand ESG assessments to private companies.",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-072402",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-06-17"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Morningstar Sustainalytics does offer a pre-IPO ESG assessment service for private companies but does not otherwise proactively rate private companies at this time. We are evaluating opportunities to expand our ESG assessments to private companies.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Prioritizing topline growth versus margin expansion",
+        "stated_position": "\"We are prioritizing our investments in areas of the business where we see the opportunity to grow, build scale, and generate attractive long-term returns\" and while these investments \"can put pressure on margins in the short-term,\" management does \"not anticipate that they will come at the expense of long-term returns or future margin expansion.\" No guidance on specific revenue or margin targets.",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We are prioritizing our investments in areas of the business where we see the opportunity to grow, build scale, and generate attractive long-term returns. We know that these investments can put pressure on margins in the short-term, but we do not anticipate that they will come at the expense of long-term returns or future margin expansion.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Areas of heaviest investment within license-based products",
+        "stated_position": "Within license-based products, \"we are investing particularly heavily in PitchBook and Sustainalytics\"; DBRS Morningstar is described as \"an area of significant investment\"; Investment Management and Index areas have lower margins \"reflecting the significant investment we are making to drive growth and scale,\" with a goal to \"grow AUM and our revenue per advisor over time.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Notably, as we build important capabilities in Wealth (including in direct indexing and our TAMP), our goal is to grow AUM and our revenue per advisor over time.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Pace of hiring given inflation and peers slowing investment",
+        "stated_position": "\"We take a long-term view of our investment priorities, including spending on increased headcount,\" but management \"acknowledge certain challenges in the current economic environment\" and is taking them into consideration \"including around the pace of hiring,\" promising to \"be prudent and will adjust as necessary.\"",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "That said, we acknowledge certain challenges in the current economic environment and are taking these into consideration as we make spending decisions, including around the pace of hiring. We will continue to be prudent and will adjust as necessary to balance our long-term priorities against changes in market conditions.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Whether there is a structural limit to growth versus data/analytics peers",
+        "stated_position": "\"We don't see any structural limits to growth.\" Many products, including in Wealth, Indexes and DBRS Morningstar, \"do not yet have the scale that our competitors enjoy.\" DBRS's $271 million of 2021 revenue is contrasted with $3.8 billion for Moody's Investor Services and $4.1 billion for S&P's Ratings segment, whose \"size and market share in the US investment-grade corporate market create significant operating leverage.\"",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We don\u2019t see any structural limits to growth. The headcount increases you reference and the impact on revenue per employee reflect the significant investments we are making in parts of the business where we see attractive opportunities to grow, achieve scale, and generate attractive long-term returns. These areas are growing rapidly and many products, including in Wealth, Indexes and DBRS Morningstar, do not yet have the scale that our competitors enjoy.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Near-term capital allocation priorities and willingness to use debt",
+        "stated_position": "\"We continue to take a balanced approach to capital allocation with a primary emphasis on organic opportunities to drive growth,\" retaining flexibility to be opportunistic on M&A; returning cash to shareholders is \"a key component of our capital deployment,\" with $111 million repurchased in Q1 2022. Management remains \"open using the private placement market in the future.\"",
+        "kind": "capital_allocation"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We continue to take a balanced approach to capital allocation with a primary emphasis on organic opportunities to drive growth. That said, we\u2019ve retained flexibility over the years to be opportunistic and pursue M&A opportunities that support our growth strategies.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Leverage tolerance following the LCD acquisition",
+        "stated_position": "Leverage increased to 2.3x Debt/EBITDA on a proforma basis, a level management believes \"is manageable to operate the business and continue to pursue our capital allocation priorities\"; the credit agreement caps leverage at 3.75x in the event of an acquisition, and management will \"continue to make sure we are prudent with a focus on maintaining a strong balance sheet.\"",
+        "kind": "capital_allocation"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We believe that level is manageable to operate the business and continue to pursue our capital allocation priorities. In the past we have increased our debt position and taken leverage levels up to pursue acquisitions (notably with PitchBook and DBRS). It's worth noting that our current credit agreement caps our leverage at 3.75x Debt/EBITDA in the event of an acquisition.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Use of international cash",
+        "stated_position": "\"Bringing cash to the U.S. often triggers adverse tax consequences,\" but the company has worked to minimize the offshore balance \"through efficient repatriation activities and strategic opportunities,\" citing the final Sustainalytics purchase consideration payment funded fully with overseas cash.",
+        "kind": "capital_allocation"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Bringing cash to the U.S. often triggers adverse tax consequences, but we have worked to minimize that balance over time through efficient repatriation activities and strategic opportunities. As an example, we recently completed the final cash payment of the purchase consideration for Sustainalytics by fully funding that commitment with overseas cash.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Integration approach for Sustainalytics, PitchBook/LCD and DBRS",
+        "stated_position": "\"Every transaction we do has a unique integration plan which is tailored to the capabilities we are acquiring and the strategy we are pursuing.\" DBRS focus was \"combining our U.S. methodologies and operations\"; Sustainalytics ESG research is being leveraged across products; \"our plan is to integrate LCD into the PitchBook platform to complement the private market data that exists within it today.\"",
+        "kind": "acquisition_or_divestiture"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Every transaction we do has a unique integration plan which is tailored to the capabilities we are acquiring and the strategy we are pursuing. The degree of integration differs depending on the capability.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Cloud transition",
+        "stated_position": "\"Morningstar, like many companies, is in the midst of its cloud transition,\" migrating on-premise data centers to the cloud; over time management expects \"lower capital expenditures for physical hardware and higher operating expenses in certain areas for cloud computing capacity.\" New product development is \"focused on leveraging cloud native services.\"",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Morningstar, like many companies, is in the midst of its cloud transition. That includes migrating our on-premise data centers to the cloud and building new products and capabilities in that environment. Over time, we expect that migration to translate to lower capital expenditures for physical hardware and higher operating expenses in certain areas for cloud computing capacity.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Client mix strategy \u2014 institutional asset managers and corporates",
+        "stated_position": "Management sees \"good growth prospects for Sustainalytics and Indexes\" within institutional asset managers; in the corporate market it enjoys \"a leading position in the second opinion provider business\"; DBRS Morningstar is leveraging global investor relationships and central bank acceptance of its ratings to grow corporate ratings in Europe and \"in the US it is making an entry in the middle market private corporate market.\"",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Meanwhile, DBRS Morningstar is leveraging our relationships with global investors and the accepted use of its credit ratings by central banks to drive growth in corporate ratings in Europe; in the US it is making an entry in the middle market private corporate market.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Cyclicality of DBRS Morningstar",
+        "stated_position": "Roughly two-thirds of 2021 DBRS revenue came from structured finance; in the US and Europe \"we are more susceptible to interest-rate volatility and issuance volumes in that segment.\" Management states \"our profile is very different today than it was back in 2008,\" with a business \"approaching $300 million in revenue\" that is \"more diverse across asset classes and geography, with a larger recurring-revenue base.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "While we are not immune to cyclicality and the impacts of market volatility in credit ratings, our profile is very different today than it was back in 2008. Today, DBRS Morningstar operates a business approaching $300 million in revenue and is more diverse across asset classes and geography, with a larger recurring-revenue base.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "PitchBook's competitive position in a recessionary environment",
+        "stated_position": "\"we are confident in our ability to provide value to clients regardless of market environment\"; if clients consolidate research solutions, \"we are confident that our data, product, and service will stack up well against any other provider, regardless of relative cost.\"",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In the event that clients want to consolidate their research solutions, we are confident that our data, product, and service will stack up well against any other provider, regardless of relative cost.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "PitchBook TAM increase to $4.9bn",
+        "stated_position": "Methodology \"has remained consistent with the methodology we disclosed in 2021\"; as PitchBook added data and capabilities it met more client use cases, and \"the count of firms in PitchBook's TAM grew by 26% as of our 2022 estimate, driven primarily by the companies and core client segment.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Our methodology for sizing PitchBook\u2019s total addressable market (TAM) has remained consistent with the methodology we disclosed in 2021. To be included in the TAM, a firm must be active in at least one use case that PitchBook supports (three use cases for our companies client segment).",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Measuring Wealth Management and direct indexing investment",
+        "stated_position": "Investments across the US TAMP, Morningstar Wealth Platform, Morningstar Office, ByAllAccounts and Morningstar Investor \"will allow us to serve a broader base of advisors and investors, driving license- and asset-based fees\"; direct indexing is expected \"to be a key driver of AUM growth\" and the focus is \"increasing assets and our revenue per advisor over time.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We believe these investments will allow us to serve a broader base of advisors and investors, driving license- and asset-based fees from these products. This includes direct indexing, which we expect to be a key driver of AUM growth.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Rationale for investing in SMArtX",
+        "stated_position": "\"SMArtX has a track record of building products that offer flexibility, advisor choice and personalization at scale, which aligns with our mission of empowering investor success\"; its technology platform \"will be integral to delivering a larger selection of investment offerings through Morningstar's TAMP.\"",
+        "kind": "acquisition_or_divestiture"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "SMArtX has a track record of building products that offer flexibility, advisor choice and personalization at scale, which aligns with our mission of empowering investor success and the demands of advisors. SMArtX\u2019s technology platform will be integral to delivering a larger selection of investment offerings through Morningstar\u2019s TAMP and we\u2019ll be sharing more details about this in the second half of the year.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Backlash over the Morningstar Investor portfolio rewrite",
+        "stated_position": "Management is \"excited about the June launch of Morningstar Investor,\" acknowledges feedback \"largely been focused on gaps in features, which the team is actively working to close,\" says legacy portfolio tools \"continue to be accessible and will remain so for several months,\" and reports \"a brief spike in cancellations in our weekly metrics which has since reverted to normal levels\" with \"minimal impact to net subscription numbers and revenue for this product.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We saw a brief spike in cancellations in our weekly metrics which has since reverted to normal levels. Subscriptions to Investor have run at a slightly higher rate relative to the pre-launch period. Taken together, we have seen minimal impact to net subscription numbers and revenue for this product.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Investment priorities and timing of returns on investment spending",
+        "stated_position": "\"This year, our investment priorities include Wealth, ESG / Morningstar Sustainalytics, and PitchBook in addition to addressing key infrastructure needs to help us scale.\" Management said it cannot guide to a specific inflection point in profitability, expects adjusted operating margins this year to be lower than a typical year, and is \"focused on getting back on a path toward levels seen in recent historical peaks,\" noting different time horizons for returns \\u2014 shorter-term for Morningstar Sustainalytics and PitchBook, longer for Wealth (direct indexing and open architecture TAMP expansion).",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-095136",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-08-26"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "As we noted in our annual meeting earlier this year, we are investing in key areas of the business to address market opportunities. This year, our investment priorities include Wealth, ESG / Morningstar Sustainalytics, and PitchBook in addition to addressing key infrastructure needs to help us scale.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Sales and marketing spending discipline and operating leverage",
+        "stated_position": "\"We believe that as we grow, we will have the opportunity to generate operating leverage in our sales and marketing activities. That said, we will continue to spend prudently in sales and marketing activities where we see the potential to generate attractive returns, which could result in higher levels of spend in certain periods.\"",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-095136",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-08-26"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We believe that as we grow, we will have the opportunity to generate operating leverage in our sales and marketing activities. That said, we will continue to spend prudently in sales and marketing activities where we see the potential to generate attractive returns, which could result in higher levels of spend in certain periods.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Restructuring of China operations",
+        "stated_position": "Morningstar \"made the decision to strategically shift our China operations to focus entirely on the China domestic market,\" requiring it to \"streamline the team in Shenzhen accordingly over the next 12 months.\" Non-China-market-focused work is being shifted to alternate locations, \"so this decision is not a cost-savings measure,\" and Morningstar \"remains committed to its long-term presence and is in the process of redefining its strategy to capitalize on the growing potential within the domestic market.\"",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-095136",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-08-26"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "After careful consideration, we have made the decision to strategically shift our China operations to focus entirely on the China domestic market. This requires us to streamline the team in Shenzhen accordingly over the next 12 months.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Increased appetite for large M&A and how acquisitions fit the existing business",
+        "stated_position": "\"When it comes to capital allocation, our primary emphasis is supporting organic growth; however, we will continue to pursue acquisitions opportunistically.\" Over the past 10 years it completed 39 transactions; growing scale, profitability and cash flow \"expanded our capacity to do larger cash and debt-financed transactions,\" and it has \"tended to focus on larger acquisitions, which have a more substantial impact.\" But \"we do not pursue M&A simply because we have the capacity to do so; all transactions need to have strategic merit, offer compelling long-term returns, and create value.\" Each of the four largest deals since end-2016 (PitchBook, DBRS, Sustainalytics, LCD) strengthened the existing business.",
+        "kind": "capital_allocation"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-095136",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-08-26"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "When it comes to capital allocation, our primary emphasis is supporting organic growth; however, we will continue to pursue acquisitions opportunistically where we identify opportunities that enhance our ability to empower investor success and create value for shareholders.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Independent investigation into Morningstar Sustainalytics' research practices and alleged anti-Israel bias",
+        "stated_position": "\"neither Morningstar nor Morningstar Sustainalytics supports the anti-Israel BDS campaign. However, in retrospect, our initial review was overly dismissive of the serious bias concerns raised by the organization JLens, the Illinois Investment Policy Board (IIPB), and other entities.\" A working group led by independent directors Steve Kaplan and Gail Landis engaged White & Case in October 2021; the 117-page report found no evidence of pervasive or systemic bias but identified one product that exhibited bias in its outcomes; Morningstar \"committed to adopt in full\" the recommendations and plans to complete implementation by June 2023.",
+        "kind": "governance_or_management"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-095136",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-08-26"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "However, in retrospect, our initial review was overly dismissive of the serious bias concerns raised by the organization JLens, the Illinois Investment Policy Board (IIPB), and other entities. We consider bias unacceptable in any form and concluded that the concerns warranted a thorough, independent review.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Joe Mansueto's pledged shares and new pledging policy",
+        "stated_position": "As of December 31, 2021 Joe Mansueto had pledged 1,800,000 shares as security under a bank credit agreement, down from 3,000,000 a year earlier, representing about 10% of his beneficially owned shares and 4% of total shares outstanding; the pledge \"was arranged to provide Joe some opportunity to diversify his assets, consistent with the advice Morningstar often gives investors.\" Effective July 2022 the Code of Ethics was amended to prohibit pledging more than 15% of beneficially owned Morningstar securities, with Audit Committee review; the Audit Committee determined Joe's arrangements \"do not present a significant risk of a margin call or subsequent foreclosure sale.\"",
+        "kind": "governance_or_management"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-095136",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-08-26"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Effective July 2022, Morningstar has amended its Code of Ethics to prohibit employees and board members from pledging more than 15% of the total number of Morningstar securities (such as shares of Morningstar stock) which they beneficially own as collateral for a loan or holding more than that number of Morningstar securities in a margin account.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Return on capital in M&A and the price paid for the LCD acquisition",
+        "stated_position": "\"We evaluate the returns of any potential M&A transaction relative to expected returns for other uses of capital. In determining the price we pay for acquisitions, we focus on cash-on-cash returns and internal rates of return.\" For LCD, management said low historical investment was insufficient to realize its \"significant growth potential, especially given secular tailwinds for private credit,\" and that it is \"confident in our ability to realize value and excess returns as we invest in the integration.\"",
+        "kind": "capital_allocation"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We evaluate the returns of any potential M&A transaction relative to expected returns for other uses of capital. In determining the price we pay for acquisitions, we focus on cash-on-cash returns and internal rates of return. Our acquisition planning is informed by comprehensive diligence and the value we expect to deliver through integrating acquisitions into our business.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Confidence that profitability will recover and improve after margin erosion",
+        "stated_position": "Management restated its position that \"there is inherent leverage in the business\" and that current investments will drive long-term returns and margin improvement, naming \"Morningstar Sustainalytics, Wealth, and PitchBook\" as the key opportunity areas; returns in Sustainalytics climate/impact metrics and PitchBook equity data are expected to materialize more quickly, while Wealth (direct indexing, open architecture TAMP) \"will take more time to materialize.\"",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "As we\u2019ve stated previously, we believe that there is inherent leverage in the business and that the investments that we\u2019re making will help drive attractive long-term returns and margin improvements. We are focused on growth and scale and shared some of those comparisons at our 2022 annual meeting. We believe significant opportunity exists in key areas including Morningstar Sustainalytics, Wealth, and PitchBook.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Changes to incentive compensation structure and merit increases",
+        "stated_position": "The \"most notable change in the 2022 compensation structure was the increase in our merit pool,\" roughly double the prior year's rate and \"almost double the weighted average market rate across our global footprint as we were focused on retaining talent in a highly competitive environment.\" Additional compensation was invested in salaries and bonuses \"to close the adjusted gender pay gap identified in a 2021 review,\" and in geographies/product areas with higher turnover (India, Morningstar Sustainalytics, DBRS Morningstar, PitchBook). Management is \"keeping a careful eye on inflation globally in our approach to 2023.\"",
+        "kind": "governance_or_management"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The most notable change in the 2022 compensation structure was the increase in our merit pool with a budgeted global weighted average percentage increase adjusted for headcount that was roughly double the rate in the prior year; we believe that the budgeted increase was also almost double the weighted average market rate across our global footprint as we were focused on retaining talent in a highly competitive environment.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Decision to stop reporting certain KPIs (Direct/PitchBook licenses, Morningstar.com premium subscribers, Advisor Workstation clients)",
+        "stated_position": "KPIs were moved to the Supplemental Deck; premium website subscriptions will be published annually rather than quarterly \"as it does not rank among our top products\"; and the company \"made the recent decision to stop disclosing the number of Advisor Workstation clients,\" concluding \"it was not as relevant a metric and not highly correlated to revenue given the heterogeneity of our client contracts.\"",
+        "kind": "governance_or_management"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We also made the recent decision to stop disclosing the number of Advisor Workstation clients. We came to the conclusion that it was not as relevant a metric and not highly correlated to revenue given the heterogeneity of our client contracts, and specifically, the wide variation in advisor user counts and size from client to client.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Why the company does not disclose more detail on investment spending at DBRS and PitchBook",
+        "stated_position": "Management said it has \"given directional guidelines on comparative margins within our portfolio\" in the past and \"will consider how we can better characterize and explain incremental investments going forward.\"",
+        "kind": "governance_or_management"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In the past, we have given directional guidelines on comparative margins within our portfolio. In response to a related question published this month, we have provided more detail on investments we\u2019re making in headcount in product areas targeted for growth. We will consider how we can better characterize and explain incremental investments going forward.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Currency in which PitchBook and other license-based products are priced",
+        "stated_position": "PitchBook contracts are priced in USD while other licensed-based products are \"generally priced in the local market currency\"; the company is \"in the process of transitioning the pricing of PitchBook products to local currencies and expect to complete this project by the end of 2023.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "You are correct that PitchBook contracts are priced in USD. Our other licensed-based products are generally priced in the local market currency, with a few exceptions to accommodate client preferences. We are in the process of transitioning the pricing of PitchBook products to local currencies and expect to complete this project by the end of 2023.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "How hiring priorities have changed over time",
+        "stated_position": "\"At any given time, our hiring priorities reflect our strategic priorities.\" In 2022 there was greater focus on \"Wealth, PitchBook, ESG/Morningstar Sustainalytics and DBRS Morningstar as well as on the infrastructure to help us scale,\" largely similar to 2021; the company hires \"more heavily in years after acquisitions to drive our investment thesis and returns.\"",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "At any given time, our hiring priorities reflect our strategic priorities. In 2022, there has been a greater focus on Wealth, PitchBook, ESG/Morningstar Sustainalytics and DBRS Morningstar as well as on the infrastructure to help us scale. Those priorities are largely similar to 2021. In many cases, we hire more heavily in years after acquisitions to drive our investment thesis and returns.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Scale of investment in Morningstar Sustainalytics and expected pace ahead",
+        "stated_position": "Management is \"investing heavily in Morningstar Sustainalytics,\" hiring to expand research IP \"particularly in the new areas of impact and climate,\" with new products to come to market in 2023; \"The pace of Sustainalytics hiring is expected to slow in 2023.\" It states dollar costs are growing faster than organic revenues and that Sustainalytics' margins \"are a drag on our overall margins,\" but are expected over time to reach levels in line with the licensed-based product group average.",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The pace of hiring to support these two new research capabilities was intensive in 2021 and 2022 as the business built up the expertise required to bring new impact and climate products to market in 2023. We also meaningfully invested to support the research needed to address clients\u2019 compliance requirements related to the EU Action Plan regulation. The pace of Sustainalytics hiring is expected to slow in 2023.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Implications of ESG regulation and political backlash, including state Attorneys General inquiries",
+        "stated_position": "\"We do not anticipate a material impact to Morningstar Sustainalytics or its clients from the recent inquiries initiated by the Attorney Generals of several U.S. states or more broadly from heightened scrutiny of ESG in the United States. If that were to change, we would disclose accordingly.\" Management frames Morningstar's role as providing \"the independent data and insights that make those conversations more informed.\"",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We do not anticipate a material impact to Morningstar Sustainalytics or its clients from the recent inquiries initiated by the Attorney Generals of several U.S. states or more broadly from heightened scrutiny of ESG in the United States. If that were to change, we would disclose accordingly. There are differing views on the merits of sustainable investing, but global investor interest in it has become mainstream",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Comparison of Sustainalytics margins with MSCI's ESG & Climate segment",
+        "stated_position": "Management declined the comparison \u2014 \"We\u2019re not familiar with the particulars of how MSCI handles its segment-level reporting\" \u2014 while acknowledging Sustainalytics \"currently has the lowest margins of our licensed-based products\" and is expected over time to approach the others.",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We\u2019re not familiar with the particulars of how MSCI handles its segment-level reporting, so it\u2019s difficult for us to directly compare the profitability of MSCI\u2019s ESG and Climate segment to Morningstar Sustainalytics\u2019 margins. That said, given our substantial investments in Sustainalytics, that product group currently has the lowest margins of our licensed-based products.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Plan for integrating LCD into PitchBook and Morningstar Indexes",
+        "stated_position": "The plan is to \"integrate Leveraged Commentary & Data ( LCD) data, analytics, and research with PitchBook\u2019s to offer a consolidated workflow for public and private capital and debt market research,\" with LCD staff moved onto PitchBook teams; on the Indexes side, operations are transitioning from S&P to Morningstar, the LCD indexes have been renamed under the Morningstar brand, and the Indexes sales team has been trained on the suite.",
+        "kind": "acquisition_or_divestiture"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We plan to integrate Leveraged Commentary & Data ( LCD) data, analytics, and research with PitchBook\u2019s to offer a consolidated workflow for public and private capital and debt market research. LCD datasets will enrich the overall PitchBook platform adding comprehensive coverage of leveraged loans, high-yield bonds, and more.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Motivation for the LCD acquisition and target customer types",
+        "stated_position": "The acquisition \"was motivated by the value that we see in Leveraged Commentary & Data\u2019s ( LCD) capabilities in private credit and leveraged loan data, research, and indexes against the backdrop of attractive secular tailwinds for private credit,\" and management has \"confirmed the private credit use cases in our total addressable market (TAM)\" after a full review of LCD's clients.",
+        "kind": "acquisition_or_divestiture"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The acquisition was motivated by the value that we see in Leveraged Commentary & Data\u2019s ( LCD) capabilities in private credit and leveraged loan data, research, and indexes against the backdrop of attractive secular tailwinds for private credit. Adding LCD\u2019s coverage to PitchBook\u2019s institutional-grade coverage of the public and private equity markets creates a comprehensive data and research tool.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Investment in the LCD product versus letting margin fall to the bottom line",
+        "stated_position": "\"As we manage through that process, we will invest to maximize long-term returns.\" PitchBook \"plans to make important investments to improve the LCD product, the LCD data set within the PitchBook platform, and our support of LCD customers, which we believe will help to accelerate growth and enhance margins.\"",
+        "kind": "acquisition_or_divestiture"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "As we integrate LCD into the business, PitchBook plans to make important investments to improve the LCD product, the LCD data set within the PitchBook platform, and our support of LCD customers, which we believe will help to accelerate growth and enhance margins.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "DBRS Morningstar headcount strategy and strategic initiatives through the credit cycle",
+        "stated_position": "The company continues \"to invest in analytical and operations staff globally to maintain/defend the existing business, but more importantly to continue to grow the business globally,\" with initiatives in US middle market and European corporates, growing the data business, and technology investments for operational scalability. Given issuance volatility, \"we manage our headcount by slowing hiring in times of lower issuance\" but \"don\u2019t downsize or stop hiring completely.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Given the volatility of credit issuance levels, we manage our headcount by slowing hiring in times of lower issuance and managing attrition accordingly. We don\u2019t downsize or stop hiring completely since we need to be adequately staffed for when issuance volumes normalize/pick-up and we continue to invest in the business, consistent with our long-term growth plans.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Approach to the public cloud migration and its cost profile",
+        "stated_position": "Management said it does not have an R&D expense line and capitalizes software development costs, follows either a \"lift and shift model\" or an \"optimize first\" model, and does \"not anticipate increased expenses to support two code bases\" because cost duplication is short. Over time it expects \"a decline in capex and related depreciation associated with the purchase and maintenance of on-premise servers and an increase in operating expenses related to our use of cloud services.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Over time, as we continue our transition from on-premise servers to the cloud, we expect to see a decline in capex and related depreciation associated with the purchase and maintenance of on-premise servers and an increase in operating expenses related to our use of cloud services.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Retention of LCD talent and onboarding",
+        "stated_position": "\"The onboarding process has been very successful, and we have seen minimal attrition.\" The company spent the first several months understanding roles and has begun transitioning the LCD reporting structure to the relevant PitchBook or Morningstar teams, adding resources in research, support, and account management.",
+        "kind": "acquisition_or_divestiture"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The onboarding process has been very successful, and we have seen minimal attrition. We took the first several months following the acquisition to fully understand the roles and responsibilities of the Leveraged Commentary & Data (LCD) team.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Investment spending and operating margin trajectory",
+        "stated_position": "Management said a significant portion of recent operating expense growth is driven by investments to build capabilities to support growth in prioritized products \u2014 PitchBook, Morningstar Sustainalytics, and Wealth Management \u2014 and that it takes a long-term view while being \"prudent with spending decisions given challenges in the economic environment,\" expecting margins this year to be lower than a typical year but focused on getting back toward recent historical peaks.",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-110627",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "As to the timing of investments, we take a long-term view and invest where we see attractive opportunities to grow, achieve scale, and generate strong long-term returns. We are also being prudent with spending decisions given challenges in the economic environment.  As we noted in our investor question responses published in August, while we expect that operating margins this year will be lower than in a typical year, we are focused on getting back on a path toward levels seen in recent historical peaks.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "LCD integration and which PitchBook client segments it will expand",
+        "stated_position": "Management said the biggest opportunities from LCD's capabilities are with lenders, investors, banks and service providers and, to a lesser extent, limited partners, and that integrating LCD data into the PitchBook platform will expand reach with those segments.",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-110627",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "As we look at LCD\u2019s capabilities, we see the biggest opportunities with lenders, investors, banks and service providers and, to a lesser extent, limited partners. We expect that the integration of LCD data and analysis into the PitchBook platform will expand our reach with those client segments.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Conditions for the $50 million contingent LCD payment",
+        "stated_position": "Management explained the $50 million contingent consideration, payable six months after the June 1, 2022 close, is contingent on transitioning LCD customer relationships \u2014 specifically unbundling LCD contracts from other S&P services into standalone Morningstar agreements \u2014 paid based on percentage of customer ACV successfully unbundled as of December 1, 2022.",
+        "kind": "acquisition_or_divestiture"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-110627",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "To encourage focus on this transition, the contingent consideration of up to $50 million will be paid based on the percentage of customer ACV that has been successfully unbundled as of December 1, 2022.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "DBRS Morningstar's competitive position versus Moody's and S&P",
+        "stated_position": "Management said growth was driven by U.S. CMBS ratings activity \"where we enjoy a leading position,\" and that unlike Moody's and S&P, DBRS Morningstar currently has a smaller share of the U.S. corporate and CLO markets.",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-110627",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Unlike Moody\u2019s and S&P, DBRS Morningstar currently has a smaller share of the U.S. corporate and collateralized loan obligation (CLOs) markets, which saw steep declines in issuance.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "TAMP moving to open architecture with third-party models",
+        "stated_position": "Management said demand is for flexibility and choice, with unified and separately managed accounts growing ahead of ETF and mutual fund models, and that \"we plan to open our TAMP to third-party models in the coming months, migrating to an open architecture model.\"",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-110627",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "To meet the demand for flexibility, we plan to open our TAMP to third-party models in the coming months, migrating to an open architecture model.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Direct indexing growth opportunity and competitive advantage",
+        "stated_position": "Management called direct indexing \"an attractive growth opportunity for Morningstar,\" said it believes Cerulli's projected 12.4% annual growth through 2026 is conservative, and located its competitive advantage in the breadth of capabilities and proprietary IP across Morningstar Indexes, Sustainalytics and Equity Research, brand strength with advisors, and the ability to bring all direct indexing components together in-house, with pricing generally in line with or lower than competitors.",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-110627",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We stand out for our ability to bring all the direct indexing components together using in-house capabilities. Our pricing is generally in line with or lower than our competitors in this market.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Purpose of share repurchases",
+        "stated_position": "Management said it makes significant share repurchases when it believes the return potential is attractive compared to other uses of capital, and expressly not for the purpose of share-based compensation.",
+        "kind": "capital_allocation"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-110627",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We make significant share repurchases when we believe that the return potential is attractive compared to other uses of capital. We do not do so for the purpose of share-based compensation.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Total price paid for Sustainalytics",
+        "stated_position": "Management disclosed the acquisition of the remaining stake closed July 2, 2020, with three cash payments \u2014 an initial payment at closing plus earn-outs on June 30, 2021 and June 30, 2022 based on a multiple of Morningstar Sustainalytics' revenues \u2014 totalling EUR 147.1 million.",
+        "kind": "acquisition_or_divestiture"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-110627",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The total consideration across the three payments was EUR 147.1 million.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Gross margin versus peers and reliance on third-party data",
+        "stated_position": "Management said it is \"difficult to make direct comparisons with our peers' gross margins given differences in our business mix,\" that it does not believe its gross margin is capped, and that it does not believe it is more reliant on third-party datasets than peers or faces a higher cost of sourcing data.",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-120313",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-11-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "It is difficult to make direct comparisons with our peers\u2019 gross margins given differences in our business mix. Importantly, we do not believe that our gross margin is capped, and we have invested to fund growth.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Debt structure and funding of the LCD acquisition",
+        "stated_position": "Management said the credit facility structure, particularly the term loan used for the LCD acquisition, \"is a good fit for our needs,\" that its prepayable nature will allow excess cash to pay it down over time, that a similar funding strategy was used for DBRS, and that it does not currently swap out any of its debt.",
+        "kind": "capital_allocation"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-120313",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-11-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The structure of our credit facility, particularly the term loan component used for the LCD acquisition, is a good fit for our needs. The prepayable nature of the loan will allow us to use excess cash to pay it down over time. We were able to use a similar funding strategy with the acquisition of DBRS.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Target leverage ratio and prioritization of debt repayment over share repurchases",
+        "stated_position": "Management said it does not target a specific debt ratio but takes \"a conservative approach to managing our balance sheet,\" describing a historical pattern of increasing debt for acquisitions (notably PitchBook and DBRS) then paying it down, and stated that \"debt repayment will be a near-to-intermediate-term priority for deployment of excess cash.\"",
+        "kind": "capital_allocation"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-120313",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-11-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "While we do not target a specific debt ratio, we do take a conservative approach to managing our balance sheet. Historically, we have increased our debt levels with a corresponding increase in our leverage ratio to pursue acquisitions (notably PitchBook and DBRS) and then paid down debt in subsequent periods.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Senator Pat Toomey's request for information on Morningstar Sustainalytics research practices",
+        "stated_position": "Management said it has responded and is answering follow-up questions, does not plan to make the response public at this time, continues to engage with legislators and other stakeholders, and will disclose any material outcome per legal/regulatory requirements or usual investor channels.",
+        "kind": "governance_or_management"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-120313",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-11-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We have responded to Senator Pat Toomey\u2019s request for information and are in the process of answering follow-up questions related to that response. We do not plan to make the response public at this time.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "PitchBook management incentive compensation plan",
+        "stated_position": "Management described the PitchBook incentive plan adopted with the acquisition for 2017-2019 and renewed at the end of 2019 for 2020-2022, with awards tied to revenue targets specific to PitchBook's business and higher target incentives in the third year of the plan.",
+        "kind": "governance_or_management"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-120313",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-11-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The PitchBook incentive plan, which we adopted in connection with the acquisition of PitchBook for the 2017-2019 fiscal year period, was renewed at the end of 2019 for the 2020-2022 fiscal year period. Under that plan, which applies to certain PitchBook employees, awards are tied to financial targets in each year of the plan period, with higher target incentives in the third year of the plan.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Integration of the Leveraged Commentary & Data acquisition into PitchBook",
+        "stated_position": "Management said fifty-nine employees joined with the close of the LCD acquisition on June 1, 2022, and that PitchBook has since added staff to support the LCD product across research, product, support, account management, and sales.",
+        "kind": "acquisition_or_divestiture"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-120313",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-11-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Fifty-nine employees joined Morningstar with the close of the LCD acquisition on June 1, 2022. Since then, PitchBook has added staff to support the LCD product including in research, product, support, account management, and sales.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Drivers of Morningstar Indexes growth and product partnerships",
+        "stated_position": "Management attributed growth to investable product revenue supported by net inflows to higher margin products and new launches, noting roughly 60 new passive investable products launched with partners including Morgan Stanley, Blackrock, and Citigroup, with particularly strong interest in renewable energy and enhanced ESG indexes.",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-120313",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-11-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "During the prior year, roughly 60 new passive investable products were launched with partners including Morgan Stanley, Blackrock, and Citigroup. We saw particularly strong interest in products focused on renewable energy and enhanced ESG indexes.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Headcount growth plans going into 2023",
+        "stated_position": "\"Heading into 2023, we are slowing headcount growth except in our fastest growing product areas. Additionally, we are adding headcount in Wealth Management to support direct indexing and develop our open architecture TAMP, although at a slowing rate.\" The reduction and shift of China operations is expected to be substantially complete by the end of the third quarter of 2023.",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-129521",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Heading into 2023, we are slowing headcount growth except in our fastest growing product areas. Additionally, we are adding headcount in Wealth Management to support direct indexing and develop our open architecture TAMP, although at a slowing rate.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Pricing strategy and pricing power across the portfolio",
+        "stated_position": "\"Pricing has been a priority focus for us as we enter 2023 given the inflationary environment.\" Most success achieving price increases with license-based products; maturity of product does not generally factor into assessments; increases ranging from mid-single-digits to high-single-digits/low-double-digits; harder to raise prices in asset-based areas with \"widespread fee compression in the industry.\"",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-129521",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We are generally implementing higher-than-typical annual price increases for 2023 where appropriate, reflecting the increased value we\u2019re providing as well as increased input costs. Given these factors, we\u2019re instituting price increases ranging from mid-single-digits for certain products to high-single-digits to low-double-digits for other products.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Relative importance of corporate versus institutional investor clients for Morningstar Sustainalytics",
+        "stated_position": "\"We view the institutional investor and corporate issuer client segments as equally important for the future growth and success of Sustainalytics and believe that they are interdependent.\" Success with institutional investors drives demand from corporate issuers licensing the ESG rating.",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-129521",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We view the institutional investor and corporate issuer client segments as equally important for the future growth and success of Sustainalytics and believe that they are interdependent.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Sustainalytics differentiation through proprietary data",
+        "stated_position": "\"Morningstar Sustainalytics offers both proprietary ESG product methodologies and proprietary data sets. The ESG information generally available in the market is unstructured, incomplete, and sometimes of low quality.\" Data sets cover a 16,000-company universe with current and historical data.",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-129521",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Morningstar Sustainalytics offers both proprietary ESG product methodologies and proprietary data sets. The ESG information generally available in the market is unstructured, incomplete, and sometimes of low quality.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "DBRS Morningstar competitive position in corporate ratings by geography",
+        "stated_position": "In Canada, \"we have a leading market position with a strong presence in corporate ratings with little client turnover\"; in the U.S. primarily active in private/middle market; the public investment-grade sector \"is dominated by Moody's and S&P\" and \"it remains difficult for DBRS Morningstar to compete\"; in Europe the markets are more open with a growing position.",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-129521",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "By contrast, the public investment-grade sector in the U.S. is dominated by Moody\u2019s and S&P, and, given that most non-insurance institutional mandates reference ratings provided by Moody\u2019s, S&P, and Fitch, and use benchmarks that rely on these ratings, it remains difficult for DBRS Morningstar to compete.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "PitchBook's importance to future growth and product bundling",
+        "stated_position": "\"We view PitchBook as important to Morningstar's future growth given the continued convergence of private and public markets, and the increased importance of private debt, which was a driver of our acquisition of LCD.\" Starting to bundle Morningstar public equity data and ESG ratings into PitchBook, plus the Morningstar Unicorn Index built on PitchBook and Morningstar Indexes capabilities.",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-129521",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We view PitchBook as important to Morningstar\u2019s future growth given the continued convergence of private and public markets, and the increased importance of private debt, which was a driver of our acquisition of LCD. As a result, we have made significant ongoing investments to support its growth.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "PitchBook total addressable market",
+        "stated_position": "TAM built from number of qualifying firms and estimated average account revenue rather than total licenses; \"You can see from the large TAM ($4.9 billion) and our market share estimate that we have a lot of room for growth.\"",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-129521",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "You can see from the large TAM ($4.9 billion) and our market share estimate that we have a lot of room for growth.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Cash management and capital allocation approach",
+        "stated_position": "\"We continue to balance capital allocation priorities, and our approach has not changed. Historically, we have taken a conservative approach to managing cash and favor short-duration, high-quality, liquid investments.\" In the current rate environment, also \"remain focused on repayment of debt to minimize interest expense.\"",
+        "kind": "capital_allocation"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-129521",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We continue to balance capital allocation priorities, and our approach has not changed. Historically, we have taken a conservative approach to managing cash and favor short-duration, high-quality, liquid investments.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Dividend policy and payout ratio",
+        "stated_position": "\"Dividends have consistently been an important part of our capital allocation policy and we are proud to have raised the dividend every year since its inception.\" No specific payout target; average adjusted payout ratio since 2018 is in the mid-20s; announced a 4.2% quarterly dividend increase and a new $500 million share repurchase program replacing the January 2021 program.",
+        "kind": "capital_allocation"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-129521",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Dividends have consistently been an important part of our capital allocation policy and we are proud to have raised the dividend every year since its inception. We review our dividend policy and capital allocation regularly with our board. We just announced a 4.2% increase in our quarterly dividend payable in 2023 and a new $500 million share repurchase program (replacing the existing program from January 2021).",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Bonus plan design",
+        "stated_position": "Bonus pool funding based on performance relative to financial targets tied to the annual budget, using adjusted revenue and adjusted EBITDA, \"with a floor at 60% funding and no cap.\"",
+        "kind": "governance_or_management"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-129521",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The bonus plan calculation is based on two performance measures: adjusted revenue and adjusted EBITDA (earnings before interest, taxes, depreciation, and amortization). If adjusted revenue and adjusted EBITDA are realized at 100% of target, the bonus is funded at 100%. The pool increases or decreases based on performance against these goals, with a floor at 60% funding and no cap.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Founder Joe Mansueto family holdings",
+        "stated_position": "\"All of Joe's holdings are disclosed annually in Morningstar's proxy statement and in Schedule 13G filed with the SEC.\"",
+        "kind": "governance_or_management"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-129521",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "All of Joe\u2019s holdings are disclosed annually in Morningstar\u2019s proxy statement and in Schedule 13G filed with the SEC.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "topic": "Employee turnover trends",
+        "stated_position": "Trailing 12-month average turnover was 18.5% as of December 2021, up from 11.8% in 2020; through the first 11 months of 2022 the annualized rate is similar to full-year 2021; \"relatively high turnover in the Morningstar Sustainalytics product area given strong demand for ESG expertise.\"",
+        "kind": "governance_or_management"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-129521",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We\u2019ve also continued to experience relatively high turnover in the Morningstar Sustainalytics product area given strong demand for ESG expertise. We will report full-year turnover in our 2022 Enterprise Sustainability Report.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Unusually direct admission that the reorganization had been discussed internally for an extended period before being executed."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-025145",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-02-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Candidly, we\u2019ve talked about doing this internally for a while now.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Recurring mission-statement phrasing used to frame a structural reorganization decision."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-025145",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-02-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Empowering investor success is always at the core of our decision-making",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Forward-looking growth claim for the new Wealth Management platform, hedged with \"we anticipate\" \u2014 a benchmark against which later results can be measured."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-025145",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-02-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "All in, we\u2019re excited about delivering a friction-free, comprehensive platform that will empower advisors to create value for the end investors they serve. In turn, we anticipate that this will be a significant driver of growth for Morningstar in the years ahead.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Unusually assertive self-characterisation of the indexes business as \"world-class\" and framing of \"ambition,\" signalling strategic emphasis on a business competing with MSCI."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-035590",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-03-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We believe we are building world-class index capabilities and our success in 2021 is the latest evidence of our ambition in this space.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Positions Morningstar as a market-shaper rather than participant in ESG, while conceding the industry's \"relative nascency\" \u2014 a claim paired with a hedge on market size."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-035590",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-03-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We are h elping to shape the market with our products and services and continue to refine as the industry grows and matures.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "A notably wide hedge: management declines to size the ESG opportunity it says it is investing heavily in."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-035590",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-03-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We\u2019ve seen estimates for ESG market size that range from several hundred million to several billion U.S. dollars, which suggests the scope of the market hasn\u2019t yet been consistently defined given the relative nascency of this fast-growing industry.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Reframes a sharp turnover increase as a return to normal rather than a problem, a direct attempt to reset the baseline investors judge it against."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-035590",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-03-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "For historical context, our attrition from 2017-2019 averaged 16.6%, which we consider a more normalized number than what we experienced during the period following the start of the pandemic.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "A hedged forward statement \u2014 the company disclaims forecasting while nonetheless offering a go-forward expectation qualified twice."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-035590",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-03-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "While we do not forecast a tax rate, it is helpful to look back prior to the Sustainalytics acquisition. Our effective rate in 2019 was 23.1%. Every year tends to be different given discrete items that impact our rate (for instance, M&A activity). Our expectation is that a go-forward rate could be closer to the rate in 2019, absent discrete items.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "An unusually colloquial and self-consciously disciplined framing of acquisition pricing discipline in response to a pointed question about paying 11-12 times sales."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "While the process was likely competitive, we ran our own race.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Sets an explicit, recurring return standard management can be held to on the LCD deal, in place of any quantified financial detail."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "we expect the acquisition to generate strong returns well above our cost of capital",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "A blunt characterization of an asset it just agreed to buy from S&P Global, framing the acquisition as a turnaround/enhancement opportunity."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "as it hasn't been updated in years",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Confirms a strategic repositioning away from large institutional consulting contracts and away from the client-concentration model that produced the TD Ameritrade loss."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "There are no $10 million-plus clients contributing to Investment Management revenue as we shift away from consulting work to focus on direct relationships with advisors.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Reframes the wealth management goal away from advisor count toward revenue per advisor \u2014 a shift in the stated success metric."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "While adding more advisors is important, our aim is to continue increasing the connectivity of our advisor solutions and increasing revenue per advisor as a result.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "A direct admission that the QDIA thesis Morningstar has promoted has not yet translated into adoption, hedging a growth narrative."
+      },
+      "source": null,
+      "confidence": "low",
+      "confidence_reason": "quote not found verbatim in the source section, so this item is a paraphrase rather than a traceable citation",
+      "quote": "we have not yet seen significant adoption of managed accounts as a default option in the plans we work with",
+      "quote_verified": false,
+      "quote_check": "8-K_8-K_whole: not found in the source section"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Positive operating leverage claim is expressly conditioned on excluding client losses management attributes to its own strategy shift."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "That was indeed the case last year within Managed Portfolios, if we exclude the impact of the disclosed client losses that were a result of our strategy shift.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Candid characterization of the historic limits of the Workplace franchise, against which the stated move upmarket should be measured."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-049042",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-04-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The small and midsize plan market has traditionally been the sweet spot for our managed accounts service.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Unusually blunt, informal characterisation of competitors' M&A distraction as an opportunity \u2014 rare candour in a written Reg FD response."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-065899",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "It is fair to say that we are often excited when larger competitors are distracted by large integrations that leave them less focused on customers.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Compact statement of the company's core competitive claim, framed as a differentiation thesis against scale-advantaged peers."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-065899",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We believe insights are not fungible and investors value Morningstar\u2019s unique perspective and the tools we provide to enable their workflows.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Direct admission of a doubled raise pool \u2014 a specific, unusually concrete concession about labour market pressure."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-065899",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Additionally, we made more substantial increases to our compensation pools in our January 2022 merit cycle relative to previous years, doubling our raise pool in an increasingly competitive market for talent.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Candid, quantified admission of company-wide attrition deterioration, framed against a self-defined \"more normalized\" 16.6% baseline."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-065899",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Attrition rose last year across all our regions and business lines, rising from 12.0% in 2020 to 18.5% in 2021.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "A hedged forward expectation on margins tied to specific segments \u2014 worth tracking against later years."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-065899",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "That said, as we grow in areas such as credit ratings and wealth management, it is our expectation that added scale should be a positive for margins.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "An unusually direct concession to a critical question that framed Morningstar as an outlier on margin pressure; management accepts the investment framing rather than the inflation framing."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-072402",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-06-17"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "You are correct that we are investing heavily in the business, reflecting the opportunities we see to deliver outsized revenue growth in the large and expanding addressable markets in which we serve investors.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "An explicit admission that margins are being sacrificed, immediately hedged by the non-disclosure of long-term margin targets."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-072402",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-06-17"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In the short-term, we recognize that these investments can impact margins.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Quantifies the scale of the build-out in a single year; the phrase \"team members\" is the company's recurring characterisation of employees."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-072402",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-06-17"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "To support that growth, our headcount expanded by over 1600 team members in the 12 months ended March 2022.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Recurring claim of confidence in ESG as a growth engine, stated at the peak of the company's ESG investment cycle."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-072402",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-06-17"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We are investing heavily in ESG and remain confident in our long-term prospects for growth.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Unusually direct admission that a specific product investment is depressing current margins, while declining to disclose product-level profitability."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In the case of Sustainalytics in particular, investments in our suite of climate and impact products are significant and have a meaningful impact on our current margin profile.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "A hedge deflecting an investor's explicit incremental-margin comparison against data/analytics peers rather than engaging with the framework."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "That said, it\u2019s difficult to make a direct comparison with competitors given the differences in our business mix. We\u2019re also not able to comment on their incremental operating margins.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Recurring refusal to commit to quantified targets, repeated alongside claims of long-term margin expansion."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We do not provide guidance on specific revenue or margin targets.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Frames heavy spending as a deliberate long-horizon bet, the central justification recurring across multiple answers in this filing."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We continue to invest in areas like this because we see unique opportunities\u2014such as with climate and impact data\u2014to make upfront investments that can pay off for years.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Explicit statement of ambition to move DBRS beyond structured finance into corporates, a directional shift in how the ratings business is characterised."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-082065",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-07-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We continue to invest behind DBRS Morningstar to grow our asset class coverage and build a more substantial corporate franchise in the U.S. and Europe.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Unusually direct admission of a management failing, reversing the company's earlier public posture on the Sustainalytics bias allegations."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-095136",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-08-26"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "in retrospect, our initial review was overly dismissive of the serious bias concerns raised by the organization JLens, the Illinois Investment Policy Board (IIPB), and other entities",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Pre-empts the framing of the Shenzhen reductions as cost cutting; a deliberate characterisation of a headcount reduction as strategy rather than savings."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-095136",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-08-26"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We are shifting non-China-market-focused work to alternate locations, so this decision is not a cost-savings measure.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Defensive framing in response to investor concern about a sharp step-up in deal size; recurring 'strategic merit / long-term returns' formulation for capital allocation discipline."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-095136",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-08-26"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "However, we do not pursue M&A simply because we have the capacity to do so; all transactions need to have strategic merit, offer compelling long-term returns, and create value.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "An explicit hedge on margin recovery timing while still committing directionally to prior peak levels."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-095136",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-08-26"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "While we cannot guide to a specific inflection point in profitability, we expect that adjusted operating margins this year will be lower than a typical year and we are focused on getting back on a path toward levels seen in recent historical peaks.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Self-characterisation of competitive position, and the framing of Morningstar's original business as 'legacy' public company data."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-095136",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-08-26"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "PitchBook\\u2019s best-in-class coverage of the private markets complements Morningstar\\u2019s legacy public company datasets; together they are key to building one of the most comprehensive multi-asset datasets in the industry.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "A pointed characterisation of the acquired asset as under-invested by its prior owner \u2014 the recurring justification for both the price paid and the planned spending, repeated nearly verbatim later in the same filing."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In the case of Leveraged Commentary & Data (LCD), we believe that low levels of historical investment in the business were not sufficient to realize what we see as its significant growth potential, especially given secular tailwinds for private credit.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "An unusually direct admission about a business the company elsewhere describes as a core growth priority."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "As a result, Sustainalytics\u2019 margins have been the lowest in our licensed-based product group and are a drag on our overall margins.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "An explicit ranking of internal product-level profitability that the company normally declines to disclose; sets a benchmark against which later statements can be measured."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Within our licensed-based products, the margins for Direct and Data are the highest and Morningstar Sustainalytics has the lowest product margins; PitchBook\u2019s margins are higher than those generated by Sustainalytics but below those for Data and Direct.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Management's first-order framing of the ESG political backlash as immaterial, with a conditional disclosure hedge attached."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We do not anticipate a material impact to Morningstar Sustainalytics or its clients from the recent inquiries initiated by the Attorney Generals of several U.S. states or more broadly from heightened scrutiny of ESG in the United States. If that were to change, we would disclose accordingly.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "The stated reason for reducing a long-running disclosure; the rationale is worth preserving because the disclosure itself disappeared."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We came to the conclusion that it was not as relevant a metric and not highly correlated to revenue given the heterogeneity of our client contracts",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Frames an above-market pay increase as a deliberate retention strategy rather than cost inflation \u2014 a shift in emphasis on compensation."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "we believe that the budgeted increase was also almost double the weighted average market rate across our global footprint as we were focused on retaining talent in a highly competitive environment",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "A direct acknowledgement of an identified pay gap and remedial spending, cross-referenced to the Enterprise Sustainability Report."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "we invested additional compensation in salaries and bonus levels to close the adjusted gender pay gap identified in a 2021 review",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "A claim explicitly flagged as recurring (\"as we've stated previously\"), offered in answer to a question noting profitability had fallen back to 2010 levels."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-102681",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-09-23"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "As we\u2019ve stated previously, we believe that there is inherent leverage in the business and that the investments that we\u2019re making will help drive attractive long-term returns and margin improvements.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Direct refusal to disclose, framing the limits of transparency on the very spending management cites as driving expense growth."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-110627",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We don\u2019t currently disclose total spending on investments.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Names the three businesses explicitly designated for growth prioritization \u2014 a compact statement of strategic focus worth tracking year to year."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-110627",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "These include investments in product development, sales, and marketing to support key products that we\u2019re prioritizing for growth including PitchBook, Morningstar Sustainalytics, and Wealth Management.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Management goes beyond a third-party forecast to assert it is too conservative \u2014 unusually forward-leaning optimism for a written Reg FD answer."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-110627",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Direct indexing represents an attractive growth opportunity for Morningstar. In a 2021 report, Cerulli projected that Direct Indexing would grow at a 12.4% annual rate through 2026 and we believe that estimate is a conservative one",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Recurring hedge pattern across answers: a reassuring present-tense statement immediately followed by refusal to forecast."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-110627",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We\u2019re monitoring the environment closely, but don\u2019t provide forecasts on future revenue expectations.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Acknowledges an ongoing, plural set of governmental inquiries into Sustainalytics research practices \u2014 broader than the single senator's request the question asked about."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-120313",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-11-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We continue to engage with legislators and other government officials who have inquired about Sustainalytics research practices and products as well as with other stakeholders in the community.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "A rare, matter-of-fact confirmation, buried in an expense answer, that an independent investigation of Sustainalytics research practices took place and has concluded."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-120313",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-11-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Professional fees in the second quarter included costs associated with the completed independent investigation regarding certain Morningstar Sustainalytics research practices.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "A direct statement of capital allocation priority ranking debt paydown ahead of other uses, notable against the company's general refusal to set a target leverage ratio."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-120313",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-11-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "That said, debt repayment will be a near-to-intermediate-term priority for deployment of excess cash.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Frames the China wind-down as a shift of work to India, linking a geopolitical/regulatory retreat to an operational relocation strategy."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-120313",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-11-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The increase in headcount in India was due in part to the initiation of the reduction and shift of our China operations.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Unusually direct admission of limited pricing power in the asset-based businesses, contrasted with the confident tone about license-based pricing."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-129521",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In general, it\u2019s more difficult to raise prices in the asset-based areas of the business where we\u2019re getting paid in basis points on assets under management or advisement and where there\u2019s widespread fee compression in the industry.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Flat rejection of the premise of an investor question about consolidation of rating agency mandates, immediately followed by a nuanced concession about U.S. competitiveness."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-129521",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We\u2019ve not observed this trend in the corporate markets we\u2019re active in.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Hedged positive framing on turnover while naming specific problem areas \u2014 a candid qualification within an optimistic answer."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-129521",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Encouragingly, we\u2019ve seen voluntary attrition decline in most markets, with a few exceptions, including our India office, which is experiencing higher turnover than the rest of our employee population.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "investor_qa",
+      "value": {
+        "why_notable": "Signals an emerging cross-portfolio bundling strategy, a shift in how the product portfolio is characterised."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001104659-22-129521",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Both Morningstar and our clients see attractive opportunities to expand through the bundling of products and associated pricing strategies.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
   "risk_deltas": {
     "fiscal_year": 2022,
     "compared_to": 2021,
@@ -2392,12 +5417,14 @@
       ]
     },
     "investor_qa": {
-      "n": 0,
-      "populated": false,
-      "high_confidence": 0,
-      "low_confidence": 0,
-      "unverified_quotes": 0,
-      "sources": []
+      "n": 157,
+      "populated": true,
+      "high_confidence": 156,
+      "low_confidence": 1,
+      "unverified_quotes": 1,
+      "sources": [
+        "8-K_8-K_whole"
+      ]
     },
     "risk_deltas": {
       "populated": true,
@@ -2414,14 +5441,24 @@
       "basis": "product or business areas described in Item 1 \u2014 this filing does not disclose reportable segments, so these are NOT segments and must not be compared with a year that does"
     },
     "investor_qa_basis": {
-      "n": 0,
+      "n": 157,
       "source_register": "Regulation FD voluntary disclosure (8-K item 7.01)",
       "basis": "management's written answers to questions submitted by investors, published roughly monthly. Same verification as every other fact \u2014 whole-document boundaries and a checked quote \u2014 but a different kind of evidence from a 10-K or proxy statement: unaudited, unprompted by any disclosure requirement, and responsive to whatever was asked. Corroborating; not a substitute for a filed disclosure.",
-      "filings": []
+      "filings": [
+        "0001104659-22-025145",
+        "0001104659-22-035590",
+        "0001104659-22-049042",
+        "0001104659-22-065899",
+        "0001104659-22-072402",
+        "0001104659-22-082065",
+        "0001104659-22-095136",
+        "0001104659-22-102681",
+        "0001104659-22-110627",
+        "0001104659-22-120313",
+        "0001104659-22-129521"
+      ]
     },
-    "extraction_tasks_missing": [
-      "investor_qa"
-    ],
+    "extraction_tasks_missing": [],
     "board_metadata": {
       "board_size": 10,
       "committees": [

@@ -17,7 +17,7 @@ asserted. Update this file when the source, universe, or as-of date changes.
 | Window | Five fiscal years, per `config/company.toml` `[window]` |
 | Subject | MORN / Morningstar, Inc., CIK 0001289419, FY2021–FY2025 |
 | Retrieved | 202 documents across 128 filings — see `data/raw/fetch-manifest.json` |
-| Extraction model | `claude-opus-5`, effort `medium` — 45 calls, 693,234 input / 103,417 output tokens ($6.05). 34 calls for the six core tasks, 11 for FY2025 `investor_qa` |
+| Extraction model | `claude-opus-5`, effort `medium`. The ledger as it stands represents **88 cached calls, 1,086,058 input / 235,841 output tokens ($11.33)** — 34 for the six core tasks, 54 for `investor_qa`. About $2.60 more was spent on 24 superseded first-pass results (see limitation 16) and one failed call, so total outlay was ~$14 |
 
 ### One filing outside the window, by name
 
@@ -277,13 +277,35 @@ has to survive them.
      informative, and it means a count of Q&A facts is not a count of distinct
      findings. Do not treat repetition as corroboration.
 
-15. **`investor_qa` is currently populated for FY2025 only.** 186 facts from 11
-   filings. FY2021–FY2024 have the triage decisions but no extraction, so those
-   years' `investor_qa` fields are empty for a reason that is *not* an absence of
-   disclosure — the filings exist and are cached. Any cross-year comparison of
-   this field is invalid until the remaining years are run. The ledger report's
-   coverage table shows the gap; the `extraction_tasks_missing` entry in each
-   year's `data_quality` names it explicitly.
+15. **`investor_qa` counts are not a measure of how much management said.**
+   All five years are now extracted — 850 facts from 54 filings (FY2021 113,
+   FY2022 157, FY2023 231, FY2024 163, FY2025 186) — but the spread across years
+   reflects how many questions were submitted and answered, and how long the
+   answers ran, not any property of the company's strategy that year. FY2023 has
+   twice FY2021's count largely because the FY2021 filings are shorter. Use this
+   field for *what was said*, never as a series.
+
+16. **24 of the 54 `investor_qa` results were extracted twice, and the first
+   answers were discarded.** A boilerplate-stripping rule was too aggressive: when
+   it could not locate the end of the forward-looking-statements caution it
+   discarded everything from the caution to the end of the document. In eleven
+   FY2021–FY2022 filings that deleted the entire Q&A, reducing ~9,000-character
+   bodies to ~330 characters, and those filings then dropped out of the extraction
+   plan without a message. Fixing the rule changed the input text of 24 already-
+   cached results, which were re-run.
+
+   Two guards now exist so this class of fault cannot be silent again, and both
+   matter more than the bug did:
+
+   - **The stripper fails toward keeping text.** An unrecognised layout costs a
+     few cents in duplicated boilerplate rather than discarding a document.
+     Removing boilerplate is a cost optimization; losing content is a correctness
+     failure, and when they conflict the optimization loses.
+   - **The cache detects a changed input.** `src/extract_facts.py` compares each
+     cached result's stored `source_chars` against the current source text and
+     refuses to treat a mismatch as done. "A completed task is never re-run" is
+     only safe while its input is unchanged, and a filename cannot know what it
+     was computed from. Run `--refresh-stale` to rebuild only those.
 
 ## Cache policy
 
@@ -328,7 +350,37 @@ Two consequences worth knowing when reading the ledger:
   quote, rather than asking the model where it looked. So a fact can only be
   attributed to a document that provably contains its evidence.
 
-Result on the current run: **665 facts, 0 unverified quotes.**
+Result on the current run: **1,329 facts, 3 unverified quotes (0.23%).**
+
+**One of those three is a genuine paraphrase, and it is the first the project has
+found.** In a FY2022 investor-Q&A extraction the filing reads "we are gaining
+traction and seeing increased interest *but* have not yet seen significant
+adoption of managed accounts as a default option in the plans we work with"; the
+quote came back as "*We* have not yet seen significant adoption of managed
+accounts as a default option in the plans we work with", promoting a subordinate
+clause to a standalone sentence and dropping the offsetting positive half. The
+fact then characterised it as "a direct admission... hedging a growth narrative."
+
+Two words changed and the claim became stronger than the filing supports. That is
+exactly the failure this check exists for, it is 96% character-exact, and it is
+now a regression case in the test file. It is also the reason the near-miss
+tolerance stays at three trailing characters rather than being widened to
+accommodate the two artifacts below.
+
+The other two are false negatives, both left in place deliberately:
+
+- A 205-character verbatim quote with the literal text `_PLACEHOLDER` appended —
+  a 12-character tail, over the threshold. Widening the threshold to 12 would
+  admit real paraphrased endings.
+- A quote whose source sentence contains a stray page number mid-clause ("tied to
+  both **7** revenue and profit") in the filed document itself, confirmed by
+  re-parsing the raw HTML independently. The model quoted the sentence as a human
+  reads it. Tolerating gaps in the *source* would dismantle the defence against
+  stitched quotes, which is a far more valuable property than three recovered
+  facts.
+
+Both are marked `low` with the reason on the fact, and their quotes are preserved
+for inspection.
 
 The rejection cases are a committed test rather than a claim:
 `uv run python tests/test_verify_quote.py` asserts that the check still refuses a
@@ -362,8 +414,9 @@ none will be, and is the reason the check stays.
 
 Every fact carries `high` or `low` with the reason recorded on it. `low` means
 the source section's boundaries are unverified (limitation 9) or the quote could
-not be verified. On the current run **51 of 665 facts are `low`**, all of them
-board-composition facts from `DEF14A_director_bios`.
+not be verified. On the current run **54 of 1,329 facts are `low`**: 51
+board-composition facts from `DEF14A_director_bios`, plus the 3 unverified quotes
+above.
 
 **Any claim in the outputs resting on a `low` fact must say so, or be dropped.**
 

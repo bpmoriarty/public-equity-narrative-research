@@ -1,0 +1,100 @@
+{
+  "fiscal_year": 2022,
+  "task": "investor_qa",
+  "unit": "0001104659-22-065899",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:07:46Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 8731,
+    "output_tokens": 2676
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-22-065899",
+      "form": "8-K",
+      "filing_date": "2022-05-27",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 19430,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Margin pressure and willingness to invest ahead of growth; strategic priorities",
+        "stated_position": "Management said it is \"intent on balancing short- and long-term tradeoffs which can impact margins in periods of heavier investment,\" that this is the case today, and identified key strategic priorities as \"delivering insights to public and private market investors, growing our ESG leadership position, capitalizing on wealth segment opportunities and scaling to support growth.\"",
+        "kind": "strategy",
+        "quote": "As we often say, we are intent on balancing short- and long-term tradeoffs which can impact margins in periods of heavier investment. That is the case today, as we continue to have opportunities to deliver outsized revenue growth in the large and expanding addressable markets in which we serve investors. Our key strategic priorities include delivering insights to public and private market investors, growing our ESG leadership position, capitalizing on wealth segment opportunities and scaling to support growth."
+      },
+      {
+        "topic": "Stock-based compensation philosophy versus peers and whether it will converge",
+        "stated_position": "Management defended stock awards as \"an important part of our compensation philosophy to reward and incentivize our team members and align with our value creation objectives over time\" and an important tool for attracting talent against fintech competitors; it declined to forecast convergence with peer metrics, saying it would not speculate on others' practices, and said awards will continue to be used \"prudently.\"",
+        "kind": "capital_allocation",
+        "quote": "We cannot forecast convergence of metrics as we would not want to speculate on the objectives and compensation practices of others. Stock awards will continue to be an important part of our compensation structure and we will utilize them prudently to ensure they continue to achieve their intended purpose in incentivizing our team members."
+      },
+      {
+        "topic": "Employee attrition and retention initiatives",
+        "stated_position": "Management disclosed attrition rose from 12.0% in 2020 to 18.5% in 2021 (vs a 2017-2019 average of 16.6% considered \"more normalized\") and described three initiatives: re-engineering the exit interview process, more investment in base compensation increases, and \"investing in improving internal career mobility opportunities for our people\" via a \"more robust internal career marketplace.\"",
+        "kind": "governance_or_management",
+        "quote": "We have three initiatives underway focused on bringing attrition back to a more normalized number. First, we re-engineered our exit interview process to gain better insights into why people are leaving. We are using that information to inform our countermeasures. Second, we invested more in base compensation increases in 2021 and 2022 compared with 2020. Third, we are investing in improving internal career mobility opportunities for our people."
+      },
+      {
+        "topic": "Where headcount is concentrated across product areas",
+        "stated_position": "Management declined to give workforce levels by product but stated: \"Across our product areas and functions, the largest concentrations of headcount are currently in PitchBook, Morningstar Sustainalytics, our Wealth product areas, Data and Direct, and DBRS Morningstar,\" supported by large research and data collection teams, and acknowledged \"we are investing more heavily in recent periods, given our higher rates of headcount growth relative to our peers.\"",
+        "kind": "segment_or_product",
+        "quote": "Across our product areas and functions, the largest concentrations of headcount are currently in PitchBook, Morningstar Sustainalytics, our Wealth product areas, Data and Direct, and DBRS Morningstar. Additionally, supporting these products and other areas are large teams within our research and data collection functions."
+      },
+      {
+        "topic": "Industry consolidation and whether Morningstar has the scale to compete",
+        "stated_position": "Management said consolidation \"creates both challenges and opportunities,\" that it is \"often excited when larger competitors are distracted by large integrations,\" that \"insights are not fungible\" and investors value Morningstar's unique perspective, and that it will continue to invest in differentiated data sets; it expects added scale in credit ratings and wealth management \"should be a positive for margins.\"",
+        "kind": "competition_or_market",
+        "quote": "In terms of scale, our growth suggests we are having success competing with larger firms. We believe insights are not fungible and investors value Morningstar\u2019s unique perspective and the tools we provide to enable their workflows. As we have since the company was founded, we will continue to invest in and expand our differentiated data sets and analytics to meet evolving investor needs."
+      },
+      {
+        "topic": "DBRS Morningstar competitive position and investment in corporate ratings",
+        "stated_position": "Management said DBRS Morningstar \"currently has limited presence in the leveraged finance sector (bank loans and CLOs) and the U.S. investment grade corporate market,\" that \"We are investing to grow our corporate presence in both the U.S. and Europe,\" and attributed share gains to \"quality of our ratings and our quick and efficient responsiveness to market participants that surpasses some of our competitors.\"",
+        "kind": "segment_or_product",
+        "quote": "DBRS Morningstar currently has limited presence in the leveraged finance sector (bank loans and CLOs) and the U.S. investment grade corporate market. That can help our relative growth rate in periods of market volatility and negatively impact the comparisons in periods of significant corporate issuance. We are investing to grow our corporate presence in both the U.S. and Europe."
+      },
+      {
+        "topic": "Disclosure practices \u2014 profitability by line of business",
+        "stated_position": "Management said it continually evaluates disclosures and appreciates suggestions but \"we do not anticipate disclosing our profitability by line of business,\" while noting it may consider replicating the directional margin analysis given at the 2020 Annual Meeting.",
+        "kind": "governance_or_management",
+        "quote": "We continually evaluate our disclosures and what information could be useful to our shareholders and appreciate the suggestions you are making although we do not anticipate disclosing our profitability by line of business."
+      },
+      {
+        "topic": "Adjusted EBITDA as used for executive bonus purposes",
+        "stated_position": "Management explained that its Adjusted EBITDA measures the business on a \"pre-bonus\" basis, excluding the large variable incentive compensation component, and that it is \"an annual measurement used solely for bonus purposes and is reviewed and approved annually by the Compensation Committee of the Board of Directors.\"",
+        "kind": "governance_or_management",
+        "quote": "We do not calculate Adjusted EBITDA quarterly as it is an annual measurement used solely for bonus purposes and is reviewed and approved annually by the Compensation Committee of the Board of Directors."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "It is fair to say that we are often excited when larger competitors are distracted by large integrations that leave them less focused on customers.",
+        "why_notable": "Unusually blunt, informal characterisation of competitors' M&A distraction as an opportunity \u2014 rare candour in a written Reg FD response."
+      },
+      {
+        "quote": "We believe insights are not fungible and investors value Morningstar\u2019s unique perspective and the tools we provide to enable their workflows.",
+        "why_notable": "Compact statement of the company's core competitive claim, framed as a differentiation thesis against scale-advantaged peers."
+      },
+      {
+        "quote": "Additionally, we made more substantial increases to our compensation pools in our January 2022 merit cycle relative to previous years, doubling our raise pool in an increasingly competitive market for talent.",
+        "why_notable": "Direct admission of a doubled raise pool \u2014 a specific, unusually concrete concession about labour market pressure."
+      },
+      {
+        "quote": "Attrition rose last year across all our regions and business lines, rising from 12.0% in 2020 to 18.5% in 2021.",
+        "why_notable": "Candid, quantified admission of company-wide attrition deterioration, framed against a self-defined \"more normalized\" 16.6% baseline."
+      },
+      {
+        "quote": "That said, as we grow in areas such as credit ratings and wealth management, it is our expectation that added scale should be a positive for margins.",
+        "why_notable": "A hedged forward expectation on margins tied to specific segments \u2014 worth tracking against later years."
+      }
+    ]
+  }
+}

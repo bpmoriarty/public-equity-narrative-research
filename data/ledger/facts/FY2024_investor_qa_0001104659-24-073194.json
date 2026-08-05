@@ -1,0 +1,101 @@
+{
+  "fiscal_year": 2024,
+  "task": "investor_qa",
+  "unit": "0001104659-24-073194",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:44:38Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 7474,
+    "output_tokens": 1581
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-24-073194",
+      "form": "8-K",
+      "filing_date": "2024-06-20",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001104659-24-073194",
+      "form": "8-K",
+      "filing_date": "2024-06-20",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-2_whole",
+      "accession": "0001104659-24-073194",
+      "form": "8-K",
+      "filing_date": "2024-06-20",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 15061,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Rationale for the AssetMark transaction / TAMP strategy",
+        "stated_position": "This alliance allows each party to lean into its relative strengths: Morningstar Wealth in leveraging data and research to deliver a full spectrum of investment products, and AssetMark in providing a best-in-class advisor experience. The cost of maintaining and improving the TAMP is significant and scale is important; in the U.S. the best way to scale is to reach more clients with investment products and to allow others like AssetMark to own the technology platform.",
+        "kind": "strategy",
+        "quote": "The Morningstar Wealth TAMP was launched in 2001. The cost of maintaining and improving it is significant, and scale is important for success. In the U.S., we believe the best way to scale our business is to reach more clients with our investment products, and to allow others like AssetMark to own the technology platform."
+      },
+      {
+        "topic": "Transaction structure and consideration",
+        "stated_position": "AssetMark will make an upfront payment at closing, with potential additional payment tied to the transition of clients and assets over the 12-month period post-closing, plus upside opportunities for attracting new assets thereafter.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "Under the terms of the agreement, AssetMark will make an upfront payment to Morningstar at closing. Morningstar has the potential to receive an additional payment tied to the transition of clients and assets to the AssetMark platform during the 12-month period post-closing, plus upside opportunities for attracting new assets to the AssetMark platform after that time."
+      },
+      {
+        "topic": "Product implications \u2014 sunsetting the U.S. TAMP",
+        "stated_position": "After closing, Morningstar will begin to sunset its U.S. TAMP, while remaining committed to Morningstar Wealth as a long-term growth driver, aiming to build assets in strategies distributed on third-party platforms and on the International Wealth Platform.",
+        "kind": "segment_or_product",
+        "quote": "After the transaction closes later this year, we will begin to sunset our U.S. TAMP. We remain committed to Morningstar Wealth as a growth driver for the company over the long term, and our goal is to continue to build assets in investment strategies distributed on third-party platforms as well as on our International Wealth Platform to support the segment\u2019s revenue growth and improved profitability."
+      },
+      {
+        "topic": "Competitive position in international / UK wealth platform",
+        "stated_position": "Morningstar will focus on the International Wealth platform from the 2022 Praemium acquisition; in the UK it says it is gaining share as a challenger with growth in line with expectations, and has had success cross-selling Investment Management products.",
+        "kind": "competition_or_market",
+        "quote": "We\u2019ll also focus on our International Wealth platform, which came out of our 2022 acquisition of Praemium's international operations. In the UK, in particular, we are gaining share as a challenger with growth in line with our expectations."
+      },
+      {
+        "topic": "Proposition for advisors and wealth managers going forward",
+        "stated_position": "In North America Morningstar is leaning into the parts of the advisor workflow where its data and research intelligence adds most value \u2014 proposal creation, investment research, investment management, and retirement services \u2014 and teaming with third parties for other parts.",
+        "kind": "strategy",
+        "quote": "As we look ahead in North America, we are leaning into the parts of the advisor workflow where we believe the clarity of Morningstar\u2019s data and research intelligence adds the most value. That\u2019s primarily in proposal creation, investment research, investment management, and"
+      },
+      {
+        "topic": "Why AssetMark is the right partner",
+        "stated_position": "\"We share a common culture and ambition to empower advisor growth and investor success.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "Why is AssetMark the right fit? We share a common culture and ambition to empower advisor growth and investor success."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "With the transaction, we will have a focused investment management business in the U.S. without the complexity of a legacy platform, which has faced secular headwinds.",
+        "why_notable": "Unusually direct characterisation of its own U.S. TAMP as a \"legacy platform\" facing \"secular headwinds\" \u2014 a marked shift from prior positioning of Morningstar Wealth as a growth investment."
+      },
+      {
+        "quote": "Advisors are central to our mission of empowering investor success.",
+        "why_notable": "Restates the recurring \"empowering investor success\" mission language even while exiting a major advisor-facing platform."
+      },
+      {
+        "quote": "*Previously disclosed numbers of advisor clients have not included Direct Compass users or advisors who directly access data or APIs outside of our software products.",
+        "why_notable": "Footnote discloses a change in how the advisor-count metric is defined, making the ~300,000 figure not comparable to prior disclosures."
+      }
+    ]
+  }
+}

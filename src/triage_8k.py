@@ -151,10 +151,24 @@ def strip_boilerplate(text: str, is_body: bool, bp: dict) -> str:
         m = bp["forward_looking_start"].search(t)
         if m:
             nxt = bp["forward_looking_end"].search(t, m.end())
-            # Keep everything after the caution block. If nothing follows it, the
-            # block ran to the end of the document and the whole tail goes — that
-            # is a truncation at the end, so it needs no marker.
-            t = (t[:m.start()] + ELISION + t[nxt.start():]) if nxt else t[:m.start()]
+            if nxt:
+                t = t[:m.start()] + ELISION + t[nxt.start():]
+            # CONSERVATIVE FALLBACK — do not strip at all when the end of the
+            # caution block cannot be located.
+            #
+            # This branch previously did `t = t[:m.start()]`, on the reasoning that
+            # an unterminated caution block must run to the end of the document.
+            # That reasoning was wrong and expensive: in eleven FY2021-FY2022
+            # filings the caution is followed directly by the Q&A, so the block WAS
+            # terminated, just not by a pattern we had. Those filings were trimmed
+            # from ~9,000 characters to ~330 — the entire Q&A deleted — and because
+            # the remainder fell under the stub threshold they then dropped out of
+            # the extraction plan without a word.
+            #
+            # Stripping boilerplate is a cost optimization. Losing content is a
+            # correctness failure. When the two are in tension the optimization
+            # loses, so an unrecognised layout now costs a few cents in duplicated
+            # boilerplate instead of silently discarding a document.
     else:
         t = bp["exhibit_head"].sub("", t)
         t = bp["image_placeholder"].sub("", t)

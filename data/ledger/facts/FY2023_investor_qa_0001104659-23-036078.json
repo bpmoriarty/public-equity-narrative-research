@@ -1,0 +1,138 @@
+{
+  "fiscal_year": 2023,
+  "task": "investor_qa",
+  "unit": "0001104659-23-036078",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:08:05Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 12480,
+    "output_tokens": 3698
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-23-036078",
+      "form": "8-K",
+      "filing_date": "2023-03-23",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 32721,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Top financial and strategic priorities for the next 6-12 months; spending philosophy during a downturn",
+        "stated_position": "Management says it recognizes the operating environment has changed and is \"being prudent in our approach to investments in 2023,\" limiting hiring and new investments even in fast-growing areas, with new investments concentrated in building wealth platforms, climate and impact data, and private debt capabilities. \"Our goal is to grow revenue and increase margins over time while prudently managing costs in the near term.\"",
+        "kind": "strategy",
+        "quote": "We are limiting hiring and new investments, including in parts of the business that are growing well. New investments today are concentrated in a handful of areas, such as in building our wealth platforms, climate and impact data, and private debt capabilities. But even there, we have slowed the pace of investments. Our goal is to grow revenue and increase margins over time while prudently managing costs in the near term."
+      },
+      {
+        "topic": "Return targets/hurdle rates on investments",
+        "stated_position": "\"Overall, we seek to earn cash on cash returns well in excess of our cost of capital,\" with base hurdle rates in the mid-teens and higher expected long-term returns for many investments made.",
+        "kind": "capital_allocation",
+        "quote": "Overall, we seek to earn cash on cash returns well in excess of our cost of capital. While our base hurdle rates are in the mid-teens, we expect higher long-term returns for many of the investments we have made."
+      },
+      {
+        "topic": "Whether margins have bottomed and the intent for margins going forward",
+        "stated_position": "Management views the 16.0% adjusted operating margin as close to an annual low point in its investment cycle, declines to call a quarterly bottom, and says it is focused on increasing margins over the near-to-medium term to be more consistent with historical peaks.",
+        "kind": "strategy",
+        "quote": "We view the 16.0% adjusted operating margin as close to an annual low point in our investment cycle. While it is difficult to call a \u201cbottom\u201d in our quarterly margin profile as we see how market conditions unfold, we are focused on increasing margins over the near-to-medium term to be more consistent with historical peaks."
+      },
+      {
+        "topic": "Relative margins by product grouping and disclosure practice as a one-segment business",
+        "stated_position": "Management says it is only able to address relative margins directionally, notes license-based products \"continue to tend to offer the highest margins in aggregate,\" asset-based products have the lowest, and that it intends to cover companywide margin and relative comparisons again at the May shareholder meeting.",
+        "kind": "strategy",
+        "quote": "That said, we intend to cover companywide margin and some of the relative comparisons again in our upcoming shareholder meeting in May. In the interim, we can provide an update on the relative performance across business areas. We\u2019d note that we are only able to address relative margins by type of revenue or product area on a directional basis based on estimates."
+      },
+      {
+        "topic": "Whether PitchBook is approaching market saturation and demand from client segments",
+        "stated_position": "Management states it continues to see strong demand from new logos and existing clients in core segments and does not believe it is reaching saturation, and that LCD creates opportunity with private credit market participants \"where we currently have limited reach.\"",
+        "kind": "segment_or_product",
+        "quote": "Given the size of PitchBook\u2019s business relative to our total addressable market, we do not believe that we are reaching saturation in any of our core segments. Meanwhile, the introduction of Leveraged Commentary & Data (LCD) news, research, and data into our offering creates opportunity to drive greater demand with private credit market participants, where we currently have limited reach."
+      },
+      {
+        "topic": "Whether PitchBook has a structural growth/profitability tradeoff versus other license products",
+        "stated_position": "Management does not believe there is anything structurally different about PitchBook relative to other license-based areas; it looks at SaaS return thresholds, and with customer lifetime value well in excess of acquisition cost and a sizable addressable market it is confident in ongoing investment.",
+        "kind": "segment_or_product",
+        "quote": "We do not believe that there is anything structurally different about the PitchBook product relative to our other license-based product areas. In our evaluation of PitchBook, we look at commonly used return thresholds for software-as-a-service (SaaS) businesses. With customer lifetime value well in excess of customer acquisition costs and a sizable addressable market, we\u2019re confident in our ongoing investments in the product."
+      },
+      {
+        "topic": "PitchBook growth drivers and enterprise licensing strategy",
+        "stated_position": "Growth is driven by new logos and expansion with existing clients; management has increased enterprise licenses and \"expect significant revenue growth to come from continuing to pursue this strategy,\" with LCD integration and new datasets becoming a more important growth driver near-to-medium term.",
+        "kind": "strategy",
+        "quote": "We have increased the number of enterprise licenses at PitchBook, which provide access to all potential users in a group or firm for an aggregate fixed price and expect significant revenue growth to come from continuing to pursue this strategy. Meanwhile, our integration of LCD data, expansion of other new datasets, and development of new features, will help ensure we derive value from clients and will become a more important driver of growth in the near-to-medium term."
+      },
+      {
+        "topic": "PitchBook 2023 product roadmap and pricing strategy",
+        "stated_position": "The 2023 roadmap focuses on fundraising, allocation and benchmarking workflows plus deal execution and market intelligence, including the PitchBook VC Exit Predictor and completing LCD integration; pricing strategy is \"based on continuously enhancing the value of the products and services we provide,\" reviewed annually with periodic increases.",
+        "kind": "segment_or_product",
+        "quote": "PitchBook\u2019s product roadmap in 2023 is focused on building functionality that enhances fundraising, allocation, and benchmarking workflows as well as deal execution and market intelligence capabilities. For example, this year we expect to release the PitchBook VC Exit Predictor, a proprietary machine learning algorithm that assesses the likelihood of an investor exit."
+      },
+      {
+        "topic": "PitchBook competitive landscape",
+        "stated_position": "Management says the competitive landscape has not changed materially, names S&P Capital IQ, Preqin and CB Insights as legacy competitors, cites human capital requirements as high barriers to entry, and expects additional competitors as it extends into private credit.",
+        "kind": "competition_or_market",
+        "quote": "The competitive landscape has not changed materially in the last year. We still compete with a select few legacy data providers (S&P Capital IQ, Preqin, CB Insights) as well as smaller firms servicing portions of our client base. The human capital requirements of collecting reliably accurate information continue to create high barriers to entry in this space."
+      },
+      {
+        "topic": "Whether M&A would be used to expand the Indexes business",
+        "stated_position": "Organic growth \"will continue to be our primary focus,\" but management does consider acquisitions when they make sense to grow global capabilities, citing Moorgate Benchmarks (2021) and LCD (2022).",
+        "kind": "acquisition_or_divestiture",
+        "quote": "While we have seen very strong organic growth for our Indexes business (which will continue to be our primary focus), we do consider acquisitions when they make sense to help us grow our global capabilities."
+      },
+      {
+        "topic": "China operations reduction and shift of work",
+        "stated_position": "Management expects the reduction of operations and shift of work to other Morningstar locations to be substantially completed during the third quarter of 2023, with continued costs in severance, transformation and asset impairment categories in the first three quarters.",
+        "kind": "strategy",
+        "quote": "We expect the reduction of operations and shift of work to other Morningstar locations to be substantially completed during the third quarter of 2023. For the first three quarters of 2023, we expect to continue to incur costs in all three categories; however, most of the total costs have been recorded to date."
+      },
+      {
+        "topic": "Culture and whether there is a tradeoff between stakeholders",
+        "stated_position": "Management says cultural attributes are \"deeply woven into the fabric of our culture,\" that it intentionally guards them, and denies any tradeoff: \"We do not believe there is a tradeoff between creating shareholder value and providing a great place to work. Our people are our most important asset.\"",
+        "kind": "governance_or_management",
+        "quote": "We do not believe there is a tradeoff between creating shareholder value and providing a great place to work. Our people are our most important asset. We believe that creating a great place to work helps us attract and retain the most talented people, ultimately driving performance and shareholder value."
+      },
+      {
+        "topic": "Real estate footprint and hybrid work",
+        "stated_position": "Sharing space with another company would pose collaboration and confidentiality challenges given open space design; the company uses coworking spaces where employee populations are smaller, continuously reviews its portfolio for sublease opportunities, and has increasingly moved to unassigned seating supporting its hybrid work policy.",
+        "kind": "other",
+        "quote": "As headcount has grown in recent years, and, in some cases, outgrown office capacity, we\u2019ve increasingly moved to an unassigned seating model that drives efficiency and also supports our hybrid work policy."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We recognize that the operating environment has changed, and we are responding to those changing conditions.",
+        "why_notable": "Direct acknowledgement of a changed environment, opening the document's framing shift from growth to prudence."
+      },
+      {
+        "quote": "In these areas, we reacted quickly and slowed down the pace of hiring and investment; however, it was not enough to offset the margin impact from the revenue declines given the fixed nature of much of the cost structure.",
+        "why_notable": "Unusually direct admission that management's response was insufficient, and that much of the cost base is fixed."
+      },
+      {
+        "quote": "That said, margins and overall financial performance did underperform our expectations. This was evidenced by lower bonus payouts across the company which are tied to both adjusted revenue and adjusted EBITDA.",
+        "why_notable": "Explicit admission of underperformance against its own expectations, tied to compensation outcomes."
+      },
+      {
+        "quote": "Our margins in 2022 reached a low point not seen in recent periods.",
+        "why_notable": "Blunt characterisation of margin trough, notable from a company that usually frames results in investment-cycle terms."
+      },
+      {
+        "quote": "We remain very excited and optimistic about our strategy and prospects for PitchBook growth in the coming years.",
+        "why_notable": "Strongly promotional language about PitchBook set against the company's simultaneous caution elsewhere; a recurring claim to track across years."
+      },
+      {
+        "quote": "We do not have business operating segments. Instead, we have one reportable segment and disclose revenue by type and product area, to provide useful information to shareholders.",
+        "why_notable": "Repeated framing used throughout the filing to limit disclosure of product-level profitability; a hedge on the specificity of any margin discussion."
+      },
+      {
+        "quote": "These methodologies are not complete and, like our product areas, change from time to time. As a result, our discussions of relative margins are directional and based on estimates.",
+        "why_notable": "An upfront hedge qualifying all margin commentary in the document as directional estimates."
+      }
+    ]
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "fiscal_year": 2024,
+  "task": "investor_qa",
+  "unit": "0001289419-24-000017",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:09:34Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 10842,
+    "output_tokens": 3635
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-24-000017",
+      "form": "8-K",
+      "filing_date": "2024-03-22",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 26762,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Material weakness in internal control over financial reporting related to segment reporting, following SEC objection to segment aggregation",
+        "stated_position": "Management said the SEC \"objected to our aggregation of certain operating segments,\" after which it re-evaluated FASB ASC 280 and disaggregated to five reportable segments plus a \"Corporate and All Other\" category. It determined it \"had ineffective process-level controls over those changes, which resulted in the material weakness as of December 31, 2023,\" but remains \"confident in our internal control framework and the underlying financial information,\" calling the matter \"isolated to segment reporting\" and expecting full remediation \"in the first half of 2024.\"",
+        "kind": "governance_or_management",
+        "quote": "Because we changed our application of FASB ASC 280 and our operating segment aggregation analysis for the fourth quarter of 2023, we determined that we had ineffective process-level controls over those changes, which resulted in the material weakness as of December 31, 2023. We are nonetheless confident in our internal control framework and the underlying financial information for the segments and the other areas of our reporting."
+      },
+      {
+        "topic": "Disclosure of additional historical segment data in response to investor requests",
+        "stated_position": "Management said it provided three years of historical data for updated segments in the 10-K and plans to share additional historical quarterly revenue and adjusted operating income by segment with first quarter 2024 earnings.",
+        "kind": "governance_or_management",
+        "quote": "We plan to share additional historical quarterly revenue and adjusted operating income by segment when we release our earnings for the first quarter of 2024."
+      },
+      {
+        "topic": "Restructuring/targeted reorganizations across Sustainalytics, Wealth, and Credit",
+        "stated_position": "Management said it took actions in 2023 \"including targeted reorganizations to better match our cost structure with the market opportunity,\" and anticipates total savings \"well in excess of the $9 million in associated severance.\" It also acknowledged Morningstar Sustainalytics \"is not profitable today on an adjusted operating income basis.\"",
+        "kind": "strategy",
+        "quote": "During 2023, we took actions across Morningstar Sustainalytics, Morningstar Wealth, and Morningstar Credit including targeted reorganizations to better match our cost structure with the market opportunity."
+      },
+      {
+        "topic": "Future strategy for Morningstar Sustainalytics \u2014 whether it becomes a licensed data-only business",
+        "stated_position": "Management said it is \"streamlining our product lineup to focus on areas that address ESG risks, EU Action Plan and regulatory-related solutions, and our climate product suite,\" using automation to improve cost effectiveness, and stated explicitly it does \"not have plans to move to a licensed data-only business model,\" while remaining committed to second party opinions and focusing SPO activity on the U.S. securitized bond market.",
+        "kind": "strategy",
+        "quote": "We are committed to accommodating all these use cases (including SPOs) and do not have plans to move to a licensed data-only business model."
+      },
+      {
+        "topic": "PitchBook renewal rate decline and business model for growth",
+        "stated_position": "Management described the model as \"We sell to new customers and then increase the number of licensed users within those organizations,\" said the annual revenue renewal rate fell to 112% in 2023 from 121% in 2022 reflecting \"higher churn for non-core clients as well as more limited expansion with renewing customers,\" with the biggest challenges in the corporate (company) segment, and declined to guide on future renewal rates while expressing confidence in the value proposition.",
+        "kind": "segment_or_product",
+        "quote": "While we do not provide guidance on future renewal rates, we are confident in the PitchBook value proposition and our ability to expand the renewal base over time."
+      },
+      {
+        "topic": "LCD integration into PitchBook and change to revenue reporting",
+        "stated_position": "Management said 2023 focus was \"on client retention and the repapering of client agreements,\" that integration of LCD data, research and news on the PitchBook Platform is substantially complete, that LCD clients will be moved onto PitchBook licenses at renewal, and that \"we do not plan to continue to report revenue for the PitchBook Platform separately from LCD.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "Now that we\u2019ve substantially completed the integration of LCD data, research, and news on the PitchBook Platform, we expect that as LCD clients renew, we will move them onto the PitchBook Platform with PitchBook licenses. As a result, we do not plan to continue to report revenue for the PitchBook Platform separately from LCD."
+      },
+      {
+        "topic": "PitchBook management bonus plan structure and retention",
+        "stated_position": "Management said awards aggregating $28.6 million are available under the current plan, with annual grants of $7.15 million in 2023 and 2024 and $14.3 million in 2025; targets are not disclosed but \"are tied to both revenue and profit, and we believe that we've set them so that there is an appropriate sharing of value between management and shareholders,\" and it believes the plan \"has been effective at retaining PitchBook's leadership team.\"",
+        "kind": "governance_or_management",
+        "quote": "We do not disclose targets under the plan, but they are tied to both \nrevenue and profit, and we believe that we\u2019ve set them so that there is an appropriate sharing of value between management and shareholders."
+      },
+      {
+        "topic": "Steps to improve near-term profitability of Morningstar Wealth",
+        "stated_position": "Management said it is \"focusing on areas where we have the greatest confidence that we can win,\" naming the international wealth platform and U.S. model portfolios on third-party platforms, modified its U.S. sales incentive framework, reduced Wealth headcount via targeted reorganizations, and is containing non-compensation operating costs.",
+        "kind": "strategy",
+        "quote": "To increase revenue, we are focusing on areas where we have the greatest confidence that we can win and have seen positive trends, including on our international wealth platform, which is growing rapidly, and on model portfolios distributed on third-party platforms in the U.S."
+      },
+      {
+        "topic": "Keys to success in Morningstar Credit versus incumbents",
+        "stated_position": "Management said keys to success \"include being timely and responsive to investor requests and needs and providing solid research on the topics that drive these markets,\" and that expanded coverage in middle-market loans and \"esoteric\" ABS has allowed expansion of public ratings coverage, making licensed data products more robust.",
+        "kind": "competition_or_market",
+        "quote": "Across Morningstar Credit, we believe that the keys to success include being timely and responsive to investor requests and needs and providing solid research on the topics that drive these markets."
+      },
+      {
+        "topic": "Morningstar Retirement growth drivers and distribution strategy",
+        "stated_position": "Management identified three drivers of asset growth \u2014 market performance, expansion of the defined contribution market, and net inflows as it expands its product footprint within RIAs, recordkeepers, broker dealers, and employers \u2014 and said these drivers \"were very much intact in 2023.\"",
+        "kind": "segment_or_product",
+        "quote": "Finally, the third is net inflows as we expand our product footprint (and managed accounts) within our main distribution channels, which include registered investment advisors (RIAs), recordkeepers, broker dealers, and employers."
+      },
+      {
+        "topic": "Capital expenditure priorities",
+        "stated_position": "Management said more than 80% of 2023 capital expenditures were for external and internal use software development and that it is \"focused on ensuring that our development of products and services is driving value for the company and shareholders.\"",
+        "kind": "capital_allocation",
+        "quote": "More than 80% of our capital expenditures in 2023 were for external and internal use software development. Within these categories, we are focused on ensuring that our development of products and services is driving value for the company and shareholders."
+      },
+      {
+        "topic": "Employee turnover and retention initiatives",
+        "stated_position": "Management said voluntary turnover decreased to 12% in 2023 from 16% in 2022 and 17% in 2021, attributed the trend largely to the broader labor market and layoffs elsewhere, but noted \"positive results from internal initiatives including those focused on retaining top performers.\"",
+        "kind": "governance_or_management",
+        "quote": "This trend is consistent with what we\u2019ve observed in the broader labor market, and, we believe, has largely been driven by uncertainty stemming from layoffs in the technology, financial, and retail industries. That said, we have seen positive results from internal initiatives including those focused on retaining top performers."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "Upon review of our filing, the SEC evaluated our application of the standard and objected to our aggregation of certain operating segments.",
+        "why_notable": "Unusually direct acknowledgement that a regulator objected to management's own accounting interpretation, framed as the cause of the restated segment structure."
+      },
+      {
+        "quote": "This control matter is isolated to segment reporting, and we expect it will be fully remediated in the first half of 2024 when we have had adequate time to test the effectiveness of the process and control improvements.",
+        "why_notable": "Containment language \u2014 management bounds the material weakness narrowly and commits to a remediation timeline, worth checking against later filings."
+      },
+      {
+        "quote": "From the segment information we reported for the 9 months ended September 30, 2023, and the revised segment disclosure for the 12 months ended December 31, 2023, you can derive that Morningstar Sustainalytics is not profitable today on an adjusted operating income basis.",
+        "why_notable": "A candid admission of unprofitability in a strategically emphasized ESG business, delivered by pointing investors to derive it rather than disclosing it directly."
+      },
+      {
+        "quote": "Although Morningstar Sustainalytics has faced recent headwinds, (especially in the U.S.), over the long term we expect continued strong fundamentals to support demand for ESG and especially climate data.",
+        "why_notable": "A hedge on the ESG growth story: acknowledgement of U.S. headwinds paired with a long-term conviction claim, and a narrowing of emphasis toward climate data."
+      },
+      {
+        "quote": "Although the annual revenue renewal rate was still strong on an absolute basis, the decline in the annual revenue renewal rate in 2023 relative to the prior year and the five-year average partially reflected the impact of a more challenging environment, which resulted in higher churn for non-core clients as well as more limited expansion with renewing customers than in prior periods.",
+        "why_notable": "Softening tone around PitchBook's flagship retention metric \u2014 a key growth claim in prior years now qualified as 'still strong on an absolute basis.'"
+      },
+      {
+        "quote": "Morningstar DBRS has a high level of inherent operating leverage. Large increases in transactional issuance volumes result in a very high flow-through to incremental adjusted operating income.",
+        "why_notable": "A recurring characterisation of the credit ratings business as cyclically leveraged, with explicit acknowledgement it 'worked in the other direction' in 2022 and 2023."
+      }
+    ]
+  }
+}

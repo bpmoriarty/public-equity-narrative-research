@@ -1,0 +1,130 @@
+{
+  "fiscal_year": 2023,
+  "task": "investor_qa",
+  "unit": "0001104659-23-110795",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:09:10Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 10239,
+    "output_tokens": 3165
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-23-110795",
+      "form": "8-K",
+      "filing_date": "2023-10-23",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 24522,
+  "facts": {
+    "topics": [
+      {
+        "topic": "SEC enforcement action against DBRS Morningstar",
+        "stated_position": "On September 29, 2023, the SEC issued orders resolving investigations at several financial firms, including two settlements with DBRS Morningstar resulting in a total of $8 million in penalties, which were paid early in the fourth quarter.",
+        "kind": "governance_or_management",
+        "quote": "On September 29, 2023, the Securities and Exchange Commission (SEC) issued orders that resolved investigations at several financial firms, including two settlements with DBRS Morningstar resulting in a total of $8 million in penalties, which were paid early in the fourth quarter."
+      },
+      {
+        "topic": "Morningstar Sustainalytics growth opportunity",
+        "stated_position": "New regulatory requirements and demand to support ESG integration support future opportunities in continental Europe, and management continues to see an opportunity to leverage the existing Morningstar client footprint in managed product data and analytics to grow the business.",
+        "kind": "segment_or_product",
+        "quote": "New regulatory requirements as well as demand to support ESG integration in the investment selection process and advisory practices with wealth managers support future opportunities for the business in continental Europe. We also continue to see an opportunity to leverage the existing Morningstar client footprint in managed product data and analytics to grow this business."
+      },
+      {
+        "topic": "PitchBook market penetration and competitive position",
+        "stated_position": "Greatest penetration rate is in the investment bank sector and to a lesser extent private equity; penetration analysis based on client logos as a percentage of TAM is directionally helpful but limited, and management continues to see significant growth opportunities across all primary segments.",
+        "kind": "competition_or_market",
+        "quote": "Our greatest penetration rate is in the investment bank sector and to a lesser extent within private equity. Our analysis of penetration rates is based on total client logos in a given segment as a percentage of total companies in the TAM for that segment. We think this analysis is directionally helpful but does have some limits."
+      },
+      {
+        "topic": "Vulnerability of PitchBook's corporate/company client segment",
+        "stated_position": "The company segment continues to be the most vulnerable segment in the current market environment, with particular vulnerability with start-ups and corporate development teams.",
+        "kind": "competition_or_market",
+        "quote": "The company segment continues to be our most vulnerable segment in the current market environment, with particular vulnerability with start-ups and corporate development teams."
+      },
+      {
+        "topic": "PitchBook pricing strategy",
+        "stated_position": "PitchBook implemented a meaningful price increase in mid-2022, and management continues to look for opportunities to increase prices at renewal.",
+        "kind": "strategy",
+        "quote": "In addition, PitchBook implemented a meaningful price increase in mid-2022, and we continue to look for opportunities to increase prices at renewal."
+      },
+      {
+        "topic": "LCD acquisition integration costs and ROIC impact",
+        "stated_position": "Management expects to invest close to $6 million in integration costs for LCD across 2022 and 2023; the incremental $650 million of debt incurred to fund the acquisition had an actual impact of approximately 170 basis points on 2022 ROIC, closer to 90 basis points factoring in LCD's after-tax income.",
+        "kind": "capital_allocation",
+        "quote": "The 200 bps cited at the annual shareholder meeting was a rounding of the impact of the incremental $650 million of debt incurred to fund the acquisition on our aggregate return on invested capital (ROIC). The actual impact of the debt was approximately 170 basis points in 2022, which would be closer to 90 basis points if we also factor in the after-tax income of LCD from the date of the acquisition."
+      },
+      {
+        "topic": "Reporting LCD as part of PitchBook",
+        "stated_position": "LCD didn't meet the threshold to be a separately disclosed key product area for 2023; in 2024 Morningstar will report LCD as part of PitchBook as the two products approach full integration, with platform integration work largely complete in the first half of 2024.",
+        "kind": "segment_or_product",
+        "quote": "LCD didn\u2019t meet the threshold to be included as a separately disclosed key product area for 2023. In 2024, we will report LCD as part of PitchBook."
+      },
+      {
+        "topic": "Post-acquisition priorities for LCD",
+        "stated_position": "Attention is now shifting from platform integration to expanding relationships with existing clients and attracting new clients, especially in the rapidly growing private credit market.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "We\u2019ll largely complete the platform integration work in the first half of 2024. Our attention is now shifting to expanding relationships with existing clients and attracting new clients, drawn by the additional use cases we\u2019re now able to support, especially in the rapidly growing private credit market."
+      },
+      {
+        "topic": "Investment Management disclosure practices",
+        "stated_position": "Managed Portfolios is Investment Management's flagship product and the directly-distributed product is the focus of recent investments; management is considering updates to how it discloses AUM but does not currently share quarterly flows.",
+        "kind": "segment_or_product",
+        "quote": "We are considering updates to how we disclose AUM for these products, but do not currently share quarterly flows."
+      },
+      {
+        "topic": "Return horizon and rationale for Morningstar Wealth investments",
+        "stated_position": "Management expects a three-to-five-year return horizon for Morningstar Wealth investments, a longer payoff period than license-based product areas, driven by sustained net inflows.",
+        "kind": "strategy",
+        "quote": "At our annual shareholders\u2019 meeting in May, we noted that we expect the return horizon for our investments in Morningstar Wealth to be three to five years, a longer payoff period compared to the investments we\u2019ve made in our license-based product areas."
+      },
+      {
+        "topic": "Cost reductions in Morningstar Wealth",
+        "stated_position": "In the third quarter, Morningstar took actions to reduce Morningstar Wealth headcount and identified opportunities to decrease non-compensation operating costs, while continuing to prioritize and support the U.S. and international wealth platforms.",
+        "kind": "strategy",
+        "quote": "In the third quarter, we took actions to reduce Morningstar Wealth headcount and also identified opportunities to decrease non-compensation-related operating costs, including expenses related to third-party contractors and other vendors, travel, marketing and infrastructure. We continue to prioritize and support the U.S. and international wealth platforms, which we believe offer attractive opportunities to scale and generate long-term returns."
+      },
+      {
+        "topic": "Morningstar Indexes competitive position",
+        "stated_position": "Growth has been driven by products leveraging proprietary research from across Morningstar and by clients opting to switch to Morningstar Index benchmarks from incumbent providers, with clients seeing the benefit of transitioning mandates to a global index provider.",
+        "kind": "competition_or_market",
+        "quote": "Licensed data has benefited from client uptake of proprietary, differentiated indexes as well as clients opting to switch to Morningstar Index benchmarks from incumbent providers. We believe that clients are seeing the benefit of transitioning mandates to a global index provider with competitive capabilities and a differentiated offering that provides good value."
+      },
+      {
+        "topic": "Go-forward effective tax rate expectation",
+        "stated_position": "Adjusting for tax reserves and discrete items, the company likely would have realized a tax rate between 27.0% and 29.0% in both periods, and expects a go-forward underlying rate within a consistent range absent discrete items and further changes in tax regulation.",
+        "kind": "other",
+        "quote": "Our current expectation is that a go-forward underlying rate would be within a consistent range, absent discrete items and further changes in tax regulation."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We\u2019ve acknowledged that the investments we\u2019ve made in Morningstar Wealth were countercyclical. However, we think it\u2019s important to take a long-term approach to our investments and to take advantage of opportunities that we believe will create long-term value for shareholders even when the external environment is more challenging. That said, the sharp declines in global markets in 2022 have meant that we\u2019ve tracked behind our initial goals for Morningstar Wealth.",
+        "why_notable": "An unusually direct admission that the company is behind its own goals, paired with a defense of the countercyclical investment choice."
+      },
+      {
+        "quote": "The company segment continues to be our most vulnerable segment in the current market environment, with particular vulnerability with start-ups and corporate development teams.",
+        "why_notable": "Candid characterisation of weakness in a specific PitchBook client segment, repeated language of 'vulnerable'."
+      },
+      {
+        "quote": "Overall, for the PitchBook platform, in the first half of 2023, we saw some softening in the net renewal rate relative to the 2022 rate and the 2017-2022 average, which we attribute to hesitancy from some clients to expand their relationships given the current economic environment.",
+        "why_notable": "A hedge on the previously touted 121% net renewal rate, admitting softening while attributing it to external conditions."
+      },
+      {
+        "quote": "Morningstar Indexes\u2019 industry-leading growth in recent years has been driven by several different factors.",
+        "why_notable": "Self-characterisation as 'industry-leading' \u2014 a competitive claim stated without qualification."
+      },
+      {
+        "quote": "So far, we\u2019re pleased with the progress we\u2019re making post-acquisition to bring the richness of LCD\u2019s data, news, and research onto one platform.",
+        "why_notable": "Recurring positive framing of the LCD integration; 'pleased' appears repeatedly in the same answer alongside acknowledgment that it is 'early in this process'."
+      }
+    ]
+  }
+}

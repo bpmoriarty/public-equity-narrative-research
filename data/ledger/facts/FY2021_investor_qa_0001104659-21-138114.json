@@ -1,0 +1,106 @@
+{
+  "fiscal_year": 2021,
+  "task": "investor_qa",
+  "unit": "0001104659-21-138114",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:01:44Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 6468,
+    "output_tokens": 2622
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-21-138114",
+      "form": "8-K",
+      "filing_date": "2021-11-12",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 12708,
+  "facts": {
+    "topics": [
+      {
+        "topic": "PitchBook's total addressable market and competitive set relative to Bloomberg and Refinitiv",
+        "stated_position": "Our growth strategy at PitchBook isn't necessarily about displacing competitors, it's about ensuring that the client is using PitchBook. We seldom compete head-to-head with Bloomberg or Refinitiv; rather, we view our offering as complementary. Direct competitive set is predominantly Capital IQ, Preqin, Crunchbase and to a certain extent Mergermarket (in Europe mostly).",
+        "kind": "competition_or_market",
+        "quote": "Our growth strategy at PitchBook isn\u2019t necessarily about displacing competitors, it\u2019s about ensuring that the client is using PitchBook. We seldom compete head-to-head with Bloomberg or Refinitiv; rather, we view our offering as complementary."
+      },
+      {
+        "topic": "Adapting the product set for international markets where independent advisors are less prevalent",
+        "stated_position": "We believe that investors are well-served by independent advice; regulations and advisor practices vary greatly by market, so we tailor our software, data and investment management services. The best example is the acquisition of Adviser Logic in Australia. Where investors are served directly by larger institutions, Morningstar provides enterprise solutions embedded into firms' business functions.",
+        "kind": "strategy",
+        "quote": "Regulations and advisor practices vary greatly by market, so we tailor our software, data and investment management services to support the needs of advisors in these markets. The best example of this is our acquisition of Adviser Logic in Australia, which allowed us to address the growing need for financial planning in the market."
+      },
+      {
+        "topic": "Long-term growth opportunity in Morningstar Indexes",
+        "stated_position": "Over the long-run, we expect our growth will be supported by attracting new clients that create investable products from our indexes, increased demand for ESG-related indexes (which we are well-suited to provide using Sustainalytics' expertise), and licensing of benchmark data.",
+        "kind": "segment_or_product",
+        "quote": "Over the long-run, we expect our growth will be supported by attracting new clients that create investable products from our indexes, increased demand for ESG-related indexes (which we are well-suited to provide using Sustainalytics\u2019 expertise), and licensing of benchmark data."
+      },
+      {
+        "topic": "Margin expansion and operating leverage versus higher-margin peers (FDS, MSCI, SPGI, MCO)",
+        "stated_position": "We manage our business to a model of sustainable growth where we invest heavily to capture longer-term opportunities; we are currently in a period of extraordinary investment because our opportunity set is meaningful. We will focus on making the right short-term and long-term trade-offs, which could have impacts on margin in periods of heavier investment.",
+        "kind": "strategy",
+        "quote": "Valuations more recently across private and public markets have tended to favor faster growers, but we manage our business to a model of sustainable growth where we invest heavily to capture longer-term opportunities. Our business mix has changed since 15 years ago; however, it\u2019s also fair to say that we are currently in a period of extraordinary investment because our opportunity set is meaningful."
+      },
+      {
+        "topic": "Secular growth trends the company intends to capitalize on",
+        "stated_position": "Whether it is ESG, indexes, retirement, wealth, data, credit ratings, or the private markets, we are at the intersection of attractive secular growth trends on which we intend to capitalize; we expect these trends to continue, especially with respect to ESG, wealth, and the private markets.",
+        "kind": "strategy",
+        "quote": "Whether it is ESG, indexes, retirement, wealth, data, credit ratings, or the private markets, we are at the intersection of attractive secular growth trends on which we intend to capitalize. As such, we have been investing heavily to support our ability to compete well and generate strong future returns. We expect these trends to continue, especially with respect to ESG, wealth, and the private markets."
+      },
+      {
+        "topic": "Competition for talent and compensation programs",
+        "stated_position": "While we are facing competition to retain and attract employees, the mechanism associated with the increase in the bonus pool is largely related to our outperformance relative to targets. Nevertheless, to better compete for talent, we're analyzing our compensation programs and are investing more resources toward compensation in 2021 and 2022.",
+        "kind": "governance_or_management",
+        "quote": "Nevertheless, to better compete for talent, we\u2019re analyzing our compensation programs and are investing more resources toward compensation in 2021 and 2022."
+      },
+      {
+        "topic": "Pricing power across the portfolio",
+        "stated_position": "We do not disclose the percentage of revenue growth that comes from price increases, but generally we expect to be compensated for the value we provide, and we believe that our license-based products, in aggregate, exhibit the most pricing power across the portfolio.",
+        "kind": "segment_or_product",
+        "quote": "Generally, we expect to be compensated for the value we provide our clients, and many of our long-standing clients agree that we\u2019ve become important parts of their daily workflow. As such, we believe that our license-based products, in aggregate, exhibit the most pricing power across the portfolio."
+      },
+      {
+        "topic": "How asset owners and managers use Sustainalytics research in their investment processes",
+        "stated_position": "Sustainalytics research and ratings are used throughout the investment process, from pre-investment analysis to security selection to post-investment engagement and compliance, varying from one of many analytical inputs to being deeply embedded in investment decisions; its research is also used extensively in the creation of benchmark indexes.",
+        "kind": "segment_or_product",
+        "quote": "Sustainalytics research and ratings are used by asset owners and asset managers throughout the investment process, from pre-investment analysis to security selection to post-investment engagement and compliance."
+      },
+      {
+        "topic": "Durability of COVID-19-related cost savings",
+        "stated_position": "We view most of these cost savings as temporary in nature and have seen these areas increase in 2021 as travel restrictions are easing, employees return to offices globally, and our pace of hiring has accelerated.",
+        "kind": "other",
+        "quote": "We view most of these cost savings as temporary in nature and have seen these areas increase in 2021 as travel restrictions are easing, we are seeing employees return to offices globally, and our pace of hiring has accelerated."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "In fact, we occasionally send some of our customers to Refinitiv products for some specific needs that PitchBook can\u2019t meet (for example, After Market Research).",
+        "why_notable": "Unusually direct admission of product gaps at PitchBook, and of referring customers to a competitor."
+      },
+      {
+        "quote": "In certain cases, we may report lower margins than members of our peer set, but we often generate higher revenue growth and cash flow conversion. In the broader fintech market, we often exhibit higher margins than many peers but lower revenue growth.",
+        "why_notable": "Management reframes the peer comparison both ways depending on the chosen comparison set \u2014 a hedge on the margin-gap question rather than a direct answer."
+      },
+      {
+        "quote": "we are currently in a period of extraordinary investment because our opportunity set is meaningful",
+        "why_notable": "The framing of 'extraordinary investment' becomes the standing justification for flat margins; worth tracking across years to see when the period ends."
+      },
+      {
+        "quote": "We are motivated to protect -and grow- our existing competitive advantages in each area so that we can continue to empower investor success in these arenas.",
+        "why_notable": "Recurring 'empower investor success' mission phrasing deployed to defend a capital-allocation posture."
+      },
+      {
+        "quote": "we wouldn\u2019t necessarily classify the increase in bonus expense as \u201cone-time\u201d in nature but rather tied to business performance; contributions to the bonus pool will ebb and flow along with our financial performance and increasing headcount",
+        "why_notable": "Management explicitly declines the 'one-time' characterisation investors offered, setting an expectation that compensation costs scale with performance."
+      }
+    ]
+  }
+}

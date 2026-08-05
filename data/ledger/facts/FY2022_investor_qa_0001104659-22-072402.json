@@ -1,0 +1,96 @@
+{
+  "fiscal_year": 2022,
+  "task": "investor_qa",
+  "unit": "0001104659-22-072402",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:01:44Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 4822,
+    "output_tokens": 2099
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-22-072402",
+      "form": "8-K",
+      "filing_date": "2022-06-17",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 7505,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Long-term profitability targets and investment priorities",
+        "stated_position": "Management confirmed it is \"investing heavily in the business, reflecting the opportunities we see to deliver outsized revenue growth in the large and expanding addressable markets in which we serve investors,\" naming Pitchbook, DBRS Morningstar, Morningstar Sustainalytics, Indexes, and Wealth Management as the largest investment areas, and said that while it does not disclose long-term margin targets, \"our goal is to improve margins over time as we scale and benefit from operating leverage.\"",
+        "kind": "strategy",
+        "quote": "While we do not disclose our long-term margin targets, our goal is to improve margins over time as we scale and benefit from operating leverage and the investments we are making in the business."
+      },
+      {
+        "topic": "Sustainalytics differentiation and value proposition",
+        "stated_position": "Management said its key differentiator is the ability \"to inform investors throughout the investment lifecycle from pre-investment analysis and screens, through the investment decision itself, to the post-investment stage,\" and pointed to the ESG Risk Rating's \"focus on absolute rather than relative risk,\" the EU Action Plan solution set, and \"our large and responsive customer service organization.\"",
+        "kind": "segment_or_product",
+        "quote": "We believe that one of our key differentiators and an important part of our value proposition is our ability to inform investors throughout the investment lifecycle from pre-investment analysis and screens, through the investment decision itself, to the post-investment stage, when our data helps clients vote on shareholder resolutions and engage with companies in their portfolios."
+      },
+      {
+        "topic": "New climate ratings planned for late 2022",
+        "stated_position": "Management stated it continues to invest in new data and analytics \"with a recent focus on climate and impact data\" and will debut new physical risk and transition risk ratings in late 2022.",
+        "kind": "segment_or_product",
+        "quote": "In late 2022, we will debut new ratings that help investors more directly understand how the changing climate could affect a company (physical risk) and how a company is adapting to the shift toward a low-carbon economy (transition risk)."
+      },
+      {
+        "topic": "Growth drivers and target customers for Sustainalytics",
+        "stated_position": "Asset managers and asset owners account for the largest share of Sustainalytics revenue; growth drivers cited are \"the evolving global regulatory environment as well as the opportunity to expand our penetration within large asset managers and to reach more middle market clients, especially in the United States,\" plus corporate licensed ratings and second-party opinions for green and sustainability bonds.",
+        "kind": "segment_or_product",
+        "quote": "Growth drivers include the evolving global regulatory environment as well as the opportunity to expand our penetration within large asset managers and to reach more middle market clients, especially in the United States."
+      },
+      {
+        "topic": "Competitive position in green bond verification",
+        "stated_position": "Management cited being named by the Climate Bonds Initiative as \"the Largest Verifier for Certified Climate Bonds for a fifth consecutive year\" and described a \"strong competitive position\" in second-party opinions for green and sustainability bonds.",
+        "kind": "competition_or_market",
+        "quote": "In June 2022, the Climate Bonds Initiative (CBI) named Morningstar Sustainalytics the Largest Verifier for Certified Climate Bonds for a fifth consecutive year, while noting that in 2021 the market for green bonds nearly doubled in volume to more than USD 1.1 trillion compared to 2020."
+      },
+      {
+        "topic": "Firm-wide ESG objective",
+        "stated_position": "Management stated the \"overall objective is to establish leading ESG positions across Morningstar,\" leveraging Sustainalytics data, research, and ratings across products including direct indexing for advisors and a new Sustainability hub in Direct.",
+        "kind": "strategy",
+        "quote": "More broadly, our overall objective is to establish leading ESG positions across Morningstar. We are leveraging Sustainalytics data, research, and ratings to meet that goal."
+      },
+      {
+        "topic": "PitchBook addressable market and penetration",
+        "stated_position": "Management stated the total addressable market for PitchBook is 114,000 firms against 8,000 firms served today, leaving \"considerable room for growth, especially as we integrate the capabilities of our recently acquired Leveraged Commentary & Data product area.\"",
+        "kind": "segment_or_product",
+        "quote": "As we discussed at our Annual Shareholder Meeting, we view the total addressable market for PitchBook to be 114,000 firms. We serve 8,000 firms today."
+      },
+      {
+        "topic": "ESG assessment of private companies",
+        "stated_position": "Management said Sustainalytics offers a pre-IPO ESG assessment service but \"does not otherwise proactively rate private companies at this time,\" and is evaluating opportunities to expand ESG assessments to private companies.",
+        "kind": "segment_or_product",
+        "quote": "Morningstar Sustainalytics does offer a pre-IPO ESG assessment service for private companies but does not otherwise proactively rate private companies at this time. We are evaluating opportunities to expand our ESG assessments to private companies."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "You are correct that we are investing heavily in the business, reflecting the opportunities we see to deliver outsized revenue growth in the large and expanding addressable markets in which we serve investors.",
+        "why_notable": "An unusually direct concession to a critical question that framed Morningstar as an outlier on margin pressure; management accepts the investment framing rather than the inflation framing."
+      },
+      {
+        "quote": "In the short-term, we recognize that these investments can impact margins.",
+        "why_notable": "An explicit admission that margins are being sacrificed, immediately hedged by the non-disclosure of long-term margin targets."
+      },
+      {
+        "quote": "To support that growth, our headcount expanded by over 1600 team members in the 12 months ended March 2022.",
+        "why_notable": "Quantifies the scale of the build-out in a single year; the phrase \"team members\" is the company's recurring characterisation of employees."
+      },
+      {
+        "quote": "We are investing heavily in ESG and remain confident in our long-term prospects for growth.",
+        "why_notable": "Recurring claim of confidence in ESG as a growth engine, stated at the peak of the company's ESG investment cycle."
+      }
+    ]
+  }
+}

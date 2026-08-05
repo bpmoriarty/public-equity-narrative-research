@@ -1,0 +1,42 @@
+{
+  "fiscal_year": 2023,
+  "task": "investor_qa",
+  "unit": "0001104659-23-025316",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:07:58Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 3078,
+    "output_tokens": 457
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-23-025316",
+      "form": "8-K",
+      "filing_date": "2023-02-24",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 1597,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Regulation of subsidiaries and branches in the U.K. and the UAE",
+        "stated_position": "Certain of our subsidiaries and branches are regulated in the U.K. and the UAE. In the U.K., our regulator is the U.K. Financial Conduct Authority (FCA), which regulates activities related to Morningstar Indexes, Morningstar Wealth, and DBRS Morningstar. In the UAE, the Dubai Financial Services Authority (DFSA) regulates activities related to Morningstar Wealth.",
+        "kind": "governance_or_management",
+        "quote": "Certain of our subsidiaries and branches are regulated in the U.K. and the UAE. In the U.K., our regulator is the U.K. Financial Conduct Authority (FCA), which regulates activities related to Morningstar Indexes, Morningstar Wealth, and DBRS Morningstar. In the UAE, the Dubai Financial Services Authority (DFSA) regulates activities related to Morningstar Wealth."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We encourage current shareholders, potential shareholders, and other interested parties to send questions to us in writing and we make written responses available on a regular basis.",
+        "why_notable": "Recurring framing of Morningstar's standing written-question disclosure policy, which substitutes for traditional earnings calls."
+      }
+    ]
+  }
+}

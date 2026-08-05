@@ -1,0 +1,146 @@
+{
+  "fiscal_year": 2023,
+  "task": "investor_qa",
+  "unit": "0001104659-23-105947",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:09:01Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 10875,
+    "output_tokens": 3907
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-23-105947",
+      "form": "8-K",
+      "filing_date": "2023-10-02",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 27487,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Path back to \"historical peak\" adjusted operating margins",
+        "stated_position": "Management defines the target as adjusted operating margins topping 20% as shown in the five-year chart at the Annual Shareholder Meeting, to be reached via revenue growth plus \"careful management of expenses,\" headcount actions at DBRS Morningstar and Morningstar Sustainalytics, cuts to travel and professional fees, real estate consolidation (London), and further automation of data collection and research.",
+        "kind": "strategy",
+        "quote": "When we talk about our intention to return our business to recent historical peaks, we\u2019re referring to adjusted operating margins and looking at the period represented in the chart when those margins topped 20%."
+      },
+      {
+        "topic": "Narrowing of Morningstar Sustainalytics focus and reorganizations",
+        "stated_position": "The Q2 2023 targeted reorganizations were focused on DBRS Morningstar, \"reflecting the challenges in the North American commercial real estate market,\" and Morningstar Sustainalytics, \"where we have narrowed our focus to concentrate on more mature ESG markets and products that serve a global footprint,\" with further headcount reductions in Q3 2023.",
+        "kind": "segment_or_product",
+        "quote": "The targeted reorganizations in the second quarter of 2023 were focused on DBRS Morningstar, reflecting the challenges in the North American commercial real estate market, and Morningstar Sustainalytics, where we have narrowed our focus to concentrate on more mature ESG markets and products that serve a global footprint."
+      },
+      {
+        "topic": "Transition of China operations",
+        "stated_position": "Management expects the transition of China-based activities to be substantially complete by the end of Q3 2023, after which it expects lower ongoing costs and no significant additional transformation costs; more than 260 additional employees left the China offices during July and August.",
+        "kind": "strategy",
+        "quote": "We anticipate that the transition of our China operations will be substantially complete by the end of the third quarter of 2023. Once that milestone is met, we expect to incur lower ongoing costs for those activities previously conducted in China (including compensation and benefits, and facilities-related expenses) compared to the period prior to the transition."
+      },
+      {
+        "topic": "DBRS Morningstar growth priorities and resource reallocation",
+        "stated_position": "Planning for continued CMBS softness while seeing \"good growth opportunities in global corporates, including Canadian investment-grade and middle-market U.S. and European ratings\" and in ABS; resources are being reallocated to the credit practices group and new asset classes including esoteric ABS.",
+        "kind": "segment_or_product",
+        "quote": "We are reallocating resources to areas that we believe will help us support long-term growth. In particular, we\u2019ve reallocated resources to our credit practices group, which supports our broader ratings effort and the addition of ratings in new asset classes, including in esoteric ABS, which include niche, nontraditional ABS issuance."
+      },
+      {
+        "topic": "DBRS competitive position in middle-market corporate ratings",
+        "stated_position": "Management is confident DBRS hires will generate returns, and while \"the largest players are entrenched in the public investment-grade corporate market in the US and Europe,\" it does not see the same challenges in private and middle-market corporate markets, believing clients value its responsiveness and research quality.",
+        "kind": "competition_or_market",
+        "quote": "While the largest players are entrenched in the public investment-grade corporate market in the US and Europe, we do not see the same challenges in private and middle-market corporate markets. We believe that our clients appreciate our responsiveness and the quality of our research product."
+      },
+      {
+        "topic": "CMBS market share pressure and divergent credit views",
+        "stated_position": "Management acknowledges market share pressure in U.S. CMBS related to changing transaction mix and \"a divergence in market views that dated to late 2022,\" noting DBRS has been engaged less frequently on transactions with high office and certain retail exposures, but says the primary revenue driver was the sharp drop in overall issuance.",
+        "kind": "competition_or_market",
+        "quote": "Compared to some other credit rating agencies, DBRS Morningstar has been engaged less frequently on transactions that have relatively high exposures to office and certain retail properties where these segments play a key role in our credit analysis."
+      },
+      {
+        "topic": "Sustainalytics leadership departures (Michael Jantzi, Bob Mann)",
+        "stated_position": "The leadership changes \"were not part of the original integration plan,\" though management \"were also prepared for them\"; Jantzi chose to step down in 2022 to pursue new challenges, and Bob Mann \"left earlier this year as we hastened integrating Morningstar Sustainalytics into our broader operations.\"",
+        "kind": "governance_or_management",
+        "quote": "In that vein, while the changes in leadership that you referenced were not part of the original integration plan, we were also prepared for them."
+      },
+      {
+        "topic": "Aligning Morningstar Sustainalytics with Morningstar Indexes under Ron Bundy",
+        "stated_position": "The two operate in similar markets and serve similar clients; placing both under one executive, Ron Bundy, \"allows for greater alignment around this strategic direction\" and is expected to bring investors a more holistic set of ESG products faster.",
+        "kind": "governance_or_management",
+        "quote": "Morningstar Indexes and Morningstar Sustainalytics operate in similar markets, serve a similar set of institutional and asset management clients, and, working together, we believe that they will bring investors a more holistic set of ESG products and services in a faster and more focused way. Placing both under the leadership of one executive, Ron Bundy, allows for greater alignment around this strategic direction."
+      },
+      {
+        "topic": "Climate solutions product line strategy",
+        "stated_position": "The plan is to increase ESG thought leadership, better leverage the broader Morningstar sales team, and use Morningstar Indexes as a delivery channel for climate IP; management remains \"committed to our climate suite as one of our key business initiatives going forward\" while acknowledging the buying cycle has been slow.",
+        "kind": "segment_or_product",
+        "quote": "We remain committed to our climate suite as one of our key business initiatives going forward."
+      },
+      {
+        "topic": "EU ESG ratings regulation proposal on separation of business activities",
+        "stated_position": "Management believes the separation sections \"may be adjusted in the final regulation,\" continues to engage EU policymakers, and will consider safeguarding methodology independence and protecting against conflicts of interest once it has clarity.",
+        "kind": "competition_or_market",
+        "quote": "We believe, as with the whole draft regulation, that the sections addressing the separation of certain business activities may be adjusted in the final regulation, given that the regulated community and other stakeholders have raised questions about the nuances of the different separation requirements for different kinds of regulated businesses."
+      },
+      {
+        "topic": "PitchBook pricing model and modularization",
+        "stated_position": "Pricing is reviewed annually and is all-inclusive; \"At this time, we have no plans to change our approach, which we believe has several important benefits for our clients,\" citing the breadth of datasets and interconnectivity across the database.",
+        "kind": "segment_or_product",
+        "quote": "At this time, we have no plans to change our approach, which we believe has several important benefits for our clients."
+      },
+      {
+        "topic": "PitchBook demand environment and sales staffing",
+        "stated_position": "Demand in core venture capital and private equity segments \"remains strong\" with additional demand in private credit; management says it has a well-defined staffing model and has not observed extended sales cycles or increased sales attrition through June 2023.",
+        "kind": "competition_or_market",
+        "quote": "Demand in our core venture capital and private equity segments remains strong and we\u2019re seeing additional demand in the private credit space. We have a well-defined staffing model that sets the appropriate team size to deliver on our sales targets."
+      },
+      {
+        "topic": "Capital allocation priorities and share repurchases",
+        "stated_position": "The MJKK license termination is viewed as capital allocation \"similar to an M&A transaction in its impact\"; management continues \"a balanced approach to capital allocation with a near-to-intermediate term focus on paying down debt\" following Praemium and LCD, and repurchases shares when return potential is attractive.",
+        "kind": "capital_allocation",
+        "quote": "We continue to take a balanced approach to capital allocation with a near-to-intermediate term focus on paying down debt following the acquisitions of Praemium and LCD in 2022 and the accompanying increase in our debt and leverage levels. We repurchase shares when we believe that the return potential is attractive compared to other uses of cash and continue to take that approach."
+      },
+      {
+        "topic": "M&A-related expenses and integration wind-down",
+        "stated_position": "M&A add-backs include one-time transaction and integration costs, primarily related to Praemium and LCD acquisitions including integrating LCD onto the PitchBook platform; \"We expect these activities to wind down as we move into 2024.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "Through the first six months of 2023, costs in this category were primarily related to the Praemium and Leveraged Commentary & Data (LCD) acquisitions completed in mid-2022, including the integration of LCD onto the PitchBook platform. We expect these activities to wind down as we move into 2024."
+      },
+      {
+        "topic": "Disclosure practices on guidance and segment detail",
+        "stated_position": "Management reiterates its \"stated practice of not issuing guidance\" and declines to disclose revenues by asset class or quarterly revenues beyond key product area level \"for competitive reasons,\" but is considering updates to AUM disclosure for asset-based product areas.",
+        "kind": "governance_or_management",
+        "quote": "We do not currently disclose quarterly flows for our asset-based product areas but are considering updates to how we disclose AUM for these products."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "Bob left earlier this year as we hastened integrating Morningstar Sustainalytics into our broader operations.",
+        "why_notable": "Unusually candid framing of an executive departure as a consequence of accelerated integration, rather than a personal decision \u2014 contrasts with the account given for Jantzi."
+      },
+      {
+        "quote": "We acknowledge the significant headwinds in the North American CMBS market, although we do expect CMBS-related revenues to rebound over the longer term.",
+        "why_notable": "Direct admission of a structural problem paired with an unquantified long-term recovery hedge."
+      },
+      {
+        "quote": "The capabilities of our offering are differentiated, so incorporating them into an existing investment process requires commitment and engagement from the client side and most clients have instead been prioritizing their regulatory reporting requirements.",
+        "why_notable": "Attributes slow climate-product sales to client priorities and product complexity \u2014 a softening of earlier enthusiasm for the ESG build-out."
+      },
+      {
+        "quote": "as we remain focused on working to return our adjusted operating margins to historical peaks",
+        "why_notable": "Hedged, doubly-qualified phrasing (\"focused on working to return\") for a margin objective, with no timeframe attached; a recurring claim in this period."
+      },
+      {
+        "quote": "where we have narrowed our focus to concentrate on more mature ESG markets and products that serve a global footprint",
+        "why_notable": "Marks an explicit retrenchment in how the Sustainalytics business is characterised, after heavy investment."
+      },
+      {
+        "quote": "Consistent with our stated practice of not issuing guidance, we don\u2019t provide forward-looking details on expense savings that we expect to materialize from the actions that we\u2019ve taken. That said, our savings from those actions will exceed the $4 million in severance costs disclosed for the second quarter of 2023.",
+        "why_notable": "Refuses quantification on principle, then immediately offers a directional floor \u2014 a recurring pattern in Morningstar's investor Q&A."
+      }
+    ]
+  }
+}

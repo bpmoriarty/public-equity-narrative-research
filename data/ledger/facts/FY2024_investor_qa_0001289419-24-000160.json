@@ -1,0 +1,151 @@
+{
+  "fiscal_year": 2024,
+  "task": "investor_qa",
+  "unit": "0001289419-24-000160",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:45:00Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 13912,
+    "output_tokens": 3890
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-24-000160",
+      "form": "8-K",
+      "filing_date": "2024-12-13",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001289419-24-000160",
+      "form": "8-K",
+      "filing_date": "2024-12-13",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 36405,
+  "facts": {
+    "topics": [
+      {
+        "topic": "CFO transition and continuity of strategy",
+        "stated_position": "Michael Holt, current Chief Strategy Officer and President of Research & Investments, was named CFO effective January 1, 2025, following \"a rigorous selection process, which included interviews with internal and external candidates.\" Jason Dubinsky steps down at end of 2024 \"to pursue other interests\" and will consult through June 30, 2025. Management states: \"We expect continuity in our strategy through the CFO transition. We will continue to focus on growing our adjusted operating income and free cash flow to increase shareholder value.\"",
+        "kind": "governance_or_management",
+        "quote": "We expect continuity in our strategy through the CFO transition. We will continue to focus on growing our adjusted operating income and free cash flow to increase shareholder value."
+      },
+      {
+        "topic": "Long-term capital allocation priorities, dividend versus buybacks",
+        "stated_position": "Management restates four long-term priorities: preserve a strong balance sheet for flexibility; prioritize funding organic growth and consider acquisitions where they see opportunities to generate long-term shareholder value; maintain and increase the dividend commensurate with financial results; and repurchase shares when cash is available, accelerating \"opportunistically when we believe that our shares are substantially undervalued.\" Given leverage at approximately 1.2x, they are \"carefully assessing our best use of cash,\" one outcome being a 12.3% quarterly dividend increase from 40.5 to 45.5 cents for 2025.",
+        "kind": "capital_allocation",
+        "quote": "- We aim to maintain and increase our dividend over time commensurate with company financial results; and - We look to repurchase shares when we have available cash and will accelerate that activity opportunistically when we believe that our shares are substantially undervalued."
+      },
+      {
+        "topic": "Debt paydown following the LCD acquisition",
+        "stated_position": "Management says the debt-financed 2022 LCD acquisition caused a substantial increase in leverage and that, with higher interest rates, \"over the past 18 months we have been focused on paying down debt,\" with leverage down to approximately 1.2x as of September 30, 2024.",
+        "kind": "capital_allocation",
+        "quote": "With the 2022 acquisition of Leveraged Commentary & Data (LCD), which we financed with debt, we saw a substantial increase in our leverage. As a result of that increase and higher interest rates, over the past 18 months we have been focused on paying down debt."
+      },
+      {
+        "topic": "Use of divestiture proceeds",
+        "stated_position": "Management says that if it determines to use proceeds from the AssetMark transaction and the sale of the Commodity and Energy Data business to repay debt, leverage ratios could come down further \u2014 framed conditionally rather than as a commitment.",
+        "kind": "capital_allocation",
+        "quote": "If we determine to use the proceeds from the AssetMark transaction and the sale of our Commodity and Energy Data business to repay debt, you could see our leverage ratios come down further."
+      },
+      {
+        "topic": "Further divestitures of sub-scale or non-core businesses",
+        "stated_position": "Management says it evaluates the product portfolio on an ongoing basis \"to allocate investment to the best opportunities for widening our economic moat and driving long-term value creation,\" notes the completed Commodity and Energy data sale and the December 1, 2024 disposition of roughly $12 billion of TAMP assets to AssetMark, and states it plans to sunset the TAMP.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "On an ongoing basis, we evaluate our product portfolio to allocate investment to the best opportunities for widening our economic moat and driving long-term value creation."
+      },
+      {
+        "topic": "Margin expansion goal and headcount",
+        "stated_position": "Management confirms the goal is annual adjusted operating margin returning to recent peaks \"in the low 20 percent range\" and higher, and states: \"Over the long term, we are focused on increasing revenues at a faster rate than our adjusted operating expenses, with the goal of margin expansion and increasing free cash flow over time.\" It declines to share headcount projections.",
+        "kind": "strategy",
+        "quote": "Over the long term, we are focused on increasing revenues at a faster rate than our adjusted operating expenses, with the goal of margin expansion and increasing free cash flow over time. We do not share headcount projections"
+      },
+      {
+        "topic": "Competitive position in structured credit ratings",
+        "stated_position": "Management concedes it does not have a significant CLO ratings business while its largest competitors are more active there, which has helped drive their growth; it says it continues to see opportunities in structured credit and \"attractive prospects in private and middle market corporates in the U.S. and Europe.\"",
+        "kind": "competition_or_market",
+        "quote": "That said, we do not have a significant business in rating collateralized loan obligations, while our largest competitors are more active in this sector, which has helped drive their growth."
+      },
+      {
+        "topic": "Change in Advisor Workstation / App Hub partnership strategy",
+        "stated_position": "Management says that based on learnings over the past 18 months it adjusted its App Hub strategy \"to only partner with solutions that are closely connected to our core strategy and directly connected to the Advisor workflow,\" resulting in fewer partners going forward, and expects to deliver an upgraded Advisor Workstation in early 2025.",
+        "kind": "segment_or_product",
+        "quote": "Based on our learnings over the past 18 months, we've adjusted our strategy to only partner with solutions that are closely connected to our core strategy and directly connected to the Advisor workflow."
+      },
+      {
+        "topic": "Loss of a research distribution client to insourcing",
+        "stated_position": "Management states the softness was largely driven by a client loss \u2014 a large global bank, a client since 2019 that sourced Morningstar equity research for buyside distribution \u2014 which \"made the strategic decision to stop using third-party research and to bring all research in house.\" Research distribution was roughly 5% of Morningstar Data and Analytics revenue for the trailing 12 months.",
+        "kind": "competition_or_market",
+        "quote": "The client in question was a large global bank who had been with us since 2019 and sourced our equity research and distributed it to buyside clients. The client ultimately made the strategic decision to stop using third-party research and to bring all research in house."
+      },
+      {
+        "topic": "Sustainalytics strategy to return to growth and licensed ratings model change",
+        "stated_position": "Management lists initiatives in climate (regulatory/reporting use cases, banking segment), broader data set improvements including CSRD support, and commitment to \"strengthening our market-leading second party-opinion product.\" It notes a shift in the licensed ratings product away from a model under which corporate clients could contract for a rating, which has reduced revenue but \"better positions us to scale that product over time.\"",
+        "kind": "segment_or_product",
+        "quote": "Finally, we\u2019ve noted a shift in our licensed ratings product to focus on licensing existing ESG Risk Ratings as we\u2019ve moved away from a model under which corporate clients could contract with us to provide a rating. The change in our product offering has led to a recent decline in revenue for the licensed ratings product in corporate solutions, but we believe it better positions us to scale that product over time."
+      },
+      {
+        "topic": "ESG competitive dynamics and vendor consolidation",
+        "stated_position": "Management attributes the ESG slowdown to vendor consolidation as \"many clients rationalized their ESG providers following a period of strong growth when they may have purchased multiple, overlapping ESG products,\" plus client focus on regulatory compliance over investment integration, and says competitors' strength in climate data and in indexes pressures its retention efforts.",
+        "kind": "competition_or_market",
+        "quote": "we have noted challenges in this space, and this has in turn also put pressure on our broader retention efforts with clients who have already selected one of our competitors to provide climate data. We believe that competitors are also able to leverage their strengths in other areas, including indexes, in support of their ESG products."
+      },
+      {
+        "topic": "PitchBook product roadmap",
+        "stated_position": "Management says the roadmap reflects \"a focus on expansion of data and research alongside product enhancements, including AI-driven tools,\" including private credit capabilities (BDCs and CLOs), non-backed company data, global databases and APAC research, private capital indexes with Morningstar Indexes, and expanded AI-driven document summaries.",
+        "kind": "segment_or_product",
+        "quote": "The PitchBook product roadmap continues to reflect a focus on expansion of data and research alongside product enhancements, including AI-driven tools."
+      },
+      {
+        "topic": "PitchBook management bonus plan terminated after CEO departure",
+        "stated_position": "Management states the PitchBook management bonus plan \"was designed primarily as a compensation vehicle for John\" (former PitchBook CEO John Gabbert) and was terminated in Q3 24 following his departure, with stock forfeiture positively affecting PitchBook adjusted operating income.",
+        "kind": "governance_or_management",
+        "quote": "The plan was designed primarily as a compensation vehicle for John and was terminated in Q3 24."
+      },
+      {
+        "topic": "Japan strategy after terminating the Morningstar Japan licensing agreement",
+        "stated_position": "Management says that with the termination completed \"the Morningstar brand is in our full control,\" it now sells most products through a new subsidiary, Morningstar Japan, which \"has helped eliminate the brand confusion that we previously faced,\" has hired a local manager research team, and is expanding beyond first-tier financial institutions to fintech startups and developing solutions for independent financial advisors.",
+        "kind": "strategy",
+        "quote": "With the termination completed, the Morningstar brand is in our full control. We have moved to selling most products through a new subsidiary, Morningstar Japan, which has helped eliminate the brand confusion that we previously faced."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "Considering Morningstar\u2019s low (and decreasing) leverage and lack of appetite for transformational M&A, why hasn\u2019t more capital been returned to shareholders?",
+        "why_notable": "The investor question itself characterizes Morningstar as having a \"lack of appetite for transformational M&A\" \u2014 a framing management does not dispute in its answer, which instead reaffirms organic growth and opportunistic buybacks."
+      },
+      {
+        "quote": "We also have ample room under our current repurchase program to make share repurchases. We report on share repurchase activity quarterly in our 10-Q and 10-K filings.",
+        "why_notable": "A conspicuous non-answer to repeated, pointed questions about why buybacks have not resumed; management deflects to routine quarterly disclosure rather than stating an intention."
+      },
+      {
+        "quote": "the structured credit ratings business overall still lags behind its competitors five years into the merger",
+        "why_notable": "A blunt investor characterization of the credit business's competitive standing that management answers by conceding the CLO gap rather than rebutting the premise."
+      },
+      {
+        "quote": "we evaluate our product portfolio to allocate investment to the best opportunities for widening our economic moat and driving long-term value creation",
+        "why_notable": "\"Widening our economic moat\" \u2014 Morningstar's own analytical vocabulary applied to itself; a recurring self-description worth tracking across years."
+      },
+      {
+        "quote": "we are committed to strengthening our market-leading second party-opinion product",
+        "why_notable": "The one place in a largely defensive Sustainalytics answer where management claims market leadership, narrowed to a single sub-product rather than ESG ratings broadly."
+      },
+      {
+        "quote": "we plan to sunset our TAMP after clients and assets transition to AssetMark",
+        "why_notable": "Plain statement that a business line will be wound down entirely, not merely partially sold \u2014 a definitive exit from the Wealth TAMP model."
+      }
+    ]
+  }
+}

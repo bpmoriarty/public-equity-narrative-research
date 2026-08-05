@@ -1,0 +1,100 @@
+{
+  "fiscal_year": 2023,
+  "task": "investor_qa",
+  "unit": "0001104659-23-093954",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:08:46Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 8458,
+    "output_tokens": 2646
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-23-093954",
+      "form": "8-K",
+      "filing_date": "2023-08-21",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 19478,
+  "facts": {
+    "topics": [
+      {
+        "topic": "PitchBook corporate (company) segment vulnerability and long-run customer mix",
+        "stated_position": "\"The segment that is most vulnerable in the current environment is the company (corporate) segment and, within that segment, we see particular vulnerability with start-ups and corporate development teams.\" Management declined to guide on long-term client or segment mix, saying they \"have large addressable markets across geography and client type and see significant opportunities across all segments, despite near-term headwinds,\" and see opportunities to help corporates consolidate further business with Morningstar as well as opportunities in private credit with the acquisition of LCD.",
+        "kind": "segment_or_product",
+        "quote": "The segment that is most vulnerable in the current environment is the company (corporate) segment and, within that segment, we see particular vulnerability with start-ups and corporate development teams. This pressure stems from reduced demand from corporate clients, as M&A activity slowed and as companies were constrained in their ability to add seats and/or renew contracts."
+      },
+      {
+        "topic": "PitchBook total addressable market methodology and size",
+        "stated_position": "\"Our methodology for sizing PitchBook's total addressable market (TAM) has remained consistent with the methodology we disclosed in 2021.\" The $6.5 billion TAM cited as of April 2023 included more than 130,000 firms, with increases since 2022 driven by \"the ongoing expansion of PitchBook data globally and the addition of new use cases.\"",
+        "kind": "competition_or_market",
+        "quote": "The $6.5 billion TAM cited as of April 2023 included more than 130,000 firms. The company (corporate) and investor segments each accounted for roughly one-third of PitchBook\u2019s TAM by firm count and the service provider segment accounted for roughly one quarter of the TAM, with the remainder coming from the limited partner segment."
+      },
+      {
+        "topic": "Disclosure of enterprise pricing for PitchBook",
+        "stated_position": "\"For competitive reasons, we do not disclose the range of annual subscription prices for enterprise clients.\"",
+        "kind": "competition_or_market",
+        "quote": "As of early July 2023, PitchBook\u2019s enterprise license contracts accounted for roughly 20% of total annual contract value related to active PitchBook accounts; individual seat-based contracts accounted for roughly 80%. For competitive reasons, we do not disclose the range of annual subscription prices for enterprise clients."
+      },
+      {
+        "topic": "Morningstar Wealth investment priorities and path to margin accretion",
+        "stated_position": "Investments in 2021 and 2022 \"were geared at building our global wealth platforms,\" mostly hiring and third-party technology partnerships to build the US and UK Wealth Platforms \"which provide digitally enabled investment and productivity services that embed us in the advisor workflow.\" To realize returns, \"our focus is on building out capabilities to attract new advisors and assets to the platforms,\" plus obtaining a greater share of existing advisors' assets and increasing automation of account openings. Management notes \"the return horizon here is longer than we see with investments in our license-based product areas.\"",
+        "kind": "strategy",
+        "quote": "We have experienced recent success, evidenced by growth in lead generation, advisor proposal generation, and new account openings, although we need to keep scaling these meaningfully. We are also focused on obtaining a greater share of the assets of advisors who currently use our platform."
+      },
+      {
+        "topic": "Peer comparables for Morningstar Wealth and its margin profile",
+        "stated_position": "\"For public company comparables, we look to Envestnet, AssetMark, SEI, and Iress (in Australia) which all have certain similar business characteristics,\" while noting important differences in composition; and \"the current Wealth business has below average margins as compared to corporate average across Morningstar.\"",
+        "kind": "competition_or_market",
+        "quote": "For public company comparables, we look to Envestnet, AssetMark, SEI, and Iress (in Australia) which all have certain similar business characteristics."
+      },
+      {
+        "topic": "Expense control and headcount growth",
+        "stated_position": "\"We look at these cost categories closely and we are reducing discretionary costs, including travel and professional fees. Our most significant lever when it comes to expense growth is headcount and we're slowing headcount growth broadly across the company.\"",
+        "kind": "strategy",
+        "quote": "We look at these cost categories closely and we are reducing discretionary costs, including travel and professional fees. Our most significant lever when it comes to expense growth is headcount and we\u2019re slowing headcount growth broadly across the company."
+      },
+      {
+        "topic": "Product-level contribution margin visibility and planning/resource allocation process",
+        "stated_position": "\"We have a comprehensive budget and three-year planning process under which we set financial targets and allocate resources across the company.\" Product area performance is reviewed regularly against budgets, investments made, and OKRs, and plans are modified based on those reviews; product-level margins rely on \"a variety of cost allocation methodologies to directionally attribute certain pools of centralized expenses.\"",
+        "kind": "governance_or_management",
+        "quote": "We have a comprehensive budget and three-year planning process under which we set financial targets and allocate resources across the company. We review the performance of product areas, including revenue and direct expenses regularly relative to our budgets, the investments we have made, and our OKRs (Objectives and Key Results)."
+      },
+      {
+        "topic": "Correction of adjusted diluted EPS reported for Q2 2023",
+        "stated_position": "\"We corrected the calculation of adjusted diluted net income per share and the related percentage changes of adjusted diluted net income per share for the quarter ended June 30, 2023, following the identification of a clerical error in the calculation.\" The $11.8 million SBI license termination expense was incorrectly included; a footnote in prior earnings releases also \"incorrectly noted\" that non-operating (gains) losses included interest expense, \"which was a typo.\"",
+        "kind": "governance_or_management",
+        "quote": "We corrected the calculation of adjusted diluted net income per share and the related percentage changes of adjusted diluted net income per share for the quarter ended June 30, 2023, following the identification of a clerical error in the calculation."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We do not have business operating segments. We have one reportable segment but disclose revenue by type and product area to provide useful information to shareholders. When we address relative margins, by type of revenue or product area, we employ a variety of cost allocation methodologies to directly attribute certain expenses to the individual product areas. As a result, our discussions of relative margins are directional and based on estimates.",
+        "why_notable": "An unusually explicit hedge framing all product-level margin discussion as directional estimates, placed as a preamble before answering profitability questions."
+      },
+      {
+        "quote": "We have noted that the return horizon here is longer than we see with investments in our license-based product areas, and we will continue to provide updates on our progress.",
+        "why_notable": "A recurring, direct acknowledgment that Morningstar Wealth's payback period is longer than the rest of the business \u2014 a hedge on prior investment enthusiasm."
+      },
+      {
+        "quote": "the current Wealth business has below average margins as compared to corporate average across Morningstar, based on certain cost allocations and assumptions",
+        "why_notable": "A direct admission that a strategically emphasized business dilutes company margins."
+      },
+      {
+        "quote": "Sales productivity increased sharply in 2021, when we experienced particularly strong demand for PitchBook licenses. Starting in mid-2022, sales productivity has returned to levels similar to those experienced during the period from 2018 through 2020.",
+        "why_notable": "Characterizes 2021 as an anomaly rather than a new baseline \u2014 a reframing of the PitchBook growth narrative."
+      },
+      {
+        "quote": "We received a high volume of shareholder questions in May. To share information in as timely a manner as possible, we published our responses in multiple installments.",
+        "why_notable": "Signals unusual intensity of investor scrutiny in this period, requiring multiple installments of responses."
+      }
+    ]
+  }
+}

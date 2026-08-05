@@ -1,0 +1,96 @@
+{
+  "fiscal_year": 2022,
+  "task": "investor_qa",
+  "unit": "0001104659-22-110627",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:02:16Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 6020,
+    "output_tokens": 2135
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-22-110627",
+      "form": "8-K",
+      "filing_date": "2022-10-21",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 11198,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Investment spending and operating margin trajectory",
+        "stated_position": "Management said a significant portion of recent operating expense growth is driven by investments to build capabilities to support growth in prioritized products \u2014 PitchBook, Morningstar Sustainalytics, and Wealth Management \u2014 and that it takes a long-term view while being \"prudent with spending decisions given challenges in the economic environment,\" expecting margins this year to be lower than a typical year but focused on getting back toward recent historical peaks.",
+        "kind": "strategy",
+        "quote": "As to the timing of investments, we take a long-term view and invest where we see attractive opportunities to grow, achieve scale, and generate strong long-term returns. We are also being prudent with spending decisions given challenges in the economic environment.  As we noted in our investor question responses published in August, while we expect that operating margins this year will be lower than in a typical year, we are focused on getting back on a path toward levels seen in recent historical peaks."
+      },
+      {
+        "topic": "LCD integration and which PitchBook client segments it will expand",
+        "stated_position": "Management said the biggest opportunities from LCD's capabilities are with lenders, investors, banks and service providers and, to a lesser extent, limited partners, and that integrating LCD data into the PitchBook platform will expand reach with those segments.",
+        "kind": "segment_or_product",
+        "quote": "As we look at LCD\u2019s capabilities, we see the biggest opportunities with lenders, investors, banks and service providers and, to a lesser extent, limited partners. We expect that the integration of LCD data and analysis into the PitchBook platform will expand our reach with those client segments."
+      },
+      {
+        "topic": "Conditions for the $50 million contingent LCD payment",
+        "stated_position": "Management explained the $50 million contingent consideration, payable six months after the June 1, 2022 close, is contingent on transitioning LCD customer relationships \u2014 specifically unbundling LCD contracts from other S&P services into standalone Morningstar agreements \u2014 paid based on percentage of customer ACV successfully unbundled as of December 1, 2022.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "To encourage focus on this transition, the contingent consideration of up to $50 million will be paid based on the percentage of customer ACV that has been successfully unbundled as of December 1, 2022."
+      },
+      {
+        "topic": "DBRS Morningstar's competitive position versus Moody's and S&P",
+        "stated_position": "Management said growth was driven by U.S. CMBS ratings activity \"where we enjoy a leading position,\" and that unlike Moody's and S&P, DBRS Morningstar currently has a smaller share of the U.S. corporate and CLO markets.",
+        "kind": "competition_or_market",
+        "quote": "Unlike Moody\u2019s and S&P, DBRS Morningstar currently has a smaller share of the U.S. corporate and collateralized loan obligation (CLOs) markets, which saw steep declines in issuance."
+      },
+      {
+        "topic": "TAMP moving to open architecture with third-party models",
+        "stated_position": "Management said demand is for flexibility and choice, with unified and separately managed accounts growing ahead of ETF and mutual fund models, and that \"we plan to open our TAMP to third-party models in the coming months, migrating to an open architecture model.\"",
+        "kind": "strategy",
+        "quote": "To meet the demand for flexibility, we plan to open our TAMP to third-party models in the coming months, migrating to an open architecture model."
+      },
+      {
+        "topic": "Direct indexing growth opportunity and competitive advantage",
+        "stated_position": "Management called direct indexing \"an attractive growth opportunity for Morningstar,\" said it believes Cerulli's projected 12.4% annual growth through 2026 is conservative, and located its competitive advantage in the breadth of capabilities and proprietary IP across Morningstar Indexes, Sustainalytics and Equity Research, brand strength with advisors, and the ability to bring all direct indexing components together in-house, with pricing generally in line with or lower than competitors.",
+        "kind": "competition_or_market",
+        "quote": "We stand out for our ability to bring all the direct indexing components together using in-house capabilities. Our pricing is generally in line with or lower than our competitors in this market."
+      },
+      {
+        "topic": "Purpose of share repurchases",
+        "stated_position": "Management said it makes significant share repurchases when it believes the return potential is attractive compared to other uses of capital, and expressly not for the purpose of share-based compensation.",
+        "kind": "capital_allocation",
+        "quote": "We make significant share repurchases when we believe that the return potential is attractive compared to other uses of capital. We do not do so for the purpose of share-based compensation."
+      },
+      {
+        "topic": "Total price paid for Sustainalytics",
+        "stated_position": "Management disclosed the acquisition of the remaining stake closed July 2, 2020, with three cash payments \u2014 an initial payment at closing plus earn-outs on June 30, 2021 and June 30, 2022 based on a multiple of Morningstar Sustainalytics' revenues \u2014 totalling EUR 147.1 million.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "The total consideration across the three payments was EUR 147.1 million."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We don\u2019t currently disclose total spending on investments.",
+        "why_notable": "Direct refusal to disclose, framing the limits of transparency on the very spending management cites as driving expense growth."
+      },
+      {
+        "quote": "These include investments in product development, sales, and marketing to support key products that we\u2019re prioritizing for growth including PitchBook, Morningstar Sustainalytics, and Wealth Management.",
+        "why_notable": "Names the three businesses explicitly designated for growth prioritization \u2014 a compact statement of strategic focus worth tracking year to year."
+      },
+      {
+        "quote": "Direct indexing represents an attractive growth opportunity for Morningstar. In a 2021 report, Cerulli projected that Direct Indexing would grow at a 12.4% annual rate through 2026 and we believe that estimate is a conservative one",
+        "why_notable": "Management goes beyond a third-party forecast to assert it is too conservative \u2014 unusually forward-leaning optimism for a written Reg FD answer."
+      },
+      {
+        "quote": "We\u2019re monitoring the environment closely, but don\u2019t provide forecasts on future revenue expectations.",
+        "why_notable": "Recurring hedge pattern across answers: a reassuring present-tense statement immediately followed by refusal to forecast."
+      }
+    ]
+  }
+}

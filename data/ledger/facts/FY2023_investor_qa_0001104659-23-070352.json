@@ -1,0 +1,78 @@
+{
+  "fiscal_year": 2023,
+  "task": "investor_qa",
+  "unit": "0001104659-23-070352",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:08:44Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 4984,
+    "output_tokens": 1560
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-23-070352",
+      "form": "8-K",
+      "filing_date": "2023-06-12",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 7434,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Pace of investment and headcount growth",
+        "stated_position": "\"As we noted in our annual meeting, more recently we have started to slow the pace of investment and headcount growth across much of the business which will have an impact on future rates of expense growth.\"",
+        "kind": "strategy",
+        "quote": "As we noted in our annual meeting, more recently we have started to slow the pace of investment and headcount growth across much of the business which will have an impact on future rates of expense growth._PLACEHOLDER"
+      },
+      {
+        "topic": "Morningstar Sustainalytics SPO market share and competitive landscape",
+        "stated_position": "Management acknowledged that market share has declined but asserted continued market leadership: \"while our market share has come down, we continue to be the market leader in the space,\" citing a 24% share of SPOs in 2022, down from 27% in 2021, and explaining that flat-fee pricing, existing bond programs, and LEED certifications mean bond volumes do not translate into SPO activity.",
+        "kind": "competition_or_market",
+        "quote": "We note that while our market share has come down, we continue to be the market leader in the space. According to Environmental Finance, Morningstar Sustainalytics had a 24% market share of SPOs produced by an SPO provider in 2022, down from 27% in 2021."
+      },
+      {
+        "topic": "Reduction and shift of China operations",
+        "stated_position": "\"We have stated, and continue to believe, that we expect the activities related to our reduction and shift of our China operations will result in lower ongoing run rate costs.\" No direct answer given on non-GAAP operating income impact.",
+        "kind": "strategy",
+        "quote": "We have stated, and continue to believe, that we expect the activities related to our reduction and shift of our China operations will result in lower ongoing run rate costs."
+      },
+      {
+        "topic": "DBRS Morningstar business mix and geographic exposure",
+        "stated_position": "Management declined to disclose revenue or sensitivity by asset class but characterised the mix: largest component CMBS, followed by ABS and RMBS, \"limited exposure to ratings for covered bonds and collateralized loan obligations,\" and \"we are more heavily weighted towards structured finance in the US and Europe; in Canada we have a higher exposure to corporate and financial institution ratings.\"",
+        "kind": "segment_or_product",
+        "quote": "We have limited exposure to ratings for covered bonds and collateralized loan obligations. From a geographical perspective, we are more heavily weighted towards structured finance in the US and Europe; in Canada we have a higher exposure to corporate and financial institution ratings."
+      },
+      {
+        "topic": "Real estate footprint and hybrid work policy",
+        "stated_position": "Management said it \"continually review[s] our real estate portfolio and evaluate[s] opportunities to reduce or sublease space where possible,\" has \"increasingly moved to an unassigned seating model,\" believes \"in-person collaboration, supported by flexibility through a hybrid schedule, promotes innovation, engagement, and teamwork,\" and is \"looking to consolidate offices where appropriate,\" having \"closed smaller offices in favor of flexible workspaces.\"",
+        "kind": "strategy",
+        "quote": "As headcount has grown in recent years, and in some cases outgrown office capacity, we\u2019ve increasingly moved to an unassigned seating model that drives efficiency and also supports our hybrid work policy. We believe that in-person collaboration, supported by flexibility through a hybrid schedule, promotes innovation, engagement, and teamwork. At the same time, we are looking to consolidate offices where appropriate, and we have closed smaller offices in favor of flexible workspaces."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We note that while our market share has come down, we continue to be the market leader in the space.",
+        "why_notable": "An unusually direct admission of share loss, immediately paired with a leadership claim \u2014 a hedged characterisation of the Sustainalytics competitive position."
+      },
+      {
+        "quote": "more recently we have started to slow the pace of investment and headcount growth across much of the business",
+        "why_notable": "Marks a stated change of direction after years of described investment and headcount growth."
+      },
+      {
+        "quote": "We have stated, and continue to believe, that we expect the activities related to our reduction and shift of our China operations will result in lower ongoing run rate costs.",
+        "why_notable": "A recurring claim restated rather than quantified; management declines to address the specific non-GAAP question asked."
+      },
+      {
+        "quote": "We believe that in-person collaboration, supported by flexibility through a hybrid schedule, promotes innovation, engagement, and teamwork.",
+        "why_notable": "Defends an expanding office footprint against peer behaviour \u2014 a values-framed justification for a capital allocation decision."
+      }
+    ]
+  }
+}

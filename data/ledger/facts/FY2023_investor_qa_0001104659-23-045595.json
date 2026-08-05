@@ -1,0 +1,158 @@
+{
+  "fiscal_year": 2023,
+  "task": "investor_qa",
+  "unit": "0001104659-23-045595",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:08:20Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 15265,
+    "output_tokens": 3711
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-23-045595",
+      "form": "8-K",
+      "filing_date": "2023-04-14",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 41958,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Rationale for terminating the MJKK licensing agreement and regaining the Morningstar brand in Japan",
+        "stated_position": "With the termination of the licensing agreement with MJKK, the Morningstar brand in Japan is in our full control, expected to provide long-term benefits which could not be achieved under the previous structure; management believes the Japanese market offers strong growth potential and that the business in Japan could grow meaningfully, while the transaction also removes brand confusion.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "With the termination of the licensing agreement with MJKK, the Morningstar brand in Japan is in our full control. We expect this to provide long-term benefits which could not be achieved under the previous structure. We believe that the Japanese market offers strong growth potential."
+      },
+      {
+        "topic": "Plans for remaining stake in SBI Global Asset Management (formerly MJKK)",
+        "stated_position": "\"We plan to sell our remaining stake in SBI Global Asset Management over time, but not to immediately finance the remaining portion of the termination payment.\"",
+        "kind": "capital_allocation",
+        "quote": "We plan to sell our remaining stake in SBI Global Asset Management over time, but not to immediately finance the remaining portion of the termination payment."
+      },
+      {
+        "topic": "Whether other non-US joint ventures will be exited",
+        "stated_position": "\"We do not have any remaining joint ventures.\"",
+        "kind": "strategy",
+        "quote": "4. Outside of MJKK, do you have any additional joint ventures outside the US that you are planning to exit? We do not have any remaining joint ventures."
+      },
+      {
+        "topic": "Further investment in Japan",
+        "stated_position": "Further investment will be predicated on opportunities in the market and management's assessment of the potential returns.",
+        "kind": "strategy",
+        "quote": "Further investment will be predicated on opportunities in the market and our assessment of the potential returns."
+      },
+      {
+        "topic": "Cost management and headcount as the principal lever on expense growth",
+        "stated_position": "After significant investments over the past few years, management believes it can maintain planned growth across many areas without expanding headcount; slowing the rate of headcount growth is described as the most significant lever to slow expense growth over time.",
+        "kind": "strategy",
+        "quote": "After significant investments over the past few years, we believe we can maintain our planned growth across many areas of the business without an associated expansion of headcount. We started to slow the rate of headcount growth last year and remain focused on this goal, which is the most significant lever to slow expense growth over time."
+      },
+      {
+        "topic": "Investment time horizons by product area and expected returns",
+        "stated_position": "Management laid out timing expectations: Sustainalytics climate investments \"to start paying off in the near future\"; PitchBook returns \"over a fairly short time horizon\"; Morningstar Wealth a longer timeline with returns starting in 2023 and 2024; DBRS Morningstar middle-market ratings will \"take more time to scale and gain share.\"",
+        "kind": "strategy",
+        "quote": "We have not fully commercialized several key investments that we\u2019ve made in Morningstar Wealth, including Direct Indexing, rolled out in 2022, the upcoming expansion of our TAMP to third party models, and the buildout of our international wealth platform. The timeline to realize the return on these investments is longer as we work to attract assets to our platforms, although we expect to start generating returns in 2023 and 2024."
+      },
+      {
+        "topic": "Whether headcount will be reduced",
+        "stated_position": "\"Outside of that transition, we do not have any plans for broader reductions in headcount,\" and staffing levels are believed appropriate to support the business.",
+        "kind": "strategy",
+        "quote": "Outside of that transition, we do not have any plans for broader reductions in headcount. We continuously evaluate our resource needs across the company and believe our staffing levels are appropriate to support the business and consistent with our strategic and financial objectives."
+      },
+      {
+        "topic": "Commitment to operating leverage and margin improvement",
+        "stated_position": "Management acknowledges margins have not fully reflected potential operating leverage due to investments, but is \"committed to increasing our aggregate margins over time\" across the current mix of business areas.",
+        "kind": "strategy",
+        "quote": "We also recognize that margins have not fully reflected potential operating leverage due to investments we\u2019ve made to support attractive growth opportunities. However, we are committed to increasing our aggregate margins over time and believe we can do that across our current mix of business areas."
+      },
+      {
+        "topic": "Pricing strategy",
+        "stated_position": "\"we\u2019re focused on increasing prices where we\u2019ve added the most value,\" with increases ranging from mid-single digits to high-single-digits/low-double-digits for license-based products.",
+        "kind": "strategy",
+        "quote": "As we discussed in a December 2022 response, we\u2019re focused on increasing prices where we\u2019ve added the most value. At that time, we noted that we were instituting price increases ranging from mid-single digits for certain license-based products to high-single-digits to low-double-digits for other license-based products."
+      },
+      {
+        "topic": "Climate risk metrics market opportunity and competitive position",
+        "stated_position": "External definitions of market size vary widely; internal estimates size the market at more than $1 billion, and management believes regulatory compliance and reporting will be the biggest drivers of initial adoption, with climate solutions expected to drive organic growth starting in the second half of 2023.",
+        "kind": "competition_or_market",
+        "quote": "The external definitions of the market size for climate risk metrics vary widely. Our internal estimates size the market at more than $1 billion."
+      },
+      {
+        "topic": "Market position in Second Party Opinions on green bonds",
+        "stated_position": "Market share declined modestly during the year but Morningstar \"remained the market leader with 24% of the global market,\" and 2023 focus is on maintaining position with underwriters and innovating to maintain and grow share.",
+        "kind": "competition_or_market",
+        "quote": "We also experienced a modest decline in our market share during the year, although, according to Environmental Finance, we remained the market leader with 24% of the global market. In 2023, we are focused on maintaining our strong position with underwriters and continuing to innovate to maintain and grow market share."
+      },
+      {
+        "topic": "Comparison of Sustainalytics to MSCI's ESG & Climate business",
+        "stated_position": "Management notes MSCI's climate suite was largely built through acquisition while Morningstar is building its climate suite organically, which is pressuring current margins, and that MSCI does not to its knowledge rate green bonds.",
+        "kind": "competition_or_market",
+        "quote": "In particular, MSCI has an established climate product suite, which was largely built through acquisition. We are building our climate suite organically, which is pressuring current margins, and have just started to roll out our offering in this space. Meanwhile, MSCI does not to our knowledge rate green bonds."
+      },
+      {
+        "topic": "Performance of the Moorgate Benchmarks acquisition",
+        "stated_position": "Management is pleased with progress and has made \"the strategic decision to accelerate the integration of Moorgate with our primary calculation platform,\" but says the Index Services offerings have underperformed expectations due to near-term focus on operations and technology \"as well as execution missteps,\" prompting a restructuring of the team.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "One area that has underperformed our expectations is the Index Services offerings coming out of the acquisition. We are slightly behind our initial targets due to our near-term focus on operations and technology, as well as execution missteps. We\u2019ve restructured the team and refocused activities to better serve our clients and drive future growth."
+      },
+      {
+        "topic": "SMArtX relationship as a model for partnering",
+        "stated_position": "SMArtX is helping accelerate modernization of the US Wealth Platform technology stack and is described as \"a good example of how we can build strategic relationships and leverage external partners for important capabilities in our business going forward.\"",
+        "kind": "strategy",
+        "quote": "SMArtX has been a great partner and a good example of how we can build strategic relationships and leverage external partners for important capabilities in our business going forward."
+      },
+      {
+        "topic": "Praemium integration",
+        "stated_position": "The acquisition and integration of Praemium's U.K. and International businesses \"is going well and performing as expected\"; businesses rebranded to Morningstar Wealth Platform and Wealthcraft, with technology and data migrated without client disruption.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "The acquisition and integration of Praemium\u2019s U.K. and International businesses is going well and performing as expected. We have rebranded the businesses to Morningstar Wealth Platform and Wealthcraft, a Morningstar company."
+      },
+      {
+        "topic": "Stock underperformance versus peers",
+        "stated_position": "Management will not speculate on drivers but acknowledges that both return on invested capital and adjusted operating margins have declined despite top line growth, and states its focus is on value creation and sustainable growth, margin improvement, and attractive returns.",
+        "kind": "governance_or_management",
+        "quote": "While we cannot comment or speculate on drivers of our stock price performance, we have noted and acknowledged that both return on invested capital and adjusted operating margins have declined lately despite our top line growth."
+      },
+      {
+        "topic": "Segment reporting practice",
+        "stated_position": "\"We do not have business operating segments. We have one reportable segment, but disclose revenue by type and product area,\" and discussions of relative margins are directional and based on estimates.",
+        "kind": "other",
+        "quote": "We do not have business operating segments. We have one reportable segment, but disclose revenue by type and product area, to provide useful information to shareholders."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "You are correct that costs have increased faster than revenue since 2020.",
+        "why_notable": "Unusually direct concession to a critical investor premise about expense discipline."
+      },
+      {
+        "quote": "We are a competitive bunch, and as owners of the company, our goal is to outperform over long-term periods, and we certainly feel the pain when our shareholders do.",
+        "why_notable": "Unusually personal, informal tone in a Reg FD filing addressing stock underperformance; frames management as owner-operators."
+      },
+      {
+        "quote": "We are slightly behind our initial targets due to our near-term focus on operations and technology, as well as execution missteps.",
+        "why_notable": "Rare explicit admission of \"execution missteps\" on an acquisition."
+      },
+      {
+        "quote": "We received an unusually high volume of shareholder questions in February and have consolidated our responses to similar questions. To share information in as timely a manner as possible, we have published our responses in installments. This is the fourth and final installment.",
+        "why_notable": "Signals elevated investor pressure in this period \u2014 four installments of answers was not routine."
+      },
+      {
+        "quote": "We do not disclose fees paid to any specific service provider but would note that the legal fees associated with our ESG investigation were a meaningful part of our underlying increase in professional fees for the year.",
+        "why_notable": "Acknowledges the ESG investigation as a material cost driver while declining to quantify \u2014 a hedged partial disclosure on a governance matter."
+      },
+      {
+        "quote": "It is difficult to see that leverage come through in more challenging market environments like we saw in 2022.",
+        "why_notable": "Hedge on the repeated claim of \"inherent leverage in the business,\" which investors pressed as unproven."
+      }
+    ]
+  }
+}

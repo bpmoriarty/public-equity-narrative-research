@@ -1,0 +1,136 @@
+{
+  "fiscal_year": 2024,
+  "task": "investor_qa",
+  "unit": "0001104659-24-010618",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:09:24Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 10107,
+    "output_tokens": 4038
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-24-010618",
+      "form": "8-K",
+      "filing_date": "2024-02-05",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 24571,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Competitive landscape and market share across lines of business",
+        "stated_position": "\"We are competitive in the areas that we're active in and aim for market-leading positions.\" PitchBook is described as \"a clear leader in the market for private market data,\" Morningstar Sustainalytics as \"one of the leading providers of ESG data,\" Morningstar DBRS as having \"a market-leading position for corporate, structured, covered bond, financial institution, and sovereign credit ratings in Canada,\" and Morningstar Retirement as \"one of the leading providers of managed accounts for defined contribution plans in the US.\" Management says it looks \"to participate in markets that are large and growing and where our products can gain competitive advantages over time.\"",
+        "kind": "competition_or_market",
+        "quote": "We are competitive in the areas that we\u2019re active in and aim for market-leading positions. For example, PitchBook is a clear leader in the market for private market data, and Morningstar Sustainalytics is one of the leading providers of ESG data. In other product areas, we may have smaller market share globally, but a leading position in certain geographies or market segments."
+      },
+      {
+        "topic": "Management incentive compensation alignment with margin expansion and expense control",
+        "stated_position": "In 2023 the company-level annual incentive structure \"equally weighted adjusted revenue and adjusted EBITDA, a structure that was designed to incentivize profitable growth,\" an increased emphasis on profitability versus 2022's 67%/33% weighting; equal weighting is expected to continue in 2024. \"stock ownership is the cornerstone of our executive compensation program,\" with a significant portion of CEO and NEO stock-based compensation driven by Total Shareholder Return.",
+        "kind": "governance_or_management",
+        "quote": "In 2023, our company-level annual incentive structure equally weighted adjusted revenue and adjusted EBITDA, a structure that was designed to incentivize profitable growth. This represented an increased emphasis on profitability in the incentive structure compared to 2022 when the financial measures were weighted 67% to adjusted revenue and 33% to adjusted EBITDA."
+      },
+      {
+        "topic": "Morningstar DBRS SEC settlements and ongoing compliance obligations",
+        "stated_position": "Two September 2023 SEC settlements related to recordkeeping for credit ratings communications over unapproved electronic messaging channels and to former CMBS ratings methodologies used July 2019 through November 2022; DBRS \"agreed to ongoing compliance-related obligations\" extending through 2024, paid a $6.0 million and a $2.0 million civil monetary penalty, and monitoring costs \"are not material.\" DBRS \"does not have any operations in China and the order does not reference China.\"",
+        "kind": "governance_or_management",
+        "quote": "Under the terms of the settlements, Morningstar DBRS agreed to ongoing compliance-related obligations to resolve the investigation related to record-keeping, which will extend through 2024. In early October 2023, it paid a $6.0 million civil monetary penalty to the SEC for this matter, and a $2.0 million civil monetary penalty to the SEC to resolve the investigation related to CMBS ratings methodologies."
+      },
+      {
+        "topic": "Private credit as a driver of PitchBook client expansion",
+        "stated_position": "\"We've seen significant client expansion opportunities arise from the extension of our private credit data and news coverage, particularly as market trends have favored private credit,\" including renewing and meaningfully expanding a relationship with a large asset manager and displacing a competitor at another asset manager.",
+        "kind": "segment_or_product",
+        "quote": "We\u2019ve seen significant client expansion opportunities arise from the extension of our private credit data and news coverage, particularly as market trends have favored private credit."
+      },
+      {
+        "topic": "Whether PitchBook Manager Scores could become a licensing business like Morningstar Essentials/Ratings",
+        "stated_position": "\"PitchBook pricing is all-inclusive for the platform and includes Manager Scores. PitchBook does not have a ratings license for managers comparable to Morningstar Essentials and we do not expect that to change for the foreseeable future.\"",
+        "kind": "segment_or_product",
+        "quote": "PitchBook pricing is all-inclusive for the platform and includes Manager Scores. PitchBook does not have a ratings license for managers comparable to Morningstar Essentials and we do not expect that to change for the foreseeable future."
+      },
+      {
+        "topic": "Medium-term investment priorities for Morningstar Sustainalytics",
+        "stated_position": "\"Continued development of our climate suite remains an important priority for Morningstar Sustainalytics,\" with focus on tools for institutional clients to evaluate climate risks and meet net zero objectives, reporting tools for mandated climate disclosure regulation in the UK and EU, a low carbon transition and physical climate risk value at risk signal, enhanced carbon emissions data, expanded climate index capabilities with Morningstar Indexes, and EU taxonomy alignment.",
+        "kind": "strategy",
+        "quote": "Continued development of our climate suite remains an important priority for Morningstar Sustainalytics. In the short-to-intermediate term, we are working on the development of additional tools to help institutional clients evaluate the climate risks of portfolio companies and to support their decision making as they seek to meet net zero objectives."
+      },
+      {
+        "topic": "PitchBook 2024 investment priorities",
+        "stated_position": "\"For PitchBook, in 2024, we plan to further expand our data and research assets and product capabilities.\" Data plans include enhancing private credit coverage, coverage of non-PE- or VC-backed companies, and public equity datasets; research is building proprietary tools like the VC Exit Predictor and Manager Scores; product work focuses on workflows including a new advanced screening experience; and continued build out of the PitchBook Global Unicorn indexes with Morningstar Indexes.",
+        "kind": "strategy",
+        "quote": "For PitchBook, in 2024, we plan to further expand our data and research assets and product capabilities. Data plans include enhancing private credit coverage, building out our coverage of non-PE- or VC-backed companies, and further strengthening our public equity datasets."
+      },
+      {
+        "topic": "Business continuity risk from concentration of operations in India",
+        "stated_position": "Mumbai is described as \"our largest location measured by number of employees\"; Morningstar \"maintains a robust business continuity strategy\" including risk assessments, business impact analysis, plans, exercises and evaluations, covering key locations including India. No India-specific contingency plan for US restrictions is described.",
+        "kind": "other",
+        "quote": "Our data collection, technology, and operational center in Mumbai, India, is our largest location measured by number of employees and we also engage third-party vendors in India. Morningstar maintains a robust business continuity strategy that is focused on ensuring that our teams, offices, and the business processes they support are protected and able to quickly recover in the event of a business disruption."
+      },
+      {
+        "topic": "M&A guardrails and preference for organic investment",
+        "stated_position": "Acquisitions must align with \"our mission of empowering investor success,\" build databases/research/technical expertise/customer groups faster or more cost effectively than building them, and \"offer a good cultural fit with our entrepreneurial spirit and brand leadership.\" \"While we are active in looking at M&A opportunities, we generally favor organic investments and maintain a high hurdle for completing transactions with a focus on evaluating long-term returns relative to other potential uses of cash.\"",
+        "kind": "capital_allocation",
+        "quote": "While we are active in looking at M&A opportunities, we generally favor organic investments and maintain a high hurdle for completing transactions with a focus on evaluating long-term returns relative to other potential uses of cash. We assess overall cash-on-cash and internal rates of return based on the price we are paying and the value we expect to realize over time."
+      },
+      {
+        "topic": "Share of revenue attributable to ESG",
+        "stated_position": "\"The majority of our ESG revenue is generated by Morningstar Sustainalytics, which accounted for a little over 5% of total Morningstar revenue for the trailing 12 months ended September 2023.\" While total ESG revenue is not disclosed, \"it is substantially less than 30%.\"",
+        "kind": "segment_or_product",
+        "quote": "The majority of our ESG revenue is generated by Morningstar Sustainalytics, which accounted for a little over 5% of total Morningstar revenue for the trailing 12 months ended September 2023."
+      },
+      {
+        "topic": "Lack of sell-side coverage, earnings calls and investor conferences",
+        "stated_position": "\"Consistent with our approach to shareholder engagement since we went public, our goal is to communicate equally with all shareholders, without special treatment for large shareholders or research analysts.\" Management points to the Annual Shareholder Meeting Q&A, written 8-K answers, an enhanced quarterly shareholder presentation and a new CEO letter in the quarterly reporting package, and says \"We welcome sell-side coverage.\"",
+        "kind": "governance_or_management",
+        "quote": "Consistent with our approach to shareholder engagement since we went public, our goal is to communicate equally with all shareholders, without special treatment for large shareholders or research analysts."
+      },
+      {
+        "topic": "Diversity hiring targets and ESG disclosure practices",
+        "stated_position": "\"Morningstar models industry-leading ESG disclosures\" including racial diversity data for the U.S. and Canada and adjusted and unadjusted pay gap disclosure. \"We do not have specific hiring targets, but we do report on our demographics annually in our Corporate Sustainability Report (CSR).\"",
+        "kind": "governance_or_management",
+        "quote": "We do not have specific hiring targets, but we do report on our demographics annually in our Corporate Sustainability Report (CSR)."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We are competitive in the areas that we\u2019re active in and aim for market-leading positions.",
+        "why_notable": "A hedged answer to a direct request for line-by-line market share; the company declines to quantify share except where a third-party source exists, and reframes the question around aspiration rather than position."
+      },
+      {
+        "quote": "We provide detailed market share metrics for these areas when there\u2019s a clear third-party source.",
+        "why_notable": "Explicit statement of a disclosure boundary \u2014 a standing rationale for not quantifying competitive position."
+      },
+      {
+        "quote": "We\u2019d also note that stock ownership is the cornerstone of our executive compensation program.",
+        "why_notable": "Recurring self-characterization of the compensation philosophy, worth tracking against year-over-year changes in incentive weightings."
+      },
+      {
+        "quote": "offer a good cultural fit with our entrepreneurial spirit and brand leadership. We prefer areas that have natural adjacencies to our portfolio as they generally provide greater opportunities for financial success.",
+        "why_notable": "Restates the long-standing M&A screen in cultural/mission terms rather than purely financial ones."
+      },
+      {
+        "quote": "we do not expect that to change for the foreseeable future",
+        "why_notable": "An unusually flat foreclosure of a monetization path investors were probing, rather than the usual open-ended answer."
+      },
+      {
+        "quote": "While we don\u2019t disclose total revenue attributable to ESG, it is substantially less than 30%.",
+        "why_notable": "Confirms a bound while refusing the exact figure \u2014 a directional admission that ESG is a small part of the business despite its prominence in the narrative."
+      },
+      {
+        "quote": "Morningstar models industry-leading ESG disclosures through our annual disclosures of racial diversity data for the U.S. and Canada, diverse representation data by functional area globally, and turnover by gender and race in the U.S. market.",
+        "why_notable": "Strong self-praise (\"industry-leading\") about its own ESG disclosure from a company that also sells ESG ratings, while declining to disclose the ESG ratings it receives."
+      },
+      {
+        "quote": "We don\u2019t publicly disclose our ratings; these ratings are available to subscribers to the various rating providers\u2019 platforms.",
+        "why_notable": "Notable tension: an ESG ratings provider withholding its own ESG ratings from public disclosure."
+      }
+    ]
+  }
+}

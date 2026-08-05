@@ -384,7 +384,7 @@ def gather_investor_qa(sections: list[dict], tri: dict, fy: int) -> list[list[di
                                     if d["section_key"] in set(r["read_section_keys"])
                                     and d.get("trimmed_path")}
 
-    out = []
+    out, skipped = [], []
     for acc, keyed in want.items():
         srcs = []
         for s in sections:
@@ -400,6 +400,26 @@ def gather_investor_qa(sections: list[dict], tri: dict, fy: int) -> list[list[di
                          "text": tp.read_text(encoding="utf-8")})
         if srcs:
             out.append(sorted(srcs, key=lambda s: s["key"]))
+        else:
+            skipped.append(acc)
+
+    # A filing that triage routed here but that yields no readable document is a
+    # PIPELINE FAULT, not an empty year. It has to stop the run.
+    #
+    # This is how eleven FY2021-FY2022 filings went missing: a boilerplate-stripping
+    # bug reduced their bodies below the stub threshold, `read_section_keys` came
+    # back empty, and this loop moved on. The extraction reported "32 tasks" and
+    # succeeded on all 32, so nothing anywhere looked wrong — the count was simply
+    # 11 lower than it should have been, and no output said so.
+    if skipped:
+        sys.exit(
+            f"FATAL: FY{fy} — triage routed {len(skipped)} filing(s) to investor_qa but "
+            f"none of their documents is readable:\n"
+            + "\n".join(f"    {a}" for a in sorted(skipped))
+            + "\n  Triage marked these as carrying Q&A content, so an empty result here "
+              "means the content was lost between triage and extraction — most likely "
+              "over-aggressive boilerplate stripping. Inspect "
+              "data/triage/text/<accession>/ and re-run src/triage_8k.py.")
     out.sort(key=lambda g: g[0]["filing_date"])
     return out
 
@@ -528,6 +548,9 @@ def main() -> None:
                     help="count tokens and print a cost estimate; make no extraction calls")
     ap.add_argument("--force", action="store_true",
                     help="re-run tasks that already have a cached result (costs tokens)")
+    ap.add_argument("--refresh-stale", action="store_true",
+                    help="re-run only those cached results whose source text has changed "
+                         "since they were extracted (costs tokens)")
     args = ap.parse_args()
 
     cfg = load_config()
@@ -540,11 +563,32 @@ def main() -> None:
     # Report missing sources rather than silently producing fewer tasks.
     empty = [u for u in plan if not u["sources"]]
     plan = [u for u in plan if u["sources"]]
+
+    # --- staleness ---------------------------------------------------------
+    # "A completed task is never re-run" is only safe while its INPUT is
+    # unchanged. Upstream text can move under a cached result — a config pattern
+    # is corrected, a boilerplate rule is fixed — and the result then answers a
+    # question about a document that no longer exists in that form.
+    #
+    # This is not hypothetical. Fixing one over-aggressive stripping rule changed
+    # the input of 24 of 54 cached investor_qa results, all silently, because the
+    # cache key is a filename and a filename does not know what it was computed
+    # from. Comparing the stored source_chars against the current source text
+    # catches exactly that, for every task, at no cost.
+    stale, cached = [], []
     if not args.force:
-        cached = [u for u in plan if out_path(u["fy"], u["task"], u.get("unit")).exists()]
-        plan = [u for u in plan if not out_path(u["fy"], u["task"], u.get("unit")).exists()]
-    else:
-        cached = []
+        for u in list(plan):
+            p = out_path(u["fy"], u["task"], u.get("unit"))
+            if not p.exists():
+                continue
+            plan.remove(u)
+            try:
+                was = json.loads(p.read_text(encoding="utf-8")).get("source_chars")
+            except (json.JSONDecodeError, OSError):
+                was = None
+            (stale if was is not None and was != u["chars"] else cached).append((u, was))
+        if args.refresh_stale:
+            plan += [u for u, _ in stale]
 
     ex = cfg["extraction"]
     print(f"Fact extraction — {ex['model']}, effort={ex['effort']}, "
@@ -558,9 +602,27 @@ def main() -> None:
             print(f"      FY{u['fy']} {u['task']}"
                   + (f" [{u['unit']}]" if u.get("unit") else "")
                   + ": no section text found")
+    if stale:
+        print()
+        print(f"  *** {len(stale)} CACHED RESULT(S) ARE STALE — their source text has changed "
+              f"since extraction ***")
+        for u, was in sorted(stale, key=lambda t: (t[0]["fy"], t[0].get("unit") or "")):
+            print(f"      FY{u['fy']} {u['task']}"
+                  + (f" [{u['unit']}]" if u.get("unit") else "")
+                  + f": extracted against {was:,d} chars, source is now {u['chars']:,d} "
+                    f"({u['chars'] - was:+,d})")
+        if not args.refresh_stale:
+            print()
+            print("  These were NOT re-run. A stale result answers a question about a "
+                  "document that no longer exists in that form.")
+            print("  Re-run them with:  --refresh-stale   (costs tokens)")
     print()
 
     if not plan:
+        if stale and not args.refresh_stale:
+            # Not "nothing to do": there is something to do and it costs money.
+            sys.exit(f"{len(stale)} stale result(s) left in place. "
+                     "Nothing was run. Pass --refresh-stale to rebuild them.")
         print("nothing to do.")
         return
 

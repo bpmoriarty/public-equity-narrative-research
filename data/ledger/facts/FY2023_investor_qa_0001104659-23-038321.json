@@ -1,0 +1,134 @@
+{
+  "fiscal_year": 2023,
+  "task": "investor_qa",
+  "unit": "0001104659-23-038321",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:08:07Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 10560,
+    "output_tokens": 3815
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-23-038321",
+      "form": "8-K",
+      "filing_date": "2023-03-29",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 25975,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Segment reporting structure and cost allocation for product-level margins",
+        "stated_position": "\"We do not have business segments as you describe. Rather, we have one reportable segment but disclose revenue by type, or product area, to provide useful information to shareholders.\" Management says it does not define corporate overhead separately and views relative margins as directional.",
+        "kind": "other",
+        "quote": "We do not have business segments as you describe. Rather, we have one reportable segment but disclose revenue by type, or product area, to provide useful information to shareholders."
+      },
+      {
+        "topic": "PitchBook employee incentive plan design and renewal for 2023-2025",
+        "stated_position": "The plans cover three years with backloaded delivery; the renewed plan \"includes both a revenue and a profit margin target\" whereas the first two were tied to revenue and cash flow. \"The plans have been designed to encourage the meeting of stretch goals over a three-year period for a high-growth, founder-led business.\" Management says the plan \"has been effective at retaining PitchBook's leadership.\"",
+        "kind": "governance_or_management",
+        "quote": "For the first two plans, the awards were tied to revenue and cash flow targets; the renewed plan includes both a revenue and a profit margin target. The plans have been designed to encourage the meeting of stretch goals over a three-year period for a high-growth, founder-led business."
+      },
+      {
+        "topic": "Annual incentive plan weighting and alignment with shareholders",
+        "stated_position": "Management confirms the 2021-2022 structure was 67% adjusted revenue / 33% adjusted EBITDA, which \"reflected an emphasis on the top-line and promoted a growth mindset,\" and states that \"in 2023, we will be returning to a company incentive plan structure that equally weights adjusted revenue and adjusted EBITDA, a structure designed to incentivize profitable growth.\" It adds that \"stock ownership is the cornerstone of our executive compensation program.\"",
+        "kind": "governance_or_management",
+        "quote": "That said, in 2023, we will be returning to a company incentive plan structure that equally weights adjusted revenue and adjusted EBITDA, a structure designed to incentivize profitable growth."
+      },
+      {
+        "topic": "DBRS Morningstar market share and competitive positioning in credit ratings",
+        "stated_position": "Management concedes DBRS Morningstar \"has a relatively small share of total ratings in the corporate and financial institutions segments\" and is \"not a significant player in rating large, investment-grade corporates in the U.S. and Europe,\" saying it is \"instead focused on middle-market and private transactions\" where it has \"seen good progress within our targeted niche.\"",
+        "kind": "competition_or_market",
+        "quote": "In particular, we are not a significant player in rating large, investment-grade corporates in the U.S. and Europe, which dominate the market and often have ratings assigned to multiple individual bonds. We are instead focused on middle-market and private transactions; in these markets the issuer often has just a single credit rating, which further complicates direct comparisons."
+      },
+      {
+        "topic": "Investment in DBRS Morningstar and expected margin trajectory",
+        "stated_position": "Lower 2022 margins are attributed to market conditions and \"the effect of investments (reflected in higher headcount) to execute our growth strategy,\" including expanded analytical capabilities primarily in India and middle-market corporate build-out. \"We expect these investments to deliver strong long-term returns\" and \"Our expectation is that margins continue to increase over time as we further grow and scale the credit ratings area.\"",
+        "kind": "segment_or_product",
+        "quote": "Since 2019, we have invested to expand our analytical capabilities (primarily in India) as well as to build out other key ratings areas including a focus on middle-market corporate activities. We expect these investments to deliver strong long-term returns."
+      },
+      {
+        "topic": "Long-term growth expectations for credit ratings relative to competitors",
+        "stated_position": "Management sees room for growth in middle-market and private corporate markets in the U.S. and Europe and expansion in certain ABS and CLO markets, and states: \"we believe that we have the potential to grow at rates faster than the big three credit ratings agencies.\"",
+        "kind": "competition_or_market",
+        "quote": "We are also progressing initiatives to expand our market coverage in certain asset-backed securities and collateralized loan obligation markets where we\\u2019ve made strategic investments to date. Based on these opportunities, we believe that we have the potential to grow at rates faster than the big three credit ratings agencies."
+      },
+      {
+        "topic": "Growth opportunity in Morningstar Indexes",
+        "stated_position": "\"We continue to see opportunities for strong continued growth in the Indexes product area, supported by investor interest in our unique index products tied to the strengths of Morningstar in areas such as Sustainalytics, Morningstar Equity Research, and PitchBook.\" No specific growth guidance provided.",
+        "kind": "segment_or_product",
+        "quote": "We continue to see opportunities for strong continued growth in the Indexes product area, supported by investor interest in our unique index products tied to the strengths of Morningstar in areas such as Sustainalytics, Morningstar Equity Research, and PitchBook. We do not provide specific guidance around the expected growth rate."
+      },
+      {
+        "topic": "Integration of Leveraged Commentary & Data into PitchBook and Morningstar Indexes",
+        "stated_position": "\"All LCD colleagues have been integrated into the relevant teams with nominal employee attrition.\" News and research teams centralized under PitchBook; during 2023 the company expects to incorporate LCD news, research, and data into the PitchBook platform. Index calculation transition from S&P to in-house platform expected to complete \"early next year.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "During 2023, we expect to incorporate LCD news, research, and data into the PitchBook platform to better serve existing LCD customers, existing PitchBook customers, and new prospective customers."
+      },
+      {
+        "topic": "Sustainalytics contract terms and integration",
+        "stated_position": "Sustainalytics contracts typically have one to two year initial terms then transition to evergreen contracts; \"As part of our integration activities, we are in the process of further aligning Sustainalytics\\u2019 contracts to standard Morningstar terms and conditions.\"",
+        "kind": "segment_or_product",
+        "quote": "As part of our integration activities, we are in the process of further aligning Sustainalytics\\u2019 contracts to standard Morningstar terms and conditions."
+      },
+      {
+        "topic": "Dividend policy and payout ratio",
+        "stated_position": "\"Dividends have consistently been an important part of our capital allocation strategy and we are proud to have increased the dividend every year since our IPO. While we don\\u2019t have a specific payout target, our average adjusted payout ratio since 2018 is in the mid-20s\"",
+        "kind": "capital_allocation",
+        "quote": "Dividends have consistently been an important part of our capital allocation strategy and we are proud to have increased the dividend every year since our IPO. While we don\\u2019t have a specific payout target, our average adjusted payout ratio since 2018 is in the mid-20s with the payout defined as cash dividends paid divided by adjusted diluted net income."
+      },
+      {
+        "topic": "2023 capital allocation priorities and share repurchase approach",
+        "stated_position": "\"Our decision to repurchase shares is valuation driven.\" For 2023, \"we\\u2019ll continue to take a balanced approach to capital allocation\" but with \"a near-to-intermediate term focus on using excess cash to pay down debt following the acquisition of Praemium and LCD in 2022 and the accompanying increase in our leverage levels.\"",
+        "kind": "capital_allocation",
+        "quote": "In 2023, we\\u2019ll continue to take a balanced approach to capital allocation. That said, we do have a near-to-intermediate term focus on using excess cash to pay down debt following the acquisition of Praemium and LCD in 2022 and the accompanying increase in our leverage levels."
+      },
+      {
+        "topic": "Leverage targets, covenants and balance sheet philosophy",
+        "stated_position": "Covenants require maintaining a 3.50x ratio of consolidated funded indebtedness to consolidated EBITDA (up to 3.75x temporarily for a large acquisition). \"As we noted last year, we do not target a specific debt ratio, and have taken a conservative approach to managing our balance sheet over time.\" Debt repayment will be a near-to-intermediate-term priority.",
+        "kind": "capital_allocation",
+        "quote": "As we noted last year, we do not target a specific debt ratio, and have taken a conservative approach to managing our balance sheet over time. Over the long-term, we seek to balance capital allocation priorities. That said, given our higher outstanding debt balance due to the LCD acquisition and recent increases in short-term interest rates, debt repayment will be a near-to-intermediate-term priority for deployment of excess cash."
+      },
+      {
+        "topic": "Capital expenditure policy and office space",
+        "stated_position": "No guidance on future capex levels, but \"we continue to follow our accounting policy to capitalize software development and will invest prudently in our offices to accommodate hybrid working and avoid taking on new space where we can.\"",
+        "kind": "capital_allocation",
+        "quote": "we continue to follow our accounting policy to capitalize software development and will invest prudently in our offices to accommodate hybrid working and avoid taking on new space where we can"
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We received an unusually high volume of shareholder questions in February and have consolidated our responses to similar questions. To share information in as timely a manner as possible, we will be publishing our responses in installments.",
+        "why_notable": "Management itself flags an unusual level of shareholder scrutiny \\u2014 a signal of investor pressure in this period."
+      },
+      {
+        "quote": "We believe that where we have incentivized growth, we have maintained a discipline of only investing where we believe that every dollar invested compounded returns for shareholders over time.",
+        "why_notable": "A defensive claim of capital discipline made in direct response to a shareholder allegation of misalignment between management and shareholders."
+      },
+      {
+        "quote": "That balance reflected an emphasis on the top-line and promoted a growth mindset.",
+        "why_notable": "Retrospective characterisation of the prior incentive design, framing a growth emphasis that is now being reversed toward 'profitable growth' \\u2014 a notable shift in stated priority."
+      },
+      {
+        "quote": "DBRS Morningstar had positive adjusted operating income, based on certain cost allocation assumptions and estimates, in the fourth quarter of 2022 although profit levels were far lower than the comparable prior year quarter.",
+        "why_notable": "An unusually direct, heavily hedged admission of deteriorating profitability in the ratings business."
+      },
+      {
+        "quote": "While it\\u2019s still early, we are already seeing evidence that the combination of LCD and PitchBook is providing additional incremental value to our customers and raising their willingness to pay for it.",
+        "why_notable": "Early-stage acquisition claim hedged with 'still early' \\u2014 worth revisiting against later characterisations of LCD's contribution."
+      },
+      {
+        "quote": "These methodologies are not complete and, like our product areas, do change from time to time. As a result, our discussions of relative margins are directional and based on estimates.",
+        "why_notable": "A recurring caveat that limits accountability for product-level profitability disclosures shareholders were pressing on."
+      }
+    ]
+  }
+}

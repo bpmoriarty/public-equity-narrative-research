@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-08-05T18:17:21Z",
+  "generated_utc": "2026-08-05T19:30:25Z",
   "ticker": "MORN",
   "cik": "0001289419",
   "headline_window_chars": 1200,
@@ -104,7 +104,7 @@
           "path": "data/sections/FY2021/8-K/0001104659-21-035565/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-21-035565/8-K_8-K_whole.txt",
           "raw_chars": 22982,
-          "content_chars": 16628,
+          "content_chars": 17321,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -137,7 +137,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 16628
+      "content_chars": 17321
     },
     {
       "accession": "0001104659-21-039050",
@@ -247,7 +247,7 @@
           "path": "data/sections/FY2021/8-K/0001104659-21-051388/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-21-051388/8-K_8-K_whole.txt",
           "raw_chars": 19118,
-          "content_chars": 12767,
+          "content_chars": 13457,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -280,7 +280,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 12767
+      "content_chars": 13457
     },
     {
       "accession": "0001104659-21-067825",
@@ -378,7 +378,7 @@
           "path": "data/sections/FY2021/8-K/0001104659-21-080129/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-21-080129/8-K_8-K_whole.txt",
           "raw_chars": 50999,
-          "content_chars": 44659,
+          "content_chars": 45339,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -423,7 +423,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 44659
+      "content_chars": 45339
     },
     {
       "accession": "0001104659-21-090651",
@@ -447,7 +447,7 @@
           "path": "data/sections/FY2021/8-K/0001104659-21-090651/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-21-090651/8-K_8-K_whole.txt",
           "raw_chars": 15212,
-          "content_chars": 8857,
+          "content_chars": 9555,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -480,7 +480,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 8857
+      "content_chars": 9555
     },
     {
       "accession": "0001104659-21-105166",
@@ -504,7 +504,7 @@
           "path": "data/sections/FY2021/8-K/0001104659-21-105166/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-21-105166/8-K_8-K_whole.txt",
           "raw_chars": 9656,
-          "content_chars": 336,
+          "content_chars": 3942,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -533,11 +533,11 @@
           }
         }
       ],
-      "read_section_keys": [],
-      "stub_documents": [
-        "8-K"
+      "read_section_keys": [
+        "8-K_8-K_whole"
       ],
-      "content_chars": 0
+      "stub_documents": [],
+      "content_chars": 3942
     },
     {
       "accession": "0001104659-21-116917",
@@ -561,7 +561,7 @@
           "path": "data/sections/FY2021/8-K/0001104659-21-116917/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-21-116917/8-K_8-K_whole.txt",
           "raw_chars": 27684,
-          "content_chars": 334,
+          "content_chars": 21964,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -590,11 +590,11 @@
           }
         }
       ],
-      "read_section_keys": [],
-      "stub_documents": [
-        "8-K"
+      "read_section_keys": [
+        "8-K_8-K_whole"
       ],
-      "content_chars": 0
+      "stub_documents": [],
+      "content_chars": 21964
     },
     {
       "accession": "0001104659-21-125162",
@@ -692,7 +692,7 @@
           "path": "data/sections/FY2021/8-K/0001104659-21-138114/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-21-138114/8-K_8-K_whole.txt",
           "raw_chars": 18425,
-          "content_chars": 335,
+          "content_chars": 12708,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -721,11 +721,11 @@
           }
         }
       ],
-      "read_section_keys": [],
-      "stub_documents": [
-        "8-K"
+      "read_section_keys": [
+        "8-K_8-K_whole"
       ],
-      "content_chars": 0
+      "stub_documents": [],
+      "content_chars": 12708
     },
     {
       "accession": "0001104659-21-146663",
@@ -897,7 +897,7 @@
           "path": "data/sections/FY2022/8-K/0001104659-22-025145/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-22-025145/8-K_8-K_whole.txt",
           "raw_chars": 9098,
-          "content_chars": 332,
+          "content_chars": 3381,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -926,11 +926,11 @@
           }
         }
       ],
-      "read_section_keys": [],
-      "stub_documents": [
-        "8-K"
+      "read_section_keys": [
+        "8-K_8-K_whole"
       ],
-      "content_chars": 0
+      "stub_documents": [],
+      "content_chars": 3381
     },
     {
       "accession": "0001104659-22-029183",
@@ -1028,7 +1028,7 @@
           "path": "data/sections/FY2022/8-K/0001104659-22-035590/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-22-035590/8-K_8-K_whole.txt",
           "raw_chars": 19949,
-          "content_chars": 13676,
+          "content_chars": 14387,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -1061,7 +1061,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 13676
+      "content_chars": 14387
     },
     {
       "accession": "0001104659-22-049042",
@@ -1085,7 +1085,7 @@
           "path": "data/sections/FY2022/8-K/0001104659-22-049042/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-22-049042/8-K_8-K_whole.txt",
           "raw_chars": 32779,
-          "content_chars": 26499,
+          "content_chars": 27215,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -1130,7 +1130,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 26499
+      "content_chars": 27215
     },
     {
       "accession": "0001104659-22-065899",
@@ -1154,7 +1154,7 @@
           "path": "data/sections/FY2022/8-K/0001104659-22-065899/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-22-065899/8-K_8-K_whole.txt",
           "raw_chars": 24988,
-          "content_chars": 18739,
+          "content_chars": 19430,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -1199,7 +1199,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 18739
+      "content_chars": 19430
     },
     {
       "accession": "0001104659-22-067118",
@@ -1284,7 +1284,7 @@
           "path": "data/sections/FY2022/8-K/0001104659-22-072402/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-22-072402/8-K_8-K_whole.txt",
           "raw_chars": 13065,
-          "content_chars": 331,
+          "content_chars": 7505,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -1313,11 +1313,11 @@
           }
         }
       ],
-      "read_section_keys": [],
-      "stub_documents": [
-        "8-K"
+      "read_section_keys": [
+        "8-K_8-K_whole"
       ],
-      "content_chars": 0
+      "stub_documents": [],
+      "content_chars": 7505
     },
     {
       "accession": "0001104659-22-076846",
@@ -1402,7 +1402,7 @@
           "path": "data/sections/FY2022/8-K/0001104659-22-082065/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-22-082065/8-K_8-K_whole.txt",
           "raw_chars": 32169,
-          "content_chars": 333,
+          "content_chars": 26609,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -1443,11 +1443,11 @@
           }
         }
       ],
-      "read_section_keys": [],
-      "stub_documents": [
-        "8-K"
+      "read_section_keys": [
+        "8-K_8-K_whole"
       ],
-      "content_chars": 0
+      "stub_documents": [],
+      "content_chars": 26609
     },
     {
       "accession": "0001104659-22-095136",
@@ -1471,7 +1471,7 @@
           "path": "data/sections/FY2022/8-K/0001104659-22-095136/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-22-095136/8-K_8-K_whole.txt",
           "raw_chars": 22501,
-          "content_chars": 336,
+          "content_chars": 16797,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -1500,11 +1500,11 @@
           }
         }
       ],
-      "read_section_keys": [],
-      "stub_documents": [
-        "8-K"
+      "read_section_keys": [
+        "8-K_8-K_whole"
       ],
-      "content_chars": 0
+      "stub_documents": [],
+      "content_chars": 16797
     },
     {
       "accession": "0001104659-22-102681",
@@ -1528,7 +1528,7 @@
           "path": "data/sections/FY2022/8-K/0001104659-22-102681/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-22-102681/8-K_8-K_whole.txt",
           "raw_chars": 53530,
-          "content_chars": 334,
+          "content_chars": 47819,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -1557,11 +1557,11 @@
           }
         }
       ],
-      "read_section_keys": [],
-      "stub_documents": [
-        "8-K"
+      "read_section_keys": [
+        "8-K_8-K_whole"
       ],
-      "content_chars": 0
+      "stub_documents": [],
+      "content_chars": 47819
     },
     {
       "accession": "0001104659-22-110627",
@@ -1585,7 +1585,7 @@
           "path": "data/sections/FY2022/8-K/0001104659-22-110627/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-22-110627/8-K_8-K_whole.txt",
           "raw_chars": 16905,
-          "content_chars": 335,
+          "content_chars": 11198,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -1614,11 +1614,11 @@
           }
         }
       ],
-      "read_section_keys": [],
-      "stub_documents": [
-        "8-K"
+      "read_section_keys": [
+        "8-K_8-K_whole"
       ],
-      "content_chars": 0
+      "stub_documents": [],
+      "content_chars": 11198
     },
     {
       "accession": "0001104659-22-120313",
@@ -1642,7 +1642,7 @@
           "path": "data/sections/FY2022/8-K/0001104659-22-120313/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-22-120313/8-K_8-K_whole.txt",
           "raw_chars": 15295,
-          "content_chars": 335,
+          "content_chars": 9587,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -1671,11 +1671,11 @@
           }
         }
       ],
-      "read_section_keys": [],
-      "stub_documents": [
-        "8-K"
+      "read_section_keys": [
+        "8-K_8-K_whole"
       ],
-      "content_chars": 0
+      "stub_documents": [],
+      "content_chars": 9587
     },
     {
       "accession": "0001104659-22-125853",
@@ -1795,7 +1795,7 @@
           "path": "data/sections/FY2022/8-K/0001104659-22-129521/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-22-129521/8-K_8-K_whole.txt",
           "raw_chars": 25227,
-          "content_chars": 334,
+          "content_chars": 19519,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -1836,11 +1836,11 @@
           }
         }
       ],
-      "read_section_keys": [],
-      "stub_documents": [
-        "8-K"
+      "read_section_keys": [
+        "8-K_8-K_whole"
       ],
-      "content_chars": 0
+      "stub_documents": [],
+      "content_chars": 19519
     },
     {
       "accession": "0001104659-23-006197",
@@ -1864,7 +1864,7 @@
           "path": "data/sections/FY2023/8-K/0001104659-23-006197/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-23-006197/8-K_8-K_whole.txt",
           "raw_chars": 13050,
-          "content_chars": 6643,
+          "content_chars": 7344,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -1897,7 +1897,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 6643
+      "content_chars": 7344
     },
     {
       "accession": "0001104659-23-008314",
@@ -1968,7 +1968,7 @@
           "path": "data/sections/FY2023/8-K/0001104659-23-025316/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-23-025316/8-K_8-K_whole.txt",
           "raw_chars": 7305,
-          "content_chars": 908,
+          "content_chars": 1597,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -2001,7 +2001,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 908
+      "content_chars": 1597
     },
     {
       "accession": "0001104659-23-035071",
@@ -2099,7 +2099,7 @@
           "path": "data/sections/FY2023/8-K/0001104659-23-036078/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-23-036078/8-K_8-K_whole.txt",
           "raw_chars": 37915,
-          "content_chars": 30569,
+          "content_chars": 32721,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -2144,7 +2144,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 30569
+      "content_chars": 32721
     },
     {
       "accession": "0001104659-23-038321",
@@ -2168,7 +2168,7 @@
           "path": "data/sections/FY2023/8-K/0001104659-23-038321/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-23-038321/8-K_8-K_whole.txt",
           "raw_chars": 31169,
-          "content_chars": 23944,
+          "content_chars": 25975,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -2201,7 +2201,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 23944
+      "content_chars": 25975
     },
     {
       "accession": "0001104659-23-042167",
@@ -2225,7 +2225,7 @@
           "path": "data/sections/FY2023/8-K/0001104659-23-042167/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-23-042167/8-K_8-K_whole.txt",
           "raw_chars": 32185,
-          "content_chars": 24964,
+          "content_chars": 26993,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -2258,7 +2258,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 24964
+      "content_chars": 26993
     },
     {
       "accession": "0001104659-23-045595",
@@ -2282,7 +2282,7 @@
           "path": "data/sections/FY2023/8-K/0001104659-23-045595/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-23-045595/8-K_8-K_whole.txt",
           "raw_chars": 47152,
-          "content_chars": 40051,
+          "content_chars": 41958,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -2337,7 +2337,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 40051
+      "content_chars": 41958
     },
     {
       "accession": "0001104659-23-059121",
@@ -2361,7 +2361,7 @@
           "path": "data/sections/FY2023/8-K/0001104659-23-059121/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-23-059121/8-K_8-K_whole.txt",
           "raw_chars": 33712,
-          "content_chars": 27227,
+          "content_chars": 28869,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -2389,7 +2389,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 27227
+      "content_chars": 28869
     },
     {
       "accession": "0001104659-23-070352",
@@ -2413,7 +2413,7 @@
           "path": "data/sections/FY2023/8-K/0001104659-23-070352/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-23-070352/8-K_8-K_whole.txt",
           "raw_chars": 12626,
-          "content_chars": 6746,
+          "content_chars": 7434,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -2441,7 +2441,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 6746
+      "content_chars": 7434
     },
     {
       "accession": "0001104659-23-072246",
@@ -2539,7 +2539,7 @@
           "path": "data/sections/FY2023/8-K/0001104659-23-078743/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-23-078743/8-K_8-K_whole.txt",
           "raw_chars": 44887,
-          "content_chars": 37931,
+          "content_chars": 39696,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -2567,7 +2567,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 37931
+      "content_chars": 39696
     },
     {
       "accession": "0001104659-23-093954",
@@ -2591,7 +2591,7 @@
           "path": "data/sections/FY2023/8-K/0001104659-23-093954/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-23-093954/8-K_8-K_whole.txt",
           "raw_chars": 24791,
-          "content_chars": 17708,
+          "content_chars": 19478,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -2619,7 +2619,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 17708
+      "content_chars": 19478
     },
     {
       "accession": "0001104659-23-099304",
@@ -2643,7 +2643,7 @@
           "path": "data/sections/FY2023/8-K/0001104659-23-099304/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-23-099304/8-K_8-K_whole.txt",
           "raw_chars": 23625,
-          "content_chars": 17451,
+          "content_chars": 18308,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -2671,7 +2671,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 17451
+      "content_chars": 18308
     },
     {
       "accession": "0001104659-23-101202",
@@ -2769,7 +2769,7 @@
           "path": "data/sections/FY2023/8-K/0001104659-23-105947/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-23-105947/8-K_8-K_whole.txt",
           "raw_chars": 32800,
-          "content_chars": 26617,
+          "content_chars": 27487,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -2797,7 +2797,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 26617
+      "content_chars": 27487
     },
     {
       "accession": "0001104659-23-110795",
@@ -2821,7 +2821,7 @@
           "path": "data/sections/FY2023/8-K/0001104659-23-110795/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-23-110795/8-K_8-K_whole.txt",
           "raw_chars": 30317,
-          "content_chars": 23665,
+          "content_chars": 24522,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -2849,7 +2849,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 23665
+      "content_chars": 24522
     },
     {
       "accession": "0001104659-23-122850",
@@ -2947,7 +2947,7 @@
           "path": "data/sections/FY2023/8-K/0001104659-23-127324/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-23-127324/8-K_8-K_whole.txt",
           "raw_chars": 35868,
-          "content_chars": 29865,
+          "content_chars": 30551,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -2975,7 +2975,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 29865
+      "content_chars": 30551
     },
     {
       "accession": "0001104659-24-010618",
@@ -2999,7 +2999,7 @@
           "path": "data/sections/FY2024/8-K/0001104659-24-010618/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001104659-24-010618/8-K_8-K_whole.txt",
           "raw_chars": 29886,
-          "content_chars": 23861,
+          "content_chars": 24571,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -3027,7 +3027,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 23861
+      "content_chars": 24571
     },
     {
       "accession": "0001289419-24-000017",
@@ -3051,7 +3051,7 @@
           "path": "data/sections/FY2024/8-K/0001289419-24-000017/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001289419-24-000017/8-K_8-K_whole.txt",
           "raw_chars": 33066,
-          "content_chars": 26004,
+          "content_chars": 26762,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -3079,7 +3079,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 26004
+      "content_chars": 26762
     },
     {
       "accession": "0001289419-24-000033",
@@ -3103,7 +3103,7 @@
           "path": "data/sections/FY2024/8-K/0001289419-24-000033/8-K_8-K_whole.txt",
           "trimmed_path": "data/triage/text/0001289419-24-000033/8-K_8-K_whole.txt",
           "raw_chars": 38206,
-          "content_chars": 31061,
+          "content_chars": 31802,
           "over_size_cap": false,
           "size_cap_note": null,
           "signals": {
@@ -3131,7 +3131,7 @@
         "8-K_8-K_whole"
       ],
       "stub_documents": [],
-      "content_chars": 31061
+      "content_chars": 31802
     },
     {
       "accession": "0001289419-24-000042",

@@ -1,0 +1,164 @@
+{
+  "fiscal_year": 2023,
+  "task": "investor_qa",
+  "unit": "0001104659-23-078743",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:08:45Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 14575,
+    "output_tokens": 4570
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-23-078743",
+      "form": "8-K",
+      "filing_date": "2023-07-06",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 39696,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Investment criteria and hurdle rates for growth investments",
+        "stated_position": "\"As we evaluate growth investments, we seek to earn cash-on-cash returns well in excess of our cost of capital... As our business has grown, we are focused on investments with larger net present values that we believe will have a more meaningful impact on our business.\" Management also says it has \"not made any significant changes to our investment criteria\" but \"adjusted our hurdle rates accordingly\" as cost of capital changed with rate increases.",
+        "kind": "capital_allocation",
+        "quote": "We have not made any significant changes to our investment criteria. We monitor our cost of capital, and as that changed with recent increases in interest rates and market volatility, we adjusted our hurdle rates accordingly."
+      },
+      {
+        "topic": "Preference for license-based/recurring revenue versus transaction- and asset-based areas",
+        "stated_position": "Roughly 70% of 2022 revenues were license-based; \"We like the recurring revenue streams that these products offer, and we often see shorter time horizons to realize returns in these product areas.\" Management continues to invest in cyclical areas but is \"managing expenses prudently in areas that have been under recent pressure.\"",
+        "kind": "strategy",
+        "quote": "While we recognize there is cyclicality in our transaction- and asset-based product areas, we have invested where we have seen, and continue to see, attractive long-term return potential that we expect to materialize across cycles. That said, we are managing expenses prudently in areas that have been under recent pressure."
+      },
+      {
+        "topic": "PitchBook's long-term business model comparison and margin position",
+        "stated_position": "PitchBook is \"generally a SaaS-based model\"; management notes \"PitchBook relative margins are below other licensed-based areas in Morningstar today due to our investments in growth,\" and names Factset, S&P Market Intelligence, Moody's Analytics and MSCI Analytics as comparable models, with CB Insights, Preqin and S&P Capital IQ as main competitors.",
+        "kind": "segment_or_product",
+        "quote": "That said, we have noted that PitchBook relative margins are below other licensed-based areas in Morningstar today due to our investments in growth. As the business matures, it\u2019s fair to look at PitchBook relative to our other Morningstar business areas as well as peers with similar business and financial models."
+      },
+      {
+        "topic": "LCD integration approach",
+        "stated_position": "Management is integrating LCD research, news and data into the PitchBook platform \"to support one unified platform experience, so we do not view it as a cross-selling opportunity,\" and intends to \"deliver more value to our clients and align our future price points to recognize that value.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "We are in the process of integrating LCD research, news, and data into the PitchBook platform to support one unified platform experience, so we do not view it as a cross-selling opportunity."
+      },
+      {
+        "topic": "DBRS Morningstar competitive position and market share",
+        "stated_position": "Management believes market-leading positions in Canadian ratings \"remain largely unchanged,\" acknowledges \"market share pressure in commercial mortgage-backed securities (CMBS) ratings,\" and states it is \"not a significant player in the large, investment-grade corporates that dominate the market in the US and Europe.\"",
+        "kind": "competition_or_market",
+        "quote": "We remain focused on middle-market and private transactions, but we are not a significant player in the large, investment-grade corporates that dominate the market in the US and Europe."
+      },
+      {
+        "topic": "Repositioning of the CMBS team in response to a slower expected recovery",
+        "stated_position": "Management says it has \"become more pessimistic on the likely speed of the recovery in CMBS\" and as a result has \"repositioned parts of our CMBS team to other parts of Morningstar and eliminated certain roles to align our capacity with market demand.\"",
+        "kind": "segment_or_product",
+        "quote": "That said, we have become more pessimistic on the likely speed of the recovery in CMBS and as a result, we have repositioned parts of our CMBS team to other parts of Morningstar and eliminated certain roles to align our capacity with market demand."
+      },
+      {
+        "topic": "Strategic rationale for middle-market and private corporate ratings",
+        "stated_position": "Corporate ratings \"offer particularly good opportunities for recurring revenue, which is an important driver of our interest in the private and middle market corporate markets in the US and Europe,\" where \"we don't see significant barriers to entry\"; analysts have been hired \"on a one-by-one basis.\"",
+        "kind": "strategy",
+        "quote": "Corporate ratings offer particularly good opportunities for recurring revenue, which is an important driver of our interest in the private and middle market corporate markets in the US and Europe. In those markets, where the larger players are not as entrenched as they are in investment-grade corporates, we don\u2019t see significant barriers to entry."
+      },
+      {
+        "topic": "DBRS Morningstar long-term margin ambition versus S&P and Moody's",
+        "stated_position": "DBRS Morningstar is \"currently below the corporate average\" on margin; over time management believes it can reach \"a margin profile (on a like-for-like basis) at or above the profile we shared at the time of acquisition,\" while noting S&P and Moody's have much higher margins due to size, scale and corporate ratings mix.",
+        "kind": "segment_or_product",
+        "quote": "Over time, we believe that we can steadily increase margins as we diversify across asset classes and continue to grow and increase the recurring revenue base of the business, leading to a margin profile (on a like-for-like basis) at or above the profile we shared at the time of acquisition."
+      },
+      {
+        "topic": "Growth outlook for Morningstar Data and Direct, including generative AI use cases",
+        "stated_position": "Management \"do[es] not view them as mature products,\" citing expansion of data sets and use cases, \"with interest from clients in using our data to power generative AI use cases.\"",
+        "kind": "segment_or_product",
+        "quote": "We believe that there is good opportunity for continued growth in Morningstar Data and Morningstar Direct and do not view them as mature products."
+      },
+      {
+        "topic": "US ESG demand environment for Morningstar Sustainalytics",
+        "stated_position": "Management acknowledges \"a divergence between the demand environment for Morningstar Sustainalytics in the US compared with Europe,\" \"short-term challenges in the US pipeline,\" and a slowdown in retail asset management and wealth management, while focusing in the US on core institutional segments and key ESG use cases.",
+        "kind": "competition_or_market",
+        "quote": "In particular, we see short-term challenges in the US pipeline. While our core institutional audience, which is comprised of asset owners and institutional asset managers, remains active and engaged, we have seen a slowdown in the retail asset management and wealth management segments."
+      },
+      {
+        "topic": "Competing with MSCI in ESG",
+        "stated_position": "\"we've observed that MSCI is often viewed as the default option by customers in the US given the strength of their index business. We see an opportunity to challenge that positioning as we more closely align Morningstar Sustainalytics with Morningstar Indexes.\"",
+        "kind": "competition_or_market",
+        "quote": "More broadly, we\u2019ve observed that MSCI is often viewed as the default option by customers in the US given the strength of their index business. We see an opportunity to challenge that positioning as we more closely align Morningstar Sustainalytics with Morningstar Indexes and come to market with aligned ESG and index capabilities."
+      },
+      {
+        "topic": "Cost actions in the second party opinion (SPO) business",
+        "stated_position": "In response to lower 2022 activity, \"we have consolidated regional reporting structures to drive greater efficiencies, reduced research capacity to align with demand, and increased our focus on activities in markets with the most attractive growth opportunities.\"",
+        "kind": "segment_or_product",
+        "quote": "In response to the lower activity levels in 2022, we have consolidated regional reporting structures to drive greater efficiencies, reduced research capacity to align with demand, and increased our focus on activities in markets with the most attractive growth opportunities."
+      },
+      {
+        "topic": "Slowing investment in and refocusing Sustainalytics",
+        "stated_position": "\"we are slowing down our investments in Morningstar Sustainalytics. This will better align expense growth with revenue growth\"; focus on scale and integration of ESG products within Morningstar, refocusing on \"most scalable products in mature markets, including North America and EMEA,\" and leveraging the broader Morningstar footprint in Asia Pacific.",
+        "kind": "strategy",
+        "quote": "As we noted at the Annual Shareholder Meeting, we are slowing down our investments in Morningstar Sustainalytics. This will better align expense growth with revenue growth as we move forward."
+      },
+      {
+        "topic": "Sustainalytics leadership transition and consolidation under Ron Bundy",
+        "stated_position": "Leadership of Morningstar Sustainalytics has been consolidated under Ron Bundy, in addition to his role as President of Morningstar Indexes. Management says the transition from Michael Jantzi \"has mostly been smooth but has not been without its challenges,\" and sees a bigger opportunity through tighter integration with the rest of the business.",
+        "kind": "governance_or_management",
+        "quote": "We recently consolidated the leadership of Morningstar Sustainalytics under Ron Bundy, who takes on this responsibility in addition to being President of Morningstar Indexes. In our view, the transition of leadership from Michael Jantzi has mostly been smooth but has not been without its challenges."
+      },
+      {
+        "topic": "ESG talent turnover",
+        "stated_position": "\"We have continued to see elevated voluntary turnover in Morningstar Sustainalytics relative to the broader business, reflecting the continued competitive environment for ESG talent,\" though turnover began declining meaningfully in mid-2022 while remaining above the company average.",
+        "kind": "governance_or_management",
+        "quote": "We have continued to see elevated voluntary turnover in Morningstar Sustainalytics relative to the broader business, reflecting the continued competitive environment for ESG talent."
+      },
+      {
+        "topic": "Morningstar Indexes competitive position and margin ambition",
+        "stated_position": "Indexes has been \"the fastest growing provider in the industry for the past two years based on the latest data from Burton-Taylor International Consulting\"; management does \"not expect to reach margin levels consistent with MSCI or S&P Global's index businesses given the significant size and scale differential,\" but sees meaningful room to grow revenue and profitability.",
+        "kind": "competition_or_market",
+        "quote": "While we do not expect to reach margin levels consistent with MSCI or S&P Global\u2019s index businesses given the significant size and scale differential, we believe we have meaningful opportunity to further grow revenue and profitability over time."
+      },
+      {
+        "topic": "Cost control actions across the company",
+        "stated_position": "\"We noted in the Annual Shareholder Meeting that we were slowing hiring. We've also stopped backfilling certain roles to drive efficiency and have selectively eliminated roles elsewhere in the organization to reduce costs,\" plus reduced discretionary spend and real estate footprint optimization.",
+        "kind": "strategy",
+        "quote": "We\u2019ve also stopped backfilling certain roles to drive efficiency and have selectively eliminated roles elsewhere in the organization to reduce costs. In other areas, we reduced discretionary costs, including travel, marketing, and professional fees. Additionally, as our office leases come up for renewal, we have reduced space and are looking to further optimize our real estate footprint."
+      },
+      {
+        "topic": "Reportable segments and margin disclosure methodology",
+        "stated_position": "\"We do not have business operating segments. We have one reportable segment but disclose revenue by type and product area\"; discussions of relative margins are \"directional and based on estimates,\" and allocation of central expenses \"may also change over time.\"",
+        "kind": "governance_or_management",
+        "quote": "We do not have business operating segments. We have one reportable segment but disclose revenue by type and product area to provide useful information to shareholders."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "In our view, the transition of leadership from Michael Jantzi has mostly been smooth but has not been without its challenges.",
+        "why_notable": "An unusually candid admission of difficulty in a leadership transition, hedged with \"mostly.\""
+      },
+      {
+        "quote": "However, we see a bigger opportunity through a tighter connection with the rest of our business and our recent moves are aimed at unlocking this potential with more urgency.",
+        "why_notable": "\"more urgency\" signals a shift in how Sustainalytics is being managed \u2014 from standalone to integrated."
+      },
+      {
+        "quote": "That said, we have become more pessimistic on the likely speed of the recovery in CMBS",
+        "why_notable": "A direct downgrade of a previously stated outlook, tied to concrete headcount action."
+      },
+      {
+        "quote": "We have been pleased with the outsized growth and returns at PitchBook since the acquisition and have continued to invest prudently to grow this business.",
+        "why_notable": "The recurring self-characterisation of PitchBook as the model acquisition, contrasted with more qualified language about DBRS in the same answer."
+      },
+      {
+        "quote": "Despite that decline, we\u2019re also pleased with the progress we\u2019re making across our global credit rating business and continue to see strong long-term potential.",
+        "why_notable": "Hedged optimism about DBRS after disclosing a revenue decline \u2014 the phrasing pivots from results to long-term potential."
+      },
+      {
+        "quote": "As we look to expand our margins and return to levels consistent with recent peaks, we are paying close attention to controlling costs.",
+        "why_notable": "Frames margin recovery to prior peaks as an explicit goal, a shift in emphasis from growth investment to cost discipline."
+      }
+    ]
+  }
+}

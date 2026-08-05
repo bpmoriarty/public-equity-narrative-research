@@ -1,0 +1,90 @@
+{
+  "fiscal_year": 2022,
+  "task": "investor_qa",
+  "unit": "0001104659-22-120313",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:02:18Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 5522,
+    "output_tokens": 2026
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-22-120313",
+      "form": "8-K",
+      "filing_date": "2022-11-18",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 9587,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Gross margin versus peers and reliance on third-party data",
+        "stated_position": "Management said it is \"difficult to make direct comparisons with our peers' gross margins given differences in our business mix,\" that it does not believe its gross margin is capped, and that it does not believe it is more reliant on third-party datasets than peers or faces a higher cost of sourcing data.",
+        "kind": "competition_or_market",
+        "quote": "It is difficult to make direct comparisons with our peers\u2019 gross margins given differences in our business mix. Importantly, we do not believe that our gross margin is capped, and we have invested to fund growth."
+      },
+      {
+        "topic": "Debt structure and funding of the LCD acquisition",
+        "stated_position": "Management said the credit facility structure, particularly the term loan used for the LCD acquisition, \"is a good fit for our needs,\" that its prepayable nature will allow excess cash to pay it down over time, that a similar funding strategy was used for DBRS, and that it does not currently swap out any of its debt.",
+        "kind": "capital_allocation",
+        "quote": "The structure of our credit facility, particularly the term loan component used for the LCD acquisition, is a good fit for our needs. The prepayable nature of the loan will allow us to use excess cash to pay it down over time. We were able to use a similar funding strategy with the acquisition of DBRS."
+      },
+      {
+        "topic": "Target leverage ratio and prioritization of debt repayment over share repurchases",
+        "stated_position": "Management said it does not target a specific debt ratio but takes \"a conservative approach to managing our balance sheet,\" describing a historical pattern of increasing debt for acquisitions (notably PitchBook and DBRS) then paying it down, and stated that \"debt repayment will be a near-to-intermediate-term priority for deployment of excess cash.\"",
+        "kind": "capital_allocation",
+        "quote": "While we do not target a specific debt ratio, we do take a conservative approach to managing our balance sheet. Historically, we have increased our debt levels with a corresponding increase in our leverage ratio to pursue acquisitions (notably PitchBook and DBRS) and then paid down debt in subsequent periods."
+      },
+      {
+        "topic": "Senator Pat Toomey's request for information on Morningstar Sustainalytics research practices",
+        "stated_position": "Management said it has responded and is answering follow-up questions, does not plan to make the response public at this time, continues to engage with legislators and other stakeholders, and will disclose any material outcome per legal/regulatory requirements or usual investor channels.",
+        "kind": "governance_or_management",
+        "quote": "We have responded to Senator Pat Toomey\u2019s request for information and are in the process of answering follow-up questions related to that response. We do not plan to make the response public at this time."
+      },
+      {
+        "topic": "PitchBook management incentive compensation plan",
+        "stated_position": "Management described the PitchBook incentive plan adopted with the acquisition for 2017-2019 and renewed at the end of 2019 for 2020-2022, with awards tied to revenue targets specific to PitchBook's business and higher target incentives in the third year of the plan.",
+        "kind": "governance_or_management",
+        "quote": "The PitchBook incentive plan, which we adopted in connection with the acquisition of PitchBook for the 2017-2019 fiscal year period, was renewed at the end of 2019 for the 2020-2022 fiscal year period. Under that plan, which applies to certain PitchBook employees, awards are tied to financial targets in each year of the plan period, with higher target incentives in the third year of the plan."
+      },
+      {
+        "topic": "Integration of the Leveraged Commentary & Data acquisition into PitchBook",
+        "stated_position": "Management said fifty-nine employees joined with the close of the LCD acquisition on June 1, 2022, and that PitchBook has since added staff to support the LCD product across research, product, support, account management, and sales.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "Fifty-nine employees joined Morningstar with the close of the LCD acquisition on June 1, 2022. Since then, PitchBook has added staff to support the LCD product including in research, product, support, account management, and sales."
+      },
+      {
+        "topic": "Drivers of Morningstar Indexes growth and product partnerships",
+        "stated_position": "Management attributed growth to investable product revenue supported by net inflows to higher margin products and new launches, noting roughly 60 new passive investable products launched with partners including Morgan Stanley, Blackrock, and Citigroup, with particularly strong interest in renewable energy and enhanced ESG indexes.",
+        "kind": "segment_or_product",
+        "quote": "During the prior year, roughly 60 new passive investable products were launched with partners including Morgan Stanley, Blackrock, and Citigroup. We saw particularly strong interest in products focused on renewable energy and enhanced ESG indexes."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We continue to engage with legislators and other government officials who have inquired about Sustainalytics research practices and products as well as with other stakeholders in the community.",
+        "why_notable": "Acknowledges an ongoing, plural set of governmental inquiries into Sustainalytics research practices \u2014 broader than the single senator's request the question asked about."
+      },
+      {
+        "quote": "Professional fees in the second quarter included costs associated with the completed independent investigation regarding certain Morningstar Sustainalytics research practices.",
+        "why_notable": "A rare, matter-of-fact confirmation, buried in an expense answer, that an independent investigation of Sustainalytics research practices took place and has concluded."
+      },
+      {
+        "quote": "That said, debt repayment will be a near-to-intermediate-term priority for deployment of excess cash.",
+        "why_notable": "A direct statement of capital allocation priority ranking debt paydown ahead of other uses, notable against the company's general refusal to set a target leverage ratio."
+      },
+      {
+        "quote": "The increase in headcount in India was due in part to the initiation of the reduction and shift of our China operations.",
+        "why_notable": "Frames the China wind-down as a shift of work to India, linking a geopolitical/regulatory retreat to an operational relocation strategy."
+      }
+    ]
+  }
+}

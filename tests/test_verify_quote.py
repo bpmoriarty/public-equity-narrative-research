@@ -81,7 +81,30 @@ MUST_FAIL = [
     ("spans a real gap that only the placeholder removal could bridge",
      "annually to ensure that it reflects investorquestions9262025003.jpg and expect "
      "long-term demand for specialized sustainability research"),
+    # FROM REAL OUTPUT — the first genuine paraphrase this project found, in a
+    # FY2022 investor-Q&A extraction. The filing reads "...we are gaining traction
+    # and seeing increased interest BUT have not yet seen significant adoption...";
+    # the model emitted "WE have not yet seen significant adoption...", promoting a
+    # subordinate clause to a standalone sentence and dropping the offsetting
+    # positive half. It then characterised the result as "a direct admission...
+    # hedging a growth narrative".
+    #
+    # Two words changed, and the claim got stronger than the filing supports. This
+    # is the failure the whole check exists for, and it is why the near-miss
+    # tolerance stays at three trailing characters: this quote is 96% exact.
+    ("real output: subordinate clause promoted to a sentence, offsetting half dropped",
+     "We have not yet seen significant adoption of managed accounts as a default "
+     "option in the plans we work with"),
 ]
+
+# The paraphrase above is checked against this, its real surrounding sentence.
+PARAPHRASE_SOURCE = (
+    "10. Has the selection of your managed accounts as a default option accelerated? "
+    "We are gaining traction and seeing increased interest but have not yet seen "
+    "significant adoption of managed accounts as a default option in the plans we work "
+    "with, especially when distributed by recordkeepers that have proprietary "
+    "target-date funds."
+)
 
 
 def main() -> int:
@@ -100,7 +123,10 @@ def main() -> int:
     print()
     print("MUST FAIL — the check is worthless if it cannot reject")
     for label, quote in MUST_FAIL:
-        ok, why, span = verify_quote(quote, SOURCE)
+        # The real-output paraphrase is checked against its own sentence; every
+        # other case is checked against SOURCE.
+        hay = PARAPHRASE_SOURCE if label.startswith("real output") else SOURCE
+        ok, why, span = verify_quote(quote, hay)
         print(f"  {'BROKEN' if ok else 'REJECTED':9s} {label}")
         if ok:
             print(f"          -> accepted as: {why}")

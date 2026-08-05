@@ -1,0 +1,112 @@
+{
+  "fiscal_year": 2023,
+  "task": "investor_qa",
+  "unit": "0001104659-23-042167",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:08:15Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 10889,
+    "output_tokens": 2844
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-23-042167",
+      "form": "8-K",
+      "filing_date": "2023-04-05",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 26993,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Cost control levers amid revenue pressure; slowing headcount growth",
+        "stated_position": "Management said sales and marketing efforts are \"critical to ensure we are driving top line performance\" and that G&A investments have been important to scale operations, but stated that \"our most significant lever when it comes to expense growth is headcount and we're slowing headcount growth broadly across the company.\"",
+        "kind": "strategy",
+        "quote": "As we address in a response to a related question, our most significant lever when it comes to expense growth is headcount and we\u2019re slowing headcount growth broadly across the company."
+      },
+      {
+        "topic": "Disclosure of product-area margins and PitchBook profitability",
+        "stated_position": "Management declined to disclose margins by product area or commission structure, saying the 2017 PitchBook disclosure was made \"to provide transparency on the performance of the remainder of our business at the time,\" but stated PitchBook's profitability \"has continued to increase substantially since our acquisition.\"",
+        "kind": "segment_or_product",
+        "quote": "In 2017, we disclosed PitchBook\u2019s impact on our financials to provide transparency on the performance of the remainder of our business at the time. We do not disclose margins by product area or the impacts of our commission structure. That said, based on certain cost allocation assumptions and estimates, PitchBook\u2019s level of profitability has continued to increase substantially since our acquisition."
+      },
+      {
+        "topic": "DBRS Morningstar hiring priorities and geographic/sector expansion",
+        "stated_position": "Hiring \"has been focused on areas where we see the best long-term growth opportunities, including the U.S. and the European Union,\" with operations staff added in Mumbai, expanded corporate credit ratings teams in the U.S. and Europe to support growth in the middle-market and private segments, and added U.S. structured finance headcount in sectors where Morningstar has not historically participated, including aviation finance.",
+        "kind": "segment_or_product",
+        "quote": "Hiring has been focused on areas where we see the best long-term growth opportunities, including the U.S. and the European Union. As we hire, we are also focused on identifying operational efficiencies."
+      },
+      {
+        "topic": "Competitive-reason limits on DBRS revenue disclosure",
+        "stated_position": "Management said that \"for competitive reasons\" it does not provide a detailed breakdown of DBRS Morningstar revenue by both asset class and region, but provided revenue by asset class type.",
+        "kind": "competition_or_market",
+        "quote": "For competitive reasons, we do not provide a detailed breakdown of DBRS Morningstar revenue by both asset class and region, but we can provide DBRS Morningstar revenue separately by asset class type as detailed below."
+      },
+      {
+        "topic": "Pricing strategy for Morningstar Direct",
+        "stated_position": "Management said it is \"focused on ensuring our pricing reflects the increased value we're providing to our clients given our investments and significant product enhancements,\" and that pricing changes are largely taking effect and expected to have an impact in 2023.",
+        "kind": "segment_or_product",
+        "quote": "we are focused on ensuring our pricing reflects the increased value we\u2019re providing to our clients given our investments and significant product enhancements, which was also a contributor in the fourth quarter. That said, pricing changes are largely taking effect and expected to have an impact in 2023."
+      },
+      {
+        "topic": "Morningstar Sustainalytics investment thesis and margin impact",
+        "stated_position": "Management acknowledged Sustainalytics is \"the primary area of investment,\" that expenses grew faster than revenue in 2022 and that it \"had the largest impact of any product area on our decline in margins last year,\" while stating belief that investments including climate and impact data \"will provide long-term returns\" and that Sustainalytics \"will have a positive impact on margins as we grow the business and commercialize the investments we have made.\"",
+        "kind": "segment_or_product",
+        "quote": "As a result, overall expenses increased at a faster pace than revenue in 2022, and Morningstar Sustainalytics had the largest impact of any product area on our decline in margins last year, considering certain cost allocation assumptions. We believe that the investments we have made, including in climate and impact data, will provide long-term returns and that Morningstar Sustainalytics will have a positive impact on margins as we grow the business and commercialize the investments we have made."
+      },
+      {
+        "topic": "Positioning of license-based product areas",
+        "stated_position": "Management said license-based areas performed in line with expectations and that it believes they \"are positioned for strong growth based on the quality and value of our offerings, the investments we have made to continue to meet customer needs, and the overall markets that we serve.\"",
+        "kind": "segment_or_product",
+        "quote": "While we cannot provide guidance on our future revenue, we believe that our license-based product areas are positioned for strong growth based on the quality and value of our offerings, the investments we have made to continue to meet customer needs, and the overall markets that we serve."
+      },
+      {
+        "topic": "Whether Advisor Workstation users are being migrated to Morningstar Direct",
+        "stated_position": "Management directly denied the premise: \"We are not actively migrating users to Morningstar Direct and continue to enhance Advisor Workstation with an updated toolkit to help advisors better serve investors.\"",
+        "kind": "segment_or_product",
+        "quote": "We are not actively migrating users to Morningstar Direct and continue to enhance Advisor Workstation with an updated toolkit to help advisors better serve investors."
+      },
+      {
+        "topic": "No forward guidance and no quarterly earnings calls; shareholder engagement policy",
+        "stated_position": "Management defended the policy: \"We do not provide annual guidance or conduct quarterly earnings calls because we do not want to encourage a focus on short-term results that is inconsistent with our mission to empower investor success,\" while saying it continues to evaluate and refine its approach and welcomes feedback.",
+        "kind": "governance_or_management",
+        "quote": "We do not provide annual guidance or conduct quarterly earnings calls because we do not want to encourage a focus on short-term results that is inconsistent with our mission to empower investor success. We provide written answers to shareholders of all sizes and share answers dating back to 2014."
+      },
+      {
+        "topic": "ROIC, capital allocation philosophy, and margin targets",
+        "stated_position": "Management said it remains \"focused on continuing to generate ROIC at levels well above our cost of capital\" and seeks \"cash-on-cash returns in the mid-teens,\" denied operating under a different philosophy from prior management while acknowledging heavier investment, and declined to give margin or return targets beyond being \"focused on driving margins closer to the historical peaks we have seen in the business.\"",
+        "kind": "capital_allocation",
+        "quote": "We are not operating under a different philosophy, but we do acknowledge that we have invested more heavily in the business over the past several years due to the significant opportunities we see in the market and our conviction around the returns they will generate."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We do not have business operating segments. We have one reportable segment, but disclose revenue by type and product area, to provide useful information to shareholders.",
+        "why_notable": "Framing caveat repeated in these filings; management stresses that product-area margin discussion is estimate-based and allocations \"do change from time to time,\" limiting the weight of any margin statement."
+      },
+      {
+        "quote": "As a result, our discussions of relative margins are directional and based on estimates.",
+        "why_notable": "An explicit hedge attached to every product-level profitability answer in this filing."
+      },
+      {
+        "quote": "While we cannot provide guidance on returns and margins, we have noted that we are focused on driving margins closer to the historical peaks we have seen in the business.",
+        "why_notable": "A hedged commitment: refuses specific targets while accepting margins have fallen from historical peaks \u2014 notable given the questioner's direct challenge on competitors' clarity about long-term targets."
+      },
+      {
+        "quote": "While turnover remained higher than we\u2019d like to see in 2022, encouragingly, the increase in turnover that started in 2021 and persisted through the first few quarters of 2022 was lower in the fourth quarter, as turnover fell noticeably on a seasonally adjusted basis.",
+        "why_notable": "Unusually direct admission that attrition is above management's own tolerance, with a specific acknowledgement of persistently high turnover in India and the Sustainalytics product area."
+      },
+      {
+        "quote": "We received an unusually high volume of shareholder questions in February and have consolidated our responses to similar questions.",
+        "why_notable": "Signals an unusual level of shareholder pressure in this period, consistent with the pointed ROIC and engagement questions that follow."
+      }
+    ]
+  }
+}

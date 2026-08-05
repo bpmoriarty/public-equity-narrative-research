@@ -1,0 +1,96 @@
+{
+  "fiscal_year": 2021,
+  "task": "investor_qa",
+  "unit": "0001104659-21-051388",
+  "ok": true,
+  "extracted_utc": "2026-08-05T19:07:19Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 6700,
+    "output_tokens": 2703
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-21-051388",
+      "form": "8-K",
+      "filing_date": "2021-04-16",
+      "items": [
+        "7.01"
+      ]
+    }
+  ],
+  "source_chars": 13457,
+  "facts": {
+    "topics": [
+      {
+        "topic": "DBRS Morningstar's competitive position versus larger ratings peers and constraints on U.S. corporate market growth",
+        "stated_position": "Management says investors' views on underlying credit quality matter more to bond pricing than which agency rates it, which \"supports our ability to compete with our larger peers in the U.S. and European structured finance markets,\" while index criteria, mandates and regulatory use of ratings benefit Canadian issuers rated by DBRS Morningstar and \"is this same dynamic that currently constrains our growth opportunities in the U.S. corporate markets.\"",
+        "kind": "competition_or_market",
+        "quote": "As such, we believe issuers In Canada rated by DBRS Morningstar do benefit from securing a DBRS Morningstar rating based on our strong brand, inclusion in indexes, and history in the Canadian credit markets. It is this same dynamic that currently constrains our growth opportunities in the U.S. corporate markets."
+      },
+      {
+        "topic": "Subscription/license contract structure and cash collection model",
+        "stated_position": "Management characterises the subscription model as historically central: \"our subscription-based model allowed us to grow the business by taking advantage of the float created by getting paid upfront for the services we delivered over time. That model remains important today, even as our product portfolio is more diversified now.\" License products are contracted on one to three year terms, billed annually with cash collected at the beginning of the annual term.",
+        "kind": "strategy",
+        "quote": "It is fair to say that, over the course of our history, our subscription-based model allowed us to grow the business by taking advantage of the float created by getting paid upfront for the services we delivered over time. That model remains important today, even as our product portfolio is more diversified now."
+      },
+      {
+        "topic": "Response to low ISS carbon/environmental ratings and ESG disclosure plans",
+        "stated_position": "Management states it partnered with UK-based Greenstone to calculate its global carbon footprint, published scope 1, 2 and 3 emissions for the first time in its 2020 corporate sustainability report, and that \"Our plan is to be a leader with respect to transparency in this area, and we believe that Morningstar is uniquely positioned.\" It plans to draw on its own research and Sustainalytics' ESG Assessment Platform team to analyse its global supply chain and to \"articulate public reduction targets.\"",
+        "kind": "strategy",
+        "quote": "Our plan is to be a leader with respect to transparency in this area, and we believe that Morningstar is uniquely positioned. We plan to draw on our own research and tools to examine our impact across the supply chain; we\u2019re work closely with the ESG Assessment Platform team at Sustainalytics to analyze and report on our global supply chain and partnerships. Additionally, we plan to articulate public reduction targets; where appropriate, we will align with international standards and guidance with respect to global reduction frameworks."
+      },
+      {
+        "topic": "In-house versus third-party management within Managed Portfolios",
+        "stated_position": "Management states it offers Managed Portfolios in the U.S., U.K., South Africa, Australia and India totaling $28.6 billion AUM/AUA at December 31, 2020, that it does \"not offer third-party model portfolio providers (or \"strategists\") within Managed Portfolios,\" and that it manages the asset allocation and underlying investment vehicle targets itself while mainly using third-party managers as subadvisors within the Morningstar Mutual Funds Trust.",
+        "kind": "segment_or_product",
+        "quote": "Currently, we do not offer third-party model portfolio providers (or \u201cstrategists\u201d) within Managed Portfolios. We manage the asset allocation and underlying investment vehicle targets of these portfolios."
+      },
+      {
+        "topic": "Which products are gaining or losing share, and performance versus peer group",
+        "stated_position": "Management claims consistent ability to grow revenue in Morningstar Data, Direct and PitchBook relative to its own market estimates, and cites its \"leadership position in the ESG space\" with Sustainalytics solutions as \"emerging standards in the marketplace for ESG investing.\" It concedes that growth in assets under management lagged its combined market estimate of over 20% in Workplace Solutions and Investment Management, attributing Investment Management client losses to a strategy shift. It states three-year average revenue growth of 15.1% (9.3% organic) versus peer average 8.2% (6.9% organic).",
+        "kind": "competition_or_market",
+        "quote": "It is true, on the other hand, that growth in assets under management have lagged our most recent combined market estimate growth rate of over 20% in both Workplace Solutions and Investment Management. However, client losses in Investment Management brought on by a strategy shift mask underlying progress we\u2019ve made in both areas."
+      },
+      {
+        "topic": "Founder Joe Mansueto's ownership succession",
+        "stated_position": "Management states: \"The substance of Joe's plan is for his wife to inherit his shares and then ultimately distribute the shares to non-profits and family members.\"",
+        "kind": "governance_or_management",
+        "quote": "The substance of Joe\u2019s plan is for his wife to inherit his shares and then ultimately distribute the shares to non-profits and family members."
+      },
+      {
+        "topic": "Composition of license-based revenue by customer type",
+        "stated_position": "Management estimates that as of December 31, 2020 approximately 33% of license-based revenues come from advisors, 25% from asset managers, and 22% from private market investors, with the remainder split among redistributors, retail investors, buyside investors and the retirement market, and states it has not disclosed specific growth rates by client type.",
+        "kind": "segment_or_product",
+        "quote": "As of December 31, 2020, we estimate that approximately 33% of our license-based revenues come from advisors, 25% from asset managers, and 22% from private market investors, with the remainder split amongst redistributors, retail investors, buyside investors, and the retirement market. We have not disclosed specific growth rates of revenue generated by each client type."
+      },
+      {
+        "topic": "Disclosure of TAM/SAM and market share by segment",
+        "stated_position": "Management declines to provide segment-level TAM, SAM, share and rank, pointing instead to market size and growth estimates offered at its Annual Meeting presentations, and asserts \"our participation in large and growing markets have supported our aggregate growth and that we still have ample runways for growth in many of our key product areas.\"",
+        "kind": "competition_or_market",
+        "quote": "We\u2019ve consistently demonstrated that our participation in large and growing markets have supported our aggregate growth and that we still have ample runways for growth in many of our key product areas."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "Prior to the publication of our enterprise sustainability report, Morningstar did not make our global emissions public. Consistent with their policy, ISS ratings in the areas of B.1 Environmental Management and B.3. Eco-Efficiency characterized our transparency as \u201cvery low;\u201d our ratings were similarly below D.",
+        "why_notable": "An unusually direct admission of a poor third-party ESG rating and of prior non-disclosure by a company that sells ESG ratings itself."
+      },
+      {
+        "quote": "However, client losses in Investment Management brought on by a strategy shift mask underlying progress we\u2019ve made in both areas.",
+        "why_notable": "Concedes client losses while framing them as self-inflicted by a strategy shift \u2014 a hedge that reframes a shortfall as deliberate."
+      },
+      {
+        "quote": "This is just the latest example of the large and growing end markets that we try to operate in.",
+        "why_notable": "The hedged phrasing \"try to operate in\" alongside the recurring \"large and growing markets\" claim that appears repeatedly in Morningstar's self-description."
+      },
+      {
+        "quote": "Greenstone data collected on 2019 and 2020 data indicated that our emissions are well in line with global peers of similar businesses; indeed, when scaled for revenue and employees, the current data indicates that Morningstar is well-positioned to contribute to charting an ambitious path to efficiency in the future.",
+        "why_notable": "Rebuts the low ISS score by reframing on a scaled basis while first arguing that cross-company comparisons are \"difficult and of limited use\" \u2014 an argument used both ways."
+      }
+    ]
+  }
+}

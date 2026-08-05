@@ -1,6 +1,6 @@
 # 8-K triage log — conditional items 7.01 / 8.01
 
-Generated 2026-08-05T18:17:21Z. MORN (Morningstar, Inc.), CIK 0001289419.
+Generated 2026-08-05T19:30:25Z. MORN (Morningstar, Inc.), CIK 0001289419.
 
 Deterministic: no model calls, so the same inputs always give the same decisions and every one can be checked by hand. `config/forms.toml` requires this log — "Log every triage decision; a silent drop here loses real events."
 
@@ -11,16 +11,16 @@ Deterministic: no model calls, so the same inputs always give the same decisions
 - filings triaged: **75**
 - read: **60**
 - date_only: **15**
-- content to read, after stripping boilerplate: **1,055,009** chars
+- content to read, after stripping boilerplate: **1,261,770** chars
 
 ## By fiscal year
 
 | FY | triaged | read | date_only | content chars |
 |---|---|---|---|---|
-| FY2021 | 13 | 9 | 4 | 108,236 |
-| FY2022 | 15 | 14 | 1 | 85,688 |
-| FY2023 | 19 | 15 | 4 | 316,722 |
-| FY2024 | 12 | 10 | 2 | 237,268 |
+| FY2021 | 13 | 9 | 4 | 149,611 |
+| FY2022 | 15 | 14 | 1 | 230,221 |
+| FY2023 | 19 | 15 | 4 | 335,366 |
+| FY2024 | 12 | 10 | 2 | 239,477 |
 | FY2025 | 16 | 12 | 4 | 307,095 |
 
 ## Where the content sits, by year
@@ -29,8 +29,8 @@ The Reg FD investor Q&A moved from the 8-K body to an EX-99.1 exhibit inside the
 
 | FY | content in body | content in exhibit |
 |---|---|---|
-| FY2021 | 5 | 2 |
-| FY2022 | 4 | 3 |
+| FY2021 | 8 | 2 |
+| FY2022 | 12 | 3 |
 | FY2023 | 14 | 0 |
 | FY2024 | 3 | 7 |
 | FY2025 | 0 | 12 |
@@ -72,47 +72,47 @@ The Reg FD investor Q&A moved from the 8-K body to an EX-99.1 exhibit inside the
 
 | filed | FY | items | chars | routes to | reason |
 |---|---|---|---|---|---|
-| 2021-03-12 | FY2021 | 7.01 | 16,628 | investor_qa | narrative content: investor_qa |
+| 2021-03-12 | FY2021 | 7.01 | 17,321 | investor_qa | narrative content: investor_qa |
 | 2021-03-19 | FY2021 | 7.01, 9.01 | 14,029 | investor_qa | narrative content: presentation |
-| 2021-04-16 | FY2021 | 7.01 | 12,767 | investor_qa | narrative content: investor_qa |
-| 2021-06-11 | FY2021 | 7.01 | 44,659 | investor_qa | narrative content: investor_qa |
-| 2021-07-09 | FY2021 | 7.01 | 8,857 | investor_qa | narrative content: investor_qa |
-| 2021-08-13 | FY2021 | 7.01 | 0 | investor_qa | narrative content: investor_qa |
-| 2021-09-17 | FY2021 | 7.01 | 0 | investor_qa | narrative content: investor_qa |
-| 2021-11-12 | FY2021 | 7.01 | 0 | investor_qa | narrative content: investor_qa |
+| 2021-04-16 | FY2021 | 7.01 | 13,457 | investor_qa | narrative content: investor_qa |
+| 2021-06-11 | FY2021 | 7.01 | 45,339 | investor_qa | narrative content: investor_qa |
+| 2021-07-09 | FY2021 | 7.01 | 9,555 | investor_qa | narrative content: investor_qa |
+| 2021-08-13 | FY2021 | 7.01 | 3,942 | investor_qa | narrative content: investor_qa |
+| 2021-09-17 | FY2021 | 7.01 | 21,964 | investor_qa | narrative content: investor_qa |
+| 2021-11-12 | FY2021 | 7.01 | 12,708 | investor_qa | narrative content: investor_qa |
 | 2021-12-22 | FY2021 | 7.01, 9.01 | 11,296 | events | strong material signal: deal |
-| 2022-02-18 | FY2022 | 7.01 | 0 | investor_qa | narrative content: investor_qa |
-| 2022-03-18 | FY2022 | 7.01 | 13,676 | investor_qa | narrative content: investor_qa |
-| 2022-04-22 | FY2022 | 7.01 | 26,499 | investor_qa | narrative content: investor_qa |
-| 2022-05-27 | FY2022 | 7.01 | 18,739 | investor_qa | narrative content: investor_qa |
+| 2022-02-18 | FY2022 | 7.01 | 3,381 | investor_qa | narrative content: investor_qa |
+| 2022-03-18 | FY2022 | 7.01 | 14,387 | investor_qa | narrative content: investor_qa |
+| 2022-04-22 | FY2022 | 7.01 | 27,215 | investor_qa | narrative content: investor_qa |
+| 2022-05-27 | FY2022 | 7.01 | 19,430 | investor_qa | narrative content: investor_qa |
 | 2022-06-01 | FY2022 | 7.01, 9.01 | 7,908 | events | strong material signal: deal |
-| 2022-06-17 | FY2022 | 7.01 | 0 | investor_qa | narrative content: investor_qa |
+| 2022-06-17 | FY2022 | 7.01 | 7,505 | investor_qa | narrative content: investor_qa |
 | 2022-07-01 | FY2022 | 7.01, 9.01 | 11,216 | events | strong material signal: deal |
-| 2022-07-22 | FY2022 | 7.01 | 0 | investor_qa | narrative content: investor_qa, presentation |
-| 2022-08-26 | FY2022 | 7.01 | 0 | investor_qa | narrative content: investor_qa |
-| 2022-09-23 | FY2022 | 7.01 | 0 | investor_qa | narrative content: investor_qa |
-| 2022-10-21 | FY2022 | 7.01 | 0 | investor_qa | narrative content: investor_qa |
-| 2022-11-18 | FY2022 | 7.01 | 0 | investor_qa | narrative content: investor_qa |
+| 2022-07-22 | FY2022 | 7.01 | 26,609 | investor_qa | narrative content: investor_qa, presentation |
+| 2022-08-26 | FY2022 | 7.01 | 16,797 | investor_qa | narrative content: investor_qa |
+| 2022-09-23 | FY2022 | 7.01 | 47,819 | investor_qa | narrative content: investor_qa |
+| 2022-10-21 | FY2022 | 7.01 | 11,198 | investor_qa | narrative content: investor_qa |
+| 2022-11-18 | FY2022 | 7.01 | 9,587 | investor_qa | narrative content: investor_qa |
 | 2022-12-09 | FY2022 | 8.01, 9.01 | 7,650 | events | strong material signal: capital_allocation |
-| 2022-12-22 | FY2022 | 7.01 | 0 | investor_qa | narrative content: investor_qa |
-| 2023-01-24 | FY2023 | 7.01 | 6,643 | investor_qa | narrative content: investor_qa |
+| 2022-12-22 | FY2022 | 7.01 | 19,519 | investor_qa | narrative content: investor_qa |
+| 2023-01-24 | FY2023 | 7.01 | 7,344 | investor_qa | narrative content: investor_qa |
 | 2023-01-31 | FY2023 | 8.01 | 2,433 | events | material signal (deal) matched outside the headline window, so it is a mention rather than an announcement — read, because only a reader can tell those apart |
-| 2023-02-24 | FY2023 | 7.01 | 908 | investor_qa | narrative content: investor_qa |
-| 2023-03-23 | FY2023 | 7.01 | 30,569 | investor_qa | narrative content: investor_qa, presentation |
-| 2023-03-29 | FY2023 | 7.01 | 23,944 | investor_qa | narrative content: investor_qa |
-| 2023-04-05 | FY2023 | 7.01 | 24,964 | investor_qa | narrative content: investor_qa |
-| 2023-04-14 | FY2023 | 7.01 | 40,051 | investor_qa | narrative content: investor_qa |
-| 2023-05-11 | FY2023 | 7.01 | 27,227 | investor_qa | narrative content: investor_qa |
-| 2023-06-12 | FY2023 | 7.01 | 6,746 | investor_qa | narrative content: investor_qa |
-| 2023-07-06 | FY2023 | 7.01 | 37,931 | investor_qa | narrative content: investor_qa |
-| 2023-08-21 | FY2023 | 7.01 | 17,708 | investor_qa | narrative content: investor_qa |
-| 2023-09-08 | FY2023 | 7.01 | 17,451 | investor_qa | narrative content: investor_qa |
-| 2023-10-02 | FY2023 | 7.01 | 26,617 | investor_qa | narrative content: investor_qa |
-| 2023-10-23 | FY2023 | 7.01 | 23,665 | investor_qa | narrative content: investor_qa |
-| 2023-12-19 | FY2023 | 7.01 | 29,865 | investor_qa | narrative content: investor_qa |
-| 2024-02-05 | FY2024 | 7.01 | 23,861 | investor_qa | narrative content: investor_qa |
-| 2024-03-22 | FY2024 | 7.01 | 26,004 | investor_qa | narrative content: investor_qa |
-| 2024-05-09 | FY2024 | 7.01 | 31,061 | investor_qa | narrative content: investor_qa |
+| 2023-02-24 | FY2023 | 7.01 | 1,597 | investor_qa | narrative content: investor_qa |
+| 2023-03-23 | FY2023 | 7.01 | 32,721 | investor_qa | narrative content: investor_qa, presentation |
+| 2023-03-29 | FY2023 | 7.01 | 25,975 | investor_qa | narrative content: investor_qa |
+| 2023-04-05 | FY2023 | 7.01 | 26,993 | investor_qa | narrative content: investor_qa |
+| 2023-04-14 | FY2023 | 7.01 | 41,958 | investor_qa | narrative content: investor_qa |
+| 2023-05-11 | FY2023 | 7.01 | 28,869 | investor_qa | narrative content: investor_qa |
+| 2023-06-12 | FY2023 | 7.01 | 7,434 | investor_qa | narrative content: investor_qa |
+| 2023-07-06 | FY2023 | 7.01 | 39,696 | investor_qa | narrative content: investor_qa |
+| 2023-08-21 | FY2023 | 7.01 | 19,478 | investor_qa | narrative content: investor_qa |
+| 2023-09-08 | FY2023 | 7.01 | 18,308 | investor_qa | narrative content: investor_qa |
+| 2023-10-02 | FY2023 | 7.01 | 27,487 | investor_qa | narrative content: investor_qa |
+| 2023-10-23 | FY2023 | 7.01 | 24,522 | investor_qa | narrative content: investor_qa |
+| 2023-12-19 | FY2023 | 7.01 | 30,551 | investor_qa | narrative content: investor_qa |
+| 2024-02-05 | FY2024 | 7.01 | 24,571 | investor_qa | narrative content: investor_qa |
+| 2024-03-22 | FY2024 | 7.01 | 26,762 | investor_qa | narrative content: investor_qa |
+| 2024-05-09 | FY2024 | 7.01 | 31,802 | investor_qa | narrative content: investor_qa |
 | 2024-06-14 | FY2024 | 7.01, 9.01 | 8,065 | investor_qa | narrative content: investor_qa |
 | 2024-06-20 | FY2024 | 7.01, 9.01 | 15,061 | events, investor_qa | material signal (deal) in a document that also carries narrative content (investor_qa) |
 | 2024-07-18 | FY2024 | 7.01, 9.01 | 31,323 | investor_qa | narrative content: investor_qa, presentation |
