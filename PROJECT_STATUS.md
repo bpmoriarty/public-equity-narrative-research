@@ -22,7 +22,7 @@ they anchor a narrative claim.
 
 **Last Session:** 2026-08-05
 
-**Overall Health:** 🟢 Working — milestones 1–4 complete; 8-K triage and all five years of investor Q&A done; 1,329 facts
+**Overall Health:** 🟢 Working — milestones 1–4 complete; 1,329 facts. Milestone 5 is scoped and its three design decisions are made; build not started
 
 ### What's Working
 
@@ -159,15 +159,89 @@ Next is **milestone 5, the three outputs** in `output/`. Everything they need is
 in `data/ledger/`, and SPEC.md §3 is explicit that they derive from the ledger,
 never from raw sections.
 
-Three things milestone 5 has to respect, and they are all recorded on the data
-rather than left to memory:
-1. **No claim may rest on a `low`-confidence fact without saying so.** 51 of 479
-   facts are `low`, all board composition. If the board narrative turns out to
-   matter, fix those boundaries first (Next Steps item 10).
-2. **Never compare segment counts across FY2022/FY2023.** The basis changes. Use
-   the segment names and the filing's own language instead.
+### Milestone 5 is scoped. Build not started — resume here.
+
+Scoped 2026-08-05 at the user's request; the user then paused before any code was
+written. The three design questions are **answered** (see Recent Decisions) and the
+sizing below is measured, not estimated, so none of it needs re-deriving.
+
+**Payload sizes, from `count_tokens` rather than chars/4:**
+
+| Pack shape | chars | tokens | $ per call (in) |
+|---|---|---|---|
+| All fields except `investor_qa`, no quotes | 185,243 | 73,555 | $0.37 |
+| All fields, no quote text — **the working pack** | 582,543 | **219,406** | $1.10 |
+| All fields with quotes | 900,443 | 320,046 | $1.60 |
+
+The whole ledger fits one context with room to spare, so **do not pre-summarize**
+— a model-written digest between the filings and the outputs is the one layer this
+pipeline exists to avoid. Send claim + source + confidence; hold quotes back until
+a writer must reproduce one.
+
+`investor_qa` is **64% of the ledger by volume** (850 of 1,329 facts, 769K of 1.14M
+chars). Any document written from this pack drifts toward Reg FD material by
+gravity alone. The user chose full weight with labels — so the labelling is what
+holds the line, and it has to be enforced, not trusted.
+
+**Cost, with a 1-hour prompt cache on the shared 219K-token prefix:** ~$3.50 first
+pass (cache write $2.19 + 4 reads $0.44 + ~35K output $0.88), then ~$1.30 per
+review round. **All-in $6–10** for two or three rounds; $13–20 uncached.
+
+**Time:** ~2–3 hours of build (pack builder, fact IDs, event dedup, four prompts,
+citation checker); ~15 min of API runtime per full regeneration round.
+
+**Four calls, not three.** `discussion-points.md` splits: the stated-vs-paid-for
+priorities section gets its own call on a tight payload (`incentive_metrics` ×
+`strategic_priorities` × `notable_language`, ~15K tokens). SPEC.md §4c calls that
+divergence "the single most useful thing this pipeline can surface" — it should not
+be the third subsection of a call already juggling 1,329 facts.
+
+**Generate `timeline.md` first.** It is the cheapest to check for correctness, and
+it surfaces the dedup problems below before they propagate into prose.
+
+### Six findings from the scoping that milestone 5 has to handle
+
+Found by measuring the ledger, not by reading code:
+
+1. **No fact IDs.** A fact carries `(form, fiscal_year, accession, section_key)` —
+   which identifies a *filing*, not a fact. For an 8-K holding 40 Q&A facts a
+   citation means "somewhere in this document," weaker than the standard this
+   project set. Fix is deterministic: a content hash per fact in `build_ledger.py`
+2. **20 duplicate event records** — the same event reported by two filings. The
+   Shenzhen restructuring in FY2022 and FY2023; the $500M buyback in FY2022 and
+   FY2023; the DBRS SEC settlement in FY2023 and FY2024; the Commodity & Energy
+   divestiture in FY2024 and FY2025. The timeline must merge these — and the
+   duplication is an **asset**: two independent filings corroborating one event
+3. **26 of 74 events carry no date** and cannot enter a chronological table as-is
+4. **Five FY2021 "events" are annual-meeting vote outcomes** — director elections,
+   auditor ratification, say-on-pay. They belong to `vote_results` (61 facts
+   already) and would pad the timeline with routine governance
+5. **No FY2021 shareholder letter** — already DATA.md limitation 8, re-confirmed
+   here against the submissions feed (MORN's first ARS filing is 2023-03-31) and
+   now quantified: letter-voice evidence is 10–11 `notable_language` facts per
+   year from `letter_full_text` in FY2022–FY2025 and **zero** in FY2021. Any
+   sentence about "five years of shareholder letters" would be false
+6. **`ledger-report.md` carries a misleading warning** about FY2021's missing
+   `letter` task, because the check cannot tell "not extracted" from "no such
+   section exists". A false alarm in an audit artifact trains you to ignore the
+   real ones
+
+### Five constraints the finished outputs must satisfy
+
+Enforce in a `verify_outputs.py` pass rather than trusting the prose. Three of the
+five become mechanical once facts have IDs:
+
+1. **No claim rests on a `low` fact without saying so** — 54 of 1,329 (51 board
+    facts with unverified proxy boundaries, 3 unverified quotes). If the board
+    narrative turns out to matter, fix those boundaries first (Next Steps item 11)
+2. **Never compare segment counts across FY2022/FY2023.** The basis changes from
+   product areas to reportable segments. Use segment names and the filing's own
+   language instead
 3. **Name the meeting date for any say-on-pay claim**, because the vote on year
-   N's pay happens in year N+1.
+   N's pay happens in year N+1
+4. **`investor_qa` is labelled Reg FD wherever it is leaned on**, and its counts
+   are never presented as a series
+5. **Every citation resolves to a fact that exists**
 
 Actual cost of milestone 4: **$4.52** (571,664 input / 66,406 output tokens
 across 34 calls). Milestones 1–3 cost nothing.
@@ -196,6 +270,9 @@ across 34 calls). Milestones 1–3 cost nothing.
 | 2026-08-04 | `pdfminer.six`, **not** `pypdf`, for PDF text | pypdf coerces unmapped glyphs toward whitespace, turning every digit in the FY2022 letter into a space — "fell 15%" became "fell". pdfminer preserves them as `(cid:N)`. Prefer the library that preserves what it can't interpret |
 | 2026-08-04 | Glyph offset **derived**, not hardcoded | Taken from the space glyph's frequency and validated against English sentinel words, so the decoder isn't silently wrong on a different company's font |
 | 2026-08-04 | The dual em-dash/minus glyph maps to ASCII `-` | One glyph serves both. A hyphen for an em dash is cosmetic; a lost minus sign inverts a fact |
+| 2026-08-05 | **Reg FD Q&A carries full weight in the outputs, labelled** | User decision, against the recommendation of corroboration-only. It is 64% of the ledger and contains management's clearest strategy statements — material the 10-K never addresses. The cost is that the brief's centre of gravity sits on unaudited, unprompted disclosure, so the Reg FD label is load-bearing and must be enforced by the output checker rather than left to the prose |
+| 2026-08-05 | Undated events get a **separate "period unclear" block**, not a guessed date | User decision. 26 of 74 events carry no date. Placing them at their filing's date would put them in the wrong place on the timeline — a February 10-K reports the prior year — and dropping them would silently lose a third of the events. A second table loses nothing and invents nothing |
+| 2026-08-05 | Facts get **content-hashed IDs** and outputs get a citation checker | User decision. ~45 min of build, $0 in API cost. Every citation resolves to a specific fact or the build fails, which turns three of the five output constraints from trusted into mechanical. Same principle as `verify_quote`: measure traceability, do not assert it |
 | 2026-08-05 | The boilerplate stripper **fails toward keeping text** | It previously assumed an unterminated forward-looking caution ran to the end of the document. In eleven filings the caution was terminated by the Q&A heading instead, so the stripper deleted ~8,700 of ~9,000 characters. Stripping boilerplate is a cost optimization and losing content is a correctness failure; when the two conflict, the optimization loses |
 | 2026-08-05 | A filing routed to a task but yielding **no readable document is fatal**, not skipped | This is how the eleven went missing: `read_section_keys` came back empty, the loop moved on, and the run reported 32 of 32 successful while being 11 short. Nothing anywhere looked wrong. Triage saying "this carries content" and extraction finding none is a contradiction, and a contradiction has to stop the run |
 | 2026-08-05 | The cache **verifies its input**, not just its filename | Fixing the stripper changed the source text under 24 already-cached results, silently. A cache keyed on a filename cannot know what it was computed from, so each result stores its `source_chars` and a mismatch is reported and refused rather than treated as done |
@@ -246,7 +323,14 @@ across 34 calls). Milestones 1–3 cost nothing.
        evidence in `data/triage/`
 9. [x] **Investor Q&A, all five years.** 850 facts from 54 filings
 10. [ ] **Milestone 5 — Three outputs** to `output/`, derived only from the
-        ledger
+        ledger. **Scoped and decided; build not started.** See "Milestone 5 is
+        scoped" above for measured sizes, cost and the six findings. In order:
+    - a. [ ] Content-hashed fact IDs in `build_ledger.py`
+    - b. [ ] `src/build_pack.py` — the 219K-token citable pack (deterministic)
+    - c. [ ] Event dedup/merge + the "period unclear" split (deterministic)
+    - d. [ ] `timeline.md` first — cheapest to check, surfaces dedup problems
+    - e. [ ] `narrative-brief.md`, then `discussion-points.md` as two calls
+    - f. [ ] `src/verify_outputs.py` — the five output constraints, mechanical
 11. [ ] Optional, if the board narrative proves load-bearing: per-year verified
         boundaries for `DEF14A_director_bios` and `DEF14A_proposals_and_votes`
 12. [ ] Run `preflight`, then `verification-suite` before treating any output as
@@ -369,6 +453,30 @@ across 34 calls). Milestones 1–3 cost nothing.
   prose: `segments` changes meaning at FY2022/FY2023, and say-on-pay votes for
   year N are held in year N+1
 - Next: milestone 5, the three outputs
+
+### 2026-08-05 (continued) — milestone 5 scoped, not started
+
+- **Scoped milestone 5 at the user's request** and measured what it would take
+  rather than estimating: three payload shapes token-counted (73,555 / 219,406 /
+  320,046), cost with a 1-hour prompt cache (~$3.50 first pass, ~$1.30 per review
+  round, **$6–10 all-in**), and time (~2–3 hours of build, ~15 min of API runtime
+  per round). Full detail under "Milestone 5 is scoped" above
+- **Six findings from measuring the ledger**, the two structural ones being: facts
+  have no IDs, so a citation can only reach filing granularity — for an 8-K holding
+  40 Q&A facts that means "somewhere in this document"; and 20 event records are
+  cross-year duplicates of the same event, which the timeline must merge and which
+  are corroboration rather than noise
+- Re-confirmed DATA.md limitation 8 (no FY2021 shareholder letter) against the
+  submissions feed and quantified its effect: zero letter-sourced facts in FY2021
+  against 10–11 per year after. Separately, the `ledger-report.md` warning that
+  FY2021's `letter` task "has no result file" is a false alarm — the check cannot
+  distinguish "not extracted" from "no such section exists"
+- **User answered the three design questions, then paused before any build.** Reg
+  FD Q&A carries full weight with labels; undated events get their own block; facts
+  get content-hashed IDs plus an output citation checker. Recorded in Recent
+  Decisions and broken into ordered sub-steps under Next Steps item 10
+- Nothing was built and nothing was spent. Next: begin milestone 5 item 10a when
+  the user is ready
 
 ### 2026-08-05 (continued) — 8-K triage
 
