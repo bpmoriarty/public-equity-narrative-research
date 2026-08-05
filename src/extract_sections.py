@@ -56,6 +56,13 @@ FORMAT FACTS, verified against real MORN filings before any of this was written
 6. Proxies have no item numbering, so headings are matched on their text and
    selected by anchor-phrase content — see find_proxy_sections.
 
+7. An ARS filing is NOT the shareholder letter. It is the complete annual report
+   and it contains the entire 10-K: the four cached MORN filings run 436,000 to
+   621,000 characters, of which the letter is 29,600 to 37,500. The letter has to
+   be located inside it, and it is bounded by letter conventions rather than
+   filing structure — a salutation opening and a sign-off closing, each verified
+   to occur exactly once per document. See extract_letter.
+
 ===========================================================================
 KNOWN LIMITS — what to trust and what not to
 ===========================================================================
@@ -312,7 +319,33 @@ def split_risk_factors(doc: Doc, i0: int, i1: int) -> list[dict]:
             "body_chars": len(body_only),
             "body": body_only,
         })
-    return factors
+
+    # HEADINGS SPLIT ACROSS TEXT NODES.
+    #
+    # A long risk statement is sometimes broken into two bold+italic text nodes
+    # mid-sentence, and each looks like a separate factor. In the FY2024 10-K:
+    #
+    #   "...ultimately having an adverse effect on our operating results and"
+    #   "our ability to deliver long-term value to our shareholders."
+    #
+    # That inflated the factor count by one and put a sentence fragment into the
+    # year-over-year diff as a phantom deleted risk factor.
+    #
+    # The tell is unambiguous and needs no heuristic threshold: the first half has
+    # a body of EXACTLY ZERO characters, because the only thing between it and the
+    # next heading is that next heading. A genuine risk factor always has
+    # paragraphs of discussion beneath it. So an empty-bodied factor is not a
+    # factor at all — it is the first half of the one that follows it.
+    merged: list[dict] = []
+    for f in factors:
+        if merged and merged[-1]["body_chars"] == 0:
+            prev = merged.pop()
+            f = {**f,
+                 "heading": f"{prev['heading']} {f['heading']}",
+                 "category": prev["category"] or f["category"],
+                 "heading_was_split": True}
+        merged.append(f)
+    return merged
 
 
 # ---------------------------------------------------------------------------
@@ -439,45 +472,57 @@ def find_proxy_sections(doc: Doc) -> dict[str, dict]:
             "candidates": len(starts),
             "anchor_hits": pick["anchor_hits"],
         }
-        continue
-
-        # RUNNING PAGE HEADERS. Donnelley proxies print the section title at the
-        # top of every page, so "Compensation Discussion and Analysis" appears 14
-        # times inside its own section in the FY2022 proxy. Group them: consecutive
-        # matches separated by less than `gap` nodes are one section's page headers,
-        # not separate sections. FY2021 and FY2025 have no running headers, which
-        # is precisely why only those two looked right before this was handled and
-        # the bug stayed invisible in aggregate.
-        gap = 2500
-        runs: list[list[int]] = [[starts[0]]]
-        for i in starts[1:]:
-            if i - runs[-1][-1] <= gap:
-                runs[-1].append(i)
-            else:
-                runs.append([i])
-
-        # For each run, the section starts at its FIRST header and ends at the first
-        # of its OWN end patterns occurring after its LAST header. Searching after
-        # the last header is what makes this robust: it steps over the section's own
-        # running headers, and over the front-of-proxy summary where an end phrase
-        # often appears long before the real section it names.
-        ends = sorted({i for p in end_pats for i in matches(p)})
-        cands = []
-        for run in runs:
-            after = [e for e in ends if e > run[-1]]
-            i1 = after[0] if after else len(doc.nodes)
-            cands.append((sum(len(doc.texts[k]) for k in range(run[0], i1)), run[0], i1, len(run)))
-        cands.sort(reverse=True)
-        chars, i0, i1, headers = cands[0]
-        out[key] = {
-            "text": doc.text_span(i0, i1),
-            "node_range": [i0, i1],
-            "boundary_basis": (f"nodes {i0}-{i1}: {len(starts)} heading match(es) grouped into "
-                               f"{len(runs)} run(s); chosen run has {headers} page header(s), "
-                               f"end from its own end-patterns"),
-            "candidates": len(starts),
-        }
     return out
+
+
+# ---------------------------------------------------------------------------
+# Shareholder letter, inside the annual report
+# ---------------------------------------------------------------------------
+
+def extract_letter(whole_text: str, cfg: dict) -> dict:
+    """Locate the shareholder letter inside an annual report. Format fact 7.
+
+    Bounded on the letter's own conventions — a salutation to a sign-off — because
+    an ARS has no structural marker for where the letter ends and the 10-K begins.
+
+    Works on the already-extracted document text rather than on HTML nodes: the
+    two markers are plain prose, not styled headings, so there is nothing for a
+    structural rule to grip. Both are verified unique per document before use, and
+    a non-unique match is reported rather than guessed at.
+    """
+    spec = next((s for s in cfg["sections"]["sections"] if s["key"] == "letter_full_text"), None)
+    if not spec:
+        return {"error": "config/sections.toml has no letter_full_text section"}
+
+    starts: list[re.Match] = []
+    for pat in spec["start_patterns"]:
+        starts += list(re.finditer(pat, whole_text, re.I))
+    if not starts:
+        return {"error": f"no salutation found (tried {spec['start_patterns']})"}
+    starts.sort(key=lambda m: m.start())
+    i0 = starts[0].start()
+
+    ends: list[re.Match] = []
+    for pat in spec["end_patterns"]:
+        ends += [m for m in re.finditer(pat, whole_text, re.I) if m.start() > i0]
+    if not ends:
+        return {"error": f"salutation at {i0} but no sign-off after it "
+                         f"(tried {spec['end_patterns']})"}
+    ends.sort(key=lambda m: m.start())
+    # Keep a short tail past the sign-off so the signer's name survives — it is
+    # what identifies whose voice the letter is.
+    tail = int(spec.get("signature_tail_chars", 100))
+    i1 = min(ends[0].end() + tail, len(whole_text))
+
+    return {
+        "text": whole_text[i0:i1].strip(),
+        "boundary_basis": (f"chars {i0}-{i1} of {len(whole_text):,d}: salutation "
+                           f"{starts[0].group(0)!r} ({len(starts)} match(es) in document) "
+                           f"-> sign-off {ends[0].group(0)!r} "
+                           f"({len(ends)} match(es) after it) + {tail}-char signature tail"),
+        "salutation_matches": len(starts),
+        "signoff_matches_after_start": len(ends),
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -655,7 +700,14 @@ def main() -> None:
                 # made "EX-10.1" (a material contract, in scope) indistinguishable
                 # from "EX-101" (XBRL taxonomy, excluded at fetch time) in the key.
                 key = f"{slug(form)}_{slug(rec['doc_type'].upper()).replace('.', '-')}_whole"
-                sections = {key: extract_whole(path)}
+                whole = extract_whole(path)
+                sections = {key: whole}
+                # An annual report yields TWO artifacts: the document itself (kept
+                # as the source of record) and the shareholder letter located inside
+                # it. Only the letter is in scope per SPEC.md; the rest of an ARS is
+                # the 10-K, already extracted from the 10-K filing itself.
+                if form == "ARS" and whole.get("text"):
+                    sections["letter_full_text"] = extract_letter(whole["text"], cfg)
             else:
                 sections = {}
         except Exception as exc:
@@ -728,7 +780,10 @@ def main() -> None:
     run_ok = sum(1 for r in results if r["ok"])
     print(f"this run  : {len(results)} attempted, {run_ok} written, {len(results)-run_ok} failed")
     print(f"all stored: {len(all_rows)} sections, {ok_n} ok, {len(all_rows)-ok_n} failed")
-    if len(results) - ok_n:
+    # Compare against THIS RUN's success count, not the merged total: `ok_n`
+    # counts every section ever stored, so on a filtered run `len(results) - ok_n`
+    # goes negative, which is truthy, and printed an empty "failures:" header.
+    if len(results) - run_ok:
         print()
         print("failures:")
         for r in results:

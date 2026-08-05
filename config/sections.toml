@@ -186,10 +186,32 @@ outcome_source = "8-K item 5.07"
 key = "letter_full_text"
 form = "ARS"
 label = "Shareholder letter — full text"
-# Letters are short enough to take whole (SPEC.md: "Full text (usually short)"),
-# so no start/end patterns. The work here is LOCATING the letter, not bounding
-# it: it may be a standalone ARS, an EX-13 to the 10-K, or an 8-K exhibit.
-take_full_document = true
+# CORRECTED 2026-08-05 after measuring the real documents. This entry originally
+# said `take_full_document = true`, on the assumption that an ARS filing *is* the
+# letter. It is not: an ARS is the complete annual report and CONTAINS the entire
+# 10-K. The four cached MORN filings run 436,000-621,000 characters, of which the
+# letter is 29,600-37,500. Taking the document whole would have sent the
+# financial statements to the model — the exact failure the section-targeted rule
+# in CLAUDE.md exists to prevent, and roughly 150,000 tokens per year of it.
+#
+# So the letter IS bounded, by the letter-writing conventions rather than by
+# filing structure: it opens on a salutation and closes on a sign-off. Both
+# patterns were verified to match EXACTLY ONCE in each of the four documents
+# before being written here. The signature name sits just past the sign-off, so
+# a short tail is kept to preserve who signed it.
+take_full_document = false
+start_patterns = [
+    'dear\s+(fellow\s+)?(share|stock)holders?',
+    'to\s+our\s+(fellow\s+)?(share|stock)holders?',
+]
+end_patterns = [
+    'best\s+regards',
+    'sincerely',
+    'respectfully',
+    'warm\s+regards',
+]
+# Characters kept after the sign-off, to capture the signer's name.
+signature_tail_chars = 100
 anchor_phrases = ["dear", "shareholders", "fellow"]
 extract_signals = ["strategic_priorities", "notable_language"]
 
@@ -210,6 +232,39 @@ extract_signals = ["strategic_priorities", "notable_language"]
 # Global floor. A section under this is a failure regardless of type — no real
 # 10-K item is 500 characters.
 min_chars = 2000
+
+# ===========================================================================
+# Risk factor diffing  (SPEC.md section 2: "Diff rather than summarizing each
+# year independently")
+# ===========================================================================
+# Similarity thresholds for matching a year's risk factors against the prior
+# year's, on a 0-100 scale. Deterministic and reproducible — this comparison uses
+# `rapidfuzz`, not a model, so the same inputs always give the same deltas and
+# nobody has to trust a summary.
+#
+# Three outcomes, and the middle one is the point of the exercise: a factor whose
+# wording changed materially but which is still recognizably the same risk. New
+# and deleted factors are high-signal; unchanged boilerplate is noise.
+
+[risk_diff]
+
+# At or above this, the factor is the same risk in substantially the same words.
+unchanged_at = 95
+
+# Between `reworded_at` and `unchanged_at`: same risk, materially reworded.
+# Below `reworded_at`: no counterpart, so it is genuinely added or removed.
+# 60 is deliberately permissive. Risk factor headings are long sentences that
+# share heavy boilerplate ("...could adversely affect our business, financial
+# condition and results of operations"), so unrelated factors already score
+# 40-55 against each other on shared phrasing alone. Set this too high and real
+# rewordings get reported as an add plus a delete, which double-counts the
+# change and overstates year-over-year churn.
+reworded_at = 60
+
+# A matched pair whose BODY similarity falls below this is reported as reworded
+# even when the heading is identical — a company can leave the headline risk
+# untouched and rewrite the substance underneath it.
+body_reworded_at = 90
 
 # Per-section plausible length bands, in characters. Deliberately wide: these
 # catch catastrophic failure, not stylistic variation. Tighten only after you

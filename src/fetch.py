@@ -216,6 +216,9 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Milestone 2 — fetch and cache filing documents.")
     ap.add_argument("--dry-run", action="store_true", help="report what would be fetched, download nothing")
     ap.add_argument("--limit", type=int, default=None, help="process at most N filings (for a first look)")
+    ap.add_argument("--accession", action="append", default=None, metavar="ACC",
+                    help="fetch this accession even if it is outside the fiscal-year window "
+                         "(repeatable). Deliberate, narrow override — see DATA.md.")
     args = ap.parse_args()
 
     if not INVENTORY.exists():
@@ -232,7 +235,26 @@ def main() -> None:
 
     # The work list comes from the inventory, which is the single source of truth
     # for what is in scope (CLAUDE.md: don't recompute what another stage owns).
-    work = [r for r in inv["filings"] if r["in_window"] and r["disposition"] in ("in_scope", "triage")]
+    if args.accession:
+        # EXPLICIT OVERRIDE for a filing that sits outside the window but reports on
+        # a period inside it. The motivating case: an 8-K Item 5.07 reports the vote
+        # taken at the annual meeting, which for the FY2025 proxy happened in May
+        # 2026 — so the FY2025 say-on-pay result lives in a 2026-dated filing.
+        #
+        # Named accessions rather than a widened window on purpose. Extending the
+        # window to 2026 would sweep in the 10-Qs, Form 4s and earnings 8-Ks of a
+        # sixth year and quietly change what every coverage claim means. This adds
+        # exactly the documents asked for, and the reason is recorded in DATA.md.
+        want = set(args.accession)
+        work = [r for r in inv["filings"] if r["accession"] in want]
+        missing = want - {r["accession"] for r in work}
+        if missing:
+            sys.exit(f"FATAL: accession(s) not in the inventory: {sorted(missing)}\n"
+                     "Check the accession number, or re-run src/discover.py if the "
+                     "filing is newer than the inventory's as-of date.")
+    else:
+        work = [r for r in inv["filings"]
+                if r["in_window"] and r["disposition"] in ("in_scope", "triage")]
     work.sort(key=lambda r: (r["fiscal_year"], r["form"], r["filing_date"]))
     if args.limit:
         work = work[:args.limit]
@@ -324,21 +346,47 @@ def main() -> None:
         print("\nDRY RUN — nothing was written.")
         return
 
+    # MERGE into any existing manifest rather than replacing it.
+    #
+    # This bit hard the first time a run covered only part of the work list: a
+    # single `--accession` fetch rewrote a 201-record manifest as a 1-record file.
+    # The cached documents were all still on disk — nothing was lost and no EDGAR
+    # request was repeated — but the manifest is what every downstream stage reads
+    # to find them, so section extraction saw one document and produced nothing.
+    #
+    # Keying on (accession, filename) rather than accession alone: one filing
+    # contributes several documents, and a filing-level key would let the last
+    # document silently evict its siblings.
+    manifest_path = RAW_DIR / "fetch-manifest.json"
+    merged: dict[tuple[str, str], dict] = {}
+    if manifest_path.exists():
+        for r in json.loads(manifest_path.read_text(encoding="utf-8")).get("records", []):
+            merged[(r["accession"], r["filename"])] = r
+    for r in records:                              # this run wins for what it covered
+        merged[(r["accession"], r["filename"])] = r
+    all_records = sorted(merged.values(),
+                         key=lambda r: (r["fiscal_year"], r["form"], r["accession"], r["filename"]))
+
     manifest = {
         "generated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "inventory_as_of": inv["as_of_utc"],
         "ticker": inv["ticker"], "cik": cik, "company_name": company,
-        "filings_processed": len(work),
-        "documents": len(records),
+        # Counts that describe THIS run are labelled as such; the totals describe
+        # everything cached. Conflating the two produced nonsense on filtered runs.
+        "last_run_filter": {"accession": args.accession, "limit": args.limit},
+        "last_run_filings": len(work),
+        "last_run_documents": len(records),
+        "documents": len(all_records),
         "downloaded_this_run": dl.fetched,
         "already_cached": dl.cached,
         "bytes_downloaded_this_run": dl.bytes_new,
         "skipped_by_reason": skipped_counts,
         "failures": dl.failed,
-        "records": records,
+        "records": all_records,
     }
-    (RAW_DIR / "fetch-manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
-    print(f"\nwrote {RAW_DIR / 'fetch-manifest.json'}")
+    manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    print(f"\nwrote {manifest_path}  ({len(records)} record(s) this run, "
+          f"{len(all_records)} total)")
 
     if dl.failed:
         sys.exit(f"\n{len(dl.failed)} document(s) failed. Re-run to retry only those "
