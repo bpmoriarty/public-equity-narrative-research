@@ -84,11 +84,22 @@ FIELD_MAP: list[tuple[str, str, str]] = [
     ("mdna",      "notable_language",     "notable_language"),
     ("comp",      "notable_language",     "notable_language"),
     ("letter",    "notable_language",     "notable_language"),
+    # Reg FD investor Q&A. Note both of its keys land in `investor_qa` and NOT in
+    # `notable_language`, unlike every other notable_language source above. That is
+    # the point of the separate field: a phrase from a monthly investor reply and a
+    # phrase from the 10-K are not interchangeable evidence, and once they are in
+    # the same list nothing downstream can tell them apart. See InvestorQaTopic.
+    ("investor_qa", "topics",             "investor_qa"),
+    ("investor_qa", "notable_language",   "investor_qa"),
 ]
+
+# Tasks that produce one result file PER FILING rather than one per year, so the
+# ledger has to collect all of them. See gather_investor_qa in extract_facts.py.
+PER_FILING_TASKS = {"investor_qa"}
 
 LEDGER_FIELDS = ["strategic_priorities", "segments", "headcount", "leadership",
                  "board", "incentive_metrics", "vote_results", "events",
-                 "notable_language"]
+                 "notable_language", "investor_qa"]
 
 
 def load_json(p: Path, what: str) -> dict:
@@ -104,6 +115,20 @@ def section_texts(manifest_rows: list[dict]) -> dict[tuple[str, str], str]:
         if r.get("ok") and r.get("out"):
             out[(r["accession"], r["key"])] = (ROOT / r["out"]).read_text(encoding="utf-8")
     return out
+
+
+def load_task_records(fy: int, task: str) -> list[dict]:
+    """Cached extraction results for one (year, task). A list, because some tasks
+    produce one file per filing rather than one per year.
+
+    Two explicit patterns rather than one `FY{fy}_{task}*.json` glob: a prefix
+    glob would silently pick up a different task's files the moment one task name
+    becomes a prefix of another, and it would do so without any error.
+    """
+    paths = sorted(FACTS_DIR.glob(f"FY{fy}_{task}.json"))
+    if task in PER_FILING_TASKS:
+        paths += sorted(FACTS_DIR.glob(f"FY{fy}_{task}_*.json"))
+    return [json.loads(p.read_text(encoding="utf-8")) for p in paths]
 
 
 def attribute(item: dict, sources: list[dict],
@@ -138,41 +163,38 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict) -> tuple[YearLedger,
     fields: dict[str, list[LedgerFact]] = {f: [] for f in LEDGER_FIELDS}
 
     # --- facts from the extraction tasks -----------------------------------
-    task_cache: dict[str, dict | None] = {}
+    task_cache: dict[str, list[dict]] = {}
     for task, fact_key, ledger_field in FIELD_MAP:
         if task not in task_cache:
-            p = FACTS_DIR / f"FY{fy}_{task}.json"
-            task_cache[task] = json.loads(p.read_text(encoding="utf-8")) if p.exists() else None
-        rec = task_cache[task]
-        if rec is None:
-            continue
-        raw = rec["facts"].get(fact_key)
-        if raw is None:
-            continue
-        # `headcount` is a single object, not a list; normalize so one code path
-        # handles both rather than special-casing it downstream.
-        items = raw if isinstance(raw, list) else [raw]
-        sources = [{**s, "fiscal_year": fy} for s in rec["sources"]]
-        for item in items:
-            if not isinstance(item, dict):
+            task_cache[task] = load_task_records(fy, task)
+        for rec in task_cache[task]:
+            raw = rec["facts"].get(fact_key)
+            if raw is None:
                 continue
-            src, verified, check, span = attribute(item, sources, texts)
-            conf, reason = confidence_for(src.section_key if src else "", verified)
-            fields[ledger_field].append(LedgerFact(
-                field=ledger_field,
-                value={k: v for k, v in item.items() if k != "quote"},
-                source=src, confidence=conf, confidence_reason=reason,
-                quote=span, quote_verified=verified, quote_check=check,
-            ))
-            if not verified:
-                warnings.append(f"FY{fy} {ledger_field}: unverified quote ({check[:70]})")
+            # `headcount` is a single object, not a list; normalize so one code
+            # path handles both rather than special-casing it downstream.
+            items = raw if isinstance(raw, list) else [raw]
+            sources = [{**s, "fiscal_year": fy} for s in rec["sources"]]
+            for item in items:
+                if not isinstance(item, dict):
+                    continue
+                src, verified, check, span = attribute(item, sources, texts)
+                conf, reason = confidence_for(src.section_key if src else "", verified)
+                fields[ledger_field].append(LedgerFact(
+                    field=ledger_field,
+                    value={k: v for k, v in item.items() if k != "quote"},
+                    source=src, confidence=conf, confidence_reason=reason,
+                    quote=span, quote_verified=verified, quote_check=check,
+                ))
+                if not verified:
+                    warnings.append(f"FY{fy} {ledger_field}: unverified quote ({check[:70]})")
 
     # --- board metadata (size, committees) ---------------------------------
-    board_rec = task_cache.get("board")
+    board_recs = task_cache.get("board") or []
     board_meta = {}
-    if board_rec:
-        board_meta = {"board_size": board_rec["facts"].get("board_size"),
-                      "committees": board_rec["facts"].get("committees", [])}
+    if board_recs:
+        board_meta = {"board_size": board_recs[0]["facts"].get("board_size"),
+                      "committees": board_recs[0]["facts"].get("committees", [])}
 
     # --- filings and earnings cadence, straight from the inventory ---------
     filings = [{"form": r["form"], "accession": r["accession"], "filed": r["filing_date"],
@@ -231,7 +253,26 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict) -> tuple[YearLedger,
                       "must not be compared with a year that does",
     }
 
-    missing_tasks = [t for t in {t for t, _, _ in FIELD_MAP} if task_cache.get(t) is None]
+    # REGISTER, not reliability. `investor_qa` facts are boundary-clean (whole
+    # documents) and quote-verified like any other, so they are `high` confidence
+    # and that is correct. What makes them different is the KIND of document: a
+    # monthly Reg FD reply to whatever investors happened to ask, not a considered
+    # annual disclosure. Recorded on the data so an output can weight it, rather
+    # than left to whoever reads the field name to remember.
+    qa_facts = fields["investor_qa"]
+    dq["investor_qa_basis"] = {
+        "n": len(qa_facts),
+        "source_register": "Regulation FD voluntary disclosure (8-K item 7.01)",
+        "basis": "management's written answers to questions submitted by investors, "
+                 "published roughly monthly. Same verification as every other fact — "
+                 "whole-document boundaries and a checked quote — but a different kind "
+                 "of evidence from a 10-K or proxy statement: unaudited, unprompted by "
+                 "any disclosure requirement, and responsive to whatever was asked. "
+                 "Corroborating; not a substitute for a filed disclosure.",
+        "filings": sorted({f.source.accession for f in qa_facts if f.source}),
+    }
+
+    missing_tasks = [t for t in {t for t, _, _ in FIELD_MAP} if not task_cache.get(t)]
     dq["extraction_tasks_missing"] = sorted(missing_tasks)
     for t in missing_tasks:
         warnings.append(f"FY{fy}: extraction task '{t}' has no result file — "
@@ -271,7 +312,7 @@ def main() -> None:
     all_warnings: list[str] = []
 
     for fy in years:
-        if not any((FACTS_DIR / f"FY{fy}_{t}.json").exists() for t, _, _ in FIELD_MAP):
+        if not any(load_task_records(fy, t) for t in {t for t, _, _ in FIELD_MAP}):
             print(f"FY{fy}  SKIPPED — no extraction results. "
                   f"Run: uv run python src/extract_facts.py --fy {fy}")
             continue

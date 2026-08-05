@@ -1,0 +1,131 @@
+{
+  "fiscal_year": 2025,
+  "task": "investor_qa",
+  "unit": "0001289419-25-000067",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:02:48Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 11845,
+    "output_tokens": 2980
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-25-000067",
+      "form": "8-K",
+      "filing_date": "2025-04-29",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001289419-25-000067",
+      "form": "8-K",
+      "filing_date": "2025-04-29",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 28267,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Margin expansion goal and whether Morningstar still expects to reach or exceed its historical peak margin",
+        "stated_position": "Management declined to reaffirm the peak-margin framing, saying instead that it does not provide guidance but continues \"to focus on increasing adjusted operating income as a driver of long-term value creation\" with \"Continued margin expansion over the long-term\" central to those efforts.",
+        "kind": "strategy",
+        "quote": "While we don\u2019t provide guidance, we continue to focus on increasing adjusted operating income as a driver of long-term value creation. Continued margin expansion over the long-term is central to these efforts."
+      },
+      {
+        "topic": "Strategy and leadership for Advisor Workstation and Morningstar Data",
+        "stated_position": "Management described a long-term vision for Direct Platform: selling comprehensive solutions spanning the entire investor lifecycle on one connected platform, offering Direct Advisory Suite globally to broker/dealers and independent RIAs to expand its serviceable obtainable market, and capitalizing on the convergence of private and public markets. It noted turnover in Advisor Workstation leadership but said James Rhodes has led the segment since January 2022.",
+        "kind": "strategy",
+        "quote": "In addition, we plan to offer Direct Advisory Suite globally, targeting both the broker/dealers who have traditionally been Advisor Workstation clients as well as independent registered investment advisors, expanding our serviceable obtainable market."
+      },
+      {
+        "topic": "Managing the exchange market data product for profitability rather than growth",
+        "stated_position": "Management stated it is deliberately managing the exchange market data product for profitability rather than revenue growth, and that the focus is on contributions to profitability, not increasing revenue.",
+        "kind": "segment_or_product",
+        "quote": "For example, we are managing the exchange market data product (included in Morningstar Data) for profitability rather than revenue growth, and revenue for that product declined over Q4 and FY 24."
+      },
+      {
+        "topic": "Whether Morningstar Wealth revenue can grow after the Office and TAMP portfolio moves",
+        "stated_position": "Management said the streamlined Wealth business will look a lot different, and smaller (at least in the short term), but will be more focused and, they anticipate, profitable.",
+        "kind": "strategy",
+        "quote": "We have noted that our streamlining of the Morningstar Wealth business means that it will look a lot different, and smaller (at least in the short-term), than it previously did. But it will be more focused, and we anticipate, profitable."
+      },
+      {
+        "topic": "Retirement of Morningstar Office and transition of clients to SS&C's Black Diamond Wealth Platform",
+        "stated_position": "Management characterized the SS&C agreement and the decision to retire Morningstar Office as \"an important step in our efforts to streamline our Morningstar Wealth offering and to focus on areas where we have the greatest confidence that we can scale without making significant new capital investments,\" with completion anticipated by the end of 2026, a negative revenue impact and a positive run-rate impact on Wealth adjusted operating income, and a minority share of SS&C revenue for transitioning Office customers.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "The agreement with SS&C Technologies and our decision to retire Morningstar Office mark an important step in our efforts to streamline our Morningstar Wealth offering and to focus on areas where we have the greatest confidence that we can scale without making significant new capital investments."
+      },
+      {
+        "topic": "Refocusing the Sustainalytics licensed ratings product for corporates",
+        "stated_position": "Management said the renewal-rate decline was driven in part by a decision to refocus the licensed ratings product on distribution of existing ESG Risk Ratings and underlying data; it no longer offers corporates the option to contract for a rating, losing revenue and clients but expecting improved scalability.",
+        "kind": "segment_or_product",
+        "quote": "The decline was driven in part by the decision to refocus our licensed ratings product for corporates on the use and distribution of existing ESG Risk Ratings and underlying data. We no longer offer corporates the option to contract with us to provide a rating. As a result, we have lost revenue and clients but expect improved scalability."
+      },
+      {
+        "topic": "Secular tailwinds and headwinds for Morningstar Data",
+        "stated_position": "Management cited growth of investor choice, demand for personalization and the accelerating convergence of public and private markets as tailwinds, and industry consolidation and continued pressure on fees as headwinds.",
+        "kind": "competition_or_market",
+        "quote": "We see several secular tailwinds for Morningstar Data, including growth of investor choice and increasing demand for personalization, as well as the accelerating convergence of public and private markets. Headwinds include industry consolidation and continued pressure on fees, especially in more challenging markets."
+      },
+      {
+        "topic": "New CFO Michael Holt's priorities compared with his predecessor",
+        "stated_position": "Management said Holt's priorities are consistent with the ongoing focus on sustainable revenue growth and shareholder value, specifically growing adjusted operating income and free cash flows, and that the historical capital allocation approach continues unchanged under him.",
+        "kind": "governance_or_management",
+        "quote": "Michael Holt\u2019s priorities as CFO are consistent with our ongoing focus on sustainable revenue growth and creating value for shareholders. Specifically, he is focused on growing adjusted operating income (supported by higher adjusted operating margins) and free cash flows over time."
+      },
+      {
+        "topic": "Capital allocation framework and dividend payout as a percentage of free cash flow",
+        "stated_position": "Management restated its priorities \u2014 preserve a strong balance sheet for flexibility, fund organic growth first and consider acquisitions, maintain and increase the dividend commensurate with results, repurchase shares when cash is available \u2014 and said it does not target a specific cash flow payout, noting a five-year average dividend in the low 20% range of free cash flow and prioritization of debt paydown in 2023 and 2024.",
+        "kind": "capital_allocation",
+        "quote": "Consistent with Morningstar\u2019s historical approach to capital allocation, under Michael we continue to preserve a strong balance sheet to maintain flexibility; prioritize funding organic growth and consider acquisitions where we see opportunities to generate long-term shareholder value; maintain and increase our dividend over time commensurate with company financial results; and repurchase shares when we have available cash."
+      },
+      {
+        "topic": "Headcount reductions and effect on internal culture",
+        "stated_position": "Management attributed lower headcount to refocusing Wealth, weakness at Sustainalytics and PitchBook efficiency, and disclosed a decline in average employee engagement score from 69% to 64% over the year, while describing remedial programs.",
+        "kind": "governance_or_management",
+        "quote": "We did see a softening of our average engagement score over the course of last year from 69% to 64%. However, the trend over the year was positive, with stabilization in the second quarter and rising metrics in the second half of the year in response to actions by management and improving business performance."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "While we don\u2019t provide guidance, we continue to focus on increasing adjusted operating income as a driver of long-term value creation. Continued margin expansion over the long-term is central to these efforts.",
+        "why_notable": "Asked directly whether it still expects to reach or exceed its historical peak margin, management never answers \u2014 a hedge on a target previously stated plainly in prior commentary."
+      },
+      {
+        "quote": "But it will be more focused, and we anticipate, profitable.",
+        "why_notable": "An unusually blunt characterization of the Wealth business as smaller and only prospectively profitable \u2014 a marked shift in how the segment is described."
+      },
+      {
+        "quote": "As a result, we have lost revenue and clients but expect improved scalability.",
+        "why_notable": "Direct admission of revenue and client loss as the consequence of a deliberate strategic choice in Sustainalytics."
+      },
+      {
+        "quote": "We are also keeping a close eye on recent volatility in the market.",
+        "why_notable": "Recurring hedge in this filing about market and tariff-related volatility affecting clients."
+      },
+      {
+        "quote": "We don\u2019t provide guidance as to future revenue trends, but we will note that we are paying very close attention to the impact of recent tariff-related market volatility on our clients.",
+        "why_notable": "Explicit flagging of tariff-driven market volatility as a client-level risk, notable for dating the concern to April 2025."
+      },
+      {
+        "quote": "While there has been turnover in the leadership of Morningstar Advisor Workstation in recent years, James Rhodes, President, Direct Platform, has led this segment since January 2022.",
+        "why_notable": "Concedes leadership turnover in a product area while pivoting to segment-level continuity \u2014 a defensive framing of a governance question."
+      },
+      {
+        "quote": "focus on areas where we have the greatest confidence that we can scale without making significant new capital investments",
+        "why_notable": "A capital-discipline criterion for portfolio decisions, stated as the rationale for exiting Morningstar Office."
+      }
+    ]
+  }
+}

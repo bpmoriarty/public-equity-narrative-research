@@ -1609,6 +1609,7 @@
       "quote_check": "verbatim match"
     }
   ],
+  "investor_qa": [],
   "risk_deltas": {
     "fiscal_year": 2021,
     "compared_to": null,
@@ -1713,6 +1714,14 @@
         "DEF14A_cdna"
       ]
     },
+    "investor_qa": {
+      "n": 0,
+      "populated": false,
+      "high_confidence": 0,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": []
+    },
     "risk_deltas": {
       "populated": false,
       "counts": null,
@@ -1722,7 +1731,14 @@
       "filing_uses_reportable_segment_language": false,
       "basis": "product or business areas described in Item 1 \u2014 this filing does not disclose reportable segments, so these are NOT segments and must not be compared with a year that does"
     },
+    "investor_qa_basis": {
+      "n": 0,
+      "source_register": "Regulation FD voluntary disclosure (8-K item 7.01)",
+      "basis": "management's written answers to questions submitted by investors, published roughly monthly. Same verification as every other fact \u2014 whole-document boundaries and a checked quote \u2014 but a different kind of evidence from a 10-K or proxy statement: unaudited, unprompted by any disclosure requirement, and responsive to whatever was asked. Corroborating; not a substitute for a filed disclosure.",
+      "filings": []
+    },
     "extraction_tasks_missing": [
+      "investor_qa",
       "letter"
     ],
     "board_metadata": {

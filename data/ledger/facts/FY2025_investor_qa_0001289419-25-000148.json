@@ -1,0 +1,101 @@
+{
+  "fiscal_year": 2025,
+  "task": "investor_qa",
+  "unit": "0001289419-25-000148",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:03:19Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 6245,
+    "output_tokens": 1827
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-25-000148",
+      "form": "8-K",
+      "filing_date": "2025-08-05",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001289419-25-000148",
+      "form": "8-K",
+      "filing_date": "2025-08-05",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 11576,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Cross-sell between Morningstar segments",
+        "stated_position": "Management describes an \"integrated coverage model\" pairing a lead strategic account executive with product sales specialists, says the greatest crossover is with firms leveraging data and research platforms across Morningstar Direct Platform, PitchBook, and Morningstar Sustainalytics \u2014 most notably large multi-segment asset and wealth management firms \u2014 and declines to disclose cross-selling metrics.",
+        "kind": "strategy",
+        "quote": "We have found the greatest crossover exists with firms who leverage our data and research platforms across our licensed products in Morningstar Direct Platform, PitchBook, and Morningstar Sustainalytics, most notably large multi-segment asset and wealth management firms. We do not disclose metrics on cross-selling."
+      },
+      {
+        "topic": "Expansion of data coverage into non-traditional and private/semi-liquid universes",
+        "stated_position": "Management says it has significantly increased coverage on non-traditional universes in response to market trends and asset flows and is now expanding depth and breadth of coverage on semi-liquid funds and other vehicles \"as part of our broader focus on meeting investor needs as public/private market convergence accelerates.\"",
+        "kind": "segment_or_product",
+        "quote": "More recently, we are expanding the depth and breadth of our coverage on semi-liquid funds and other investment vehicles as part of our broader focus on meeting investor needs as public/private market convergence accelerates."
+      },
+      {
+        "topic": "Retention differences by product; characterisation of exchange market data",
+        "stated_position": "Retention was higher in managed investment (including fund) data and Morningstar Essentials and lower in exchange market data, \"which we view as a non-core product.\"",
+        "kind": "segment_or_product",
+        "quote": "Between 2022 and 2024, retention rates were higher in managed investment (including fund) data and Morningstar Essentials and lower in exchange market data, which we view as a non-core product."
+      },
+      {
+        "topic": "Monetization plan for Morningstar Medalist Ratings on interval funds",
+        "stated_position": "The company expects to monetize Medalist Ratings for interval funds as an extension of its current asset manager offering, to reach additional private investment managers targeting retail investors via interval funds, and to sell Morningstar Essentials licenses on interval funds.",
+        "kind": "segment_or_product",
+        "quote": "We expect to monetize Morningstar Medalist Ratings for interval funds and related data as an extension of our current offering to asset managers. Use cases include competitive analysis, product development, and the production of fact sheets and ad hoc reports."
+      },
+      {
+        "topic": "TAM disclosure and maturity of the Morningstar Direct market",
+        "stated_position": "No TAM estimate is currently provided but the company is \"considering providing an estimate of Morningstar Direct Platform's TAM at a later date\"; management views the core market for Morningstar Direct as mature but points to higher growth rates from investments in data and capabilities, new user groups, private market data expansion, and a modernized interface.",
+        "kind": "strategy",
+        "quote": "We do not currently provide a total addressable market (TAM) estimate for Morningstar Direct Platform or key products in that segment but are considering providing an estimate of Morningstar Direct Platform\u2019s TAM at a later date. We view the core market for Morningstar Direct as mature."
+      },
+      {
+        "topic": "Penetration and competitive position of Morningstar Advisor Workstation",
+        "stated_position": "Management estimates it serves roughly half of US advisors, calls it a relatively mature market in which \"we're a leader in the space,\" and says the launch of Morningstar Direct Advisory Suite positions it to capture new market share in the US and to expand into new geographies in the future.",
+        "kind": "competition_or_market",
+        "quote": "While it is a relatively mature market and we\u2019re a leader in the space, we believe that the launch of Morningstar Direct Advisory Suite (the next phase of Morningstar Advisor Workstation) positions us to capture new market share in the US, with an improved user experience, expanded AI capabilities, and new digital reporting."
+      },
+      {
+        "topic": "Proprietary nature of data underlying fund ratings",
+        "stated_position": "Ratings draw on a combination of proprietary data, direct submissions from fund groups, public or centralized sources, and analyst research; \"While some inputs are public or standardized, the classification, calculations, and many key metrics are proprietary to Morningstar.\"",
+        "kind": "competition_or_market",
+        "quote": "While some inputs are public or standardized, the classification, calculations, and many key metrics are proprietary to Morningstar."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "which we view as a non-core product",
+        "why_notable": "An unusually direct, explicit downgrading of exchange market data within the Morningstar Data segment \u2014 a characterisation that could foreshadow deemphasis or divestiture."
+      },
+      {
+        "quote": "as part of our broader focus on meeting investor needs as public/private market convergence accelerates",
+        "why_notable": "Frames private/public market convergence as the organizing strategic theme across data coverage decisions \u2014 a recurring Morningstar claim worth tracking year over year."
+      },
+      {
+        "quote": "We view the core market for Morningstar Direct as mature.",
+        "why_notable": "A blunt admission of maturity in a flagship product, immediately hedged by a list of growth investments."
+      },
+      {
+        "quote": "we estimate that we serve roughly half of US advisors through the product",
+        "why_notable": "A rare quantified penetration claim, stated as an estimate rather than a precise metric."
+      }
+    ]
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "fiscal_year": 2025,
+  "task": "investor_qa",
+  "unit": "0001104659-25-085675",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:03:26Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 12909,
+    "output_tokens": 3549
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-25-085675",
+      "form": "8-K",
+      "filing_date": "2025-08-29",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001104659-25-085675",
+      "form": "8-K",
+      "filing_date": "2025-08-29",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 30912,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Departure of James Rhodes, President of Direct Platform, and interim leadership",
+        "stated_position": "\"James Rhodes, President of Direct Platform, will be leaving the Company on Sept. 12, 2025. Frannie Besztery, Chief Operating Officer of Direct Platform, will serve as interim head until a permanent successor is appointed.\" No reason for the departure is given.",
+        "kind": "governance_or_management",
+        "quote": "James Rhodes, President of Direct Platform, will be leaving the Company on Sept. 12, 2025. Frannie Besztery, Chief Operating Officer of Direct Platform, will serve as interim head until a permanent successor is appointed."
+      },
+      {
+        "topic": "Morningstar Credit's competitive position in structured finance versus larger competitors",
+        "stated_position": "Management characterizes its positioning as differentiated by private-market asset-backed exposure in subsectors such as data centers and aviation, and by minimal CLO exposure: \"our larger competitors have significant exposure to collateralized loan obligations (CLOs) in their asset-backed securities business... We do not have significant exposure to CLO ratings.\"",
+        "kind": "competition_or_market",
+        "quote": "In addition, our larger competitors have significant exposure to collateralized loan obligations (CLOs) in their asset-backed securities business and issuance in this sector tends to track the leveraged loan market, which was weak in Q2 25. We do not have significant exposure to CLO ratings."
+      },
+      {
+        "topic": "Shift in Morningstar Credit's mix toward private credit ratings",
+        "stated_position": "\"Private credit ratings accounted for roughly a quarter of Morningstar Credit's transaction-based revenue in 2024, an increase from 2021, when that level was slightly less than a fifth of transaction-based revenue,\" with market conditions affecting the public/private mix in any period.",
+        "kind": "segment_or_product",
+        "quote": "Private credit ratings accounted for roughly a quarter of Morningstar Credit\u2019s transaction-based revenue in 2024, an increase from 2021, when that level was slightly less than a fifth of transaction-based revenue."
+      },
+      {
+        "topic": "Refocusing of Morningstar Wealth",
+        "stated_position": "Management describes \"our efforts to refocus the business on model portfolios offered on third-party platforms and our International Wealth Platform,\" with headcount reductions tied to the sale and transition of US TAMP assets to AssetMark and \"our planned sunsetting of Morningstar Office.\"",
+        "kind": "strategy",
+        "quote": "as we made meaningful progress in our efforts to refocus the business on model portfolios offered on third-party platforms and our International Wealth Platform. The primary drivers of the improved profitability were increased reported revenue, primarily due to higher ad sales, and lower compensation costs due in part to reductions in headcount related to sale and transition of assets in our US Turnkey Asset Management Platform (TAMP) to AssetMark, and our planned sunsetting of Morningstar Office."
+      },
+      {
+        "topic": "Growth priorities for Morningstar Indexes",
+        "stated_position": "\"We remain focused on growth in both our investable and licensed data products,\" continuing to leverage Morningstar research and analysis \"including in public-private market convergence,\" and seeing licensed-data opportunities \"especially in the equity beta, leveraged loan, and multi-asset investment categories.\"",
+        "kind": "strategy",
+        "quote": "We remain focused on growth in both our investable and licensed data products. In our investable products business, we continue to leverage Morningstar research and analysis, including in public-private market convergence. We also see opportunities to continue to grow our licensed-data business especially in the equity beta, leveraged loan, and multi-asset investment categories."
+      },
+      {
+        "topic": "PitchBook corporate client weakness versus institutional client base",
+        "stated_position": "\"softness in our corporate client segment has contributed to slower growth; however, our core institutional client base, whose priorities are more strategic and less rate-sensitive, has remained more resilient.\" Management expects \"corporate client weakness to persist until economic conditions improve,\" while viewing stabilization in the existing corporate business as a positive sign.",
+        "kind": "competition_or_market",
+        "quote": "We expect corporate client weakness to persist until economic conditions improve, although we view the stabilization in our existing business as a positive sign. We do not disclose growth rates for customer segments or competitive win-loss rates."
+      },
+      {
+        "topic": "PitchBook pricing strategy",
+        "stated_position": "\"We have not implemented a change in our overall pricing strategy in the first half of 2025. PitchBook seeks price increases at renewal where appropriate, consistent with our historical approach, but there was no broad-based pricing action in Q2 25.\"",
+        "kind": "segment_or_product",
+        "quote": "We have not implemented a change in our overall pricing strategy in the first half of 2025. PitchBook seeks price increases at renewal where appropriate, consistent with our historical approach, but there was no broad-based pricing action in Q2 25."
+      },
+      {
+        "topic": "Balancing free cash flow to shareholders against employee bonus incentives",
+        "stated_position": "\"We design our incentives for continued profitable growth and margin expansion.\" The company monitors a \"sharing ratio\" of projected bonus payout as a percentage of AOI each quarter, and \"The Compensation Committee has the discretion to limit the bonus if the sharing ratio is not aligned with expectations.\" The program is weighted 50% revenue / 50% AOI, and \"Revenue and profit growth are required each year to reach the target bonus.\"",
+        "kind": "governance_or_management",
+        "quote": "We design our incentives for continued profitable growth and margin expansion. In order to maintain an aggregate bonus pool amount that is appropriately aligned with profits, we monitor the \u201csharing ratio\u201d expressed as a projected bonus payout as a percentage of AOI each quarter. The Compensation Committee has the discretion to limit the bonus if the sharing ratio is not aligned with expectations."
+      },
+      {
+        "topic": "Commitment on unallocated corporate expenses",
+        "stated_position": "\"We remain committed to driving efficiency and scale in our corporate and unallocated expenses and reducing these costs as a percentage of revenue over time,\" with these cost pools described as \"largely outside of the control or discretion of our segment leaders.\"",
+        "kind": "strategy",
+        "quote": "We remain committed to driving efficiency and scale in our corporate and unallocated expenses and reducing these costs as a percentage of revenue over time."
+      },
+      {
+        "topic": "Approach to guidance and forward-looking tax rate",
+        "stated_position": "\"We don't plan to provide additional forward-looking views on our effective tax rate, consistent with our broader approach to guidance,\" while reaffirming a high 20% expected effective rate before discrete items.",
+        "kind": "other",
+        "quote": "We don\u2019t plan to provide additional forward-looking views on our effective tax rate, consistent with our broader approach to guidance."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "For competitive reasons, we do not disclose revenue breakdowns by rating type beyond the detail on structured finance and fundamental ratings shared in our supplemental quarterly presentation",
+        "why_notable": "Recurring competitive-sensitivity rationale used to decline granular segment disclosure; the same posture appears for customer-segment growth and win-loss rates."
+      },
+      {
+        "quote": "We continued to add new clients during this period, but these additions were offset by churn, primarily in our corporate client segment.",
+        "why_notable": "Unusually direct admission that PitchBook's total client count declined in H1 2025 \u2014 a reversal for a business historically framed around client growth."
+      },
+      {
+        "quote": "The $4.9 million of targeted reorganization costs in Q2 25 did have a negative impact on adjusted operating income. We do not comment on future headcount plans.",
+        "why_notable": "Flat refusal to say whether the Sustainalytics reorganization is finished, leaving the scale of restructuring open-ended."
+      },
+      {
+        "quote": "So, in percentage (but not dollar) terms, we expect the bonus pool to grow faster than profit if the 100% target is reached.",
+        "why_notable": "Explicit acknowledgment that incentive leverage favors employees over margin at target, notable given shareholder questions about free cash flow conversion."
+      },
+      {
+        "quote": "we are currently assessing the potential impacts of the One Big Beautiful Bill (OBBB); however, an estimate of the impact of the OBBB on our consolidated financial statements cannot be made at this time",
+        "why_notable": "Hedge on a material tax-law change, repeated verbatim from the 10-Q rather than elaborated for investors."
+      }
+    ]
+  }
+}

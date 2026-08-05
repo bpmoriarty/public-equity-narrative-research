@@ -1,0 +1,123 @@
+{
+  "fiscal_year": 2025,
+  "task": "investor_qa",
+  "unit": "0001104659-25-027795",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:02:48Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 7633,
+    "output_tokens": 3196
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-25-027795",
+      "form": "8-K",
+      "filing_date": "2025-03-25",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001104659-25-027795",
+      "form": "8-K",
+      "filing_date": "2025-03-25",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 16230,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Direct Advisory Suite launch, go-to-market, and pricing impact",
+        "stated_position": "Management said Direct Advisory Suite \"represents the next generation of our advisor offering,\" is built on the Direct Platform, will be offered globally to capture \"both the broker/dealers who have traditionally been Advisor Workstation clients as well as registered investment advisors,\" with all Advisor Workstation clients expected to be enabled and updated in 2025 and 2026; given the increased capabilities, \"we will consider price increases at renewal.\"",
+        "kind": "segment_or_product",
+        "quote": "We plan to offer Direct Advisory Suite globally, capturing both the broker/dealers who have traditionally been Advisor Workstation clients as well as registered investment advisors. All Morningstar Advisor Workstation clients are expected to be enabled and updated to Direct Advisory Suite in 2025 and 2026 so that they can take advantage of these enhanced capabilities."
+      },
+      {
+        "topic": "Retirement of Morningstar Office and transition to SS&C's Black Diamond",
+        "stated_position": "Management stated it will retire Morningstar Office after 20 years and provide a streamlined transition for interested clients to SS&C's Black Diamond Wealth Platform, which will integrate the new Direct Advisory Suite product.",
+        "kind": "segment_or_product",
+        "quote": "We recently announced that we will be retiring Morningstar Office after 20 years and providing a streamlined transition for interested clients to SS&C\\u2019s Black Diamond Wealth Platform, which will integrate our new Direct Advisory Suite product and allow advisors to continue using the Morningstar data and research they\\u2019ve loved in Office."
+      },
+      {
+        "topic": "Whether Addepar is a competitor",
+        "stated_position": "Management said it does not view Addepar as a competitor; Addepar and other players including Envestnet, Orion, and Black Diamond are Morningstar Data clients, and \"Morningstar serves as the common data language for their users.\"",
+        "kind": "competition_or_market",
+        "quote": "We do not view Addepar as a competitor. They, and a number of other players in the space including Envestnet, Orion, and Black Diamond, are Morningstar Data clients, and Morningstar serves as the common data language for their users."
+      },
+      {
+        "topic": "Senior management's 5-10 year vision; four company strategic goals",
+        "stated_position": "Management restated the mission of empowering investor success and listed four strategic goals: \"delivering insights across asset classes to public- and private-market investors; leveraging advances in artificial intelligence to drive innovation; driving operational excellence and scalability to support growth targets; and building an amazing culture that supports exceptional talent.\" It said it is working to \"expand our moat\" and will consider adjacencies, deciding whether to build, buy, or partner, and seeks \"durable growth, with increases in adjusted operating income, adjusted operating margin, and free cash flow over the long term.\"",
+        "kind": "strategy",
+        "quote": "We have established four company strategic goals: delivering insights across asset classes to public- and private-market investors; leveraging advances in artificial intelligence to drive innovation; driving operational excellence and scalability to support growth targets; and building an amazing culture that supports exceptional talent."
+      },
+      {
+        "topic": "Whether significant acquisitions are needed for growth",
+        "stated_position": "Management said that when opportunities arise it determines whether to build, buy, or partner, and \"we do not believe that we require significant acquisitions to grow over the next few years.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "When we see these opportunities, we determine if it is more efficient to build, buy, or partner. That said, we do not believe that we require significant acquisitions to grow over the next few years."
+      },
+      {
+        "topic": "Integration approach and brand strategy for acquisitions (portfolio of brands vs. full integration)",
+        "stated_position": "Management said every transaction has a detailed integration plan tailored to the capabilities acquired, cites DBRS and LCD (roughly 90% of LCD clients transitioned to PitchBook), and said it \"generally transition[s] acquired brands to Morningstar using a phased endorsement strategy,\" citing Morningstar DBRS and progress \"consolidating our portfolio to fortify the Morningstar brand.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "From a brand perspective, we generally transition acquired brands to Morningstar using a phased endorsement strategy. So, for example, we have transitioned DBRS to Morningstar DBRS."
+      },
+      {
+        "topic": "M&A framework, criteria, and guard rails",
+        "stated_position": "Management said M&A must align with the mission, build databases/research/technical expertise/customer groups faster or more cost effectively than building them, and offer a good cultural fit; it prefers natural adjacencies, cites Lumonic and Dealview Technologies as strengthening private credit and structured finance, and stated: \"we generally favor organic investments and maintain a high hurdle for completing transactions with a focus on evaluating long-term returns relative to other potential uses of cash.\"",
+        "kind": "capital_allocation",
+        "quote": "While we actively evaluate M&A opportunities, we generally favor organic investments and maintain a high hurdle for completing transactions with a focus on evaluating long-term returns relative to other potential uses of cash. We assess overall cash-on-cash and internal rates of return based on the price we are paying and the value we expect to realize over time."
+      },
+      {
+        "topic": "AI adoption by clients and the proprietary data moat",
+        "stated_position": "Management said it views the adoption of AI \"as a driver of growth for our data sets and the intellectual property (IP) we create,\" that its \"AI ready\" data sets lower a barrier to client adoption, and that it works to enhance its moat \"by creating hard to reproduce IP, such as the Morningstar Medalist Rating,\" believing its breadth of data assets and 40 years of historical data \"cannot be replicated.\"",
+        "kind": "strategy",
+        "quote": "We continue to work to enhance our moat by creating hard to reproduce IP, such as the Morningstar Medalist Rating, which uses a combination of raw data and historical proprietary data sets collected over the past 40 years. We believe that our breadth of data assets and historical data sets provide a unique advantage for us to develop IP that cannot be replicated."
+      },
+      {
+        "topic": "Executive long-term incentive design: 20% absolute TSR hurdle",
+        "stated_position": "Management said a 100% payout target for delivering 20% TSR is appropriate; the hurdle was raised from 10% to 20% in 2020 \"due in part to shareholder feedback\"; MSUs vest at 0% if TSR is negative 13.33% or lower; annual MSU awards are split into two grants to smooth short-term volatility; and the compensation committee's independent consultant concluded the goals are challenging and support shareholder value creation.",
+        "kind": "governance_or_management",
+        "quote": "In 2020, we increased our TSR hurdle from 10% to 20%, due in part to shareholder feedback. Aligning management incentives with shareholder returns is an important part of our compensation philosophy."
+      },
+      {
+        "topic": "Impact of EU CSRD/Omnibus rollback on Sustainalytics",
+        "stated_position": "Management acknowledged the EU's sustainable finance agenda \"is evolving rapidly\" and that the Omnibus proposals would reduce the number of firms reporting on CSRD, but said \"the impact on our business is not as significant\" and that it does \"not expect material changes in 2025.\"",
+        "kind": "competition_or_market",
+        "quote": "While this directly impacts reporting providers, the impact on our business is not as significant. We expect that companies will continue to be required to assess material issues related to their business, and we are still well-prepared to help firms do this work and collect reported data as it becomes available."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "First and foremost, we are focused on our mission of empowering investor success.",
+        "why_notable": "The mission statement is the recurring anchor phrase management returns to across answers, including the M&A criteria answer \\u2014 useful for tracking continuity of self-description."
+      },
+      {
+        "quote": "We operate in large and growing markets across our business and see continued runway for profitable growth. We are working to expand our moat in our current business and will consider moving into adjacencies where we believe that we are well-positioned to serve investors.",
+        "why_notable": "Explicit adoption of 'moat' language for its own business \\u2014 the framing Morningstar's research applies to companies it rates, now used self-referentially."
+      },
+      {
+        "quote": "In general, we seek to continuously enhance the value of products and services to meet our clients\\u2019 needs, and we generally expect to be compensated for the value we provide to our clients via pricing. We review our pricing strategy annually to ensure that it reflects the value we deliver to customers.",
+        "why_notable": "An unusually direct statement of a value-based pricing posture, framed as an annual review rather than an ad hoc increase."
+      },
+      {
+        "quote": "Historically, MSUs have been earned above the 100% target and below the 100% target.",
+        "why_notable": "A hedged, non-specific defense of incentive rigor in response to a pointed challenge that the TSR hurdle is too low relative to peers."
+      },
+      {
+        "quote": "We\\u2019ve made strong progress consolidating our portfolio to fortify the Morningstar brand while continuing to clearly communicate our capabilities to the market.",
+        "why_notable": "Signals a full-integration, single-brand direction rather than the 'portfolio of brands' approach the questioner raised."
+      }
+    ]
+  }
+}

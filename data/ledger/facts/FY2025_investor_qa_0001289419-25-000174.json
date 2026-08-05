@@ -1,0 +1,167 @@
+{
+  "fiscal_year": 2025,
+  "task": "investor_qa",
+  "unit": "0001289419-25-000174",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:04:07Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 11348,
+    "output_tokens": 4810
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-25-000174",
+      "form": "8-K",
+      "filing_date": "2025-11-25",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001289419-25-000174",
+      "form": "8-K",
+      "filing_date": "2025-11-25",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 28441,
+  "facts": {
+    "topics": [
+      {
+        "topic": "AI strategy and where the largest opportunities lie",
+        "stated_position": "AI strategy is focused in three areas: \"delivering our differentiated data and intellectual property (IP); accelerating speed-to-insights in our products; and boosting the operational excellence of our teams,\" with distribution via MCP server connections to Anthropic's Claude, Microsoft Foundry/Copilot, and an upcoming OpenAI/ChatGPT integration for PitchBook, plus experimentation with flexible consumption, enterprise, and seat-based revenue models to \"match price to value.\"",
+        "kind": "strategy",
+        "quote": "As described in our Q3 25 CEO letter and responses to investor questions shared Nov. 5, 2025, our AI strategy is focused in three areas: delivering our differentiated data and intellectual property (IP); accelerating speed-to-insights in our products; and boosting the operational excellence of our teams. We have a long history of creating IP and combining it with hard-to-replicate data; we believe that leveraging these capabilities alongside the latest AI technologies will position us as a winner."
+      },
+      {
+        "topic": "Headcount growth and investment posture",
+        "stated_position": "Increase was \"primarily driven by higher headcount in Morningstar Credit and PitchBook to support growth in those segments,\" offset by lower Wealth headcount tied to the TAMP transition to AssetMark and \"the ongoing sunsetting of Morningstar Office.\" No guidance on future headcount; \"We continue to invest with a focus on driving profitable growth.\"",
+        "kind": "strategy",
+        "quote": "The increase was primarily driven by higher headcount in Morningstar Credit and PitchBook to support growth in those segments, offset by lower Morningstar Wealth headcount related to the completed transition of assets from our US Turnkey Asset Management Platform (TAMP) to AssetMark and the ongoing sunsetting of Morningstar Office. We do not provide guidance around future headcount. We continue to invest with a focus on driving profitable growth."
+      },
+      {
+        "topic": "International Wealth Platform prospects and Wealth profitability",
+        "stated_position": "No guidance on revenue or margins, but \"optimistic about the medium-term revenue growth opportunities\"; the platform \"has gained market share from larger competitors in the UK,\" with cross-selling success, and the focus is \"continuing to increase the profitability of the overall Morningstar Wealth platform over time.\"",
+        "kind": "segment_or_product",
+        "quote": "While we do not provide guidance on revenue or margins, we are optimistic about the medium-term revenue growth opportunities for our International Wealth Platform. It has gained market share from larger competitors in the UK, and we have also experienced success cross-selling other Morningstar models and funds to existing clients on the platform."
+      },
+      {
+        "topic": "Data moat and pricing power",
+        "stated_position": "\"We believe that we have a significant data moat across our business,\" built around \"credibility and industry acceptance, our edge in collecting data in a systematic, scalable manner, the enrichment of our data and our differentiated IP, and governance that is designed to protect our data via client agreements.\" Prices are reviewed regularly and adjusted based on added value and input costs.",
+        "kind": "competition_or_market",
+        "quote": "We believe that we have a significant data moat across our business. As described in responses to similar questions in September (for PitchBook) and early November (for the broader business), we believe that our moat is built around credibility and industry acceptance, our edge in collecting data in a systematic, scalable manner, the enrichment of our data and our differentiated IP, and governance that is designed to protect our data via client agreements."
+      },
+      {
+        "topic": "Leverage, liquidity, and funding buybacks with debt",
+        "stated_position": "\"We are focused on maintaining a strong balance sheet to provide flexibility for the business.\" No target leverage ratio shared, but \"considerable headroom under our debt agreements\" and comfort with recent leverage ratios; share repurchases are \"an important component of our approach to capital allocation,\" done opportunistically when valuations are attractive relative to intrinsic value.",
+        "kind": "capital_allocation",
+        "quote": "We are focused on maintaining a strong balance sheet to provide flexibility for the business. While we do not share a target leverage ratio, we would note that we have considerable headroom under our debt agreements and have been comfortable with the leverage ratios that you have seen in recent years."
+      },
+      {
+        "topic": "Share repurchase activity and new authorization",
+        "stated_position": "Repurchased 1,873,729 shares YTD through Oct. 28, 2025, totaling $487.0 million, 4.4% of shares outstanding as of Dec. 31, 2024; board authorized an additional $1 billion over the next three years, representing 4.8 million shares at the Nov. 24, 2025 price, or 11.6% of shares outstanding as of Oct. 24, 2025.",
+        "kind": "capital_allocation",
+        "quote": "Our board has authorized an additional $1 billion in share repurchase authority over the next three years, representing 4.8 million shares at our share price as of Nov. 24, 2025, or 11.6% of our shares outstanding as of Oct. 24, 2025."
+      },
+      {
+        "topic": "PitchBook data sourcing and the AI + human intelligence model",
+        "stated_position": "\"Our hybrid AI + HI (human intelligence) model combines AI-powered ingestion, classification, and resolution with validation and primary research conducted by our global research team.\" The percentage sourced directly from market participants is not disclosed, but \"much of what we believe is our highest-value information comes from proprietary datasets sourced through our primary research process, including data collected via surveys and FOIA requests.\"",
+        "kind": "competition_or_market",
+        "quote": "While we do not disclose the percentage of data sourced directly from market participants, much of what we believe is our highest-value information comes from proprietary datasets sourced through our primary research process, including data collected via surveys and FOIA requests."
+      },
+      {
+        "topic": "Whether AI can improve PitchBook margins",
+        "stated_position": "While remaining focused on growth investments, \"we believe these innovations will also contribute to greater efficiency, scalability, and support margin improvement over the long-term.\"",
+        "kind": "segment_or_product",
+        "quote": "While we also remain focused on growth investments, we believe these innovations will also contribute to greater efficiency, scalability, and support margin improvement over the long-term."
+      },
+      {
+        "topic": "Corporate client churn and competitive losses at PitchBook",
+        "stated_position": "Corporate segment has the highest churn rate in PitchBook's business; driven in part by fewer use cases in uncertain markets, but also \"corporates with a market intelligence use case are less sticky and some are choosing competitors over PitchBook.\" Win-loss rate trends are not disclosed.",
+        "kind": "competition_or_market",
+        "quote": "But we have also observed that corporates with a market intelligence use case are less sticky and some are choosing competitors over PitchBook. We do not disclose win-loss rate trends."
+      },
+      {
+        "topic": "PitchBook's positioning to capture renewed private-market momentum, and risks to that view",
+        "stated_position": "Positioning rests on \"Unmatched Data Depth and Quality,\" the AI + Human Intelligence model, product innovation including PitchBook Navigator, and integrated delivery via APIs and feeds \u2014 creating \"a data moat that we believe competitors cannot easily replicate.\" Risks acknowledged: extended sales cycles and corporate clients continuing to rationalize licenses or choose alternative solutions.",
+        "kind": "competition_or_market",
+        "quote": "That said, we acknowledge headwinds beyond the market environment. We have observed extended sales cycles for both new and existing clients, driven by resource constraints and evolving data and AI strategies. Should these continue, they could limit near-term growth. Additionally, corporate clients, historically more volatile, may continue to rationalize licenses or choose alternative solutions in uncertain environments."
+      },
+      {
+        "topic": "PitchBook Direct Data business",
+        "stated_position": "\"PitchBook Direct Data represents a small-but-growing part of the PitchBook reportable segment, accounting for a high single-digit share of revenue for the year-to-date through September 2025,\" offering API or data-feed access for market intelligence, deal sourcing, deal execution, due diligence, and fundraising.",
+        "kind": "segment_or_product",
+        "quote": "PitchBook Direct Data represents a small-but-growing part of the PitchBook reportable segment, accounting for a high single-digit share of revenue for the year-to-date through September 2025."
+      },
+      {
+        "topic": "Change in definition of PitchBook licensed users",
+        "stated_position": "In Q3 25 the definition was updated primarily to exclude Morningstar and PitchBook users, following a rationalization of the internal user count; a quarterly time series back to Q3 23 was provided under the updated definition. \"The definition change was voluntary.\"",
+        "kind": "governance_or_management",
+        "quote": "In Q3 25, as part of our periodic reviews of licensed users, we conducted a rationalization of our internal user count. We also took this opportunity to refine the definition of our reported licensed user count to focus on third-party licensed users."
+      },
+      {
+        "topic": "Executive turnover, succession planning, and groupthink risk",
+        "stated_position": "\"Morningstar has a robust succession planning process\" for named executive officers and leadership teams; the company is \"proud of our record and history of developing internal talent\" but \"find[s] great value in approaching the external market for roles when we deem it important for key hires or when we believe we do not have a successor ready,\" and seeks \"a balance of perspectives, leadership styles, expertise, backgrounds, and views.\"",
+        "kind": "governance_or_management",
+        "quote": "We are proud of our record and history of developing internal talent. Additionally, we find great value in approaching the external market for roles when we deem it important for key hires or when we believe we do not have a successor ready. We seek to maintain a balance of perspectives, leadership styles, expertise, backgrounds, and views on our leadership team to guide the business and maximize investor success."
+      },
+      {
+        "topic": "Leadership changes: Indexes and Sustainalytics",
+        "stated_position": "Ron Bundy, President of Morningstar Indexes and Morningstar Sustainalytics, will be retiring at the end of this year; David Pagliaro is new President of Sustainalytics, a \"strategic hire into that leadership team just a year ago\"; Amelia Furr appointed President of Morningstar Indexes; there is a current opening for President of Direct Platform. No reason stated for the retirement beyond retirement itself.",
+        "kind": "governance_or_management",
+        "quote": "We recently announced that Ron Bundy, President of Morningstar Indexes and Morningstar Sustainalytics will be retiring at the end of this year. Our new President of Sustainalytics, David Pagliaro, was a strategic hire into that leadership team just a year ago."
+      },
+      {
+        "topic": "AssetMark contingent consideration from US TAMP sale",
+        "stated_position": "Morningstar is entitled to payment from AssetMark based on net flows of transitioned customers through December 1, 2025; \"The contingent consideration is accounted for as a gain contingency, and if realizable, will be recorded in Q4 2025.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "As part of Morningstar\u2019s sale of US TAMP assets to AssetMark in 2024, Morningstar is entitled to payment from AssetMark based on the net flows of transitioned customers through December 1, 2025. The contingent consideration is accounted for as a gain contingency, and if realizable, will be recorded in Q4 2025."
+      },
+      {
+        "topic": "Bonus program design and annual target resetting",
+        "stated_position": "\"Our bonus program is designed to reward execution against clear financial targets aimed at directly supporting the creation of shareholder value,\" with participants measured against group-specific revenue and adjusted operating income targets plus overall company performance; \"Our financial targets are reset annually.\"",
+        "kind": "governance_or_management",
+        "quote": "Our bonus program is designed to reward execution against clear financial targets aimed at directly supporting the creation of shareholder value. Participants are measured against group-specific revenue and adjusted operating income targets and also have exposure to overall company performance."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "we believe that leveraging these capabilities alongside the latest AI technologies will position us as a winner",
+        "why_notable": "Unusually assertive competitive claim \u2014 management declaring itself a prospective \"winner\" in AI rather than hedging."
+      },
+      {
+        "quote": "create a data moat that we believe competitors cannot easily replicate",
+        "why_notable": "Moat language recurs across multiple answers in the same filing (PitchBook and the broader business), signalling a deliberate framing of competitive advantage."
+      },
+      {
+        "quote": "But we have also observed that corporates with a market intelligence use case are less sticky and some are choosing competitors over PitchBook.",
+        "why_notable": "Unusually direct admission of competitive losses, going beyond the market-environment explanation offered elsewhere."
+      },
+      {
+        "quote": "we have seen increased churn and pressure on expansion in the past couple of quarters that have contributed to the revenue growth deceleration you note over the past two quarters. A slowdown in new business growth has also contributed, with the most significant decline in the corporate client segment.",
+        "why_notable": "Candid acknowledgement that deceleration is internal (churn, expansion, new business) and not solely attributable to the market cycle."
+      },
+      {
+        "quote": "At the same time, we have observed sales cycles for clients and prospective clients extend as firms seek to do more with fewer resources and are engaging in ongoing efforts to clarify their strategies for data and artificial intelligence.",
+        "why_notable": "Frames customer AI strategy uncertainty as a headwind to Morningstar's own sales \u2014 a hedge sitting alongside the filing's optimistic AI narrative."
+      },
+      {
+        "quote": "The definition change was voluntary.",
+        "why_notable": "Blunt, one-sentence denial that a change to a key reported metric was driven by auditors or regulators."
+      },
+      {
+        "quote": "we have demonstrated that we opportunistically repurchase shares when we believe that valuations are attractive relative to our assessment of intrinsic value",
+        "why_notable": "Recurring intrinsic-value framing of buybacks; management asserts its own valuation judgment as the trigger for capital return."
+      }
+    ]
+  }
+}

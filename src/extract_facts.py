@@ -80,6 +80,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SECTIONS_MANIFEST = ROOT / "data" / "sections" / "sections-manifest.json"
 INVENTORY = ROOT / "data" / "discovery" / "inventory.json"
 FACTS_DIR = ROOT / "data" / "ledger" / "facts"
+TRIAGE = ROOT / "data" / "triage" / "triage-8k.json"
 
 # Published Claude Opus 5 rates, per million tokens. Used only to print an
 # estimate before spending anything; nothing depends on them being current.
@@ -187,6 +188,33 @@ TASKS: dict[str, dict] = {
                "acquisitions completed, restructurings, financings.\n"
                "Attribute each item to the filing it came from by quoting that filing.",
     },
+    "investor_qa": {
+        # Special: one call PER FILING, sources resolved from the triage log.
+        # See gather_investor_qa and the PER-FILING note in its docstring.
+        "sections": ["triage:investor_qa"],
+        "per_filing": True,
+        "ask": "This is one Regulation FD filing in which Morningstar published written "
+               "answers to questions submitted by investors.\n"
+               "- topics: the exchanges that bear on STRATEGY, CAPITAL ALLOCATION, "
+               "PORTFOLIO CHANGES, GOVERNANCE, or COMPETITIVE POSITION. For each, what was "
+               "asked about and what management said, in management's own phrasing.\n"
+               "- notable_language: passages that carry tone or emphasis — an unusually "
+               "direct admission, a claim that recurs, a hedge on something previously "
+               "stated plainly, a shift in how a business is characterised.\n"
+               "\n"
+               "SCOPE — this matters more here than in any other task. Much of this "
+               "document is commentary on quarterly financial results: revenue movement, "
+               "margin drivers, expense timing, foreign exchange effects, comparisons to "
+               "the prior quarter. THAT IS OUT OF SCOPE. This is a narrative and "
+               "governance history, not a financial one. Leave out any exchange whose "
+               "substance is the explanation of a reported number.\n"
+               "Include an exchange about the same business only where management states "
+               "an intention, a priority, a change of direction, a reason for a decision, "
+               "or a characterisation of its competitive position. The test is whether the "
+               "answer would still be worth reading five years from now.\n"
+               "An empty list is a correct answer for a filing that is all results "
+               "commentary.",
+    },
     "votes": {
         "sections": ["8-K_5.07"],     # special: the paired vote 8-K, see gather_votes
         "ask": "This is the 8-K Item 5.07 reporting the shareholder vote held at the annual "
@@ -218,6 +246,18 @@ def load_inventory() -> dict:
     if not INVENTORY.exists():
         sys.exit(f"FATAL: {INVENTORY} not found. Run src/discover.py first.")
     return json.loads(INVENTORY.read_text(encoding="utf-8"))
+
+
+def load_triage() -> dict | None:
+    """The 8-K triage decisions, if triage has been run. None if it has not.
+
+    Optional rather than required, so the six original tasks still run in a
+    checkout where triage has never been run. Any task that actually needs it
+    fails loudly in plan_tasks rather than quietly planning zero units.
+    """
+    if not TRIAGE.exists():
+        return None
+    return json.loads(TRIAGE.read_text(encoding="utf-8"))
 
 
 def read_section(row: dict) -> str:
@@ -308,6 +348,62 @@ def gather_votes(sections: list[dict], inv: dict, fy: int) -> list[dict]:
     return out
 
 
+def gather_investor_qa(sections: list[dict], tri: dict, fy: int) -> list[list[dict]]:
+    """Q&A documents for one year, grouped ONE LIST PER FILING.
+
+    PER-FILING, not per-year, unlike every other task. Three reasons, and the
+    first is a correctness issue rather than a preference:
+
+      - FY2025's Q&A runs to 306,000 characters across twelve filings, about
+        93,000 tokens. Asking for every topic across all twelve in one response
+        would plausibly exceed max_tokens, and a structured response that hits
+        max_tokens is a failed call, not a shorter one. Splitting bounds each
+        response to one document's worth of topics.
+      - These filings are monthly. The unit that a reader cares about is "what
+        management said in May", so the filing is the natural unit of the answer
+        as well as of the cost.
+      - Retry granularity: one bad call costs one month, not a year.
+
+    Which documents to read comes from data/triage/triage-8k.json rather than from
+    a rule here, because the answer changes across the window — the Q&A text is
+    inline in the 8-K body for FY2021-FY2023 and an EX-99.1 exhibit for
+    FY2024-FY2025. `read_section_keys` already encodes that per filing.
+    """
+    want: dict[str, dict[str, str]] = {}
+    for r in tri["records"]:
+        if (r["fiscal_year"] == fy and r["decision"] == "read"
+                and "investor_qa" in r["routes_to"]):
+            # Read the TRIMMED text triage wrote, not the raw section: the cover
+            # page and the forward-looking-statements block are verbatim-identical
+            # across these filings, so sending them once per filing is paying
+            # eleven times for the same paragraphs and pushing the content that
+            # matters further down the prompt. Quotes are still verified against
+            # the untrimmed section, so nothing is weakened by this.
+            want[r["accession"]] = {d["section_key"]: d["trimmed_path"]
+                                    for d in r["documents"]
+                                    if d["section_key"] in set(r["read_section_keys"])
+                                    and d.get("trimmed_path")}
+
+    out = []
+    for acc, keyed in want.items():
+        srcs = []
+        for s in sections:
+            if not (s["accession"] == acc and s["key"] in keyed
+                    and s.get("ok") and s.get("out")):
+                continue
+            tp = ROOT / keyed[s["key"]]
+            if not tp.exists():
+                sys.exit(f"FATAL: trimmed text {tp} is missing but the triage log "
+                         "names it. Re-run src/triage_8k.py.")
+            srcs.append({"key": s["key"], "accession": s["accession"], "form": s["form"],
+                         "filing_date": s["filing_date"], "items": s.get("items", []),
+                         "text": tp.read_text(encoding="utf-8")})
+        if srcs:
+            out.append(sorted(srcs, key=lambda s: s["key"]))
+    out.sort(key=lambda g: g[0]["filing_date"])
+    return out
+
+
 def build_prompt(task: str, fy: int, sources: list[dict]) -> str:
     """Assemble the user message: sources first, then the ask."""
     parts = [f"Company fiscal year: FY{fy}", ""]
@@ -323,13 +419,30 @@ def build_prompt(task: str, fy: int, sources: list[dict]) -> str:
     return "\n".join(parts)
 
 
-def plan_tasks(sections: list[dict], inv: dict, years: list[int],
+def plan_tasks(sections: list[dict], inv: dict, tri: dict | None, years: list[int],
                only_task: str | None) -> list[dict]:
-    """Every (year, task) unit of work, with its sources resolved."""
+    """Every unit of work, with its sources resolved.
+
+    A unit is normally one (year, task). A task marked `per_filing` fans out into
+    one unit per filing instead, each with its own `unit` key so it caches and
+    retries independently.
+    """
     plan = []
     for fy in years:
         for task, spec in TASKS.items():
             if only_task and task != only_task:
+                continue
+            if spec.get("per_filing"):
+                if tri is None:
+                    # Loudly, not silently: this task cannot be planned without
+                    # the triage log, and producing zero units would look like
+                    # "this year has no Q&A filings".
+                    sys.exit(f"FATAL: task '{task}' needs data/triage/triage-8k.json. "
+                             "Run src/triage_8k.py first.")
+                for group in gather_investor_qa(sections, tri, fy):
+                    plan.append({"fy": fy, "task": task, "unit": group[0]["accession"],
+                                 "sources": group,
+                                 "chars": sum(len(s["text"]) for s in group)})
                 continue
             if task == "events_8k":
                 sources = gather_8k(sections, inv, fy)
@@ -337,7 +450,7 @@ def plan_tasks(sections: list[dict], inv: dict, years: list[int],
                 sources = gather_votes(sections, inv, fy)
             else:
                 sources = gather_plain(sections, fy, spec["sections"])
-            plan.append({"fy": fy, "task": task, "sources": sources,
+            plan.append({"fy": fy, "task": task, "unit": None, "sources": sources,
                          "chars": sum(len(s["text"]) for s in sources)})
     return plan
 
@@ -346,13 +459,21 @@ def plan_tasks(sections: list[dict], inv: dict, years: list[int],
 # Running
 # ---------------------------------------------------------------------------
 
-def out_path(fy: int, task: str) -> Path:
+def out_path(fy: int, task: str, unit: str | None = None) -> Path:
+    """Cache path for one unit of work.
+
+    Per-filing tasks get the accession in the filename, so each is cached and
+    retried on its own. The accession is filesystem-safe as filed (digits and
+    hyphens), so it is used verbatim — a sanitized name could collide.
+    """
+    if unit:
+        return FACTS_DIR / f"FY{fy}_{task}_{unit}.json"
     return FACTS_DIR / f"FY{fy}_{task}.json"
 
 
 def run_one(client: anthropic.Anthropic, cfg: dict, unit: dict) -> dict:
     """One extraction call. Returns a record; never raises."""
-    fy, task = unit["fy"], unit["task"]
+    fy, task, uk = unit["fy"], unit["task"], unit.get("unit")
     ex = cfg["extraction"]
     prompt = build_prompt(task, fy, unit["sources"])
     started = datetime.now(timezone.utc)
@@ -367,22 +488,23 @@ def run_one(client: anthropic.Anthropic, cfg: dict, unit: dict) -> dict:
             output_format=TASK_MODELS[task],
         )
     except Exception as exc:
-        return {"fiscal_year": fy, "task": task, "ok": False,
+        return {"fiscal_year": fy, "task": task, "unit": uk, "ok": False,
                 "error": f"{type(exc).__name__}: {exc}"}
 
     # A structured response cut off by max_tokens is a failed call, not a short
     # answer: the JSON is incomplete. Surface it rather than storing a partial.
     if resp.stop_reason == "max_tokens":
-        return {"fiscal_year": fy, "task": task, "ok": False,
+        return {"fiscal_year": fy, "task": task, "unit": uk, "ok": False,
                 "error": f"hit max_tokens ({ex['max_tokens']}) — response truncated. "
                          "Raise max_tokens in config/company.toml [extraction]."}
     if resp.stop_reason == "refusal":
-        return {"fiscal_year": fy, "task": task, "ok": False,
+        return {"fiscal_year": fy, "task": task, "unit": uk, "ok": False,
                 "error": f"model declined: {resp.stop_details}"}
 
     return {
         "fiscal_year": fy,
         "task": task,
+        "unit": uk,
         "ok": True,
         "extracted_utc": started.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "model": resp.model,
@@ -410,16 +532,17 @@ def main() -> None:
 
     cfg = load_config()
     sections, inv = load_sections(), load_inventory()
+    tri = load_triage()
     years = args.fy or list(range(inv["first_fiscal_year"], inv["last_fiscal_year"] + 1))
 
-    plan = plan_tasks(sections, inv, sorted(years), args.task)
+    plan = plan_tasks(sections, inv, tri, sorted(years), args.task)
 
     # Report missing sources rather than silently producing fewer tasks.
     empty = [u for u in plan if not u["sources"]]
     plan = [u for u in plan if u["sources"]]
     if not args.force:
-        cached = [u for u in plan if out_path(u["fy"], u["task"]).exists()]
-        plan = [u for u in plan if not out_path(u["fy"], u["task"]).exists()]
+        cached = [u for u in plan if out_path(u["fy"], u["task"], u.get("unit")).exists()]
+        plan = [u for u in plan if not out_path(u["fy"], u["task"], u.get("unit")).exists()]
     else:
         cached = []
 
@@ -432,7 +555,9 @@ def main() -> None:
     if empty:
         print(f"  no source       : {len(empty)}")
         for u in empty:
-            print(f"      FY{u['fy']} {u['task']}: no section text found")
+            print(f"      FY{u['fy']} {u['task']}"
+                  + (f" [{u['unit']}]" if u.get("unit") else "")
+                  + ": no section text found")
     print()
 
     if not plan:
@@ -453,7 +578,8 @@ def main() -> None:
                 messages=[{"role": "user", "content": build_prompt(u["task"], u["fy"], u["sources"])}],
             ).input_tokens
             total_in += n
-            print(f"  FY{u['fy']} {u['task']:10s} {u['chars']:>9,d} chars  {n:>8,d} tokens")
+            label = u['task'] + (f" {u['unit']}" if u.get('unit') else '')
+            print(f"  FY{u['fy']} {label:34s} {u['chars']:>9,d} chars  {n:>8,d} tokens")
         worst_out = len(plan) * ex["max_tokens"]
         print()
         print(f"input   : {total_in:,d} tokens  ->  ${total_in / 1e6 * PRICE_IN:,.2f}")
@@ -473,19 +599,20 @@ def main() -> None:
         futures = {pool.submit(run_one, client, cfg, u): u for u in plan}
         for fut in as_completed(futures):
             rec = fut.result()
-            fy, task = rec["fiscal_year"], rec["task"]
+            fy, task, uk = rec["fiscal_year"], rec["task"], rec.get("unit")
+            label = task + (f" {uk[-8:]}" if uk else "")
             if rec["ok"]:
-                out_path(fy, task).write_text(json.dumps(rec, indent=2), encoding="utf-8")
+                out_path(fy, task, uk).write_text(json.dumps(rec, indent=2), encoding="utf-8")
                 counts = {k: (len(v) if isinstance(v, list) else ("1" if v else "0"))
                           for k, v in rec["facts"].items()}
                 done += 1
-                print(f"  ok    FY{fy} {task:10s} "
+                print(f"  ok    FY{fy} {label:20s} "
                       f"in={rec['usage']['input_tokens']:>7,d} "
                       f"out={rec['usage']['output_tokens']:>6,d}  "
                       + ", ".join(f"{k}={v}" for k, v in counts.items()))
             else:
                 failed.append(rec)
-                print(f"  FAIL  FY{fy} {task:10s} {rec['error'][:110]}")
+                print(f"  FAIL  FY{fy} {label:20s} {rec['error'][:110]}")
 
     print()
     print("=" * 72)
@@ -493,7 +620,9 @@ def main() -> None:
     if failed:
         print("\nfailures (re-run to retry only these — successes are cached):")
         for r in failed:
-            print(f"  FY{r['fiscal_year']} {r['task']}: {r['error']}")
+            print(f"  FY{r['fiscal_year']} {r['task']}"
+                  + (f" [{r['unit']}]" if r.get("unit") else "")
+                  + f": {r['error']}")
         sys.exit(1)
 
 

@@ -22,7 +22,7 @@ they anchor a narrative claim.
 
 **Last Session:** 2026-08-05
 
-**Overall Health:** 🟢 Working — milestones 1–4 complete; ledger built, every fact quote-verified
+**Overall Health:** 🟢 Working — milestones 1–4 complete; 8-K triage done; 665 facts, every quote verified
 
 ### What's Working
 
@@ -66,6 +66,18 @@ they anchor a narrative claim.
 - **Quote verification works, and is proven able to fail.** Confirmed to reject
   fabricated quotes, paraphrased tails, quotes stitched from two passages, an
   extra appended word, and fragments too short to be evidence
+- **8-K triage complete** (`src/triage_8k.py`). All 75 conditional 7.01/8.01
+  filings judged deterministically, with the evidence for every decision
+  recorded: **60 read, 15 date_only**, and all 15 drops are quarterly dividend
+  declarations. Config-driven patterns; no model calls
+- **Reg FD investor Q&A is now in the ledger for FY2025** — 186 facts from 11
+  filings, in its own `investor_qa` field. MORN publishes written answers to
+  investor questions roughly monthly, and nothing else in the corpus carries
+  management's voice on strategy at that frequency
+- **The quote verifier now has a committed test** (`tests/test_verify_quote.py`).
+  Six pass-cases and six reject-cases, run with one command. It exists because
+  the normalization has been loosened three times and each loosening is exactly
+  when the rejections need re-proving
 - **Coverage.** 10-K and DEF 14A complete for all five fiscal years
 
 ### What's Broken or Incomplete
@@ -77,9 +89,18 @@ they anchor a narrative claim.
   marking, not fixed — see Recent Decisions
 - **FY2021 has no shareholder letter at all.** Verified absent, not a lookup
   failure: no ARS filed, and no EX-13 in any of the five 10-Ks
-- **75 triage 8-Ks are extracted but unjudged on content.** Items 7.01/8.01;
-  the text is in `data/sections/`, but nothing has yet decided which are
-  strategic announcements and which are routine releases
+- **`investor_qa` is populated for FY2025 only.** FY2021–FY2024 have triage
+  decisions but no extraction, so those years read as empty for a reason that is
+  NOT absence of disclosure — the filings exist and are cached. No cross-year
+  comparison of this field is valid yet. See DATA.md limitation 15
+- **The 15 dividend drops should be re-read by eye before publication.** The
+  classifier is tuned to be wrong in the cheap direction, but the drop list is
+  the actual safety net and reading it takes about a minute:
+  `uv run python src/triage_8k.py --show date_only`
+- **Investor Q&A topics recur across months and are not independent
+  observations.** Six near-duplicate pairs in FY2025 — Morningstar Wealth's
+  refocusing was answered in June, August and September. A count of Q&A facts is
+  not a count of distinct findings. See DATA.md limitation 14
 - **`segments` is not comparable across the whole window.** MORN's FY2021 and
   FY2022 10-Ks never say "reportable segment"; FY2023 onward do. So the field
   holds product areas for two years and reportable segments for three, and the
@@ -95,6 +116,24 @@ they anchor a narrative claim.
 ---
 
 ## What We're Doing Now
+
+The 8-K triage is done and FY2025's investor Q&A is extracted, at the review gate
+the user set: one year first, then decide about the other four.
+
+**The review question, with the evidence in hand.** The Q&A material is
+substantive — management on why PitchBook renewal rates fell ("We have not seen a
+material change in the competitive environment"), on Addepar not being a
+competitor, on conceding that basic reference data will be commoditized in an
+AI-first world, and on tying the TAMP sale, the Morningstar Office wind-down and
+the CRSP acquisition into one portfolio-realignment story that the 10-K does not
+tell in that form. FY2025 cost **$1.53** for 11 calls; the remaining four years
+are roughly 42 filings and ~$4.
+
+**What triage found that changes a documented assumption.** There are zero Item
+2.01 filings in the entire window, despite two completed acquisitions, a
+divestiture and two announcements. MORN furnishes deal news under 7.01/8.01. The
+`include_items` filter contributed no transaction coverage at all — every
+acquisition in the ledger came from the 10-K. Recorded as DATA.md limitation 4.
 
 Milestones 1–4 are done. Both requirements set for milestone 4 were met: every
 fact carries a `confidence` marker with its reason, and vote outcomes come from
@@ -141,6 +180,15 @@ across 34 calls). Milestones 1–3 cost nothing.
 | 2026-08-04 | `pdfminer.six`, **not** `pypdf`, for PDF text | pypdf coerces unmapped glyphs toward whitespace, turning every digit in the FY2022 letter into a space — "fell 15%" became "fell". pdfminer preserves them as `(cid:N)`. Prefer the library that preserves what it can't interpret |
 | 2026-08-04 | Glyph offset **derived**, not hardcoded | Taken from the space glyph's frequency and validated against English sentinel words, so the decoder isn't silently wrong on a different company's font |
 | 2026-08-04 | The dual em-dash/minus glyph maps to ASCII `-` | One glyph serves both. A hyphen for an em dash is cosmetic; a lost minus sign inverts a fact |
+| 2026-08-05 | Triage is allowed to be confident **only about "read"** | The two errors do not cost the same. A false read costs a fraction of a cent; a false date_only deletes a corporate event from a five-year history and nothing downstream can detect it. So `date_only` needs positive evidence of a routine filing AND no material signal anywhere, and anything unrecognised is read |
+| 2026-08-05 | Match **position** is recorded, not just match presence | A keyword scan flagged 42 of 75 filings as deal-related against roughly 6 that announce a transaction — because the investor Q&A discusses past acquisitions at length. A press release states its subject in the headline, so a match inside the first 1,200 chars scores `strong` and a later one `mention`. Only strong matches drive routing |
+| 2026-08-05 | Triage routes **documents**, not filings | The Q&A text is inline in the 8-K body for FY2021–FY2023 and an EX-99.1 exhibit from FY2024 on. A filing-level decision plus the existing bodies-only rule would have read the early years and silently read nothing for the late ones, while reporting the same filings processed |
+| 2026-08-05 | Investor Q&A gets **its own ledger field** | Same verification as everything else, but not the same kind of evidence: unaudited, required by no disclosure rule, and responsive to whatever investors happened to ask. Merged into `notable_language` it would be indistinguishable from the 10-K, and an output could cite an off-hand monthly reply with the authority of an audited filing |
+| 2026-08-05 | `investor_qa` facts stay **`high` confidence**; register is recorded separately | Their boundaries are trivially correct and their quotes verify, so `low` would be false. Register is a different axis and lives in the field name and `data_quality.investor_qa_basis`. Folding two things into one flag makes both unreadable |
+| 2026-08-05 | `InvestorQaFacts` deliberately has **no `events` list** | Triage already routes any filing with a material signal to the events path, and the 10-K independently covers every transaction in the window. A third account of the same acquisition, sourced to the weakest of the three documents, would eventually get cited |
+| 2026-08-05 | Q&A extraction is **one call per filing**, not per year | FY2025's Q&A is ~93k input tokens across 12 filings and produced 37k output tokens. One call per year would have needed all of that in a single response against a 16k ceiling — a truncated structured output is a failed call, not a shorter one. Observed max per filing: 4,810 output tokens |
+| 2026-08-05 | The trimmer marks its one **interior** deletion | Cutting a block out of the middle puts two separate passages side by side, and a model can then quote across the seam in good faith — manufacturing exactly the stitched quote the grounding check exists to catch. An explicit `[... omitted ...]` marker makes such a quote fail instead of reading as contiguous |
+| 2026-08-05 | Triage **decisions** are committed; trimmed **text** is not | The text is a copy of public EDGAR documents and regenerates free. The decisions are the audit record `config/forms.toml` asks for, and 15 filings were dropped from the history on their strength — a record of what was excluded has to survive in the repository |
 | 2026-08-05 | Risk deltas are **deterministic**, not a model call | `rapidfuzz` over the already-split factors gives the same answer every run and can be audited by hand. It also keeps the filing's largest section out of the API budget. SPEC.md §2 asks for a diff, and a diff is not a judgment task |
 | 2026-08-05 | Matching is **one-to-one, greedy, best score first** | Otherwise two of this year's factors both claim the same prior-year factor, and that factor never appears as removed — silently losing a deletion, which is exactly the high-signal event the diff exists to find |
 | 2026-08-05 | FY2021 risk deltas are **null with a reason**, not empty lists | Empty lists read as "nothing changed in FY2021". The prior year is outside the window, so nothing can be computed. CLAUDE.md: guard edge cases in code, not just prose |
@@ -174,12 +222,16 @@ across 34 calls). Milestones 1–3 cost nothing.
        boundaries hand-verified
 7. [x] **Milestone 4 — Year ledger.** 479 facts, 0 unverified quotes, per-fact
        confidence, vote outcomes from 8-K 5.07
-8. [ ] **Milestone 5 — Three outputs** to `output/`, derived only from the ledger
-9. [ ] Triage the 75 7.01/8.01 8-Ks on content (text already extracted). Worth
-       doing before milestone 5 if the timeline looks thin on strategic events
-10. [ ] Optional, if the board narrative proves load-bearing: per-year verified
+8. [x] **8-K triage.** All 75 judged, 60 read / 15 date_only, decisions and
+       evidence in `data/triage/`
+9. [ ] **Decide on the remaining four years of investor Q&A** (~42 filings,
+       ~$4). FY2025 is done and reviewable; FY2021–FY2024 are triaged but not
+       extracted
+10. [ ] **Milestone 5 — Three outputs** to `output/`, derived only from the
+        ledger
+11. [ ] Optional, if the board narrative proves load-bearing: per-year verified
         boundaries for `DEF14A_director_bios` and `DEF14A_proposals_and_votes`
-11. [ ] Run `preflight`, then `verification-suite` before treating any output as
+12. [ ] Run `preflight`, then `verification-suite` before treating any output as
         shareable
 
 ---
@@ -207,6 +259,11 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `data/ledger/FY*.json` | **The ledger.** Everything downstream derives from here, never from raw sections |
 | `data/ledger/ledger-report.md` | Cross-year coverage, confidence counts, and comparability warnings |
 | `data/ledger/facts/` | Cached per-task extraction results. A completed task is never re-run |
+| `src/triage_8k.py` | Judges the 75 conditional 7.01/8.01 8-Ks. Deterministic, no model calls |
+| `config/forms.toml` `[eight_k.triage]` | Triage patterns, headline window, size cap. Change behaviour here, not in code |
+| `data/triage/triage-8k.json` | Every triage decision with its evidence. Committed — it is the record of what was excluded |
+| `data/triage/triage-report.md` | The auditable log, including the full drop list |
+| `tests/test_verify_quote.py` | Proves the grounding check can still reject. Run it after any change to `canon` |
 | `data/discovery/inventory.json` | **Machine source of truth** for what's in scope. Later stages read this, not config |
 | `data/discovery/discovery-report.md` | The human-readable inventory and gap analysis |
 | `data/raw/FY*/…` | Cached documents by fiscal year and form. Never delete — rebuilding means re-hitting EDGAR for all 201 |
@@ -294,3 +351,40 @@ across 34 calls). Milestones 1–3 cost nothing.
   prose: `segments` changes meaning at FY2022/FY2023, and say-on-pay votes for
   year N are held in year N+1
 - Next: milestone 5, the three outputs
+
+### 2026-08-05 (continued) — 8-K triage
+
+- **Scoped the 75 unjudged 7.01/8.01 8-Ks before building anything**, and the
+  scoping changed the plan. The six material events they appear to hold — the
+  Praemium and LCD acquisitions, the Japan unwind, the AssetMark TAMP sale, CRSP,
+  and a $500M repurchase authorization — turned out to be **already in the ledger
+  from the 10-K**. Checked rather than assumed; the event-recovery case was much
+  weaker than it looked
+- What the filings genuinely add is the **Reg FD investor Q&A**: ~990,000 chars
+  of management answering investor questions monthly, with no substitute anywhere
+  else in the corpus
+- **Built the triage log first** (`src/triage_8k.py`), because `config/forms.toml`
+  asks for it in as many words and it costs nothing. 60 read / 15 date_only, all
+  15 drops dividend declarations, every decision carrying its evidence
+- Verified the guard on the case that mattered: the 2022-12-09 filing is titled
+  as a dividend declaration and also authorized a $500M buyback. It was kept
+- **Auditing my own log found a pattern gap** — the Japan filing reads "entered
+  into a (i) Termination Agreement", and the `(i)` defeated the pattern. It was
+  read anyway via the unrecognised-defaults-to-read fallback, but logged as "no
+  signal matched", which understated the evidence. Fixed the pattern and split
+  the log message so a mention is never reported as nothing
+- Extracted FY2025's Q&A: 11 calls, 0 failures, **186 facts, $1.53**
+- **The first unverified quotes in the project — 4 of 186 — and all four were
+  false negatives in my verifier.** Three were the model emitting the literal
+  six characters `\u2019` instead of `’`; one was a Workiva image placeholder
+  sitting inside a sentence in the source, which my own trimmer removes on the
+  input side but not on the verification side. Fixed both in `canon()`
+- **Wrote `tests/test_verify_quote.py`** because loosening the check three times
+  without re-proving the rejections is how a verifier quietly becomes a rubber
+  stamp. 6 pass-cases, 6 reject-cases, all correct
+- Hand-checked 14 stored quotes against `data/raw/` re-parsed from scratch with
+  BeautifulSoup, not trusting `data/sections/` at all: 14/14 found
+- Found that **zero Item 2.01 filings exist in the window** despite two completed
+  acquisitions and a divestiture — MORN furnishes deal news under 7.01. The
+  configured item filter contributed no transaction coverage at all
+- Next: user's call on the remaining four years of Q&A (~$4), then milestone 5

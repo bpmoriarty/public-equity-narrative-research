@@ -17,7 +17,7 @@ asserted. Update this file when the source, universe, or as-of date changes.
 | Window | Five fiscal years, per `config/company.toml` `[window]` |
 | Subject | MORN / Morningstar, Inc., CIK 0001289419, FY2021–FY2025 |
 | Retrieved | 202 documents across 128 filings — see `data/raw/fetch-manifest.json` |
-| Extraction model | `claude-opus-5`, effort `medium` — 34 calls, 571,664 input / 66,406 output tokens |
+| Extraction model | `claude-opus-5`, effort `medium` — 45 calls, 693,234 input / 103,417 output tokens ($6.05). 34 calls for the six core tasks, 11 for FY2025 `investor_qa` |
 
 ### One filing outside the window, by name
 
@@ -95,10 +95,23 @@ has to survive them.
    mapping and flag any fiscal-year-end change.
 
 4. **8-K coverage is deliberately partial.** Only the items in
-   `config/forms.toml` `[eight_k].include_items` are processed. Item 2.02
-   earnings releases are logged by date only. Anything outside both lists is
+   `config/forms.toml` `[eight_k].include_items` are processed, plus the
+   conditional 7.01/8.01 filings that survive triage (limitation 13). Item 2.02
+   earnings releases are logged by date only. Anything outside those lists is
    never seen. Coverage claims must say "material 8-Ks as defined in
    `config/forms.toml`," never "all 8-Ks."
+
+   **The item filter did not catch a single transaction in this window, and that
+   is a finding about the filter rather than about the company.** There are ZERO
+   Item 2.01 filings ("completion of acquisition or disposition of assets") and
+   zero Item 2.05 filings across FY2021–FY2025, although MORN completed the
+   Leveraged Commentary & Data and Praemium acquisitions, sold its US TAMP assets
+   to AssetMark, unwound its Morningstar Japan holding, and announced the CRSP
+   acquisition inside that period. Every one of those was furnished under Item
+   7.01 or 8.01 instead. `include_items` is not wrong, but for this filer it
+   contributed no transaction coverage at all — the acquisitions in the ledger
+   come from the 10-K's Item 1 and MD&A, which independently captured all of
+   them. Do not describe the 8-K stream as the source of the deal record.
 
 5. **Restatements and amendments.** A 10-K/A supersedes parts of the original
    but does not replace it on EDGAR. Both are in the window. Where an amendment
@@ -217,6 +230,61 @@ has to survive them.
    year — see the extraction log before reading a year's thin coverage as a real
    absence of disclosure.
 
+13. **15 of the 75 conditional 7.01/8.01 8-Ks were dropped from the history.**
+   `src/triage_8k.py` judged them on content; the decisions and their evidence are
+   in `data/triage/triage-8k.json`, and the full drop list is printed in
+   `data/triage/triage-report.md` for audit. All 15 are quarterly dividend
+   declarations. Nothing else was dropped: a `date_only` decision requires
+   positive evidence of a routine filing AND the absence of every material signal
+   including passing mentions, and anything unrecognised is read.
+
+   The asymmetry is deliberate and worth restating, because it is the reason to
+   trust the drop list: a false "read" costs a fraction of a cent, while a false
+   "date_only" removes a corporate event from a five-year history in a way no
+   downstream stage can detect. The classifier is tuned to be wrong in the
+   cheap direction. The 15 drops should still be re-read by eye before publication
+   — it takes about a minute and it is the real safety net.
+
+   One case shows why title-based filtering would not have been safe: the
+   2022-12-09 filing is titled as a dividend declaration and also authorized a
+   $500 million share repurchase program. It was kept, on the capital-allocation
+   signal.
+
+14. **The Reg FD investor Q&A is a different kind of evidence, and lives in its
+   own ledger field.** MORN publishes written answers to investor questions
+   roughly monthly under Item 7.01. These are management's own words and they are
+   in scope, but they are not equivalent to a 10-K or proxy statement: unaudited,
+   not required by any disclosure rule, and responsive to whatever investors
+   happened to ask that month. They are therefore kept in `investor_qa` and never
+   merged into `strategic_priorities`, `notable_language`, or `events` — once
+   merged, nothing downstream could tell an off-hand monthly reply from an audited
+   annual disclosure. Each year's record carries
+   `data_quality.investor_qa_basis`. Treat this material as corroborating, and
+   name it as Reg FD material wherever an output leans on it.
+
+   Two further cautions on this field:
+
+   - **Where the text lives changes inside the window.** The Q&A is inline in the
+     8-K body for FY2021–FY2023 and a separate EX-99.1 exhibit from FY2024 on,
+     with FY2024 containing both shapes. Any code that reads 8-K bodies only
+     silently returns nothing for the later years while reporting the same number
+     of filings processed. The triage log records which document carries the
+     content per filing.
+   - **Topics recur across months and are not independent observations.** In
+     FY2025 six pairs of topics across different filings are near-duplicates —
+     the Morningstar Wealth refocusing was asked and answered in June, August and
+     September, and the James Rhodes departure twice. That recurrence is itself
+     informative, and it means a count of Q&A facts is not a count of distinct
+     findings. Do not treat repetition as corroboration.
+
+15. **`investor_qa` is currently populated for FY2025 only.** 186 facts from 11
+   filings. FY2021–FY2024 have the triage decisions but no extraction, so those
+   years' `investor_qa` fields are empty for a reason that is *not* an absence of
+   disclosure — the filings exist and are cached. Any cross-year comparison of
+   this field is invalid until the remaining years are run. The ledger report's
+   coverage table shows the gap; the `extraction_tasks_missing` entry in each
+   year's `data_quality` names it explicitly.
+
 ## Cache policy
 
 `data/raw/` is written once per document and read thereafter (CLAUDE.md: EDGAR
@@ -260,17 +328,49 @@ Two consequences worth knowing when reading the ledger:
   quote, rather than asking the model where it looked. So a fact can only be
   attributed to a document that provably contains its evidence.
 
-Result on the current run: **479 facts, 0 unverified quotes.** The check was
-separately confirmed to reject fabricated quotes, paraphrased tails, quotes
-stitched together from two passages, an extra appended word, and fragments too
-short to be evidence. A 100% pass rate only means something alongside evidence
-that the check can fail.
+Result on the current run: **665 facts, 0 unverified quotes.**
+
+The rejection cases are a committed test rather than a claim:
+`uv run python tests/test_verify_quote.py` asserts that the check still refuses a
+fabricated quote, a paraphrased ending, a quote stitched from two passages, an
+inserted word, and a fragment too short to be evidence. A 100% pass rate means
+nothing on its own — a checker that returns `True` unconditionally produces the
+same number. The test exists because the normalization has been loosened three
+times, and each loosening is exactly when the rejections need re-proving.
+
+**What the three loosenings were, all triggered by real output, none by theory:**
+
+| Symptom | Real cause | Fix |
+|---|---|---|
+| A 258-of-260-character match called a paraphrase | two stray characters after the closing full stop | accept a trailing tail of ≤3 characters — an absolute count, because a 99% ratio forgives the same artifact on a long quote and rejects it on a short one |
+| 3 of the first 4 investor-Q&A failures | the model emitted a unicode escape as literal text — the six characters `\u2019` — where the character `’` belongs | decode literal `\uXXXX` escapes before comparing |
+| 1 investor-Q&A failure | a Workiva image placeholder (`…9262025003.jpg`) sits *inside* a sentence in the extracted text | drop bare image filenames on both sides |
+
+The last of those was self-inflicted and is worth naming: `src/triage_8k.py`
+strips those placeholders before sending text to a model, while verification runs
+against the untrimmed section. Trimming the model's input cannot make a bad quote
+pass — that direction is safe by construction — but it can make a good one fail,
+and it did. For the same reason the trimmer marks its one interior deletion with
+an explicit `[... omitted ...]` marker, so a quote written across the seam fails
+verification instead of silently reading as contiguous text.
+
+All four of those failures were false negatives. **No fabricated or paraphrased
+quote has yet been found in any extraction run** — which is not the same as saying
+none will be, and is the reason the check stays.
 
 ### Confidence
 
 Every fact carries `high` or `low` with the reason recorded on it. `low` means
 the source section's boundaries are unverified (limitation 9) or the quote could
-not be verified. On the current run **51 of 479 facts are `low`**, all of them
+not be verified. On the current run **51 of 665 facts are `low`**, all of them
 board-composition facts from `DEF14A_director_bios`.
 
 **Any claim in the outputs resting on a `low` fact must say so, or be dropped.**
+
+Confidence deliberately does **not** encode *register*. Every `investor_qa` fact
+is `high`, and that is correct: those documents have trivially correct boundaries
+(whole documents) and their quotes verify. But a Reg FD investor reply is a weaker
+kind of evidence than an audited annual filing, and that is recorded separately —
+in the field name and in `data_quality.investor_qa_basis` (limitation 14) — rather
+than by degrading the confidence marker. Folding two different things into one
+flag would make both unreadable.

@@ -1,0 +1,159 @@
+{
+  "fiscal_year": 2025,
+  "task": "investor_qa",
+  "unit": "0001289419-25-000158",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:03:39Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 14753,
+    "output_tokens": 4258
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-25-000158",
+      "form": "8-K",
+      "filing_date": "2025-09-26",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001289419-25-000158",
+      "form": "8-K",
+      "filing_date": "2025-09-26",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 39616,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Departure of James Rhodes, President of Direct Platform, and succession process",
+        "stated_position": "James Rhodes \"left the company effective Sept. 12, 2025, to pursue other interests\"; Frannie Besztery, COO of Direct Platform, serves as interim head, and Russell Reynolds has been retained to search for a permanent successor, with both internal and external candidates considered.",
+        "kind": "governance_or_management",
+        "quote": "When we announced his departure on Aug. 29, 2025, we also shared that Frannie Besztery, Chief Operating Officer of Direct Platform, would serve as interim head until a permanent successor is appointed. We have retained Russell Reynolds, an executive search firm, to formally assist us with the search process to secure our next President of Direct Platform. We are actively considering both internal and external candidates."
+      },
+      {
+        "topic": "Whether the cost focus is temporary or durable",
+        "stated_position": "Management frames value as a function of free cash flow, uses adjusted operating income as a proxy, and says it aims to grow revenue faster than adjusted operating expense over time, balancing investment with expense attention \u2014 \"We will continue to drive for profitable growth.\"",
+        "kind": "strategy",
+        "quote": "To achieve long-term AOI growth, we are focused on growing revenue at a faster pace than adjusted operating expense over time, which requires us to balance investment in the business to support growth with careful attention to expenses. We will continue to drive for profitable growth."
+      },
+      {
+        "topic": "Where incremental S&M and R&D investment is going",
+        "stated_position": "Lists investment priorities: Morningstar Credit ratings and licensed data, PitchBook platform enhancements including AI-powered tools, modernizing interfaces including Direct Platform, scaling Morningstar Indexes with the CRSP acquisition, and database expansion spanning public and private investments.",
+        "kind": "strategy",
+        "quote": "- Scaling our Morningstar Indexes business with the recently announced acquisition of the Center for Research in Security Prices (CRSP).\n- Database expansion and investment in research and analytics to create intellectual property built around our data, including tools that span public and private investments."
+      },
+      {
+        "topic": "Strategy to grow Morningstar Direct licenses given structural challenges in public asset management",
+        "stated_position": "Enhance databases beyond traditional mutual funds with focus on semiliquid structures, CITs, model portfolios, SMAs and ETPs to unlock new capabilities and reach adjacent user segments; invest in modern, workflow-oriented, AI-leveraging user experiences to attract a broader range of users beyond the typical heavy user.",
+        "kind": "segment_or_product",
+        "quote": "As we see the industry evolving, we continue to enhance our databases beyond traditional mutual funds with a specific focus on semiliquid structures (including interval funds, tender offer funds, and business development companies), collective investment trusts, model portfolios, separately managed accounts and exchange-traded products. We believe that these additional datasets will unlock new capabilities and experiences in Direct to grow our user base in adjacent user segments."
+      },
+      {
+        "topic": "Pricing strategy for Morningstar Direct",
+        "stated_position": "Simplified licensing model based on number of licenses, with additional fees for specific use cases such as distribution or publication; prices reviewed regularly and adjusted based on added value and input costs; larger-than-usual increase from 2023, since mid-2024 more in line with prior years; no comment on future increases.",
+        "kind": "segment_or_product",
+        "quote": "We review prices regularly and make adjustments based on the added value provided and input costs. Starting in 2023, we introduced a larger-than-usual price increase with our annual renewals, reflecting significant enhancements to the product, including new data sets, additional Morningstar IP, and the introduction of Analytics Lab. Since mid-2024, price increases have been more in line with prior years. We do not comment on future price increases."
+      },
+      {
+        "topic": "PitchBook's competitive moat and the threat from AI",
+        "stated_position": "Competitive advantage is twofold \u2014 network effects and trusted relationships enabling sourcing of non-public, hard-to-access information, and a long history of adopting technology; providers relying on public data scraping \"can surface information, but we do not believe that they can replicate our depth, context, or actionable insights.\"",
+        "kind": "competition_or_market",
+        "quote": "PitchBook\u2019s data moat is built on years of investment in proprietary infrastructure, analyst expertise, and rigorous verification processes. Providers that rely on public source data scraping can surface information, but we do not believe that they can replicate our depth, context, or actionable insights."
+      },
+      {
+        "topic": "PitchBook partnerships with LLM providers",
+        "stated_position": "Entered agreements with leading LLM providers including Anthropic, Perplexity, and Rogo to expand reach while maintaining control and data security.",
+        "kind": "segment_or_product",
+        "quote": "We have entered into agreements with leading large language model (LLM) providers including Anthropic, Perplexity, and Rogo to further expand our reach, allowing clients to access PitchBook\u2019s institutional-grade data securely through the tools they already use while maintaining control and data security."
+      },
+      {
+        "topic": "Whether PitchBook is integrated or operates independently",
+        "stated_position": "An integrated coverage model with a lead strategic account executive plus product sales specialists for multi-product clients, but \"we run our firm in a decentralized manner and the PitchBook segment, like others at Morningstar, operates with relative independence.\"",
+        "kind": "governance_or_management",
+        "quote": "That said, we run our firm in a decentralized manner and the PitchBook segment, like others at Morningstar, operates with relative independence."
+      },
+      {
+        "topic": "Whether PitchBook's growth slowdown is cyclical or structural",
+        "stated_position": "Early signs of stabilization in deal flow in Q3 25, but no broad-based improvement; uncertainty in policy, macro and technology environments causing client hesitancy; \"We believe the majority of the pressure is short-term and cyclical.\"",
+        "kind": "competition_or_market",
+        "quote": "We believe the majority of the pressure is short-term and cyclical, while we are proactively positioning the business to capture long-term opportunities as the private markets expand and evolve."
+      },
+      {
+        "topic": "PitchBook TAM and penetration",
+        "stated_position": "TAM estimated at $11.1 billion in 2025; penetration highest in PE, VC and investment banks with opportunity in corporates, commercial banks and international markets; future growth from both new logo acquisition and expansion at existing customers.",
+        "kind": "competition_or_market",
+        "quote": "Morningstar currently estimates PitchBook\u2019s TAM at $11.1 billion in 2025, reflecting both the expansion of private markets globally and the growing demand for integrated data solutions across corporates, service providers, and financial sponsors."
+      },
+      {
+        "topic": "Morningstar Credit market share gains",
+        "stated_position": "Continues to increase market coverage in areas of investment including private credit ratings sectors such as aviation and data center transactions; cites SEC NRSRO staff report that smaller and medium sized agencies picked up roughly 1% of addressable market coverage per year over five years through 2023.",
+        "kind": "competition_or_market",
+        "quote": "Morningstar Credit continues to increase market coverage in areas where we are investing, including in private credit ratings sectors such as aviation and data center transactions."
+      },
+      {
+        "topic": "Repositioning of Morningstar Wealth",
+        "stated_position": "Since 2024 refocused on model portfolios distribution via third-party platforms and the International Wealth Platform to scale the business and support profitable and sustainable growth; TAMP customer assets sold to AssetMark, Morningstar Office being retired; \"We remain focused on improving the profitability of this segment.\"",
+        "kind": "segment_or_product",
+        "quote": "Starting in 2024, our teams have refocused Morningstar Wealth on model portfolios distribution via third-party platforms and our International Wealth Platform, with the goals of more effectively scaling the business and supporting profitable and sustainable growth."
+      },
+      {
+        "topic": "Intent of the Sustainalytics reorganization",
+        "stated_position": "The restructuring \"is in line with our broader effort to focus the business on areas where we believe that we can win longer term while also improving profitability,\" with continued expectation of long-term demand for specialized sustainability and climate research, ratings, and data.",
+        "kind": "segment_or_product",
+        "quote": "we would note that this restructuring is in line with our broader effort to focus the business on areas where we believe that we can win longer term while also improving profitability. In particular, we continue to see a wide spectrum of client needs across our target market and expect long-term demand for specialized sustainability and climate research, ratings, and data."
+      },
+      {
+        "topic": "Positioning of Morningstar relative to AI disruption",
+        "stated_position": "Acknowledges AI is inherently disruptive and magnifies outcomes for successful and unsuccessful adopters; investing to make data AI-ready, launched the Morningstar model context protocol (MCP) server built on the Intelligence Engine, and AI Insights in Direct Advisory Suite.",
+        "kind": "strategy",
+        "quote": "We acknowledge that AI is inherently disruptive and is changing how the world approaches technology and engages with information and believe that it will be a key factor shaping the workforce of the future. Disruptive technologies (personal computing, internet, mobile and most recently AI) tend to magnify the outcomes for both successful and unsuccessful adopters."
+      },
+      {
+        "topic": "Capital allocation priorities and appetite for further M&A or divestitures",
+        "stated_position": "States four priorities in order \u2014 strong balance sheet, funding organic growth and considering acquisitions, maintaining and increasing the dividend, repurchasing shares opportunistically when shares are substantially undervalued; says \"we believe that we have a good set of capabilities\" and remains opportunistic on M&A with focus on strategic fit and reasonable prices.",
+        "kind": "capital_allocation",
+        "quote": "\u2022 We seek to preserve a strong balance sheet to maintain flexibility;\n\u2022 We will prioritize funding organic growth and consider acquisitions where we see opportunities to generate long-term shareholder value;\n\u2022 We aim to maintain and increase our dividend over time commensurate with company financial results; and\n\u2022 We look to repurchase shares when we have available cash and will accelerate that activity opportunistically when we believe that our shares are substantially undervalued."
+      },
+      {
+        "topic": "Portfolio realignment over the past year, including CRSP",
+        "stated_position": "Describes exiting the investment platform business in the US via the TAMP asset sale and intended wind-down of Morningstar Office, and the planned CRSP acquisition, whose Market Indexes are benchmarks for more than $3 trillion in US equities, providing meaningful scale for index capabilities.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "In the past year, we have made several important moves to better align our product portfolio, including exiting the investment platform business in the US, with the sale of customer assets in our Turnkey Asset Management Platform (TAMP) and the announcement of our intent to wind-down Morningstar Office. We also recently announced our plans to acquire the Center for Research in Security Prices (CRSP)."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "Margin pressure has led to some defensiveness, although we would note that we are observing higher cost sensitivity in the US asset management market, compared to EMEA and APAC where we have seen stronger performance.",
+        "why_notable": "An unusually direct admission of client defensiveness and geographic divergence in demand within its core asset management market; repeated twice in the same filing."
+      },
+      {
+        "quote": "At this point, we believe that we have a good set of capabilities. We remain opportunistic around additional M&A, with a focus on strategic fit and reasonable prices.",
+        "why_notable": "A notably restrained framing of M&A appetite after a period of portfolio pruning \u2014 signals no large-scale deal ambition."
+      },
+      {
+        "quote": "While the rise of AI, like other technology shifts, poses a threat for some client use cases, we are focused on harnessing it to deepen our competitive advantage.",
+        "why_notable": "Concedes AI is a threat to some PitchBook use cases while pivoting to an offensive framing \u2014 a hedge on the moat narrative stated more plainly elsewhere."
+      },
+      {
+        "quote": "In the past, firms have often waited for several quarters of sustained momentum before re-accelerating investments in tools, and licenses.",
+        "why_notable": "Sets expectations for a lagged recovery, tempering investor hopes tied to improving deal markets."
+      },
+      {
+        "quote": "We do not comment on future price increases.",
+        "why_notable": "A firm refusal on a topic repeatedly probed by investors, notable given the company had earlier volunteered detail about the size and rationale of the 2023 increase."
+      }
+    ]
+  }
+}

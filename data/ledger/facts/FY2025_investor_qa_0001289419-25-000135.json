@@ -1,0 +1,157 @@
+{
+  "fiscal_year": 2025,
+  "task": "investor_qa",
+  "unit": "0001289419-25-000135",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:02:48Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 12526,
+    "output_tokens": 3783
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-25-000135",
+      "form": "8-K",
+      "filing_date": "2025-06-27",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001289419-25-000135",
+      "form": "8-K",
+      "filing_date": "2025-06-27",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 31609,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Private credit as a growth opportunity across multiple segments",
+        "stated_position": "Private credit \"represents an important opportunity for growth across multiple Morningstar segments\"; roughly a quarter of Morningstar Credit ratings-related revenue was private in 2024; plans to launch the Morningstar Medalist Rating for Semiliquid Funds later this year and new private-investment capabilities in Direct Advisory Suite.",
+        "kind": "strategy",
+        "quote": "Private credit represents an important opportunity for growth across multiple Morningstar segments. Private debt assets under management totaled roughly $3.3 trillion (including assets in evergreen structures) in 2024, a figure that PitchBook projects will grow to $4.9 trillion by 2029."
+      },
+      {
+        "topic": "Direct Platform growth slowdown and shift to core products",
+        "stated_position": "Management attributes the slowdown to flat-to-declining non-core products and slower core growth, including the AppHub marketplace which \"did not deliver as we expected,\" product delays in Direct Advisory Suite, and a shift from revenue growth to profitability for exchange market data; teams are now focused on core products.",
+        "kind": "segment_or_product",
+        "quote": "Going forward, our teams are focused on executing on growth opportunities in our core Morningstar Direct Platform products, including Morningstar Direct, core products within Morningstar Data, and Morningstar Advisor Workstation/Direct Advisory Suite."
+      },
+      {
+        "topic": "Morningstar DBRS ratings methodology for private vs public transactions and NAIC scrutiny",
+        "stated_position": "Management notes the NAIC \"retracted the June 2024 report that you reference in 2025 primarily due to data quality issues\" and stresses that Morningstar DBRS uses the same criteria, methodology, policies and procedures for private as for public transactions.",
+        "kind": "competition_or_market",
+        "quote": "Without commenting on our competitors\u2019 ratings methodologies, we\u2019d underscore that Morningstar DBRS follows the same analytical processes, using the same criteria, methodology, policies, and procedures to rate private market transactions that it uses to rate public market transactions."
+      },
+      {
+        "topic": "Competitive position versus the Big 3 rating agencies in private markets",
+        "stated_position": "Management says the larger agencies historically focused on bigger opportunities such as investment-grade corporate credit and that the private market \"provides a more level playing field for smaller ratings agencies to compete.\"",
+        "kind": "competition_or_market",
+        "quote": "The private market also provides a more level playing field for smaller ratings agencies to compete, unlike the public markets where issues related to legacy investment mandates and index eligibility can come into play."
+      },
+      {
+        "topic": "Rating across the capital structure including junior tranches",
+        "stated_position": "When engaged, Morningstar DBRS typically analyzes the entire capital structure, which it believes adds value to investors including insurers who may buy higher-risk mezzanine tranches.",
+        "kind": "segment_or_product",
+        "quote": "When Morningstar DBRS is engaged to analyze a transaction, we typically analyze the entire capital structure. We believe providing coverage across the capital structure adds value to our investor base, some of whom are insurance companies who may buy higher risk mezzanine tranches of these transactions."
+      },
+      {
+        "topic": "Diversifying Morningstar Credit away from structured finance issuance cycles",
+        "stated_position": "Over the past few years the company has taken steps to diversify Credit's revenue base to make it \"less vulnerable to fluctuations in structured finance issuance, especially in commercial mortgage-backed securities,\" including expansion into private and middle-market credit and a small-but-growing data business.",
+        "kind": "strategy",
+        "quote": "Over the past few years, we have taken steps to diversify Morningstar Credit\u2019s revenue base with the goal of making the business less vulnerable to fluctuations in structured finance issuance, especially in commercial mortgage-backed securities."
+      },
+      {
+        "topic": "PitchBook retention strategy and levers",
+        "stated_position": "PitchBook is focused on enhancing platform value, targeting sales and marketing, expanding Direct Data offerings, prioritizing customer success, and expanding use-case adoption; no guidance given on renewal rates.",
+        "kind": "segment_or_product",
+        "quote": "To improve retention and support growth, PitchBook is focused on:\n\u2022\tEnhancing platform value through deeper data coverage and workflow integrations;"
+      },
+      {
+        "topic": "PitchBook corporate client churn",
+        "stated_position": "Flat client count reflects additions offset by continued churn in the corporate segment, which management attributes to more limited use cases in slower deal activity and budget sensitivity.",
+        "kind": "segment_or_product",
+        "quote": "Corporates tend to have more limited use cases for private market data, research, and tools in periods of slower deal activity, and they\u2019re often more sensitive to budget constraints in uncertain macro environments."
+      },
+      {
+        "topic": "Refocusing Morningstar Wealth",
+        "stated_position": "With the AssetMark strategic alliance and the decision to retire Morningstar Office, Wealth has been refocused on Model Portfolios on third-party platforms and the International Wealth Platform, \"both areas where we believe that we can scale and grow more efficiently and improve profitability.\" No long-term margin targets provided.",
+        "kind": "strategy",
+        "quote": "With changes over the past year, including our strategic alliance with AssetMark and our decision to retire Morningstar Office, we have refocused Morningstar Wealth on Morningstar Model Portfolios offered on third-party platforms and the International Wealth Platform, both areas where we believe that we can scale and grow more efficiently and improve profitability."
+      },
+      {
+        "topic": "Cross-product synergies and integrated sales",
+        "stated_position": "In 2025 the company broadened its approach to integrated sales with account executives collaborating with product-focused sales teams, but \"we would not currently attribute a significant portion of revenue to cross-product synergies.\"",
+        "kind": "strategy",
+        "quote": "To that end, in 2025, we broadened our approach to integrated sales for clients who buy multiple products from Morningstar with an account executive collaborating with product-focused sales teams to grow strategically with the client."
+      },
+      {
+        "topic": "Executive severance policy with change-in-control provisions",
+        "stated_position": "Management says the driver for adoption was to formalize a policy aligned with current market executive compensation practices to attract and retain talent, and that it includes customary change-in-control provisions.",
+        "kind": "governance_or_management",
+        "quote": "As such, the driver for adoption was to formalize an executive severance policy in alignment with current market executive compensation practices to support our ability to attract and retain top-notch talent."
+      },
+      {
+        "topic": "Nature of Daniel Mansueto's beneficial ownership",
+        "stated_position": "He is deemed to beneficially own 56,250 shares as trustee of a trust associated with Joe Mansueto and 2.3 million shares as voting agent of GRATs for the benefit of Joe Mansueto's children; Joe Mansueto is also deemed to beneficially own these shares.",
+        "kind": "governance_or_management",
+        "quote": "Pursuant to SEC rules, Daniel Mansueto is deemed to beneficially own (i) 56,250 Morningstar shares because he serves as the trustee of a trust associated with Joe Mansueto and (ii) 2.3 million Morningstar shares because he serves as the voting agent of certain grantor retained annuity trusts (GRATs) for the benefit of Joe Mansueto\u2019s children."
+      },
+      {
+        "topic": "Capital allocation framework, divestitures and strategic alternatives for underperforming assets",
+        "stated_position": "Roughly three quarters of 2024 capex was for external and internal use software development; if an activity is judged non-core, \"we may exit or deemphasize those activities,\" citing the AssetMark transaction, sunsetting Morningstar Office, and the sale of the Commodity and Energy Data business. On Sustainalytics, only that teams work to align the product suite with client demand.",
+        "kind": "capital_allocation",
+        "quote": "As you\u2019ve seen from our track record, if we come to the conclusion that an activity is non-core, we may exit or deemphasize those activities to enable our teams to focus on our strategic priorities."
+      },
+      {
+        "topic": "Refusal to publish a TAM for Morningstar Direct Platform",
+        "stated_position": "The company aligns with industry practice by not publishing a specific TAM figure for Direct Platform, citing the complexity of defining a TAM for products serving a broad and diverse audience, while pointing to roughly $44.3 billion in global spend on financial data and analysis in 2024.",
+        "kind": "other",
+        "quote": "We align with industry practices by not publishing a specific total addressable market (TAM) figure for Morningstar Direct Platform. This decision reflects the complexities inherent in accurately defining a TAM for products that serve such a broad and diverse audience, spanning multiple industries and use cases."
+      },
+      {
+        "topic": "PitchBook total addressable market increase",
+        "stated_position": "TAM estimate raised from $6.5 billion in 2023 to $8.8 billion in 2024 to $11.1 billion in 2025, reflecting global expansion of data coverage and use cases, growth of private markets, and higher demand for integrated data solutions.",
+        "kind": "competition_or_market",
+        "quote": "The increase reflects the ongoing global expansion of PitchBook\u2019s data coverage and use cases across client types, the growth of private markets, and higher demand for integrated data solutions across corporates and service providers."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "The approach did not deliver as we expected. We transitioned to a strategic partnership approach with a focus on building relationships and integrations with firms aligned to more common advisor workflows, which resulted in a decline in associated revenues starting in Q3 24.",
+        "why_notable": "Unusually direct admission that the AppHub two-sided marketplace failed, followed by a stated change of direction."
+      },
+      {
+        "quote": "In addition, we experienced product delays, which slowed the delivery of Direct Advisory Suite and negatively impacted renewals and new client acquisition.",
+        "why_notable": "Candid acknowledgment of execution failure affecting both renewals and new business."
+      },
+      {
+        "quote": "That said, we would not currently attribute a significant portion of revenue to cross-product synergies.",
+        "why_notable": "A hedge that undercuts the recurring management theme of cross-segment synergy, in response to an investor calling the company a 'house of financial data brands'."
+      },
+      {
+        "quote": "NAIC retracted the June 2024 report that you reference in 2025 primarily due to data quality issues.",
+        "why_notable": "Management rebuts a regulatory-scrutiny premise by pointing to the retraction rather than addressing the substance of ratings differences."
+      },
+      {
+        "quote": "We only disclose market coverage where we are able to cite independent third-party sources, and we are not aware of any sources that meet this criterion.",
+        "why_notable": "Explicit statement of a disclosure policy used to decline a market-share question."
+      },
+      {
+        "quote": "In 2024, we overhauled and modernized our Direct Web Services product (non-core), which led to an anticipated increase in customer churn and weighed on the growth rates for Morningstar Data and the broader segment.",
+        "why_notable": "Frames churn as anticipated and self-inflicted, and introduces the core/non-core framing that recurs throughout the document."
+      }
+    ]
+  }
+}

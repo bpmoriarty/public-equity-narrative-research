@@ -1,0 +1,167 @@
+{
+  "fiscal_year": 2025,
+  "task": "investor_qa",
+  "unit": "0001289419-25-000080",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:02:48Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 17718,
+    "output_tokens": 4787
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-25-000080",
+      "form": "8-K",
+      "filing_date": "2025-05-07",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001289419-25-000080",
+      "form": "8-K",
+      "filing_date": "2025-05-07",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 48088,
+  "facts": {
+    "topics": [
+      {
+        "topic": "How Morningstar strengthens and maintains leading positions in core products (Direct, Wealth, PitchBook) over the medium term",
+        "stated_position": "Management says it is \"focused on putting our customers front and center,\" seeking to \"anticipate and address trends shaping the investment landscape, notably the steep growth in investment products and associated data and the accelerating convergence of public and private markets,\" using AI to \"simplify and streamline customer workflows.\" For PitchBook it is \"differentiating and enhancing our competitive moat by growing the breadth and depth of our data sets\"; for Direct Platform, building \"a platform that provides a seamless experience for our clients to discover, analyze, and extract data\"; for Wealth, \"building on a trusted brand with investors, providing differentiated model portfolios.\"",
+        "kind": "strategy",
+        "quote": "As we work to strengthen our competitive position across the business, we are focused on putting our customers front and center. To do this, we seek to anticipate and address trends shaping the investment landscape, notably the steep growth in investment products and associated data and the accelerating convergence of public and private markets."
+      },
+      {
+        "topic": "Key investment priorities for management over the next 12-18 months",
+        "stated_position": "\"Our strategy is to deliver insights and experiences that make us essential to the investor workflow.\" Investing in data, research and analytics, driving operational scale, developing talent; developing data sets and insights on illiquid and semi-liquid investments, modernizing software experience; in Morningstar Credit and Indexes, \"fostering the adoption of our solutions that credibly challenge traditional providers.\"",
+        "kind": "strategy",
+        "quote": "Our strategy is to deliver insights and experiences that make us essential to the investor workflow. Across the business, we are investing in data, research, and analytics that meet the modern investor\u2019s needs, driving operational scale across our capabilities, and developing our talent."
+      },
+      {
+        "topic": "Unallocated corporate expenses rising as a percentage of revenue and prospects for operating leverage",
+        "stated_position": "Management says different competitors take different approaches so there is no clear benchmark; unallocated corporate expenses cover cost pools \"largely outside of the control or discretion of our segment leaders,\" and it remains \"focused on driving efficiency and scale in our unallocated corporate expenses and reducing these costs as a percentage of revenue over time.\"",
+        "kind": "other",
+        "quote": "We remain focused on driving efficiency and scale in our unallocated corporate expenses and reducing these costs as a percentage of revenue over time."
+      },
+      {
+        "topic": "PitchBook headcount philosophy",
+        "stated_position": "Headcount is disclosed only at company level; \"We manage headcount with the goal of supporting durable growth,\" and in 2024 PitchBook headcount declined as more efficient data collection allowed operating with fewer equity data analysts.",
+        "kind": "segment_or_product",
+        "quote": "We manage headcount with the goal of supporting durable growth. We would note that in 2024, PitchBook headcount declined relative to 2023, as we benefited from the introduction of more efficient data collection efforts which allows us to operate with fewer equity data analysts."
+      },
+      {
+        "topic": "PitchBook Direct Data (data feeds) and its addressable market",
+        "stated_position": "Direct Data \"has seen strong growth and accounted for a high single-digit percentage of total PitchBook segment revenue in 2024,\" all recognized within the PitchBook segment; it \"represents an important part of our total addressable market\" reaching use cases including quantitative research and enterprise-wide data infrastructure, with \"several planned releases to expand our offering in that market in 2025.\"",
+        "kind": "segment_or_product",
+        "quote": "Direct Data represents an important part of our total addressable market and allows us to reach a broader set of use cases including quantitative research, workflow automation, and enterprise-wide data infrastructure. Our product roadmap includes several planned releases to expand our offering in that market in 2025."
+      },
+      {
+        "topic": "Whether PitchBook's declining renewal rates reflect increased competition",
+        "stated_position": "Management attributes the decline to a challenging market environment and higher churn in non-core segments, particularly smaller corporates and smaller VC firms with first-time funds, and states: \"We have not seen a material change in the competitive environment and do not provide guidance on future renewal rates.\"",
+        "kind": "competition_or_market",
+        "quote": "We have not seen a material change in the competitive environment and do not provide guidance on future renewal rates."
+      },
+      {
+        "topic": "Whether Morningstar Credit's cost structure will become more variable",
+        "stated_position": "A significant majority of Morningstar Credit's expenses is fixed, largely compensation; the variable component is primarily incentive compensation. \"We believe that the current mix of variable and fixed costs for Morningstar Credit is appropriate.\"",
+        "kind": "segment_or_product",
+        "quote": "This mix allows Morningstar Credit to maintain a high level of operating leverage, where increases in transactional issuance volumes can significantly boost incremental adjusted operating income. We believe that the current mix of variable and fixed costs for Morningstar Credit is appropriate."
+      },
+      {
+        "topic": "What Morningstar Credit is doing in private credit",
+        "stated_position": "Roughly a quarter of FY24 Morningstar Credit ratings revenue related to private transactions, primarily ratings on private transactions with a smaller contribution from surveillance; it rates private and middle-market corporate issuances, asset finance, risk transfer structures, ABS and other structured finance, including in 2024 ABS backed by data centers and aviation-backed transactions.",
+        "kind": "segment_or_product",
+        "quote": "We rate a wide range of private transactions. These include private and middle- market corporate issuances, asset finance transactions, risk transfer structures as well as asset-backed securities (ABS), and other structured finance transactions."
+      },
+      {
+        "topic": "Investment Management growth strategy within Morningstar Wealth",
+        "stated_position": "Asset Allocation Services and Institutional Asset Management together accounted for roughly 5% of Morningstar Wealth revenue in 2024, and \"Our growth strategy in Investment Management is focused on Morningstar Model Portfolios and the International Wealth Platform.\"",
+        "kind": "segment_or_product",
+        "quote": "Our growth strategy in Investment Management is focused on Morningstar Model Portfolios and the International Wealth Platform."
+      },
+      {
+        "topic": "Generative AI product roadmap",
+        "stated_position": "\"One of our four strategic goals is to leverage advances in artificial intelligence to drive innovation across internal and external products and services,\" with three primary use cases: team productivity, quality and efficiency of operations, and better/faster insights to clients. Upcoming projects include AI-ready content and services such as the Morningstar Agent and expanding Mo's knowledge base; PitchBook will \"continue to roll out AI features in a measured, customer-informed way.\"",
+        "kind": "strategy",
+        "quote": "One of our four strategic goals is to leverage advances in artificial intelligence to drive innovation across internal and external products and services. We\u2019re focused on three primary use cases: using AI as a tool to improve our team\u2019s productivity, using AI to improve the quality and efficiency of our operations, and using AI to get better, faster, and targeted insights and experiences to our clients."
+      },
+      {
+        "topic": "Rationale for the Lumonic and DealX acquisitions",
+        "stated_position": "Lumonic automates covenant compliance, financial tracking and AI-driven portfolio analytics for private credit lenders, so \"PitchBook is now able to compete in the portfolio monitoring space\"; it operates as a subsidiary of PitchBook. DealX, previously a strategic partner of Morningstar Credit, brings US CMBS and global CLO data expertise and is expected to \"bolster our position as a leader in CMBS analytics while expanding its reach to private credit and leveraged loan markets.\" Morningstar paid $38.5 million net of cash acquired in Q1 25 and is \"optimistic that over time, these capabilities will become meaningful growth drivers.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "As part of Morningstar Credit, we expect that DealX will bolster our position as a leader in CMBS analytics while expanding its reach to private credit and leveraged loan markets. In Q1 25, we paid $38.5 million, net of cash acquired, related to the acquisitions of Lumonic and DealX. We are optimistic that over time, these capabilities will become meaningful growth drivers for PitchBook and Morningstar Credit."
+      },
+      {
+        "topic": "Disclosure posture on the 2024 divestitures (Commodity and Energy Data, US TAMP assets)",
+        "stated_position": "The Commodity and Energy Data business \"was not material relative to Morningstar Direct Platform\" and the divestiture \"has been slightly dilutive\" to margins; US TAMP customer assets were sold to AssetMark. \"We do not intend to disclose additional details related to the financial impact of these transactions.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "We do not intend to disclose additional details related to the financial impact of these transactions."
+      },
+      {
+        "topic": "Pricing philosophy and 2025 price increases",
+        "stated_position": "\"Our approach to pricing is centered around continuously enhancing the value of our products and services\"; pricing is reviewed annually. PitchBook uses \"a simple, all-inclusive pricing philosophy,\" with list prices for new logos increased in January 2024 and typical increases at renewal; Direct Platform typically sees price increases at renewal.",
+        "kind": "segment_or_product",
+        "quote": "For our PitchBook platform, we adopt a simple, all-inclusive pricing philosophy that balances the value we offer with the goal of expanding client relationships. We believe that as we enhance the breadth and depth of our data and research, and improve the user experience, we can justify raising prices over time."
+      },
+      {
+        "topic": "Capital allocation priorities and resumption of share repurchases",
+        "stated_position": "Priorities are to \"preserve a strong balance sheet to maintain flexibility; prioritize funding organic growth and consider acquisitions where we see opportunities to generate long-term shareholder value; maintain and increase our dividend over time commensurate with company financial results; and repurchase shares when we have available cash.\" Management notes an intermediate-term focus on paying down debt after the 2022 LCD acquisition, a 12.3% dividend increase to 45.5 cents, and that it \"may accelerate share repurchase activities opportunistically when we believe that valuations are attractive relative to our assessment of intrinsic value.\"",
+        "kind": "capital_allocation",
+        "quote": "Broadly, our capital allocation priorities are to preserve a strong balance sheet to maintain flexibility; prioritize funding organic growth and consider acquisitions where we see opportunities to generate long-term shareholder value; maintain and increase our dividend over time commensurate with company financial results; and repurchase shares when we have available cash."
+      },
+      {
+        "topic": "Plan to repatriate foreign cash in 2025",
+        "stated_position": "Roughly 76% of cash at Dec. 31, 2024 was held outside the US; $142.0 million of foreign subsidiary earnings was determined not permanently reinvested and \"We plan to bring these earnings back to the US during 2025,\" with a $7.1 million deferred tax liability recorded; use of cash will follow stated capital allocation priorities.",
+        "kind": "capital_allocation",
+        "quote": "As of our 2024 year-end, we determined that $142.0 million of foreign subsidiary earnings was not permanently reinvested. We plan to bring these earnings back to the US during 2025."
+      },
+      {
+        "topic": "Shift from debt paydown to a more balanced capital allocation approach",
+        "stated_position": "With leverage at 0.9x as of Dec. 31, 2024 \u2014 \"at the lower end of our recent range of leverage levels\" \u2014 \"we are taking a more balanced approach to capital allocation across the priorities outlined in a related question this month,\" citing the Q4 buyback, the 2025 dividend increase, two smaller acquisitions and $109.6 million of Q1 25 repurchases.",
+        "kind": "capital_allocation",
+        "quote": "Given our leverage levels, we are taking a more balanced approach to capital allocation across the priorities outlined in a related question this month."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "The exclusion of exchange market data from the annual revenue renewal rate in 2023 was due to an oversight in our calculation.",
+        "why_notable": "An unusually direct admission that a previously reported key performance metric was miscalculated."
+      },
+      {
+        "quote": "in Morningstar Credit and Morningstar Indexes, we are building momentum and fostering the adoption of our solutions that credibly challenge traditional providers",
+        "why_notable": "Framing Credit and Indexes as challengers to incumbents \u2014 a recurring competitive self-characterisation."
+      },
+      {
+        "quote": "the accelerating convergence of public and private markets",
+        "why_notable": "A market-thesis phrase used to justify the strategy and the private-credit-facing acquisitions; worth tracking across years."
+      },
+      {
+        "quote": "Overall, we view the LCD integration as a success. We retained the full LCD team and prioritized a thoughtful migration of clients to the PitchBook platform.",
+        "why_notable": "Management declares the 2022 LCD acquisition a success in the same filing where it attributes softening renewal rates and licensed-user noise partly to the LCD transition."
+      },
+      {
+        "quote": "With the economic uncertainty we\u2019ve seen in recent months, the M&A environment remains challenging with very limited activity.",
+        "why_notable": "A blunt statement about current conditions in early 2025, going beyond the prior-year commentary the question asked about."
+      },
+      {
+        "quote": "We\u2019ll continue to roll out AI features in a measured, customer-informed way\u2014prioritizing use cases that deliver real value and productivity gains.",
+        "why_notable": "A hedged, deliberately unhurried framing of AI ambition in response to a question implying the roadmap has stalled since 'Mo'."
+      },
+      {
+        "quote": "we do seek to balance growth opportunities and increased profitability over time",
+        "why_notable": "Non-committal framing of PitchBook's efficiency trajectory after being asked where it should operate on a normalized basis."
+      }
+    ]
+  }
+}

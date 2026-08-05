@@ -94,10 +94,40 @@ _QUOTES = {ord("‘"): "'", ord("’"): "'", ord("‚"): "'",
            ord(" "): " "}
 
 
+# A model producing structured JSON sometimes emits a unicode escape as LITERAL
+# TEXT — the six characters \ u 2 0 1 9 — where the character ’ belongs. Found on
+# real output: three of the first four verification failures in this project were
+# this and nothing else, on quotes that were otherwise word-for-word exact.
+#
+# Decoding these is safe in the way that matters: it changes how a single
+# character is spelled and cannot turn a paraphrase into a match. It is the same
+# class of difference as a curly versus straight apostrophe, which this check
+# already ignores for the reason given in the module docstring.
+_ESCAPE = re.compile(r"\\u([0-9a-fA-F]{4})")
+
+# Bare image filenames left in the text by HTML-to-text conversion, e.g.
+# "investorquestions9262025003.jpg". These sit INSIDE sentences in some filings —
+# the Workiva-generated exhibits from FY2024 onward are full of them — so a quote
+# that a human would call verbatim contains no such token and the source does.
+#
+# This one is a self-inflicted failure worth naming: src/triage_8k.py strips these
+# before sending text to the model, while verification runs against the untrimmed
+# section. Trimming cannot make a bad quote pass, but it can make a good one fail,
+# and it did. Removing the artifact on both sides is the fix.
+_IMG = re.compile(r"\S+\.(?:jpg|jpeg|png|gif)\b", re.I)
+
+
 def canon(s: str) -> str:
-    """Normalize text for quote comparison. See the module docstring."""
+    """Normalize text for quote comparison. See the module docstring.
+
+    Order matters: escapes are decoded FIRST, so a literal \\u2019 becomes ’ and is
+    then folded to ' by the translation table below. Doing it the other way round
+    would leave the escape intact.
+    """
+    s = _ESCAPE.sub(lambda m: chr(int(m.group(1), 16)), s)
     s = unicodedata.normalize("NFKC", s)
     s = s.translate(_QUOTES).translate(_DASHES)
+    s = _IMG.sub(" ", s)
     return re.sub(r"\s+", " ", s).strip().lower()
 
 
@@ -262,6 +292,28 @@ class NotableLanguage(BaseModel):
                                           "hedge, a claim that recurs across years.")
 
 
+class InvestorQaTopic(BaseModel):
+    """One exchange in a Reg FD investor Q&A filing.
+
+    KEPT IN ITS OWN LEDGER FIELD, not folded into `strategic_priorities` or
+    `events`. A 10-K statement and a Reg FD answer are both management's words, but
+    they are not the same kind of evidence: the 10-K is a considered annual
+    disclosure reviewed by counsel, and this is a monthly reply to whatever
+    investors happened to ask. Mixing them would let an output cite an off-hand
+    answer with the same authority as an audited filing, and nothing downstream
+    could tell them apart. Separate field, so any output can weight or exclude
+    this material as a class.
+    """
+    topic: str = Field(description="What the question was about, in the filing's own terms.")
+    stated_position: str = Field(
+        description="What management said, in its own phrasing. Not summarized into "
+                    "neutral language — the wording is the point.")
+    kind: Literal["strategy", "capital_allocation", "segment_or_product",
+                  "acquisition_or_divestiture", "governance_or_management",
+                  "competition_or_market", "other"]
+    quote: str = QUOTE_FIELD
+
+
 class VoteResult(BaseModel):
     matter: str = Field(description="What was voted on, e.g. 'advisory vote on executive "
                                      "compensation', 'ratification of KPMG'.")
@@ -320,6 +372,20 @@ class VoteFacts(BaseModel):
     results: list[VoteResult]
 
 
+class InvestorQaFacts(BaseModel):
+    """Deliberately has NO `events` list.
+
+    These filings do announce transactions sometimes, and the temptation is to
+    collect events here too. But src/triage_8k.py already routes any filing with a
+    material signal to the events path, and the 10-K's MD&A independently covers
+    every transaction in this window. Adding events here would produce a third
+    account of the same acquisition, sourced to the weakest of the three
+    documents, and someone would eventually cite it.
+    """
+    topics: list[InvestorQaTopic]
+    notable_language: list[NotableLanguage]
+
+
 class FactSource(BaseModel):
     """Where a fact came from. Carried on every fact, per CLAUDE.md Traceability.
 
@@ -369,6 +435,10 @@ class YearLedger(BaseModel):
     vote_results: list[LedgerFact]
     events: list[LedgerFact]
     notable_language: list[LedgerFact]
+    # Reg FD investor Q&A. Its own field on purpose — see InvestorQaTopic. Empty
+    # for a year whose triage found no Q&A filings, which is a real possibility:
+    # this is voluntary disclosure and a company can simply stop.
+    investor_qa: list[LedgerFact]
     # Null with a reason when it cannot be computed — never empty, which would
     # read as "nothing changed". See src/risk_diff.py.
     risk_deltas: dict | None
@@ -383,4 +453,5 @@ TASK_MODELS: dict[str, type[BaseModel]] = {
     "letter": LetterFacts,
     "events_8k": EightKFacts,
     "votes": VoteFacts,
+    "investor_qa": InvestorQaFacts,
 }

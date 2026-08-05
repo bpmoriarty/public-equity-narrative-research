@@ -1,0 +1,61 @@
+{
+  "fiscal_year": 2025,
+  "task": "investor_qa",
+  "unit": "0001289419-25-000178",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:04:23Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 3620,
+    "output_tokens": 804
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-25-000178",
+      "form": "8-K",
+      "filing_date": "2025-12-23",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001289419-25-000178",
+      "form": "8-K",
+      "filing_date": "2025-12-23",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 3292,
+  "facts": {
+    "topics": [
+      {
+        "topic": "PitchBook growth drivers \u2014 new logos vs. upselling existing customers vs. pricing, and the forward strategy",
+        "stated_position": "Management said growth over the past five years was \"fueled by a combination of broad new logo acquisition and strong net renewal rates as clients expanded headcount during a period of heightened deal activity and accelerated hiring that peaked in 2021 and 2022,\" and that \"More recently, we started to see a shift in revenue drivers with an increasing share of growth coming from expansion with existing large AUM accounts in our core customer segments.\" Looking forward, the opportunity is \"twofold\": to \"expand our reach within existing accounts and capture remaining large AUM logos who aren't our clients through targeted marketing and sales strategies,\" while continuing \"to focus on adding new logos across small- and mid-sized firms in our core as well as adjacent client segments like corporates and service providers.\" Management expects \"that expansion with existing large AUM accounts will continue to outpace growth from new logos even as both remain important growth drivers.\"",
+        "kind": "segment_or_product",
+        "quote": "More recently, we started to see a shift in revenue drivers with an increasing share of growth coming from expansion with existing large AUM accounts in our core customer segments."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "Combined with opportunities to upsell and cross-sell within existing accounts, we believe these initiatives position us to sustain growth even as markets normalize.",
+        "why_notable": "Hedged framing \u2014 \"even as markets normalize\" acknowledges that the deal-activity and hiring boom that drove PitchBook's prior growth has passed, with growth now conditioned on a belief rather than stated plainly."
+      },
+      {
+        "quote": "More broadly, we expect that expansion with existing large AUM accounts will continue to outpace growth from new logos even as both remain important growth drivers.",
+        "why_notable": "A direct statement that the growth engine has shifted from customer acquisition to account expansion \u2014 a characterisation change worth tracking against prior-year descriptions of PitchBook's growth."
+      },
+      {
+        "quote": "During that time, we succeeded at bringing in many clients with significant assets under management (AUM), which created a large base and set a strong foundation for continued growth.",
+        "why_notable": "Attributes past success to a specific, time-bound market condition (2021-2022 peak), implicitly conceding that period is not repeatable."
+      }
+    ]
+  }
+}

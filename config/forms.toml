@@ -112,6 +112,131 @@ date_only_items = [
 ]
 
 # ---------------------------------------------------------------------------
+# Triage of the conditional 7.01/8.01 filings (src/triage_8k.py)
+# ---------------------------------------------------------------------------
+# Added 2026-08-05. `conditional_items` above says these filings get fetched and
+# then judged on content; this is the judgment, and it is deterministic.
+#
+# THE ONE RULE THAT MATTERS: the only decision this stage is allowed to make
+# confidently is "read it". `date_only` requires positive evidence of a routine
+# filing AND the absence of every material signal. Anything unrecognised is read.
+# A false "read" costs a few cents; a false "date_only" silently deletes a
+# corporate event from the history, and nothing downstream could ever detect it.
+#
+# WHY POSITION MATTERS. Matching on keywords alone over-fires badly here. These
+# filings include Morningstar's Reg FD investor Q&A, where management discusses
+# past acquisitions at length — so "acquisition of" appears in dozens of
+# documents that announce nothing. A press release, by contrast, states its
+# subject in the headline. So a match is scored STRONG inside the headline window
+# and a MENTION after it. Only strong matches drive the material routing;
+# mentions are recorded, because a suppressed observation is not a clean one.
+
+[eight_k.triage]
+
+# Characters from the start of a document treated as its headline. A press
+# release puts its subject in the first line or two; 1,200 chars comfortably
+# covers a headline plus dateline without reaching into the body.
+headline_window_chars = 1200
+
+# Hard ceiling on any single document sent to a model. Exists because 8-K
+# exhibits are unbounded: the FY2025 credit-agreement 8-K carries a
+# 622,000-character EX-10.1. A document over the cap is SKIPPED AND RECORDED,
+# never silently truncated — a truncated agreement reads as a complete one.
+max_document_chars = 120000
+
+# Which signals make a filing material. A strong match on any of these forces
+# `read`, whatever else the document looks like.
+material_signals = ["deal", "capital_allocation", "leadership"]
+
+# Which signals mark a filing routine. Sufficient for `date_only` ONLY when no
+# material signal fired at all.
+routine_signals = ["dividend"]
+
+# Signals that mean "narrative content worth reading" without implying a
+# discrete event. Routed to the investor_qa field, not to events.
+narrative_signals = ["investor_qa", "presentation"]
+
+# Regex patterns, case-insensitive. Keep them anchored to announcement phrasing
+# rather than topic words: "acquisition" matches any discussion of the past,
+# "completes acquisition of" matches an announcement.
+[eight_k.triage.patterns]
+
+investor_qa = [
+    'investor\s+questions?\s+and\s+answers',
+    'answers?\s+to\s+(additional\s+)?(investor\s+)?(inquiries|questions)',
+    'investor\s*q\s*&\s*a',
+    'we\s+encourage\s+current\s+shareholders',
+]
+
+deal = [
+    '\b(plans?|intends?|agreed|agrees)\s+to\s+acquire\b',
+    '\bto\s+acquire\b',
+    '\bcompletes?\s+(the\s+)?acquisition\b',
+    '\bhas\s+(completed|closed)\s+(the\s+)?acquisition\b',
+    '\bentered\s+into\s+a[n]?\s+[A-Za-z ]{0,40}(Purchase|Merger|Termination|Tender\s+Offer)\s+Agreement\b',
+    # Named agreements, standalone. Added after auditing the log: the 2023-01-31
+    # Japan filing reads "entered into a (i) Termination Agreement", and the
+    # enumerator "(i) " defeats the [A-Za-z ] run above. That filing was still
+    # read — the unrecognised-defaults-to-read fallback caught it — but it was
+    # logged as "no signal matched", which understates the evidence.
+    '\b(Termination|Tender\s+Offer|Asset\s+Purchase|Share\s+Purchase|Merger)\s+Agreement\b',
+    '\bstrategic\s+alliance\b',
+    '\bdivest(iture|ed|ing)?\b',
+    '\bsale\s+of\s+(its|the)\s+\w+\s+business\b',
+    '\bjoint\s+venture\b',
+]
+
+capital_allocation = [
+    '\bauthoriz(ed|es)\s+a?\s*(new\s+)?\$?[\d.,]*\s*(million|billion)?\s*share\s+repurchase\b',
+    '\b(new|additional)\s+\$[\d.,]+\s*(million|billion)\s+share\s+repurchase\s+program\b',
+    '\bstock\s+split\b',
+    '\bspecial\s+dividend\b',
+    '\b(senior\s+notes|credit\s+facility|term\s+loan)\s+offering\b',
+]
+
+leadership = [
+    '\bappoint(ed|s|ment)\s+of\s+\w+\s+as\b',
+    '\bnamed\s+(as\s+)?(chief|president|chair)\b',
+    '\bwill\s+(step\s+down|retire|depart)\b',
+    '\bresign(ed|ation)\b',
+    '\bsuccessor\s+to\b',
+]
+
+dividend = [
+    '(declares|increases|announces)\s+.{0,30}quarterly\s+(cash\s+)?dividend',
+    'quarterly\s+(cash\s+)?dividend\s+of\s+[\d.]+\s*cents',
+]
+
+presentation = [
+    'investor\s+presentation',
+    'investor\s+day',
+]
+
+# Boilerplate stripped before a document is sent to a model, and before its
+# content length is measured. All of it is verbatim-identical across filings, so
+# leaving it in would pay for the same text 75 times and bury the signal.
+[eight_k.triage.boilerplate]
+
+# The 8-K cover page: from the top of the document to the first item heading.
+# ~2,270 chars in every MORN filing in the window.
+body_starts_at_item = '(?i)Item\s+[0-9]\.[0-9]{2}'
+
+# The signature block and everything after it.
+body_ends_at = '(?i)\bSIGNATURES\b'
+
+# The forward-looking-statements caution, which the 7.01 filings repeat in full
+# every time. Runs from the heading to the next numbered question or item.
+forward_looking_start = '(?i)Caution\s+Concerning\s+Forward-Looking\s+Statements'
+forward_looking_end = '(?i)(Item\s+9\.01|\b1\.\s+[A-Z])'
+
+# Filing-agent artifacts at the head of an extracted exhibit, e.g.
+# "EX-99.1 2 iq-may72025.htm EX-99.1 Document generated by Workiva Inc".
+exhibit_head = '(?i)^EX-99\.\d\s+\d+\s+\S+\.htm\s+EX(HIBIT)?[\s-]*99[.-]\d\s*(Exhibit\s+99\.\d\s*)?(Document generated by Workiva Inc\s*)?'
+
+# Workiva image placeholders left behind by HTML-to-text conversion.
+image_placeholder = '\S+\.jpg\b'
+
+# ---------------------------------------------------------------------------
 # Gap-analysis signals (PROMPT.md milestone 1)
 # ---------------------------------------------------------------------------
 # Forms NOT processed for content, but whose mere presence in the window must be

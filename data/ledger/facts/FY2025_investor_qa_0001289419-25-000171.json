@@ -1,0 +1,173 @@
+{
+  "fiscal_year": 2025,
+  "task": "investor_qa",
+  "unit": "0001289419-25-000171",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:03:40Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 16446,
+    "output_tokens": 4492
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-25-000171",
+      "form": "8-K",
+      "filing_date": "2025-11-05",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001289419-25-000171",
+      "form": "8-K",
+      "filing_date": "2025-11-05",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 45136,
+  "facts": {
+    "topics": [
+      {
+        "topic": "Widening the economic moat / response to fintech startup competition",
+        "stated_position": "Management said that through the first 10 months of 2025 it has \"taken a number of deliberate steps designed to fortify our economic moat by strengthening core sources of competitive advantage, particularly intangible assets, switching costs, and network effects,\" citing PitchBook nearly doubling private company coverage, Medalist Ratings for Semiliquid Funds, the Direct Advisory Suite rollout, and the Lumonic acquisition. It also noted it provides data to many fintech firms and that this client segment has been a source of growth.",
+        "kind": "competition_or_market",
+        "quote": "Through the first 10 months of 2025, we have taken a number of deliberate steps designed to fortify our economic moat by strengthening core sources of competitive advantage, particularly intangible assets, switching costs, and network effects."
+      },
+      {
+        "topic": "Data moat and protection of IP/data from AI disintermediation",
+        "stated_position": "Management described its moat as built on credibility and industry acceptance, systematic data collection, data enrichment and differentiated IP, and strong governance including a \"dedicated Responsible AI Council.\" It conceded basic reference data will be commoditized in an AI-first world while asserting differentiation comes from enriched, standard-setting data.",
+        "kind": "competition_or_market",
+        "quote": "While we agree that basic reference data and investment details will be further commoditized in an AI-first world, we believe that our differentiation comes from the data that we collect and enrich with our standard-setting categorizations, calculations, and methodologies."
+      },
+      {
+        "topic": "Strategy for delivering data through AI platforms and LLMs",
+        "stated_position": "Management said its strategy is to deliver data, research and technology across multiple distribution channels including emerging LLM interfaces, and described relationships with Anthropic (Claude for Financial Services), Perplexity, Rogo, Hebbia, Finster, Model ML and Farsight.",
+        "kind": "strategy",
+        "quote": "More broadly, our strategy is to deliver data, research, and technology across multiple distribution channels, including the PitchBook platform, direct data feeds, and emerging LLM interfaces, supporting client workflows wherever they operate."
+      },
+      {
+        "topic": "Revenue model \u2014 seat-based versus enterprise, and AI risk to seat-based pricing",
+        "stated_position": "Management said it does not follow a usage-based model in the Direct Platform, described varying models by product, and acknowledged that \"commercial models are still evolving with the growth of AI,\" saying it is experimenting with flexible consumption- and seat-based models to match price to value.",
+        "kind": "strategy",
+        "quote": "Overall, we\u2019d note that commercial models are still evolving with the growth of AI, but we\u2019re confident that the pairing of our IP with data \u2013 including hard-to-access data \u2013 offers a compelling value proposition. That means experimenting with flexible consumption- and seat-based revenue models as we seek to match price to value."
+      },
+      {
+        "topic": "AI spending and margin impact",
+        "stated_position": "Management said it will allocate investment towards AI where it sees high potential for positive returns, that returns may not materialize in the first year, and that it believes it can continue to expand adjusted operating income and AOI margins over time. It does not disclose AI costs separately.",
+        "kind": "strategy",
+        "quote": "We will allocate investment towards AI where we see high potential for positive returns. While these returns may not always materialize in the first year, we believe that we can continue to expand our adjusted operating income (AOI) and AOI margins over time, building on the progress we have made in recent years."
+      },
+      {
+        "topic": "Direct Platform stickiness and strategic focus on user tiers",
+        "stated_position": "Management described three groups of Direct users (Data Users, Capability Users, Scaled Users), said data users are the smallest group and more at risk of churn, and stated that its strategic focus is moving more users into the second and third tiers where retention is strongest.",
+        "kind": "segment_or_product",
+        "quote": "Data users represent the smallest group of Direct users. Our strategic focus is on moving more users into the second and third tiers, where retention is strongest."
+      },
+      {
+        "topic": "PitchBook competition, sales cycles and pricing power",
+        "stated_position": "Management said it is observing longer sales cycles, due in part to firms seeking to do more with fewer resources and efforts to clarify their data and AI strategies, but that net revenue renewal rates remain strong with expansion opportunities especially with large clients.",
+        "kind": "competition_or_market",
+        "quote": "we are observing longer sales cycles, due in part to firms seeking to do more with fewer resources and ongoing efforts to clarify their strategies for data and artificial intelligence (AI). That said, net revenue renewal rates have remained strong and we\u2019re seeing expansion opportunities, especially with large clients."
+      },
+      {
+        "topic": "Capitalizing on growth in private debt/private credit",
+        "stated_position": "Management said it believes it is well-positioned across PitchBook, Morningstar Credit and Direct Platform, noting private credit firms are a small but growing PitchBook client segment and that roughly a quarter of Morningstar Credit's 2024 transaction-based revenue related to private credit ratings.",
+        "kind": "segment_or_product",
+        "quote": "We believe we are well-positioned to capitalize on the tremendous growth in private debt funds across multiple parts of our business including PitchBook, Morningstar Credit, and Morningstar Direct Platform."
+      },
+      {
+        "topic": "PitchBook logo growth and go-to-market changes",
+        "stated_position": "Management said that from January 2024 through June 2025 the trend in PitchBook net logos was slightly negative, as churn in existing logos (especially corporate) was mostly offset by new logos, while ACV per logo increased. It said it has not made significant changes to its go-to-market sales engine and that NPS was 49 as of September 2025.",
+        "kind": "segment_or_product",
+        "quote": "From January 2024 through June 2025, the trend in PitchBook net logos was slightly negative, as churn in existing logos (especially in the corporate sector) was mostly offset by the addition of new logos. During this same period, annual contract value (ACV) per logo has increased."
+      },
+      {
+        "topic": "PitchBook TAM and growth strategy",
+        "stated_position": "Management said PitchBook's TAM was estimated at \"$11.1 million\" as of April 2025 [as stated], roughly 60% corporate logos and 20% investor logos, noted the 2024 change in TAM definition to include corporates with one use case, and said future growth will come from both new logo acquisition and expansion with existing clients, particularly underpenetrated corporate and international markets and commercial banks.",
+        "kind": "strategy",
+        "quote": "In short, new logos remain an important driver, but expansion at existing clients, especially large global firms, also represents a substantial and durable growth opportunity."
+      },
+      {
+        "topic": "Capital allocation priorities, buybacks versus acquisitions, and CRSP funding",
+        "stated_position": "Management agreed \"it has been a good time to accelerate share repurchases,\" reported 1,873,729 shares repurchased for $487.0 million YTD through Oct. 28, 2025 completing the $500 million program, disclosed a new three-year $1 billion program effective Oct. 31, 2025, restated its four long-term capital allocation priorities, and said CRSP will be financed primarily through the new credit facility of up to $1.5 billion.",
+        "kind": "capital_allocation",
+        "quote": "As you saw in our recently reported Q3 25 results, we agree with your thesis that it has been a good time to accelerate share repurchases. For the year-to-date through Oct. 28, 2025, we repurchased 1,873,729 shares for a total of $487.0 million, completing the share repurchases authorized under the three-year $500 million program effective Jan. 1, 2023."
+      },
+      {
+        "topic": "Treatment of repurchased stock as treasury shares",
+        "stated_position": "Management said its repurchase activity is guided by a focus on long-term value creation and that, consistent with common practice, it treats repurchased stock as treasury shares which are not considered outstanding.",
+        "kind": "capital_allocation",
+        "quote": "Consistent with common practice, we treat our repurchased stock as treasury shares, which are not considered outstanding."
+      },
+      {
+        "topic": "Rationale for the CRSP acquisition",
+        "stated_position": "Management said the planned CRSP acquisition \"represents an important step in scaling our Morningstar Indexes business and will position us as one of the largest index providers for public US equity index funds,\" bringing market share and scale in US beta equity indexes, and said it looks forward to expanding the Vanguard relationship.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "Our planned acquisition of CRSP represents an important step in scaling our Morningstar Indexes business and will position us as one of the largest index providers for public US equity index funds."
+      },
+      {
+        "topic": "Expected financial impact of CRSP",
+        "stated_position": "Management said CRSP generates $55 million in revenue annually, that it believes it \"can bring a stronger commercial focus to grow the franchise over time,\" and that it expects the transaction to be accretive to adjusted operating margin in 2026. It declined to give detailed revenue breakdowns or segment-level expense detail.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "We have shared that CRSP generates $55 million in revenue annually. We believe we can bring a stronger commercial focus to grow the franchise over time and to support the scaling of Morningstar Indexes. We expect the CRSP transaction to be accretive to adjusted operating margin in 2026."
+      },
+      {
+        "topic": "Index pricing strategy following CRSP",
+        "stated_position": "Management said it has positioned Morningstar Indexes as a disruptor in the index space for a number of years and intends to continue to play this role, seeking to provide value-based pricing for core index capabilities.",
+        "kind": "strategy",
+        "quote": "We have positioned Morningstar Indexes as a disruptor in the index space for a number of years and intend to continue to play this role. We seek to provide value-based pricing for our core index capabilities."
+      },
+      {
+        "topic": "Why ROIC is not an executive incentive metric",
+        "stated_position": "Management said the annual company-level incentive program assigns 50% weight to revenue and 50% to AOI in 2025, that long-term alignment comes through absolute TSR-based market stock units and stock ownership requirements, and that it actively monitors ROIC and views it as a useful measure but that outside of acquisitions the business is not capital-intensive.",
+        "kind": "governance_or_management",
+        "quote": "We actively monitor our return on invested capital (ROIC) and view it as a useful measure of long-term capital efficiency and value creation. We\u2019d note that outside of acquisitions our business is not capital-intensive so increases in margins and profitability have a direct impact on ROIC."
+      },
+      {
+        "topic": "Joe Mansueto's ownership stake and share sales",
+        "stated_position": "Management said Joe Mansueto does not have a target percent ownership, has historically entered annual 10b5-1 plans to sell shares to diversify his investments, that his current plan covers 400,000 shares (100,000 per quarter), that his stake was 36.5% as of Oct. 24, 2025, and that his year-end stake would be 36.3% assuming a Q4 sale.",
+        "kind": "governance_or_management",
+        "quote": "Joe Mansueto does not have a target percent ownership in Morningstar stake each year. Joe Mansueto historically has entered into 10b5-1 plans on an annual basis to sell a portion of his Morningstar shares to diversify his investments."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "DAS is more than a user interface refresh\u2014it is a strategic move to embed Morningstar deeper into advisor workflows, making it harder to switch away without losing efficiency and insight.",
+        "why_notable": "Unusually blunt statement that a product design decision is intended to raise customer switching costs."
+      },
+      {
+        "quote": "While we agree that basic reference data and investment details will be further commoditized in an AI-first world",
+        "why_notable": "A direct concession that part of the company's historic product base will be commoditized \u2014 a hedge on the durability of the data business."
+      },
+      {
+        "quote": "we are observing longer sales cycles, due in part to firms seeking to do more with fewer resources and ongoing efforts to clarify their strategies for data and artificial intelligence (AI)",
+        "why_notable": "Acknowledgement of demand friction at PitchBook, attributed partly to client uncertainty about AI."
+      },
+      {
+        "quote": "From January 2024 through June 2025, the trend in PitchBook net logos was slightly negative",
+        "why_notable": "Rare admission of negative net customer growth at the company's key growth franchise, softened by \"slightly.\""
+      },
+      {
+        "quote": "As of April 2025, we estimated PitchBook\u2019s TAM at $11.1 million.",
+        "why_notable": "An apparent misstatement of units ($11.1 million rather than billion) in a headline market-size figure, worth noting as stated."
+      },
+      {
+        "quote": "We have established a dedicated Responsible AI Council and a governance framework designed to protect our data in client agreements and are regularly reviewing how legal action is evolving related to AI.",
+        "why_notable": "First-order description of a new governance body created in response to AI risk."
+      },
+      {
+        "quote": "We have positioned Morningstar Indexes as a disruptor in the index space for a number of years and intend to continue to play this role.",
+        "why_notable": "Recurring self-characterisation of Indexes as a price disruptor, reasserted immediately after announcing a scale acquisition."
+      }
+    ]
+  }
+}

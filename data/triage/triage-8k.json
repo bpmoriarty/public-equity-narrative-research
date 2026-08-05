@@ -1,0 +1,5303 @@
+{
+  "generated_utc": "2026-08-05T18:17:21Z",
+  "ticker": "MORN",
+  "cik": "0001289419",
+  "headline_window_chars": 1200,
+  "max_document_chars": 120000,
+  "filings_triaged": 75,
+  "read": 60,
+  "date_only": 15,
+  "records": [
+    {
+      "accession": "0001104659-21-027572",
+      "filing_date": "2021-02-24",
+      "report_date": "2021-02-23",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "date_only",
+      "reason": "routine filing (dividend) and no material signal anywhere in the document, not even a passing mention",
+      "routes_to": [],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001104659-21-027572/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-027572/8-K_8-K_whole.txt",
+          "raw_chars": 3285,
+          "content_chars": 660,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "mention",
+              "first_at": 2408,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2408,
+                  "matched": "quarterly cash dividend of 31.5 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2021/8-K/0001104659-21-027572/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-027572/8-K_EX-99-1_whole.txt",
+          "raw_chars": 5376,
+          "content_chars": 5318,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "strong",
+              "first_at": 288,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 288,
+                  "matched": "Declares Quarterly Dividend",
+                  "pattern": "(declares|increases|announces)\\s+.{0,30}quarterly\\s+(cash\\s+)?dividend"
+                },
+                {
+                  "at": 297,
+                  "matched": "Quarterly Dividend of 31.5 Cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [],
+      "content_chars": 5978
+    },
+    {
+      "accession": "0001104659-21-035565",
+      "filing_date": "2021-03-12",
+      "report_date": "2021-03-12",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001104659-21-035565/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-035565/8-K_8-K_whole.txt",
+          "raw_chars": 22982,
+          "content_chars": 16628,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2476,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2476,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5707,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5754,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 16628
+    },
+    {
+      "accession": "0001104659-21-039050",
+      "filing_date": "2021-03-19",
+      "report_date": "2021-03-19",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: presentation",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001104659-21-039050/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-039050/8-K_8-K_whole.txt",
+          "raw_chars": 8294,
+          "content_chars": 2595,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "deal": {
+              "strength": "mention",
+              "first_at": 3557,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 3557,
+                  "matched": "complete the acquisition",
+                  "pattern": "\\bcompletes?\\s+(the\\s+)?acquisition\\b"
+                }
+              ]
+            },
+            "presentation": {
+              "strength": "mention",
+              "first_at": 2373,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2373,
+                  "matched": "Investor Presentation",
+                  "pattern": "investor\\s+presentation"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2021/8-K/0001104659-21-039050/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-039050/8-K_EX-99-1_whole.txt",
+          "raw_chars": 11493,
+          "content_chars": 11434,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "presentation": {
+              "strength": "strong",
+              "first_at": 59,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 59,
+                  "matched": "Investor Presentation",
+                  "pattern": "investor\\s+presentation"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 14029
+    },
+    {
+      "accession": "0001104659-21-051388",
+      "filing_date": "2021-04-16",
+      "report_date": "2021-04-16",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001104659-21-051388/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-051388/8-K_8-K_whole.txt",
+          "raw_chars": 19118,
+          "content_chars": 12767,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2476,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2476,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5705,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5752,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 12767
+    },
+    {
+      "accession": "0001104659-21-067825",
+      "filing_date": "2021-05-17",
+      "report_date": "2021-05-14",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "date_only",
+      "reason": "routine filing (dividend) and no material signal anywhere in the document, not even a passing mention",
+      "routes_to": [],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001104659-21-067825/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-067825/8-K_8-K_whole.txt",
+          "raw_chars": 3263,
+          "content_chars": 648,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "mention",
+              "first_at": 2398,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2398,
+                  "matched": "quarterly cash dividend of 31.5 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2021/8-K/0001104659-21-067825/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-067825/8-K_EX-99-1_whole.txt",
+          "raw_chars": 5330,
+          "content_chars": 5271,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "strong",
+              "first_at": 280,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 280,
+                  "matched": "Declares Quarterly Dividend",
+                  "pattern": "(declares|increases|announces)\\s+.{0,30}quarterly\\s+(cash\\s+)?dividend"
+                },
+                {
+                  "at": 289,
+                  "matched": "Quarterly Dividend of 31.5 Cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [],
+      "content_chars": 5919
+    },
+    {
+      "accession": "0001104659-21-080129",
+      "filing_date": "2021-06-11",
+      "report_date": "2021-06-11",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001104659-21-080129/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-080129/8-K_8-K_whole.txt",
+          "raw_chars": 50999,
+          "content_chars": 44659,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2475,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2475,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5705,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5751,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "deal": {
+              "strength": "mention",
+              "first_at": 12358,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 12358,
+                  "matched": "to acquire",
+                  "pattern": "\\bto\\s+acquire\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 44659
+    },
+    {
+      "accession": "0001104659-21-090651",
+      "filing_date": "2021-07-09",
+      "report_date": "2021-07-09",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001104659-21-090651/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-090651/8-K_8-K_whole.txt",
+          "raw_chars": 15212,
+          "content_chars": 8857,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2474,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2474,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5706,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5751,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 8857
+    },
+    {
+      "accession": "0001104659-21-105166",
+      "filing_date": "2021-08-13",
+      "report_date": "2021-08-13",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001104659-21-105166/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-105166/8-K_8-K_whole.txt",
+          "raw_chars": 9656,
+          "content_chars": 336,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2478,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2478,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5763,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5811,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [
+        "8-K"
+      ],
+      "content_chars": 0
+    },
+    {
+      "accession": "0001104659-21-116917",
+      "filing_date": "2021-09-17",
+      "report_date": "2021-09-17",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001104659-21-116917/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-116917/8-K_8-K_whole.txt",
+          "raw_chars": 27684,
+          "content_chars": 334,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2481,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2481,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5764,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5815,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [
+        "8-K"
+      ],
+      "content_chars": 0
+    },
+    {
+      "accession": "0001104659-21-125162",
+      "filing_date": "2021-10-12",
+      "report_date": "2021-10-08",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "date_only",
+      "reason": "routine filing (dividend) and no material signal anywhere in the document, not even a passing mention",
+      "routes_to": [],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001104659-21-125162/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-125162/8-K_8-K_whole.txt",
+          "raw_chars": 3283,
+          "content_chars": 661,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "mention",
+              "first_at": 2404,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2404,
+                  "matched": "quarterly cash dividend of 31.5 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2021/8-K/0001104659-21-125162/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-125162/8-K_EX-99-1_whole.txt",
+          "raw_chars": 2973,
+          "content_chars": 2914,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "strong",
+              "first_at": 274,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 274,
+                  "matched": "Declares Quarterly Dividend",
+                  "pattern": "(declares|increases|announces)\\s+.{0,30}quarterly\\s+(cash\\s+)?dividend"
+                },
+                {
+                  "at": 283,
+                  "matched": "Quarterly Dividend of 31.5 Cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [],
+      "content_chars": 3575
+    },
+    {
+      "accession": "0001104659-21-138114",
+      "filing_date": "2021-11-12",
+      "report_date": "2021-11-12",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001104659-21-138114/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-138114/8-K_8-K_whole.txt",
+          "raw_chars": 18425,
+          "content_chars": 335,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2479,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2479,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5763,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5813,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [
+        "8-K"
+      ],
+      "content_chars": 0
+    },
+    {
+      "accession": "0001104659-21-146663",
+      "filing_date": "2021-12-06",
+      "report_date": "2021-12-03",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "date_only",
+      "reason": "routine filing (dividend) and no material signal anywhere in the document, not even a passing mention",
+      "routes_to": [],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001104659-21-146663/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-146663/8-K_8-K_whole.txt",
+          "raw_chars": 3283,
+          "content_chars": 660,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "mention",
+              "first_at": 2406,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2406,
+                  "matched": "quarterly cash dividend of 36 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2021/8-K/0001104659-21-146663/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-146663/8-K_EX-99-1_whole.txt",
+          "raw_chars": 6094,
+          "content_chars": 6035,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "strong",
+              "first_at": 277,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 277,
+                  "matched": "Declares Quarterly Dividend",
+                  "pattern": "(declares|increases|announces)\\s+.{0,30}quarterly\\s+(cash\\s+)?dividend"
+                },
+                {
+                  "at": 286,
+                  "matched": "Quarterly Dividend of 36 Cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [],
+      "content_chars": 6695
+    },
+    {
+      "accession": "0001104659-21-152512",
+      "filing_date": "2021-12-22",
+      "report_date": "2021-12-21",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "strong material signal: deal",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001104659-21-152512/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-152512/8-K_8-K_whole.txt",
+          "raw_chars": 3282,
+          "content_chars": 657,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "deal": {
+              "strength": "mention",
+              "first_at": 2432,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2432,
+                  "matched": "to acquire",
+                  "pattern": "\\bto\\s+acquire\\b"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2021/8-K/0001104659-21-152512/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-21-152512/8-K_EX-99-1_whole.txt",
+          "raw_chars": 10698,
+          "content_chars": 10639,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "deal": {
+              "strength": "strong",
+              "first_at": 426,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 426,
+                  "matched": "to Acquire",
+                  "pattern": "\\bto\\s+acquire\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 11296
+    },
+    {
+      "accession": "0001104659-22-025145",
+      "filing_date": "2022-02-18",
+      "report_date": "2022-02-18",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001104659-22-025145/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-025145/8-K_8-K_whole.txt",
+          "raw_chars": 9098,
+          "content_chars": 332,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2479,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2479,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5760,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5810,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [
+        "8-K"
+      ],
+      "content_chars": 0
+    },
+    {
+      "accession": "0001104659-22-029183",
+      "filing_date": "2022-03-02",
+      "report_date": "2022-03-01",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "date_only",
+      "reason": "routine filing (dividend) and no material signal anywhere in the document, not even a passing mention",
+      "routes_to": [],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001104659-22-029183/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-029183/8-K_8-K_whole.txt",
+          "raw_chars": 3267,
+          "content_chars": 650,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "mention",
+              "first_at": 2400,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2400,
+                  "matched": "quarterly cash dividend of 36 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2022/8-K/0001104659-22-029183/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-029183/8-K_EX-99-1_whole.txt",
+          "raw_chars": 5222,
+          "content_chars": 5164,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "strong",
+              "first_at": 185,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 185,
+                  "matched": "Declares Quarterly Dividend",
+                  "pattern": "(declares|increases|announces)\\s+.{0,30}quarterly\\s+(cash\\s+)?dividend"
+                },
+                {
+                  "at": 194,
+                  "matched": "Quarterly Dividend of 36 Cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [],
+      "content_chars": 5814
+    },
+    {
+      "accession": "0001104659-22-035590",
+      "filing_date": "2022-03-18",
+      "report_date": "2022-03-18",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001104659-22-035590/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-035590/8-K_8-K_whole.txt",
+          "raw_chars": 19949,
+          "content_chars": 13676,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2476,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2476,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5608,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5655,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 13676
+    },
+    {
+      "accession": "0001104659-22-049042",
+      "filing_date": "2022-04-22",
+      "report_date": "2022-04-22",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001104659-22-049042/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-049042/8-K_8-K_whole.txt",
+          "raw_chars": 32779,
+          "content_chars": 26499,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2476,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2476,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5608,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5655,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "deal": {
+              "strength": "mention",
+              "first_at": 29325,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 29325,
+                  "matched": "divestiture",
+                  "pattern": "\\bdivest(iture|ed|ing)?\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 26499
+    },
+    {
+      "accession": "0001104659-22-065899",
+      "filing_date": "2022-05-27",
+      "report_date": "2022-05-27",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001104659-22-065899/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-065899/8-K_8-K_whole.txt",
+          "raw_chars": 24988,
+          "content_chars": 18739,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2474,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2474,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5605,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5650,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "deal": {
+              "strength": "mention",
+              "first_at": 23442,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 23442,
+                  "matched": "to acquire",
+                  "pattern": "\\bto\\s+acquire\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 18739
+    },
+    {
+      "accession": "0001104659-22-067118",
+      "filing_date": "2022-06-01",
+      "report_date": "2022-06-01",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "strong material signal: deal",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001104659-22-067118/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-067118/8-K_8-K_whole.txt",
+          "raw_chars": 4932,
+          "content_chars": 2241,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2022/8-K/0001104659-22-067118/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-067118/8-K_EX-99-1_whole.txt",
+          "raw_chars": 5726,
+          "content_chars": 5667,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "deal": {
+              "strength": "strong",
+              "first_at": 297,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 297,
+                  "matched": "Completes Acquisition",
+                  "pattern": "\\bcompletes?\\s+(the\\s+)?acquisition\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 7908
+    },
+    {
+      "accession": "0001104659-22-072402",
+      "filing_date": "2022-06-17",
+      "report_date": "2022-06-17",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001104659-22-072402/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-072402/8-K_8-K_whole.txt",
+          "raw_chars": 13065,
+          "content_chars": 331,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2475,
+              "n_patterns_matched": 4,
+              "evidence": [
+                {
+                  "at": 2475,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5606,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5652,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [
+        "8-K"
+      ],
+      "content_chars": 0
+    },
+    {
+      "accession": "0001104659-22-076846",
+      "filing_date": "2022-07-01",
+      "report_date": "2022-07-01",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "strong material signal: deal",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001104659-22-076846/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-076846/8-K_8-K_whole.txt",
+          "raw_chars": 3296,
+          "content_chars": 681,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2022/8-K/0001104659-22-076846/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-076846/8-K_EX-99-1_whole.txt",
+          "raw_chars": 10594,
+          "content_chars": 10535,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "deal": {
+              "strength": "strong",
+              "first_at": 288,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 288,
+                  "matched": "Completes Acquisition",
+                  "pattern": "\\bcompletes?\\s+(the\\s+)?acquisition\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 11216
+    },
+    {
+      "accession": "0001104659-22-082065",
+      "filing_date": "2022-07-22",
+      "report_date": "2022-07-22",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa, presentation",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001104659-22-082065/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-082065/8-K_8-K_whole.txt",
+          "raw_chars": 32169,
+          "content_chars": 333,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2475,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2475,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5608,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5654,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "presentation": {
+              "strength": "mention",
+              "first_at": 9003,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 9003,
+                  "matched": "investor day",
+                  "pattern": "investor\\s+day"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [
+        "8-K"
+      ],
+      "content_chars": 0
+    },
+    {
+      "accession": "0001104659-22-095136",
+      "filing_date": "2022-08-26",
+      "report_date": "2022-08-26",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001104659-22-095136/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-095136/8-K_8-K_whole.txt",
+          "raw_chars": 22501,
+          "content_chars": 336,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2477,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2477,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5753,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5801,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [
+        "8-K"
+      ],
+      "content_chars": 0
+    },
+    {
+      "accession": "0001104659-22-102681",
+      "filing_date": "2022-09-23",
+      "report_date": "2022-09-23",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001104659-22-102681/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-102681/8-K_8-K_whole.txt",
+          "raw_chars": 53530,
+          "content_chars": 334,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2480,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2480,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5754,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5805,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [
+        "8-K"
+      ],
+      "content_chars": 0
+    },
+    {
+      "accession": "0001104659-22-110627",
+      "filing_date": "2022-10-21",
+      "report_date": "2022-10-21",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001104659-22-110627/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-110627/8-K_8-K_whole.txt",
+          "raw_chars": 16905,
+          "content_chars": 335,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2478,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2478,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5753,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5802,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [
+        "8-K"
+      ],
+      "content_chars": 0
+    },
+    {
+      "accession": "0001104659-22-120313",
+      "filing_date": "2022-11-18",
+      "report_date": "2022-11-18",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001104659-22-120313/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-120313/8-K_8-K_whole.txt",
+          "raw_chars": 15295,
+          "content_chars": 335,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2479,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2479,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5754,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5804,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [
+        "8-K"
+      ],
+      "content_chars": 0
+    },
+    {
+      "accession": "0001104659-22-125853",
+      "filing_date": "2022-12-09",
+      "report_date": "2022-12-06",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "strong material signal: capital_allocation",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001104659-22-125853/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-125853/8-K_8-K_whole.txt",
+          "raw_chars": 3619,
+          "content_chars": 996,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "mention",
+              "first_at": 2406,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2406,
+                  "matched": "quarterly cash dividend of 37.5 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2022/8-K/0001104659-22-125853/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-125853/8-K_EX-99-1_whole.txt",
+          "raw_chars": 6713,
+          "content_chars": 6654,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "capital_allocation": {
+              "strength": "strong",
+              "first_at": 229,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 229,
+                  "matched": "Authorizes New $500 Million Share Repurchase",
+                  "pattern": "\\bauthoriz(ed|es)\\s+a?\\s*(new\\s+)?\\$?[\\d.,]*\\s*(million|billion)?\\s*share\\s+repurchase\\b"
+                },
+                {
+                  "at": 240,
+                  "matched": "New $500 Million Share Repurchase Program",
+                  "pattern": "\\b(new|additional)\\s+\\$[\\d.,]+\\s*(million|billion)\\s+share\\s+repurchase\\s+program\\b"
+                }
+              ]
+            },
+            "dividend": {
+              "strength": "strong",
+              "first_at": 173,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 173,
+                  "matched": "Declares Quarterly Dividend",
+                  "pattern": "(declares|increases|announces)\\s+.{0,30}quarterly\\s+(cash\\s+)?dividend"
+                },
+                {
+                  "at": 182,
+                  "matched": "Quarterly Dividend of 37.5 Cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 7650
+    },
+    {
+      "accession": "0001104659-22-129521",
+      "filing_date": "2022-12-22",
+      "report_date": "2022-12-22",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001104659-22-129521/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-22-129521/8-K_8-K_whole.txt",
+          "raw_chars": 25227,
+          "content_chars": 334,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2479,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2479,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5753,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5803,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "capital_allocation": {
+              "strength": "mention",
+              "first_at": 24195,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 24195,
+                  "matched": "new $500 million share repurchase program",
+                  "pattern": "\\b(new|additional)\\s+\\$[\\d.,]+\\s*(million|billion)\\s+share\\s+repurchase\\s+program\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [
+        "8-K"
+      ],
+      "content_chars": 0
+    },
+    {
+      "accession": "0001104659-23-006197",
+      "filing_date": "2023-01-24",
+      "report_date": "2023-01-24",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-006197/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-006197/8-K_8-K_whole.txt",
+          "raw_chars": 13050,
+          "content_chars": 6643,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2478,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2478,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5753,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5802,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 6643
+    },
+    {
+      "accession": "0001104659-23-008314",
+      "filing_date": "2023-01-31",
+      "report_date": "2023-01-31",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "8.01"
+      ],
+      "decision": "read",
+      "reason": "material signal (deal) matched outside the headline window, so it is a mention rather than an announcement \u2014 read, because only a reader can tell those apart",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-008314/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-008314/8-K_8-K_whole.txt",
+          "raw_chars": 4705,
+          "content_chars": 2433,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "deal": {
+              "strength": "mention",
+              "first_at": 2355,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2355,
+                  "matched": "Termination Agreement",
+                  "pattern": "\\b(Termination|Tender\\s+Offer|Asset\\s+Purchase|Share\\s+Purchase|Merger)\\s+Agreement\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 2433
+    },
+    {
+      "accession": "0001104659-23-025316",
+      "filing_date": "2023-02-24",
+      "report_date": "2023-02-24",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-025316/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-025316/8-K_8-K_whole.txt",
+          "raw_chars": 7305,
+          "content_chars": 908,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2479,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2479,
+                  "matched": "Answers to additional inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5751,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5801,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 908
+    },
+    {
+      "accession": "0001104659-23-035071",
+      "filing_date": "2023-03-21",
+      "report_date": "2023-03-17",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "date_only",
+      "reason": "routine filing (dividend) and no material signal anywhere in the document, not even a passing mention",
+      "routes_to": [],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-035071/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-035071/8-K_8-K_whole.txt",
+          "raw_chars": 3273,
+          "content_chars": 654,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "mention",
+              "first_at": 2402,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2402,
+                  "matched": "quarterly cash dividend of 37.5 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2023/8-K/0001104659-23-035071/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-035071/8-K_EX-99-1_whole.txt",
+          "raw_chars": 4915,
+          "content_chars": 4856,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "strong",
+              "first_at": 173,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 173,
+                  "matched": "Declares Quarterly Dividend",
+                  "pattern": "(declares|increases|announces)\\s+.{0,30}quarterly\\s+(cash\\s+)?dividend"
+                },
+                {
+                  "at": 182,
+                  "matched": "Quarterly Dividend of 37.5 Cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [],
+      "content_chars": 5510
+    },
+    {
+      "accession": "0001104659-23-036078",
+      "filing_date": "2023-03-23",
+      "report_date": "2023-03-23",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa, presentation",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-036078/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-036078/8-K_8-K_whole.txt",
+          "raw_chars": 37915,
+          "content_chars": 30569,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2476,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2476,
+                  "matched": "Answers to inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5280,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5327,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "presentation": {
+              "strength": "mention",
+              "first_at": 12895,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 12895,
+                  "matched": "investor day",
+                  "pattern": "investor\\s+day"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 30569
+    },
+    {
+      "accession": "0001104659-23-038321",
+      "filing_date": "2023-03-29",
+      "report_date": "2023-03-29",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-038321/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-038321/8-K_8-K_whole.txt",
+          "raw_chars": 31169,
+          "content_chars": 23944,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2476,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2476,
+                  "matched": "Answers to inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5280,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5327,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 23944
+    },
+    {
+      "accession": "0001104659-23-042167",
+      "filing_date": "2023-04-05",
+      "report_date": "2023-04-05",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-042167/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-042167/8-K_8-K_whole.txt",
+          "raw_chars": 32185,
+          "content_chars": 24964,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2475,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2475,
+                  "matched": "Answers to inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5279,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5325,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 24964
+    },
+    {
+      "accession": "0001104659-23-045595",
+      "filing_date": "2023-04-14",
+      "report_date": "2023-04-14",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-045595/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-045595/8-K_8-K_whole.txt",
+          "raw_chars": 47152,
+          "content_chars": 40051,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2476,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 2476,
+                  "matched": "Answers to inquiries",
+                  "pattern": "answers?\\s+to\\s+(additional\\s+)?(investor\\s+)?(inquiries|questions)"
+                },
+                {
+                  "at": 5280,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5327,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "deal": {
+              "strength": "mention",
+              "first_at": 7722,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 7722,
+                  "matched": "joint venture",
+                  "pattern": "\\bjoint\\s+venture\\b"
+                },
+                {
+                  "at": 9851,
+                  "matched": "termination agreement",
+                  "pattern": "\\b(Termination|Tender\\s+Offer|Asset\\s+Purchase|Share\\s+Purchase|Merger)\\s+Agreement\\b"
+                },
+                {
+                  "at": 10009,
+                  "matched": "entered into a tender offer agreement",
+                  "pattern": "\\bentered\\s+into\\s+a[n]?\\s+[A-Za-z ]{0,40}(Purchase|Merger|Termination|Tender\\s+Offer)\\s+Agreement\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 40051
+    },
+    {
+      "accession": "0001104659-23-059121",
+      "filing_date": "2023-05-11",
+      "report_date": "2023-05-11",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-059121/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-059121/8-K_8-K_whole.txt",
+          "raw_chars": 33712,
+          "content_chars": 27227,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 5111,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 5111,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5156,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 27227
+    },
+    {
+      "accession": "0001104659-23-070352",
+      "filing_date": "2023-06-12",
+      "report_date": "2023-06-12",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-070352/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-070352/8-K_8-K_whole.txt",
+          "raw_chars": 12626,
+          "content_chars": 6746,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 5112,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 5112,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5158,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 6746
+    },
+    {
+      "accession": "0001104659-23-072246",
+      "filing_date": "2023-06-16",
+      "report_date": "2023-06-16",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "date_only",
+      "reason": "routine filing (dividend) and no material signal anywhere in the document, not even a passing mention",
+      "routes_to": [],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-072246/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-072246/8-K_8-K_whole.txt",
+          "raw_chars": 3267,
+          "content_chars": 650,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "mention",
+              "first_at": 2400,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2400,
+                  "matched": "quarterly cash dividend of 37.5 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2023/8-K/0001104659-23-072246/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-072246/8-K_EX-99-1_whole.txt",
+          "raw_chars": 4773,
+          "content_chars": 4714,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "strong",
+              "first_at": 173,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 173,
+                  "matched": "Declares Quarterly Dividend",
+                  "pattern": "(declares|increases|announces)\\s+.{0,30}quarterly\\s+(cash\\s+)?dividend"
+                },
+                {
+                  "at": 182,
+                  "matched": "Quarterly Dividend of 37.5 Cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [],
+      "content_chars": 5364
+    },
+    {
+      "accession": "0001104659-23-078743",
+      "filing_date": "2023-07-06",
+      "report_date": "2023-07-06",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-078743/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-078743/8-K_8-K_whole.txt",
+          "raw_chars": 44887,
+          "content_chars": 37931,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 5111,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 5111,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5156,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 37931
+    },
+    {
+      "accession": "0001104659-23-093954",
+      "filing_date": "2023-08-21",
+      "report_date": "2023-08-21",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-093954/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-093954/8-K_8-K_whole.txt",
+          "raw_chars": 24791,
+          "content_chars": 17708,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 5231,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 5231,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5279,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 17708
+    },
+    {
+      "accession": "0001104659-23-099304",
+      "filing_date": "2023-09-08",
+      "report_date": "2023-09-08",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-099304/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-099304/8-K_8-K_whole.txt",
+          "raw_chars": 23625,
+          "content_chars": 17451,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 5233,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 5233,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5283,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 17451
+    },
+    {
+      "accession": "0001104659-23-101202",
+      "filing_date": "2023-09-15",
+      "report_date": "2023-09-15",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "date_only",
+      "reason": "routine filing (dividend) and no material signal anywhere in the document, not even a passing mention",
+      "routes_to": [],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-101202/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-101202/8-K_8-K_whole.txt",
+          "raw_chars": 3293,
+          "content_chars": 666,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "mention",
+              "first_at": 2410,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2410,
+                  "matched": "quarterly cash dividend of 37.5 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2023/8-K/0001104659-23-101202/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-101202/8-K_EX-99-1_whole.txt",
+          "raw_chars": 4957,
+          "content_chars": 4898,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "strong",
+              "first_at": 173,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 173,
+                  "matched": "Declares Quarterly Dividend",
+                  "pattern": "(declares|increases|announces)\\s+.{0,30}quarterly\\s+(cash\\s+)?dividend"
+                },
+                {
+                  "at": 182,
+                  "matched": "Quarterly Dividend of 37.5 Cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [],
+      "content_chars": 5564
+    },
+    {
+      "accession": "0001104659-23-105947",
+      "filing_date": "2023-10-02",
+      "report_date": "2023-10-02",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-105947/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-105947/8-K_8-K_whole.txt",
+          "raw_chars": 32800,
+          "content_chars": 26617,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 5231,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 5231,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5279,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 26617
+    },
+    {
+      "accession": "0001104659-23-110795",
+      "filing_date": "2023-10-23",
+      "report_date": "2023-10-23",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-110795/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-110795/8-K_8-K_whole.txt",
+          "raw_chars": 30317,
+          "content_chars": 23665,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 5712,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 5712,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5761,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 23665
+    },
+    {
+      "accession": "0001104659-23-122850",
+      "filing_date": "2023-12-01",
+      "report_date": "2023-12-01",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "date_only",
+      "reason": "routine filing (dividend) and no material signal anywhere in the document, not even a passing mention",
+      "routes_to": [],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-122850/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-122850/8-K_8-K_whole.txt",
+          "raw_chars": 3291,
+          "content_chars": 668,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "mention",
+              "first_at": 2412,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2412,
+                  "matched": "quarterly cash dividend of 40.5 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2023/8-K/0001104659-23-122850/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-122850/8-K_EX-99-1_whole.txt",
+          "raw_chars": 5582,
+          "content_chars": 5523,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "strong",
+              "first_at": 173,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 173,
+                  "matched": "Declares Quarterly Dividend",
+                  "pattern": "(declares|increases|announces)\\s+.{0,30}quarterly\\s+(cash\\s+)?dividend"
+                },
+                {
+                  "at": 182,
+                  "matched": "Quarterly Dividend of 40.5 Cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [],
+      "content_chars": 6191
+    },
+    {
+      "accession": "0001104659-23-127324",
+      "filing_date": "2023-12-19",
+      "report_date": "2023-12-19",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001104659-23-127324/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-127324/8-K_8-K_whole.txt",
+          "raw_chars": 35868,
+          "content_chars": 29865,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 5233,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 5233,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5283,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 29865
+    },
+    {
+      "accession": "0001104659-24-010618",
+      "filing_date": "2024-02-05",
+      "report_date": "2024-02-05",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001104659-24-010618/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-24-010618/8-K_8-K_whole.txt",
+          "raw_chars": 29886,
+          "content_chars": 23861,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 5232,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 5232,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 5281,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 23861
+    },
+    {
+      "accession": "0001289419-24-000017",
+      "filing_date": "2024-03-22",
+      "report_date": "2024-03-22",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000017/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000017/8-K_8-K_whole.txt",
+          "raw_chars": 33066,
+          "content_chars": 26004,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 6260,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 6260,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 6307,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 26004
+    },
+    {
+      "accession": "0001289419-24-000033",
+      "filing_date": "2024-05-09",
+      "report_date": "2024-05-09",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "7.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000033/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000033/8-K_8-K_whole.txt",
+          "raw_chars": 38206,
+          "content_chars": 31061,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 6363,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 6363,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 6407,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 31061
+    },
+    {
+      "accession": "0001289419-24-000042",
+      "filing_date": "2024-06-14",
+      "report_date": "2024-06-14",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000042/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000042/8-K_8-K_whole.txt",
+          "raw_chars": 7279,
+          "content_chars": 844,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2372,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2372,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000042/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000042/8-K_EX-99-1_whole.txt",
+          "raw_chars": 7382,
+          "content_chars": 7221,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 126,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 126,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 172,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 8065
+    },
+    {
+      "accession": "0001289419-24-000044",
+      "filing_date": "2024-06-18",
+      "report_date": "2024-06-18",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "date_only",
+      "reason": "routine filing (dividend) and no material signal anywhere in the document, not even a passing mention",
+      "routes_to": [],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000044/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000044/8-K_8-K_whole.txt",
+          "raw_chars": 3089,
+          "content_chars": 677,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "mention",
+              "first_at": 2240,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2240,
+                  "matched": "quarterly cash dividend of 40.5 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000044/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000044/8-K_EX-99-1_whole.txt",
+          "raw_chars": 5695,
+          "content_chars": 5571,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "strong",
+              "first_at": 238,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 238,
+                  "matched": "Declares Quarterly Dividend",
+                  "pattern": "(declares|increases|announces)\\s+.{0,30}quarterly\\s+(cash\\s+)?dividend"
+                },
+                {
+                  "at": 247,
+                  "matched": "Quarterly Dividend of 40.5 Cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [],
+      "content_chars": 6248
+    },
+    {
+      "accession": "0001104659-24-073194",
+      "filing_date": "2024-06-20",
+      "report_date": "2024-06-20",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "material signal (deal) in a document that also carries narrative content (investor_qa)",
+      "routes_to": [
+        "events",
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001104659-24-073194/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-24-073194/8-K_8-K_whole.txt",
+          "raw_chars": 8582,
+          "content_chars": 1295,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2897,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2897,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            },
+            "deal": {
+              "strength": "mention",
+              "first_at": 2567,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2567,
+                  "matched": "Asset Purchase Agreement",
+                  "pattern": "\\b(Termination|Tender\\s+Offer|Asset\\s+Purchase|Share\\s+Purchase|Merger)\\s+Agreement\\b"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2024/8-K/0001104659-24-073194/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-24-073194/8-K_EX-99-1_whole.txt",
+          "raw_chars": 6557,
+          "content_chars": 6498,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "deal": {
+              "strength": "strong",
+              "first_at": 78,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 78,
+                  "matched": "Strategic Alliance",
+                  "pattern": "\\bstrategic\\s+alliance\\b"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.2",
+          "section_key": "8-K_EX-99-2_whole",
+          "is_body": false,
+          "path": "data/sections/FY2024/8-K/0001104659-24-073194/8-K_EX-99-2_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-24-073194/8-K_EX-99-2_whole.txt",
+          "raw_chars": 7327,
+          "content_chars": 7268,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 111,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 111,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            },
+            "deal": {
+              "strength": "strong",
+              "first_at": 92,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 92,
+                  "matched": "Strategic Alliance",
+                  "pattern": "\\bstrategic\\s+alliance\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole",
+        "8-K_EX-99-2_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 15061
+    },
+    {
+      "accession": "0001289419-24-000049",
+      "filing_date": "2024-07-18",
+      "report_date": "2024-07-18",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa, presentation",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000049/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000049/8-K_8-K_whole.txt",
+          "raw_chars": 7378,
+          "content_chars": 820,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2348,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2348,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000049/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000049/8-K_EX-99-1_whole.txt",
+          "raw_chars": 30808,
+          "content_chars": 30503,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 138,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 138,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 184,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "presentation": {
+              "strength": "mention",
+              "first_at": 4775,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 4775,
+                  "matched": "investor presentation",
+                  "pattern": "investor\\s+presentation"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 31323
+    },
+    {
+      "accession": "0001289419-24-000081",
+      "filing_date": "2024-08-26",
+      "report_date": "2024-08-26",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "material signal (deal) in a document that also carries narrative content (investor_qa)",
+      "routes_to": [
+        "events",
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000081/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000081/8-K_8-K_whole.txt",
+          "raw_chars": 7383,
+          "content_chars": 821,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2351,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2351,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000081/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000081/8-K_EX-99-1_whole.txt",
+          "raw_chars": 10013,
+          "content_chars": 9852,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 126,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 126,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 909,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "deal": {
+              "strength": "strong",
+              "first_at": 222,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 222,
+                  "matched": "strategic alliance",
+                  "pattern": "\\bstrategic\\s+alliance\\b"
+                },
+                {
+                  "at": 3637,
+                  "matched": "plans to acquire",
+                  "pattern": "\\b(plans?|intends?|agreed|agrees)\\s+to\\s+acquire\\b"
+                },
+                {
+                  "at": 3643,
+                  "matched": "to acquire",
+                  "pattern": "\\bto\\s+acquire\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 10673
+    },
+    {
+      "accession": "0001289419-24-000097",
+      "filing_date": "2024-09-18",
+      "report_date": "2024-09-18",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "date_only",
+      "reason": "routine filing (dividend) and no material signal anywhere in the document, not even a passing mention",
+      "routes_to": [],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000097/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000097/8-K_8-K_whole.txt",
+          "raw_chars": 3114,
+          "content_chars": 692,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "mention",
+              "first_at": 2250,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2250,
+                  "matched": "quarterly cash dividend of 40.5 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000097/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000097/8-K_EX-99-1_whole.txt",
+          "raw_chars": 5805,
+          "content_chars": 5681,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "strong",
+              "first_at": 238,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 238,
+                  "matched": "Declares Quarterly Dividend",
+                  "pattern": "(declares|increases|announces)\\s+.{0,30}quarterly\\s+(cash\\s+)?dividend"
+                },
+                {
+                  "at": 247,
+                  "matched": "Quarterly Dividend of 40.5 Cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [],
+      "content_chars": 6373
+    },
+    {
+      "accession": "0001289419-24-000102",
+      "filing_date": "2024-10-01",
+      "report_date": "2024-10-01",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000102/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000102/8-K_8-K_whole.txt",
+          "raw_chars": 7394,
+          "content_chars": 832,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2362,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2362,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000102/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000102/8-K_EX-99-1_whole.txt",
+          "raw_chars": 45290,
+          "content_chars": 44965,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 111,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 111,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 159,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 45797
+    },
+    {
+      "accession": "0001289419-24-000121",
+      "filing_date": "2024-11-12",
+      "report_date": "2024-11-12",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000121/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000121/8-K_8-K_whole.txt",
+          "raw_chars": 7402,
+          "content_chars": 836,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2368,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2368,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000121/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000121/8-K_EX-99-1_whole.txt",
+          "raw_chars": 8306,
+          "content_chars": 8182,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 117,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 117,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 167,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "deal": {
+              "strength": "mention",
+              "first_at": 1660,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 1660,
+                  "matched": "divestiture",
+                  "pattern": "\\bdivest(iture|ed|ing)?\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 9018
+    },
+    {
+      "accession": "0001289419-24-000160",
+      "filing_date": "2024-12-13",
+      "report_date": "2024-12-13",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000160/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000160/8-K_8-K_whole.txt",
+          "raw_chars": 7400,
+          "content_chars": 834,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2366,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2366,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2024/8-K/0001289419-24-000160/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-24-000160/8-K_EX-99-1_whole.txt",
+          "raw_chars": 35908,
+          "content_chars": 35571,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 138,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 138,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 188,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "deal": {
+              "strength": "mention",
+              "first_at": 10631,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 10631,
+                  "matched": "divest",
+                  "pattern": "\\bdivest(iture|ed|ing)?\\b"
+                }
+              ]
+            },
+            "leadership": {
+              "strength": "mention",
+              "first_at": 1221,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 1221,
+                  "matched": "named Chief",
+                  "pattern": "\\bnamed\\s+(as\\s+)?(chief|president|chair)\\b"
+                },
+                {
+                  "at": 1451,
+                  "matched": "will step down",
+                  "pattern": "\\bwill\\s+(step\\s+down|retire|depart)\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 36405
+    },
+    {
+      "accession": "0001289419-25-000005",
+      "filing_date": "2025-01-31",
+      "report_date": "2025-01-31",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000005/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000005/8-K_8-K_whole.txt",
+          "raw_chars": 7396,
+          "content_chars": 836,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2366,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2366,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000005/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000005/8-K_EX-99-1_whole.txt",
+          "raw_chars": 11859,
+          "content_chars": 11650,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 138,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 138,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 187,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 12486
+    },
+    {
+      "accession": "0001289419-25-000058",
+      "filing_date": "2025-03-14",
+      "report_date": "2025-03-14",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "date_only",
+      "reason": "routine filing (dividend) and no material signal anywhere in the document, not even a passing mention",
+      "routes_to": [],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000058/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000058/8-K_8-K_whole.txt",
+          "raw_chars": 3089,
+          "content_chars": 681,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "mention",
+              "first_at": 2242,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2242,
+                  "matched": "quarterly cash dividend of 45.5 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000058/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000058/8-K_EX-99-1_whole.txt",
+          "raw_chars": 6587,
+          "content_chars": 6438,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "strong",
+              "first_at": 238,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 238,
+                  "matched": "Declares Quarterly Dividend",
+                  "pattern": "(declares|increases|announces)\\s+.{0,30}quarterly\\s+(cash\\s+)?dividend"
+                },
+                {
+                  "at": 247,
+                  "matched": "Quarterly Dividend of 45.5 Cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [],
+      "content_chars": 7119
+    },
+    {
+      "accession": "0001104659-25-027795",
+      "filing_date": "2025-03-25",
+      "report_date": "2025-03-25",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001104659-25-027795/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-25-027795/8-K_8-K_whole.txt",
+          "raw_chars": 11076,
+          "content_chars": 748,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2529,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2529,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001104659-25-027795/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-25-027795/8-K_EX-99-1_whole.txt",
+          "raw_chars": 15541,
+          "content_chars": 15482,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 59,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 59,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 106,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "deal": {
+              "strength": "mention",
+              "first_at": 7874,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 7874,
+                  "matched": "to acquire",
+                  "pattern": "\\bto\\s+acquire\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 16230
+    },
+    {
+      "accession": "0001289419-25-000067",
+      "filing_date": "2025-04-29",
+      "report_date": "2025-04-28",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000067/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000067/8-K_8-K_whole.txt",
+          "raw_chars": 8060,
+          "content_chars": 822,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2351,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2351,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000067/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000067/8-K_EX-99-1_whole.txt",
+          "raw_chars": 27670,
+          "content_chars": 27445,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 108,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 108,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 155,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 28267
+    },
+    {
+      "accession": "0001289419-25-000080",
+      "filing_date": "2025-05-07",
+      "report_date": "2025-05-07",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000080/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000080/8-K_8-K_whole.txt",
+          "raw_chars": 8057,
+          "content_chars": 822,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2348,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2348,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000080/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000080/8-K_EX-99-1_whole.txt",
+          "raw_chars": 47581,
+          "content_chars": 47266,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 99,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 99,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 143,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "deal": {
+              "strength": "mention",
+              "first_at": 39345,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 39345,
+                  "matched": "divested",
+                  "pattern": "\\bdivest(iture|ed|ing)?\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 48088
+    },
+    {
+      "accession": "0001289419-25-000132",
+      "filing_date": "2025-06-20",
+      "report_date": "2025-06-20",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "date_only",
+      "reason": "routine filing (dividend) and no material signal anywhere in the document, not even a passing mention",
+      "routes_to": [],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000132/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000132/8-K_8-K_whole.txt",
+          "raw_chars": 3084,
+          "content_chars": 678,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "mention",
+              "first_at": 2240,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2240,
+                  "matched": "quarterly cash dividend of 45.5 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000132/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000132/8-K_EX-99-1_whole.txt",
+          "raw_chars": 6580,
+          "content_chars": 6431,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "strong",
+              "first_at": 238,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 238,
+                  "matched": "Declares Quarterly Dividend",
+                  "pattern": "(declares|increases|announces)\\s+.{0,30}quarterly\\s+(cash\\s+)?dividend"
+                },
+                {
+                  "at": 247,
+                  "matched": "Quarterly Dividend of 45.5 Cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [],
+      "content_chars": 7109
+    },
+    {
+      "accession": "0001289419-25-000135",
+      "filing_date": "2025-06-27",
+      "report_date": "2025-06-27",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000135/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000135/8-K_8-K_whole.txt",
+          "raw_chars": 8059,
+          "content_chars": 820,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2348,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2348,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000135/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000135/8-K_EX-99-1_whole.txt",
+          "raw_chars": 31126,
+          "content_chars": 30789,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 138,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 138,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 184,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "deal": {
+              "strength": "mention",
+              "first_at": 10315,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 10315,
+                  "matched": "divestiture",
+                  "pattern": "\\bdivest(iture|ed|ing)?\\b"
+                },
+                {
+                  "at": 25661,
+                  "matched": "strategic alliance",
+                  "pattern": "\\bstrategic\\s+alliance\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 31609
+    },
+    {
+      "accession": "0001289419-25-000148",
+      "filing_date": "2025-08-05",
+      "report_date": "2025-08-05",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000148/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000148/8-K_8-K_whole.txt",
+          "raw_chars": 8199,
+          "content_chars": 958,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2350,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2350,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000148/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000148/8-K_EX-99-1_whole.txt",
+          "raw_chars": 10827,
+          "content_chars": 10618,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 138,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 138,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 185,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 11576
+    },
+    {
+      "accession": "0001104659-25-085675",
+      "filing_date": "2025-08-29",
+      "report_date": "2025-08-29",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001104659-25-085675/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-25-085675/8-K_8-K_whole.txt",
+          "raw_chars": 9300,
+          "content_chars": 1225,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2536,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2536,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001104659-25-085675/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-25-085675/8-K_EX-99-1_whole.txt",
+          "raw_chars": 29746,
+          "content_chars": 29687,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 59,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 59,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 107,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 30912
+    },
+    {
+      "accession": "0001289419-25-000154",
+      "filing_date": "2025-09-19",
+      "report_date": "2025-09-19",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "date_only",
+      "reason": "routine filing (dividend) and no material signal anywhere in the document, not even a passing mention",
+      "routes_to": [],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000154/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000154/8-K_8-K_whole.txt",
+          "raw_chars": 3109,
+          "content_chars": 693,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "mention",
+              "first_at": 2250,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2250,
+                  "matched": "quarterly cash dividend of 45.5 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000154/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000154/8-K_EX-99-1_whole.txt",
+          "raw_chars": 6530,
+          "content_chars": 6406,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "strong",
+              "first_at": 223,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 223,
+                  "matched": "Declares Quarterly Dividend",
+                  "pattern": "(declares|increases|announces)\\s+.{0,30}quarterly\\s+(cash\\s+)?dividend"
+                },
+                {
+                  "at": 232,
+                  "matched": "Quarterly Dividend of 45.5 Cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [],
+      "content_chars": 7099
+    },
+    {
+      "accession": "0001289419-25-000156",
+      "filing_date": "2025-09-23",
+      "report_date": "2025-09-23",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "strong material signal: deal",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000156/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000156/8-K_8-K_whole.txt",
+          "raw_chars": 3315,
+          "content_chars": 899,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "deal": {
+              "strength": "mention",
+              "first_at": 2282,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2282,
+                  "matched": "to acquire",
+                  "pattern": "\\bto\\s+acquire\\b"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000156/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000156/8-K_EX-99-1_whole.txt",
+          "raw_chars": 10722,
+          "content_chars": 10543,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "deal": {
+              "strength": "strong",
+              "first_at": 375,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 375,
+                  "matched": "Plans to Acquire",
+                  "pattern": "\\b(plans?|intends?|agreed|agrees)\\s+to\\s+acquire\\b"
+                },
+                {
+                  "at": 381,
+                  "matched": "to Acquire",
+                  "pattern": "\\bto\\s+acquire\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 11442
+    },
+    {
+      "accession": "0001289419-25-000158",
+      "filing_date": "2025-09-26",
+      "report_date": "2025-09-26",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000158/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000158/8-K_8-K_whole.txt",
+          "raw_chars": 8323,
+          "content_chars": 959,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2356,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2356,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000158/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000158/8-K_EX-99-1_whole.txt",
+          "raw_chars": 38834,
+          "content_chars": 38657,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 138,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 138,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 189,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "deal": {
+              "strength": "mention",
+              "first_at": 38400,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 38400,
+                  "matched": "plans to acquire",
+                  "pattern": "\\b(plans?|intends?|agreed|agrees)\\s+to\\s+acquire\\b"
+                },
+                {
+                  "at": 38406,
+                  "matched": "to acquire",
+                  "pattern": "\\bto\\s+acquire\\b"
+                }
+              ]
+            },
+            "leadership": {
+              "strength": "mention",
+              "first_at": 1733,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 1733,
+                  "matched": "named President",
+                  "pattern": "\\bnamed\\s+(as\\s+)?(chief|president|chair)\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 39616
+    },
+    {
+      "accession": "0001289419-25-000171",
+      "filing_date": "2025-11-05",
+      "report_date": "2025-11-05",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000171/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000171/8-K_8-K_whole.txt",
+          "raw_chars": 8510,
+          "content_chars": 972,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2367,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2367,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000171/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000171/8-K_EX-99-1_whole.txt",
+          "raw_chars": 44373,
+          "content_chars": 44164,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 140,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 140,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 189,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "deal": {
+              "strength": "mention",
+              "first_at": 3074,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 3074,
+                  "matched": "plan to acquire",
+                  "pattern": "\\b(plans?|intends?|agreed|agrees)\\s+to\\s+acquire\\b"
+                },
+                {
+                  "at": 3079,
+                  "matched": "to acquire",
+                  "pattern": "\\bto\\s+acquire\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 45136
+    },
+    {
+      "accession": "0001289419-25-000174",
+      "filing_date": "2025-11-25",
+      "report_date": "2025-11-25",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000174/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000174/8-K_8-K_whole.txt",
+          "raw_chars": 8500,
+          "content_chars": 960,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2356,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2356,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000174/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000174/8-K_EX-99-1_whole.txt",
+          "raw_chars": 27818,
+          "content_chars": 27481,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 138,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 138,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 188,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            },
+            "deal": {
+              "strength": "mention",
+              "first_at": 23586,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 23586,
+                  "matched": "divestiture",
+                  "pattern": "\\bdivest(iture|ed|ing)?\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 28441
+    },
+    {
+      "accession": "0001289419-25-000176",
+      "filing_date": "2025-12-05",
+      "report_date": "2025-12-05",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "date_only",
+      "reason": "routine filing (dividend) and no material signal anywhere in the document, not even a passing mention",
+      "routes_to": [],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000176/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000176/8-K_8-K_whole.txt",
+          "raw_chars": 3099,
+          "content_chars": 687,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "mention",
+              "first_at": 2246,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2246,
+                  "matched": "quarterly cash dividend of 50 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000176/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000176/8-K_EX-99-1_whole.txt",
+          "raw_chars": 7149,
+          "content_chars": 7000,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "dividend": {
+              "strength": "strong",
+              "first_at": 223,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 223,
+                  "matched": "Increases Quarterly Dividend",
+                  "pattern": "(declares|increases|announces)\\s+.{0,30}quarterly\\s+(cash\\s+)?dividend"
+                },
+                {
+                  "at": 431,
+                  "matched": "quarterly dividend of 50 cents",
+                  "pattern": "quarterly\\s+(cash\\s+)?dividend\\s+of\\s+[\\d.]+\\s*cents"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [],
+      "content_chars": 7687
+    },
+    {
+      "accession": "0001289419-25-000178",
+      "filing_date": "2025-12-23",
+      "report_date": "2025-12-23",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: investor_qa",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000178/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000178/8-K_8-K_whole.txt",
+          "raw_chars": 8500,
+          "content_chars": 960,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "mention",
+              "first_at": 2356,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2356,
+                  "matched": "Investor Q&A",
+                  "pattern": "investor\\s*q\\s*&\\s*a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001289419-25-000178/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001289419-25-000178/8-K_EX-99-1_whole.txt",
+          "raw_chars": 2445,
+          "content_chars": 2332,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "investor_qa": {
+              "strength": "strong",
+              "first_at": 138,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 138,
+                  "matched": "Investor Questions and Answers",
+                  "pattern": "investor\\s+questions?\\s+and\\s+answers"
+                },
+                {
+                  "at": 188,
+                  "matched": "We encourage current shareholders",
+                  "pattern": "we\\s+encourage\\s+current\\s+shareholders"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 3292
+    }
+  ]
+}

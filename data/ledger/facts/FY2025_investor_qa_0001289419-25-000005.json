@@ -1,0 +1,105 @@
+{
+  "fiscal_year": 2025,
+  "task": "investor_qa",
+  "unit": "0001289419-25-000005",
+  "ok": true,
+  "extracted_utc": "2026-08-05T18:02:48Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 6527,
+    "output_tokens": 2525
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-25-000005",
+      "form": "8-K",
+      "filing_date": "2025-01-31",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001289419-25-000005",
+      "form": "8-K",
+      "filing_date": "2025-01-31",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 12486,
+  "facts": {
+    "topics": [
+      {
+        "topic": "CFO succession \u2014 selection of Michael Holt and the search process",
+        "stated_position": "\"We followed a rigorous selection process in choosing Michael Holt as our next CFO, which included interviewing both internal and external candidates.\" Management cited his 15-plus years at Morningstar, seven years as chief strategy officer, two years as president of the Research and Investments group overseeing a 400-person team, and credited him with centralizing and scaling Research & Investment capabilities, driving the M&A strategy behind DBRS, Sustainalytics and LCD, reframing the approach to the Wealth space \"culminating in the AssetMark transaction,\" and partnering on \"growing our adjusted operating income and margin improvement.\"",
+        "kind": "governance_or_management",
+        "quote": "We followed a rigorous selection process in choosing Michael Holt as our next CFO, which included interviewing both internal and external candidates. Michael brings expertise in a number of key areas, including company strategy and analysis, as well as deep insight into Morningstar\u2019s operations."
+      },
+      {
+        "topic": "Impact of U.S. federal elections on PitchBook, Credit, and Sustainalytics",
+        "stated_position": "Management said \"There are a number of unknowns surrounding the economic and policy impacts of the recent U.S. federal elections,\" noting PitchBook sales \"tend to correlate to fundraising, M&A activity, and private capital trends\"; that Morningstar Credit Markets \"are projecting another strong year of issuance\" in U.S. structured finance and ABS with continued private credit activity, while higher rates \"could have a negative impact on issuance on a short-term basis.\"",
+        "kind": "competition_or_market",
+        "quote": "There are a number of unknowns surrounding the economic and policy impacts of the recent U.S. federal elections. We\u2019ve shared a few thoughts on the potential impact of the issues you raise."
+      },
+      {
+        "topic": "Sustainalytics and the ESG environment",
+        "stated_position": "\"While we\u2019ve noted headwinds in the U.S. for several years, we believe a focus on assessing financially material ESG risks will continue to be an important driver across markets.\" Management said it expects that focus to \"drive increased maturity in the sector\" and stressed serving \"a global client base.\"",
+        "kind": "segment_or_product",
+        "quote": "While we\u2019ve noted headwinds in the U.S. for several years, we believe a focus on assessing financially material ESG risks will continue to be an important driver across markets."
+      },
+      {
+        "topic": "Term loan interest rate election",
+        "stated_position": "\"To date we have opted to pay interest based on 1-month SOFR plus a spread based on our consolidated leverage ratio, to preserve prepayment flexibility.\"",
+        "kind": "capital_allocation",
+        "quote": "To date we have opted to pay interest based on 1-month SOFR plus a spread based on our consolidated leverage ratio, to preserve prepayment flexibility."
+      },
+      {
+        "topic": "Share pledging policy and Joe Mansueto's pledged shares",
+        "stated_position": "Morningstar \"has elected not to completely prohibit pledging, as it allows shareholders flexibility in financial planning without reliance on selling shares, further aligning the interests of management with those of our shareholders,\" and believes the 15% cap is a sufficient protective measure. As of January 27, 2025 Mansueto is the only executive officer or director with a pledge \u2014 1 million shares, down two thirds from an initial 3 million in 2021, about 6.5% of his beneficial ownership and roughly 2.3% of shares outstanding \u2014 reviewed annually by the audit committee.",
+        "kind": "governance_or_management",
+        "quote": "While Morningstar\u2019s insider trading policy generally restricts insiders from engaging in derivative or speculative transactions involving Morningstar stock, Morningstar has elected not to completely prohibit pledging, as it allows shareholders flexibility in financial planning without reliance on selling shares, further aligning the interests of management with those of our shareholders."
+      },
+      {
+        "topic": "Mix of enterprise versus seat-based licenses across products",
+        "stated_position": "Management said PitchBook's unlimited (enterprise) license contracts \"accounted for roughly 20% of total annual contract value related to active PitchBook accounts, while individual seat-based contracts accounted for roughly 80% and that breakdown has not changed materially as of December 31, 2024,\" and described Direct as seat-based, Advisor Workstation as primarily enterprise, Wealth and Retirement as primarily asset-based fees, and Credit as \"primarily has a transaction-based revenue model.\"",
+        "kind": "segment_or_product",
+        "quote": "In an earlier response, we noted that as of early July 2023 PitchBook\u2019s unlimited license contracts accounted for roughly 20% of total annual contract value related to active PitchBook accounts, while individual seat-based contracts accounted for roughly 80% and that breakdown has not changed materially as of December 31, 2024."
+      },
+      {
+        "topic": "Assets linked to Morningstar Indexes",
+        "stated_position": "\"As of September 30, 2024, assets linked to and tracking Morningstar Indexes totaled $228.2 billion, an increase of 37.5% over the prior-year period,\" with roughly 70% in ETFs, a little less than 30% in open-ended funds, and more than 300 products linked in total.",
+        "kind": "segment_or_product",
+        "quote": "As of September 30, 2024, assets linked to and tracking Morningstar Indexes totaled $228.2 billion, an increase of 37.5% over the prior-year period."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "During his tenure here, Michael centralized and scaled our Research & Investment capabilities; drove our M&A strategy leading the DBRS, Sustainalytics, and LCD acquisitions; and has been instrumental in reframing our approach to the Wealth space culminating in the AssetMark transaction.",
+        "why_notable": "Management credits the incoming CFO personally with the company's acquisition program and with the Wealth-space repositioning, framing the AssetMark divestiture as the culmination of a deliberate strategy rather than an opportunistic sale."
+      },
+      {
+        "quote": "Michael was a key partner to Kunal and our former CFO, Jason Dubinsky, in allocating investment and implementing and driving a focus on growing our adjusted operating income and margin improvement.",
+        "why_notable": "Directly responsive to the questioner's premise about growing revenue faster than expenses; signals continuity of the margin-improvement emphasis under the new CFO."
+      },
+      {
+        "quote": "While we\u2019ve noted headwinds in the U.S. for several years, we believe a focus on assessing financially material ESG risks will continue to be an important driver across markets.",
+        "why_notable": "An unusually direct acknowledgment of multi-year U.S. headwinds in the Sustainalytics business, paired with a narrowing of the ESG claim to 'financially material' risks and a pivot to the global client base."
+      },
+      {
+        "quote": "Joe pledged his shares because he did not want to reduce his ownership and weaken his alignment with the Company's shareholders.",
+        "why_notable": "Pledging \u2014 normally framed as a governance risk \u2014 is recast as an act of shareholder alignment; the same alignment rationale is used twice in the answer."
+      },
+      {
+        "quote": "If long-term interest rates continued to increase as they have since the election, that could have a dampening effect on market activity and potentially result in fewer new opportunities.",
+        "why_notable": "A hedge on PitchBook's outlook: management names a specific downside scenario for new sales opportunities rather than offering only the constructive case."
+      }
+    ]
+  }
+}

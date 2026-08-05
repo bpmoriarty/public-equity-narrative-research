@@ -27,6 +27,13 @@ data/raw/
 # Extracted sections regenerate from data/raw/ deterministically and for free.
 data/sections/
 
+# Trimmed copies of the triage documents, held so the exact text sent to a model
+# is an artifact on disk. Ignored for the same reason as data/raw/: it is a *copy*
+# of public EDGAR documents, and it regenerates from them for free.
+#
+# The triage DECISIONS beside it are committed — see below.
+data/triage/text/
+
 # data/ledger/ IS COMMITTED. It was ignored on the same "it regenerates"
 # reasoning as data/sections/, and for the ledger that reasoning is wrong:
 #
@@ -40,6 +47,13 @@ data/sections/
 #     data/sections/ are both ignored.
 #
 # 904 KB, and it is the analytical substance of the project. It belongs in git.
+
+# data/triage/triage-8k.json AND triage-report.md ARE COMMITTED (178 KB). They
+# regenerate deterministically, so by the rule above they could be ignored — but
+# they are the audit record config/forms.toml explicitly asks for ("Log every
+# triage decision; a silent drop here loses real events"), and 15 filings were
+# dropped from the history on the strength of them. A record of what was excluded
+# has to survive in the repository, or the exclusion is undocumented.
 
 # Final deliverables regenerate from data/ledger/
 output/
