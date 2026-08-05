@@ -20,9 +20,9 @@ they anchor a narrative claim.
 
 **Phase:** Building
 
-**Last Session:** 2026-08-04
+**Last Session:** 2026-08-05
 
-**Overall Health:** 🟢 Working — milestones 1–3 complete; two proxy sections flagged low-confidence
+**Overall Health:** 🟢 Working — milestones 1–4 complete; ledger built, every fact quote-verified
 
 ### What's Working
 
@@ -51,6 +51,21 @@ they anchor a narrative claim.
 - **Boundary-verified:** all three 10-K sections across all five years (item map
   structurally identical each year: 21 items, 1→1A, 1A→1B, 7→7A), plus proxy
   CD&A (FY2022 checked end-to-end) and incentive tables
+- **Shareholder letters located.** An ARS is the whole annual report, not the
+  letter — 436k–621k chars including the entire 10-K. The letter is now bounded
+  on its own conventions (salutation → sign-off, each verified unique per
+  document), giving 30k–38k chars per year for four of the five years
+- **Milestone 4 — risk deltas, deterministic** (`src/risk_diff.py`). `rapidfuzz`,
+  no model calls, so the same inputs always give the same answer and it is
+  auditable. One-to-one greedy matching, thresholds in config. Also removes the
+  largest section in the filing (Item 1A, 62k–103k chars/yr) from the API budget
+- **Milestone 4 — year ledger** (`src/extract_facts.py`, `src/build_ledger.py`).
+  34 model calls, 0 failures, **479 facts across five years, 0 unverified
+  quotes**. Every fact carries its source filing, an exact quote from it, and a
+  confidence marker. 428 high / 51 low
+- **Quote verification works, and is proven able to fail.** Confirmed to reject
+  fabricated quotes, paraphrased tails, quotes stitched from two passages, an
+  extra appended word, and fragments too short to be evidence
 - **Coverage.** 10-K and DEF 14A complete for all five fiscal years
 
 ### What's Broken or Incomplete
@@ -65,23 +80,42 @@ they anchor a narrative claim.
 - **75 triage 8-Ks are extracted but unjudged on content.** Items 7.01/8.01;
   the text is in `data/sections/`, but nothing has yet decided which are
   strategic announcements and which are routine releases
+- **`segments` is not comparable across the whole window.** MORN's FY2021 and
+  FY2022 10-Ks never say "reportable segment"; FY2023 onward do. So the field
+  holds product areas for two years and reportable segments for three, and the
+  counts (3 → 10 → 6) must not be read as a re-segmentation of that shape. Each
+  year's record carries `data_quality.segments_basis`, detected from the filing
+  text. See DATA.md limitation 10
+- **Say-on-pay year alignment is a live trap.** `vote_results` for FY N comes
+  from an 8-K filed in year N+1, while `events` for FY N may contain the vote
+  held *during* FY N, which concerned FY N−1's pay. Both are correctly sourced;
+  any output claim must name the meeting date, not just the fiscal year. See
+  DATA.md limitation 11
 
 ---
 
 ## What We're Doing Now
 
-Milestones 1–3 are done. Next is **milestone 4, the year ledger** — the
-structured per-year records in `data/ledger/` that every output derives from.
+Milestones 1–4 are done. Both requirements set for milestone 4 were met: every
+fact carries a `confidence` marker with its reason, and vote outcomes come from
+the 8-K Item 5.07 filings rather than the proxy.
 
-Two things milestone 4 must carry, decided 2026-08-04:
-1. **Every field gets a `confidence` marker** (`high` / `low`) plus its reason.
-   Anything sourced from `DEF14A_director_bios` or `DEF14A_proposals_and_votes`
-   is `low`, because those boundaries are unverified. SPEC.md §3 permits schema
-   additions provided every field stays sourced, and this keeps the weakness
-   recorded rather than hidden.
-2. **Vote outcomes come from 8-K Item 5.07, not the proxy.** A DEF 14A solicits a
-   vote; it does not report the result. The 5.07 filings are extracted whole, so
-   they need no boundary detection and carry no boundary risk.
+Next is **milestone 5, the three outputs** in `output/`. Everything they need is
+in `data/ledger/`, and SPEC.md §3 is explicit that they derive from the ledger,
+never from raw sections.
+
+Three things milestone 5 has to respect, and they are all recorded on the data
+rather than left to memory:
+1. **No claim may rest on a `low`-confidence fact without saying so.** 51 of 479
+   facts are `low`, all board composition. If the board narrative turns out to
+   matter, fix those boundaries first (Next Steps item 10).
+2. **Never compare segment counts across FY2022/FY2023.** The basis changes. Use
+   the segment names and the filing's own language instead.
+3. **Name the meeting date for any say-on-pay claim**, because the vote on year
+   N's pay happens in year N+1.
+
+Actual cost of milestone 4: **$4.52** (571,664 input / 66,406 output tokens
+across 34 calls). Milestones 1–3 cost nothing.
 
 ---
 
@@ -107,6 +141,17 @@ Two things milestone 4 must carry, decided 2026-08-04:
 | 2026-08-04 | `pdfminer.six`, **not** `pypdf`, for PDF text | pypdf coerces unmapped glyphs toward whitespace, turning every digit in the FY2022 letter into a space — "fell 15%" became "fell". pdfminer preserves them as `(cid:N)`. Prefer the library that preserves what it can't interpret |
 | 2026-08-04 | Glyph offset **derived**, not hardcoded | Taken from the space glyph's frequency and validated against English sentinel words, so the decoder isn't silently wrong on a different company's font |
 | 2026-08-04 | The dual em-dash/minus glyph maps to ASCII `-` | One glyph serves both. A hyphen for an em dash is cosmetic; a lost minus sign inverts a fact |
+| 2026-08-05 | Risk deltas are **deterministic**, not a model call | `rapidfuzz` over the already-split factors gives the same answer every run and can be audited by hand. It also keeps the filing's largest section out of the API budget. SPEC.md §2 asks for a diff, and a diff is not a judgment task |
+| 2026-08-05 | Matching is **one-to-one, greedy, best score first** | Otherwise two of this year's factors both claim the same prior-year factor, and that factor never appears as removed — silently losing a deletion, which is exactly the high-signal event the diff exists to find |
+| 2026-08-05 | FY2021 risk deltas are **null with a reason**, not empty lists | Empty lists read as "nothing changed in FY2021". The prior year is outside the window, so nothing can be computed. CLAUDE.md: guard edge cases in code, not just prose |
+| 2026-08-05 | **Every fact carries a verbatim quote, and the quote is checked** | A model asked for a citation always produces something citation-shaped. The dangerous failure is a plausible source for a claim the filing never made, and nothing downstream can detect it. The check turns traceability from an assertion into a test |
+| 2026-08-05 | Source attribution is **measured, not asserted** | A task reading two sections resolves each fact by finding which section contains its quote, rather than asking the model where it looked. Verification and attribution become one operation, and a fact can only be attributed to a document that provably contains its evidence |
+| 2026-08-05 | Near-miss tolerance is an **absolute 3-character tail**, not a percentage | At 99%, the same two stray characters are forgiven on a 260-char quote and rejected on a 64-char one — the same artifact passing or failing based on how much was quoted around it. A generation artifact is a fixed handful of characters either way |
+| 2026-08-05 | `max_tokens` raised to **16000**, deviating from CLAUDE.md's 4096 | On Opus 5 thinking is on by default and shares one budget with the response. A 4096 ceiling does not produce a smaller answer, it truncates the JSON mid-structure — a failed call, not a cheaper one. The intent of the rule holds: responses are bounded fact lists, and stayed at 877–3,342 tokens |
+| 2026-08-05 | One model call per **(year, source group)**, seven per year | A whole-year record does not fit in one response; each large section is sent exactly once; and the task is the unit of caching and retry, so a crash costs at most the tasks in flight |
+| 2026-08-05 | **No prompt caching** | It pays off when a prefix is resent. Each section goes to exactly one task, so there is no repeated prefix and a cache write would be pure overhead |
+| 2026-08-05 | `segments_basis` is **detected from the filing**, not hardcoded | FY2021–FY2022 never say "reportable segment" and FY2023+ do, so the field means different things across the window. Deriving the flag from the text keeps it correct for the next company |
+| 2026-08-05 | The out-of-window vote 8-K is fetched **by name**, not by widening the window | The FY2025 say-on-pay result is in a filing dated 2026. Extending the window would sweep in a sixth year of 10-Qs and Form 4s and quietly change what every coverage claim means |
 | 2026-08-04 | 10-K sections bounded by an **item map**, not end-patterns | A section runs from its heading to the next item heading, which is self-consistent and cannot over-capture into the financial statements. Headings are found structurally: text starting "Item N." and not inside an `<a>` (16 real vs 16 TOC links) |
 | 2026-08-04 | Risk factors split on **bold + italic** styling | That is how individual factors are marked; category headings are bold alone and body text is weight 400. The non-bold summary list at the top of Item 1A is excluded automatically, which matters because it repeats every factor title |
 | 2026-08-04 | Over-capture flagged by **count**, not presence | MD&A legitimately cites the balance sheet once. Presence alone produced five false positives on verifiably correct boundaries. Now: a marker 3+ times, or 2+ distinct markers |
@@ -127,10 +172,11 @@ Two things milestone 4 must carry, decided 2026-08-04:
        decode validated, 890 digits recovered
 6. [x] **Milestone 3 — Section extraction.** 226/226 sections; 10-K and CD&A
        boundaries hand-verified
-7. [ ] **Milestone 4 — Year ledger** to `data/ledger/`, with per-field
-       `confidence` and vote outcomes taken from 8-K 5.07
-8. [ ] Triage the 75 7.01/8.01 8-Ks on content (text already extracted)
-9. [ ] **Milestone 5 — Three outputs** to `output/`
+7. [x] **Milestone 4 — Year ledger.** 479 facts, 0 unverified quotes, per-fact
+       confidence, vote outcomes from 8-K 5.07
+8. [ ] **Milestone 5 — Three outputs** to `output/`, derived only from the ledger
+9. [ ] Triage the 75 7.01/8.01 8-Ks on content (text already extracted). Worth
+       doing before milestone 5 if the timeline looks thin on strategic events
 10. [ ] Optional, if the board narrative proves load-bearing: per-year verified
         boundaries for `DEF14A_director_bios` and `DEF14A_proposals_and_votes`
 11. [ ] Run `preflight`, then `verification-suite` before treating any output as
@@ -154,6 +200,13 @@ Two things milestone 4 must carry, decided 2026-08-04:
 | `src/pdf_text.py` | PDF text extraction with subsetted-font glyph decoding. `--selftest` |
 | `src/extract_sections.py` | Milestone 3. Section location + validation. **Read its KNOWN LIMITS docstring** before trusting any proxy section |
 | `data/sections/sections-manifest.json` | Every section with char count, boundary basis, and validation result |
+| `src/risk_diff.py` | Deterministic year-over-year risk factor diff. No model calls |
+| `src/ledger_schema.py` | Ledger shape, confidence rules, and `verify_quote` — the grounding check |
+| `src/extract_facts.py` | Milestone 4a. The only stage that spends tokens. `--estimate` costs nothing |
+| `src/build_ledger.py` | Milestone 4b. Assembles, verifies every quote, validates, writes |
+| `data/ledger/FY*.json` | **The ledger.** Everything downstream derives from here, never from raw sections |
+| `data/ledger/ledger-report.md` | Cross-year coverage, confidence counts, and comparability warnings |
+| `data/ledger/facts/` | Cached per-task extraction results. A completed task is never re-run |
 | `data/discovery/inventory.json` | **Machine source of truth** for what's in scope. Later stages read this, not config |
 | `data/discovery/discovery-report.md` | The human-readable inventory and gap analysis |
 | `data/raw/FY*/…` | Cached documents by fiscal year and form. Never delete — rebuilding means re-hitting EDGAR for all 201 |
@@ -218,3 +271,26 @@ Two things milestone 4 must carry, decided 2026-08-04:
 - Decided to record the two weak proxy sections as low-confidence rather than
   keep tuning a global heuristic or drop them
 - Next: milestone 4, the year ledger
+
+### 2026-08-05
+
+- **Milestone 4 complete.** Ledger built for all five years: 479 facts, 34 model
+  calls, 0 failures, **0 unverified quotes**, $4.52
+- Built the traceability check first and the extraction second. Every fact must
+  carry an exact quote, which is then verified against the source — and the
+  verifier was itself tested against fabricated, paraphrased, stitched and
+  truncated quotes, because a 100% pass rate proves nothing unless the check can
+  fail
+- Kept the largest section out of the API entirely: risk deltas are `rapidfuzz`,
+  not a model call, so they are reproducible and hand-auditable
+- Found an ARS is the whole annual report, not the shareholder letter — sending
+  one whole would have cost ~150k tokens a year of financial statements
+- Found and fixed three bugs: a risk factor heading split across text nodes
+  became a phantom deleted factor; `fetch.py` replaced the manifest instead of
+  merging, so the first partial run cut 201 records to 1; and the quote checker
+  called a 258-of-260-character match a paraphrase, which would have put a false
+  "unreliable" label on a well-evidenced fact
+- Surfaced two comparability traps and recorded both on the data rather than in
+  prose: `segments` changes meaning at FY2022/FY2023, and say-on-pay votes for
+  year N are held in year N+1
+- Next: milestone 5, the three outputs

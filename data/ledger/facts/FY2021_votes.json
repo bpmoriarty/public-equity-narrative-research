@@ -1,0 +1,136 @@
+{
+  "fiscal_year": 2021,
+  "task": "votes",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:18:12Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 3792,
+    "output_tokens": 1678
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-22-061422",
+      "form": "8-K",
+      "filing_date": "2022-05-16",
+      "proxy_accession": "0001193125-22-092675",
+      "proxy_filed": "2022-04-01"
+    }
+  ],
+  "source_chars": 4827,
+  "facts": {
+    "results": [
+      {
+        "matter": "Election of director Joe Mansueto",
+        "votes_for": 32857397,
+        "votes_against": 367062,
+        "abstentions": 29357,
+        "broker_non_votes": 923394,
+        "outcome": "elected",
+        "quote": "Joe Mansueto\n32,857,397\n367,062\n29,357\n923,394"
+      },
+      {
+        "matter": "Election of director Kunal Kapoor",
+        "votes_for": 33045152,
+        "votes_against": 198574,
+        "abstentions": 10090,
+        "broker_non_votes": 923394,
+        "outcome": "elected",
+        "quote": "Kunal Kapoor\n33,045,152\n198,574\n10,090\n923,394"
+      },
+      {
+        "matter": "Election of director Robin Diamonte",
+        "votes_for": 26352609,
+        "votes_against": 6852256,
+        "abstentions": 48951,
+        "broker_non_votes": 923394,
+        "outcome": "elected",
+        "quote": "Robin Diamonte\n26,352,609\n6,852,256\n48,951\n923,394"
+      },
+      {
+        "matter": "Election of director Cheryl Francis",
+        "votes_for": 25376211,
+        "votes_against": 7869228,
+        "abstentions": 8377,
+        "broker_non_votes": 923394,
+        "outcome": "elected",
+        "quote": "Cheryl Francis\n25,376,211\n7,869,228\n8,377\n923,394"
+      },
+      {
+        "matter": "Election of director Steve Joynt",
+        "votes_for": 33001535,
+        "votes_against": 243889,
+        "abstentions": 8392,
+        "broker_non_votes": 923394,
+        "outcome": "elected",
+        "quote": "Steve Joynt\n33,001,535\n243,889\n8,392\n923,394"
+      },
+      {
+        "matter": "Election of director Steve Kaplan",
+        "votes_for": 32716360,
+        "votes_against": 529621,
+        "abstentions": 7835,
+        "broker_non_votes": 923394,
+        "outcome": "elected",
+        "quote": "Steve Kaplan\n32,716,360\n529,621\n7,835\n923,394"
+      },
+      {
+        "matter": "Election of director Gail Landis",
+        "votes_for": 26385491,
+        "votes_against": 6859997,
+        "abstentions": 8328,
+        "broker_non_votes": 923394,
+        "outcome": "elected",
+        "quote": "Gail Landis\n26,385,491\n6,859,997\n8,328\n923,394"
+      },
+      {
+        "matter": "Election of director Bill Lyons",
+        "votes_for": 31462508,
+        "votes_against": 1782886,
+        "abstentions": 8422,
+        "broker_non_votes": 923394,
+        "outcome": "elected",
+        "quote": "Bill Lyons\n31,462,508\n1,782,886\n8,422\n923,394"
+      },
+      {
+        "matter": "Election of director Doniel Sutton",
+        "votes_for": 26336003,
+        "votes_against": 6865325,
+        "abstentions": 52488,
+        "broker_non_votes": 923394,
+        "outcome": "elected",
+        "quote": "Doniel Sutton\n26,336,003\n6,865,325\n52,488\n923,394"
+      },
+      {
+        "matter": "Election of director Caroline Tsay",
+        "votes_for": 26351760,
+        "votes_against": 6893655,
+        "abstentions": 8401,
+        "broker_non_votes": 923394,
+        "outcome": "elected",
+        "quote": "Caroline Tsay\n26,351,760\n6,893,655\n8,401\n923,394"
+      },
+      {
+        "matter": "Advisory vote on Morningstar's executive compensation",
+        "votes_for": 32732639,
+        "votes_against": 507847,
+        "abstentions": 13330,
+        "broker_non_votes": 923394,
+        "outcome": "approved, on an advisory basis",
+        "quote": "Morningstar\u2019s executive compensation was approved, on an advisory basis, with the voting as follows:\nVotes For\nVotes Against\nAbstentions\nBroker Non- Votes\n32,732,639\n507,847\n13,330\n923,394"
+      },
+      {
+        "matter": "Ratification of the appointment of KPMG LLP as Morningstar's independent registered public accounting firm for 2022",
+        "votes_for": 33894817,
+        "votes_against": 179381,
+        "abstentions": 103012,
+        "broker_non_votes": null,
+        "outcome": "ratified",
+        "quote": "The appointment of KPMG as Morningstar\u2019s independent registered public accounting firm for 2022 was ratified with the voting as follows:\nVotes For\nVotes Against\nAbstentions\n33,894,817\n179,381\n103,012"
+      }
+    ]
+  }
+}

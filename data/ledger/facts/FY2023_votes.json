@@ -1,0 +1,136 @@
+{
+  "fiscal_year": 2023,
+  "task": "votes",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:12:55Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 3298,
+    "output_tokens": 1689
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-24-000038",
+      "form": "8-K",
+      "filing_date": "2024-05-15",
+      "proxy_accession": "0001193125-24-080640",
+      "proxy_filed": "2024-03-28"
+    }
+  ],
+  "source_chars": 3840,
+  "facts": {
+    "results": [
+      {
+        "matter": "Election of director Joe Mansueto",
+        "votes_for": 38313001,
+        "votes_against": 412322,
+        "abstentions": 14969,
+        "broker_non_votes": 838544,
+        "outcome": "elected",
+        "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:"
+      },
+      {
+        "matter": "Election of director Kunal Kapoor",
+        "votes_for": 38479017,
+        "votes_against": 245617,
+        "abstentions": 15658,
+        "broker_non_votes": 838544,
+        "outcome": "elected",
+        "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:"
+      },
+      {
+        "matter": "Election of director Robin Diamonte",
+        "votes_for": 32537690,
+        "votes_against": 6187070,
+        "abstentions": 15532,
+        "broker_non_votes": 838544,
+        "outcome": "elected",
+        "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:"
+      },
+      {
+        "matter": "Election of director Cheryl Francis",
+        "votes_for": 31189986,
+        "votes_against": 7534922,
+        "abstentions": 15384,
+        "broker_non_votes": 838544,
+        "outcome": "elected",
+        "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:"
+      },
+      {
+        "matter": "Election of director Steve Joynt",
+        "votes_for": 28789451,
+        "votes_against": 9935476,
+        "abstentions": 15365,
+        "broker_non_votes": 838544,
+        "outcome": "elected",
+        "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:"
+      },
+      {
+        "matter": "Election of director Steve Kaplan",
+        "votes_for": 36804621,
+        "votes_against": 1920533,
+        "abstentions": 15138,
+        "broker_non_votes": 838544,
+        "outcome": "elected",
+        "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:"
+      },
+      {
+        "matter": "Election of director Gail Landis",
+        "votes_for": 32147041,
+        "votes_against": 6578104,
+        "abstentions": 15147,
+        "broker_non_votes": 838544,
+        "outcome": "elected",
+        "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:"
+      },
+      {
+        "matter": "Election of director Bill Lyons",
+        "votes_for": 36655807,
+        "votes_against": 2068504,
+        "abstentions": 15981,
+        "broker_non_votes": 838544,
+        "outcome": "elected",
+        "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:"
+      },
+      {
+        "matter": "Election of director Doniel Sutton",
+        "votes_for": 32614928,
+        "votes_against": 6109944,
+        "abstentions": 15420,
+        "broker_non_votes": 838544,
+        "outcome": "elected",
+        "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:"
+      },
+      {
+        "matter": "Election of director Caroline Tsay",
+        "votes_for": 32543974,
+        "votes_against": 6181356,
+        "abstentions": 14962,
+        "broker_non_votes": 838544,
+        "outcome": "elected",
+        "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:"
+      },
+      {
+        "matter": "Advisory vote on Morningstar's executive compensation",
+        "votes_for": 38378684,
+        "votes_against": 346649,
+        "abstentions": 14959,
+        "broker_non_votes": 838544,
+        "outcome": "approved, on an advisory basis",
+        "quote": "Morningstar's executive compensation was approved, on an advisory basis, with the voting as follows:"
+      },
+      {
+        "matter": "Ratification of the appointment of KPMG LLP as Morningstar's independent registered public accounting firm for 2024",
+        "votes_for": 39387232,
+        "votes_against": 184850,
+        "abstentions": 6754,
+        "broker_non_votes": null,
+        "outcome": "ratified",
+        "quote": "The appointment of KPMG as Morningstar's independent registered public accounting firm for 2024 was ratified with the voting as follows:"
+      }
+    ]
+  }
+}

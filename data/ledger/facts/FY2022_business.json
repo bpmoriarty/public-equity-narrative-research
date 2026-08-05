@@ -1,0 +1,111 @@
+{
+  "fiscal_year": 2022,
+  "task": "business",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:18:20Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 33411,
+    "output_tokens": 1780
+  },
+  "sources": [
+    {
+      "key": "10-K_item1_business",
+      "accession": "0001289419-23-000005",
+      "form": "10-K",
+      "filing_date": "2023-02-24"
+    }
+  ],
+  "source_chars": 99893,
+  "facts": {
+    "strategic_priorities": [
+      {
+        "text": "Our strategy is to deliver insights and experiences that make us essential to investor workflow.",
+        "quote": "Our strategy is to deliver insights and experiences that make us essential to investor workflow. Proprietary data sets, meaningful analytics, independent research, and effective investment strategies are at the core of the powerful digital solutions that investors across our client segments rely on."
+      },
+      {
+        "text": "Deliver differentiated insights across asset classes to public and private market investors",
+        "quote": "Deliver differentiated insights across asset classes to public and private market investors\nShifting investor needs and expectations, innovative investment approaches and technologies, and a changing political and regulatory environment continue to drive the evolution of the financial services industry. We remain committed to ensuring that the modern investor is empowered with new data, research, and analytics."
+      },
+      {
+        "text": "Establish a leading ESG position across each business area",
+        "quote": "Establish a leading ESG position across each business area\nWith Sustainalytics as part of the Morningstar business, we are positioned to successfully offer ESG solutions across the investing landscape, which is a pivotal part of our long-term strategy."
+      },
+      {
+        "text": "Drive operational excellence and scalability to support growth targets",
+        "quote": "Drive operational excellence and scalability to support growth targets\nMorningstar has grown significantly in the last few years, and as we have continued to focus on growth in 2022 and beyond, we are emphasizing execution and scalability in our operations, processes, and technology."
+      },
+      {
+        "text": "Build an inclusive culture that drives exceptional talent engagement and development",
+        "quote": "Build an inclusive culture that drives exceptional talent engagement and development\nMorningstar is committed to investing in talent and building a culture that realizes our DEI goals."
+      },
+      {
+        "text": "Expand investment and credit research capabilities and enhance existing products and services; adopt new technology",
+        "quote": "A key aspect of our growth strategy is to expand our investment and credit research capabilities and enhance our existing products and services. We strive to adopt new technology that can improve our products and services."
+      },
+      {
+        "text": "Build a comprehensive Wealth platform leveraging capabilities from across Morningstar",
+        "quote": "In 2022 we launched direct indexing capabilities through the TAMP allowing advisors to work with clients to personalize index portfolios to address individual preferences and tax management needs, as part of our ongoing strategy to build a comprehensive Wealth platform leveraging capabilities from across Morningstar."
+      }
+    ],
+    "segments": [
+      {
+        "name": "PitchBook",
+        "note": "Described as largest product area based on revenue",
+        "quote": "PitchBook is our largest product area based on revenue and comprised 21.8%, 17.1%, and 14.5% of our consolidated revenue in 2022, 2021, and 2020, respectively."
+      },
+      {
+        "name": "Morningstar Data",
+        "note": null,
+        "quote": "Morningstar Data is our second-largest product area based on revenue and accounted for 13.6%, 14.3%, and 15.5% of our consolidated revenue in 2022, 2021, and 2020, respectively."
+      },
+      {
+        "name": "DBRS Morningstar",
+        "note": null,
+        "quote": "DBRS Morningstar is our third-largest product area based on revenue and accounted for 12.7%, 16.0%, and 14.9% of our consolidated revenue in 2022, 2021, and 2020, respectively."
+      },
+      {
+        "name": "Morningstar Direct",
+        "note": null,
+        "quote": "Morningstar Direct is our fourth-largest product based on revenue and accounted for 9.9%, 10.2%, and 11.4% of our consolidated revenue in 2022, 2021, and 2020, respectively."
+      },
+      {
+        "name": "Investment Management",
+        "note": null,
+        "quote": "Morningstar Investment Management is our fifth-largest product area based on revenue and comprised 6.3%, 7.4%, and 8.5% of our consolidated revenue in 2022, 2021, and 2020, respectively."
+      },
+      {
+        "name": "Workplace Solutions",
+        "note": null,
+        "quote": "Morningstar Workplace Solutions includes several different offerings, including managed retirement accounts (MRA), fiduciary services, Morningstar Lifetime Allocation Funds, and custom models."
+      },
+      {
+        "name": "Morningstar Sustainalytics",
+        "note": null,
+        "quote": "Morningstar Sustainalytics provides ESG data, research, analysis, and insights to institutional investors globally, covering equity, fixed income, and sovereign asset classes."
+      },
+      {
+        "name": "Morningstar Advisor Workstation",
+        "note": null,
+        "quote": "Morningstar Advisor Workstation is a web-based research, investment planning, and portfolio analysis platform that empowers financial professionals to build trusted client relationships through personalized investment advice."
+      },
+      {
+        "name": "Morningstar.com",
+        "note": null,
+        "quote": "Our largest website, Morningstar.com, helps individual investors discover, evaluate, and monitor stocks, ETFs, and mutual funds; build and monitor portfolios; and monitor the markets."
+      },
+      {
+        "name": "Morningstar Indexes",
+        "note": null,
+        "quote": "Morningstar offers a broad range of market indexes that can be used as performance benchmarks and as the basis for investment products and other portfolio strategies for a wide range of retail and institutional investor clients."
+      }
+    ],
+    "headcount": {
+      "value": 12224,
+      "as_stated": "12,224 permanent, full-time employees around the world as of December 31, 2022",
+      "quote": "As of December 31, 2022, we had 12,224 permanent, full-time employees around the world."
+    }
+  }
+}

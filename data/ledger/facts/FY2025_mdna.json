@@ -1,0 +1,145 @@
+{
+  "fiscal_year": 2025,
+  "task": "mdna",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:19:30Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 25465,
+    "output_tokens": 3342
+  },
+  "sources": [
+    {
+      "key": "10-K_item7_mdna",
+      "accession": "0001289419-26-000013",
+      "form": "10-K",
+      "filing_date": "2026-02-13"
+    }
+  ],
+  "source_chars": 69275,
+  "facts": {
+    "events": [
+      {
+        "type": "acquisition",
+        "description": "Completed acquisition of Center for Research in Security Prices, LLC (CRSP) for a closing cash payment of approximately $365.0 million, financed through borrowings under the 2025 A-1 Facility drawn in 2026.",
+        "date": "2026-02-02",
+        "quote": "On February 2, 2026, we completed our previously announced acquisition of CRSP for a closing cash payment of approximately $365.0 million, subject to customary adjustments. The acquisition was financed through borrowings under the 2025 A-1 Facility, which were drawn in 2026."
+      },
+      {
+        "type": "acquisition",
+        "description": "Acquisition of Dealview Technologies Limited (DealX) completed in the first quarter of 2025, within Morningstar Credit.",
+        "date": null,
+        "quote": "Organic revenue growth excludes revenue associated with the Dealview Technologies Limited (DealX) acquisition, which was completed in the first quarter of 2025, and foreign currency impact."
+      },
+      {
+        "type": "divestiture",
+        "description": "Contingent payment gain of $22.7 million in 2025 related to the earlier sale of US Morningstar Wealth TAMP customer assets to AssetMark, versus a $64.0 million gain in 2024.",
+        "date": null,
+        "quote": "We recorded a $22.7 million gain in 2025 from the contingent payment related to the sale of customer assets from the US Morningstar Wealth Turnkey Asset Management Platform (TAMP) to AssetMark (sale of US TAMP assets), compared to a $64.0 million gain in 2024."
+      },
+      {
+        "type": "divestiture",
+        "description": "Sale of the Commodity and Energy Data business from the Morningstar Direct Platform segment for $52.4 million, with a $45.3 million gain recorded in Q3 2024.",
+        "date": "2024-09-30",
+        "quote": "Effective September 30, 2024, we sold our Commodity and Energy Data business from the Morningstar Direct Platform segment for a purchase price of $52.4 million. In the third quarter of 2024, we recorded a $45.3 million gain on sale of business in the Consolidated Statements of Income."
+      },
+      {
+        "type": "restructuring",
+        "description": "Targeted reorganizations in certain areas of the business including Morningstar Sustainalytics and Morningstar Direct Platform, plus the sunsetting of Morningstar Wealth's Office product, driving $14.4 million higher severance costs in cost of revenue.",
+        "date": null,
+        "quote": "higher severance costs of $14.4 million in 2025 related to the targeted reorganizations in certain areas of the business including Morningstar Sustainalytics and Morningstar Direct Platform as well as the sunsetting of Morningstar Wealth's Office product"
+      },
+      {
+        "type": "restructuring",
+        "description": "Targeted reorganizations in PitchBook generating severance costs of $4.5 million.",
+        "date": null,
+        "quote": "PitchBook's adjusted operating income includes the impact of $4.5 million in severance costs primarily related to targeted reorganizations."
+      },
+      {
+        "type": "financing",
+        "description": "Terminated the 2022 Credit Agreement and entered a new $1.5 billion multi-currency 2025 Credit Agreement comprising a $750.0 million revolver, a $375.0 million delayed draw term facility and a $375.0 million three-year term facility.",
+        "date": "2025-10-31",
+        "quote": "On October 31, 2025, the company terminated the 2022 Credit Agreement and entered into a new senior credit agreement (the 2025 Credit Agreement). The 2025 Credit Agreement provides the company with a multi-currency credit facility with a borrowing capacity of up to $1.5 billion"
+      },
+      {
+        "type": "financing",
+        "description": "Board approved a new $1.0 billion share repurchase program effective October 31, 2025, expiring October 30, 2028, replacing the prior $500.0 million program completed in October 2025.",
+        "date": "2025-10-29",
+        "quote": "On October 29, 2025, the board of directors approved a new share repurchase program that authorizes the company to repurchase up to $1.0 billion in shares of the company's outstanding common stock, effective October 31, 2025 (the new share repurchase program)."
+      },
+      {
+        "type": "financing",
+        "description": "Board approved a regular quarterly dividend of $0.50 per share ($19.9 million) payable January 30, 2026; company expects to maintain 50.0 cents per share quarterly in 2026.",
+        "date": null,
+        "quote": "In December 2025, our board of directors approved a regular quarterly dividend of $0.50 per share, or $19.9 million, payable on January 30, 2026 to shareholders of record as of January 2, 2026."
+      },
+      {
+        "type": "other",
+        "description": "Completed a one-time repatriation of $150.0 million of foreign earnings to the US during 2025, following the Q4 2024 determination that $142.0 million was no longer permanently reinvested.",
+        "date": null,
+        "quote": "In the fourth quarter of 2024, we determined $142.0 million in earnings of certain of our foreign subsidiaries to be no longer permanently reinvested. During 2025, we completed a one-time repatriation of these earnings totaling $150.0 million to the US."
+      },
+      {
+        "type": "impairment",
+        "description": "$12.4 million impairment loss recorded in 2024 related to the investment in SmartX Advisory Solutions.",
+        "date": null,
+        "quote": "We recorded a $12.4 million impairment loss in 2024 related to our investment in SmartX Advisory Solutions."
+      },
+      {
+        "type": "other",
+        "description": "Revised annual renewal rate methodology in 2025 to include mid-contract changes in contract value; Morningstar Advisor Workstation renewal rate unavailable in 2025.",
+        "date": null,
+        "quote": "In 2025, we revised our annual renewal rate methodology to include changes in the contract value in the renewal amount, including updates made mid-contract. Prior to 2025, mid-contract updates were not included except in the calculation of PitchBook's revenue renewal rate."
+      }
+    ],
+    "segment_changes": [
+      {
+        "name": "Morningstar Direct Platform",
+        "note": "Renamed starting Q1 2025; composition of key product areas within the segment changed, with no change to overall segment composition",
+        "quote": "Starting in the first quarter of 2025, the company changed the name of this reportable segment to Morningstar Direct Platform. It also changed the composition of the key product areas within the segment (Morningstar Data, Morningstar Direct, and Morningstar Advisor Workstation). There were no changes to the overall composition of the reportable segment."
+      },
+      {
+        "name": "Corporate and All Other",
+        "note": "Morningstar Sustainalytics and Morningstar Indexes do not individually meet quantitative thresholds and are combined here; not a reportable segment",
+        "quote": "The operating segments of Morningstar Sustainalytics and Morningstar Indexes do not individually meet the quantitative segment reporting thresholds and have been combined and presented as part of Corporate and All Other, which is not a reportable segment."
+      },
+      {
+        "name": "Morningstar Direct Platform, PitchBook, Morningstar Credit, Morningstar Wealth, and Morningstar Retirement",
+        "note": "Seven operating segments presented as five reportable segments",
+        "quote": "The company has seven operating segments which are presented as the following five reportable segments: Morningstar Direct Platform, PitchBook, Morningstar Credit, Morningstar Wealth, and Morningstar Retirement."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We do not make public financial forecasts for our business because we want to avoid creating any incentives for our management team to make speculative statements about our financial results that could influence our stock price or take actions that help us meet short-term forecasts, but may not build long-term shareholder value.",
+        "why_notable": "Recurring, distinctive statement of Morningstar's refusal to give guidance, framed as a governance choice."
+      },
+      {
+        "quote": "The politicization of ESG-related business activities and investments has increased in recent years, particularly in the US. This politicization may result in Morningstar facing heightened scrutiny in this regard, and may result in the company incurring increased costs in addressing related inquiries.",
+        "why_notable": "Unusually direct acknowledgment of political risk to the ESG business, a shift in emphasis from ESG as pure opportunity."
+      },
+      {
+        "quote": "Additionally, current regulatory uncertainty in the US \u2014 including changes and the pace of changes enacted by the current presidential administration and related leadership changes at US government agencies such as the US Securities and Exchange Commission, as well as recent and potential future US Supreme Court rulings \u2014 may impact our business.",
+        "why_notable": "Explicit naming of the sitting administration and SEC leadership churn as a business risk \u2014 a new and pointed framing."
+      },
+      {
+        "quote": "Morningstar Sustainalytics revenue decreased $5.3 million or 4.5%. Organic revenue decreased 7.1%, largely driven by the continued streamlining of the licensed-ratings offering as the company transitions to a model focused on licensing the use and distribution of existing ratings and underlying data, as well as softness in second-party opinions.",
+        "why_notable": "Frames a declining ESG business as a deliberate business-model transition rather than demand loss; 'softness' is a hedge."
+      },
+      {
+        "quote": "This was partially offset by continued softness in the corporate client segment, especially with smaller firms with more limited use cases. PitchBook licensed users were relatively flat compared to the prior-year period, reflecting the addition of new logos offset by churn.",
+        "why_notable": "Direct admission of flat user growth and churn in the company's fastest-growing franchise."
+      },
+      {
+        "quote": "Overall, our business, balance sheet, technological infrastructure, and teams have shown resilience and flexibility navigating global macroeconomic trends.",
+        "why_notable": "Self-congratulatory summary claim placed at the end of an extended list of regulatory and macro risks."
+      },
+      {
+        "quote": "In addition, the revenue renewal rate for Morningstar Advisor Workstation was not available in 2025 due to ongoing updates to our billing system and a product transition.",
+        "why_notable": "Admission that a previously disclosed retention metric could not be produced \u2014 a withdrawal of a metric investors track."
+      }
+    ]
+  }
+}

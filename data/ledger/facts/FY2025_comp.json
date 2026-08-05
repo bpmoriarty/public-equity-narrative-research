@@ -1,0 +1,119 @@
+{
+  "fiscal_year": 2025,
+  "task": "comp",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:19:33Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 23873,
+    "output_tokens": 2737
+  },
+  "sources": [
+    {
+      "key": "DEF14A_cdna",
+      "accession": "0001193125-26-129081",
+      "form": "DEF 14A",
+      "filing_date": "2026-03-27"
+    },
+    {
+      "key": "DEF14A_incentive_tables",
+      "accession": "0001193125-26-129081",
+      "form": "DEF 14A",
+      "filing_date": "2026-03-27"
+    }
+  ],
+  "source_chars": 60829,
+  "facts": {
+    "incentive_metrics": [
+      {
+        "metric": "Adjusted Revenue",
+        "plan": "Annual incentive (Morningstar Corporate Incentive Plan)",
+        "weight": "50%",
+        "target_or_range": "Target $2,417.8 million; achieved $2,430.6 million (100.5% of target); unweighted funding factor 102.7%",
+        "quote": "Adjusted Revenue (Millions)\n$\n2,417.8\n$2,430.6\n100.5\n%\n102.7\n%\n50\n%\n115.5\n%\n111.4\n%"
+      },
+      {
+        "metric": "Adjusted Operating Income (AOI)",
+        "plan": "Annual incentive (Morningstar Corporate Incentive Plan)",
+        "weight": "50%",
+        "target_or_range": "Target $699.4 million; achieved $778.6 million (111.3% of target); unweighted funding factor 128.3%",
+        "quote": "We set targets under our 2025 bonus plan, calculated as described in the Annual Incentives section of this Compensation Discussion and Analysis, of $2,417.8 million for Adjusted Revenue (+6.1% of 2024 actual Adjusted Revenue of $2,278.6 million) and $699.4 million for AOI (+3.2% of 2024 actual AOI of $677.5 million)."
+      },
+      {
+        "metric": "Individual performance factor",
+        "plan": "Annual incentive (Morningstar Corporate Incentive Plan)",
+        "weight": "Multiplier applied to target alongside financial performance factor",
+        "target_or_range": "2025: Kunal Kapoor 110%; Michael Holt 175%",
+        "quote": "The annual incentives are based on a financial performance factor, which is based on two equally-weighted financial performance goals (Adjusted Revenue and AOI), and an individual performance factor. All or a portion of the annual incentive payout related to individual performance may be delivered in RSUs."
+      },
+      {
+        "metric": "Total shareholder return (TSR) over three-year performance period",
+        "plan": "Market Stock Units (MSUs) under the 2021 Plan",
+        "weight": "MSUs comprise 75% of target annual equity award mix",
+        "target_or_range": "0% vesting if TSR is negative 13.33%; 100% vesting if TSR is 20%; 200% vesting if TSR is 70%",
+        "quote": "Performance Level\nShares Earned as a Percentage of Target Market Stock Units\nThreshold TSR\n0% vesting if TSR is negative 13.33%\nTarget TSR\n100% vesting if TSR is 20%\nMaximum TSR\n200% vesting if TSR is 70%"
+      },
+      {
+        "metric": "Adjusted Operating Income (AOI) outperformance over three-year period (Jan 1, 2025 \u2013 Dec 31, 2027)",
+        "plan": "Stretch PSUs under the 2021 Plan",
+        "weight": null,
+        "target_or_range": "0% vesting at 100% of target AOI goal; 100% vesting at 112.5% of target AOI goal; 200% of base amount at 125% of target AOI goal",
+        "quote": "100% of Target AOI Goal\n0% vesting if achieved\n112.5% of Target AOI Goal\n100% vesting if achieved (2)\n125% of Target AOI Goal\n200% of base amount vesting if achieved"
+      },
+      {
+        "metric": "Three-year Adjusted Revenue CAGR (revenue kicker modifier on 2022 MSUs)",
+        "plan": "2022 Market Stock Units",
+        "weight": "100% - 150% modifier",
+        "target_or_range": "Target of 15.5% CAGR for 2022-2024; achievement of 9.8%, so no modifier applied",
+        "quote": "Adjusted Revenue CAGR achievement of 9.8% fell below the target of 15.5% for the time period of 2022 - 2024 and therefore no modifier was applied to the MSU payout."
+      },
+      {
+        "metric": "Time-based vesting (continued service)",
+        "plan": "RSUs under the 2021 Plan",
+        "weight": "RSUs comprise 25% of target annual equity award mix",
+        "target_or_range": "Vest in four equal annual installments commencing on the first anniversary of the grant date",
+        "quote": "In 2025, the Compensation Committee granted RSUs to our participating NEOs that vest in four equal annual installments commencing on the first anniversary of the grant date and subject to their continued employment through the applicable vesting date."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "However, due to a few delayed product deliveries, our CEO recommended and the Compensation Committee approved the application of negative discretion to reduce the 2025 annual incentive payout to 111.4% of target.",
+        "why_notable": "Explicit disclosure of downward discretion, with the CEO himself recommending the reduction \u2014 an unusually specific and self-critical rationale for overriding a formulaic 115.5% funding."
+      },
+      {
+        "quote": "Given the significant shareholder support, the Compensation Committee did not make changes to the Company\u2019s executive compensation program in response to the 2025 say on pay vote, but did make one enhancement to the 2025 program intended to further align pay and performance by removing the funding floor from the 2025 annual incentive funding formula, as described further below.",
+        "why_notable": "Frames the removal of the 60% funding floor as a voluntary enhancement rather than a response to shareholder pressure."
+      },
+      {
+        "quote": "Beginning with the 2025 annual incentive program, the Compensation Committee removed the 60% funding floor used in 2024 (and prior years) with the intention to further align with market practices and enhance alignment of pay and performance.",
+        "why_notable": "Documents a concrete structural tightening of the bonus plan and the stated justification for it."
+      },
+      {
+        "quote": "The stretch PSUs are granted with performance goals that are designed to be extremely challenging in order to receive any vested shares. Given the attainment of the goals was not deemed probable as of the date of grant, there is no grant date fair value associated with these awards for accounting purposes",
+        "why_notable": "Committee justifies awards that carry zero reported grant-date value, meaning a large potential pay opportunity sits outside the Summary Compensation Table."
+      },
+      {
+        "quote": "Despite exceeding plan on targets for adjusted revenue and AOI, our cumulative TSR for the one- and three-year period ending December 31, 2025 was -35.1% and +2.3%, respectively. In line with our pay for performance philosophy, payouts under our long- and short-term incentive programs",
+        "why_notable": "Direct acknowledgment of a sharp stock decline juxtaposed with operating outperformance, used to defend the pay outcome."
+      },
+      {
+        "quote": "For 2025, Kunal Kapoor\u2019s salary increased 23.8% in connection with a rebalancing of his cash compensation to enhance competitiveness of his pay versus market data and with consideration to his salary remaining flat in 2024.",
+        "why_notable": "A large CEO salary increase framed as a neutral 'rebalancing' offset by a reduction in bonus target from 319% to 270% of salary."
+      },
+      {
+        "quote": "In consideration of his status as our principal shareholder, Joe believes that his compensation should be directly aligned with other shareholders and be realized primarily through appreciation in the long-term value of our common stock.",
+        "why_notable": "Recurring justification for the Executive Chairman's $100,000 salary unchanged since 2000 and non-participation in incentive plans."
+      },
+      {
+        "quote": "In May 2025, with input from our independent compensation consultant, we adopted the Morningstar, Inc. Executive Severance Policy (\u201cSeverance Policy\u201d) for our NEOs (excluding Joe Mansueto) and certain other members of the executive leadership team to provide a uniform baseline and process for future executive departures and to align with market practices.",
+        "why_notable": "New formal severance policy adopted in the same year the Chief Revenue Officer departed and forfeited his bonus and equity."
+      },
+      {
+        "quote": "After examining these factors, the Audit Committee was satisfied that Joe possesses sufficient assets aside from his pledged Company shares to satisfy, if necessary, his indebtedness secured by those shares.",
+        "why_notable": "Extended defense of the founder's share pledge, expanded in 2026 for a soccer stadium project \u2014 a recurring governance justification."
+      }
+    ]
+  }
+}

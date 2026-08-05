@@ -1,0 +1,104 @@
+{
+  "fiscal_year": 2022,
+  "task": "letter",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:18:41Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 14003,
+    "output_tokens": 1795
+  },
+  "sources": [
+    {
+      "key": "letter_full_text",
+      "accession": "0001104659-23-039633",
+      "form": "ARS",
+      "filing_date": "2023-03-31"
+    }
+  ],
+  "source_chars": 37643,
+  "facts": {
+    "strategic_priorities": [
+      {
+        "text": "Slowing the pace of investments in 2023 given the external environment, while continuing to execute the strategy",
+        "quote": "Thus, while we are \n\nexecuting our strategy, we are slowing the pace of investments in 2023. A more cautious \n\npace makes sense, given the challenges in the external environment."
+      },
+      {
+        "text": "Debt repayment as a near- to intermediate-term priority for cash deployment, maintaining a conservative balance sheet",
+        "quote": "We have historically taken a conservative \n\napproach to managing our balance sheet, and that isn\u2019t changing. Over time, we seek to \n\nbalance capital allocation priorities, but debt repayment will be a near- to intermediate-term \n\npriority for the deployment of cash."
+      },
+      {
+        "text": "Building a comprehensive, end-to-end wealth platform under the Morningstar Wealth umbrella for independent advisors",
+        "quote": "Our vision here is meaningful. We are building a comprehensive, end-to-end wealth \n\nplatform designed to help independent advisors through every step of their \n\ninvestment workflow."
+      },
+      {
+        "text": "Strengthen the wealth platform and increase advisor adoption in 2023",
+        "quote": "Our focus this year is to continue \n\nto strengthen our platform and to get more advisors using it. If we succeed, our wealth \n\nstrategy will be a meaningful driver of our business in the years to come."
+      },
+      {
+        "text": "Delivering differentiated insights across asset classes to public and private market investors",
+        "quote": "Delivering Differentiated Insights Across Asset Classes to \n\nPublic and Private Market Investors"
+      },
+      {
+        "text": "Establishing leading ESG positions across each business and making ESG accessible to retail investors",
+        "quote": "ESG has been the domain of institutional \n\ninvestors to date, and we\u2019re committed to making it accessible, understandable, and \n\npersonal for Main Street."
+      },
+      {
+        "text": "Driving operational excellence and scalability, including migrating on-premises data centers to the cloud",
+        "quote": "A key focus in recent years has been the migration of our on-premises data centers to \n\nthe cloud and a focus on building new products and capabilities in the cloud."
+      },
+      {
+        "text": "Building an inclusive culture that supports exceptional talent, with a goal of filling 40% of non-entry-level positions internally in 2023",
+        "quote": "In 2022, we filled 37% of our non-entry-level positions with internal hires; \n\nour goal for 2023 is 40%."
+      },
+      {
+        "text": "Regaining full control of the Morningstar brand in Japan by exiting the SoftBank-era licensing agreement",
+        "quote": "we\u2019ve announced that we\u2019re regaining full control of our \n\nbrand in Japan as we exit a licensing agreement that dates to the establishment \n\nof a joint venture with SoftBank in 1998."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "There\u2019s no sugarcoating that market volatility and losses created strong headwinds for our \n\nasset-based and credit rating products.",
+        "why_notable": "Unusually blunt framing of a bad year at the very top of the letter."
+      },
+      {
+        "quote": "Knowing what we do now, I can confidently \n\nsay that we underestimated the opportunity in the private debt arena when we \n\nfirst evaluated LCD.",
+        "why_notable": "A rare CEO admission of a mis-estimate, framed as upside rather than error."
+      },
+      {
+        "quote": "While we made good progress in enhancing our wealth offering last year, the early financial \n\nresults aren\u2019t what we\u2019d hoped for.",
+        "why_notable": "Direct acknowledgment that the flagship investment area is underdelivering."
+      },
+      {
+        "quote": "I wish we had done this many years ago.",
+        "why_notable": "Personal, self-critical aside about the delayed consolidation of Morningstar Wealth."
+      },
+      {
+        "quote": "Many of our long-term shareholders have noted the decline in our margins.",
+        "why_notable": "Explicit acknowledgment of shareholder criticism, followed by a defense of investment spending."
+      },
+      {
+        "quote": "We don\u2019t buy stock to offset dilution like others do. For us, it\u2019s \n\nsimply a case of doing so when we think it\u2019s the best use of capital.",
+        "why_notable": "Distinguishes Morningstar's buyback philosophy from peers; recurring capital-allocation rhetoric."
+      },
+      {
+        "quote": "ESG is a story that varies across the globe. It has become a political lightning rod in the \n\nU.S., but in Europe, it\u2019s a critical component in understanding a quickly evolving regulatory",
+        "why_notable": "Careful hedging on ESG amid US political backlash, a shift in tone versus prior advocacy."
+      },
+      {
+        "quote": "Announcing to my colleagues in China that we \n\nhad made the decision to limit our operations there was likely the hardest day I\u2019ve \n\nexperienced personally as CEO.",
+        "why_notable": "Highly personal framing of a material operational restructuring that also drove adjusted-margin add-backs."
+      },
+      {
+        "quote": "That headline number isn\u2019t what we\u2019d like to see.",
+        "why_notable": "Candid concession on turnover of 18.9%, contrasting with generally favorable engagement statistics."
+      },
+      {
+        "quote": "there\u2019s no doubt that with Wealth in \n\nparticular, the market environment has meant that our expected returns have been delayed.",
+        "why_notable": "Hedged admission that returns on the largest investment area are pushed out, blamed on markets."
+      }
+    ]
+  }
+}

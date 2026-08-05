@@ -1,0 +1,116 @@
+{
+  "fiscal_year": 2023,
+  "task": "letter",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:12:36Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 11323,
+    "output_tokens": 2315
+  },
+  "sources": [
+    {
+      "key": "letter_full_text",
+      "accession": "0001289419-24-000022",
+      "form": "ARS",
+      "filing_date": "2024-03-28"
+    }
+  ],
+  "source_chars": 29732,
+  "facts": {
+    "strategic_priorities": [
+      {
+        "text": "Realizing returns on several years of accelerated investments to drive growth",
+        "quote": "In 2023, we were focused on realizing returns on several years of accelerated investments to drive growth, with improving market conditions in most parts of the business."
+      },
+      {
+        "text": "Focusing Morningstar Wealth on areas where we have the greatest confidence we can win \u2014 the international wealth platform and model portfolios on third-party platforms in the US \u2014 trading growth for a shorter path to profitability",
+        "quote": "We are now focusing on areas where we have the greatest confidence that we can win, including our international wealth platform, which is growing rapidly, and model portfolios distributed on third-party platforms in the US. We will trade some overall growth that we might have experienced, but the cost commitment is lower and the path to profitability shorter and clearer."
+      },
+      {
+        "text": "Using 2024 to reset Morningstar Sustainalytics, rebuild the climate offering for European regulatory use cases, and bolster talent",
+        "quote": "We are using 2024 to reset and lay a foundation for renewed growth. That includes rebuilding our climate offering\u2014particularly to meet regulatory use cases in Europe, where we have had some recent sales wins\u2014and bolstering talent by adding Morningstar veterans to the team."
+      },
+      {
+        "text": "AI: remove friction for clients and colleagues; AI adoption added as a companywide goal for 2024",
+        "quote": "We\u2019ve added AI adoption as a companywide goal for 2024, ensuring that we are at the forefront of leveraging technology and innovating responsibly in all aspects of our business."
+      },
+      {
+        "text": "Limit hiring and discretionary expenses in 2024 to continue improving profitability",
+        "quote": "Our goal remains to limit hiring and discretionary expenses in 2024 to continue improving profitability."
+      },
+      {
+        "text": "Prioritize debt repayment and financial flexibility, consistent with a historically conservative balance-sheet approach",
+        "quote": "During 2023, we prioritized debt repayment. We reduced debt by $137.2 million and lowered our financial covenant debt/EBITDA ratio to 1.7 times from 2.2 times as of year-end 2022."
+      },
+      {
+        "text": "Company Goal 1: Delivering differentiated insights across asset classes to public and private market investors",
+        "quote": "Delivering differentiated insights across asset classes to public and private market investors."
+      },
+      {
+        "text": "Company Goal 2: Establishing leading ESG positions across each business",
+        "quote": "Establishing leading ESG positions across each business. We first shared this corporate goal with you in our 2020 annual report, and we\u2019re pleased with our progress since then."
+      },
+      {
+        "text": "Company Goal 3: Driving operational excellence and scalability to support growth",
+        "quote": "Driving operational excellence and scalability to support growth. The work we do to support this goal often happens behind the scenes as we build critical infrastructure to support our future growth."
+      },
+      {
+        "text": "Company Goal 4: Building an inclusive culture that supports exceptional talent",
+        "quote": "Building an inclusive culture that supports exceptional talent. My colleagues are central to all that we do and have been essential to what we\u2019ve accomplished since our founding."
+      },
+      {
+        "text": "Expanding opportunities in private and venture market transparency, credit ratings competition, and personalization",
+        "quote": "We see a similar opportunity to make investing more transparent in private and venture markets, to bring competition to the credit ratings market, and to drive a heightened level of personalization in investing."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "The investments were sizable and poorly timed, given widespread losses across equity and bond markets in 2022.",
+        "why_notable": "Unusually direct admission of a capital-allocation mistake in Morningstar Wealth."
+      },
+      {
+        "quote": "While the macro environment for ESG was a drag in the US, Morningstar Sustainalytics suffered equally from self-inflicted wounds. Our climate offering was too complex for the moment, forcing us to rework product road maps in this important growth area.",
+        "why_notable": "'Self-inflicted wounds' is a blunt admission of execution failure rather than blaming markets alone."
+      },
+      {
+        "quote": "Our adjusted operating margins in 2022 and 2023 represented a low-water mark relative to our recent history and reflected accelerated investments we\u2019d made in 2021 and 2022, especially in headcount, as well as the headwinds I described.",
+        "why_notable": "Frames two years of margin compression as a 'low-water mark,' implying a turn \u2014 a claim to watch against later years."
+      },
+      {
+        "quote": "We kept our research teams independent of our sales and marketing groups and weren\u2019t afraid to take heat for ratings or analyses that didn\u2019t paint a popular fund in the best light. That remains true to this day\u2014our analysts call it like they see it.",
+        "why_notable": "Recurring independence claim, notable given the same letter discloses SEC settlements at Morningstar DBRS."
+      },
+      {
+        "quote": "Severance costs related to targeted reorganizations in certain parts of the business and two Morningstar DBRS settlements with the Securities and Exchange Commission had a 0.8% impact on operating and adjusted operating margins in 2023.",
+        "why_notable": "Regulatory settlements disclosed only as a margin quantification, with no further explanation or reason given."
+      },
+      {
+        "quote": "Morningstar\u2019s average annual engagement score was 69% in 2023, a decline from 80% in 2022. We made some hard choices last year to align our team size and expense structure with the market opportunity, which affected the overall score.",
+        "why_notable": "Rare disclosure of a sharp deterioration in an internal culture metric, with layoffs named as the cause."
+      },
+      {
+        "quote": "global turnover ticked up to 22% from 19%. That increase was largely driven by involuntary turnover, with voluntary turnover dropping to 12% in 2023 from 16% in 2022.",
+        "why_notable": "Careful decomposition of turnover to attribute the rise to company-initiated cuts rather than attrition."
+      },
+      {
+        "quote": "This is one of those pivot points that we are leaning into across the firm under the leadership of a talented team that includes Adam Wheat. Rest assured, though, that I am writing this letter myself!",
+        "why_notable": "Informal, personal tone; explicit assurance the letter is not AI-written amid the AI narrative."
+      },
+      {
+        "quote": "With these additions, I believe PitchBook is better positioned to serve its addressable market; it\u2019s increasingly a must-have for professional investors.",
+        "why_notable": "'Must-have' framing for PitchBook, a recurring positioning claim, stated even as growth decelerated."
+      },
+      {
+        "quote": "Prior to the launch, we relied on third parties\u2014which also happened to be our competitors\u2014for this service. We now operate a robust, independent, and globally distributed index platform.",
+        "why_notable": "Candid acknowledgment of prior dependence on competitors, claimed as resolved."
+      },
+      {
+        "quote": "(That\u2019s two prouds in two sentences, but I can\u2019t think of a better word!)",
+        "why_notable": "Conversational self-aware aside typical of this CEO's letter voice."
+      }
+    ]
+  }
+}

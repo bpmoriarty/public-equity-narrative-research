@@ -1,0 +1,122 @@
+{
+  "fiscal_year": 2024,
+  "task": "mdna",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:18:56Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 26824,
+    "output_tokens": 2702
+  },
+  "sources": [
+    {
+      "key": "10-K_item7_mdna",
+      "accession": "0001289419-25-000041",
+      "form": "10-K",
+      "filing_date": "2025-02-28"
+    }
+  ],
+  "source_chars": 73196,
+  "facts": {
+    "events": [
+      {
+        "type": "divestiture",
+        "description": "Sold Commodity and Energy Data business within Morningstar Data and Analytics segment for $52.4 million, recording a $45.3 million gain on sale of business in Q3 2024.",
+        "date": "2024-09-30",
+        "quote": "Effective September 30, 2024, we sold our Commodity and Energy Data business within the Morningstar Data and Analytics segment for a purchase price of $52.4 million. In the third quarter of 2024, we recorded a $45.3 million gain on sale of business in the Consolidated Statements of Income."
+      },
+      {
+        "type": "divestiture",
+        "description": "Sale of customer assets from the US Morningstar Wealth Turnkey Asset Management Platform (TAMP) to AssetMark, divested in the fourth quarter of 2024, with a $64.0 million gain recorded.",
+        "date": null,
+        "quote": "as well as revenue and interim service fees associated with the sale of customer assets from the US Morningstar Wealth Turnkey Asset Management Platform (TAMP) to AssetMark (sale of US TAMP assets), which we divested in the f ourth quarter of 2024, from our organic revenue growth calculation for a period of 12 months after we complete the divestitures."
+      },
+      {
+        "type": "impairment",
+        "description": "Recorded a $12.4 million impairment loss related to investment in SmartX Advisory Solutions.",
+        "date": null,
+        "quote": "We recorded a $12.4 million impairment loss in 2024 related to our investment in SmartX Advisory Solutions."
+      },
+      {
+        "type": "financing",
+        "description": "June 2024 amendment to the 2022 Credit Agreement eliminated the second term loan draw option and increased term loan and revolver to $650.0 million each, raising total borrowing capacity to $1.3 billion.",
+        "date": null,
+        "quote": "The 2022 Credit Agreement was amended twice in September 2022 and again most recently in June 2024 (Amended 2022 Credit Agreement) to, among other items, eliminate the options for a second term loan draw and increase both the term loan and revolving credit facility to $650.0 million each, raising the total borrowing capacity to $1.3 billion"
+      },
+      {
+        "type": "other",
+        "description": "Determined $142.0 million of certain foreign subsidiary earnings no longer permanently reinvested; anticipates one-time repatriation in 2025 and recorded a $7.1 million deferred tax liability.",
+        "date": "2024-12-31",
+        "quote": "During the fourth quarter of 2024, we determined $142.0 million in earnings of certain of our foreign subsidiaries to be no longer permanently reinvested. We anticipate a one-time repatriation of these earnings back to the US via distribution later in 2025."
+      },
+      {
+        "type": "other",
+        "description": "Repurchased 33,300 shares for $11.6 million in 2024 under the $500.0 million authorization approved December 6, 2022.",
+        "date": null,
+        "quote": "For the year ended December 31, 2024, we repurchased a total of 33,300 shares for $11.6 million ."
+      },
+      {
+        "type": "other",
+        "description": "Board approved regular quarterly dividend of $0.455 per share in December 2024; company expects quarterly dividends of 45.5 cents per share in 2025.",
+        "date": null,
+        "quote": "In December 2024, our board of directors approved a regular quarterly dividend of $0.455 per share, or $19.4 million, payable on January 31, 2025 to shareholders of record as of January 3, 2025."
+      },
+      {
+        "type": "leadership_transition",
+        "description": "Termination of the PitchBook management bonus plan, a compensation vehicle designed primarily to incentivize PitchBook's former CEO, with forfeiture of stock aiding margin.",
+        "date": null,
+        "quote": "The increase in margin was partially driven by the forfeiture of stock in the now-terminated PitchBook management bonus plan, which was a compensation vehicle designed primarily to incentivize PitchBook's former CEO."
+      },
+      {
+        "type": "other",
+        "description": "DBRS, Inc. entered two SEC settlements totaling $8.0 million in civil monetary penalties (record-keeping and CMBS ratings methodologies), paid in early October 2023.",
+        "date": "2023-09-29",
+        "quote": "On September 29, 2023, DBRS, Inc. entered into two settlements with the SEC requiring DBRS, Inc. to pay an aggregate of $8.0 million in civil monetary penalties."
+      }
+    ],
+    "segment_changes": [
+      {
+        "name": "Morningstar Data and Analytics, PitchBook, Morningstar Wealth, Morningstar Credit, and Morningstar Retirement",
+        "note": "Seven operating segments presented as five reportable segments; Morningstar Sustainalytics and Morningstar Indexes do not meet quantitative thresholds and are combined into Corporate and All Other.",
+        "quote": "The company has seven operating segments which are presented as the following five reportable segments: Morningstar Data and Analytics, PitchBook, Morningstar Wealth, Morningstar Credit, and Morningstar Retirement. The operating segments of Morningstar Sustainalytics and Morningstar Indexes do not individually meet the quantitative segment reporting thresholds and have been combined and presented as part of Corporate and All Other, which is not a reportable segment."
+      },
+      {
+        "name": "PitchBook",
+        "note": "Revenue from PitchBook media sales product reclassified from license-based to transaction-based starting with the quarter ended March 31, 2024; prior periods not restated.",
+        "quote": "Starting with the quarter ended March 31, 2024, revenue from PitchBook media sales product was reclassified from license-based to transaction-based. Prior periods have not been restated to reflect the updated classifications."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We do not make public financial forecasts for our business because we want to avoid creating any incentives for our management team to make speculative statements about our financial results that could influence our stock price or take actions that help us meet short-term forecasts, but may not build long-term shareholder value.",
+        "why_notable": "Recurring, distinctive statement of policy against guidance, framed as a governance safeguard."
+      },
+      {
+        "quote": "Additionally, current regulatory uncertainty in the US \u2014 including changes and the pace of changes enacted by the current presidential administration and related leadership changes at US government agencies such as the US Securities and Exchange Commission, as well as recent and potential future US Supreme Court rulings \u2014 may impact our business.",
+        "why_notable": "New, unusually direct reference to the current US administration and SEC leadership changes as a business risk."
+      },
+      {
+        "quote": "The politicization of ESG-related business activities and investments has increased in recent years, particularly in the US. This politicization may result in Morningstar facing heightened scrutiny in this regard, and may result in the company incurring increased costs in addressing related inquiries.",
+        "why_notable": "Direct admission that anti-ESG political pressure could raise costs and scrutiny for a business line the company has invested in."
+      },
+      {
+        "quote": "The company updated its definition of compensation expense to incorporate commissions, severance, and stock-based compensation, in addition to salaries, bonus, employee benefits, and payroll taxes, which were all included in the earlier definition. Compensation expense for prior periods has been retroactively adjusted for the updated definition.",
+        "why_notable": "Mid-stream change in a key expense definition with retroactive restatement, affecting year-over-year comparability."
+      },
+      {
+        "quote": "For these license-based products and services, we estimate that our annual renewal rate was approximat ely 100% in 2024 versus 103% in 2023.",
+        "why_notable": "Hedged ('approximately') disclosure of a deterioration in a core retention metric amid otherwise strong growth narrative."
+      },
+      {
+        "quote": "This was partially offset by continued softness in the corporate client segment, especially with smaller firms with more limited use cases.",
+        "why_notable": "Candid acknowledgment of persistent weakness in a PitchBook client segment despite headline growth."
+      },
+      {
+        "quote": "Overall, our business, balance sheet, technological infrastructure, and teams have shown resilience and flexibility navigating global macroeconomic trends.",
+        "why_notable": "Self-congratulatory resilience claim appended to a discussion of macro headwinds; the kind of phrasing that recurs across years."
+      }
+    ]
+  }
+}

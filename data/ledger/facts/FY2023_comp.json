@@ -1,0 +1,130 @@
+{
+  "fiscal_year": 2023,
+  "task": "comp",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:12:36Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 20477,
+    "output_tokens": 2692
+  },
+  "sources": [
+    {
+      "key": "DEF14A_cdna",
+      "accession": "0001193125-24-080640",
+      "form": "DEF 14A",
+      "filing_date": "2024-03-28"
+    },
+    {
+      "key": "DEF14A_incentive_tables",
+      "accession": "0001193125-24-080640",
+      "form": "DEF 14A",
+      "filing_date": "2024-03-28"
+    }
+  ],
+  "source_chars": 51921,
+  "facts": {
+    "incentive_metrics": [
+      {
+        "metric": "Adjusted Revenue",
+        "plan": "Corporate Incentive Plan (annual cash incentive)",
+        "weight": "50% (Kunal Kapoor and Jason Dubinsky); 67% (Danny Dunn)",
+        "target_or_range": "Target goal $2,111.9 million; achievement $2,032.3 million (96.2% attainment; 87.9% unweighted funding factor)",
+        "quote": "At the beginning of 2023, the Compensation Committee established a funding formula that specifies bonus funding for various performance levels, with the final funding factor weighted 50% for Adjusted Revenue and 50% for Adjusted EBITDA, except for Danny Dunn who, based on his role as chief revenue officer, had a funding factor of 67% Adjusted Revenue and 33% Adjusted EBITDA weightings."
+      },
+      {
+        "metric": "Adjusted EBITDA",
+        "plan": "Corporate Incentive Plan (annual cash incentive)",
+        "weight": "50% (Kunal Kapoor and Jason Dubinsky); 33% (Danny Dunn)",
+        "target_or_range": "Target goal $542.8 million; achievement $526.7 million (97.0% attainment; 95.6% unweighted funding factor)",
+        "quote": "Adjusted EBITDA in 2023 was $526.7 million compared with a target goal of $542.8 million. As a result of this performance, our annual cash incentive funded at 91.7% of target for Kunal and Jason, and 90.4% of target for Danny."
+      },
+      {
+        "metric": "Individual performance factor",
+        "plan": "Corporate Incentive Plan (annual cash incentive)",
+        "weight": null,
+        "target_or_range": "Determined at 100% for each NEO for 2023",
+        "quote": "For 2023, as described in more detail below, the Compensation Committee determined that each executive\u2019s individual performance factor was 100%, resulting in no further adjustments to the final bonus amount."
+      },
+      {
+        "metric": "Total shareholder return (TSR), absolute, over three-year performance period",
+        "plan": "Long-term equity incentive \u2014 market stock units (75% of annual equity grant)",
+        "weight": "75% of annual equity award value is MSUs",
+        "target_or_range": "0% vesting if TSR is negative 13.33%; 100% vesting if TSR is 20%; 200% vesting if TSR is 70%",
+        "quote": "In 2023, the target TSR to earn 100% of the target MSUs was 20%. Vesting for TSR performance between the performance levels described below is based on a linear interpolation."
+      },
+      {
+        "metric": "Adjusted Revenue CAGR (\"revenue kicker\")",
+        "plan": "Long-term equity incentive \u2014 market stock units",
+        "weight": null,
+        "target_or_range": "100% - 150% of shares earned based on Adjusted Revenue growth",
+        "quote": "In addition to the TSR metric, the MSUs granted to NEOs in 2023 had an adjusted revenue kicker, where an additional amount of MSUs could be earned for exceeding Adjusted Revenue growth targets during the three-year performance period."
+      },
+      {
+        "metric": "Time-based vesting (no performance metric)",
+        "plan": "Long-term equity incentive \u2014 restricted stock units (25% of annual equity grant)",
+        "weight": "25% of annual equity award value",
+        "target_or_range": "Vest in four equal annual installments beginning on the first anniversary of the grant date",
+        "quote": "In 2023, the Compensation Committee granted RSUs to our NEOs that vest in four equal annual installments commencing on the first anniversary of the grant date and subject to their continued employment through the applicable vesting date."
+      },
+      {
+        "metric": "TSR and Adjusted Revenue for 2020 MSU grants (payout outcome)",
+        "plan": "2020 Market Stock Units",
+        "weight": null,
+        "target_or_range": "May 2020: 136.6% of target vested at actual TSR of 38.3%; November 2020: 117.8% of target vested at actual TSR of 28.9%; revenue kicker not triggered",
+        "quote": "For the 2020 MSUs, the three-year Adjusted Revenue growth target was not exceeded, resulting in no modification to the underlying MSU payouts."
+      },
+      {
+        "metric": "Maximum MSU payout range including kicker",
+        "plan": "2021 Stock Incentive Plan \u2014 market stock units",
+        "weight": null,
+        "target_or_range": "0% to 300% of target",
+        "quote": "The number of shares of our common stock to be received at vesting will range from 0% to 300% of the target amount based on the company\u2019s TSR for the three-year performance period and the adjusted revenue kicker."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "In 2022, the weighting of financial performance in the calculation of the annual incentive was 67% Adjusted Revenue and 33% Adjusted EBITDA. In 2023, we increased the plan\u2019s focus on profitability by shifting the weighting to 50% Adjusted Revenue and 50% Adjusted EBITDA for Kunal Kapoor and Jason Dubinsky.",
+        "why_notable": "Explicit stated rationale for the change in metric weighting \u2014 a shift toward profitability."
+      },
+      {
+        "quote": "We set robust goals under our incentive plans. In 2023, we generated strong positive growth in both Adjusted Revenue and Adjusted EBITDA, however, our performance was below our target goals.",
+        "why_notable": "Framing of a miss: emphasises 'robust goals' and 'strong positive growth' while conceding below-target performance."
+      },
+      {
+        "quote": "His salary increased by 5% to $525,000 in 2023 and remains among the lowest in the peer group to emphasize the committee\u2019s preferred focus on variable pay.",
+        "why_notable": "Recurring justification for CEO pay structure \u2014 low salary framed as deliberate emphasis on at-risk pay."
+      },
+      {
+        "quote": "Overall, Kunal\u2019s 2023 target total compensation remained below the median target total compensation for the peer group and continues to place more emphasis on performance-based, at-risk compensation than our peer group.",
+        "why_notable": "Committee defends a large equity target increase by pointing to below-median positioning."
+      },
+      {
+        "quote": "Though the Company did not exceed its 2023 financial goals, market headwinds were managed by curtailing hiring and reducing headcount, coupled with prudent investment in growth to improve profitability.",
+        "why_notable": "Justification of a 100% individual performance factor for the CEO despite missing financial goals, citing cost reduction."
+      },
+      {
+        "quote": "With respect to MSUs, the Compensation Committee elected to grant one-half of each NEO\u2019s targeted value in May 2023 and the other half in November 2023 to minimize the potential effect of short-term stock price volatility on the awards.",
+        "why_notable": "Explains a grant-timing practice designed to dampen stock price volatility effects on performance awards."
+      },
+      {
+        "quote": "Given the significant shareholder support, the Compensation Committee did not make any changes to the Company\u2019s executive compensation program in response to the 2023 say on pay vote.",
+        "why_notable": "Standard justification for inaction, anchored to the 98.6% support level."
+      },
+      {
+        "quote": "We do not have employment agreements or change-in-control agreements with any of our executive officers.",
+        "why_notable": "Recurring governance claim distinguishing Morningstar from typical peer practice."
+      },
+      {
+        "quote": "In consideration of his status as our principal shareholder, Joe believes that his compensation should be directly aligned with other shareholders and be realized primarily through appreciation in the long-term value of our common stock. At his request and as supported by the Compensation Committee, he did not participate in our equity or cash-based incentive programs in 2023 and his salary has been $100,000 since 2000.",
+        "why_notable": "Long-running rationale for the Executive Chairman receiving no incentive compensation."
+      },
+      {
+        "quote": "After examining these factors, the Audit Committee was satisfied that Joe possessed sufficient assets aside from his pledged Company shares to satisfy, if necessary, his indebtedness secured by those shares.",
+        "why_notable": "Committee justifies an exception to the anti-pledging stance for the founder's 1,800,000 pledged shares."
+      }
+    ]
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "fiscal_year": 2025,
+  "task": "board",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:19:34Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 8623,
+    "output_tokens": 1933
+  },
+  "sources": [
+    {
+      "key": "DEF14A_director_bios",
+      "accession": "0001193125-26-129081",
+      "form": "DEF 14A",
+      "filing_date": "2026-03-27"
+    }
+  ],
+  "source_chars": 20736,
+  "facts": {
+    "board_size": 10,
+    "members": [
+      {
+        "name": "Joe Mansueto",
+        "role": "Executive Chairman of Morningstar, Inc.",
+        "director_since": "1984",
+        "committees": [],
+        "quote": "Two members of our executive management team, our founder and Executive Chairman, and our CEO."
+      },
+      {
+        "name": "Kunal Kapoor",
+        "role": "Chief Executive Officer of Morningstar, Inc.",
+        "director_since": "2017",
+        "committees": [],
+        "quote": "Kunal Kapoor\n50\n2017\nChief Executive Officer of Morningstar, Inc."
+      },
+      {
+        "name": "Anne Bramman",
+        "role": "Independent director; Senior Advisor at Boston Consulting Group",
+        "director_since": "2026",
+        "committees": [
+          "Audit",
+          "Compensation"
+        ],
+        "quote": "Anne Bramman\n58\n2026\n\u25cf\nAudit; Compensation"
+      },
+      {
+        "name": "Robin Diamonte",
+        "role": "Independent director; Chief Investment Officer of RTX Corp.",
+        "director_since": "2015",
+        "committees": [
+          "Audit",
+          "NCGC"
+        ],
+        "quote": "Robin Diamonte\n61\n2015\n\u25cf\nAudit; NCGC"
+      },
+      {
+        "name": "Cheryl Francis",
+        "role": "Independent director; Audit Committee Chair",
+        "director_since": "2002",
+        "committees": [
+          "Audit (Chair)",
+          "Compensation"
+        ],
+        "quote": "Cheryl Francis\n72\n2002\n\u25cf\nAudit (Chair); Compensation"
+      },
+      {
+        "name": "Steve Joynt",
+        "role": "Independent director; Former Chief Executive Officer of DBRS",
+        "director_since": "2019",
+        "committees": [
+          "Compensation",
+          "NCGC"
+        ],
+        "quote": "Steve Joynt\n74\n2019\n\u25cf\nCompensation; NCGC"
+      },
+      {
+        "name": "Steve Kaplan",
+        "role": "Independent director; Compensation Committee Chair",
+        "director_since": "1999",
+        "committees": [
+          "Compensation (Chair)",
+          "NCGC"
+        ],
+        "quote": "Steve Kaplan\n66\n1999\n\u25cf\nCompensation (Chair); NCGC"
+      },
+      {
+        "name": "Bill Lyons",
+        "role": "Independent director; NCGC Chair",
+        "director_since": "2007",
+        "committees": [
+          "Compensation",
+          "NCGC (Chair)"
+        ],
+        "quote": "Bill Lyons\n70\n2007\n\u25cf\nCompensation; NCGC (Chair)"
+      },
+      {
+        "name": "Doniel Sutton",
+        "role": "Independent director; Chief People Officer at Pinterest, Inc.",
+        "director_since": "2021",
+        "committees": [
+          "Audit",
+          "Compensation"
+        ],
+        "quote": "Doniel Sutton\n52\n2021\n\u25cf\nAudit; Compensation"
+      },
+      {
+        "name": "Caroline Tsay",
+        "role": "Independent director; Former Chief Executive Officer of Compute Software, Inc.",
+        "director_since": "2017",
+        "committees": [
+          "Audit",
+          "NCGC"
+        ],
+        "quote": "Caroline Tsay\n44\n2017\n\u25cf\nAudit; NCGC"
+      },
+      {
+        "name": "Gail Landis",
+        "role": "Current director not standing for re-election at the 2026 annual shareholders' meeting",
+        "director_since": null,
+        "committees": [],
+        "quote": "One current director, Gail Landis, has reached both the mandatory retirement age under our director retirement policy and has served on the Board for more than ten years, and is not standing for re-election."
+      }
+    ],
+    "committees": [
+      "Audit",
+      "Compensation",
+      "Nominating and Corporate Governance Committee (NCGC)"
+    ]
+  }
+}

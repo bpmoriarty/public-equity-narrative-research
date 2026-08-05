@@ -1,0 +1,2523 @@
+{
+  "fiscal_year": 2025,
+  "ticker": "MORN",
+  "cik": "0001289419",
+  "company_name": "Morningstar, Inc.",
+  "filings": [
+    {
+      "form": "8-K",
+      "accession": "0001289419-25-000025",
+      "filed": "2025-02-26",
+      "report_date": "2025-02-26",
+      "items": [
+        "2.02",
+        "7.01",
+        "9.01"
+      ],
+      "disposition": "date_only"
+    },
+    {
+      "form": "8-K",
+      "accession": "0001289419-25-000070",
+      "filed": "2025-04-30",
+      "report_date": "2025-04-30",
+      "items": [
+        "2.02",
+        "7.01",
+        "9.01"
+      ],
+      "disposition": "date_only"
+    },
+    {
+      "form": "8-K",
+      "accession": "0001289419-25-000090",
+      "filed": "2025-05-14",
+      "report_date": "2025-05-09",
+      "items": [
+        "5.02",
+        "5.07"
+      ],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "8-K",
+      "accession": "0001289419-25-000142",
+      "filed": "2025-07-30",
+      "report_date": "2025-07-30",
+      "items": [
+        "2.02",
+        "7.01",
+        "9.01"
+      ],
+      "disposition": "date_only"
+    },
+    {
+      "form": "8-K",
+      "accession": "0001289419-25-000161",
+      "filed": "2025-10-14",
+      "report_date": "2025-10-08",
+      "items": [
+        "5.02",
+        "7.01",
+        "9.01"
+      ],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "8-K",
+      "accession": "0001289419-25-000166",
+      "filed": "2025-10-29",
+      "report_date": "2025-10-29",
+      "items": [
+        "2.02",
+        "7.01",
+        "9.01"
+      ],
+      "disposition": "date_only"
+    },
+    {
+      "form": "8-K",
+      "accession": "0001104659-25-104692",
+      "filed": "2025-10-31",
+      "report_date": "2025-10-31",
+      "items": [
+        "1.01",
+        "1.02",
+        "2.03",
+        "3.03",
+        "9.01"
+      ],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "10-K",
+      "accession": "0001289419-26-000013",
+      "filed": "2026-02-13",
+      "report_date": "2025-12-31",
+      "items": [],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "DEFA14A",
+      "accession": "0001104659-26-034530",
+      "filed": "2026-03-25",
+      "report_date": null,
+      "items": [],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "DEF 14A",
+      "accession": "0001193125-26-129081",
+      "filed": "2026-03-27",
+      "report_date": "2026-05-07",
+      "items": [],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "DEFA14A",
+      "accession": "0001193125-26-129102",
+      "filed": "2026-03-27",
+      "report_date": null,
+      "items": [],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "ARS",
+      "accession": "0001289419-26-000017",
+      "filed": "2026-03-27",
+      "report_date": "2026-03-27",
+      "items": [],
+      "disposition": "in_scope"
+    }
+  ],
+  "earnings_release_dates": [
+    "2025-02-26",
+    "2025-04-30",
+    "2025-07-30",
+    "2025-10-29"
+  ],
+  "strategic_priorities": [
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Our strategy is to deliver insights and experiences that make us essential to the investor workflow."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Our strategy is to deliver insights and experiences that make us essential to the investor workflow.\nWe are currently focused on the following five strategic priorities:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Win for Investors: Deliver differentiated insights and solutions that make us essential to investors by emphasizing research as the company's research & development (R&D) engine."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "\u2022 Win for Investors: Deliver diff erentiated insights and solutions that make us essential to investors by emphasizing research as the company\u2019s research & development (R&D) engine.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Lead in AI to Empower Investor Success: Make Morningstar AI-native, rethinking capabilities and processes to greatly improve the speed and quality of insights and experiences essential to the investor workflow."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "\u2022 Lead in AI to Empower Investor Success: Make Morningstar AI-native, rethinking capabilities and processes to greatly improve the speed and quality of insights and experiences essential to the investor workflow.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Own the Language of Markets: Become the trusted universal language for public and private markets."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "\u2022 Own the Language of Markets: Become the trusted universal language for public and private markets.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Scale for Impact: Drive operational excellence and scalability to support profitable growth."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "\u2022 Scale for Impact: Drive operational excellence and scalability to support profitable growth.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Build an Exceptional Culture: Foster a workplace where every employee is empowered to make a difference and act with integrity."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "\u2022 Build an Exceptional Culture: Foster a workplace where every employee is empowered to make a difference and act with integrity.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "A key aspect of our growth strategy is to expand and enhance our existing products and services, striving to adopt new technology, including AI."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "A key aspect of our growth strategy is to expand and enhance our existing products and services. We strive to adopt new technology, including AI, that can improve our products and services.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Sharpen Morningstar Sustainalytics' focus on its core data, research and ratings businesses by retiring the second-party opinions product"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In January 2026, we announced our plans to retire our second-party opinions product by the end of the first quarter as part of a broader effort to sharpen Morningstar Sustainalytics\u2019 focus on its core data, research and ratings businesses.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Delivering insights across asset classes to public and private market investors \u2014 making Morningstar the common language of public and private markets"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Company Goal One Delivering insights across asset classes to public and private market investors One of our highest-priority initiatives is to make Morningstar the common language of public and private markets.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Leveraging advances in artificial intelligence to drive innovation across internal and external products and services"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Leveraging advances in artificial intelligence to drive innovation across internal and external products and services We introduced a dedicated AI goal in 2025 and made significant progress during the year in three primary areas.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Driving operational excellence and scalability to support growth targets"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Driving operational excellence and scalability to support growth targets We made important progress in companywide initiatives as well as segment-specific projects to drive scale across the business and support future growth.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Building an amazing culture that supports exceptional talent"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Building an amazing culture that supports exceptional talent In an AI world, where human-in-the-loop efforts are key to our competitive edge, our people\u201410,973 permanent, full-time employees globally as of as of Dec. 31, 2025\u2014remain one of our most important assets.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Increasing adjusted operating income and margins"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We remain focused on increasing adjusted operating income and margins.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Continuing to invest in Morningstar Credit through cycles, focusing on the longer-term growth trendline and more balanced capabilities"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We plan to keep investing in this area, acknowledging that credit rating activity can vary widely from year to year. We remain focused on the longer-term growth trendline as we develop a more balanced set of capabilities that extend beyond our traditional areas of strength.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Focusing Morningstar Wealth on core Investment Management and Morningstar Investor after streamlining"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Morningstar Wealth is now focused on its core Investment Management business, which includes Morningstar Model Portfolios and the International Wealth Platform, and Morningstar Investor, which serves the individual market.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Scaling Morningstar Indexes via the CRSP acquisition"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We expect this acquisition to be a game changer in our efforts to scale up Morningstar Indexes.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Prioritizing a strong balance sheet for flexibility while returning capital via dividends and buybacks"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We continue to prioritize a strong balance sheet to provide flexibility.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "segments": [
+    {
+      "field": "segments",
+      "value": {
+        "name": "Morningstar Direct Platform",
+        "note": "In 2025, the composition of the key product areas within the segment was updated; the document states there were no changes to the overall composition of the segment."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In 2025, we updated the composition of the key product areas (Morningstar Data, Morningstar Direct, Morningstar Advisor Workstation) within the Morningstar Direct Platform segment. There were no changes to the overall composition of the Morningstar Direct Platform segment.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "segments",
+      "value": {
+        "name": "PitchBook",
+        "note": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We operate our business through five reportable segments: Morningstar Direct Platform, PitchBook, Morningstar Credit, Morningstar Wealth, and Morningstar Retirement.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "segments",
+      "value": {
+        "name": "Morningstar Credit",
+        "note": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Morningstar Credit provides investors with credit ratings, research, data, and credit analytics solutions that, we believe, contribute to the transparency of international and domestic credit markets. Morningstar Credit includes Morningstar DBRS and Morningstar Credit Analytics (MCA).",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "segments",
+      "value": {
+        "name": "Morningstar Wealth",
+        "note": "Document states plans announced in February 2025 to retire Morningstar Office, and completion in 2025 of the retirement of the US Morningstar Wealth Turnkey Asset Management Platform (TAMP)."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In February 2025, we announced plans to retire Morningstar Office, our practice and portfolio management software for registered investment advisors (RIAs). The transition of clients to SS&C's Black Diamond and alternative platforms is underway and is expected to be completed in early 2026. In 2025, we also completed the retirement of our US Morningstar Wealth Turnkey Asset Management Platform (TAMP) following the sale of customer assets to AssetMark in 2024.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "segments",
+      "value": {
+        "name": "Morningstar Retirement",
+        "note": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Morningstar Retirement\u2019s primary offerings include managed retirement accounts (MRA), fiduciary services, and custom models.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "segments",
+      "value": {
+        "name": "Corporate and All Other",
+        "note": "Includes unallocated corporate expenses as well as financial results from Morningstar Sustainalytics and Morningstar Indexes"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Corporate and All Other includes unallocated corporate expenses as well as financial results from Morningstar Sustainalytics and Morningstar Indexes.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "segments",
+      "value": {
+        "name": "Morningstar Direct Platform",
+        "note": "Renamed starting Q1 2025; composition of key product areas within the segment changed, with no change to overall segment composition"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Starting in the first quarter of 2025, the company changed the name of this reportable segment to Morningstar Direct Platform. It also changed the composition of the key product areas within the segment (Morningstar Data, Morningstar Direct, and Morningstar Advisor Workstation). There were no changes to the overall composition of the reportable segment.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "segments",
+      "value": {
+        "name": "Corporate and All Other",
+        "note": "Morningstar Sustainalytics and Morningstar Indexes do not individually meet quantitative thresholds and are combined here; not a reportable segment"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The operating segments of Morningstar Sustainalytics and Morningstar Indexes do not individually meet the quantitative segment reporting thresholds and have been combined and presented as part of Corporate and All Other, which is not a reportable segment.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "segments",
+      "value": {
+        "name": "Morningstar Direct Platform, PitchBook, Morningstar Credit, Morningstar Wealth, and Morningstar Retirement",
+        "note": "Seven operating segments presented as five reportable segments"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The company has seven operating segments which are presented as the following five reportable segments: Morningstar Direct Platform, PitchBook, Morningstar Credit, Morningstar Wealth, and Morningstar Retirement.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "headcount": [
+    {
+      "field": "headcount",
+      "value": {
+        "value": 10973,
+        "as_stated": "As of December 31, 2025, we had 10,973 permanent, full-time employees around the world."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "As of December 31, 2025, we had 10,973 permanent, full-time employees around the world.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "leadership": [
+    {
+      "field": "leadership",
+      "value": {
+        "name": "Daniel Dunn",
+        "role": "Chief Revenue Officer",
+        "change": "departed",
+        "date": "2025-11-21",
+        "stated_reason": "to pursue another opportunity"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-25-000161",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-10-14"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "On October 8, 2025, Daniel Dunn, Chief Revenue Officer of Morningstar, Inc. (the \u201cCompany\u201d) informed the Company that he will depart the Company to pursue another opportunity effective November 21, 2025.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "leadership",
+      "value": {
+        "name": "Julie Willoughby",
+        "role": "Chief Revenue Officer (replacing Mr. Dunn); previously Head of Global Sales",
+        "change": "appointed",
+        "date": "2025-11-21",
+        "stated_reason": null
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-25-000161",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-10-14"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Julie Willoughby, Head of Global Sales of the Company, will replace Mr. Dunn effective November 21, 2025. Ms. Willoughby has over 25 years of experience at the Company in various client-facing and sales roles.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "board": [
+    {
+      "field": "board",
+      "value": {
+        "name": "Joe Mansueto",
+        "role": "Executive Chairman of Morningstar, Inc.",
+        "director_since": "1984",
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Two members of our executive management team, our founder and Executive Chairman, and our CEO.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Kunal Kapoor",
+        "role": "Chief Executive Officer of Morningstar, Inc.",
+        "director_since": "2017",
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Kunal Kapoor\n50\n2017\nChief Executive Officer of Morningstar, Inc.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Anne Bramman",
+        "role": "Independent director; Senior Advisor at Boston Consulting Group",
+        "director_since": "2026",
+        "committees": [
+          "Audit",
+          "Compensation"
+        ]
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Anne Bramman\n58\n2026\n\u25cf\nAudit; Compensation",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Robin Diamonte",
+        "role": "Independent director; Chief Investment Officer of RTX Corp.",
+        "director_since": "2015",
+        "committees": [
+          "Audit",
+          "NCGC"
+        ]
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Robin Diamonte\n61\n2015\n\u25cf\nAudit; NCGC",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Cheryl Francis",
+        "role": "Independent director; Audit Committee Chair",
+        "director_since": "2002",
+        "committees": [
+          "Audit (Chair)",
+          "Compensation"
+        ]
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Cheryl Francis\n72\n2002\n\u25cf\nAudit (Chair); Compensation",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Steve Joynt",
+        "role": "Independent director; Former Chief Executive Officer of DBRS",
+        "director_since": "2019",
+        "committees": [
+          "Compensation",
+          "NCGC"
+        ]
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Steve Joynt\n74\n2019\n\u25cf\nCompensation; NCGC",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Steve Kaplan",
+        "role": "Independent director; Compensation Committee Chair",
+        "director_since": "1999",
+        "committees": [
+          "Compensation (Chair)",
+          "NCGC"
+        ]
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Steve Kaplan\n66\n1999\n\u25cf\nCompensation (Chair); NCGC",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Bill Lyons",
+        "role": "Independent director; NCGC Chair",
+        "director_since": "2007",
+        "committees": [
+          "Compensation",
+          "NCGC (Chair)"
+        ]
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Bill Lyons\n70\n2007\n\u25cf\nCompensation; NCGC (Chair)",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Doniel Sutton",
+        "role": "Independent director; Chief People Officer at Pinterest, Inc.",
+        "director_since": "2021",
+        "committees": [
+          "Audit",
+          "Compensation"
+        ]
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Doniel Sutton\n52\n2021\n\u25cf\nAudit; Compensation",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Caroline Tsay",
+        "role": "Independent director; Former Chief Executive Officer of Compute Software, Inc.",
+        "director_since": "2017",
+        "committees": [
+          "Audit",
+          "NCGC"
+        ]
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Caroline Tsay\n44\n2017\n\u25cf\nAudit; NCGC",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Gail Landis",
+        "role": "Current director not standing for re-election at the 2026 annual shareholders' meeting",
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "One current director, Gail Landis, has reached both the mandatory retirement age under our director retirement policy and has served on the Board for more than ten years, and is not standing for re-election.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "incentive_metrics": [
+    {
+      "field": "incentive_metrics",
+      "value": {
+        "metric": "Adjusted Revenue",
+        "plan": "Annual incentive (Morningstar Corporate Incentive Plan)",
+        "weight": "50%",
+        "target_or_range": "Target $2,417.8 million; achieved $2,430.6 million (100.5% of target); unweighted funding factor 102.7%"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Adjusted Revenue (Millions)\n$\n2,417.8\n$2,430.6\n100.5\n%\n102.7\n%\n50\n%\n115.5\n%\n111.4\n%",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "incentive_metrics",
+      "value": {
+        "metric": "Adjusted Operating Income (AOI)",
+        "plan": "Annual incentive (Morningstar Corporate Incentive Plan)",
+        "weight": "50%",
+        "target_or_range": "Target $699.4 million; achieved $778.6 million (111.3% of target); unweighted funding factor 128.3%"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We set targets under our 2025 bonus plan, calculated as described in the Annual Incentives section of this Compensation Discussion and Analysis, of $2,417.8 million for Adjusted Revenue (+6.1% of 2024 actual Adjusted Revenue of $2,278.6 million) and $699.4 million for AOI (+3.2% of 2024 actual AOI of $677.5 million).",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "incentive_metrics",
+      "value": {
+        "metric": "Individual performance factor",
+        "plan": "Annual incentive (Morningstar Corporate Incentive Plan)",
+        "weight": "Multiplier applied to target alongside financial performance factor",
+        "target_or_range": "2025: Kunal Kapoor 110%; Michael Holt 175%"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The annual incentives are based on a financial performance factor, which is based on two equally-weighted financial performance goals (Adjusted Revenue and AOI), and an individual performance factor. All or a portion of the annual incentive payout related to individual performance may be delivered in RSUs.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "incentive_metrics",
+      "value": {
+        "metric": "Total shareholder return (TSR) over three-year performance period",
+        "plan": "Market Stock Units (MSUs) under the 2021 Plan",
+        "weight": "MSUs comprise 75% of target annual equity award mix",
+        "target_or_range": "0% vesting if TSR is negative 13.33%; 100% vesting if TSR is 20%; 200% vesting if TSR is 70%"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Performance Level\nShares Earned as a Percentage of Target Market Stock Units\nThreshold TSR\n0% vesting if TSR is negative 13.33%\nTarget TSR\n100% vesting if TSR is 20%\nMaximum TSR\n200% vesting if TSR is 70%",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "incentive_metrics",
+      "value": {
+        "metric": "Adjusted Operating Income (AOI) outperformance over three-year period (Jan 1, 2025 \u2013 Dec 31, 2027)",
+        "plan": "Stretch PSUs under the 2021 Plan",
+        "weight": null,
+        "target_or_range": "0% vesting at 100% of target AOI goal; 100% vesting at 112.5% of target AOI goal; 200% of base amount at 125% of target AOI goal"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "100% of Target AOI Goal\n0% vesting if achieved\n112.5% of Target AOI Goal\n100% vesting if achieved (2)\n125% of Target AOI Goal\n200% of base amount vesting if achieved",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "incentive_metrics",
+      "value": {
+        "metric": "Three-year Adjusted Revenue CAGR (revenue kicker modifier on 2022 MSUs)",
+        "plan": "2022 Market Stock Units",
+        "weight": "100% - 150% modifier",
+        "target_or_range": "Target of 15.5% CAGR for 2022-2024; achievement of 9.8%, so no modifier applied"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Adjusted Revenue CAGR achievement of 9.8% fell below the target of 15.5% for the time period of 2022 - 2024 and therefore no modifier was applied to the MSU payout.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "incentive_metrics",
+      "value": {
+        "metric": "Time-based vesting (continued service)",
+        "plan": "RSUs under the 2021 Plan",
+        "weight": "RSUs comprise 25% of target annual equity award mix",
+        "target_or_range": "Vest in four equal annual installments commencing on the first anniversary of the grant date"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In 2025, the Compensation Committee granted RSUs to our participating NEOs that vest in four equal annual installments commencing on the first anniversary of the grant date and subject to their continued employment through the applicable vesting date.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "vote_results": [
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Joe Mansueto",
+        "votes_for": 33192034,
+        "votes_against": 508755,
+        "abstentions": 6874,
+        "broker_non_votes": 1281152,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000028",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2026-05-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Kunal Kapoor",
+        "votes_for": 33502488,
+        "votes_against": 198311,
+        "abstentions": 6864,
+        "broker_non_votes": 1281152,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000028",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2026-05-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Anne Bramman",
+        "votes_for": 33646764,
+        "votes_against": 46318,
+        "abstentions": 14581,
+        "broker_non_votes": 1281152,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000028",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2026-05-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Robin Diamonte",
+        "votes_for": 33147696,
+        "votes_against": 552518,
+        "abstentions": 7449,
+        "broker_non_votes": 1281152,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000028",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2026-05-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Cheryl Francis",
+        "votes_for": 32212413,
+        "votes_against": 1462628,
+        "abstentions": 32622,
+        "broker_non_votes": 1281152,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000028",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2026-05-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Steve Joynt",
+        "votes_for": 33420268,
+        "votes_against": 279943,
+        "abstentions": 7452,
+        "broker_non_votes": 1281152,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000028",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2026-05-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Steve Kaplan",
+        "votes_for": 32236110,
+        "votes_against": 1464664,
+        "abstentions": 6889,
+        "broker_non_votes": 1281152,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000028",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2026-05-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Bill Lyons",
+        "votes_for": 31265595,
+        "votes_against": 2434521,
+        "abstentions": 7547,
+        "broker_non_votes": 1281152,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000028",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2026-05-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Doniel Sutton",
+        "votes_for": 33126385,
+        "votes_against": 473192,
+        "abstentions": 108086,
+        "broker_non_votes": 1281152,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000028",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2026-05-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Caroline Tsay",
+        "votes_for": 33262359,
+        "votes_against": 437726,
+        "abstentions": 7578,
+        "broker_non_votes": 1281152,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000028",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2026-05-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Advisory vote on Morningstar's executive compensation",
+        "votes_for": 32474755,
+        "votes_against": 1206815,
+        "abstentions": 26093,
+        "broker_non_votes": 1281152,
+        "outcome": "approved, on an advisory basis"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000028",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2026-05-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Morningstar's executive compensation was approved, on an advisory basis, with the voting as follows:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Ratification of the appointment of KPMG LLP as Morningstar's independent registered public accounting firm for 2026",
+        "votes_for": 34861651,
+        "votes_against": 89355,
+        "abstentions": 37809,
+        "broker_non_votes": null,
+        "outcome": "ratified"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000028",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2026-05-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The appointment of KPMG as Morningstar's independent registered public accounting firm for 2026 was ratified with the voting as follows:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "events": [
+    {
+      "field": "events",
+      "value": {
+        "type": "acquisition",
+        "description": "Completed acquisition of Center for Research in Security Prices, LLC (CRSP) for a closing cash payment of approximately $365.0 million, financed through borrowings under the 2025 A-1 Facility drawn in 2026.",
+        "date": "2026-02-02"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "On February 2, 2026, we completed our previously announced acquisition of CRSP for a closing cash payment of approximately $365.0 million, subject to customary adjustments. The acquisition was financed through borrowings under the 2025 A-1 Facility, which were drawn in 2026.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "acquisition",
+        "description": "Acquisition of Dealview Technologies Limited (DealX) completed in the first quarter of 2025, within Morningstar Credit.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Organic revenue growth excludes revenue associated with the Dealview Technologies Limited (DealX) acquisition, which was completed in the first quarter of 2025, and foreign currency impact.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "divestiture",
+        "description": "Contingent payment gain of $22.7 million in 2025 related to the earlier sale of US Morningstar Wealth TAMP customer assets to AssetMark, versus a $64.0 million gain in 2024.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We recorded a $22.7 million gain in 2025 from the contingent payment related to the sale of customer assets from the US Morningstar Wealth Turnkey Asset Management Platform (TAMP) to AssetMark (sale of US TAMP assets), compared to a $64.0 million gain in 2024.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "divestiture",
+        "description": "Sale of the Commodity and Energy Data business from the Morningstar Direct Platform segment for $52.4 million, with a $45.3 million gain recorded in Q3 2024.",
+        "date": "2024-09-30"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Effective September 30, 2024, we sold our Commodity and Energy Data business from the Morningstar Direct Platform segment for a purchase price of $52.4 million. In the third quarter of 2024, we recorded a $45.3 million gain on sale of business in the Consolidated Statements of Income.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "restructuring",
+        "description": "Targeted reorganizations in certain areas of the business including Morningstar Sustainalytics and Morningstar Direct Platform, plus the sunsetting of Morningstar Wealth's Office product, driving $14.4 million higher severance costs in cost of revenue.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "higher severance costs of $14.4 million in 2025 related to the targeted reorganizations in certain areas of the business including Morningstar Sustainalytics and Morningstar Direct Platform as well as the sunsetting of Morningstar Wealth's Office product",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "restructuring",
+        "description": "Targeted reorganizations in PitchBook generating severance costs of $4.5 million.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "PitchBook's adjusted operating income includes the impact of $4.5 million in severance costs primarily related to targeted reorganizations.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "financing",
+        "description": "Terminated the 2022 Credit Agreement and entered a new $1.5 billion multi-currency 2025 Credit Agreement comprising a $750.0 million revolver, a $375.0 million delayed draw term facility and a $375.0 million three-year term facility.",
+        "date": "2025-10-31"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "On October 31, 2025, the company terminated the 2022 Credit Agreement and entered into a new senior credit agreement (the 2025 Credit Agreement). The 2025 Credit Agreement provides the company with a multi-currency credit facility with a borrowing capacity of up to $1.5 billion",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "financing",
+        "description": "Board approved a new $1.0 billion share repurchase program effective October 31, 2025, expiring October 30, 2028, replacing the prior $500.0 million program completed in October 2025.",
+        "date": "2025-10-29"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "On October 29, 2025, the board of directors approved a new share repurchase program that authorizes the company to repurchase up to $1.0 billion in shares of the company's outstanding common stock, effective October 31, 2025 (the new share repurchase program).",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "financing",
+        "description": "Board approved a regular quarterly dividend of $0.50 per share ($19.9 million) payable January 30, 2026; company expects to maintain 50.0 cents per share quarterly in 2026.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In December 2025, our board of directors approved a regular quarterly dividend of $0.50 per share, or $19.9 million, payable on January 30, 2026 to shareholders of record as of January 2, 2026.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "other",
+        "description": "Completed a one-time repatriation of $150.0 million of foreign earnings to the US during 2025, following the Q4 2024 determination that $142.0 million was no longer permanently reinvested.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In the fourth quarter of 2024, we determined $142.0 million in earnings of certain of our foreign subsidiaries to be no longer permanently reinvested. During 2025, we completed a one-time repatriation of these earnings totaling $150.0 million to the US.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "impairment",
+        "description": "$12.4 million impairment loss recorded in 2024 related to the investment in SmartX Advisory Solutions.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We recorded a $12.4 million impairment loss in 2024 related to our investment in SmartX Advisory Solutions.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "other",
+        "description": "Revised annual renewal rate methodology in 2025 to include mid-contract changes in contract value; Morningstar Advisor Workstation renewal rate unavailable in 2025.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In 2025, we revised our annual renewal rate methodology to include changes in the contract value in the renewal amount, including updates made mid-contract. Prior to 2025, mid-contract updates were not included except in the calculation of PitchBook's revenue renewal rate.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "other",
+        "description": "Board adopted the Morningstar, Inc. Executive Severance Policy, effective immediately, designating the CEO, CFO, CRO and certain other executive leadership team members as participants.",
+        "date": "2025-05-09"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-25-000090",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-05-14"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "On May 9, 2025, the Board of Directors of Morningstar, Inc. (the \"Company\" or \"Morningstar\") adopted the Morningstar, Inc. Executive Severance Policy (the \u201cSeverance Policy\u201d), effective immediately, and designated each of the Company\u2019s Chief Executive Officer, Chief Financial Officer, Chief Revenue Officer, and certain other members of the Company\u2019s executive leadership team (collectively, the \u201cParticipants\u201d) as participants in the Policy",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "other",
+        "description": "Annual Shareholders' Meeting held: all ten director nominees elected, executive compensation approved on an advisory basis, and KPMG LLP ratified as independent registered public accounting firm for 2025.",
+        "date": "2025-05-09"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-25-000090",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-05-14"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "On May 9, 2025, the Company held its Annual Shareholders\u2019 Meeting, for the purpose of electing directors, providing an advisory vote on Morningstar\u2019s executive compensation, and ratifying the appointment of KPMG LLP (\"KPMG\") as Morningstar\u2019s independent registered public accounting firm for 2025.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "financing",
+        "description": "Entry into new multi-currency Credit Agreement with Bank of America, N.A. as Administrative Agent providing borrowing capacity of up to $1.5 billion: a five-year $750.0 million revolving credit facility, a five-year delayed draw term facility of up to $375.0 million (A-1) and a three-year $375.0 million term facility (A-2).",
+        "date": "2025-10-31"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001104659-25-104692",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-10-31"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The Credit Agreement provides Morningstar with a multi-currency credit facility with a borrowing capacity of up to $1.5 billion, including a five-year $750.0 million revolving credit facility (the \u201cRevolving Credit Facility\u201d), a five-year delayed draw term facility of up to $375.0 million (the \u201cA-1 Facility\u201d) and a three-year $375.0 million term facility (the \u201cA-2 Facility\u201d and, together with the A-1 Facility and the Revolving Credit Facility, the \u201cFacility\u201d).",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "financing",
+        "description": "Termination of the existing credit agreement dated May 6, 2022 in connection with entry into the new Credit Agreement; $170.0 million outstanding under the Revolving Credit Facility as of October 31, 2025 representing a rollover of prior amounts.",
+        "date": "2025-10-31"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001104659-25-104692",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-10-31"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In connection with the entry into the Credit Agreement, the Company terminated its existing credit agreement, dated as of May 6, 2022, among the Company, certain subsidiaries of the Company, Bank of America, N.A. and the other lenders party thereto (as amended, restated or supplemented from time to time, the \"Existing Credit Agreement\"). As of October 31, 2025, the aggregate principal balance outstanding under the Revolving Credit Facility was $170.0 million, which represents a rollover of amounts outstanding under the Company\u2019s previous credit agreement.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "other",
+        "description": "Covenants under the new Facility include a Consolidated Net Leverage Ratio not greater than 3.50 to 1.00 (4.00 to 1.00 following a Material Acquisition) and a Consolidated Interest Coverage Ratio not less than 3.00 to 1.00, plus restrictions on paying dividends.",
+        "date": "2025-10-31"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001104659-25-104692",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-10-31"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "These include, among others, that (i) the Company shall have a Consolidated Net Leverage Ratio as of the end of any fiscal quarter of the Company of not greater than 3.50 to 1.00; provided that, solely with respect to the four fiscal quarters following any Material Acquisition (as defined in the Credit Agreement), the Consolidated Net Leverage Ratio determined as of the end of such four fiscal quarters shall not be greater than 4.00 to 1.00 (ii) the Company shall have a Consolidated Interest Coverage Ratio as of the end of any fiscal quarter of not less than 3.00 to 1.00.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "notable_language": [
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Recurring, distinctive statement of Morningstar's refusal to give guidance, framed as a governance choice."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We do not make public financial forecasts for our business because we want to avoid creating any incentives for our management team to make speculative statements about our financial results that could influence our stock price or take actions that help us meet short-term forecasts, but may not build long-term shareholder value.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Unusually direct acknowledgment of political risk to the ESG business, a shift in emphasis from ESG as pure opportunity."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The politicization of ESG-related business activities and investments has increased in recent years, particularly in the US. This politicization may result in Morningstar facing heightened scrutiny in this regard, and may result in the company incurring increased costs in addressing related inquiries.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Explicit naming of the sitting administration and SEC leadership churn as a business risk \u2014 a new and pointed framing."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Additionally, current regulatory uncertainty in the US \u2014 including changes and the pace of changes enacted by the current presidential administration and related leadership changes at US government agencies such as the US Securities and Exchange Commission, as well as recent and potential future US Supreme Court rulings \u2014 may impact our business.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Frames a declining ESG business as a deliberate business-model transition rather than demand loss; 'softness' is a hedge."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Morningstar Sustainalytics revenue decreased $5.3 million or 4.5%. Organic revenue decreased 7.1%, largely driven by the continued streamlining of the licensed-ratings offering as the company transitions to a model focused on licensing the use and distribution of existing ratings and underlying data, as well as softness in second-party opinions.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Direct admission of flat user growth and churn in the company's fastest-growing franchise."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "This was partially offset by continued softness in the corporate client segment, especially with smaller firms with more limited use cases. PitchBook licensed users were relatively flat compared to the prior-year period, reflecting the addition of new logos offset by churn.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Self-congratulatory summary claim placed at the end of an extended list of regulatory and macro risks."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Overall, our business, balance sheet, technological infrastructure, and teams have shown resilience and flexibility navigating global macroeconomic trends.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Admission that a previously disclosed retention metric could not be produced \u2014 a withdrawal of a metric investors track."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000013",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2026-02-13"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In addition, the revenue renewal rate for Morningstar Advisor Workstation was not available in 2025 due to ongoing updates to our billing system and a product transition.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Explicit disclosure of downward discretion, with the CEO himself recommending the reduction \u2014 an unusually specific and self-critical rationale for overriding a formulaic 115.5% funding."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "However, due to a few delayed product deliveries, our CEO recommended and the Compensation Committee approved the application of negative discretion to reduce the 2025 annual incentive payout to 111.4% of target.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Frames the removal of the 60% funding floor as a voluntary enhancement rather than a response to shareholder pressure."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Given the significant shareholder support, the Compensation Committee did not make changes to the Company\u2019s executive compensation program in response to the 2025 say on pay vote, but did make one enhancement to the 2025 program intended to further align pay and performance by removing the funding floor from the 2025 annual incentive funding formula, as described further below.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Documents a concrete structural tightening of the bonus plan and the stated justification for it."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Beginning with the 2025 annual incentive program, the Compensation Committee removed the 60% funding floor used in 2024 (and prior years) with the intention to further align with market practices and enhance alignment of pay and performance.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Committee justifies awards that carry zero reported grant-date value, meaning a large potential pay opportunity sits outside the Summary Compensation Table."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The stretch PSUs are granted with performance goals that are designed to be extremely challenging in order to receive any vested shares. Given the attainment of the goals was not deemed probable as of the date of grant, there is no grant date fair value associated with these awards for accounting purposes",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Direct acknowledgment of a sharp stock decline juxtaposed with operating outperformance, used to defend the pay outcome."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Despite exceeding plan on targets for adjusted revenue and AOI, our cumulative TSR for the one- and three-year period ending December 31, 2025 was -35.1% and +2.3%, respectively. In line with our pay for performance philosophy, payouts under our long- and short-term incentive programs",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "A large CEO salary increase framed as a neutral 'rebalancing' offset by a reduction in bonus target from 319% to 270% of salary."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "For 2025, Kunal Kapoor\u2019s salary increased 23.8% in connection with a rebalancing of his cash compensation to enhance competitiveness of his pay versus market data and with consideration to his salary remaining flat in 2024.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Recurring justification for the Executive Chairman's $100,000 salary unchanged since 2000 and non-participation in incentive plans."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In consideration of his status as our principal shareholder, Joe believes that his compensation should be directly aligned with other shareholders and be realized primarily through appreciation in the long-term value of our common stock.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "New formal severance policy adopted in the same year the Chief Revenue Officer departed and forfeited his bonus and equity."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In May 2025, with input from our independent compensation consultant, we adopted the Morningstar, Inc. Executive Severance Policy (\u201cSeverance Policy\u201d) for our NEOs (excluding Joe Mansueto) and certain other members of the executive leadership team to provide a uniform baseline and process for future executive departures and to align with market practices.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Extended defense of the founder's share pledge, expanded in 2026 for a soccer stadium project \u2014 a recurring governance justification."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-26-129081",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "After examining these factors, the Audit Committee was satisfied that Joe possesses sufficient assets aside from his pledged Company shares to satisfy, if necessary, his indebtedness secured by those shares.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Sets a deliberately measured tone against AI hype while still claiming positioning to benefit."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "As always, we view such developments with interest\u2014but also with patience and a long-term perspective. Our focus remains on building a business that compounds value over time.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Core thesis statement framing the moat argument for an AI era."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We expect AI models will become ubiquitous and cheap, while high-quality, structured, and verifiable data backed by human insight will become even more valuable.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Explicit self-description of the competitive moat as a compounding system \u2014 likely recurring framing."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "More broadly, we believe our moat is not a single asset or technology. It is a compounding system in which data fuels research, research powers IP, and software and AI-enabled tools further embed us into our clients\u2019 workflows.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Unusually direct admission of share-price decline, reframed as a buyback opportunity."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "While it has been painful to see the decline in our market value in 2025 and into 2026, it has also created an opportunity to increase our ownership in a business that we know as well as any and to deploy capital with high conviction.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Rare acknowledgment of a weak spot: flat license growth in a flagship product."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We faced headwinds in Morningstar Direct, where license growth has been flat, although that area did contribute to growth, supported by increased revenue per license and expansion with existing clients in our reporting solutions business.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Blunt aside signaling internal pressure on the research workforce in an AI environment."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Make no mistake, though: Our analysts know that they need to con- stantly up their game to deliver essential insights.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Uses independence/criticism of clients' products as a branding claim."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "our manager research analysts have been unsparing in their criticism of many of the initial semiliquid funds",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Hints at pricing/business-model change without committing to specifics."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Ultimately, AI is changing how investment intelligence is delivered, not what makes it valuable. We are experimenting with updated commercial models as we continue to work closely with clients to structure solutions that meet their evolving needs and reflect the value they get from our offerings.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Frames a long-troubled segment's first profit as a milestone."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The big milestone for Morningstar Wealth was its transition to profitability in 2025, as it contributed $9.6 million to adjusted operating income.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Acknowledges leadership turnover in aggregate, with no reasons given for the departures."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001289419-26-000017",
+        "section_key": "letter_full_text",
+        "filing_date": "2026-03-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In 2025, several long-tenured and senior leaders retired or moved on to new challenges.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "risk_deltas": {
+    "fiscal_year": 2025,
+    "compared_to": 2024,
+    "deltas": {
+      "unchanged": [
+        {
+          "heading": "Our revenues, expenses, assets, and liabilities are subject to fluctuations in foreign currency exchange rates.",
+          "heading_similarity": 100.0,
+          "body_similarity": 99.1
+        },
+        {
+          "heading": "Our indebtedness could adversely affect our cash flow and financial flexibility. Our variable rate indebtedness could subject us to interest rate risk, which could cause our debt service obligations to increase significantly.",
+          "heading_similarity": 100.0,
+          "body_similarity": 96.7
+        },
+        {
+          "heading": "The concentrated ownership position of Joe Mansueto could adversely affect our other shareholders.",
+          "heading_similarity": 100.0,
+          "body_similarity": 97.2
+        },
+        {
+          "heading": "We cannot guarantee we will pay dividends in the future or make any repurchases of our common stock under our repurchase program.",
+          "heading_similarity": 100.0,
+          "body_similarity": 98.9
+        }
+      ],
+      "reworded": [
+        {
+          "heading_now": "Failing to maintain and protect our brand, independence, and reputation may harm our business. Our reputation and business may also be negatively impacted by allegations made about possible conflicts of interest, lack of independence, or by other negative publicity or media reports.",
+          "heading_prior": "Failing to maintain and protect our brand, independence, and reputation may harm our business. Our reputation and business may also be negatively impacted by allegations made about possible conflicts of interest, or by other negative publicity or media reports.",
+          "heading_similarity": 96.0,
+          "body_similarity": 76.0,
+          "changed": "body only",
+          "category_now": "Risks Related to Our Business and Industry",
+          "category_prior": "Risks Related to Our Business and Industry"
+        },
+        {
+          "heading_now": "Failing to create and maintain innovative, proprietary, and insightful product and service offerings, keep pace with new investor requirements, technology developments, and trends, or anticipate our clients\u2019 changing needs may negatively affect our competitive position and business.",
+          "heading_prior": "Failing to create innovative, proprietary and insightful product and service offerings, keep pace with new investor requirements, technology developments, and trends, or anticipate our clients\u2019 changing needs may negatively affect our competitive position and business results.",
+          "heading_similarity": 95.7,
+          "body_similarity": 53.3,
+          "changed": "body only",
+          "category_now": "Risks Related to Our Business and Industry",
+          "category_prior": "Risks Related to Our Business and Industry"
+        },
+        {
+          "heading_now": "Changing economic conditions, including prolonged volatility, recessions, or downturns affecting the financial sector and global financial markets, fluctuating interest rates, and the impacts of global trade policies, may negatively impact our business.",
+          "heading_prior": "Prolonged volatility or downturns affecting the financial sector, global financial markets, and the global economy may impact our financial results.",
+          "heading_similarity": 67.8,
+          "body_similarity": 75.8,
+          "changed": "heading and body",
+          "category_now": "Risks Related to Our Business and Industry",
+          "category_prior": "Risks Related to Our Business and Industry"
+        },
+        {
+          "heading_now": "We could face significant reputational, operational, and financial consequences relating to cybersecurity and the protection of confidential information, including personal information about individuals.",
+          "heading_prior": "We could face significant reputational and financial consequences relating to cybersecurity and the protection of confidential information, including personal information about individuals.",
+          "heading_similarity": 96.4,
+          "body_similarity": 79.5,
+          "changed": "body only",
+          "category_now": "Risks Related to Our Information Technology and Security",
+          "category_prior": "Risks Related to Our Information Technology and Security"
+        },
+        {
+          "heading_now": "AI technologies may present business, legal, compliance, and reputational risks as they are incorporated into our products and tools.",
+          "heading_prior": "AI technologies may present business, legal, and reputational risks as they are incorporated into our products and tools.",
+          "heading_similarity": 95.3,
+          "body_similarity": 81.4,
+          "changed": "body only",
+          "category_now": "Risks Related to Our Information Technology and Security",
+          "category_prior": "Risks Related to Our Information Technology and Security"
+        },
+        {
+          "heading_now": "Failure to protect our intellectual property rights, or claims of intellectual property infringement against us, could harm our brand, our financial results, and our competitive position.",
+          "heading_prior": "Failure to protect our intellectual property rights, or claims of intellectual property infringement against us, could harm our brand, our financial performance and our ability to compete effectively.",
+          "heading_similarity": 86.8,
+          "body_similarity": 72.2,
+          "changed": "heading and body",
+          "category_now": "Risks Related to Our Information Technology and Security",
+          "category_prior": "Risks Related to Our Information Technology and Security"
+        },
+        {
+          "heading_now": "Compliance failures, regulatory action, or changes in laws could adversely affect our business.",
+          "heading_prior": "Compliance failures, regulatory action, or changes in laws could adversely affect our business.",
+          "heading_similarity": 100.0,
+          "body_similarity": 72.8,
+          "changed": "body only",
+          "category_now": "Risks Related to Legal and Regulatory Matters",
+          "category_prior": "Risks Related to Legal and Regulatory Matters"
+        },
+        {
+          "heading_now": "Several of our businesses are highly regulated throughout the world, and the regulatory environment is increasingly complicated and rapidly evolving.",
+          "heading_prior": "Several of our businesses are highly regulated throughout the world and the regulatory environment is increasingly complicated and rapidly evolving.",
+          "heading_similarity": 99.7,
+          "body_similarity": 71.8,
+          "changed": "body only",
+          "category_now": "Risks Related to Legal and Regulatory Matters",
+          "category_prior": "Risks Related to Legal and Regulatory Matters"
+        },
+        {
+          "heading_now": "Environmental, social, and governance considerations could result in enhanced regulatory obligations and expose us to potential liabilities and increased costs.",
+          "heading_prior": "Environmental, social, and governance considerations could result in enhanced regulatory obligations and expose us to potential liabilities and increased costs.",
+          "heading_similarity": 100.0,
+          "body_similarity": 76.2,
+          "changed": "body only",
+          "category_now": "Risks Related to Legal and Regulatory Matters",
+          "category_prior": "Risks Related to Legal and Regulatory Matters"
+        },
+        {
+          "heading_now": "Errors in our automated advisory tools may subject us to liability for any losses that result.",
+          "heading_prior": "Errors in our automated advisory tools may subject us to liability for any losses that result.",
+          "heading_similarity": 100.0,
+          "body_similarity": 71.8,
+          "changed": "body only",
+          "category_now": "Risks Related to Legal and Regulatory Matters",
+          "category_prior": "Risks Related to Legal and Regulatory Matters"
+        },
+        {
+          "heading_now": "Our future success depends on our ability to recruit, develop, and retain qualified employees.",
+          "heading_prior": "Our future success depends on our ability to recruit, develop, and retain qualified employees.",
+          "heading_similarity": 100.0,
+          "body_similarity": 69.9,
+          "changed": "body only",
+          "category_now": "Risks Related to Our Operations",
+          "category_prior": "Risks Related to Our Operations"
+        },
+        {
+          "heading_now": "Our operations are dependent on third-party service providers.",
+          "heading_prior": "We are dependent on third-party service providers in our operations.",
+          "heading_similarity": 93.8,
+          "body_similarity": 73.7,
+          "changed": "heading and body",
+          "category_now": "Risks Related to Our Operations",
+          "category_prior": "Risks Related to Our Operations"
+        },
+        {
+          "heading_now": "Our strategic transactions, acquisitions, dispositions, and investments in companies or technologies may not result in the expected business or financial benefits, ultimately having an adverse effect on our operating results and our ability to deliver long-term value to our shareholders.",
+          "heading_prior": "Our strategic transactions, acquisitions and investments in companies or technologies may not result in the expected business or financial benefits, ultimately having an adverse effect on our operating results and our ability to deliver long-term value to our shareholders.",
+          "heading_similarity": 97.3,
+          "body_similarity": 87.7,
+          "changed": "body only",
+          "category_now": "Risks Related to Our Operations",
+          "category_prior": "Risks Related to Our Operations"
+        },
+        {
+          "heading_now": "The goodwill of our business and other intangible assets could be impaired in the future, requiring us to record substantial impairments that could impact future earnings.",
+          "heading_prior": "The goodwill of our business and other intangible assets from our acquisitions could be impaired as a result of business conditions in the future, requiring us to record substantial impairments that would impact our operating income.",
+          "heading_similarity": 76.7,
+          "body_similarity": 75.5,
+          "changed": "heading and body",
+          "category_now": "Risks Related to Our Operations",
+          "category_prior": "Risks Related to Our Operations"
+        },
+        {
+          "heading_now": "As a global taxpayer, we face challenges due to increasing complexities in accounting for taxes (e.g., base erosion, minimum taxes, and tax transparency), which are high priorities in jurisdictions in which we operate and could materially affect our tax obligations and effective tax rate.",
+          "heading_prior": "As a global taxpayer, we face challenges due to increasing complexities in accounting for taxes (e.g., base erosion, minimum taxes, and tax transparency), which are high priorities in jurisdictions in which we operate and could materially affect our tax obligations and effective tax rate.",
+          "heading_similarity": 100.0,
+          "body_similarity": 78.2,
+          "changed": "body only",
+          "category_now": "Risks Related to Our Operations",
+          "category_prior": "Risks Related to Our Operations"
+        },
+        {
+          "heading_now": "Our insurance coverage may be inadequate or expensive.",
+          "heading_prior": "Our insurance coverage may be inadequate or expensive.",
+          "heading_similarity": 100.0,
+          "body_similarity": 83.4,
+          "changed": "body only",
+          "category_now": "Risks Related to Our Operations",
+          "category_prior": "Risks Related to Our Operations"
+        },
+        {
+          "heading_now": "Our stock price may not reflect our assessment of intrinsic value and future sales of our common stock by our significant shareholders and fluctuations in our operating results may negatively affect our stock price.",
+          "heading_prior": "Future sales of our common stock and fluctuations in our operating results may negatively affect our stock price.",
+          "heading_similarity": 68.9,
+          "body_similarity": 82.2,
+          "changed": "heading and body",
+          "category_now": "Risks Related to Ownership of Our Common Stock",
+          "category_prior": "Risks Related to Ownership of Our Common Stock"
+        }
+      ],
+      "added": [
+        {
+          "heading": "We could face liability stemming from the accuracy and use of our research, ratings, and published data, and our dependence on ingested third-party data, licensed content, and open-source components.",
+          "category": "Risks Related to Our Information Technology and Security",
+          "body_chars": 4120
+        }
+      ],
+      "removed": [
+        {
+          "heading": "We could face liability for failing to properly protect or use the information and data we collect, store, use, create, and distribute or the reports and other documents we publish or that are produced by our software products.",
+          "category": "Risks Related to Our Information Technology and Security",
+          "body_chars": 6133
+        },
+        {
+          "heading": "Our business is complex and has experienced significant growth in recent years which could strain our resources and infrastructure, and if we are unable to effectively scale our operations and increase productivity, we may not be able to successfully implement our business plan.",
+          "category": "Risks Related to Our Operations",
+          "body_chars": 4190
+        },
+        {
+          "heading": "Changes in geopolitics and the regulatory landscape could adversely affect our ability to expand (and the demand for) our product and service offerings.",
+          "category": "Risks Related to Our Operations",
+          "body_chars": 3465
+        }
+      ]
+    },
+    "counts": {
+      "unchanged": 4,
+      "reworded": 17,
+      "added": 1,
+      "removed": 3
+    },
+    "problems": [],
+    "source": {
+      "form": "10-K",
+      "fiscal_year": 2025,
+      "accession": "0001289419-26-000013",
+      "prior_accession": "0001289419-25-000041"
+    }
+  },
+  "data_quality": {
+    "strategic_priorities": {
+      "n": 17,
+      "populated": true,
+      "high_confidence": 17,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item1_business",
+        "letter_full_text"
+      ]
+    },
+    "segments": {
+      "n": 9,
+      "populated": true,
+      "high_confidence": 9,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item1_business",
+        "10-K_item7_mdna"
+      ]
+    },
+    "headcount": {
+      "n": 1,
+      "populated": true,
+      "high_confidence": 1,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item1_business"
+      ]
+    },
+    "leadership": {
+      "n": 2,
+      "populated": true,
+      "high_confidence": 2,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "8-K_8-K_whole"
+      ]
+    },
+    "board": {
+      "n": 11,
+      "populated": true,
+      "high_confidence": 0,
+      "low_confidence": 11,
+      "unverified_quotes": 0,
+      "sources": [
+        "DEF14A_director_bios"
+      ]
+    },
+    "incentive_metrics": {
+      "n": 7,
+      "populated": true,
+      "high_confidence": 7,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "DEF14A_cdna"
+      ]
+    },
+    "vote_results": {
+      "n": 12,
+      "populated": true,
+      "high_confidence": 12,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "8-K_8-K_whole"
+      ]
+    },
+    "events": {
+      "n": 17,
+      "populated": true,
+      "high_confidence": 17,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item7_mdna",
+        "8-K_8-K_whole"
+      ]
+    },
+    "notable_language": {
+      "n": 26,
+      "populated": true,
+      "high_confidence": 26,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item7_mdna",
+        "DEF14A_cdna",
+        "letter_full_text"
+      ]
+    },
+    "risk_deltas": {
+      "populated": true,
+      "counts": {
+        "unchanged": 4,
+        "reworded": 17,
+        "added": 1,
+        "removed": 3
+      },
+      "unavailable_reason": null
+    },
+    "segments_basis": {
+      "filing_uses_reportable_segment_language": true,
+      "basis": "reportable segments as named by the filing"
+    },
+    "extraction_tasks_missing": [],
+    "board_metadata": {
+      "board_size": 10,
+      "committees": [
+        "Audit",
+        "Compensation",
+        "Nominating and Corporate Governance Committee (NCGC)"
+      ]
+    }
+  }
+}

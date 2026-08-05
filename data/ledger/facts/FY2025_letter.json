@@ -1,0 +1,104 @@
+{
+  "fiscal_year": 2025,
+  "task": "letter",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:19:36Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 11965,
+    "output_tokens": 1766
+  },
+  "sources": [
+    {
+      "key": "letter_full_text",
+      "accession": "0001289419-26-000017",
+      "form": "ARS",
+      "filing_date": "2026-03-27"
+    }
+  ],
+  "source_chars": 31329,
+  "facts": {
+    "strategic_priorities": [
+      {
+        "text": "Delivering insights across asset classes to public and private market investors \u2014 making Morningstar the common language of public and private markets",
+        "quote": "Company Goal One Delivering insights across asset classes to public and private market investors One of our highest-priority initiatives is to make Morningstar the common language of public and private markets."
+      },
+      {
+        "text": "Leveraging advances in artificial intelligence to drive innovation across internal and external products and services",
+        "quote": "Leveraging advances in artificial intelligence to drive innovation across internal and external products and services We introduced a dedicated AI goal in 2025 and made significant progress during the year in three primary areas."
+      },
+      {
+        "text": "Driving operational excellence and scalability to support growth targets",
+        "quote": "Driving operational excellence and scalability to support growth targets We made important progress in companywide initiatives as well as segment-specific projects to drive scale across the business and support future growth."
+      },
+      {
+        "text": "Building an amazing culture that supports exceptional talent",
+        "quote": "Building an amazing culture that supports exceptional talent In an AI world, where human-in-the-loop efforts are key to our competitive edge, our people\u201410,973 permanent, full-time employees globally as of as of Dec. 31, 2025\u2014remain one of our most important assets."
+      },
+      {
+        "text": "Increasing adjusted operating income and margins",
+        "quote": "We remain focused on increasing adjusted operating income and margins."
+      },
+      {
+        "text": "Continuing to invest in Morningstar Credit through cycles, focusing on the longer-term growth trendline and more balanced capabilities",
+        "quote": "We plan to keep investing in this area, acknowledging that credit rating activity can vary widely from year to year. We remain focused on the longer-term growth trendline as we develop a more balanced set of capabilities that extend beyond our traditional areas of strength."
+      },
+      {
+        "text": "Focusing Morningstar Wealth on core Investment Management and Morningstar Investor after streamlining",
+        "quote": "Morningstar Wealth is now focused on its core Investment Management business, which includes Morningstar Model Portfolios and the International Wealth Platform, and Morningstar Investor, which serves the individual market."
+      },
+      {
+        "text": "Scaling Morningstar Indexes via the CRSP acquisition",
+        "quote": "We expect this acquisition to be a game changer in our efforts to scale up Morningstar Indexes."
+      },
+      {
+        "text": "Prioritizing a strong balance sheet for flexibility while returning capital via dividends and buybacks",
+        "quote": "We continue to prioritize a strong balance sheet to provide flexibility."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "As always, we view such developments with interest\u2014but also with patience and a long-term perspective. Our focus remains on building a business that compounds value over time.",
+        "why_notable": "Sets a deliberately measured tone against AI hype while still claiming positioning to benefit."
+      },
+      {
+        "quote": "We expect AI models will become ubiquitous and cheap, while high-quality, structured, and verifiable data backed by human insight will become even more valuable.",
+        "why_notable": "Core thesis statement framing the moat argument for an AI era."
+      },
+      {
+        "quote": "More broadly, we believe our moat is not a single asset or technology. It is a compounding system in which data fuels research, research powers IP, and software and AI-enabled tools further embed us into our clients\u2019 workflows.",
+        "why_notable": "Explicit self-description of the competitive moat as a compounding system \u2014 likely recurring framing."
+      },
+      {
+        "quote": "While it has been painful to see the decline in our market value in 2025 and into 2026, it has also created an opportunity to increase our ownership in a business that we know as well as any and to deploy capital with high conviction.",
+        "why_notable": "Unusually direct admission of share-price decline, reframed as a buyback opportunity."
+      },
+      {
+        "quote": "We faced headwinds in Morningstar Direct, where license growth has been flat, although that area did contribute to growth, supported by increased revenue per license and expansion with existing clients in our reporting solutions business.",
+        "why_notable": "Rare acknowledgment of a weak spot: flat license growth in a flagship product."
+      },
+      {
+        "quote": "Make no mistake, though: Our analysts know that they need to con- stantly up their game to deliver essential insights.",
+        "why_notable": "Blunt aside signaling internal pressure on the research workforce in an AI environment."
+      },
+      {
+        "quote": "our manager research analysts have been unsparing in their criticism of many of the initial semiliquid funds",
+        "why_notable": "Uses independence/criticism of clients' products as a branding claim."
+      },
+      {
+        "quote": "Ultimately, AI is changing how investment intelligence is delivered, not what makes it valuable. We are experimenting with updated commercial models as we continue to work closely with clients to structure solutions that meet their evolving needs and reflect the value they get from our offerings.",
+        "why_notable": "Hints at pricing/business-model change without committing to specifics."
+      },
+      {
+        "quote": "The big milestone for Morningstar Wealth was its transition to profitability in 2025, as it contributed $9.6 million to adjusted operating income.",
+        "why_notable": "Frames a long-troubled segment's first profit as a milestone."
+      },
+      {
+        "quote": "In 2025, several long-tenured and senior leaders retired or moved on to new challenges.",
+        "why_notable": "Acknowledges leadership turnover in aggregate, with no reasons given for the departures."
+      }
+    ]
+  }
+}

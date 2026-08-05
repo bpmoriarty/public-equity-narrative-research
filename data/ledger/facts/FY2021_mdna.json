@@ -1,0 +1,124 @@
+{
+  "fiscal_year": 2021,
+  "task": "mdna",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:17:48Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 25005,
+    "output_tokens": 2886
+  },
+  "sources": [
+    {
+      "key": "10-K_item7_mdna",
+      "accession": "0001289419-22-000005",
+      "form": "10-K",
+      "filing_date": "2022-02-25"
+    }
+  ],
+  "source_chars": 71600,
+  "facts": {
+    "events": [
+      {
+        "type": "financing",
+        "description": "364-Day Revolving Credit Facility entered June 30, 2020 expired June 29, 2021 and the company chose not to renew it.",
+        "date": "2021-06-29",
+        "quote": "On June 30, 2020, we entered into a senior credit agreement that provides us with a $50.0 million 364-day senior revolving credit facility. The 364-Day Revolving Credit Facility expired on June 29, 2021 and we chose not to renew the facility upon expiration.mm"
+      },
+      {
+        "type": "financing",
+        "description": "Issuance and sale of $350.0 million aggregate principal amount of 2.32% senior notes due 2030 in a private placement; proceeds primarily used to pay off a portion of outstanding Credit Agreement debt.",
+        "date": "2020-10-26",
+        "quote": "On October 26, 2020, we completed the issuance and sale of the 2030 Notes, in a private placement exempt from the registration requirements of the Securities Act of 1933, as amended. Proceeds were primarily used to pay off a portion of the company's outstanding debt under its Credit Agreement."
+      },
+      {
+        "type": "financing",
+        "description": "Board approved a new $400.0 million share repurchase program effective January 1, 2021, expiring December 31, 2023; only 4,900 shares for $1.3 million repurchased as of year end.",
+        "date": "2020-12-31",
+        "quote": "In December 2020, the board of directors approved a new share repurchase program that authorizes the company to repurchase up to $400.0 million in shares of the company's outstanding common stock, effective January 1, 2021. The authorization expires on December 31, 2023. As of December 31, 2021 , w e repurchased a total of 4,900 shares for $1.3 million under this authorization."
+      },
+      {
+        "type": "financing",
+        "description": "Senior credit agreement providing a five-year multi-currency facility of up to $750.0 million; $11.0 million outstanding on the term facility at December 31, 2021.",
+        "date": "2019-07-02",
+        "quote": "On July 2, 2019, we entered into a senior credit agreement (the Credit Agreement). The Credit Agreement provides the company with a five-year multi-currency credit facility with an initial borrowing capacity of up to $750.0 million, including a $300.0 million revolving credit facility and a term loan facility of $450.0 million."
+      },
+      {
+        "type": "acquisition",
+        "description": "Purchase of the remaining interest in Sustainalytics in July 2020, generating a holding gain on the previously held equity interest of $50.9 million recognized in 2020.",
+        "date": "2020-07-31",
+        "quote": "The holding gain on our previously held equity interest relates to the purchase of the remaining interest in Sustainalytics in July 2020."
+      },
+      {
+        "type": "acquisition",
+        "description": "Acquisition of Moorgate Benchmarks, whose entities are permissioned as U.K. and EU benchmark administrators.",
+        "date": null,
+        "quote": "With our acquisition of Moorgate Benchmarks, Morningstar\u2019s affiliates, Moorgate Benchmarks Limited and Moorgate Benchmarks GmbH, are permissioned to act as an U.K. and EU benchmark administrator, respectively."
+      },
+      {
+        "type": "divestiture",
+        "description": "Sale of the company's equity ownership in two equity method investments during the fourth quarter of 2020.",
+        "date": null,
+        "quote": "The gain on sale of equity method investments in 2020 relates to the sale of our equity ownership in two of our equity method investments during the fourth quarter of 2020."
+      },
+      {
+        "type": "other",
+        "description": "Company states it had no divestitures in 2021, 2020, or 2019.",
+        "date": null,
+        "quote": "Divestitures\nWe had no divestitures in 2021, 2020, or 2019."
+      },
+      {
+        "type": "guidance_change",
+        "description": "Company expects to make regular quarterly dividend payments of 36 cents per share in 2022, subject to board approval.",
+        "date": null,
+        "quote": "S ubsequent dividends will be subject to board approval and we expect to make regular quarterly dividend payments of 36 cents per share in 2022."
+      },
+      {
+        "type": "other",
+        "description": "Sustainalytics revenue began to be included in the organic revenue calculation in Q3 2021, so 2021 organic revenue includes only six months of Sustainalytics.",
+        "date": null,
+        "quote": "We began including Sustainalytics revenue in our organic revenue calculation in the third quarter of 2021. As such, organic revenue for the year-ended December 31, 2021 only includes Sustainalytics revenue for the last six months of 2021."
+      }
+    ],
+    "segment_changes": [
+      {
+        "name": "Custom Models/CIT",
+        "note": "Prior-period assets under management and advisement revised to reclassify CIT assets previously reported in Institutional Asset Management to Custom Models/CIT.",
+        "quote": "Revised to reclass CIT assets previously reported in Institutional Asset Management to Custom Models/CIT."
+      },
+      {
+        "name": "Morningstar Advisor Workstation",
+        "note": "Client count metric revised to reflect updated enterprise client reporting to include clients in Canada.",
+        "quote": "Revised to reflect updated enterprise client reporting for Advisor Workstation to include clients in Canada."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We do not make public financial forecasts for our business because we want to avoid creating any incentives for our management team to make speculative statements about our financial results that could influence our stock price or take actions that help us meet short-term forecasts, but may not build long-term shareholder value.",
+        "why_notable": "Recurring, unusually explicit statement of Morningstar's no-guidance philosophy, framing management incentives directly."
+      },
+      {
+        "quote": "Certain long-term effects of the efforts of monetary authorities and governments to ameliorate the impacts of the pandemic are potentially starting to become evident, including both price and wage inflation as well as the competition for workers. We have noted these effects in our business related to the mobility of employees between jobs and the wage levels needed to hire or retain employees.",
+        "why_notable": "Direct admission of wage inflation and employee turnover pressure affecting the company, new emphasis relative to prior pandemic disclosure."
+      },
+      {
+        "quote": "The threat of new variants of the virus and concerns over the adoption and efficacy of mitigants, such as vaccines and other treatments, continue to affect historical commercial and work patterns, although not with any significant impact on any of our sources of revenue during 2021.",
+        "why_notable": "Hedged COVID framing paired with an explicit claim of no significant revenue impact \u2014 a softening from earlier pandemic uncertainty language."
+      },
+      {
+        "quote": "Investment Management revenue grew 6.1% in 2021, as stronger year-over-year inflows and market performance more than offset the negative impact of previously-disclosed client losses.",
+        "why_notable": "Acknowledges client losses in Investment Management, an admission embedded in otherwise positive growth commentary."
+      },
+      {
+        "quote": "Given more intense regulatory scrutiny and the novelty of some of the issues presented, the possibilities for inadvertent noncompliance with regulation have increased.",
+        "why_notable": "Unusually direct admission that the company's own risk of inadvertent regulatory noncompliance has risen."
+      },
+      {
+        "quote": "Given the nature of our business, global supply chain disruptions have had little impact on the company, but could impact the availability of certain IT infrastructure over time.",
+        "why_notable": "New-for-the-year topic; a plain statement of limited impact with a forward hedge on IT infrastructure."
+      }
+    ]
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "fiscal_year": 2024,
+  "task": "events_8k",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:19:11Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 17649,
+    "output_tokens": 1932
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-24-001428",
+      "form": "8-K",
+      "filing_date": "2024-01-04",
+      "items": [
+        "5.02",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-24-000006",
+      "form": "8-K",
+      "filing_date": "2024-02-23",
+      "items": [
+        "2.02",
+        "5.02",
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-24-000014",
+      "form": "8-K",
+      "filing_date": "2024-03-15",
+      "items": [
+        "5.02",
+        "8.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-24-000038",
+      "form": "8-K",
+      "filing_date": "2024-05-15",
+      "items": [
+        "5.07"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-24-000107",
+      "form": "8-K",
+      "filing_date": "2024-10-23",
+      "items": [
+        "2.02",
+        "5.02",
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001289419-24-000152",
+      "form": "8-K",
+      "filing_date": "2024-12-06",
+      "items": [
+        "5.02",
+        "8.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-24-127251",
+      "form": "8-K",
+      "filing_date": "2024-12-10",
+      "items": [
+        "5.02",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 40153,
+  "facts": {
+    "leadership": [
+      {
+        "name": "Kimberly McGarry",
+        "role": "Chief Accounting Officer (Principal Accounting Officer)",
+        "change": "departed",
+        "date": "2024-01-19",
+        "stated_reason": "to pursue another opportunity",
+        "quote": "Kimberly McGarry, Chief Accounting Officer (Principal Accounting Officer) of Morningstar, Inc. (the \u201cCompany\u201d), has informed the Company that she will depart the Company to pursue another opportunity effective January 19, 2024."
+      },
+      {
+        "name": "Jason Dubinsky",
+        "role": "principal accounting officer (in addition to Chief Financial Officer)",
+        "change": "role_changed",
+        "date": "2024-02-23",
+        "stated_reason": null,
+        "quote": "As of February 23, 2024, the Company designated Jason Dubinsky (age 50) as principal accounting officer, in addition to his current role as Chief Financial Officer (and principal financial officer) of the Company."
+      },
+      {
+        "name": "Conan Wiersema",
+        "role": "principal accounting officer / Chief Accounting Officer",
+        "change": "appointed",
+        "date": "2024-03-15",
+        "stated_reason": null,
+        "quote": "Effective March 15, 2024, Morningstar, Inc. (the \u201cCompany\u201d) appointed Conan Wiersema as principal accounting officer, replacing Jason Dubinsky who has been serving as our principal accounting officer since February 2024."
+      },
+      {
+        "name": "Jason Dubinsky",
+        "role": "principal accounting officer",
+        "change": "role_changed",
+        "date": "2024-03-15",
+        "stated_reason": null,
+        "quote": "Mr. Dubinsky will continue in his role as Chief Financial Officer (and principal financial officer) of the Company."
+      },
+      {
+        "name": "Joe Mansueto",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2024-05-10",
+        "stated_reason": null,
+        "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:\nName\nVotes For\nVotes Against\nAbstentions\nBroker Non-Votes\nJoe Mansueto\n38,313,001\n412,322\n14,969\n838,544"
+      },
+      {
+        "name": "Jason Dubinsky",
+        "role": "Chief Financial Officer",
+        "change": "departed",
+        "date": "2024-12-31",
+        "stated_reason": null,
+        "quote": "On October 23, 2024, the Company announced that Jason Dubinsky, chief financial officer, will be stepping down from his role with the company effective December 31, 2024, after which he will serve in a consulting capacity through June 30, 2025."
+      },
+      {
+        "name": "Michael Holt",
+        "role": "Chief Financial Officer (principal financial officer)",
+        "change": "appointed",
+        "date": "2025-01-01",
+        "stated_reason": null,
+        "quote": "On December 10, 2024, Morningstar, Inc. (\u201cMorningstar\u201d or the \u201cCompany\u201d) announced that Michael Holt, 45, has been appointed chief financial officer (principal financial officer) effective January 1, 2025."
+      }
+    ],
+    "events": [
+      {
+        "type": "other",
+        "description": "Board approved quarterly cash dividend of 40.5 cents per share payable April 30, 2024",
+        "date": "2024-03-15",
+        "quote": "On March 15, 2024, Morningstar issued a press release announcing that its Board of Directors has approved a quarterly cash dividend of 40.5 cents per share payable April 30, 2024 to shareholders of record as of April 5, 2024."
+      },
+      {
+        "type": "other",
+        "description": "Annual Shareholders' Meeting held: directors elected, say-on-pay approved on advisory basis, KPMG ratified as independent registered public accounting firm for 2024",
+        "date": "2024-05-10",
+        "quote": "On May 10, 2024, Morningstar, Inc. (\u201cMorningstar\u201d) held its Annual Shareholders\u2019 Meeting, for the purpose of electing directors, providing an advisory vote on Morningstar\u2019s executive compensation, and ratifying the appointment of KPMG LLP (KPMG) as Morningstar\u2019s independent registered public accounting firm for 2024."
+      },
+      {
+        "type": "leadership_transition",
+        "description": "Separation Agreement and Contract Services Agreement entered with departing CFO Jason Dubinsky, including consulting payments of $52,500 bi-weekly for six months",
+        "date": "2024-12-03",
+        "quote": "On December 3, 2024, Mr. Dubinsky entered into an agreement with the Company (the \u201cSeparation Agreement\u201d) pursuant to which, in consideration for a customary waiver and release of claims against the Company and its affiliates and compliance with certain post-employment covenants, he will be entitled to receive his target cash bonus multiplied by the corporate funding rate for the current fiscal year, a one-time payment in an amount equal to his base salary for 2024, and payment of a portion of the premiums required to continue his healthcare coverage for up to twelve months following the separation date."
+      },
+      {
+        "type": "other",
+        "description": "Board approved quarterly cash dividend of 45.5 cents per share payable January 31, 2025",
+        "date": "2024-12-06",
+        "quote": "On December 6, 2024, Morningstar, Inc. issued a press release announcing that its Board of Directors has approved a quarterly cash dividend of 45.5 cents per share payable January 31, 2025 to shareholders of record as of January 3, 2025."
+      },
+      {
+        "type": "other",
+        "description": "Offer letter with Michael Holt setting compensation as CFO: $450,000 base salary, bonus targeted at 100% of base, RSUs with $275,000 target value and market stock units with $825,000 target value",
+        "date": "2024-12-06",
+        "quote": "Pursuant to an offer letter extended to him in connection with his appointment as chief financial officer, Mr. Holt will receive an annual base salary of $450,000 and is eligible to receive an annual cash bonus targeted at 100% of his base salary."
+      }
+    ]
+  }
+}

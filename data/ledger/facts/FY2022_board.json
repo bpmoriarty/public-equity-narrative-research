@@ -1,0 +1,126 @@
+{
+  "fiscal_year": 2022,
+  "task": "board",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:18:39Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 11390,
+    "output_tokens": 1188
+  },
+  "sources": [
+    {
+      "key": "DEF14A_director_bios",
+      "accession": "0001193125-23-086796",
+      "form": "DEF 14A",
+      "filing_date": "2023-03-31"
+    }
+  ],
+  "source_chars": 31968,
+  "facts": {
+    "board_size": 10,
+    "members": [
+      {
+        "name": "Joe Mansueto",
+        "role": "Chairman of the Board and executive chairman of the Company",
+        "director_since": "1984",
+        "committees": [],
+        "quote": "Joe Mansueto founded Morningstar in 1984 and became executive chairman in 2017. He has served as chairman since our Company\u2019s inception and as chief executive officer from 1984 to 1996 and from 2000 to 2016."
+      },
+      {
+        "name": "Kunal Kapoor",
+        "role": "chief executive officer",
+        "director_since": "2017",
+        "committees": [],
+        "quote": "Kunal Kapoor became chief executive officer of Morningstar in 2017. Before assuming his current role, he served as president, responsible for product development and innovation, sales and marketing, and driving strategic prioritization across the firm."
+      },
+      {
+        "name": "Robin Diamonte",
+        "role": null,
+        "director_since": "2015",
+        "committees": [
+          "Audit",
+          "Nominating and Corporate Governance"
+        ],
+        "quote": "Robin Diamonte was appointed to the Board in December 2015. She is the chief investment officer of Raytheon Technologies Corp."
+      },
+      {
+        "name": "Cheryl Francis",
+        "role": "Chair of the Audit Committee",
+        "director_since": "2002",
+        "committees": [
+          "Audit",
+          "Compensation"
+        ],
+        "quote": "Cheryl Francis was elected to the Board in July 2002. She has been co-chair of Corporate Leadership Center, a not-for-profit organization focused on developing tomorrow\u2019s business leaders, since August 2008"
+      },
+      {
+        "name": "Steve Joynt",
+        "role": null,
+        "director_since": "2019",
+        "committees": [
+          "Compensation",
+          "Nominating and Corporate Governance"
+        ],
+        "quote": "Steve Joynt was appointed to the Board in December 2019. He served as chief executive officer of DBRS, the global credit ratings agency acquired by Morningstar in July 2019"
+      },
+      {
+        "name": "Steve Kaplan",
+        "role": null,
+        "director_since": "1999",
+        "committees": [
+          "Compensation",
+          "Nominating and Corporate Governance"
+        ],
+        "quote": "Steve Kaplan served as a member of our advisory board beginning in 1998 and was elected to the Board in August 1999."
+      },
+      {
+        "name": "Gail Landis",
+        "role": null,
+        "director_since": "2013",
+        "committees": [
+          "Audit",
+          "Nominating and Corporate Governance"
+        ],
+        "quote": "Gail Landis was elected to the Board in May 2013. She was a founding partner of Evercore Asset Management, LLC, an institutional asset management firm"
+      },
+      {
+        "name": "Bill Lyons",
+        "role": null,
+        "director_since": "2007",
+        "committees": [
+          "Compensation",
+          "Nominating and Corporate Governance"
+        ],
+        "quote": "Bill Lyons was appointed to the Board in September 2007. He served as president and chief executive officer of American Century Companies, Inc., an investment management company, from September 2000 until his retirement in March 2007."
+      },
+      {
+        "name": "Doniel Sutton",
+        "role": null,
+        "director_since": "2021",
+        "committees": [
+          "Audit",
+          "Compensation"
+        ],
+        "quote": "Doniel Sutton was appointed to the Board in May 2021. She joined Alteryx, Inc., a company that provides data analytics software, as chief people officer in August 2022."
+      },
+      {
+        "name": "Caroline Tsay",
+        "role": null,
+        "director_since": "2017",
+        "committees": [
+          "Audit",
+          "Nominating and Corporate Governance"
+        ],
+        "quote": "Caroline Tsay was elected to the Board in May 2017. She served as chief executive officer of Compute Software, Inc., an enterprise cloud infrastructure software company, from January 2017 to November 2022."
+      }
+    ],
+    "committees": [
+      "Audit",
+      "Compensation",
+      "Nominating and Corporate Governance"
+    ]
+  }
+}

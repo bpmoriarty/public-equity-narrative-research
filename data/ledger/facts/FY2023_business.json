@@ -1,0 +1,91 @@
+{
+  "fiscal_year": 2023,
+  "task": "business",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:12:36Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 33941,
+    "output_tokens": 1321
+  },
+  "sources": [
+    {
+      "key": "10-K_item1_business",
+      "accession": "0001289419-24-000010",
+      "form": "10-K",
+      "filing_date": "2024-02-29"
+    }
+  ],
+  "source_chars": 101977,
+  "facts": {
+    "strategic_priorities": [
+      {
+        "text": "Our strategy is to deliver insights and experiences that make us essential to investor workflow.",
+        "quote": "Our strategy is to deliver insights and experiences that make us essential to investor workflow. Proprietary data sets, meaningful analytics, independent research, and effective investment strategies are at the core of the powerful digital solutions that investors across our client segments rely on."
+      },
+      {
+        "text": "Deliver differentiated insights across asset classes to public and private market investors",
+        "quote": "We are currently focused on the following four strategic priorities:\nDeliver differentiated insights across asset classes to public and private market investors"
+      },
+      {
+        "text": "Leverage advances in AI to drive innovation across internal and external products and services",
+        "quote": "Leverage advances in AI to drive innovation across internal and external products and services\nMorningstar has always been at the forefront of technology, and we believe that AI is a significant technology that will redefine the investment landscape."
+      },
+      {
+        "text": "Drive operational excellence and scalability to support growth targets",
+        "quote": "Drive operational excellence and scalability to support growth targets\nMorningstar has grown significantly in the last few years, and as we have continued to focus on growth in 2023 and beyond, we are emphasizing execution and scalability in our operations, processes, and technology."
+      },
+      {
+        "text": "Build an inclusive culture that drives exceptional talent engagement and development",
+        "quote": "Build an inclusive culture that drives exceptional talent engagement and development\nMorningstar\u2019s people and culture strategy is centered on providing a focused and differentiated approach to human capital driven by business needs."
+      },
+      {
+        "text": "A key aspect of our growth strategy is to expand our investment and credit research capabilities and enhance our existing products and services.",
+        "quote": "A key aspect of our growth strategy is to expand our investment and credit research capabilities and enhance our existing products and services. We strive to adopt new technology that can improve our products and services."
+      },
+      {
+        "text": "New strategic structure that more tightly connects Morningstar Indexes with Morningstar Sustainalytics",
+        "quote": "In 2023, Morningstar announced a new strategic structure that more tightly connects the index capabilities of Morningstar Indexes with the ESG data, ratings, and research of Morningstar Sustainalytics."
+      }
+    ],
+    "segments": [
+      {
+        "name": "Morningstar Data and Analytics",
+        "note": null,
+        "quote": "We operate our business through five reportable segments: Morningstar Data and Analytics, PitchBook, Morningstar Wealth, Morningstar Credit, and Morningstar Retirement."
+      },
+      {
+        "name": "PitchBook",
+        "note": null,
+        "quote": "We operate our business through five reportable segments: Morningstar Data and Analytics, PitchBook, Morningstar Wealth, Morningstar Credit, and Morningstar Retirement."
+      },
+      {
+        "name": "Morningstar Wealth",
+        "note": null,
+        "quote": "Morningstar Wealth brings together Investment Management, which includes our model portfolios and wealth platforms; practice and portfolio management software for registered investment advisers (RIAs) (Morningstar Office); data aggregation and enrichment capabilities (ByAllAccounts); and our individual investor platform (Morningstar.com)."
+      },
+      {
+        "name": "Morningstar Credit",
+        "note": null,
+        "quote": "Morningstar Credit provides investors with credit ratings, research, data, and credit analytics solutions that we believe contribute to the transparency of international and domestic credit markets."
+      },
+      {
+        "name": "Morningstar Retirement",
+        "note": null,
+        "quote": "Morningstar Retirement offers products designed to help individuals reach their retirement goals."
+      },
+      {
+        "name": "Corporate and All Other",
+        "note": null,
+        "quote": "Corporate and All Other includes unallocated corporate expenses as well as financial results from Morningstar Sustainalytics and Morningstar Indexes."
+      }
+    ],
+    "headcount": {
+      "value": 11334,
+      "as_stated": "As of December 31, 2023, we had 11,334 permanent, full-time employees around the world.",
+      "quote": "As of December 31, 2023, we had 11,334 permanent, full-time employees around the world."
+    }
+  }
+}

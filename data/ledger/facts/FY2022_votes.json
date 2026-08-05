@@ -1,0 +1,145 @@
+{
+  "fiscal_year": 2022,
+  "task": "votes",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:18:53Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 3672,
+    "output_tokens": 1829
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-23-062268",
+      "form": "8-K",
+      "filing_date": "2023-05-18",
+      "proxy_accession": "0001193125-23-086796",
+      "proxy_filed": "2023-03-31"
+    }
+  ],
+  "source_chars": 4661,
+  "facts": {
+    "results": [
+      {
+        "matter": "Election of director Joe Mansueto",
+        "votes_for": 36007677,
+        "votes_against": 559148,
+        "abstentions": 39646,
+        "broker_non_votes": 814216,
+        "outcome": "elected",
+        "quote": "Joe Mansueto\n36,007,677\n559,148\n39,646\n814,216"
+      },
+      {
+        "matter": "Election of director Kunal Kapoor",
+        "votes_for": 36197227,
+        "votes_against": 392476,
+        "abstentions": 16768,
+        "broker_non_votes": 814216,
+        "outcome": "elected",
+        "quote": "Kunal Kapoor\n36,197,227\n392,476\n16,768\n814,216"
+      },
+      {
+        "matter": "Election of director Robin Diamonte",
+        "votes_for": 30635244,
+        "votes_against": 5859156,
+        "abstentions": 112071,
+        "broker_non_votes": 814216,
+        "outcome": "elected",
+        "quote": "Robin Diamonte\n30,635,244\n5,859,156\n112,071\n814,216"
+      },
+      {
+        "matter": "Election of director Cheryl Francis",
+        "votes_for": 29980742,
+        "votes_against": 6608452,
+        "abstentions": 17277,
+        "broker_non_votes": 814216,
+        "outcome": "elected",
+        "quote": "Cheryl Francis\n29,980,742\n6,608,452\n17,277\n814,216"
+      },
+      {
+        "matter": "Election of director Steve Joynt",
+        "votes_for": 28418251,
+        "votes_against": 8164430,
+        "abstentions": 23790,
+        "broker_non_votes": 814216,
+        "outcome": "elected",
+        "quote": "Steve Joynt\n28,418,251\n8,164,430\n23,790\n814,216"
+      },
+      {
+        "matter": "Election of director Steve Kaplan",
+        "votes_for": 35701696,
+        "votes_against": 887546,
+        "abstentions": 17229,
+        "broker_non_votes": 814216,
+        "outcome": "elected",
+        "quote": "Steve Kaplan\n35,701,696\n887,546\n17,229\n814,216"
+      },
+      {
+        "matter": "Election of director Gail Landis",
+        "votes_for": 28847455,
+        "votes_against": 7647573,
+        "abstentions": 111443,
+        "broker_non_votes": 814216,
+        "outcome": "elected",
+        "quote": "Gail Landis\n28,847,455\n7,647,573\n111,443\n814,216"
+      },
+      {
+        "matter": "Election of director Bill Lyons",
+        "votes_for": 34838178,
+        "votes_against": 1744486,
+        "abstentions": 23807,
+        "broker_non_votes": 814216,
+        "outcome": "elected",
+        "quote": "Bill Lyons\n34,838,178\n1,744,486\n23,807\n814,216"
+      },
+      {
+        "matter": "Election of director Doniel Sutton",
+        "votes_for": 30473609,
+        "votes_against": 6020559,
+        "abstentions": 112303,
+        "broker_non_votes": 814216,
+        "outcome": "elected",
+        "quote": "Doniel Sutton\n30,473,609\n6,020,559\n112,303\n814,216"
+      },
+      {
+        "matter": "Election of director Caroline Tsay",
+        "votes_for": 30651721,
+        "votes_against": 5937474,
+        "abstentions": 17276,
+        "broker_non_votes": 814216,
+        "outcome": "elected",
+        "quote": "Caroline Tsay\n30,651,721\n5,937,474\n17,276\n814,216"
+      },
+      {
+        "matter": "Advisory vote on Morningstar's executive compensation",
+        "votes_for": 36048167,
+        "votes_against": 521906,
+        "abstentions": 36396,
+        "broker_non_votes": 814216,
+        "outcome": "approved, on an advisory basis",
+        "quote": "Morningstar\u2019s executive compensation was approved, on an advisory basis, with the voting as follows:"
+      },
+      {
+        "matter": "Advisory vote on the frequency of future advisory votes on executive compensation (1 Year: 36,173,863; 2 Years: 10,038; 3 Years: 388,058; Abstain: 34,512; Broker Non-Votes: 814,216)",
+        "votes_for": null,
+        "votes_against": null,
+        "abstentions": null,
+        "broker_non_votes": null,
+        "outcome": "A one year frequency was recommended, on an advisory basis; Morningstar will conduct future advisory votes on executive compensation on an annual basis until the next required frequency vote",
+        "quote": "A one year frequency for the frequency of votes on executive compensation was recommended, on an advisory basis, with the voting as follows:"
+      },
+      {
+        "matter": "Ratification of the appointment of KPMG LLP as Morningstar's independent registered public accounting firm for 2023",
+        "votes_for": 37117724,
+        "votes_against": 239449,
+        "abstentions": 63514,
+        "broker_non_votes": null,
+        "outcome": "ratified",
+        "quote": "The appointment of KPMG as Morningstar\u2019s independent registered public accounting firm for 2023 was ratified with the voting as follows:"
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "fiscal_year": 2022,
+  "task": "events_8k",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:18:51Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 12992,
+    "output_tokens": 1528
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-22-042328",
+      "form": "8-K",
+      "filing_date": "2022-04-04",
+      "items": [
+        "1.01",
+        "7.01",
+        "8.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-22-058246",
+      "form": "8-K",
+      "filing_date": "2022-05-10",
+      "items": [
+        "1.01",
+        "2.03",
+        "3.03"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-22-059482",
+      "form": "8-K",
+      "filing_date": "2022-05-12",
+      "items": [
+        "5.02",
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-22-061422",
+      "form": "8-K",
+      "filing_date": "2022-05-16",
+      "items": [
+        "5.07",
+        "8.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 27276,
+  "facts": {
+    "leadership": [
+      {
+        "name": "Bevin Desmond",
+        "role": "Chief Talent and Culture Officer",
+        "change": "departed",
+        "date": "2022-05-06",
+        "stated_reason": "to focus more time on her family",
+        "quote": "On May 6, 2022, Bevin Desmond, the Chief Talent and Culture Officer of Morningstar, Inc. (\u201cMorningstar\u201d), informed Morningstar\u2019s Chief Executive Officer that she has decided to depart Morningstar in August 2022 to focus more time on her family."
+      }
+    ],
+    "events": [
+      {
+        "type": "acquisition",
+        "description": "Morningstar entered an Asset Purchase Agreement with S&P Global Inc. to acquire its Leveraged Commentary & Data business and related leveraged loan indices portfolio for up to $650.0 million in cash ($600.0 million at closing plus contingent payment of up to $50.0 million six months after closing), with closing expected early in Q3 2022.",
+        "date": "2022-04-03",
+        "quote": "On April 3, 2022, Morningstar, Inc. (\u201cMorningstar\u201d) entered into an Asset Purchase Agreement (the \u201cAgreement\u201d) with S&P Global Inc., a New York corporation (\u201cSeller\u201d), pursuant to which, and subject to the terms and conditions thereof, Seller has agreed to sell its Leveraged Commentary & Data business and its related leveraged loan indices portfolio (the \u201cBusiness\u201d) to Morningstar for up to $650.0 million in cash"
+      },
+      {
+        "type": "financing",
+        "description": "Morningstar entered a debt commitment letter with Bank of America, N.A. for financing of up to $1.05 billion, consisting of a five-year $650.0 million term facility and a five-year $400.0 million revolving credit facility, to assist with the acquisition.",
+        "date": "2022-04-03",
+        "quote": "In connection with the entry into the Agreement, on April 3, 2022, Morningstar also entered into a debt commitment letter (the \u201cCommitment Letter\u201d) with Bank of America, N.A. (the \u201cCommitment Party\u201d), pursuant to which, and subject to the terms and conditions thereof, the Commitment Party committed to provide to Morningstar financing in the aggregate amount of up to $1.05 billion to assist with the acquisition of the Business"
+      },
+      {
+        "type": "financing",
+        "description": "Morningstar entered a new Credit Agreement with Bank of America, N.A. as Administrative Agent providing a five-year multi-currency credit facility of up to $1.1 billion, including a $450.0 million revolving credit facility and a delayed draw term facility of up to $650.0 million; $180.0 million was outstanding under the revolver as a rollover of the prior credit agreement.",
+        "date": "2022-05-06",
+        "quote": "The Credit Agreement provides Morningstar with a five-year multi-currency credit facility with a borrowing capacity of up to $1.1 billion, including a $450.0 million revolving credit facility (the \u201cRevolving Credit Facility\u201d) and a delayed draw term facility of up to $650.0 million (the \u201cTerm Facility\u201d and, together with the Revolving Credit Facility, the \u201cFacility\u201d)."
+      },
+      {
+        "type": "other",
+        "description": "Credit Agreement covenants restrict the Company's ability to pay dividends with respect to its capital stock.",
+        "date": "2022-05-06",
+        "quote": "The Credit Agreement contains a covenant that, among other things, restricts the Company\u2019s and its subsidiaries\u2019 and certain of its affiliates\u2019 ability to, among other things, pay dividends with respect to its capital stock."
+      },
+      {
+        "type": "other",
+        "description": "Annual Shareholders' Meeting held; all director nominees elected, executive compensation approved on an advisory basis, and KPMG LLP ratified as independent registered public accounting firm for 2022.",
+        "date": "2022-05-13",
+        "quote": "Morningstar held its Annual Shareholders\u2019 Meeting on May 13, 2022, for the purpose of electing directors, providing an advisory vote on Morningstar\u2019s executive compensation, and ratifying the appointment of KPMG LLP (KPMG) as Morningstar\u2019s independent registered public accounting firm for 2022."
+      },
+      {
+        "type": "other",
+        "description": "Board of Directors approved a quarterly cash dividend of 36 cents per share payable July 29, 2022 to shareholders of record as of July 1, 2022.",
+        "date": "2022-05-13",
+        "quote": "On May 13, 2022, Morningstar issued a press release announcing that its Board of Directors has approved a quarterly cash dividend of 36 cents per share payable July 29, 2022 to shareholders of record as of July 1, 2022."
+      }
+    ]
+  }
+}

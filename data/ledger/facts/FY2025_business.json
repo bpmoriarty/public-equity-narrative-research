@@ -1,0 +1,95 @@
+{
+  "fiscal_year": 2025,
+  "task": "business",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:19:24Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 22660,
+    "output_tokens": 1688
+  },
+  "sources": [
+    {
+      "key": "10-K_item1_business",
+      "accession": "0001289419-26-000013",
+      "form": "10-K",
+      "filing_date": "2026-02-13"
+    }
+  ],
+  "source_chars": 64787,
+  "facts": {
+    "strategic_priorities": [
+      {
+        "text": "Our strategy is to deliver insights and experiences that make us essential to the investor workflow.",
+        "quote": "Our strategy is to deliver insights and experiences that make us essential to the investor workflow.\nWe are currently focused on the following five strategic priorities:"
+      },
+      {
+        "text": "Win for Investors: Deliver differentiated insights and solutions that make us essential to investors by emphasizing research as the company's research & development (R&D) engine.",
+        "quote": "\u2022 Win for Investors: Deliver diff erentiated insights and solutions that make us essential to investors by emphasizing research as the company\u2019s research & development (R&D) engine."
+      },
+      {
+        "text": "Lead in AI to Empower Investor Success: Make Morningstar AI-native, rethinking capabilities and processes to greatly improve the speed and quality of insights and experiences essential to the investor workflow.",
+        "quote": "\u2022 Lead in AI to Empower Investor Success: Make Morningstar AI-native, rethinking capabilities and processes to greatly improve the speed and quality of insights and experiences essential to the investor workflow."
+      },
+      {
+        "text": "Own the Language of Markets: Become the trusted universal language for public and private markets.",
+        "quote": "\u2022 Own the Language of Markets: Become the trusted universal language for public and private markets."
+      },
+      {
+        "text": "Scale for Impact: Drive operational excellence and scalability to support profitable growth.",
+        "quote": "\u2022 Scale for Impact: Drive operational excellence and scalability to support profitable growth."
+      },
+      {
+        "text": "Build an Exceptional Culture: Foster a workplace where every employee is empowered to make a difference and act with integrity.",
+        "quote": "\u2022 Build an Exceptional Culture: Foster a workplace where every employee is empowered to make a difference and act with integrity."
+      },
+      {
+        "text": "A key aspect of our growth strategy is to expand and enhance our existing products and services, striving to adopt new technology, including AI.",
+        "quote": "A key aspect of our growth strategy is to expand and enhance our existing products and services. We strive to adopt new technology, including AI, that can improve our products and services."
+      },
+      {
+        "text": "Sharpen Morningstar Sustainalytics' focus on its core data, research and ratings businesses by retiring the second-party opinions product",
+        "quote": "In January 2026, we announced our plans to retire our second-party opinions product by the end of the first quarter as part of a broader effort to sharpen Morningstar Sustainalytics\u2019 focus on its core data, research and ratings businesses."
+      }
+    ],
+    "segments": [
+      {
+        "name": "Morningstar Direct Platform",
+        "note": "In 2025, the composition of the key product areas within the segment was updated; the document states there were no changes to the overall composition of the segment.",
+        "quote": "In 2025, we updated the composition of the key product areas (Morningstar Data, Morningstar Direct, Morningstar Advisor Workstation) within the Morningstar Direct Platform segment. There were no changes to the overall composition of the Morningstar Direct Platform segment."
+      },
+      {
+        "name": "PitchBook",
+        "note": null,
+        "quote": "We operate our business through five reportable segments: Morningstar Direct Platform, PitchBook, Morningstar Credit, Morningstar Wealth, and Morningstar Retirement."
+      },
+      {
+        "name": "Morningstar Credit",
+        "note": null,
+        "quote": "Morningstar Credit provides investors with credit ratings, research, data, and credit analytics solutions that, we believe, contribute to the transparency of international and domestic credit markets. Morningstar Credit includes Morningstar DBRS and Morningstar Credit Analytics (MCA)."
+      },
+      {
+        "name": "Morningstar Wealth",
+        "note": "Document states plans announced in February 2025 to retire Morningstar Office, and completion in 2025 of the retirement of the US Morningstar Wealth Turnkey Asset Management Platform (TAMP).",
+        "quote": "In February 2025, we announced plans to retire Morningstar Office, our practice and portfolio management software for registered investment advisors (RIAs). The transition of clients to SS&C's Black Diamond and alternative platforms is underway and is expected to be completed in early 2026. In 2025, we also completed the retirement of our US Morningstar Wealth Turnkey Asset Management Platform (TAMP) following the sale of customer assets to AssetMark in 2024."
+      },
+      {
+        "name": "Morningstar Retirement",
+        "note": null,
+        "quote": "Morningstar Retirement\u2019s primary offerings include managed retirement accounts (MRA), fiduciary services, and custom models."
+      },
+      {
+        "name": "Corporate and All Other",
+        "note": "Includes unallocated corporate expenses as well as financial results from Morningstar Sustainalytics and Morningstar Indexes",
+        "quote": "Corporate and All Other includes unallocated corporate expenses as well as financial results from Morningstar Sustainalytics and Morningstar Indexes."
+      }
+    ],
+    "headcount": {
+      "value": 10973,
+      "as_stated": "As of December 31, 2025, we had 10,973 permanent, full-time employees around the world.",
+      "quote": "As of December 31, 2025, we had 10,973 permanent, full-time employees around the world."
+    }
+  }
+}

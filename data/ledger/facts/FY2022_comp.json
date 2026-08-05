@@ -1,0 +1,119 @@
+{
+  "fiscal_year": 2022,
+  "task": "comp",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:18:31Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 22767,
+    "output_tokens": 2391
+  },
+  "sources": [
+    {
+      "key": "DEF14A_cdna",
+      "accession": "0001193125-23-086796",
+      "form": "DEF 14A",
+      "filing_date": "2023-03-31"
+    },
+    {
+      "key": "DEF14A_incentive_tables",
+      "accession": "0001193125-23-086796",
+      "form": "DEF 14A",
+      "filing_date": "2023-03-31"
+    }
+  ],
+  "source_chars": 59535,
+  "facts": {
+    "incentive_metrics": [
+      {
+        "metric": "Adjusted Revenue",
+        "plan": "Corporate Incentive Plan (annual cash bonus)",
+        "weight": "67%",
+        "target_or_range": "Target goal $1,939.0 million; actual $1,883.1 million (97.1% attainment), unweighted funding factor 91.5%",
+        "quote": "At the beginning of 2022, the Compensation Committee established a funding formula that specifies bonus funding for Adjusted Revenue and Adjusted EBITDA based on various performance levels, with the final funding factor being weighted 67% for Adjusted Revenue and 33% for Adjusted EBITDA."
+      },
+      {
+        "metric": "Adjusted EBITDA",
+        "plan": "Corporate Incentive Plan (annual cash bonus)",
+        "weight": "33%",
+        "target_or_range": "Target goal $570.2 million; actual $497.2 million (87.2% attainment), unweighted funding factor 75.9%",
+        "quote": "Our Adjusted EBITDA actual performance was $497.2 million compared with a target goal of $570.2 million."
+      },
+      {
+        "metric": "Total Shareholder Return (absolute, three-year)",
+        "plan": "Market Stock Unit (MSU) long-term plan",
+        "weight": "75% of annual equity grant allocated to market stock units",
+        "target_or_range": "0% vesting if TSR is negative 13.33%; 100% vesting if TSR is 20%; 200% vesting if TSR is 70%",
+        "quote": "Performance Level\nShares Earned as a Percentage of Target Market Stock Units\nThreshold TSR\n0% vesting if TSR is negative 13.33%\nTarget TSR\n100% vesting if TSR is 20%\nMaximum TSR\n200% vesting if TSR is 70%"
+      },
+      {
+        "metric": "Adjusted Revenue (revenue kicker / modifier)",
+        "plan": "2022 Market Stock Units",
+        "weight": null,
+        "target_or_range": "100% - 150% of shares earned based on TSR performance",
+        "quote": "Performance Measure\nRevenue Kicker\nAdjusted Revenue\n100% - 150% of shares earned based on TSR performance"
+      },
+      {
+        "metric": "Three-year Revenue CAGR kicker",
+        "plan": "Market Stock Units (2022 and 2021 grants)",
+        "weight": null,
+        "target_or_range": "Kicker applies to CEO target value of $2,625,000 in 2022 vs $1,000,000 in 2021",
+        "quote": "2022 Market Stock Unit Kicker\nApproximate Target Value of\n2022 Market Stock Units\n2021 Market Stock Unit Kicker\nApproximate Target Value of\n2021 Market Stock Units\nKunal Kapoor\n3-year Revenue CAGR\n$2,625,000"
+      },
+      {
+        "metric": "Total shareholder return with Adjusted Revenue modifier (2019 MSU grants, vested 2022)",
+        "plan": "2019 Market Stock Units (May and November)",
+        "weight": null,
+        "target_or_range": "Threshold 0% at TSR of negative 23.33%; target 100% at 10%; maximum 150% at 35%; revenue kicker 100%-150%; actual payout 165.2% of target",
+        "quote": "Actual TSR and Adjusted Revenue and Actual MSUs vesting\n165.2% of target MSUs vested due to actual TSR of 90.9% and an Adjusted Revenue of $1,594.4 million"
+      },
+      {
+        "metric": "Individual performance adjustment",
+        "plan": "Corporate Incentive Plan (annual bonus)",
+        "weight": null,
+        "target_or_range": "100% for Kunal, Jason and Bevin; 130% for Danny Dunn, with 15% of funding factor delivered in restricted stock units",
+        "quote": "Also, as part of the Company\u2019s program to deliver outsized awards to top performers, Kunal recommended and the Compensation Committee approved an individual performance adjustment for Danny, and that a portion of the adjustment be delivered in restricted stock units that vest 18 months after the grant date."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "In 2022, we modified our equity program to provide a higher mix of performance-based compensation as compared with 2021. For executive officers, the mix of annual equity grant changed from 50% Market Stock Units / 50% Restricted Stock Units to 75% Market Stock Units / 25% Restricted Stock Units.",
+        "why_notable": "Explicit statement of the year's key design change, shifting the equity mix toward performance-based awards."
+      },
+      {
+        "quote": "We conduct a robust goal setting process and our performance in 2022 was below our target goals for Adjusted Revenue and Adjusted EBITDA",
+        "why_notable": "Unusually direct admission of missing both annual financial targets, paired with a defence of the goal-setting process."
+      },
+      {
+        "quote": "Does not use rigid formulas to determine executive compensation but nevertheless aims to tie annual cash incentive compensation closely to value creation, as measured by increases in Adjusted Revenue and Adjusted EBITDA or similar measures.",
+        "why_notable": "Recurring philosophy language preserving committee discretion while claiming formulaic alignment."
+      },
+      {
+        "quote": "When the financial and strategic performance measures were established, and consistent with prior years, the Committee determined that these adjustments, and other significant charges not included in the Company\u2019s internal 2022 budget should be excluded from both the establishment of goals as well as the determination of payout calculations to more closely align with the underlying operating performance of the business.",
+        "why_notable": "Justification for a broad set of non-GAAP exclusions that affect both goal setting and payout, framed as consistency with prior years."
+      },
+      {
+        "quote": "His salary was not changed in 2022 and remains at $500,000, the lowest in the peer group. His target bonus was increased from $1,000,000 to $1,500,000 and the target annual equity award was increased from $2,000,000 to $3,500,000.",
+        "why_notable": "Committee justifies a large increase in CEO variable pay by benchmarking to peer percentiles while emphasising an unchanged low salary."
+      },
+      {
+        "quote": "The Company fell short of its financial targets but navigated relatively well through difficult credit and equity markets in the second half of 2022.",
+        "why_notable": "Qualitative framing of the shortfall used in support of a 100% individual performance factor for the CEO."
+      },
+      {
+        "quote": "Given the significant shareholder support, the Compensation Committee did not make any changes to the Company\u2019s executive compensation program in response to the 2022 say on pay vote.",
+        "why_notable": "Uses the 98% say-on-pay result to justify no responsive changes."
+      },
+      {
+        "quote": "Our Total Shareholder Return, which is measured over a three-year time frame on an absolute basis, far exceeded the target goals in our long-term Market Stock Unit plan.",
+        "why_notable": "Highlights the absolute (not relative) TSR basis, which produced above-maximum payouts in a year when one-year TSR was -36.3%."
+      },
+      {
+        "quote": "We do not have any employment agreements or change-in-control agreements with any of our executive officers.",
+        "why_notable": "Recurring governance claim about the absence of contractual severance protections."
+      }
+    ]
+  }
+}

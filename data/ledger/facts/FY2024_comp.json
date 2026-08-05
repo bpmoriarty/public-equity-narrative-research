@@ -1,0 +1,123 @@
+{
+  "fiscal_year": 2024,
+  "task": "comp",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:19:02Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 20169,
+    "output_tokens": 2764
+  },
+  "sources": [
+    {
+      "key": "DEF14A_cdna",
+      "accession": "0001193125-25-067151",
+      "form": "DEF 14A",
+      "filing_date": "2025-03-28"
+    },
+    {
+      "key": "DEF14A_incentive_tables",
+      "accession": "0001193125-25-067151",
+      "form": "DEF 14A",
+      "filing_date": "2025-03-28"
+    }
+  ],
+  "source_chars": 50278,
+  "facts": {
+    "incentive_metrics": [
+      {
+        "metric": "Adjusted Revenue",
+        "plan": "Corporate Incentive Plan (annual incentive)",
+        "weight": "50%",
+        "target_or_range": "Target goal $2,292.5 million; achievement $2,278.6 million (99.4% of target), unweighted funding factor 98.5%",
+        "quote": "Adjusted Revenue (Millions)\n$2,292.5\n$2,278.6\n99.4%\n98.5%\n50%\n113.2%"
+      },
+      {
+        "metric": "Adjusted Operating Income (AOI)",
+        "plan": "Corporate Incentive Plan (annual incentive)",
+        "weight": "50%",
+        "target_or_range": "Target goal $609.6 million; achievement $677.5 million (111.1% of target), unweighted funding factor 127.8%",
+        "quote": "Adjusted Operating Income (Millions)\n$ 609.6\n$ 677.5\n111.1%\n127.8%\n50%"
+      },
+      {
+        "metric": "Individual performance factor",
+        "plan": "Corporate Incentive Plan (annual incentive)",
+        "weight": null,
+        "target_or_range": "Kunal Kapoor 120%; Jason Dubinsky 100%; Danny Dunn 100%",
+        "quote": "Each executive\u2019s annual incentive target is multiplied by the financial performance factor funding above and the individual performance factor funding, as described in more detail below, to arrive at the final bonus amount."
+      },
+      {
+        "metric": "Total shareholder return (TSR) over three-year performance period",
+        "plan": "Market Stock Units (MSUs) under the 2021 Plan",
+        "weight": "75% of annual equity award mix",
+        "target_or_range": "0% vesting if TSR is negative 13.33%; 100% vesting if TSR is 20%; 200% vesting if TSR is 70%",
+        "quote": "Performance Level\nShares Earned as a Percentage of Target Market Stock Units\nThreshold TSR\n0% vesting if TSR is negative 13.33%\nTarget TSR\n100% vesting if TSR is 20%\nMaximum TSR\n200% vesting if TSR is 70%"
+      },
+      {
+        "metric": "Adjusted operating income (AOI) outperformance over three-year period January 1, 2024 \u2013 December 31, 2026",
+        "plan": "Stretch performance stock units (stretch PSUs) under the 2021 Plan",
+        "weight": "Not factored into target equity mix (no value attributed at grant)",
+        "target_or_range": "0% vesting at 100% of Target AOI Goal; 100% vesting at 112.5% of Target AOI Goal; 200% of base amount at 125% of Target AOI Goal",
+        "quote": "Performance Level\nPayout Level (1)\n100% of Target AOI Goal\n0% vesting if achieved\n112.5% of Target AOI Goal\n100% vesting if achieved (2)\n125% of Target AOI Goal\n200% of base amount vesting if achieved"
+      },
+      {
+        "metric": "Time-based vesting (continued service)",
+        "plan": "Restricted Stock Units (RSUs) under the 2021 Plan",
+        "weight": "25% of annual equity award mix",
+        "target_or_range": "Vest in four equal annual installments commencing on the first anniversary of the grant date",
+        "quote": "Restricted Stock Units: In 2024, the Compensation Committee granted RSUs to our participating NEOs that vest in four equal annual installments commencing on the first anniversary of the grant date and subject to their continued employment through the applicable vesting date."
+      },
+      {
+        "metric": "Three-year Adjusted Revenue CAGR (revenue kicker on 2021 MSUs)",
+        "plan": "May 2021 and November 2021 MSU awards",
+        "weight": "100% - 200% modifier (May 2021 grant); 100% - 150% modifier (November 2021 grant)",
+        "target_or_range": "Adjusted Revenue achievement reflecting a CAGR of 12.0% compared to a target of 11.2% for 2021-2023; May 2021 kicker of 107.3%, November 2021 kicker of 103.7%",
+        "quote": "Modified by Revenue Kicker of 107.3% based on Adjusted Revenue achievement of $1.970 million, reflecting a CAGR of 12.0% compared to a target of 11.2% for the time period of 2021 - 2023."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "The stretch PSUs are only earned if AOI exceeds long-term performance targets that are intended to be very challenging to achieve and accelerate value creation for our shareholders.",
+        "why_notable": "Committee's justification for the new 2024 equity vehicle, framing it as an unusually high bar; paired with the fact that no grant date fair value is recorded."
+      },
+      {
+        "quote": "Given the attainment of the goals was not deemed probable as of the date of grant, there is no grant date fair value associated with these awards for accounting purposes that is recognized or disclosed for financial reporting purposes or in the 2024 Summary Compensation Table.",
+        "why_notable": "An admission that a potentially large equity award (max grant date fair value $8.16m for the CEO) is invisible in reported pay figures."
+      },
+      {
+        "quote": "Changed the profit metric used in the calculation of our annual incentive from Adjusted EBITDA (earnings before interest, taxes, depreciation, and amortization) to AOI. The Adjusted Revenue metric remained for 2024.",
+        "why_notable": "Explicit year-over-year metric change in the annual bonus plan."
+      },
+      {
+        "quote": "Changed the weighting of financial performance in the calculation of our Chief Revenue Officer\u2019s annual incentive from 67% Adjusted Revenue and 33% Adjusted EBITDA to 50% Adjusted Revenue and 50% AOI to align with the weighting applicable to the other NEOs.",
+        "why_notable": "Documents removal of a revenue-tilted incentive for the CRO in favour of uniform profitability weighting."
+      },
+      {
+        "quote": "When the financial and strategic performance measures were established, and consistent with prior years, the Compensation Committee determined that the adjustments, and other significant charges not included in the Company\u2019s internal 2024 budget should be excluded from both the establishment of goals as well as the determination of payout calculations to more closely align with the underlying operating performance of the business.",
+        "why_notable": "The committee's standing justification for excluding charges from both goal-setting and payout calculation \u2014 a recurring adjustment rationale."
+      },
+      {
+        "quote": "Given the significant shareholder support, the Compensation Committee did not make changes to the Company\u2019s executive compensation program in response to the 2024 say on pay vote, but did make enhancements to the program intended to further align pay and performance as detailed in the next section.",
+        "why_notable": "Uses the 99.1% say-on-pay result to justify no responsive changes while still claiming pay-performance enhancements."
+      },
+      {
+        "quote": "In consideration of his status as our principal shareholder, Joe believes that his compensation should be directly aligned with other shareholders and be realized primarily through appreciation in the long-term value of our common stock. At his request and as supported by the Compensation Committee, consistent with prior years he did not participate in our equity or cash-based incentive programs in 2024 and his salary has been $100,000 since 2000.",
+        "why_notable": "Recurring justification for the Executive Chairman's nominal pay, framed as his own request."
+      },
+      {
+        "quote": "Jason Dubinsky\u2019s annual incentive was determined based entirely on the corporate funding factor pursuant to the terms of his separation agreement.",
+        "why_notable": "Discretionary treatment: the individual performance factor was waived for the departing CFO."
+      },
+      {
+        "quote": "In order to allow for consistent treatment of compensation payable to executives upon departure from the Company, the Compensation Committee anticipates taking steps to develop a standardized separation policy applicable to executive officers and certain other members of the executive leadership team.",
+        "why_notable": "Implicit acknowledgement that severance has been handled ad hoc, with a forward commitment to formalise it."
+      },
+      {
+        "quote": "In the case of Kunal Kapoor, the Compensation Committee elected to deliver his entire increase in annual compensation in the form of equity awards to further align his compensation with the interests of our shareholders.",
+        "why_notable": "Explains why CEO salary and bonus target were flat while equity target rose 4.6%."
+      }
+    ]
+  }
+}

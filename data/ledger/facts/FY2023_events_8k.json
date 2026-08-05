@@ -1,0 +1,67 @@
+{
+  "fiscal_year": 2023,
+  "task": "events_8k",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:12:54Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 6105,
+    "output_tokens": 877
+  },
+  "sources": [
+    {
+      "key": "8-K-A_8-K-A_whole",
+      "accession": "0001104659-23-009907",
+      "form": "8-K/A",
+      "filing_date": "2023-02-02",
+      "items": [
+        "5.02",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001104659-23-062268",
+      "form": "8-K",
+      "filing_date": "2023-05-18",
+      "items": [
+        "5.07"
+      ]
+    }
+  ],
+  "source_chars": 9372,
+  "facts": {
+    "leadership": [
+      {
+        "name": "Bevin Desmond",
+        "role": "Chief Talent and Culture Officer",
+        "change": "departed",
+        "date": "2023-01-31",
+        "stated_reason": "to focus more time on her family",
+        "quote": "As previously reported on the Original Form 8-K, Bevin Desmond has decided to depart Morningstar to focus more time on her family. Ms. Desmond\u2019s last day of employment as Morningstar\u2019s Chief Talent and Culture Officer was January 31, 2023, at which time Ms. Desmond transitioned to contractor status."
+      }
+    ],
+    "events": [
+      {
+        "type": "leadership_transition",
+        "description": "Morningstar entered a Contract Services Agreement dated February 1, 2023 with Bevin Desmond, under which she provides consulting and advisory services during a transition period at an hourly rate with no equity, health coverage or other benefits.",
+        "date": "2023-02-01",
+        "quote": "Pursuant to the terms of a Contract Services Agreement dated February 1, 2023 (the \u201cContract Services Agreement\u201d), Ms. Desmond will provide certain consulting and advisory services to Morningstar during a transition period. Ms. Desmond will be paid at an hourly rate for her services and will not be entitled to equity, health coverage or other benefits."
+      },
+      {
+        "type": "other",
+        "description": "Separation Agreement and General Release dated February 1, 2023 with Bevin Desmond, providing a waiver and release of claims and continued vesting of previously issued restricted stock unit and market stock unit awards.",
+        "date": "2023-02-01",
+        "quote": "Ms. Desmond has also entered into a Separation Agreement and General Release dated February 1, 2023 (the \u201cSeparation Agreement\u201d), pursuant to which Ms. Desmond provides a waiver and release of claim against Morningstar and receives continued vesting of her previously issued restricted stock unit and market stock unit awards."
+      },
+      {
+        "type": "other",
+        "description": "Annual Shareholders' Meeting held May 12, 2023: all director nominees elected, executive compensation approved on advisory basis, annual say-on-pay frequency recommended, and KPMG ratified as independent registered public accounting firm for 2023.",
+        "date": "2023-05-12",
+        "quote": "Morningstar held its Annual Shareholders\u2019 Meeting on May 12, 2023, for the purpose of electing directors, providing an advisory vote on Morningstar\u2019s executive compensation, providing an advisory vote on the frequency of future advisory votes on Morningstar\u2019s executive compensation, and ratifying the appointment of KPMG LLP (KPMG) as Morningstar\u2019s independent registered public accounting firm for 2023."
+      }
+    ]
+  }
+}

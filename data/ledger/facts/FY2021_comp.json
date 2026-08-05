@@ -1,0 +1,127 @@
+{
+  "fiscal_year": 2021,
+  "task": "comp",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:17:48Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 21686,
+    "output_tokens": 3019
+  },
+  "sources": [
+    {
+      "key": "DEF14A_cdna",
+      "accession": "0001193125-22-092675",
+      "form": "DEF 14A",
+      "filing_date": "2022-04-01"
+    },
+    {
+      "key": "DEF14A_incentive_tables",
+      "accession": "0001193125-22-092675",
+      "form": "DEF 14A",
+      "filing_date": "2022-04-01"
+    }
+  ],
+  "source_chars": 55868,
+  "facts": {
+    "incentive_metrics": [
+      {
+        "metric": "Adjusted Revenue",
+        "plan": "Corporate Incentive Plan (annual cash incentive)",
+        "weight": "67%",
+        "target_or_range": "Goal $1,560.1 million; achievement $1,684.5 million (108.0% attainment), unweighted funding factor 140%",
+        "quote": "At the beginning of 2021, the Compensation Committee established a funding formula that specifies bonus funding for Adjusted Revenue and Adjusted EBITDA based on various performance levels, with the final funding factor being weighted 67% for Adjusted Revenue and 33% for Adjusted EBITDA."
+      },
+      {
+        "metric": "Adjusted EBITDA",
+        "plan": "Corporate Incentive Plan (annual cash incentive)",
+        "weight": "33%",
+        "target_or_range": "Goal $465.2 million; achievement $589.5 million (126.7% attainment), unweighted funding factor 167%",
+        "quote": "Adjusted EBITDA (Millions)\n$465.2\n$\n589.5\n126.7\n%\n167\n%\n33\n%"
+      },
+      {
+        "metric": "Total Shareholder Return (absolute, three-year)",
+        "plan": "Market Stock Unit (MSU) plan \u2014 2021 grants",
+        "weight": null,
+        "target_or_range": "0% vesting if TSR is negative 13.33%; 100% vesting if TSR is 20%; 150% vesting if TSR is 45% (May 15, 2021 grant); 200% vesting if TSR is 70% (November 15, 2021 grant)",
+        "quote": "Performance Level\nShares Earned as a Percentage of Target Market Stock Units\nThreshold TSR\n0% vesting if TSR is negative 13.33%\nTarget TSR\n100% vesting if TSR is 20%\nMaximum TSR\n150% vesting if TSR is 45% (for the May 15, 2021 grant)\n200% vesting if TSR is 70% (for the November 15, 2021 grant)"
+      },
+      {
+        "metric": "Performance kicker (actual performance results other than TSR, quantitative and/or qualitative, determined by the Compensation Committee)",
+        "plan": "Market Stock Unit (MSU) plan \u2014 2021 grants",
+        "weight": null,
+        "target_or_range": "100% - 200% of shares earned based on TSR performance (May 15, 2021 grant); 100% - 150% (November 15, 2021 grant)",
+        "quote": "This performance kicker will be determined by the Compensation Committee at or before the end of the performance period and will take into consideration actual performance results (other than TSR) and other metrics, quantitative and/or qualitative during the performance period."
+      },
+      {
+        "metric": "Individual performance adjustment applied to funded target bonus",
+        "plan": "Corporate Incentive Plan (annual cash incentive)",
+        "weight": null,
+        "target_or_range": "Kunal 140%; Jason 100%; Bevin 100%; Danny 130%",
+        "quote": "Each executive\u2019s bonus target was multiplied by the final funding factor to determine the funding adjusted target bonus. Adjustments to the calculated award amounts were then determined based on each executive\u2019s individual performance."
+      },
+      {
+        "metric": "Total shareholder return over three-year performance period (2018 MSU grants, vested 2021)",
+        "plan": "Market Stock Unit plan \u2014 May and November 2018 grants",
+        "weight": null,
+        "target_or_range": "Threshold 0% vesting if TSR is negative 23.33%; target 100% if TSR is 10%; maximum 150% if TSR is 35%; actual payouts 150% of target on 140.6% and 156.8% TSR",
+        "quote": "Payouts for Market Stock Unit Plan \u2013 Payouts for this plan are based on our Total Shareholder Return over a three-year period. Our grants from May and November 2018 vested in May and November 2021, respectively. Our Total Shareholder Return for the shares vesting in May 2021 and November 2021 was 140.6% and 156.8%, respectively. These results led to the maximum payouts of 150% of target for grants made on both dates."
+      },
+      {
+        "metric": "Maximum aggregate MSU payout range (TSR plus performance kicker)",
+        "plan": "2021 Plan market stock units",
+        "weight": null,
+        "target_or_range": "0% to 300% of target",
+        "quote": "The number of shares of our common stock to be received at vesting will range from 0% to 300% of the target amount based on the company\u2019s TSR for the three-year performance period and the performance kicker."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We modified our annual incentive performance measure weightings for 2021 to 67% Adjusted Revenue and 33% Adjusted EBITDA. This represents the weighting which we believe is the optimal mix of performance measures for our annual incentive plan and is what we had in place in 2019. In 2020, we modified our weightings to 50% Adjusted Revenue and 50% Adjusted EBITDA in response to the COVID-19 pandemic and the uncertainty it caused.",
+        "why_notable": "Explicit explanation of the reversal of the COVID-era weighting change back to the pre-pandemic mix, described as 'the optimal mix'."
+      },
+      {
+        "quote": "For our performance-based Market Stock Unit Program, starting with our November 2021 grant, we increased our maximum payout to 200% of target, which represents a change to align to market practices.",
+        "why_notable": "Justifies a doubling of upside leverage purely by reference to 'market practices'."
+      },
+      {
+        "quote": "Does not use rigid formulas to determine executive compensation but nevertheless aims to tie annual cash incentive compensation closely to value creation, as measured by increases in Adjusted Revenue and Adjusted EBITDA or similar measures.",
+        "why_notable": "Recurring philosophy statement reserving discretion while claiming formulaic alignment."
+      },
+      {
+        "quote": "The shift from a revenue kicker in 2019 to a performance kicker in 2020 and 2021 was made due to the uncertain market environment and uncertain three-year outlook due to the COVID-19 pandemic.",
+        "why_notable": "Explains replacement of an objective revenue metric with a committee-determined discretionary kicker, still attributed to the pandemic in 2021."
+      },
+      {
+        "quote": "In consideration of his status as our principal shareholder, Joe believes that his compensation should be directly aligned with other shareholders and be realized primarily through appreciation in the long-term value of our common stock. At his request and supported by the Compensation Committee, he did not participate in our equity or cash-based incentive programs in 2021 and his salary has been $100,000 since 2000.",
+        "why_notable": "Long-recurring rationale for the Executive Chairman's nominal pay, framed as his own request."
+      },
+      {
+        "quote": "The Committee approved, for 2021, the original intended compensation increases from 2020. Starting January 1, 2021, his salary was $500,000 and target bonus was $1,000,000. In addition, the Committee increased Kunal\u2019s target equity grant from $1,500,000 to $2,000,000. The Committee made these changes to improve the competitiveness of Kunal\u2019s target total compensation. In total, Kunal\u2019s target total compensation is below the median of the peer group.",
+        "why_notable": "Delayed COVID-era increases restored with an explicit below-median peer positioning claim as justification."
+      },
+      {
+        "quote": "Although the 2021 Summary Compensation Table shows that Kunal\u2019s total compensation decreased year-over-year, his 2020 compensation included a non-recurring restricted stock unit grant of $3,000,000 which will vest over five years, as disclosed in our 2021 proxy.",
+        "why_notable": "Pre-emptive framing of the year-over-year decline in reported CEO pay."
+      },
+      {
+        "quote": "In 2021, Morningstar rewarded its top performers (those whose individual performance adjustment was above 100%) with a restricted stock unit award that vests in two equal annual installments commencing on the first anniversary of the grant date.",
+        "why_notable": "Describes an extra equity award layered onto the bonus formula for above-target individual ratings."
+      },
+      {
+        "quote": "Due to an administrative error, Gail Landis is not currently in compliance but has a plan is in place to achieve compliance no later than the second quarter of 2022. The Nominating and Corporate Governance Committee has reviewed the facts and granted Gail a waiver to the stock ownership requirements for this period of time.",
+        "why_notable": "Unusually direct admission of a stock ownership compliance failure and a granted waiver."
+      },
+      {
+        "quote": "Given the significant shareholder support, the Compensation Committee did not make any changes to the Company\u2019s executive compensation program in response to the 2021 say on pay vote.",
+        "why_notable": "Uses the 97% say-on-pay result to justify making no changes."
+      },
+      {
+        "quote": "Stock ownership is a cornerstone of our executive compensation program. In December 2021, we increased the holding requirement for total number of vested restricted stock units and vested market stock units from 25% to 33% for our NEOs.",
+        "why_notable": "Tightening of ownership requirements announced alongside the increase in MSU maximum payout."
+      }
+    ]
+  }
+}

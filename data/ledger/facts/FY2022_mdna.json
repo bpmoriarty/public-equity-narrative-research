@@ -1,0 +1,111 @@
+{
+  "fiscal_year": 2022,
+  "task": "mdna",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:18:27Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 25111,
+    "output_tokens": 2330
+  },
+  "sources": [
+    {
+      "key": "10-K_item7_mdna",
+      "accession": "0001289419-23-000005",
+      "form": "10-K",
+      "filing_date": "2023-02-24"
+    }
+  ],
+  "source_chars": 70740,
+  "facts": {
+    "events": [
+      {
+        "type": "restructuring",
+        "description": "Beginning July 2022, the company began significantly reducing operations in Shenzhen, China and shifting global business functions to other Morningstar locations (Mumbai, Toronto, Madrid, Chicago), with substantial completion expected by end of Q3 2023; China work to focus solely on domestic commercial activities.",
+        "date": "2022-07",
+        "quote": "In July 2022, the company began to significantly reduce its operations in Shenzhen, China and to shift the work related to its global business functions, including global product and software development, managed investment data collection and analysis, and equity data collection and analysis, to other Morningstar locations."
+      },
+      {
+        "type": "acquisition",
+        "description": "Acquisition of Praemium's U.K. and international offerings, closed in the second quarter of 2022, adding approximately $4.4 billion of assets.",
+        "date": null,
+        "quote": "Excluding $4.4 billion of assets related to the acquisition of Praemium's U.K. and international offerings in the second quarter of 2022, assets would have declined 10.9% compared with the prior-year period."
+      },
+      {
+        "type": "acquisition",
+        "description": "Acquisition of LCD, including integration and rebranding of the LCD Leveraged Loan Indexes under Morningstar Indexes.",
+        "date": null,
+        "quote": "We also completed the acquisition, integration, and rebranding of the LCD Leveraged Loan Indexes under the Morningstar Indexes umbrella and launched the Morningstar PitchBook Global Unicorn Indexes in collaboration with PitchBook."
+      },
+      {
+        "type": "financing",
+        "description": "Termination of the 2019 Credit Agreement and entry into a new 2022 Credit Agreement providing a five-year multi-currency facility with initial borrowing capacity up to $1.1 billion.",
+        "date": "2022-05-06",
+        "quote": "On May 6, 2022, the company terminated the 2019 Credit Agreement.\nOn May 6, 2022, the company entered into a new senior credit agreement (the 2022 Credit Agreement). The 2022 Credit Agreement provided the company with a five-year multi-currency credit facility with an initial borrowing capacity of up to $1.1 billion"
+      },
+      {
+        "type": "financing",
+        "description": "Two amendments to the 2022 Credit Agreement increasing total borrowing capacity to $1.3 billion and terminating the optional second term draw.",
+        "date": "2022-09-30",
+        "quote": "The Second Amendment to the 2022 Credit Agreement increased the 2022 Term Facility to a fully funded $650.0 million facility (the Amended 2022 Term Facility) and increased the 2022 Revolving Credit Facility to $650.0 million (the Amended 2022 Revolving Credit Facility) for total borrowing capacity of $1.3 billion."
+      },
+      {
+        "type": "financing",
+        "description": "Board approved a new $500.0 million share repurchase program effective January 1, 2023, replacing the existing program; new authorization expires December 31, 2025.",
+        "date": "2022-12-06",
+        "quote": "On December 6, 2022, the board of directors approved a new share repurchase program that authorizes the company to repurchase up to $500.0 million in shares of the company's outstanding common stock, effective January 1, 2023."
+      },
+      {
+        "type": "other",
+        "description": "Termination Agreement with MJKK ending the 1998 License Agreement and MJKK's use of the Morningstar brand, plus Tender Offer Agreement to tender up to 10 million MJKK shares to SBI; consideration of 8 billion Japanese yen payable by Morningstar.",
+        "date": "2023-01-27",
+        "quote": "On January 27, 2023, we entered into a Termination Agreement (the Termination Agreement) with MJKK, and a Tender Offer Agreement (the Tender Offer Agreement) with SBI Global Asset Management Co., Ltd. (SBI)."
+      },
+      {
+        "type": "other",
+        "description": "Cash payment of $50.0 million resolving contingent consideration liability related to the LCD acquisition.",
+        "date": "2023-02-06",
+        "quote": "On February 6, 2023, we made a cash payment of $50.0 million, resolving our contingent consideration liability related to our acquisition of LCD."
+      },
+      {
+        "type": "guidance_change",
+        "description": "Company expects to make regular quarterly dividend payments of 37.5 cents per share in 2023, subject to board approval.",
+        "date": null,
+        "quote": "While subsequent dividends will be subject to board approval, we expect to make regular quarterly dividend payments of 37.5 cents per share in 2023."
+      }
+    ],
+    "segment_changes": [],
+    "notable_language": [
+      {
+        "quote": "We do not make public financial forecasts for our business because we want to avoid creating any incentives for our management team to make speculative statements about our financial results that could influence our stock price or take actions that help us meet short-term forecasts, but may not build long-term shareholder value.",
+        "why_notable": "Recurring, unusually explicit refusal to give guidance, framed as a governance philosophy."
+      },
+      {
+        "quote": "Professional fees also reflected the impact of higher legal fees primarily associated with a completed independent investigation regarding certain research practices of Morningstar Sustainalytics.",
+        "why_notable": "A rare, direct reference to an independent investigation into its own ESG research practices, buried in an expense discussion."
+      },
+      {
+        "quote": "The politicization of ESG-related business activities and investments has increased in recent years, particularly in the U.S. This politicization has led to the rise of anti-ESG proponents and actions, including the submission of anti-ESG shareholder proposals to U.S.-based public companies and the filing of lawsuits against U.S. companies.",
+        "why_notable": "New, explicitly political framing of ESG risk\u2014a marked shift in how the company characterises its ESG business environment."
+      },
+      {
+        "quote": "Overall, our business, balance sheet, technological infrastructure, and teams have shown resilience and flexibility navigating global macroeconomic trends.",
+        "why_notable": "Self-congratulatory summary appended immediately after listing adverse inflation, interest rate, wage and COVID pressures."
+      },
+      {
+        "quote": "Going forward, the company's work in China will be focused solely on commercial activities in the domestic market.",
+        "why_notable": "A definitive narrowing of the China strategy, stated flatly without an explanation of the cause."
+      },
+      {
+        "quote": "Stock-based compensation expense increased $41.3 million in 2022, primarily as a result of the overachievement of targets under the PitchBook management bonus plan.",
+        "why_notable": "Direct admission that a single subsidiary bonus plan drove a large consolidated expense increase and margin decline."
+      },
+      {
+        "quote": "Approximately 64% of our cash, cash equivalents, and investments as of December 31, 2022 were held by our operations outside the U.S ., up f rom 57% as of December 31, 2021. We generally consider our U.S. directly-owned foreign subsidiary earnings to be permanently reinvested.",
+        "why_notable": "Discloses a rising share of cash trapped offshore alongside a permanent reinvestment assertion, relevant to liquidity flexibility."
+      }
+    ]
+  }
+}

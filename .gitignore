@@ -24,9 +24,22 @@ memory/
 # but it is a *copy* of public EDGAR documents, so it does not belong in git.
 data/raw/
 
-# Extracted sections and ledger records regenerate from data/raw/
+# Extracted sections regenerate from data/raw/ deterministically and for free.
 data/sections/
-data/ledger/
+
+# data/ledger/ IS COMMITTED. It was ignored on the same "it regenerates"
+# reasoning as data/sections/, and for the ledger that reasoning is wrong:
+#
+#   - data/ledger/facts/ is model output. It cost $4.52 to produce and a re-run
+#     would not reproduce it byte-for-byte, so it is the ONLY artifact in this
+#     project that cannot be regenerated. It is also the audit record of what the
+#     model actually returned, which is what makes every quote in the ledger
+#     checkable after the fact.
+#   - The rest of data/ledger/ derives from it deterministically, but derives
+#     from nothing at all in a clean checkout, because data/raw/ and
+#     data/sections/ are both ignored.
+#
+# 904 KB, and it is the analytical substance of the project. It belongs in git.
 
 # Final deliverables regenerate from data/ledger/
 output/

@@ -1,0 +1,1737 @@
+{
+  "fiscal_year": 2021,
+  "ticker": "MORN",
+  "cik": "0001289419",
+  "company_name": "Morningstar, Inc.",
+  "filings": [
+    {
+      "form": "8-K",
+      "accession": "0001104659-21-025805",
+      "filed": "2021-02-19",
+      "report_date": "2021-02-18",
+      "items": [
+        "2.02",
+        "9.01"
+      ],
+      "disposition": "date_only"
+    },
+    {
+      "form": "8-K",
+      "accession": "0001104659-21-057668",
+      "filed": "2021-04-29",
+      "report_date": "2021-04-28",
+      "items": [
+        "2.02",
+        "7.01",
+        "9.01"
+      ],
+      "disposition": "date_only"
+    },
+    {
+      "form": "8-K",
+      "accession": "0001104659-21-069795",
+      "filed": "2021-05-20",
+      "report_date": "2021-05-14",
+      "items": [
+        "5.02",
+        "5.07",
+        "9.01"
+      ],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "8-K",
+      "accession": "0001104659-21-097580",
+      "filed": "2021-07-29",
+      "report_date": "2021-07-28",
+      "items": [
+        "2.02",
+        "7.01",
+        "9.01"
+      ],
+      "disposition": "date_only"
+    },
+    {
+      "form": "8-K",
+      "accession": "0001104659-21-131050",
+      "filed": "2021-10-28",
+      "report_date": "2021-10-27",
+      "items": [
+        "2.02",
+        "7.01",
+        "9.01"
+      ],
+      "disposition": "date_only"
+    },
+    {
+      "form": "10-K",
+      "accession": "0001289419-22-000005",
+      "filed": "2022-02-25",
+      "report_date": "2021-12-31",
+      "items": [],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "DEF 14A",
+      "accession": "0001193125-22-092675",
+      "filed": "2022-04-01",
+      "report_date": "2022-05-13",
+      "items": [],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "DEFA14A",
+      "accession": "0001193125-22-092681",
+      "filed": "2022-04-01",
+      "report_date": null,
+      "items": [],
+      "disposition": "in_scope"
+    }
+  ],
+  "earnings_release_dates": [
+    "2021-02-19",
+    "2021-04-29",
+    "2021-07-29",
+    "2021-10-28"
+  ],
+  "strategic_priorities": [
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Our strategy is to deliver insights and experiences essential to investing, with a keen focus on innovation across data, research, product, and delivery"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Our strategy is to deliver insights and experiences essential to investing. Proprietary data sets, meaningful analytics, independent research, and effective investment strategies are at the core of the powerful digital solutions that investors across our client segments rely on. We have a keen focus on innovation across data, research, product, and delivery so that we can effectively cater to the evolving needs and expectations of investors globally.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Deliver differentiated insights across asset classes to public and private market investors"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Deliver differentiated insights across asset classes to public and private market investors\nShifting investor needs and expectations, innovative investment approaches and technologies, and a changing political and regulatory environment continue to drive the evolution of the financial services industry. We remain committed to ensuring that the modern investor is empowered with new data, research, and analytics.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Establish a leading ESG position across each business"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Establish a leading ESG position across each business\nThe Sustainalytics acquisition in 2020 has positioned us to successfully drive ESG across the investing landscape, which is a pivotal part of our long-term strategy. We remain focused on the growth of Sustainalytics and its ESG ratings, while prioritizing ESG integration across all areas of our business",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Drive operational excellence and scalability to support growth targets"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Drive operational excellence and scalability to support growth targets\nWe have grown significantly in the last few years, and as we have continued to focus on growth in 2021 and beyond, we are emphasizing execution and scalability in our operations, processes, and technology.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Build an inclusive culture that drives exceptional talent engagement and development"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Build an inclusive culture that drives exceptional talent engagement and development\nMorningstar is committed to investing in talent and building a culture that realizes our DEI goals.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Expand investment and credit research capabilities and enhance existing products and services (research and development)"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "A key aspect of our growth strategy is to expand our investment and credit research capabilities and enhance our existing products and services.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Build a comprehensive Wealth Management platform leveraging capabilities from Morningstar Office, ByAllAccounts, and Morningstar.com, including launching direct indexing through the TAMP"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We plan to launch direct indexing capabilities through the TAMP later in 2022, as part of our recently-announced strategy to build a comprehensive Wealth Management platform leveraging capabilities from Morningstar Office, ByAllAccounts, and Morningstar.com.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Expand wealth management platform capabilities internationally via the agreed acquisition of Praemium's U.K. and international business"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In 2021, Morningstar agreed to acquire Praemium\u2019s U.K. and international wealth management platform business. Praemium offers proprietary, friction-free, SaaS-based technology and services that allow fee-based advisors to outsource key elements of the advice workflow. The platform will enable us to expand our wealth management platform capabilities internationally beyond the U.S. and India.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "strategic_priorities",
+      "value": {
+        "text": "Longer term, MCIA plans to offer modular credit information products that leverage our credit expertise and embed in customer workflows"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Longer term, MCIA plans to offer modular credit information products that leverage our credit expertise and embed in the workflows of internal and external customers.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "segments": [
+    {
+      "field": "segments",
+      "value": {
+        "name": "Morningstar Credit Information and Analytics (MCIA)",
+        "note": "Document states it was launched in 2021 as a new credit solution provider separate from DBRS Morningstar"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "During 2021, Morningstar expanded the way it interacts with issuers and investors by launching a new credit solution provider, Morningstar Credit Information and Analytics (MCIA), that is separate from DBRS Morningstar and which offers credit products and services beyond credit ratings.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "segments",
+      "value": {
+        "name": "Custom Models/CIT",
+        "note": "Prior-period assets under management and advisement revised to reclassify CIT assets previously reported in Institutional Asset Management to Custom Models/CIT."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Revised to reclass CIT assets previously reported in Institutional Asset Management to Custom Models/CIT.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "segments",
+      "value": {
+        "name": "Morningstar Advisor Workstation",
+        "note": "Client count metric revised to reflect updated enterprise client reporting to include clients in Canada."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Revised to reflect updated enterprise client reporting for Advisor Workstation to include clients in Canada.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "headcount": [
+    {
+      "field": "headcount",
+      "value": {
+        "value": 9556,
+        "as_stated": "9,556 permanent, full-time employees around the world as of December 31, 2021"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "As of December 31, 2021, we had 9,556 permanent, full-time employees around the world.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "leadership": [],
+  "board": [
+    {
+      "field": "board",
+      "value": {
+        "name": "Joe Mansueto",
+        "role": "chairman of the Board and executive chairman of the Company",
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Joe Mansueto served as chairman of the board and chief executive officer of the Company until January 1, 2017. At that time, Joe stepped back from our day-to-day operations to instead focus on strategy, capital allocation, advising our senior team, and leading the Board. Joe serves as chairman of the Board and executive chairman of the Company.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Kunal Kapoor",
+        "role": "chief executive officer",
+        "director_since": "2017",
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Kunal Kapoor has served as chief executive officer and a Board member since January 1, 2017.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Robin Diamonte",
+        "role": null,
+        "director_since": "2015",
+        "committees": [
+          "Audit",
+          "Nominating and Corporate Governance"
+        ]
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Robin Diamonte was appointed to the Board in December 2015. She is the chief investment officer of Raytheon Technologies Corp.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Cheryl Francis",
+        "role": "Chair of the Audit Committee",
+        "director_since": "2002",
+        "committees": [
+          "Audit",
+          "Compensation"
+        ]
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Cheryl Francis was elected to the Board in July 2002. She has been co-chair of Corporate Leadership Center, a not-for-profit organization focused on developing tomorrow\u2019s business leaders, since August 2008",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Steve Joynt",
+        "role": null,
+        "director_since": "2019",
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Steve Joynt was appointed to the Board in December 2019. He served as chief executive officer of DBRS, the global credit ratings agency acquired by Morningstar in July 2019",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Steve Kaplan",
+        "role": "Chair of the Compensation Committee",
+        "director_since": "1999",
+        "committees": [
+          "Compensation",
+          "Nominating and Corporate Governance"
+        ]
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Steve Kaplan served as a member of our advisory board beginning in 1998 and was elected to the Board in August 1999.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Gail Landis",
+        "role": null,
+        "director_since": "2013",
+        "committees": [
+          "Audit",
+          "Nominating and Corporate Governance"
+        ]
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Gail Landis was elected to the Board in May 2013. She was a founding partner of Evercore Asset Management, LLC, an institutional asset management firm",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Bill Lyons",
+        "role": "Chair of the Nominating and Corporate Governance Committee",
+        "director_since": "2007",
+        "committees": [
+          "Compensation",
+          "Nominating and Corporate Governance"
+        ]
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Bill Lyons was appointed to the Board in September 2007. He served as president and chief executive officer of American Century Companies, Inc., an investment management company, from September 2000 until his retirement in March 2007.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Doniel Sutton",
+        "role": null,
+        "director_since": "2021",
+        "committees": [
+          "Audit",
+          "Compensation"
+        ]
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Doniel Sutton was appointed to the board in May 2021. She has served as chief people officer of Fastly, Inc., a leading global provider of edge cloud platform services, since September 2020.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "board",
+      "value": {
+        "name": "Caroline Tsay",
+        "role": null,
+        "director_since": "2017",
+        "committees": [
+          "Audit",
+          "Nominating and Corporate Governance"
+        ]
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Caroline Tsay was elected to the Board in May 2017. She has served as chief executive officer of Compute Software, Inc., an enterprise cloud infrastructure software company, since January 2017.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "incentive_metrics": [
+    {
+      "field": "incentive_metrics",
+      "value": {
+        "metric": "Adjusted Revenue",
+        "plan": "Corporate Incentive Plan (annual cash incentive)",
+        "weight": "67%",
+        "target_or_range": "Goal $1,560.1 million; achievement $1,684.5 million (108.0% attainment), unweighted funding factor 140%"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "At the beginning of 2021, the Compensation Committee established a funding formula that specifies bonus funding for Adjusted Revenue and Adjusted EBITDA based on various performance levels, with the final funding factor being weighted 67% for Adjusted Revenue and 33% for Adjusted EBITDA.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "incentive_metrics",
+      "value": {
+        "metric": "Adjusted EBITDA",
+        "plan": "Corporate Incentive Plan (annual cash incentive)",
+        "weight": "33%",
+        "target_or_range": "Goal $465.2 million; achievement $589.5 million (126.7% attainment), unweighted funding factor 167%"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Adjusted EBITDA (Millions)\n$465.2\n$\n589.5\n126.7\n%\n167\n%\n33\n%",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "incentive_metrics",
+      "value": {
+        "metric": "Total Shareholder Return (absolute, three-year)",
+        "plan": "Market Stock Unit (MSU) plan \u2014 2021 grants",
+        "weight": null,
+        "target_or_range": "0% vesting if TSR is negative 13.33%; 100% vesting if TSR is 20%; 150% vesting if TSR is 45% (May 15, 2021 grant); 200% vesting if TSR is 70% (November 15, 2021 grant)"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Performance Level\nShares Earned as a Percentage of Target Market Stock Units\nThreshold TSR\n0% vesting if TSR is negative 13.33%\nTarget TSR\n100% vesting if TSR is 20%\nMaximum TSR\n150% vesting if TSR is 45% (for the May 15, 2021 grant)\n200% vesting if TSR is 70% (for the November 15, 2021 grant)",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "incentive_metrics",
+      "value": {
+        "metric": "Performance kicker (actual performance results other than TSR, quantitative and/or qualitative, determined by the Compensation Committee)",
+        "plan": "Market Stock Unit (MSU) plan \u2014 2021 grants",
+        "weight": null,
+        "target_or_range": "100% - 200% of shares earned based on TSR performance (May 15, 2021 grant); 100% - 150% (November 15, 2021 grant)"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "This performance kicker will be determined by the Compensation Committee at or before the end of the performance period and will take into consideration actual performance results (other than TSR) and other metrics, quantitative and/or qualitative during the performance period.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "incentive_metrics",
+      "value": {
+        "metric": "Individual performance adjustment applied to funded target bonus",
+        "plan": "Corporate Incentive Plan (annual cash incentive)",
+        "weight": null,
+        "target_or_range": "Kunal 140%; Jason 100%; Bevin 100%; Danny 130%"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Each executive\u2019s bonus target was multiplied by the final funding factor to determine the funding adjusted target bonus. Adjustments to the calculated award amounts were then determined based on each executive\u2019s individual performance.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "incentive_metrics",
+      "value": {
+        "metric": "Total shareholder return over three-year performance period (2018 MSU grants, vested 2021)",
+        "plan": "Market Stock Unit plan \u2014 May and November 2018 grants",
+        "weight": null,
+        "target_or_range": "Threshold 0% vesting if TSR is negative 23.33%; target 100% if TSR is 10%; maximum 150% if TSR is 35%; actual payouts 150% of target on 140.6% and 156.8% TSR"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Payouts for Market Stock Unit Plan \u2013 Payouts for this plan are based on our Total Shareholder Return over a three-year period. Our grants from May and November 2018 vested in May and November 2021, respectively. Our Total Shareholder Return for the shares vesting in May 2021 and November 2021 was 140.6% and 156.8%, respectively. These results led to the maximum payouts of 150% of target for grants made on both dates.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "incentive_metrics",
+      "value": {
+        "metric": "Maximum aggregate MSU payout range (TSR plus performance kicker)",
+        "plan": "2021 Plan market stock units",
+        "weight": null,
+        "target_or_range": "0% to 300% of target"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_incentive_tables",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The number of shares of our common stock to be received at vesting will range from 0% to 300% of the target amount based on the company\u2019s TSR for the three-year performance period and the performance kicker.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "vote_results": [
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Joe Mansueto",
+        "votes_for": 32857397,
+        "votes_against": 367062,
+        "abstentions": 29357,
+        "broker_non_votes": 923394,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-22-061422",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Joe Mansueto\n32,857,397\n367,062\n29,357\n923,394",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Kunal Kapoor",
+        "votes_for": 33045152,
+        "votes_against": 198574,
+        "abstentions": 10090,
+        "broker_non_votes": 923394,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-22-061422",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Kunal Kapoor\n33,045,152\n198,574\n10,090\n923,394",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Robin Diamonte",
+        "votes_for": 26352609,
+        "votes_against": 6852256,
+        "abstentions": 48951,
+        "broker_non_votes": 923394,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-22-061422",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Robin Diamonte\n26,352,609\n6,852,256\n48,951\n923,394",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Cheryl Francis",
+        "votes_for": 25376211,
+        "votes_against": 7869228,
+        "abstentions": 8377,
+        "broker_non_votes": 923394,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-22-061422",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Cheryl Francis\n25,376,211\n7,869,228\n8,377\n923,394",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Steve Joynt",
+        "votes_for": 33001535,
+        "votes_against": 243889,
+        "abstentions": 8392,
+        "broker_non_votes": 923394,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-22-061422",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Steve Joynt\n33,001,535\n243,889\n8,392\n923,394",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Steve Kaplan",
+        "votes_for": 32716360,
+        "votes_against": 529621,
+        "abstentions": 7835,
+        "broker_non_votes": 923394,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-22-061422",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Steve Kaplan\n32,716,360\n529,621\n7,835\n923,394",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Gail Landis",
+        "votes_for": 26385491,
+        "votes_against": 6859997,
+        "abstentions": 8328,
+        "broker_non_votes": 923394,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-22-061422",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Gail Landis\n26,385,491\n6,859,997\n8,328\n923,394",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Bill Lyons",
+        "votes_for": 31462508,
+        "votes_against": 1782886,
+        "abstentions": 8422,
+        "broker_non_votes": 923394,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-22-061422",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Bill Lyons\n31,462,508\n1,782,886\n8,422\n923,394",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Doniel Sutton",
+        "votes_for": 26336003,
+        "votes_against": 6865325,
+        "abstentions": 52488,
+        "broker_non_votes": 923394,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-22-061422",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Doniel Sutton\n26,336,003\n6,865,325\n52,488\n923,394",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Election of director Caroline Tsay",
+        "votes_for": 26351760,
+        "votes_against": 6893655,
+        "abstentions": 8401,
+        "broker_non_votes": 923394,
+        "outcome": "elected"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-22-061422",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Caroline Tsay\n26,351,760\n6,893,655\n8,401\n923,394",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Advisory vote on Morningstar's executive compensation",
+        "votes_for": 32732639,
+        "votes_against": 507847,
+        "abstentions": 13330,
+        "broker_non_votes": 923394,
+        "outcome": "approved, on an advisory basis"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-22-061422",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Morningstar\u2019s executive compensation was approved, on an advisory basis, with the voting as follows:\nVotes For\nVotes Against\nAbstentions\nBroker Non- Votes\n32,732,639\n507,847\n13,330\n923,394",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "vote_results",
+      "value": {
+        "matter": "Ratification of the appointment of KPMG LLP as Morningstar's independent registered public accounting firm for 2022",
+        "votes_for": 33894817,
+        "votes_against": 179381,
+        "abstentions": 103012,
+        "broker_non_votes": null,
+        "outcome": "ratified"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-22-061422",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-05-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The appointment of KPMG as Morningstar\u2019s independent registered public accounting firm for 2022 was ratified with the voting as follows:\nVotes For\nVotes Against\nAbstentions\n33,894,817\n179,381\n103,012",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "events": [
+    {
+      "field": "events",
+      "value": {
+        "type": "financing",
+        "description": "364-Day Revolving Credit Facility entered June 30, 2020 expired June 29, 2021 and the company chose not to renew it.",
+        "date": "2021-06-29"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "On June 30, 2020, we entered into a senior credit agreement that provides us with a $50.0 million 364-day senior revolving credit facility. The 364-Day Revolving Credit Facility expired on June 29, 2021 and we chose not to renew the facility upon expiration.",
+      "quote_verified": true,
+      "quote_check": "verbatim after dropping 2 trailing character(s) (99.2% exact) \u2014 generation artifact, not a paraphrase"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "financing",
+        "description": "Issuance and sale of $350.0 million aggregate principal amount of 2.32% senior notes due 2030 in a private placement; proceeds primarily used to pay off a portion of outstanding Credit Agreement debt.",
+        "date": "2020-10-26"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "On October 26, 2020, we completed the issuance and sale of the 2030 Notes, in a private placement exempt from the registration requirements of the Securities Act of 1933, as amended. Proceeds were primarily used to pay off a portion of the company's outstanding debt under its Credit Agreement.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "financing",
+        "description": "Board approved a new $400.0 million share repurchase program effective January 1, 2021, expiring December 31, 2023; only 4,900 shares for $1.3 million repurchased as of year end.",
+        "date": "2020-12-31"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In December 2020, the board of directors approved a new share repurchase program that authorizes the company to repurchase up to $400.0 million in shares of the company's outstanding common stock, effective January 1, 2021. The authorization expires on December 31, 2023. As of December 31, 2021 , w e repurchased a total of 4,900 shares for $1.3 million under this authorization.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "financing",
+        "description": "Senior credit agreement providing a five-year multi-currency facility of up to $750.0 million; $11.0 million outstanding on the term facility at December 31, 2021.",
+        "date": "2019-07-02"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "On July 2, 2019, we entered into a senior credit agreement (the Credit Agreement). The Credit Agreement provides the company with a five-year multi-currency credit facility with an initial borrowing capacity of up to $750.0 million, including a $300.0 million revolving credit facility and a term loan facility of $450.0 million.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "acquisition",
+        "description": "Purchase of the remaining interest in Sustainalytics in July 2020, generating a holding gain on the previously held equity interest of $50.9 million recognized in 2020.",
+        "date": "2020-07-31"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The holding gain on our previously held equity interest relates to the purchase of the remaining interest in Sustainalytics in July 2020.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "acquisition",
+        "description": "Acquisition of Moorgate Benchmarks, whose entities are permissioned as U.K. and EU benchmark administrators.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "With our acquisition of Moorgate Benchmarks, Morningstar\u2019s affiliates, Moorgate Benchmarks Limited and Moorgate Benchmarks GmbH, are permissioned to act as an U.K. and EU benchmark administrator, respectively.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "divestiture",
+        "description": "Sale of the company's equity ownership in two equity method investments during the fourth quarter of 2020.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The gain on sale of equity method investments in 2020 relates to the sale of our equity ownership in two of our equity method investments during the fourth quarter of 2020.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "other",
+        "description": "Company states it had no divestitures in 2021, 2020, or 2019.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Divestitures\nWe had no divestitures in 2021, 2020, or 2019.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "guidance_change",
+        "description": "Company expects to make regular quarterly dividend payments of 36 cents per share in 2022, subject to board approval.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "S ubsequent dividends will be subject to board approval and we expect to make regular quarterly dividend payments of 36 cents per share in 2022.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "other",
+        "description": "Sustainalytics revenue began to be included in the organic revenue calculation in Q3 2021, so 2021 organic revenue includes only six months of Sustainalytics.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We began including Sustainalytics revenue in our organic revenue calculation in the third quarter of 2021. As such, organic revenue for the year-ended December 31, 2021 only includes Sustainalytics revenue for the last six months of 2021.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "other",
+        "description": "Shareholders approved the Morningstar, Inc. Amended and Restated 2011 Stock Incentive Plan at the Annual Shareholders' Meeting held May 14, 2021, covering a total of 4,126,042 shares.",
+        "date": "2021-05-14"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-21-069795",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-05-20"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "At the Annual Shareholders\u2019 Meeting of Morningstar, Inc. (Morningstar) held on May 14, 2021, the shareholders of Morningstar approved the Morningstar, Inc. Amended and Restated 2011 Stock Incentive Plan (the Plan) in accordance with the voting results set forth below under Item 5.07.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "other",
+        "description": "All ten director nominees listed in the proxy statement were elected at the 2021 Annual Shareholders' Meeting.",
+        "date": "2021-05-14"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-21-069795",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-05-20"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "other",
+        "description": "Ratification of KPMG LLP as independent registered public accounting firm for 2021.",
+        "date": "2021-05-14"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-21-069795",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-05-20"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The appointment of KPMG as Morningstar\u2019s independent registered public accounting firm for 2021 was ratified with the voting as follows:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "other",
+        "description": "A shareholder proposal requesting a Board report on risks associated with economic activism against Israel alleged in Morningstar's business lines was not approved; it was presented only at the meeting and not submitted under Rule 14a-8.",
+        "date": "2021-05-14"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-21-069795",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-05-20"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The shareholder proposal requesting that the Board prepare a report on the extent of potential legal, financial, and reputational risks associated with economic activism against Israel alleged in Morningstar\u2019s business lines was not approved, with the voting as follows:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "events",
+      "value": {
+        "type": "other",
+        "description": "Advisory vote approving Morningstar's executive compensation.",
+        "date": "2021-05-14"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2021,
+        "accession": "0001104659-21-069795",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-05-20"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Morningstar\u2019s executive compensation was approved, on an advisory basis, with the voting as follows:",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "notable_language": [
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Recurring, unusually explicit statement of Morningstar's no-guidance philosophy, framing management incentives directly."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We do not make public financial forecasts for our business because we want to avoid creating any incentives for our management team to make speculative statements about our financial results that could influence our stock price or take actions that help us meet short-term forecasts, but may not build long-term shareholder value.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Direct admission of wage inflation and employee turnover pressure affecting the company, new emphasis relative to prior pandemic disclosure."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Certain long-term effects of the efforts of monetary authorities and governments to ameliorate the impacts of the pandemic are potentially starting to become evident, including both price and wage inflation as well as the competition for workers. We have noted these effects in our business related to the mobility of employees between jobs and the wage levels needed to hire or retain employees.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Hedged COVID framing paired with an explicit claim of no significant revenue impact \u2014 a softening from earlier pandemic uncertainty language."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The threat of new variants of the virus and concerns over the adoption and efficacy of mitigants, such as vaccines and other treatments, continue to affect historical commercial and work patterns, although not with any significant impact on any of our sources of revenue during 2021.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Acknowledges client losses in Investment Management, an admission embedded in otherwise positive growth commentary."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Investment Management revenue grew 6.1% in 2021, as stronger year-over-year inflows and market performance more than offset the negative impact of previously-disclosed client losses.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Unusually direct admission that the company's own risk of inadvertent regulatory noncompliance has risen."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Given more intense regulatory scrutiny and the novelty of some of the issues presented, the possibilities for inadvertent noncompliance with regulation have increased.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "New-for-the-year topic; a plain statement of limited impact with a forward hedge on IT infrastructure."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001289419-22-000005",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-02-25"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Given the nature of our business, global supply chain disruptions have had little impact on the company, but could impact the availability of certain IT infrastructure over time.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Explicit explanation of the reversal of the COVID-era weighting change back to the pre-pandemic mix, described as 'the optimal mix'."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We modified our annual incentive performance measure weightings for 2021 to 67% Adjusted Revenue and 33% Adjusted EBITDA. This represents the weighting which we believe is the optimal mix of performance measures for our annual incentive plan and is what we had in place in 2019. In 2020, we modified our weightings to 50% Adjusted Revenue and 50% Adjusted EBITDA in response to the COVID-19 pandemic and the uncertainty it caused.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Justifies a doubling of upside leverage purely by reference to 'market practices'."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "For our performance-based Market Stock Unit Program, starting with our November 2021 grant, we increased our maximum payout to 200% of target, which represents a change to align to market practices.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Recurring philosophy statement reserving discretion while claiming formulaic alignment."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Does not use rigid formulas to determine executive compensation but nevertheless aims to tie annual cash incentive compensation closely to value creation, as measured by increases in Adjusted Revenue and Adjusted EBITDA or similar measures.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Explains replacement of an objective revenue metric with a committee-determined discretionary kicker, still attributed to the pandemic in 2021."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The shift from a revenue kicker in 2019 to a performance kicker in 2020 and 2021 was made due to the uncertain market environment and uncertain three-year outlook due to the COVID-19 pandemic.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Long-recurring rationale for the Executive Chairman's nominal pay, framed as his own request."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In consideration of his status as our principal shareholder, Joe believes that his compensation should be directly aligned with other shareholders and be realized primarily through appreciation in the long-term value of our common stock. At his request and supported by the Compensation Committee, he did not participate in our equity or cash-based incentive programs in 2021 and his salary has been $100,000 since 2000.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Delayed COVID-era increases restored with an explicit below-median peer positioning claim as justification."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The Committee approved, for 2021, the original intended compensation increases from 2020. Starting January 1, 2021, his salary was $500,000 and target bonus was $1,000,000. In addition, the Committee increased Kunal\u2019s target equity grant from $1,500,000 to $2,000,000. The Committee made these changes to improve the competitiveness of Kunal\u2019s target total compensation. In total, Kunal\u2019s target total compensation is below the median of the peer group.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Pre-emptive framing of the year-over-year decline in reported CEO pay."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Although the 2021 Summary Compensation Table shows that Kunal\u2019s total compensation decreased year-over-year, his 2020 compensation included a non-recurring restricted stock unit grant of $3,000,000 which will vest over five years, as disclosed in our 2021 proxy.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Describes an extra equity award layered onto the bonus formula for above-target individual ratings."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In 2021, Morningstar rewarded its top performers (those whose individual performance adjustment was above 100%) with a restricted stock unit award that vests in two equal annual installments commencing on the first anniversary of the grant date.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Unusually direct admission of a stock ownership compliance failure and a granted waiver."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Due to an administrative error, Gail Landis is not currently in compliance but has a plan is in place to achieve compliance no later than the second quarter of 2022. The Nominating and Corporate Governance Committee has reviewed the facts and granted Gail a waiver to the stock ownership requirements for this period of time.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Uses the 97% say-on-pay result to justify making no changes."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Given the significant shareholder support, the Compensation Committee did not make any changes to the Company\u2019s executive compensation program in response to the 2021 say on pay vote.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    },
+    {
+      "field": "notable_language",
+      "value": {
+        "why_notable": "Tightening of ownership requirements announced alongside the increase in MSU maximum payout."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2021,
+        "accession": "0001193125-22-092675",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-04-01"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Stock ownership is a cornerstone of our executive compensation program. In December 2021, we increased the holding requirement for total number of vested restricted stock units and vested market stock units from 25% to 33% for our NEOs.",
+      "quote_verified": true,
+      "quote_check": "verbatim match"
+    }
+  ],
+  "risk_deltas": {
+    "fiscal_year": 2021,
+    "compared_to": null,
+    "deltas": null,
+    "unavailable_reason": "FY2020 is outside the extraction window, so FY2021 has no prior-year risk factor list to diff against. FY2021 is the baseline year; its factors are recorded but no change can be computed. This is a gap, not an absence of change.",
+    "source": {
+      "form": "10-K",
+      "fiscal_year": 2021,
+      "accession": "0001289419-22-000005"
+    }
+  },
+  "data_quality": {
+    "strategic_priorities": {
+      "n": 9,
+      "populated": true,
+      "high_confidence": 9,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item1_business"
+      ]
+    },
+    "segments": {
+      "n": 3,
+      "populated": true,
+      "high_confidence": 3,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item1_business",
+        "10-K_item7_mdna"
+      ]
+    },
+    "headcount": {
+      "n": 1,
+      "populated": true,
+      "high_confidence": 1,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item1_business"
+      ]
+    },
+    "leadership": {
+      "n": 0,
+      "populated": false,
+      "high_confidence": 0,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": []
+    },
+    "board": {
+      "n": 10,
+      "populated": true,
+      "high_confidence": 0,
+      "low_confidence": 10,
+      "unverified_quotes": 0,
+      "sources": [
+        "DEF14A_director_bios"
+      ]
+    },
+    "incentive_metrics": {
+      "n": 7,
+      "populated": true,
+      "high_confidence": 7,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "DEF14A_cdna",
+        "DEF14A_incentive_tables"
+      ]
+    },
+    "vote_results": {
+      "n": 12,
+      "populated": true,
+      "high_confidence": 12,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "8-K_8-K_whole"
+      ]
+    },
+    "events": {
+      "n": 15,
+      "populated": true,
+      "high_confidence": 15,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item7_mdna",
+        "8-K_8-K_whole"
+      ]
+    },
+    "notable_language": {
+      "n": 17,
+      "populated": true,
+      "high_confidence": 17,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item7_mdna",
+        "DEF14A_cdna"
+      ]
+    },
+    "risk_deltas": {
+      "populated": false,
+      "counts": null,
+      "unavailable_reason": "FY2020 is outside the extraction window, so FY2021 has no prior-year risk factor list to diff against. FY2021 is the baseline year; its factors are recorded but no change can be computed. This is a gap, not an absence of change."
+    },
+    "segments_basis": {
+      "filing_uses_reportable_segment_language": false,
+      "basis": "product or business areas described in Item 1 \u2014 this filing does not disclose reportable segments, so these are NOT segments and must not be compared with a year that does"
+    },
+    "extraction_tasks_missing": [
+      "letter"
+    ],
+    "board_metadata": {
+      "board_size": 10,
+      "committees": [
+        "Audit",
+        "Compensation",
+        "Nominating and Corporate Governance"
+      ]
+    }
+  }
+}

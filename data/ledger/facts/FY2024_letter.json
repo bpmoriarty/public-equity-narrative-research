@@ -1,0 +1,104 @@
+{
+  "fiscal_year": 2024,
+  "task": "letter",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:19:10Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 12903,
+    "output_tokens": 2057
+  },
+  "sources": [
+    {
+      "key": "letter_full_text",
+      "accession": "0001289419-25-000062",
+      "form": "ARS",
+      "filing_date": "2025-03-28"
+    }
+  ],
+  "source_chars": 33040,
+  "facts": {
+    "strategic_priorities": [
+      {
+        "text": "Delivering insights across asset classes to public- and private-market investors (Company Goal No. 1)",
+        "quote": "Company Goal No. 1 Company Goals Update Our company goals guide our work of helping investors make sense of the increasingly complex investment ecosystem. In 2024, we made progress across multiple fronts. Delivering insights across asset classes to public- and private-market investors"
+      },
+      {
+        "text": "Anticipating investor needs as the convergence of public and private markets accelerates; constructing a common language of investing across public and private markets",
+        "quote": "As we enter 2025, our teams are particularly focused on anticipating investor needs as the convergence of public and private markets accelerates."
+      },
+      {
+        "text": "Leveraging advances in artificial intelligence to drive innovation across internal and external products and services (Company Goal No. 2)",
+        "quote": "Leveraging advances in artificial intelligence to drive innovation across internal and external products and services We introduced a companywide AI goal with a straightforward objective: remake internal and external workflows to get users the answers they want faster and without all those annoying clicks."
+      },
+      {
+        "text": "Driving operational excellence and scalability to support growth targets (Company Goal No. 3), tracked via revenue per employee",
+        "quote": "Driving operational excellence and scalability to support growth targets Driving efficiency and scaling our business effectively are central to our ability to generate long-term durable growth. We are keeping a close eye on revenue per employee at the consolidated level as well as across our operating segments."
+      },
+      {
+        "text": "Refocusing Morningstar Wealth on areas that require less capital to scale, including exiting the US TAMP",
+        "quote": "This included refocusing Morningstar Wealth on areas that require less capital to scale, enabling more efficient and sustainable growth. In December, we closed on the sale of customer assets in our US turnkey asset management platform (TAMP) to AssetMark, part of a broader strategic alliance with that firm."
+      },
+      {
+        "text": "Building an amazing culture that supports exceptional talent (Company Goal No. 4)",
+        "quote": "Building an amazing culture that supports exceptional talent Those of you who have followed Morningstar over the years know that whenever I\u2019m asked what keeps me up at night, I always answer that it\u2019s the next person we hire at Morningstar."
+      },
+      {
+        "text": "Prioritizing debt repayment and maintaining balance sheet flexibility",
+        "quote": "During the year, we continued prioritizing debt repayment. We reduced debt by $273.8 million, which together with improved profitability lowered our consolidated funded indebtedness to consolidated EBITDA ratio as defined in our financial covenants to 0.9 from 1.7."
+      },
+      {
+        "text": "Increasing adjusted operating income and margins as the business scales; growing Morningstar Wealth to profitability",
+        "quote": "We remain focused on increasing adjusted operating income and margins as our business scales."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We weren\u2019t getting to scale fast enough with the US TAMP, nor did we see an end to ongoing investments (something that even the largest players in the space have",
+        "why_notable": "Unusually direct admission of failure to reach scale, framed as the rationale for exiting a business."
+      },
+      {
+        "quote": "While most parts of the business grew in 2024\u2014including Morningstar Indexes, which benefited from higher assets under management for key products, largely driven by",
+        "why_notable": "Sets up the concession that Sustainalytics underperformed, isolating the one weak segment."
+      },
+      {
+        "quote": "Morningstar Sustainalytics had a more challenging year. Revenue declined modestly compared with 2023. This was largely due to softness in our flagship ESG Risk Ratings product, where vendor consolidation and softness in parts of the retail asset and wealth client segments has hurt",
+        "why_notable": "Explicit acknowledgment of decline in the ESG business, a reversal of prior years' growth narrative around Sustainalytics."
+      },
+      {
+        "quote": "we found that the buyer base remained distinct from our core client segments, and we hadn\u2019t found a good opportunity to cross-sell with our other investment data. As we look to drive growth and scale in Data and Analytics, that business didn\u2019t have a clear place.",
+        "why_notable": "Candid portfolio-pruning rationale; 'didn't have a clear place' is blunt language for a divestiture."
+      },
+      {
+        "quote": "driven in part by lower stock-based compensation due to the cancellation of the PitchBook plan after founder John Gabbert\u2019s departure",
+        "why_notable": "Links a margin improvement directly to a founder's departure and the cancellation of his compensation plan \u2014 an unusually specific governance-adjacent disclosure."
+      },
+      {
+        "quote": "I offered Pat the opportunity to reduce his hours and work part-time for 40 hours a week, but he was strangely uninterested in the offer.",
+        "why_notable": "Jocular, personal tone characteristic of this CEO's letters; humanizes an executive retirement disclosure."
+      },
+      {
+        "quote": "Doug led what I believe to be the moatiest part of our business and did a terrific job in the role for nearly 10 years.",
+        "why_notable": "Idiosyncratic 'moatiest' framing signals how leadership ranks competitive advantage across segments."
+      },
+      {
+        "quote": "whenever I\u2019m asked what keeps me up at night, I always answer that it\u2019s the next person we hire at Morningstar",
+        "why_notable": "A recurring signature claim about culture and hiring being the top risk."
+      },
+      {
+        "quote": "In 2024, our teams demonstrated good discipline: Average revenue per employee increased to roughly $200,000 from $170,000 in 2023.",
+        "why_notable": "A specific, approximate efficiency metric elevated as the scorecard for the operational excellence goal."
+      },
+      {
+        "quote": "In December, Jason Dubinsky stepped down as our chief financial officer.",
+        "why_notable": "CFO departure announced with no stated reason \u2014 the absence of a rationale is itself notable."
+      },
+      {
+        "quote": "Expenses incurred during the transition period following the closing of our strategic alliance with AssetMark, as we wind down our US TAMP, are expected to have a temporarily negative impact on profitability.",
+        "why_notable": "A hedge on near-term profitability paired with a forward-looking positive run-rate promise."
+      }
+    ]
+  }
+}

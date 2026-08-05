@@ -1,0 +1,128 @@
+{
+  "fiscal_year": 2023,
+  "task": "mdna",
+  "ok": true,
+  "extracted_utc": "2026-08-05T16:12:36Z",
+  "model": "claude-opus-5",
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 32253,
+    "output_tokens": 2718
+  },
+  "sources": [
+    {
+      "key": "10-K_item7_mdna",
+      "accession": "0001289419-24-000010",
+      "form": "10-K",
+      "filing_date": "2024-02-29"
+    }
+  ],
+  "source_chars": 88370,
+  "facts": {
+    "events": [
+      {
+        "type": "segment_change",
+        "description": "Effective as of December 31, 2023, the company concluded it has seven operating segments presented as five reportable segments, with Morningstar Sustainalytics and Morningstar Indexes combined into Corporate and All Other.",
+        "date": "2023-12-31",
+        "quote": "Effective as of December 31, 2023, the company concluded that it has seven operating segments which are presented as the following five reportable segments: Morningstar Data and Analytics, PitchBook, Morningstar Wealth, Morningstar Credit, and Morningstar Retirement."
+      },
+      {
+        "type": "restructuring",
+        "description": "Reduction of Shenzhen, China operations and shift of global business function work to other Morningstar locations; $15.6 million of costs in 2023 vs $35.7 million in 2022; substantially completed in Q3 2023.",
+        "date": "2022-07",
+        "quote": "In July 2022, the company began to significantly reduce its operations in Shenzhen, China and to shift the work related to its global business functions to other Morningstar locations. Costs incurred in 2023 related to this transition totaled $15.6 million"
+      },
+      {
+        "type": "restructuring",
+        "description": "Targeted reorganizations and headcount reductions in Morningstar Sustainalytics, Morningstar Wealth, and Morningstar DBRS, with $9.0 million of severance in 2023.",
+        "date": null,
+        "quote": "$9.0 million of severance expense during 2023, respectively, related to targeted reorganizations and headcount reductions in certain parts of the business, including Morningstar Sustainalytics, Morningstar Wealth, and Morningstar DBRS. During 2023, the most significant reductions were at Morningstar Sustainalytics."
+      },
+      {
+        "type": "other",
+        "description": "DBRS, Inc. entered into two SEC settlements paying $8.0 million in civil monetary penalties ($6.0 million record-keeping; $2.0 million CMBS ratings methodologies).",
+        "date": "2023-09-29",
+        "quote": "On September 29, 2023, DBRS, Inc. (DBRS) entered into two settlements with the SEC requiring DBRS to pay an aggregate of $8.0 million in civil monetary penalties, thus resulting in $8.0 million of expense in 2023."
+      },
+      {
+        "type": "divestiture",
+        "description": "Termination Agreement and Tender Offer Agreement relating to Morningstar Japan K.K.; Morningstar paid 8 billion yen for brand license termination and sold 8,040,600 shares to SBI for net proceeds of $26.2 million and a pre-tax gain of $18.4 million.",
+        "date": "2023-01-27",
+        "quote": "On January 27, 2023, we entered into the Termination Agreement and the Tender Offer Agreement. Pursuant to the Termination Agreement, Wealth Advisors agreed to cease use of the Morningstar brand and Morningstar, and Wealth Advisors agreed to terminate the License Agreement originally entered into in 1998."
+      },
+      {
+        "type": "acquisition",
+        "description": "Final $50.0 million contingent payment related to the LCD acquisition.",
+        "date": "2023-02-06",
+        "quote": "On February 6, 2023, the company made its final $50.0 million contingent payment related to the acquisition of LCD, of which $4.5 million is reflected in operating cash flows and $45.5 million is reflected in financing cash flows."
+      },
+      {
+        "type": "financing",
+        "description": "Board approved a $500.0 million share repurchase program effective January 1, 2023, expiring December 31, 2025; only 8,484 shares for $1.4 million repurchased as of year-end.",
+        "date": "2022-12-06",
+        "quote": "On December 6, 2022, the board of directors approved a share repurchase program that authorizes the company to repurchase up to $500.0 million in shares of the company's outstanding common stock, effective January 1, 2023. This authorization replaced the then-existing share repurchase program and expires on December 31, 2025."
+      },
+      {
+        "type": "guidance_change",
+        "description": "Company expects regular quarterly dividend payments of 40.5 cents per share in 2024.",
+        "date": null,
+        "quote": "While subsequent dividends will be subject to board approval, we expect to make regular quarterly dividend payments of 40.5 cents per share in 2024."
+      },
+      {
+        "type": "other",
+        "description": "Recognition of $13.7 million of tax benefits from a retroactive tax election for 2021 and 2022 tax periods, approved in Q2 2023.",
+        "date": null,
+        "quote": "This decrease is primarily attributable to the recognition of $13.7 million of tax benefits related to a retroactive tax election with respect to our 2021 and 2022 tax periods. We received confirmation of the approval of the tax election in the second quarter of 2023"
+      },
+      {
+        "type": "other",
+        "description": "Revenue-type classifications updated starting Q1 2023; prior periods not restated.",
+        "date": null,
+        "quote": "Starting with the quarter ended March 31, 2023, the company updated its revenue-type classifications to account for product areas with more than one revenue type. Prior periods have not been restated to reflect the updated classifications."
+      }
+    ],
+    "segment_changes": [
+      {
+        "name": "Morningstar Data and Analytics",
+        "note": "One of five reportable segments as of December 31, 2023; prior period segment information presented on a comparable basis",
+        "quote": "Prior period segment information is presented on a comparable basis to the basis on which current period segment information is presented and reviewed by the chief operating decision maker (CODM)."
+      },
+      {
+        "name": "Corporate and All Other",
+        "note": "Morningstar Sustainalytics and Morningstar Indexes do not individually meet quantitative segment reporting thresholds and have been combined into Corporate and All Other, which is not a reportable segment",
+        "quote": "The operating segments of Morningstar Sustainalytics and Morningstar Indexes do not individually meet the quantitative segment reporting thresholds and have been combined and presented as part of Corporate and All Other, which is not a reportable segment."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We do not make public financial forecasts for our business because we want to avoid creating any incentives for our management team to make speculative statements about our financial results that could influence our stock price or take actions that help us meet short-term forecasts, but may not build long-term shareholder value.",
+        "why_notable": "Recurring, distinctive philosophy statement explicitly refusing guidance \u2014 unusual among public companies."
+      },
+      {
+        "quote": "These reorganizations were in part in response to slower than anticipated progress against growth targets due in part to softening demand for ESG solutions for Morningstar Sustainalytics, the impact of sharp market declines in 2022 for Morningstar Wealth, and weak credit issuance activity, especially in U.S. CMBS, for Morningstar DBRS.",
+        "why_notable": "Unusually direct admission of missed internal growth targets in three named businesses."
+      },
+      {
+        "quote": "The politicization of ESG-related business activities and investments has increased in recent years, particularly in the U.S. This politicization has led to the rise of anti-ESG proponents and actions",
+        "why_notable": "Explicit framing of political backlash as a business risk \u2014 a shift in how the ESG business is characterised versus prior emphasis on ESG opportunity."
+      },
+      {
+        "quote": "While still strong, revenue growth slowed across regions compared to the prior year reflecting softer demand for ESG solutions.",
+        "why_notable": "Hedged concession about the Sustainalytics growth story previously described as a driver."
+      },
+      {
+        "quote": "Expense growth was primarily driven by higher compensation costs from headcount largely added during 2022 and reflects significant investments to build out the U.S. and international wealth platforms.",
+        "why_notable": "Justifies a widening segment operating loss as deliberate investment rather than underperformance."
+      },
+      {
+        "quote": "Overall, our business, balance sheet, technological infrastructure, and teams have shown resilience and flexibility navigating global macroeconomic trends.",
+        "why_notable": "Self-congratulatory resilience claim appended to a discussion of adverse rate and wage pressures."
+      },
+      {
+        "quote": "Our mission is to empower investor success. The investing ecosystem is complex, and navigating it with confidence requires a trusted, independent voice.",
+        "why_notable": "Standing mission language that recurs across years; useful baseline for detecting drift."
+      }
+    ]
+  }
+}

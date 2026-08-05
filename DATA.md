@@ -16,7 +16,22 @@ asserted. Update this file when the source, universe, or as-of date changes.
 | Universe | One company at a time, per `config/company.toml` |
 | Window | Five fiscal years, per `config/company.toml` `[window]` |
 | Subject | MORN / Morningstar, Inc., CIK 0001289419, FY2021–FY2025 |
-| Retrieved | 201 documents across 127 filings, 32.8 MB — see `data/raw/fetch-manifest.json` |
+| Retrieved | 202 documents across 128 filings — see `data/raw/fetch-manifest.json` |
+| Extraction model | `claude-opus-5`, effort `medium` — 34 calls, 571,664 input / 66,406 output tokens |
+
+### One filing outside the window, by name
+
+`0001289419-26-000028` (8-K, filed 2026-05-08) is the 202nd document and the only
+one from outside FY2021–FY2025. It carries the Item 5.07 vote taken at the
+2026-05-07 annual meeting, which is the vote on **FY2025** compensation — a
+say-on-pay result for a year in the window is reported in a filing dated after
+it, because the meeting happens the following spring.
+
+Fetched by explicit accession (`src/fetch.py --accession`), not by widening the
+window: extending the window into 2026 would have swept in a sixth year of 10-Qs,
+Form 4s and earnings 8-Ks and quietly changed what every coverage claim in this
+file means. Coverage claims therefore remain "FY2021–FY2025, plus one named 8-K
+reporting the FY2025 vote".
 
 The manifest records a SHA-256 for every document, so the cache can be verified
 against what was actually downloaded rather than assumed intact.
@@ -162,7 +177,40 @@ has to survive them.
    Any claim in the outputs that rests on a `low`-confidence field must say so,
    or be dropped.
 
-10. **Section extraction is lossy by design.** Only the sections in
+10. **`segments` does not mean the same thing in every year.** MORN's FY2021 and
+   FY2022 10-Ks never use the phrase "reportable segment" in Item 1 or Item 7;
+   the FY2023, FY2024 and FY2025 filings do. So for the first two years the
+   ledger's `segments` field holds whatever product or business areas Item 1
+   happens to describe, and from FY2023 it holds the reportable segments the
+   filing names.
+
+   Consequence: **the segment counts must not be compared across that boundary.**
+   Going from 3 items in FY2021 to 10 in FY2022 to 6 from FY2023 is not a
+   re-segmentation of that shape — it is a change in what the filing discloses,
+   plus the extraction answering a different question in each regime. A real,
+   traceable re-segmentation does sit inside this window (five reportable
+   segments first appear in the FY2023 10-K, and "Morningstar Data and Analytics"
+   is reported as "Morningstar Direct Platform" in FY2025), but it has to be
+   stated from the segment *names and the filing's own language*, never from the
+   counts.
+
+   Each year's ledger record carries this in
+   `data_quality.segments_basis`, detected from the filing text rather than
+   hardcoded, so the flag stays correct for the next company.
+
+11. **Vote results are keyed to the year whose pay was voted on, and the events
+   list is not.** A DEF 14A for fiscal year N is filed the following spring and
+   voted at that spring's meeting, so `vote_results` for FY N comes from an 8-K
+   filed in year N+1. Meanwhile the `events` list for FY N may contain the vote
+   held *during* FY N — which concerned FY N−1's compensation.
+
+   Both are correctly sourced and dated, but they are about different years. The
+   FY2021 record shows the shape: `vote_results` holds the May 2022 vote on
+   FY2021 pay, while `events` includes the May 2021 vote on FY2020 pay. Any
+   say-on-pay claim in the outputs must name the meeting date, not just the
+   fiscal year, or the two collapse into one another.
+
+12. **Section extraction is lossy by design.** Only the sections in
    `config/sections.toml` are extracted; the rest of each filing is discarded.
    A fact stated only in, say, Item 3 (Legal Proceedings) will not appear in the
    outputs. Where a boundary validation fails, that section is skipped for that
@@ -181,10 +229,48 @@ Downstream stages are free to be re-run at will; only `data/raw/` is expensive.
 ## Data-quality logging
 
 Per the top-level CLAUDE.md: log quality on the variables that actually enter
-the analysis, not just intermediates. For this pipeline that means the ledger
-fields in SPEC.md §3 — for each fiscal year, record how many of
-`strategic_priorities`, `segments`, `headcount`, `leadership`, `board`,
-`incentive_metrics`, `risk_deltas`, and `events` were populated, and from which
-source filing. A year with an empty `incentive_metrics` because the DEF 14A
-extraction failed must be distinguishable from a year where the proxy genuinely
-disclosed no metrics.
+the analysis, not just intermediates. **Implemented** — every
+`data/ledger/FY*.json` carries a `data_quality` block recording, per field: how
+many facts, how many at each confidence level, how many failed quote
+verification, and which source sections they came from.
+`data/ledger/ledger-report.md` is the cross-year view.
+
+A year with an empty `incentive_metrics` because extraction failed is therefore
+distinguishable from a year where the proxy genuinely disclosed none:
+`extraction_tasks_missing` names any task with no result file, so a gap in the
+pipeline never reads as a gap in the disclosure.
+
+### Quote verification — traceability as a test, not a promise
+
+Every fact in the ledger carries an exact quote from its source section, and the
+builder checks that the quote actually occurs in that section before storing it
+(`verify_quote` in `src/ledger_schema.py`). This exists because a model asked for
+a citation always produces something citation-shaped. The failure that matters is
+not a missing source, it is a *plausible* source for a claim the filing never
+made — and nothing downstream can distinguish that from a real extraction.
+
+Two consequences worth knowing when reading the ledger:
+
+- **The stored quote is the verified span, not whatever the model emitted.**
+  Where a generation artifact left a stray character or two on the end, the
+  citation is trimmed back to what the filing demonstrably contains. A tail
+  longer than three characters is treated as a paraphrase and fails.
+- **Source attribution is measured, not asserted.** A task that reads two
+  sections resolves each fact to a section by finding which one contains its
+  quote, rather than asking the model where it looked. So a fact can only be
+  attributed to a document that provably contains its evidence.
+
+Result on the current run: **479 facts, 0 unverified quotes.** The check was
+separately confirmed to reject fabricated quotes, paraphrased tails, quotes
+stitched together from two passages, an extra appended word, and fragments too
+short to be evidence. A 100% pass rate only means something alongside evidence
+that the check can fail.
+
+### Confidence
+
+Every fact carries `high` or `low` with the reason recorded on it. `low` means
+the source section's boundaries are unverified (limitation 9) or the quote could
+not be verified. On the current run **51 of 479 facts are `low`**, all of them
+board-composition facts from `DEF14A_director_bios`.
+
+**Any claim in the outputs resting on a `low` fact must say so, or be dropped.**
