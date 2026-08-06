@@ -346,6 +346,29 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict) -> tuple[YearLedger,
         "filings": sorted({f.source.accession for f in qa_facts if f.source}),
     }
 
+    # IDS ARE AN ANALYSIS VARIABLE NOW, so their quality is logged like any other.
+    # Every citation in every output resolves through an id, which makes "are they
+    # all present and distinct" a property the artifact should record rather than
+    # something only the build's stdout ever knew.
+    #
+    # Scoped honestly to WITHIN THIS YEAR: this block is written before the
+    # cross-year audit runs, so it cannot truthfully assert global uniqueness. The
+    # global check is `audit_ids` in this module, and it is fatal — a collision
+    # anywhere means no ledger gets to claim it was built.
+    fact_ids = [x.id for f in LEDGER_FIELDS for x in fields[f]]
+    risk_ids = [it["id"] for items in ((risk_year or {}).get("deltas") or {}).values()
+                for it in items]
+    dq["ids"] = {
+        "n_facts": len(fact_ids),
+        "n_risk_deltas": len(risk_ids),
+        "all_present": all(fact_ids) and all(risk_ids),
+        "unique_within_year": len(set(fact_ids + risk_ids)) == len(fact_ids) + len(risk_ids),
+        "basis": "content hash of the claim, its evidence and its source — see `fact_id` "
+                 "in src/ledger_schema.py. Confidence and the verification result are NOT "
+                 "hashed, so re-verifying a fact does not renumber it. Cross-year "
+                 "uniqueness is enforced fatally at build time by `audit_ids`.",
+    }
+
     missing_tasks = [t for t in {t for t, _, _ in FIELD_MAP} if not task_cache.get(t)]
     dq["extraction_tasks_missing"] = sorted(missing_tasks)
     for t in missing_tasks:

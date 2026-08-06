@@ -55,8 +55,15 @@ data/triage/text/
 # dropped from the history on the strength of them. A record of what was excluded
 # has to survive in the repository, or the exclusion is undocumented.
 
-# Final deliverables regenerate from data/ledger/
-output/
+# output/ IS COMMITTED — the earlier "final deliverables regenerate from
+# data/ledger/" reasoning was wrong for the same reason it was wrong for the
+# ledger. The three deliverables are model-written prose. They cost real money to
+# produce (~$3.50 a full pass), and a re-run will NOT reproduce them
+# byte-for-byte, so "regenerable" is not true in the sense that matters. They are
+# also the only artifact anyone outside this repo will actually read, and the thing
+# every citation check runs against.
+#
+# Caught by the preflight check on 2026-08-06, before any output existed to lose.
 
 # Per-run logs
 logs/

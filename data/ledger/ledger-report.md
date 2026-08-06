@@ -1,6 +1,6 @@
 # Year ledger
 
-Generated 2026-08-06T15:53:33Z. MORN (Morningstar, Inc.), CIK 0001289419.
+Generated 2026-08-06T16:08:46Z. MORN (Morningstar, Inc.), CIK 0001289419.
 
 Every fact carries its source filing, an exact quote from that filing, and a confidence marker. `low` means the source section's boundaries are unverified, or the quote could not be found verbatim — see `confidence_reason` on the fact. **Any claim in the outputs resting on a `low` fact must say so, or be dropped.**
 

@@ -292,6 +292,8 @@ across 34 calls). Milestones 1–3 cost nothing.
 | 2026-08-04 | `pdfminer.six`, **not** `pypdf`, for PDF text | pypdf coerces unmapped glyphs toward whitespace, turning every digit in the FY2022 letter into a space — "fell 15%" became "fell". pdfminer preserves them as `(cid:N)`. Prefer the library that preserves what it can't interpret |
 | 2026-08-04 | Glyph offset **derived**, not hardcoded | Taken from the space glyph's frequency and validated against English sentinel words, so the decoder isn't silently wrong on a different company's font |
 | 2026-08-04 | The dual em-dash/minus glyph maps to ASCII `-` | One glyph serves both. A hyphen for an em dash is cosmetic; a lost minus sign inverts a fact |
+| 2026-08-06 | **`output/` is committed, not ignored** | Found by the preflight check before any output existed to lose. The old rule said "final deliverables regenerate from data/ledger/", which is false in the way that matters: they are model-written prose, cost ~$3.50 a pass, and will not reproduce byte-for-byte. Same reasoning that already put `data/ledger/` in git |
+| 2026-08-06 | Ids are logged in `data_quality`, scoped to **within-year** | Also a preflight finding: ids became a load-bearing analysis variable and nothing in the artifact recorded that they were audited — only the build's stdout did. The block deliberately claims only within-year uniqueness, because it is written before the cross-year audit runs. Over-claiming in a data-quality block is worse than claiming less |
 | 2026-08-06 | Fact ids hash **content and evidence, never judgments** | The id covers field, fiscal_year, value, source form/accession/section_key and quote. It excludes confidence, confidence_reason, quote_verified, quote_check and filing_date. If the director-bio boundaries are fixed later, 51 board facts flip `low` → `high`; were confidence in the hash, every citation to them in an already-written brief would break — for a change that made them *more* trustworthy. A changed quote, by contrast, *should* mint a new id, because the evidence moved |
 | 2026-08-06 | Risk deltas get ids too, hashed by **exclusion** not inclusion | An output will say "the cybersecurity risk factor was reworded in FY2024", and a checker that cannot resolve that leaves a whole category of claim unverifiable — enough to make the check decorative. Naming the identity keys is what caused the 46-way collision, because the three delta categories have three different shapes. Naming the *measurements* to exclude fails toward visible churn instead of silent collision |
 | 2026-08-06 | Ids are checked for collisions at build time, **fatally**, across every year on disk | Not just the years rebuilt — a partial `--fy 2023` run still audits all 1,428. Two facts sharing an id makes a citation ambiguous, and that is exactly the failure the id exists to prevent. It fired on the first run, which is the only reason the reworded-delta bug was found in minutes rather than in a written output |
@@ -393,6 +395,7 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `data/triage/triage-report.md` | The auditable log, including the full drop list |
 | `tests/test_verify_quote.py` | Proves the grounding check can still reject. Run it after any change to `canon` |
 | `tests/test_fact_id.py` | Proves ids are stable against judgments and sensitive to content. Run it after any change to `fact_id` or `risk_delta_id` |
+| `../../.claude/skills/` | The `preflight`, `verification-suite` and other skills live TWO levels up, in the `Coding Projects` folder. Claude Code only auto-loads skills from the session's own directory and `~/.claude`, so they are **not** invocable as `/preflight` from this project — read `SKILL.md` by path and follow it |
 | `data/discovery/inventory.json` | **Machine source of truth** for what's in scope. Later stages read this, not config |
 | `data/discovery/discovery-report.md` | The human-readable inventory and gap analysis |
 | `data/raw/FY*/…` | Cached documents by fiscal year and form. Never delete — rebuilding means re-hitting EDGAR for all 201 |
@@ -531,6 +534,19 @@ across 34 calls). Milestones 1–3 cost nothing.
   until now they could not say which year they belonged to
 - Fixed a contradiction in DATA.md: it still claimed "no fabricated or paraphrased
   quote has yet been found" fifty lines below the paraphrase found last session
+- **Ran the preflight checklist** (`.claude/skills/Preflight Check/SKILL.md`, two
+  levels up in `Coding Projects`). Verdict GO, after two real findings:
+  - **`output/` was gitignored.** The three deliverables would have been absent from
+    a clean checkout. The stated reason — "regenerates from data/ledger/" — is false
+    in the way that matters: they are model-written prose, cost ~$3.50 a pass, and do
+    not reproduce byte-for-byte. Caught before any output existed to lose
+  - **Ids were not logged in `data_quality`.** Every citation now resolves through an
+    id, which makes it an analysis variable, and only the build's stdout knew whether
+    they were all present and distinct. Added `data_quality.ids`, scoped honestly to
+    within-year because the block is written before the cross-year audit runs
+- Checked the prose against the data rather than by eye: all nine asserted counts in
+  DATA.md and PROJECT_STATUS.md recompute correctly, and all five example ids quoted
+  in the documents resolve to real records
 - Next: 10b, `src/build_pack.py` — the 219K-token citable pack
 
 ### 2026-08-05 (continued) — 8-K triage

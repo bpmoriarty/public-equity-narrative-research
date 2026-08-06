@@ -4314,6 +4314,13 @@
         "0001104659-21-138114"
       ]
     },
+    "ids": {
+      "n_facts": 187,
+      "n_risk_deltas": 0,
+      "all_present": true,
+      "unique_within_year": true,
+      "basis": "content hash of the claim, its evidence and its source \u2014 see `fact_id` in src/ledger_schema.py. Confidence and the verification result are NOT hashed, so re-verifying a fact does not renumber it. Cross-year uniqueness is enforced fatally at build time by `audit_ids`."
+    },
     "extraction_tasks_missing": [
       "letter"
     ],
