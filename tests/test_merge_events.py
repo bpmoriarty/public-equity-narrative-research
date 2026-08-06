@@ -29,7 +29,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 from merge_events import (DATE_RE, classify_routine, clusters,  # noqa: E402
-                          find_pairs, load_config, merge_cluster)
+                          find_date_conflicts, find_pairs, find_undated_pairs,
+                          load_config, merge_cluster)
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
@@ -107,7 +108,8 @@ def main() -> int:
 
     out, _ = merge_count([row("A", None, CA_A, "acc-1"), row("B", None, CA_A, "acc-2")])
     check("two undated records are never merged to each other", len(out) == 2,
-          "no date means no evidence they are the same event")
+          "undated descriptions are templated year over year, so their similarity is "
+          "dominated by the template rather than the event — see the undated cases below")
 
     out, _ = merge_count([
         row("A", "2024-01-01", "Board approved a quarterly cash dividend.", "acc-1"),
@@ -175,6 +177,64 @@ def main() -> int:
     r["date_as_stated"] = "sometime in mid-2022"
     check("an unusable date is preserved in `date_as_stated`, not silently dropped",
           r["date_as_stated"] == "sometime in mid-2022" and r["date"] is None)
+
+    print()
+    print("DATE CONFLICTS — detected from structured fields, not text")
+    # The real case: one departure, two filings, two different dates.
+    desmond = [
+        {**row("L1", "2022-05-06", "Bevin Desmond departed — Chief Talent and Culture "
+                                   "Officer", "acc-1"),
+         "identity": "bevin desmond | departed | chief talent and culture officer"},
+        {**row("L2", "2023-01-31", "Bevin Desmond departed — Chief Talent and Culture "
+                                   "Officer", "acc-2"),
+         "identity": "bevin desmond | departed | chief talent and culture officer"},
+    ]
+    conf = find_date_conflicts(desmond)
+    check("same person, same change, same role, two dates -> reported", len(conf) == 1)
+    if conf:
+        check("both dates are kept, neither chosen",
+              conf[0]["dates"] == ["2022-05-06", "2023-01-31"])
+
+    # The near-identical case that is NOT a conflict: two real role changes a month
+    # apart. Text similarity scores these 100.0; the structured key separates them
+    # because the role strings differ.
+    dubinsky = [
+        {**row("L3", "2024-02-23", "Jason Dubinsky role changed — principal accounting "
+                                   "officer (in addition to Chief Financial Officer)", "acc-1"),
+         "identity": "jason dubinsky | role_changed | principal accounting officer "
+                     "(in addition to chief financial officer)"},
+        {**row("L4", "2024-03-15", "Jason Dubinsky role changed — principal accounting "
+                                   "officer", "acc-2"),
+         "identity": "jason dubinsky | role_changed | principal accounting officer"},
+    ]
+    check("two real role changes with different role strings -> NOT a conflict",
+          len(find_date_conflicts(dubinsky)) == 0,
+          "a 100.0 text score cannot tell these from the Desmond pair")
+
+    check("rows with no structured identity are never conflict-checked",
+          len(find_date_conflicts([row("A", "2022-01-01", CA_A, "acc-1"),
+                                   row("B", "2022-02-01", CA_A, "acc-2")])) == 0,
+          "events have no field that identifies the same real-world change")
+
+    print()
+    print("UNDATED NEAR-DUPLICATES — reported, never merged")
+    # The two real pairs, 1.5 points apart and on opposite sides of the truth.
+    SMARTX_A = ("Recorded a $12.4 million impairment loss related to investment in "
+                "SmartX Advisory Solutions.")
+    SMARTX_B = ("$12.4 million impairment loss recorded in 2024 related to the "
+                "investment in SmartX Advisory Solutions.")
+    DIV_2022 = ("Company expects to make regular quarterly dividend payments of 36 cents "
+                "per share in 2022, subject to Board approval.")
+    DIV_2023 = ("Company expects to make regular quarterly dividend payments of 37.5 "
+                "cents per share in 2023, subject to Board approval.")
+    for label, a_txt, b_txt in [("one impairment reported twice", SMARTX_A, SMARTX_B),
+                                ("two different years of dividend guidance",
+                                 DIV_2022, DIV_2023)]:
+        rows = [row("U1", None, a_txt, "acc-1"), row("U2", None, b_txt, "acc-2")]
+        out, _ = merge_count(rows)
+        reported = find_undated_pairs(rows, CFG)
+        check(f"not merged: {label}", len(out) == 2)
+        check(f"reported for a human: {label}", len(reported) == 1)
 
     print()
     print("=" * 74)

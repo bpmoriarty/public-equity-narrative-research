@@ -53,6 +53,27 @@ the remaining threshold lands in an eleven-point gap instead of a three-point on
 Merging is transitive: three records describing one refinancing (the whole
 transaction, the entry, the termination) become one row even where two of the three
 are same-filing, because each links to the third.
+
+---------------------------------------------------------------------------
+WHY UNDATED ROWS ARE NEVER MERGED, WHATEVER THEIR SIMILARITY
+---------------------------------------------------------------------------
+Not because "no date means no evidence" — the text is evidence. The real reason is
+sharper, and it was measured: among the 26 undated rows the two highest-scoring
+pairs are 98.9 and 97.4, and they fall on opposite sides of the truth.
+
+    98.9  ONE event   "Recorded a $12.4 million impairment loss related to
+                       investment in SmartX Advisory Solutions."
+                      "$12.4 million impairment loss recorded in 2024 related to
+                       the investment in SmartX Advisory Solutions."
+    97.4  FOUR events "Company expects to make regular quarterly dividend payments
+                       of 36 cents per share in 2022..."
+                      "...of 37.5 cents per share in 2023..."
+
+A margin of 1.5 points. These descriptions are TEMPLATED year over year and differ
+only in an amount and a year, which is exactly what token-similarity is worst at: a
+score dominated by the template rather than by the event. There is no threshold that
+separates them, so undated pairs are reported for a human and never merged. Merging
+them would have collapsed four years of distinct dividend guidance into one row.
 """
 
 from __future__ import annotations
@@ -122,12 +143,20 @@ def load_rows() -> list[dict]:
             v = x["value"]
             # Composed rather than taken from a single field: the ledger stores
             # leadership as structured parts, and a timeline needs a sentence.
-            bits = [b for b in (v.get("name"), v.get("change"), v.get("role")) if b]
+            # `change` is an enum (`role_changed`), so underscores are spaced out —
+            # a raw enum value in a finished document reads like a leaked variable.
+            change = (v.get("change") or "").replace("_", " ")
+            bits = [b for b in (v.get("name"), change, v.get("role")) if b]
             desc = " — ".join([" ".join(bits[:2]), bits[2]]) if len(bits) > 2 else " ".join(bits)
             if v.get("stated_reason"):
                 desc += f" (stated reason: {v['stated_reason']})"
-            rows.append(_row(x, fy, "leadership", "leadership_transition",
-                             v.get("date"), desc))
+            r = _row(x, fy, "leadership", "leadership_transition", v.get("date"), desc)
+            # A structured identity for conflict detection. Only leadership gets one,
+            # because only leadership has fields that identify the same real-world
+            # change independently of how it was worded. See `find_date_conflicts`.
+            r["identity"] = " | ".join(str(v.get(k) or "").strip().lower()
+                                       for k in ("name", "change", "role"))
+            rows.append(r)
     return rows
 
 
@@ -156,6 +185,75 @@ def _row(fact: dict, fy: int, field: str, typ: str | None,
 # ---------------------------------------------------------------------------
 # Merging
 # ---------------------------------------------------------------------------
+
+def find_date_conflicts(rows: list[dict]) -> list[dict]:
+    """Rows the filings describe identically but date differently.
+
+    Detected from STRUCTURED FIELDS, not text similarity, and only for leadership
+    where those fields exist: same person, same change, same role, different date.
+
+    Text similarity cannot do this job, which is why the key is structured. At a 100.0
+    text score there are exactly two pairs in this window, and they are opposites:
+
+        Bevin Desmond / departed / Chief Talent and Culture Officer
+            dated 2022-05-06 in one filing and 2023-01-31 in another
+            -> ONE departure, two dates. A real conflict, and it is reported.
+        Jason Dubinsky / role changed / principal accounting officer
+            dated 2024-02-23 and 2024-03-15
+            -> TWO changes: he took the role on in February and gave it up in March
+               when a Chief Accounting Officer was appointed.
+
+    The structured key separates them where the text does not, because the role strings
+    differ — "principal accounting officer (in addition to Chief Financial Officer)"
+    against "principal accounting officer" — so only the Desmond pair is reported.
+    That distinction is invisible to a similarity score, which reads both as identical.
+
+    The note states what was found and does not assert which reading is right.
+    CLAUDE.md: where the filings are ambiguous or contradict each other across years,
+    say so rather than silently picking one.
+    """
+    by_identity: dict[str, list[dict]] = {}
+    for r in rows:
+        if r.get("identity") and r["date"]:
+            by_identity.setdefault(r["identity"], []).append(r)
+    out = []
+    for identity, group in sorted(by_identity.items()):
+        dates = sorted({r["date"] for r in group})
+        if len(dates) < 2:
+            continue
+        out.append({
+            "identity": identity,
+            "dates": dates,
+            "ids": sorted(i for r in group for i in r["ids"]),
+            "filings": sorted({a for r in group for a in r["accessions"]}),
+            "description": group[0]["description"],
+            "note": "The filings record this with more than one date. It may be an "
+                    "announcement date against an effective date, or two genuinely "
+                    "separate changes — the filings do not settle it, so both rows are "
+                    "kept and neither date is presented as the right one.",
+        })
+    return out
+
+
+def find_undated_pairs(rows: list[dict], cfg: dict) -> list[tuple]:
+    """Undated rows whose text is nearly identical — REPORTED, never merged.
+
+    The floor is deliberately high (95) so the list stays two or three entries and
+    keeps being read. At 85 it fills with the dividend-guidance family and a reader
+    learns to skip it, which is how a real duplicate survives.
+    """
+    out = []
+    for i, j in combinations(range(len(rows)), 2):
+        a, b = rows[i], rows[j]
+        if a["date"] or b["date"]:
+            continue
+        if set(a["accessions"]) & set(b["accessions"]):
+            continue
+        s = fuzz.token_set_ratio(canon(a["description"]), canon(b["description"]))
+        if s >= cfg["undated_report_floor"]:
+            out.append((i, j, s))
+    return out
+
 
 def find_pairs(rows: list[dict], cfg: dict) -> tuple[list[tuple], list[tuple]]:
     """(to_merge, possible) — pairs above and below the similarity threshold.
@@ -271,10 +369,20 @@ def timeline_block(include_quotes: bool = True) -> dict:
     cfg = load_config()
     rows = load_rows()
     to_merge, possible = find_pairs(rows, cfg)
+    undated_pairs = find_undated_pairs(rows, cfg)
+    date_conflicts = find_date_conflicts(rows)
+
+    # The window's first fiscal year, so rows describing earlier events can be marked.
+    # In-scope filings legitimately describe pre-window events — the FY2021 10-K talks
+    # about a 2019 credit agreement — and those facts are real and sourced. They are
+    # marked rather than dropped, so a five-year timeline does not silently open with
+    # an event from two years before it.
+    first_fy = min((y for r in rows for y in r["fiscal_years"]), default=0)
 
     merged = [merge_cluster([rows[i] for i in c]) for c in clusters(len(rows), to_merge)]
     for r in merged:
         r["routine"] = classify_routine(r, cfg)
+        r["predates_window"] = bool(r["date"] and r["date"][:4] < str(first_fy))
 
     dated = sorted((r for r in merged if r["date"]),
                    key=lambda r: (r["date"], r["description"]))
@@ -321,7 +429,10 @@ def timeline_block(include_quotes: bool = True) -> dict:
             "period_unclear": len(unclear),
             "routine": sum(1 for r in merged if r["routine"]),
             "corroborated": sum(1 for r in merged if r["corroborating_filings"] > 1),
+            "predates_window": sum(1 for r in merged if r["predates_window"]),
+            "date_conflicts": len(date_conflicts),
         },
+        "date_conflicts": date_conflicts,
         "dated": dated,
         "period_unclear": unclear,
         "possible_duplicates_not_merged": [
@@ -331,6 +442,17 @@ def timeline_block(include_quotes: bool = True) -> dict:
              "note": "Same date, different filings, below the merge threshold. Left as "
                      "two rows. Check before treating them as separate events."}
             for i, j, s in sorted(possible, key=lambda p: -p[2])
+        ],
+        "undated_near_duplicates_not_merged": [
+            {"similarity": s,
+             "a": {"id": rows[i]["ids"][0], "description": rows[i]["description"]},
+             "b": {"id": rows[j]["ids"][0], "description": rows[j]["description"]},
+             "note": "Two undated rows with near-identical wording, from different "
+                     "filings. NOT merged, and the score must not be read as evidence "
+                     "they are one event: these descriptions are templated year over "
+                     "year, so a 97 can be two different years of the same routine "
+                     "guidance while a 99 is genuinely one event. Read both and decide."}
+            for i, j, s in sorted(undated_pairs, key=lambda p: -p[2])
         ],
     }
 

@@ -38,6 +38,32 @@ report_possible_duplicates = true
 # correctness one: nothing below it was ever going to be merged either way.
 possible_duplicate_floor = 45
 
+# Undated rows are NEVER merged, at any similarity, and this is the floor above which
+# near-identical undated pairs get REPORTED for a human instead.
+#
+# 95 is high on purpose. Among the 26 undated rows the two top-scoring pairs are 98.9
+# and 97.4, and they sit on opposite sides of the truth: 98.9 is one SmartX impairment
+# reported by two filings, and 97.4 is two DIFFERENT years of dividend guidance whose
+# wording is templated and differs only in an amount and a year. A margin of 1.5
+# points, so no threshold can separate them and merging is refused outright.
+#
+# At a floor of 85 this list fills with the dividend-guidance family — five entries of
+# noise around one real duplicate — and a reader learns to skip it. At 95 it holds two
+# entries, one of each kind, which is both short enough to read and a standing
+# demonstration of why the merge refuses.
+undated_report_floor = 95
+
+# Rows whose subject is an advisory vote on executive compensation. The timeline
+# marks these and footnotes them, because of the year offset recorded as binding
+# constraint 3: the vote held at the meeting in year N approves the compensation paid
+# for year N-1. The row's own date is the MEETING date and is correct as printed —
+# what needs saying is which year's pay it concerned.
+say_on_pay_patterns = [
+    '(?i)\badvisory vote\b.{0,40}\bcompensation\b',
+    '(?i)\b(executive )?compensation\b.{0,30}\bapproved\b',
+    '(?i)\bsay-on-pay\b',
+]
+
 [timeline.routine]
 # Routine annual-meeting governance. These are TAGGED, never dropped — the timeline
 # can render them compactly or omit them, but the decision belongs to the stage that

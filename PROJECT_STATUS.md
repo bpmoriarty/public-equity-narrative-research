@@ -22,7 +22,7 @@ they anchor a narrative claim.
 
 **Last Session:** 2026-08-05
 
-**Overall Health:** 🟢 Working — milestones 1–4 complete; 1,329 facts, all individually citable. Milestone 5 in progress: 10a–10c done, 10d next — the first step that spends tokens
+**Overall Health:** 🟢 Working — milestones 1–4 complete; 1,329 facts, all individually citable. Milestone 5 in progress: 10a–10d done, **the first deliverable is written** — `output/timeline.md`. Nothing spent yet
 
 ### What's Working
 
@@ -80,6 +80,11 @@ they anchor a narrative claim.
   output's citations checkable instead of merely present: `(form, FY, accession)`
   identifies a filing, and for an 8-K holding 40 Q&A facts that means "somewhere in
   this document"
+- **`output/timeline.md` exists** (`src/render_timeline.py`) — the first of the
+  three deliverables. 76 rows: 40 material dated events, 10 routine governance, 26 the
+  filings never dated. Rendered **deterministically, no model call**, and it asserts
+  its own completeness before writing: every input id appears in exactly one table or
+  the run fails
 - **Event records are resolved into timeline rows** (`src/merge_events.py`). 85
   ledger records → 76 rows: 50 dated, 26 period-unclear, 8 corroborated by more than
   one filing, 10 tagged routine. Nothing dropped — every input id lands in exactly
@@ -173,7 +178,7 @@ Next is **milestone 5, the three outputs** in `output/`. Everything they need is
 in `data/ledger/`, and SPEC.md §3 is explicit that they derive from the ledger,
 never from raw sections.
 
-### Milestone 5 in progress. 10a–10c done; 10d is next.
+### Milestone 5 in progress. 10a–10d done; 10e is next.
 
 Scoped 2026-08-05, three design questions answered (see Recent Decisions), sizing
 below measured rather than estimated.
@@ -228,7 +233,35 @@ Incentive Plan" sits on the same date, in the same meeting, as four genuinely ro
 votes — and an incentive plan change is a row type SPEC.md §4b names explicitly. An
 earlier plan to drop "the annual-meeting vote outcomes" would have taken it too.
 
-Two things worth knowing before 10d:
+**10d — `output/timeline.md` — is done, and it needed no model call.** That is a
+design decision, not a shortcut. SPEC.md §4b asks for a reference table where every row
+carries a source, and every field it needs is already in the ledger: date, precision,
+type, description, source ids, confidence, corroboration count. The only thing a model
+could add is rewriting descriptions — and `claim` text is *itself* model-written and
+unverified, so condensing it puts the reader two steps from the filing with no check
+possible at either step. A deterministic render cannot fabricate a date, drop a row or
+drift a description. The $0.30 saving is incidental; if the model added something
+checkable it would be worth paying for.
+
+**Reading the first draft surfaced four things**, which is exactly why the timeline was
+scheduled before the prose:
+
+1. **Undated rows must never be merged**, and not for the reason I first wrote. Among
+   the 26, the two closest pairs are **1.5 points apart** and opposite: 98.9 is one
+   SmartX impairment reported twice, 97.4 is two *different years* of dividend guidance
+   whose wording is templated. Merging on text would have collapsed four years of
+   distinct guidance into one row
+2. **One event is dated inconsistently by the filings** — Bevin Desmond's departure is
+   2022-05-06 in one 8-K and 2023-01-31 in another. Both kept, marked ‡, neither
+   presented as correct. Detected from *structured fields*, not text: at a 100.0 text
+   score the Desmond conflict is indistinguishable from two genuine Jason Dubinsky role
+   changes, but the role strings differ so the structured key separates them
+3. **Four dated rows predate FY2021** (a 2019 credit agreement, the 2020 Sustainalytics
+   buy-in, 2020 senior notes, 2020 repurchase authorisation). Real and sourced from
+   in-scope filings, so marked *(predates the window)* rather than dropped
+4. A raw enum (`role_changed`) was leaking into prose descriptions
+
+Two things worth knowing before 10e:
 
 - **The uniqueness check caught a real collision on its first run.** 46 reworded
   risk deltas shared ids because `risk_delta_id` read `item["heading"]`, which
@@ -345,6 +378,9 @@ across 34 calls). Milestones 1–3 cost nothing.
 | 2026-08-04 | `pdfminer.six`, **not** `pypdf`, for PDF text | pypdf coerces unmapped glyphs toward whitespace, turning every digit in the FY2022 letter into a space — "fell 15%" became "fell". pdfminer preserves them as `(cid:N)`. Prefer the library that preserves what it can't interpret |
 | 2026-08-04 | Glyph offset **derived**, not hardcoded | Taken from the space glyph's frequency and validated against English sentinel words, so the decoder isn't silently wrong on a different company's font |
 | 2026-08-04 | The dual em-dash/minus glyph maps to ASCII `-` | One glyph serves both. A hyphen for an em dash is cosmetic; a lost minus sign inverts a fact |
+| 2026-08-06 | **`timeline.md` is rendered deterministically — no model call** | Every field the table needs is already in the ledger. The only thing a model could add is rewriting descriptions, and `claim` text is itself unverified model output (3.1% verbatim), so condensing it would put the reader two steps from the filing with no check at either step. A renderer cannot fabricate a date, drop a row or drift a description, and it asserts completeness before writing. The cost saving is incidental |
+| 2026-08-06 | Date conflicts are detected from **structured fields, not text similarity** | At a text score of 100.0 this window holds one real conflict (a departure dated 2022-05-06 and 2023-01-31 by two filings) and one non-conflict (two genuine role changes a month apart). The structured key (name, change, role) separates them because the role strings differ; a similarity score reads both as identical. Both dates are kept and neither is presented as correct — CLAUDE.md on contradictory filings |
+| 2026-08-06 | Rows predating the window are **marked, not dropped** | Four dated rows fall before FY2021 because in-scope filings describe them. They are real and sourced, so a five-year timeline marks them *(predates the window)* rather than silently opening two years early or silently discarding them |
 | 2026-08-06 | Two records are one event only if they come from **different filings** | Similarity alone puts a true positive (72.9, the 2022 refinancing across two filings) three points from a true negative (61.7, one 8-K reporting two agreements with the same officer on one day). A filing does not report the same event twice, so requiring different filings excludes the negative by construction and moves the threshold into an eleven-point gap. 55 is the middle of that gap, measured |
 | 2026-08-06 | Merging is **transitive**, and keeps every member's wording | Three records describe the FY2025 refinancing — the whole transaction, the entry, the termination — and two of the three share a filing, so they only join through the third. Pairwise merging would have left two rows for one event. The merged row keeps all source ids, all descriptions in `also_described_as`, and the LOWEST confidence across members, so merging cannot promote a `low` fact |
 | 2026-08-06 | Routine governance is **tagged, not dropped** | Same reasoning as `src/triage_8k.py`: a silent drop loses real events undetectably. The material-override list exists because of a specific near-miss — the 2011 Stock Incentive Plan approval shares its date and meeting with four routine votes, and an incentive plan change is a timeline row type SPEC.md §4b names outright |
@@ -418,7 +454,7 @@ across 34 calls). Milestones 1–3 cost nothing.
     - a. [x] Content-hashed fact ids — 1,428, unique, tested, additive
     - b. [x] `src/build_pack.py` — 1,428 ids, 332,747 tokens, byte-stable, 6 derived constraints
     - c. [x] Event merge + "period unclear" split — 85 records → 76 rows, 8 corroborated, 10 routine, nothing dropped
-    - d. [ ] `timeline.md` first — cheapest to check, surfaces dedup problems
+    - d. [x] `output/timeline.md` — 76 rows, deterministic, $0.00. Surfaced four data problems before any prose was written
     - e. [ ] `narrative-brief.md`, then `discussion-points.md` as two calls
     - f. [ ] `src/verify_outputs.py` — the five output constraints, mechanical
 11. [ ] Optional, if the board narrative proves load-bearing: per-year verified
@@ -451,6 +487,8 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `data/ledger/FY*.json` | **The ledger.** Everything downstream derives from here, never from raw sections |
 | `data/ledger/ledger-report.md` | Cross-year coverage, confidence counts, and comparability warnings |
 | `data/ledger/facts/` | Cached per-task extraction results. A completed task is never re-run |
+| `src/render_timeline.py` | Milestone 5d. Renders `output/timeline.md`. Deterministic, no model call; asserts completeness before writing |
+| `output/timeline.md` | **Deliverable 1 of 3.** Chronological reference table, every row carrying its fact id and filing |
 | `src/merge_events.py` | Milestone 5c. Merges duplicate event records, splits undated ones out, tags routine governance. Deterministic. `--show merged|unclear|possible|routine` |
 | `config/outputs.toml` | Output-stage config: merge threshold, routine patterns and the material overrides. **Change behaviour here, not in code** |
 | `tests/test_merge_events.py` | Proves same-filing records never merge and the incentive-plan row is not tagged routine. Run after any threshold change |
@@ -666,7 +704,38 @@ across 34 calls). Milestones 1–3 cost nothing.
   timeline row type SPEC.md §4b names explicitly
 - 27 checks in `tests/test_merge_events.py`, fixtures drawn from the real filings
   including both sides of that 72.9/61.7 pair
-- Next: 10d, `timeline.md` — **the first step that spends tokens** (~$0.30)
+
+### 2026-08-06 (continued) — item 10d: output/timeline.md
+
+- **The first deliverable is written.** 76 rows — 40 material dated events, 10 routine
+  governance, 26 the filings never dated — each carrying its fact id and filing
+- **It needed no model call, and that is the finding.** Every field the table requires
+  is already in the ledger; the only thing a model could add is rewriting descriptions,
+  which would be a paraphrase of a paraphrase with no check possible at either step. The
+  renderer asserts its own completeness instead: every input id appears in exactly one
+  table or the file is not written
+- **Reading the first draft surfaced four data problems** — which is why the timeline
+  was scheduled ahead of the prose:
+  - **Undated rows must never be merged.** The two closest pairs are 1.5 points apart
+    and opposite: 98.9 is one SmartX impairment reported twice, 97.4 is two different
+    years of templated dividend guidance. Merging on text would have collapsed four
+    years of distinct guidance into one row
+  - **The filings date Bevin Desmond's departure two different ways** (2022-05-06 and
+    2023-01-31). Both kept, marked ‡, neither presented as correct. Detected from
+    structured fields because at a 100.0 text score it is indistinguishable from two
+    genuine Dubinsky role changes — the role strings differ, so the structured key
+    separates them and text cannot
+  - **Four dated rows predate FY2021**, described by in-scope filings. Marked
+    *(predates the window)* rather than dropped
+  - A raw enum (`role_changed`) was leaking into prose descriptions
+- Fixed a `config/outputs.toml` corruption of my own making: writing regex patterns
+  through a shell heredoc into a non-raw Python string turned every `\b` into a literal
+  0x08 backspace, ten of them. Repaired via a directly-written file, and swept all four
+  config files for control characters
+- 35 checks in `tests/test_merge_events.py`; timeline.md verified identical across
+  rebuilds apart from its `Generated` line
+- Next: 10e, `narrative-brief.md` then `discussion-points.md` — the steps that do spend
+  tokens (~$2–3)
 
 ### 2026-08-05 (continued) — 8-K triage
 

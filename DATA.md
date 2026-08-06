@@ -463,8 +463,36 @@ approved the Morningstar, Inc. Amended and Restated 2011 Stock Incentive Plan" s
 on the same date, in the same meeting, as four genuinely routine votes — and an
 incentive plan change is a row type SPEC.md §4b names explicitly.
 
-Locked in by `uv run python tests/test_merge_events.py`, including both cases above
-as fixtures drawn from the real filings.
+**Undated rows are never merged, whatever their wording**, and the reason is sharper
+than "no date, no evidence". Among the 26 undated rows the two closest pairs are 1.5
+points apart and fall on opposite sides of the truth: **98.9** is one $12.4m SmartX
+impairment reported by two filings, and **97.4** is two *different years* of dividend
+guidance whose wording is templated and differs only in an amount and a year. No
+threshold separates them, so both are reported for a human and neither is merged.
+Merging on text would have collapsed four years of distinct dividend guidance into
+one row.
+
+**One event is dated inconsistently by the filings.** Bevin Desmond's departure as
+Chief Talent and Culture Officer is dated **2022-05-06** in one 8-K and **2023-01-31**
+in another. Both rows are kept, marked ‡ in `output/timeline.md`, and neither date is
+presented as correct — it may be an announcement date against an effective date, or
+two separate changes; the filings do not settle it.
+
+That conflict is detected from **structured fields** (name, change, role), not text
+similarity, and the difference matters. At a text score of 100.0 there are two pairs
+in this window: the Desmond departure, which is a real conflict, and two Jason
+Dubinsky role changes a month apart, which are two genuine events. The structured key
+separates them because the role strings differ ("principal accounting officer (in
+addition to Chief Financial Officer)" against "principal accounting officer") — a
+distinction a similarity score cannot see.
+
+**Four dated rows predate FY2021** (a 2019 credit agreement, the 2020 Sustainalytics
+buy-in, the 2020 senior notes, the 2020 repurchase authorisation). In-scope filings
+describe them, so they are real and sourced; they are marked *(predates the window)*
+rather than dropped.
+
+Locked in by `uv run python tests/test_merge_events.py` — 35 checks, fixtures drawn
+from the real filings including every pair named above.
 
 ### Fact identifiers — what an output is allowed to cite
 
