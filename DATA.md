@@ -349,6 +349,17 @@ Two consequences worth knowing when reading the ledger:
   sections resolves each fact to a section by finding which one contains its
   quote, rather than asking the model where it looked. So a fact can only be
   attributed to a document that provably contains its evidence.
+- **`value` IS NOT VERIFIED TEXT — only `quote` is.** Measured while building the
+  output pack: of the 1,741 `value` strings longer than 40 characters, **just 3.1%
+  appear verbatim in their own fact's quote.** The other 96.9% are model-written
+  summaries, and `verify_quote` never ran on them — it only ever checked the
+  `quote` field, which is exactly what it was designed to do.
+
+  This is not a defect, but it is a sharp edge. `value` is for reasoning about;
+  `quote` is for reproducing. **Anything placed inside quotation marks in an output
+  must be copied from a `quote` field**, or it quotes the extraction rather than
+  the company — and no check in this pipeline would catch it. The constraint is
+  carried into `data/pack/pack.json` so the writers see it, not just this file.
 
 Result on the current run: **1,329 facts, 3 unverified quotes (0.23%).**
 

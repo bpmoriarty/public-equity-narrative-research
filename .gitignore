@@ -55,6 +55,17 @@ data/triage/text/
 # dropped from the history on the strength of them. A record of what was excluded
 # has to survive in the repository, or the exclusion is undocumented.
 
+# data/pack/ is ignored, and it is the ONE artifact where "it regenerates" is
+# actually true in the sense that matters: it is a pure, deterministic function of
+# data/ledger/, which IS committed. A clean checkout reproduces it byte-for-byte for
+# free. Committing it would store a second copy of ~900 KB of the same content.
+#
+# What makes that safe is the sha256 of pack.json, recorded in pack-report.md and
+# stamped onto every generated output. Without the hash, ignoring the pack would
+# lose the answer to "which payload was this document written from"; with it, the
+# answer is reproducible on demand.
+data/pack/
+
 # output/ IS COMMITTED — the earlier "final deliverables regenerate from
 # data/ledger/" reasoning was wrong for the same reason it was wrong for the
 # ledger. The three deliverables are model-written prose. They cost real money to

@@ -22,7 +22,7 @@ they anchor a narrative claim.
 
 **Last Session:** 2026-08-05
 
-**Overall Health:** 🟢 Working — milestones 1–4 complete; 1,329 facts, all individually citable. Milestone 5 in progress: 10a done, 10b next
+**Overall Health:** 🟢 Working — milestones 1–4 complete; 1,329 facts, all individually citable. Milestone 5 in progress: 10a and 10b done, 10c next
 
 ### What's Working
 
@@ -80,6 +80,10 @@ they anchor a narrative claim.
   output's citations checkable instead of merely present: `(form, FY, accession)`
   identifies a filing, and for an 8-K holding 40 Q&A facts that means "somewhere in
   this document"
+- **The citable pack is built** (`src/build_pack.py`). 1,428 ids, 332,747 tokens,
+  six binding constraints all derived from the ledger rather than hardcoded.
+  Byte-stable across rebuilds, which is what lets the prompt cache hit —
+  `pack.json` deliberately contains no timestamp
 - **The cache now verifies its input** (`--refresh-stale`). "A completed task is
   never re-run" is only safe while its input is unchanged, and a filename cannot
   know what it was computed from. Each cached result stores its `source_chars`,
@@ -165,7 +169,7 @@ Next is **milestone 5, the three outputs** in `output/`. Everything they need is
 in `data/ledger/`, and SPEC.md §3 is explicit that they derive from the ledger,
 never from raw sections.
 
-### Milestone 5 in progress. 10a done; 10b is next.
+### Milestone 5 in progress. 10a and 10b done; 10c is next.
 
 Scoped 2026-08-05, three design questions answered (see Recent Decisions), sizing
 below measured rather than estimated.
@@ -175,7 +179,33 @@ reproducible, and verified additive: strip the two new keys from the rebuilt led
 and it is byte-identical to the pre-change snapshot in all five years. Rebuilds are
 still byte-identical to each other. `tests/test_fact_id.py` locks the design in.
 
-Two things worth knowing before 10b:
+**10b — the citable pack — is done.** `data/pack/pack.json`, 1,428 citable ids,
+332,747 tokens, byte-stable, plus `index.json` for the output checker and
+`pack-report.md` for the run metadata.
+
+**The finding that shaped it: only `quote` is verified text.** Of the 1,741 `value`
+strings in the ledger longer than 40 characters, **just 3.1% appear verbatim in
+their own fact's quote.** The other 96.9% are model-written summaries, and
+`verify_quote` never ran on them — it only ever checked the `quote` field. So an
+output that puts a `value` string in quotation marks is quoting the extraction
+rather than the company, and nothing downstream would catch it. The pack therefore
+carries every quote despite the cost, names the two things `claim` and `quote`, and
+constraint 5 says only one of them may be reproduced as the company's words.
+
+**The pack is bigger than scoped, and the milestone estimate still holds — for a
+different reason than assumed.** Scoping assumed a 219K-token quote-free pack at
+$1.10 a call; requiring quotes puts it at 332,747 tokens and $1.66. But only two of
+the four generation calls need the whole pack (the brief, and the observations half
+of discussion-points); the timeline and the stated-vs-paid-for-priorities call each
+need a small subset. First pass ≈ **$3.53**, review rounds $1.00–$2.50, all-in
+**$6–10** — the originally scoped range.
+
+**Caching is not automatically cheaper**, and the pack report now prints the
+break-even rather than assuming: a cached read is 0.1x input price, so a 5-minute
+cache (1.25x write) pays from 1.4 reads and a 1-hour cache (2x write) from 2.3.
+Below that, paying full price each time wins.
+
+Two things worth knowing before 10c:
 
 - **The uniqueness check caught a real collision on its first run.** 46 reworded
   risk deltas shared ids because `risk_delta_id` read `item["heading"]`, which
@@ -292,6 +322,11 @@ across 34 calls). Milestones 1–3 cost nothing.
 | 2026-08-04 | `pdfminer.six`, **not** `pypdf`, for PDF text | pypdf coerces unmapped glyphs toward whitespace, turning every digit in the FY2022 letter into a space — "fell 15%" became "fell". pdfminer preserves them as `(cid:N)`. Prefer the library that preserves what it can't interpret |
 | 2026-08-04 | Glyph offset **derived**, not hardcoded | Taken from the space glyph's frequency and validated against English sentinel words, so the decoder isn't silently wrong on a different company's font |
 | 2026-08-04 | The dual em-dash/minus glyph maps to ASCII `-` | One glyph serves both. A hyphen for an em dash is cosmetic; a lost minus sign inverts a fact |
+| 2026-08-06 | The pack carries **every quote**, at a third of its size | Measured: only 3.1% of `value` strings appear verbatim in their own quote, so `value` is a paraphrase and `quote` is the only verified text in the project. Dropping quotes would have saved ~100K tokens and left the pack with no quotable text at all, making every quotation in every output unverifiable by construction |
+| 2026-08-06 | **`pack.json` contains no timestamp** | It is the shared cached prompt prefix, and prompt caching only hits on a byte-identical prefix. A `generated_utc` field would turn every $0.17 cached read into a $1.66 full-price call with nothing looking broken except the bill. Run metadata lives in `pack-report.md` |
+| 2026-08-06 | The payload is **compact JSON**; the index stays readable | Compact separators measured 34,741 tokens cheaper (367,489 → 332,748) with no content removed. `pack.json` is model input so every byte is paid for on each call; `index.json` is a local lookup that is never sent anywhere, so its size is free |
+| 2026-08-06 | Constraints are **derived on every build**, never written down | A constraint reading "54 facts are low confidence" when the number has become 61 is worse than no constraint, because it reads as though someone checked. All six recompute from the ledger — including which years use reportable segments and which years have a shareholder letter |
+| 2026-08-06 | `data/pack/` is gitignored, and the **sha256 is what makes that safe** | It is the one artifact where "it regenerates" is true in the sense that matters: a pure deterministic function of the committed ledger. Committing it stores a second copy of 900 KB. The hash in `pack-report.md`, stamped onto every output, preserves the answer to "which payload was this written from" |
 | 2026-08-06 | **`output/` is committed, not ignored** | Found by the preflight check before any output existed to lose. The old rule said "final deliverables regenerate from data/ledger/", which is false in the way that matters: they are model-written prose, cost ~$3.50 a pass, and will not reproduce byte-for-byte. Same reasoning that already put `data/ledger/` in git |
 | 2026-08-06 | Ids are logged in `data_quality`, scoped to **within-year** | Also a preflight finding: ids became a load-bearing analysis variable and nothing in the artifact recorded that they were audited — only the build's stdout did. The block deliberately claims only within-year uniqueness, because it is written before the cross-year audit runs. Over-claiming in a data-quality block is worse than claiming less |
 | 2026-08-06 | Fact ids hash **content and evidence, never judgments** | The id covers field, fiscal_year, value, source form/accession/section_key and quote. It excludes confidence, confidence_reason, quote_verified, quote_check and filing_date. If the director-bio boundaries are fixed later, 51 board facts flip `low` → `high`; were confidence in the hash, every citation to them in an already-written brief would break — for a change that made them *more* trustworthy. A changed quote, by contrast, *should* mint a new id, because the evidence moved |
@@ -354,7 +389,7 @@ across 34 calls). Milestones 1–3 cost nothing.
         ledger. **Scoped and decided; build not started.** See "Milestone 5 is
         scoped" above for measured sizes, cost and the six findings. In order:
     - a. [x] Content-hashed fact ids — 1,428, unique, tested, additive
-    - b. [ ] `src/build_pack.py` — the 219K-token citable pack (deterministic)
+    - b. [x] `src/build_pack.py` — 1,428 ids, 332,747 tokens, byte-stable, 6 derived constraints
     - c. [ ] Event dedup/merge + the "period unclear" split (deterministic)
     - d. [ ] `timeline.md` first — cheapest to check, surfaces dedup problems
     - e. [ ] `narrative-brief.md`, then `discussion-points.md` as two calls
@@ -389,6 +424,9 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `data/ledger/FY*.json` | **The ledger.** Everything downstream derives from here, never from raw sections |
 | `data/ledger/ledger-report.md` | Cross-year coverage, confidence counts, and comparability warnings |
 | `data/ledger/facts/` | Cached per-task extraction results. A completed task is never re-run |
+| `src/build_pack.py` | Milestone 5a. Assembles the citable pack from the ledger. Deterministic, no model calls. `--show constraints` prints the binding rules |
+| `data/pack/pack.json` | The payload the writers read. Gitignored — reproducible from the ledger; its sha256 in `pack-report.md` is the audit link |
+| `data/pack/index.json` | `{id → fact}`. What `verify_outputs.py` resolves citations through |
 | `src/triage_8k.py` | Judges the 75 conditional 7.01/8.01 8-Ks. Deterministic, no model calls |
 | `config/forms.toml` `[eight_k.triage]` | Triage patterns, headline window, size cap. Change behaviour here, not in code |
 | `data/triage/triage-8k.json` | Every triage decision with its evidence. Committed — it is the record of what was excluded |
@@ -547,7 +585,31 @@ across 34 calls). Milestones 1–3 cost nothing.
 - Checked the prose against the data rather than by eye: all nine asserted counts in
   DATA.md and PROJECT_STATUS.md recompute correctly, and all five example ids quoted
   in the documents resolve to real records
-- Next: 10b, `src/build_pack.py` — the 219K-token citable pack
+
+### 2026-08-06 (continued) — item 10b: the citable pack
+
+- **`data/pack/pack.json`: 1,428 citable ids, 332,747 tokens, byte-stable.** Plus
+  `index.json` for the output checker and `pack-report.md` for run metadata
+- **Measured before building, and it changed the design: only `quote` is verified
+  text.** Of 1,741 `value` strings over 40 characters, just **3.1%** appear verbatim
+  in their own fact's quote. The rest are model-written summaries that
+  `verify_quote` never saw. So the pack carries every quote despite costing a third
+  of its size in tokens — without them it would contain no quotable text at all
+- **`pack.json` has no timestamp, on purpose.** It is the shared cached prompt
+  prefix and caching only hits on a byte-identical prefix; a `generated_utc` field
+  would silently turn $0.17 reads into $1.66 calls. Verified: 0 ISO timestamps in
+  the payload, and byte-identical across rebuilds
+- Compact JSON separators saved 34,741 tokens with nothing removed. The index stays
+  indented — it is never sent anywhere, so its size is free
+- **All six constraints are derived, not written down.** The build detects which
+  years use reportable segments and which years have a shareholder letter, so a
+  count can never go stale while reading as though someone checked
+- Verified: ids resolve both ways between pack, index and ledger (0 discrepancies
+  in any direction); all 1,329 quotes byte-identical to the ledger; the
+  "absent means high" compaction correctly marks exactly the 54 low facts
+- The pack is bigger than the 219K I scoped, but the **$6–10 milestone estimate
+  holds** — only two of the four generation calls need the whole thing
+- Next: 10c, event dedup/merge and the "period unclear" split (deterministic)
 
 ### 2026-08-05 (continued) — 8-K triage
 
