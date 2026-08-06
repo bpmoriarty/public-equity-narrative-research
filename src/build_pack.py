@@ -56,6 +56,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from ledger_schema import canon  # noqa: E402
+from merge_events import timeline_block  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 LEDGER_DIR = ROOT / "data" / "ledger"
@@ -352,6 +353,10 @@ def build_pack(years: dict[int, dict]) -> tuple[dict, dict]:
                            "carry `heading_now`/`heading_prior`; added/removed carry "
                            "`heading`.",
         },
+        # Merged, split and classified event rows from src/merge_events.py.
+        # Imported rather than run as a separate step, so the ordering cannot be got
+        # wrong by running two scripts in the wrong sequence.
+        "timeline": timeline_block(include_quotes=False),
         "years": {},
     }
 

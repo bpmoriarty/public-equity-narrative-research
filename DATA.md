@@ -424,6 +424,48 @@ facts. One in 1,329 is not a reason to relax: it is the rate at which this failu
 mode occurs when nothing is looking for it, and it took two changed words to turn
 a hedged statement into "a direct admission."
 
+### Event merging — what the timeline counts as one event
+
+The 85 dated-event records in the ledger (`events` plus `leadership`) resolve into
+**76 timeline rows: 50 dated and 26 with no usable date.** Nine records are
+restatements of an event another filing already recorded, folding into **8
+corroborated rows**.
+
+Two records are judged to be one event when they share a date, come from
+**different filings**, and their descriptions score at least 55 on `rapidfuzz`
+`token_set_ratio`. Both halves matter, and the first is doing most of the work:
+
+| | Similarity | Same event? |
+|---|---|---|
+| "Termination of the 2019 Credit Agreement and entry into a new 2022 Credit Agreement…" vs "Morningstar entered a new Credit Agreement with Bank of America…" — **two filings** | 72.9 | yes |
+| "…Contract Services Agreement dated February 1, 2023 with Bevin Desmond…" vs "Separation Agreement and General Release dated February 1, 2023 with Bevin Desmond…" — **one filing** | 61.7 | **no** — two agreements, same officer, same day |
+
+Eleven points apart, so a similarity-only threshold between them would be luck. A
+filing does not report the same event twice, so the second pair is excluded by
+construction — and the threshold then lands in an eleven-point gap (59.6 → 48.5)
+instead of a three-point one. Merging is transitive, which is how the three records
+describing the FY2025 refinancing become one row even though two of them share a
+filing and never pair directly.
+
+**Nothing is dropped by this stage.** All 85 input records appear in exactly one row;
+the merged rows keep every source id, every filing's wording in
+`also_described_as`, and the *lowest* confidence across their members, so merging
+cannot promote a `low` fact by pairing it with a `high` one. Where two filings
+classified the same event differently, `types_disagree` records the disagreement
+rather than resolving it silently. Same-date pairs from different filings that fall
+below the threshold are listed as possible duplicates for a human to check.
+
+Ten rows are tagged **routine** annual-meeting governance — director elections,
+auditor ratification, say-on-pay, regular dividend declarations — and *tagged, not
+dropped*, so the rendering decision belongs to the document stage. That tag has a
+material-override list, which exists because of a specific near-miss: "Shareholders
+approved the Morningstar, Inc. Amended and Restated 2011 Stock Incentive Plan" sits
+on the same date, in the same meeting, as four genuinely routine votes — and an
+incentive plan change is a row type SPEC.md §4b names explicitly.
+
+Locked in by `uv run python tests/test_merge_events.py`, including both cases above
+as fixtures drawn from the real filings.
+
 ### Fact identifiers — what an output is allowed to cite
 
 Every fact and every risk delta carries a stable `id`. **1,428 ids on the current

@@ -1,0 +1,71 @@
+# Output-stage configuration (milestone 5).
+#
+# Read-only to the pipeline, like every other file in config/. Change behaviour
+# here rather than in src/.
+
+[timeline]
+# Two records describe the same event when they share a date, come from DIFFERENT
+# filings, and their descriptions are at least this similar (rapidfuzz
+# token_set_ratio, 0-100).
+#
+# 55 IS MEASURED, NOT CHOSEN. Every different-filing pair sharing a date in the
+# MORN window was scored, and the sorted similarities have their widest gap in the
+# relevant range between 59.6 and 48.5 — eleven points. Above it sit nine pairs that
+# are all genuinely one event reported twice (the LCD contingent payment, the
+# Commodity & Energy divestiture, the DBRS settlements, the $500M buyback, the 2022
+# and 2025 credit-agreement refinancings, the MJKK unwind, the Shenzhen
+# restructuring). Below it sits the covenant detail attached to a credit agreement,
+# which is a different row. 55 is the middle of that gap.
+merge_similarity = 55
+
+# SAME-FILING RECORDS ARE NEVER MERGED, at any similarity. A filing does not report
+# the same event twice, so two records from one accession sharing a date are two
+# events that happened that day. The clearest case in this window scores 61.7 — a
+# single 8-K reporting both a Contract Services Agreement and a Separation Agreement
+# with the same officer on 2023-02-01. A similarity-only rule would have merged
+# them and lost one; the different-filing requirement separates them cleanly.
+require_different_filing = true
+
+# Same-date pairs from different filings that fall BELOW the threshold are reported
+# as possible duplicates rather than merged or dropped. Set false to stop reporting
+# them (they are still never merged).
+report_possible_duplicates = true
+# Raised from 40 to 45 after reading the first output. At 40 the list included two
+# pairs matching a credit agreement against an officer's departure that happened to
+# share a date — obviously unrelated, and the kind of noise that teaches a reader to
+# skip the list. At 45 what remains is the two genuinely arguable pairs, both a
+# credit agreement against its own covenant terms. A reporting threshold, not a
+# correctness one: nothing below it was ever going to be merged either way.
+possible_duplicate_floor = 45
+
+[timeline.routine]
+# Routine annual-meeting governance. These are TAGGED, never dropped — the timeline
+# can render them compactly or omit them, but the decision belongs to the stage that
+# writes the document, not to this one. A silent drop here would lose real events,
+# the same reasoning that governs src/triage_8k.py.
+patterns = [
+    '(?i)\bdirector nominees?\b.{0,40}\belected\b',
+    '(?i)\belection of director\b',
+    '(?i)\bratification of\b.{0,60}\b(accounting firm|auditors?)\b',
+    '(?i)\badvisory vote\b.{0,40}\bcompensation\b',
+    '(?i)\bannual shareholders.{0,3} meeting held\b',
+    '(?i)\b(quarterly|regular) cash dividend\b',
+]
+
+# Patterns that OVERRIDE a routine match. Asymmetric on purpose: mislabelling a real
+# change as routine could drop it from the timeline, while mislabelling routine
+# governance as material only adds a row someone skims past.
+#
+# This exists because of a specific near-miss. "Shareholders approved the Morningstar,
+# Inc. Amended and Restated 2011 Stock Incentive Plan at the 2021 Annual Shareholders'
+# Meeting" is an INCENTIVE PLAN CHANGE — one of the row types SPEC.md section 4b names
+# explicitly — and it sits on the same date, in the same meeting, as four genuinely
+# routine votes. An earlier plan to drop "the annual-meeting vote outcomes" would have
+# taken it with them.
+material_overrides = [
+    '(?i)\b(stock|equity|incentive|compensation|severance)\s+(plan|policy)\b',
+    '(?i)\bamended and restated\b',
+    '(?i)\bshareholder proposal\b',
+    '(?i)\bspecial (cash )?dividend\b',
+    '(?i)\b(initiat|increas|suspend|discontinu|reduc)\w*\s+.{0,20}dividend\b',
+]

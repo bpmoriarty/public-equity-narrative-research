@@ -22,7 +22,7 @@ they anchor a narrative claim.
 
 **Last Session:** 2026-08-05
 
-**Overall Health:** 🟢 Working — milestones 1–4 complete; 1,329 facts, all individually citable. Milestone 5 in progress: 10a and 10b done, 10c next
+**Overall Health:** 🟢 Working — milestones 1–4 complete; 1,329 facts, all individually citable. Milestone 5 in progress: 10a–10c done, 10d next — the first step that spends tokens
 
 ### What's Working
 
@@ -80,6 +80,10 @@ they anchor a narrative claim.
   output's citations checkable instead of merely present: `(form, FY, accession)`
   identifies a filing, and for an 8-K holding 40 Q&A facts that means "somewhere in
   this document"
+- **Event records are resolved into timeline rows** (`src/merge_events.py`). 85
+  ledger records → 76 rows: 50 dated, 26 period-unclear, 8 corroborated by more than
+  one filing, 10 tagged routine. Nothing dropped — every input id lands in exactly
+  one row
 - **The citable pack is built** (`src/build_pack.py`). 1,428 ids, 332,747 tokens,
   six binding constraints all derived from the ledger rather than hardcoded.
   Byte-stable across rebuilds, which is what lets the prompt cache hit —
@@ -169,7 +173,7 @@ Next is **milestone 5, the three outputs** in `output/`. Everything they need is
 in `data/ledger/`, and SPEC.md §3 is explicit that they derive from the ledger,
 never from raw sections.
 
-### Milestone 5 in progress. 10a and 10b done; 10c is next.
+### Milestone 5 in progress. 10a–10c done; 10d is next.
 
 Scoped 2026-08-05, three design questions answered (see Recent Decisions), sizing
 below measured rather than estimated.
@@ -205,7 +209,26 @@ break-even rather than assuming: a cached read is 0.1x input price, so a 5-minut
 cache (1.25x write) pays from 1.4 reads and a 1-hour cache (2x write) from 2.3.
 Below that, paying full price each time wins.
 
-Two things worth knowing before 10c:
+**10c — event merging — is done.** 85 records (`events` + `leadership`) → 76 rows:
+50 dated, 26 period-unclear, 8 corroborated, 10 routine. All 85 input ids land in
+exactly one row.
+
+**The discriminator is "different filing", not similarity.** Similarity alone cannot
+separate the two credit-agreement records that ARE one event (72.9) from the two
+Bevin Desmond agreements that are NOT (61.7) — eleven points apart, and a threshold
+between them would be luck. But a filing does not report the same event twice, so
+requiring different filings excludes the second case by construction and the
+threshold then lands in an eleven-point gap (59.6 → 48.5) rather than a three-point
+one. Merging is transitive, which is how the three FY2025 refinancing records become
+one row despite two of them sharing a filing.
+
+**Routine governance is tagged, never dropped**, and the override list exists because
+of a real near-miss: "Shareholders approved the ... Amended and Restated 2011 Stock
+Incentive Plan" sits on the same date, in the same meeting, as four genuinely routine
+votes — and an incentive plan change is a row type SPEC.md §4b names explicitly. An
+earlier plan to drop "the annual-meeting vote outcomes" would have taken it too.
+
+Two things worth knowing before 10d:
 
 - **The uniqueness check caught a real collision on its first run.** 46 reworded
   risk deltas shared ids because `risk_delta_id` read `item["heading"]`, which
@@ -322,6 +345,10 @@ across 34 calls). Milestones 1–3 cost nothing.
 | 2026-08-04 | `pdfminer.six`, **not** `pypdf`, for PDF text | pypdf coerces unmapped glyphs toward whitespace, turning every digit in the FY2022 letter into a space — "fell 15%" became "fell". pdfminer preserves them as `(cid:N)`. Prefer the library that preserves what it can't interpret |
 | 2026-08-04 | Glyph offset **derived**, not hardcoded | Taken from the space glyph's frequency and validated against English sentinel words, so the decoder isn't silently wrong on a different company's font |
 | 2026-08-04 | The dual em-dash/minus glyph maps to ASCII `-` | One glyph serves both. A hyphen for an em dash is cosmetic; a lost minus sign inverts a fact |
+| 2026-08-06 | Two records are one event only if they come from **different filings** | Similarity alone puts a true positive (72.9, the 2022 refinancing across two filings) three points from a true negative (61.7, one 8-K reporting two agreements with the same officer on one day). A filing does not report the same event twice, so requiring different filings excludes the negative by construction and moves the threshold into an eleven-point gap. 55 is the middle of that gap, measured |
+| 2026-08-06 | Merging is **transitive**, and keeps every member's wording | Three records describe the FY2025 refinancing — the whole transaction, the entry, the termination — and two of the three share a filing, so they only join through the third. Pairwise merging would have left two rows for one event. The merged row keeps all source ids, all descriptions in `also_described_as`, and the LOWEST confidence across members, so merging cannot promote a `low` fact |
+| 2026-08-06 | Routine governance is **tagged, not dropped** | Same reasoning as `src/triage_8k.py`: a silent drop loses real events undetectably. The material-override list exists because of a specific near-miss — the 2011 Stock Incentive Plan approval shares its date and meeting with four routine votes, and an incentive plan change is a timeline row type SPEC.md §4b names outright |
+| 2026-08-06 | Timeline rows in the full pack **carry no quotes** | Every row's `ids` resolve to facts in the same payload that already hold those quotes; repeating them measured 8,119 tokens of pure redundancy, and two representations of one event is a way to get inconsistent output. `timeline_block(include_quotes=True)` is there for the standalone timeline payload, which does not carry the facts |
 | 2026-08-06 | The pack carries **every quote**, at a third of its size | Measured: only 3.1% of `value` strings appear verbatim in their own quote, so `value` is a paraphrase and `quote` is the only verified text in the project. Dropping quotes would have saved ~100K tokens and left the pack with no quotable text at all, making every quotation in every output unverifiable by construction |
 | 2026-08-06 | **`pack.json` contains no timestamp** | It is the shared cached prompt prefix, and prompt caching only hits on a byte-identical prefix. A `generated_utc` field would turn every $0.17 cached read into a $1.66 full-price call with nothing looking broken except the bill. Run metadata lives in `pack-report.md` |
 | 2026-08-06 | The payload is **compact JSON**; the index stays readable | Compact separators measured 34,741 tokens cheaper (367,489 → 332,748) with no content removed. `pack.json` is model input so every byte is paid for on each call; `index.json` is a local lookup that is never sent anywhere, so its size is free |
@@ -390,7 +417,7 @@ across 34 calls). Milestones 1–3 cost nothing.
         scoped" above for measured sizes, cost and the six findings. In order:
     - a. [x] Content-hashed fact ids — 1,428, unique, tested, additive
     - b. [x] `src/build_pack.py` — 1,428 ids, 332,747 tokens, byte-stable, 6 derived constraints
-    - c. [ ] Event dedup/merge + the "period unclear" split (deterministic)
+    - c. [x] Event merge + "period unclear" split — 85 records → 76 rows, 8 corroborated, 10 routine, nothing dropped
     - d. [ ] `timeline.md` first — cheapest to check, surfaces dedup problems
     - e. [ ] `narrative-brief.md`, then `discussion-points.md` as two calls
     - f. [ ] `src/verify_outputs.py` — the five output constraints, mechanical
@@ -424,6 +451,9 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `data/ledger/FY*.json` | **The ledger.** Everything downstream derives from here, never from raw sections |
 | `data/ledger/ledger-report.md` | Cross-year coverage, confidence counts, and comparability warnings |
 | `data/ledger/facts/` | Cached per-task extraction results. A completed task is never re-run |
+| `src/merge_events.py` | Milestone 5c. Merges duplicate event records, splits undated ones out, tags routine governance. Deterministic. `--show merged|unclear|possible|routine` |
+| `config/outputs.toml` | Output-stage config: merge threshold, routine patterns and the material overrides. **Change behaviour here, not in code** |
+| `tests/test_merge_events.py` | Proves same-filing records never merge and the incentive-plan row is not tagged routine. Run after any threshold change |
 | `src/build_pack.py` | Milestone 5a. Assembles the citable pack from the ledger. Deterministic, no model calls. `--show constraints` prints the binding rules |
 | `data/pack/pack.json` | The payload the writers read. Gitignored — reproducible from the ledger; its sha256 in `pack-report.md` is the audit link |
 | `data/pack/index.json` | `{id → fact}`. What `verify_outputs.py` resolves citations through |
@@ -609,7 +639,34 @@ across 34 calls). Milestones 1–3 cost nothing.
   "absent means high" compaction correctly marks exactly the 54 low facts
 - The pack is bigger than the 219K I scoped, but the **$6–10 milestone estimate
   holds** — only two of the four generation calls need the whole thing
-- Next: 10c, event dedup/merge and the "period unclear" split (deterministic)
+
+### 2026-08-06 (continued) — item 10c: event merge and split
+
+- **85 ledger records → 76 timeline rows.** 50 dated, 26 period-unclear, 8
+  corroborated by more than one filing, 10 tagged routine. Every input id lands in
+  exactly one row — verified, not assumed
+- **Measured the merge rule instead of picking one.** Scored every different-filing
+  pair sharing a date: the sorted similarities have their widest gap in the relevant
+  range between 59.6 and 48.5, so the threshold is 55, the middle of it
+- **The real discriminator turned out to be "different filing", not similarity.** On
+  similarity alone a true positive (72.9 — the 2022 refinancing reported by two
+  filings) sits three points from a true negative (61.7 — one 8-K reporting both a
+  Contract Services Agreement and a Separation Agreement with the same officer on the
+  same day). Requiring different filings excludes the negative by construction
+- **Merging is transitive.** The FY2025 refinancing is described by three records and
+  two of them share a filing, so they only join through the third; pairwise merging
+  would have left two rows for one event
+- **Corrected my own earlier claim.** I had said 20 records were cross-year
+  duplicates; measured, it is 9 records folding into 8 rows. The 20 was the count of
+  records merely sharing a date, most of which are different events that happened the
+  same day — which is the problem this stage exists to solve
+- **Routine governance is tagged, not dropped**, with a material-override list that
+  exists because of a near-miss: the 2011 Stock Incentive Plan approval shares its
+  date and its meeting with four routine votes, and an incentive plan change is a
+  timeline row type SPEC.md §4b names explicitly
+- 27 checks in `tests/test_merge_events.py`, fixtures drawn from the real filings
+  including both sides of that 72.9/61.7 pair
+- Next: 10d, `timeline.md` — **the first step that spends tokens** (~$0.30)
 
 ### 2026-08-05 (continued) — 8-K triage
 
