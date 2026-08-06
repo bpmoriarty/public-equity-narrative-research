@@ -1,8 +1,10 @@
 # Year ledger
 
-Generated 2026-08-05T19:30:36Z. MORN (Morningstar, Inc.), CIK 0001289419.
+Generated 2026-08-06T15:53:33Z. MORN (Morningstar, Inc.), CIK 0001289419.
 
 Every fact carries its source filing, an exact quote from that filing, and a confidence marker. `low` means the source section's boundaries are unverified, or the quote could not be found verbatim — see `confidence_reason` on the fact. **Any claim in the outputs resting on a `low` fact must say so, or be dropped.**
+
+Every fact and risk delta also carries a stable `id` — e.g. `SP-FY2021-471e22f5` — hashed from its claim, its evidence and its source, so an output can cite one fact rather than a whole filing. Confidence and the verification result are deliberately NOT in the hash: a judgment about a fact is not the fact, so re-verifying it later must not renumber it. 1428 ids this build, checked unique.
 
 ## Coverage
 

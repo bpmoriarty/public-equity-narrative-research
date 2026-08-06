@@ -142,7 +142,9 @@
   ],
   "strategic_priorities": [
     {
+      "id": "SP-FY2022-808439fd",
       "field": "strategic_priorities",
+      "fiscal_year": 2022,
       "value": {
         "text": "Our strategy is to deliver insights and experiences that make us essential to investor workflow."
       },
@@ -160,7 +162,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2022-001645b2",
       "field": "strategic_priorities",
+      "fiscal_year": 2022,
       "value": {
         "text": "Deliver differentiated insights across asset classes to public and private market investors"
       },
@@ -178,7 +182,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2022-4f07b4fe",
       "field": "strategic_priorities",
+      "fiscal_year": 2022,
       "value": {
         "text": "Establish a leading ESG position across each business area"
       },
@@ -196,7 +202,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2022-ca001ef1",
       "field": "strategic_priorities",
+      "fiscal_year": 2022,
       "value": {
         "text": "Drive operational excellence and scalability to support growth targets"
       },
@@ -214,7 +222,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2022-53e476da",
       "field": "strategic_priorities",
+      "fiscal_year": 2022,
       "value": {
         "text": "Build an inclusive culture that drives exceptional talent engagement and development"
       },
@@ -232,7 +242,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2022-377e22b8",
       "field": "strategic_priorities",
+      "fiscal_year": 2022,
       "value": {
         "text": "Expand investment and credit research capabilities and enhance existing products and services; adopt new technology"
       },
@@ -250,7 +262,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2022-18cd3cb2",
       "field": "strategic_priorities",
+      "fiscal_year": 2022,
       "value": {
         "text": "Build a comprehensive Wealth platform leveraging capabilities from across Morningstar"
       },
@@ -268,7 +282,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2022-d41a87df",
       "field": "strategic_priorities",
+      "fiscal_year": 2022,
       "value": {
         "text": "Slowing the pace of investments in 2023 given the external environment, while continuing to execute the strategy"
       },
@@ -286,7 +302,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2022-73532294",
       "field": "strategic_priorities",
+      "fiscal_year": 2022,
       "value": {
         "text": "Debt repayment as a near- to intermediate-term priority for cash deployment, maintaining a conservative balance sheet"
       },
@@ -304,7 +322,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2022-941e2fcd",
       "field": "strategic_priorities",
+      "fiscal_year": 2022,
       "value": {
         "text": "Building a comprehensive, end-to-end wealth platform under the Morningstar Wealth umbrella for independent advisors"
       },
@@ -322,7 +342,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2022-124c6dac",
       "field": "strategic_priorities",
+      "fiscal_year": 2022,
       "value": {
         "text": "Strengthen the wealth platform and increase advisor adoption in 2023"
       },
@@ -340,7 +362,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2022-91193a14",
       "field": "strategic_priorities",
+      "fiscal_year": 2022,
       "value": {
         "text": "Delivering differentiated insights across asset classes to public and private market investors"
       },
@@ -358,7 +382,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2022-110575d0",
       "field": "strategic_priorities",
+      "fiscal_year": 2022,
       "value": {
         "text": "Establishing leading ESG positions across each business and making ESG accessible to retail investors"
       },
@@ -376,7 +402,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2022-565abb65",
       "field": "strategic_priorities",
+      "fiscal_year": 2022,
       "value": {
         "text": "Driving operational excellence and scalability, including migrating on-premises data centers to the cloud"
       },
@@ -394,7 +422,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2022-f4397429",
       "field": "strategic_priorities",
+      "fiscal_year": 2022,
       "value": {
         "text": "Building an inclusive culture that supports exceptional talent, with a goal of filling 40% of non-entry-level positions internally in 2023"
       },
@@ -412,7 +442,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2022-c6053c4f",
       "field": "strategic_priorities",
+      "fiscal_year": 2022,
       "value": {
         "text": "Regaining full control of the Morningstar brand in Japan by exiting the SoftBank-era licensing agreement"
       },
@@ -432,7 +464,9 @@
   ],
   "segments": [
     {
+      "id": "SEG-FY2022-affde6ec",
       "field": "segments",
+      "fiscal_year": 2022,
       "value": {
         "name": "PitchBook",
         "note": "Described as largest product area based on revenue"
@@ -451,7 +485,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2022-6e503f7b",
       "field": "segments",
+      "fiscal_year": 2022,
       "value": {
         "name": "Morningstar Data",
         "note": null
@@ -470,7 +506,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2022-d5682fba",
       "field": "segments",
+      "fiscal_year": 2022,
       "value": {
         "name": "DBRS Morningstar",
         "note": null
@@ -489,7 +527,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2022-2cfdbe89",
       "field": "segments",
+      "fiscal_year": 2022,
       "value": {
         "name": "Morningstar Direct",
         "note": null
@@ -508,7 +548,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2022-7444dc2f",
       "field": "segments",
+      "fiscal_year": 2022,
       "value": {
         "name": "Investment Management",
         "note": null
@@ -527,7 +569,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2022-1b8c6b3c",
       "field": "segments",
+      "fiscal_year": 2022,
       "value": {
         "name": "Workplace Solutions",
         "note": null
@@ -546,7 +590,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2022-bc336b20",
       "field": "segments",
+      "fiscal_year": 2022,
       "value": {
         "name": "Morningstar Sustainalytics",
         "note": null
@@ -565,7 +611,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2022-70ff4d19",
       "field": "segments",
+      "fiscal_year": 2022,
       "value": {
         "name": "Morningstar Advisor Workstation",
         "note": null
@@ -584,7 +632,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2022-8b6eac0b",
       "field": "segments",
+      "fiscal_year": 2022,
       "value": {
         "name": "Morningstar.com",
         "note": null
@@ -603,7 +653,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2022-aafb4891",
       "field": "segments",
+      "fiscal_year": 2022,
       "value": {
         "name": "Morningstar Indexes",
         "note": null
@@ -624,7 +676,9 @@
   ],
   "headcount": [
     {
+      "id": "HC-FY2022-b5b67998",
       "field": "headcount",
+      "fiscal_year": 2022,
       "value": {
         "value": 12224,
         "as_stated": "12,224 permanent, full-time employees around the world as of December 31, 2022"
@@ -645,7 +699,9 @@
   ],
   "leadership": [
     {
+      "id": "LEAD-FY2022-b99ce9e7",
       "field": "leadership",
+      "fiscal_year": 2022,
       "value": {
         "name": "Bevin Desmond",
         "role": "Chief Talent and Culture Officer",
@@ -669,7 +725,9 @@
   ],
   "board": [
     {
+      "id": "BRD-FY2022-17df4251",
       "field": "board",
+      "fiscal_year": 2022,
       "value": {
         "name": "Joe Mansueto",
         "role": "Chairman of the Board and executive chairman of the Company",
@@ -690,7 +748,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2022-352d208a",
       "field": "board",
+      "fiscal_year": 2022,
       "value": {
         "name": "Kunal Kapoor",
         "role": "chief executive officer",
@@ -711,7 +771,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2022-e05168a1",
       "field": "board",
+      "fiscal_year": 2022,
       "value": {
         "name": "Robin Diamonte",
         "role": null,
@@ -735,7 +797,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2022-ac02d7ee",
       "field": "board",
+      "fiscal_year": 2022,
       "value": {
         "name": "Cheryl Francis",
         "role": "Chair of the Audit Committee",
@@ -759,7 +823,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2022-9fdaeb35",
       "field": "board",
+      "fiscal_year": 2022,
       "value": {
         "name": "Steve Joynt",
         "role": null,
@@ -783,7 +849,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2022-bbd350c7",
       "field": "board",
+      "fiscal_year": 2022,
       "value": {
         "name": "Steve Kaplan",
         "role": null,
@@ -807,7 +875,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2022-a8e83c2c",
       "field": "board",
+      "fiscal_year": 2022,
       "value": {
         "name": "Gail Landis",
         "role": null,
@@ -831,7 +901,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2022-25c34687",
       "field": "board",
+      "fiscal_year": 2022,
       "value": {
         "name": "Bill Lyons",
         "role": null,
@@ -855,7 +927,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2022-e7bf0ad1",
       "field": "board",
+      "fiscal_year": 2022,
       "value": {
         "name": "Doniel Sutton",
         "role": null,
@@ -879,7 +953,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2022-c445ae4e",
       "field": "board",
+      "fiscal_year": 2022,
       "value": {
         "name": "Caroline Tsay",
         "role": null,
@@ -905,7 +981,9 @@
   ],
   "incentive_metrics": [
     {
+      "id": "INC-FY2022-42de7490",
       "field": "incentive_metrics",
+      "fiscal_year": 2022,
       "value": {
         "metric": "Adjusted Revenue",
         "plan": "Corporate Incentive Plan (annual cash bonus)",
@@ -926,7 +1004,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2022-c48cc178",
       "field": "incentive_metrics",
+      "fiscal_year": 2022,
       "value": {
         "metric": "Adjusted EBITDA",
         "plan": "Corporate Incentive Plan (annual cash bonus)",
@@ -947,7 +1027,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2022-207aeeda",
       "field": "incentive_metrics",
+      "fiscal_year": 2022,
       "value": {
         "metric": "Total Shareholder Return (absolute, three-year)",
         "plan": "Market Stock Unit (MSU) long-term plan",
@@ -968,7 +1050,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2022-01256ad2",
       "field": "incentive_metrics",
+      "fiscal_year": 2022,
       "value": {
         "metric": "Adjusted Revenue (revenue kicker / modifier)",
         "plan": "2022 Market Stock Units",
@@ -989,7 +1073,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2022-174b4c5f",
       "field": "incentive_metrics",
+      "fiscal_year": 2022,
       "value": {
         "metric": "Three-year Revenue CAGR kicker",
         "plan": "Market Stock Units (2022 and 2021 grants)",
@@ -1010,7 +1096,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2022-91344f34",
       "field": "incentive_metrics",
+      "fiscal_year": 2022,
       "value": {
         "metric": "Total shareholder return with Adjusted Revenue modifier (2019 MSU grants, vested 2022)",
         "plan": "2019 Market Stock Units (May and November)",
@@ -1031,7 +1119,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2022-43979f2a",
       "field": "incentive_metrics",
+      "fiscal_year": 2022,
       "value": {
         "metric": "Individual performance adjustment",
         "plan": "Corporate Incentive Plan (annual bonus)",
@@ -1054,7 +1144,9 @@
   ],
   "vote_results": [
     {
+      "id": "VOTE-FY2022-60e12770",
       "field": "vote_results",
+      "fiscal_year": 2022,
       "value": {
         "matter": "Election of director Joe Mansueto",
         "votes_for": 36007677,
@@ -1077,7 +1169,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2022-4449848c",
       "field": "vote_results",
+      "fiscal_year": 2022,
       "value": {
         "matter": "Election of director Kunal Kapoor",
         "votes_for": 36197227,
@@ -1100,7 +1194,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2022-def0e78d",
       "field": "vote_results",
+      "fiscal_year": 2022,
       "value": {
         "matter": "Election of director Robin Diamonte",
         "votes_for": 30635244,
@@ -1123,7 +1219,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2022-cf537de9",
       "field": "vote_results",
+      "fiscal_year": 2022,
       "value": {
         "matter": "Election of director Cheryl Francis",
         "votes_for": 29980742,
@@ -1146,7 +1244,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2022-313cba58",
       "field": "vote_results",
+      "fiscal_year": 2022,
       "value": {
         "matter": "Election of director Steve Joynt",
         "votes_for": 28418251,
@@ -1169,7 +1269,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2022-b3ed8cab",
       "field": "vote_results",
+      "fiscal_year": 2022,
       "value": {
         "matter": "Election of director Steve Kaplan",
         "votes_for": 35701696,
@@ -1192,7 +1294,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2022-fe41499a",
       "field": "vote_results",
+      "fiscal_year": 2022,
       "value": {
         "matter": "Election of director Gail Landis",
         "votes_for": 28847455,
@@ -1215,7 +1319,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2022-edd5bef7",
       "field": "vote_results",
+      "fiscal_year": 2022,
       "value": {
         "matter": "Election of director Bill Lyons",
         "votes_for": 34838178,
@@ -1238,7 +1344,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2022-496dfe5a",
       "field": "vote_results",
+      "fiscal_year": 2022,
       "value": {
         "matter": "Election of director Doniel Sutton",
         "votes_for": 30473609,
@@ -1261,7 +1369,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2022-763ae9f0",
       "field": "vote_results",
+      "fiscal_year": 2022,
       "value": {
         "matter": "Election of director Caroline Tsay",
         "votes_for": 30651721,
@@ -1284,7 +1394,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2022-9a876b5d",
       "field": "vote_results",
+      "fiscal_year": 2022,
       "value": {
         "matter": "Advisory vote on Morningstar's executive compensation",
         "votes_for": 36048167,
@@ -1307,7 +1419,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2022-25444283",
       "field": "vote_results",
+      "fiscal_year": 2022,
       "value": {
         "matter": "Advisory vote on the frequency of future advisory votes on executive compensation (1 Year: 36,173,863; 2 Years: 10,038; 3 Years: 388,058; Abstain: 34,512; Broker Non-Votes: 814,216)",
         "votes_for": null,
@@ -1330,7 +1444,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2022-b56cd35d",
       "field": "vote_results",
+      "fiscal_year": 2022,
       "value": {
         "matter": "Ratification of the appointment of KPMG LLP as Morningstar's independent registered public accounting firm for 2023",
         "votes_for": 37117724,
@@ -1355,7 +1471,9 @@
   ],
   "events": [
     {
+      "id": "EVT-FY2022-618af085",
       "field": "events",
+      "fiscal_year": 2022,
       "value": {
         "type": "restructuring",
         "description": "Beginning July 2022, the company began significantly reducing operations in Shenzhen, China and shifting global business functions to other Morningstar locations (Mumbai, Toronto, Madrid, Chicago), with substantial completion expected by end of Q3 2023; China work to focus solely on domestic commercial activities.",
@@ -1375,7 +1493,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2022-8e66ef1e",
       "field": "events",
+      "fiscal_year": 2022,
       "value": {
         "type": "acquisition",
         "description": "Acquisition of Praemium's U.K. and international offerings, closed in the second quarter of 2022, adding approximately $4.4 billion of assets.",
@@ -1395,7 +1515,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2022-90c2b031",
       "field": "events",
+      "fiscal_year": 2022,
       "value": {
         "type": "acquisition",
         "description": "Acquisition of LCD, including integration and rebranding of the LCD Leveraged Loan Indexes under Morningstar Indexes.",
@@ -1415,7 +1537,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2022-ae7d37d3",
       "field": "events",
+      "fiscal_year": 2022,
       "value": {
         "type": "financing",
         "description": "Termination of the 2019 Credit Agreement and entry into a new 2022 Credit Agreement providing a five-year multi-currency facility with initial borrowing capacity up to $1.1 billion.",
@@ -1435,7 +1559,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2022-7e39249c",
       "field": "events",
+      "fiscal_year": 2022,
       "value": {
         "type": "financing",
         "description": "Two amendments to the 2022 Credit Agreement increasing total borrowing capacity to $1.3 billion and terminating the optional second term draw.",
@@ -1455,7 +1581,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2022-5d620550",
       "field": "events",
+      "fiscal_year": 2022,
       "value": {
         "type": "financing",
         "description": "Board approved a new $500.0 million share repurchase program effective January 1, 2023, replacing the existing program; new authorization expires December 31, 2025.",
@@ -1475,7 +1603,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2022-e1010e2f",
       "field": "events",
+      "fiscal_year": 2022,
       "value": {
         "type": "other",
         "description": "Termination Agreement with MJKK ending the 1998 License Agreement and MJKK's use of the Morningstar brand, plus Tender Offer Agreement to tender up to 10 million MJKK shares to SBI; consideration of 8 billion Japanese yen payable by Morningstar.",
@@ -1495,7 +1625,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2022-6e3330f2",
       "field": "events",
+      "fiscal_year": 2022,
       "value": {
         "type": "other",
         "description": "Cash payment of $50.0 million resolving contingent consideration liability related to the LCD acquisition.",
@@ -1515,7 +1647,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2022-173d9869",
       "field": "events",
+      "fiscal_year": 2022,
       "value": {
         "type": "guidance_change",
         "description": "Company expects to make regular quarterly dividend payments of 37.5 cents per share in 2023, subject to board approval.",
@@ -1535,7 +1669,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2022-3ba1e0d2",
       "field": "events",
+      "fiscal_year": 2022,
       "value": {
         "type": "acquisition",
         "description": "Morningstar entered an Asset Purchase Agreement with S&P Global Inc. to acquire its Leveraged Commentary & Data business and related leveraged loan indices portfolio for up to $650.0 million in cash ($600.0 million at closing plus contingent payment of up to $50.0 million six months after closing), with closing expected early in Q3 2022.",
@@ -1555,7 +1691,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2022-842bfdfb",
       "field": "events",
+      "fiscal_year": 2022,
       "value": {
         "type": "financing",
         "description": "Morningstar entered a debt commitment letter with Bank of America, N.A. for financing of up to $1.05 billion, consisting of a five-year $650.0 million term facility and a five-year $400.0 million revolving credit facility, to assist with the acquisition.",
@@ -1575,7 +1713,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2022-382296f8",
       "field": "events",
+      "fiscal_year": 2022,
       "value": {
         "type": "financing",
         "description": "Morningstar entered a new Credit Agreement with Bank of America, N.A. as Administrative Agent providing a five-year multi-currency credit facility of up to $1.1 billion, including a $450.0 million revolving credit facility and a delayed draw term facility of up to $650.0 million; $180.0 million was outstanding under the revolver as a rollover of the prior credit agreement.",
@@ -1595,7 +1735,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2022-0465763b",
       "field": "events",
+      "fiscal_year": 2022,
       "value": {
         "type": "other",
         "description": "Credit Agreement covenants restrict the Company's ability to pay dividends with respect to its capital stock.",
@@ -1615,7 +1757,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2022-42dca9a4",
       "field": "events",
+      "fiscal_year": 2022,
       "value": {
         "type": "other",
         "description": "Annual Shareholders' Meeting held; all director nominees elected, executive compensation approved on an advisory basis, and KPMG LLP ratified as independent registered public accounting firm for 2022.",
@@ -1635,7 +1779,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2022-c0d440c4",
       "field": "events",
+      "fiscal_year": 2022,
       "value": {
         "type": "other",
         "description": "Board of Directors approved a quarterly cash dividend of 36 cents per share payable July 29, 2022 to shareholders of record as of July 1, 2022.",
@@ -1657,7 +1803,9 @@
   ],
   "notable_language": [
     {
+      "id": "LANG-FY2022-00971bc9",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Recurring, unusually explicit refusal to give guidance, framed as a governance philosophy."
       },
@@ -1675,7 +1823,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-31693a7e",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "A rare, direct reference to an independent investigation into its own ESG research practices, buried in an expense discussion."
       },
@@ -1693,7 +1843,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-a64c5818",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "New, explicitly political framing of ESG risk\u2014a marked shift in how the company characterises its ESG business environment."
       },
@@ -1711,7 +1863,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-20e686ec",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Self-congratulatory summary appended immediately after listing adverse inflation, interest rate, wage and COVID pressures."
       },
@@ -1729,7 +1883,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-37e78c34",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "A definitive narrowing of the China strategy, stated flatly without an explanation of the cause."
       },
@@ -1747,7 +1903,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-30bd342b",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Direct admission that a single subsidiary bonus plan drove a large consolidated expense increase and margin decline."
       },
@@ -1765,7 +1923,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-f9e54f9d",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Discloses a rising share of cash trapped offshore alongside a permanent reinvestment assertion, relevant to liquidity flexibility."
       },
@@ -1783,7 +1943,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-3b494dcf",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Explicit statement of the year's key design change, shifting the equity mix toward performance-based awards."
       },
@@ -1801,7 +1963,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-8061bf0c",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Unusually direct admission of missing both annual financial targets, paired with a defence of the goal-setting process."
       },
@@ -1819,7 +1983,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-bf3552ab",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Recurring philosophy language preserving committee discretion while claiming formulaic alignment."
       },
@@ -1837,7 +2003,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-36c3f342",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Justification for a broad set of non-GAAP exclusions that affect both goal setting and payout, framed as consistency with prior years."
       },
@@ -1855,7 +2023,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-b0f171d2",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Committee justifies a large increase in CEO variable pay by benchmarking to peer percentiles while emphasising an unchanged low salary."
       },
@@ -1873,7 +2043,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-ccb08fc4",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Qualitative framing of the shortfall used in support of a 100% individual performance factor for the CEO."
       },
@@ -1891,7 +2063,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-20b1e3a4",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Uses the 98% say-on-pay result to justify no responsive changes."
       },
@@ -1909,7 +2083,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-95441327",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Highlights the absolute (not relative) TSR basis, which produced above-maximum payouts in a year when one-year TSR was -36.3%."
       },
@@ -1927,7 +2103,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-4aacaff3",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Recurring governance claim about the absence of contractual severance protections."
       },
@@ -1945,7 +2123,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-72430c42",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Unusually blunt framing of a bad year at the very top of the letter."
       },
@@ -1963,7 +2143,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-b9d943c1",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "A rare CEO admission of a mis-estimate, framed as upside rather than error."
       },
@@ -1981,7 +2163,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-97bb271f",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Direct acknowledgment that the flagship investment area is underdelivering."
       },
@@ -1999,7 +2183,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-2fae4e3b",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Personal, self-critical aside about the delayed consolidation of Morningstar Wealth."
       },
@@ -2017,7 +2203,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-4b63bdc7",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Explicit acknowledgment of shareholder criticism, followed by a defense of investment spending."
       },
@@ -2035,7 +2223,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-5a2dbcb0",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Distinguishes Morningstar's buyback philosophy from peers; recurring capital-allocation rhetoric."
       },
@@ -2053,7 +2243,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-8f529d82",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Careful hedging on ESG amid US political backlash, a shift in tone versus prior advocacy."
       },
@@ -2071,7 +2263,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-e0cda3c1",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Highly personal framing of a material operational restructuring that also drove adjusted-margin add-backs."
       },
@@ -2089,7 +2283,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-729ff4b2",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Candid concession on turnover of 18.9%, contrasting with generally favorable engagement statistics."
       },
@@ -2107,7 +2303,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2022-030bf551",
       "field": "notable_language",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Hedged admission that returns on the largest investment area are pushed out, blamed on markets."
       },
@@ -2127,7 +2325,9 @@
   ],
   "investor_qa": [
     {
+      "id": "QA-FY2022-7afb1719",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Rationale for the reorganization creating Morningstar Wealth Management, led by Daniel Needham, and how it involves Managed Portfolios, Retail (Morningstar.com), Direct Indexing, and ByAllAccounts",
         "stated_position": "Management said changing investor demographics and preferences, advancing technological capabilities, and increasing investment options are significantly impacting the advisor client segment, and that the intent to bring these capabilities together \"is all about removing friction and making it easier for advisors to respond to evolving end investor expectations.\" The launch of Morningstar Wealth Management combines Morningstar Managed Portfolios, Morningstar Office, ByAllAccounts, and Morningstar.com; management noted the initiative began in 2020 by bringing Morningstar Investment Management together with Office and ByAllAccounts to enhance practice management workflows.",
@@ -2147,7 +2347,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-553d9a8b",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Plans to address the direct indexing market",
         "stated_position": "Management stated it plans to launch direct indexing capabilities through Morningstar Wealth Management's turnkey asset management platform (TAMP) later in 2022, \"tapping into capabilities delivered through Morningstar Indexes and Sustainalytics,\" and anticipates the platform will be \"a significant driver of growth for Morningstar in the years ahead.\"",
@@ -2167,7 +2369,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-13b32b83",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Characterisation of advisor client preferences and competitive positioning of an all-in-one platform",
         "stated_position": "Management observed that independent advisors in particular favor \"all-in-one\" technology platforms that include practice, portfolio, and investment management/execution, allowing them to scale practices quickly and making it an easy way to transition businesses for those breaking away from a wirehouse.",
@@ -2187,7 +2391,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-650b1340",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Direct exposure to Russia, Ukraine, and China; operations and vendor relationships",
         "stated_position": "Existing sales in Russia are immaterial and no clients in Ukraine; \"We have recently stopped delivery of most services to Russian clients.\" A long-standing third-party vendor in Ukraine provides contract labor supporting PitchBook development and is considered \"an important part of the Morningstar group,\" with the company working to provide financial help. External sales in China are not material; operations there \"primarily support our global business,\" with a substantial number of employees in a data and technology development center in Shenzhen.",
@@ -2207,7 +2413,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-71d4efaf",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Integration of Sustainalytics ESG research across the business and ESG market opportunity",
         "stated_position": "Management states the overall objective is \"to establish leading ESG positions across our business areas,\" pulling ESG data and research across Morningstar, with particular focus on enabling ESG adoption in the wealth space; direct indexing for advisors will feature Sustainalytics data at its core, and indexes/software offerings now carry ESG Risk Ratings. Market size estimates range from several hundred million to several billion dollars, suggesting the market \"hasn't yet been consistently defined.\"",
@@ -2227,7 +2435,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-1735d2e8",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "PitchBook growth drivers and total addressable market",
         "stated_position": "Growth comes from three main drivers: increasing the core customer user base, expansion into \"adjacent\" customer segments, and innovation and product upgrades. Over half of 2021 growth was from new sales, but management expects the proportion of growth from existing clients to increase over time. TAM estimated at $3.5 billion globally, consistent with prior disclosure, based on use-case assumptions.",
@@ -2247,7 +2457,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-33523fca",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Morningstar Indexes growth drivers and long-term opportunity; competitive position versus entrenched index providers",
         "stated_position": "New client wins were the largest contributing factor, including a large client that converted from MSCI. Longer term the same factors should contribute, particularly in ESG, thematics, and private equity. Management characterises the index licensed data market as \"ripe for disruption,\" with industry consolidation causing increased pricing by entrenched competitors and pushing clients to alternatives.",
@@ -2267,7 +2479,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-9b2068d2",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Employee turnover and initiatives to reduce attrition",
         "stated_position": "Attrition rose across all regions and business lines, consistent with most industries; management describes three key initiatives: re-engineering the exit interview process, greater investment in base compensation increases in 2021 and 2022 versus 2020, and investing in internal career mobility.",
@@ -2287,7 +2501,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-9921c0a6",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Advisor Workstation client decline and product direction",
         "stated_position": "The client decline was primarily a result of industry consolidation, and management says \"we are not immune to M&A activity in the wealth management sector\" given its enterprise client base; it maintained relationships with nearly all newly combined organizations. Product enhancements center on personalization (risk tolerance, risk capacity, ESG preferences), a modernized user experience, and capabilities like financial planning and compliance/regulatory needs in the US and Canada.",
@@ -2307,7 +2523,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-14ed8452",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Capturing share of the RIA advisor market and evolving advisor-facing solutions",
         "stated_position": "Management says advisor-facing solutions \"must evolve\" as the RIA value proposition shifts toward personalization, financial planning, behavioral coaching, wellness, and tax planning, and that Morningstar is \"fully engaging here across our solutions,\" including UMA functionality, embedding the Risk Ecosystem in Morningstar Office, embedding sustainability offerings across all advisor-facing products, models, and a proprietary direct indexing pilot beginning in Q2 2022 with a select group of financial advisors.",
@@ -2327,7 +2545,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-347f540c",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Creation of the Morningstar Wealth Management product grouping under Daniel Needham",
         "stated_position": "Management describes uniting Managed Portfolios, Morningstar Office, ByAllAccounts, and Morningstar.com into a wealth management solutions product grouping, with the pending Praemium U.K./international acquisition also sitting within this group; the aim is \"not\" merely more advisors but \"increasing the connectivity of our advisor solutions and increasing revenue per advisor.\"",
@@ -2347,7 +2567,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-7a2e0381",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Competitive position of Morningstar's TAMP versus Envestnet and other larger TAMPs",
         "stated_position": "Management believes its platform \"is at parity with or exceeds the experience offered by many of our competitors,\" continues to invest, and cites being voted the number-one TAMP by advisors for service and performance in The Wealth Advisor's America's Best TAMPs, 2022 edition.",
@@ -2367,7 +2589,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-59230e88",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Differentiation of personalized portfolios; proprietary data sets",
         "stated_position": "Management points to independent research, proprietary data, and technology platforms, citing a proprietary direct indexing solution launching in beta in Q2 2022 combining Morningstar Sustainalytics metrics and Morningstar Indexes, and a new Target Date Plus service with Capital Group described as \"a significant leap forward in the personalization of target-date funds.\"",
@@ -2387,7 +2611,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-0e1518d6",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Operating leverage and margins in the asset-based/Investment Management business",
         "stated_position": "Management declines to provide forward guidance on margins but says it is experiencing positive operating leverage as products attract assets, excluding the impact of \"the disclosed client losses that were a result of our strategy shift,\" and is focusing on growing AUM.",
@@ -2407,7 +2633,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-204b4901",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Loss of the TD Ameritrade relationship and remaining large Investment Management contracts",
         "stated_position": "Management states the Managed Portfolios asset decrease from $48.6 billion in Q4 2019 to $23.1 billion in Q1 2020 is largely explained by the TD Ameritrade client loss, that TD Ameritrade switched to a fixed-fee arrangement as it transitioned the business in house and terminated the agreement following its merger with Charles Schwab, and that there are no remaining $10 million-plus clients in Investment Management revenue \"as we shift away from consulting work to focus on direct relationships with advisors.\"",
@@ -2427,7 +2655,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-baf9b570",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Moving upmarket in Workplace/retirement plan managed accounts",
         "stated_position": "Management says small and midsize plans have \"traditionally been the sweet spot\" but it has built out a direct-to-plan sales team for larger plans, a consultant relations team, a specialized engagement team, and is building a call center; it says the investment \"has started to pay off,\" citing Raytheon as its most recent large plan win.",
@@ -2447,7 +2677,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-e52a1e1b",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Adoption of managed accounts as a QDIA",
         "stated_position": "Management concedes it is \"gaining traction and seeing increased interest but have not yet seen significant adoption\" of managed accounts as a default option, particularly where recordkeepers have proprietary target-date funds they are encouraged to sell.",
@@ -2467,7 +2699,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-f1d49f24",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Disclosure of Indexes revenue and possible reclassification of licensed data revenue",
         "stated_position": "Management says Indexes revenue is not disclosed separately \"as it has not reached the size of our 'top' product categories,\" confirms the investor's derivation is \"within a reasonable range,\" and says it will consider reclassifying licensed data product revenue within Indexes to the licensed-based category in the future.",
@@ -2487,7 +2721,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-a0b73e15",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Justification for the price paid for Leveraged Commentary & Data (LCD)",
         "stated_position": "Management says it focuses on overall cash returns and expects the acquisition \"to generate strong returns well above our cost of capital,\" plans to enhance a core product that \"hasn't been updated in years\" and sell it to PitchBook clients, and notes the divestiture was triggered by regulatory requirements from S&P Global's IHS Markit merger; on competitiveness of the process it says \"While the process was likely competitive, we ran our own race.\"",
@@ -2507,7 +2743,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-42b22fab",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "LCD growth profile, accretion, and planned investment",
         "stated_position": "Management states LCD has experienced steady mid- to high-single-digit revenue growth, supported by \"differentiated, hard-to-find data,\" that the transaction is expected to be accretive to adjusted net income per share in the first year after closing and to adjusted operating margins, and that it plans to invest behind the acquisition with much of that focused on integration into the PitchBook platform.",
@@ -2527,7 +2765,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-3136a04c",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Expected synergies from LCD across PitchBook, Indexes, and DBRS Morningstar",
         "stated_position": "Management declines to quantify but says there are \"significant opportunities\" particularly within PitchBook and Indexes that were factored into expected returns, including better penetration of the addressable market, new investable products based on LCD data, cross-selling, and support for DBRS Morningstar credit analysts.",
@@ -2547,7 +2787,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-628ec42d",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Margin pressure and willingness to invest ahead of growth; strategic priorities",
         "stated_position": "Management said it is \"intent on balancing short- and long-term tradeoffs which can impact margins in periods of heavier investment,\" that this is the case today, and identified key strategic priorities as \"delivering insights to public and private market investors, growing our ESG leadership position, capitalizing on wealth segment opportunities and scaling to support growth.\"",
@@ -2567,7 +2809,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-cce541dc",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Stock-based compensation philosophy versus peers and whether it will converge",
         "stated_position": "Management defended stock awards as \"an important part of our compensation philosophy to reward and incentivize our team members and align with our value creation objectives over time\" and an important tool for attracting talent against fintech competitors; it declined to forecast convergence with peer metrics, saying it would not speculate on others' practices, and said awards will continue to be used \"prudently.\"",
@@ -2587,7 +2831,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-3c961e52",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Employee attrition and retention initiatives",
         "stated_position": "Management disclosed attrition rose from 12.0% in 2020 to 18.5% in 2021 (vs a 2017-2019 average of 16.6% considered \"more normalized\") and described three initiatives: re-engineering the exit interview process, more investment in base compensation increases, and \"investing in improving internal career mobility opportunities for our people\" via a \"more robust internal career marketplace.\"",
@@ -2607,7 +2853,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-7a00923a",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Where headcount is concentrated across product areas",
         "stated_position": "Management declined to give workforce levels by product but stated: \"Across our product areas and functions, the largest concentrations of headcount are currently in PitchBook, Morningstar Sustainalytics, our Wealth product areas, Data and Direct, and DBRS Morningstar,\" supported by large research and data collection teams, and acknowledged \"we are investing more heavily in recent periods, given our higher rates of headcount growth relative to our peers.\"",
@@ -2627,7 +2875,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-307e9046",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Industry consolidation and whether Morningstar has the scale to compete",
         "stated_position": "Management said consolidation \"creates both challenges and opportunities,\" that it is \"often excited when larger competitors are distracted by large integrations,\" that \"insights are not fungible\" and investors value Morningstar's unique perspective, and that it will continue to invest in differentiated data sets; it expects added scale in credit ratings and wealth management \"should be a positive for margins.\"",
@@ -2647,7 +2897,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-ee8c47ac",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "DBRS Morningstar competitive position and investment in corporate ratings",
         "stated_position": "Management said DBRS Morningstar \"currently has limited presence in the leveraged finance sector (bank loans and CLOs) and the U.S. investment grade corporate market,\" that \"We are investing to grow our corporate presence in both the U.S. and Europe,\" and attributed share gains to \"quality of our ratings and our quick and efficient responsiveness to market participants that surpasses some of our competitors.\"",
@@ -2667,7 +2919,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-a5abdaee",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Disclosure practices \u2014 profitability by line of business",
         "stated_position": "Management said it continually evaluates disclosures and appreciates suggestions but \"we do not anticipate disclosing our profitability by line of business,\" while noting it may consider replicating the directional margin analysis given at the 2020 Annual Meeting.",
@@ -2687,7 +2941,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-009e486d",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Adjusted EBITDA as used for executive bonus purposes",
         "stated_position": "Management explained that its Adjusted EBITDA measures the business on a \"pre-bonus\" basis, excluding the large variable incentive compensation component, and that it is \"an annual measurement used solely for bonus purposes and is reviewed and approved annually by the Compensation Committee of the Board of Directors.\"",
@@ -2707,7 +2963,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-8d345fa1",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Long-term profitability targets and investment priorities",
         "stated_position": "Management confirmed it is \"investing heavily in the business, reflecting the opportunities we see to deliver outsized revenue growth in the large and expanding addressable markets in which we serve investors,\" naming Pitchbook, DBRS Morningstar, Morningstar Sustainalytics, Indexes, and Wealth Management as the largest investment areas, and said that while it does not disclose long-term margin targets, \"our goal is to improve margins over time as we scale and benefit from operating leverage.\"",
@@ -2727,7 +2985,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-0e626cd1",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Sustainalytics differentiation and value proposition",
         "stated_position": "Management said its key differentiator is the ability \"to inform investors throughout the investment lifecycle from pre-investment analysis and screens, through the investment decision itself, to the post-investment stage,\" and pointed to the ESG Risk Rating's \"focus on absolute rather than relative risk,\" the EU Action Plan solution set, and \"our large and responsive customer service organization.\"",
@@ -2747,7 +3007,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-9c5ea3f0",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "New climate ratings planned for late 2022",
         "stated_position": "Management stated it continues to invest in new data and analytics \"with a recent focus on climate and impact data\" and will debut new physical risk and transition risk ratings in late 2022.",
@@ -2767,7 +3029,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-385a5453",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Growth drivers and target customers for Sustainalytics",
         "stated_position": "Asset managers and asset owners account for the largest share of Sustainalytics revenue; growth drivers cited are \"the evolving global regulatory environment as well as the opportunity to expand our penetration within large asset managers and to reach more middle market clients, especially in the United States,\" plus corporate licensed ratings and second-party opinions for green and sustainability bonds.",
@@ -2787,7 +3051,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-7bbe7be5",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Competitive position in green bond verification",
         "stated_position": "Management cited being named by the Climate Bonds Initiative as \"the Largest Verifier for Certified Climate Bonds for a fifth consecutive year\" and described a \"strong competitive position\" in second-party opinions for green and sustainability bonds.",
@@ -2807,7 +3073,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-dddf5404",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Firm-wide ESG objective",
         "stated_position": "Management stated the \"overall objective is to establish leading ESG positions across Morningstar,\" leveraging Sustainalytics data, research, and ratings across products including direct indexing for advisors and a new Sustainability hub in Direct.",
@@ -2827,7 +3095,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-399472f1",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "PitchBook addressable market and penetration",
         "stated_position": "Management stated the total addressable market for PitchBook is 114,000 firms against 8,000 firms served today, leaving \"considerable room for growth, especially as we integrate the capabilities of our recently acquired Leveraged Commentary & Data product area.\"",
@@ -2847,7 +3117,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-4bb1212b",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "ESG assessment of private companies",
         "stated_position": "Management said Sustainalytics offers a pre-IPO ESG assessment service but \"does not otherwise proactively rate private companies at this time,\" and is evaluating opportunities to expand ESG assessments to private companies.",
@@ -2867,7 +3139,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-c17c4233",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Prioritizing topline growth versus margin expansion",
         "stated_position": "\"We are prioritizing our investments in areas of the business where we see the opportunity to grow, build scale, and generate attractive long-term returns\" and while these investments \"can put pressure on margins in the short-term,\" management does \"not anticipate that they will come at the expense of long-term returns or future margin expansion.\" No guidance on specific revenue or margin targets.",
@@ -2887,7 +3161,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-227f610a",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Areas of heaviest investment within license-based products",
         "stated_position": "Within license-based products, \"we are investing particularly heavily in PitchBook and Sustainalytics\"; DBRS Morningstar is described as \"an area of significant investment\"; Investment Management and Index areas have lower margins \"reflecting the significant investment we are making to drive growth and scale,\" with a goal to \"grow AUM and our revenue per advisor over time.\"",
@@ -2907,7 +3183,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-e5fe8c23",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Pace of hiring given inflation and peers slowing investment",
         "stated_position": "\"We take a long-term view of our investment priorities, including spending on increased headcount,\" but management \"acknowledge certain challenges in the current economic environment\" and is taking them into consideration \"including around the pace of hiring,\" promising to \"be prudent and will adjust as necessary.\"",
@@ -2927,7 +3205,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-80ae6beb",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Whether there is a structural limit to growth versus data/analytics peers",
         "stated_position": "\"We don't see any structural limits to growth.\" Many products, including in Wealth, Indexes and DBRS Morningstar, \"do not yet have the scale that our competitors enjoy.\" DBRS's $271 million of 2021 revenue is contrasted with $3.8 billion for Moody's Investor Services and $4.1 billion for S&P's Ratings segment, whose \"size and market share in the US investment-grade corporate market create significant operating leverage.\"",
@@ -2947,7 +3227,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-339fcdfb",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Near-term capital allocation priorities and willingness to use debt",
         "stated_position": "\"We continue to take a balanced approach to capital allocation with a primary emphasis on organic opportunities to drive growth,\" retaining flexibility to be opportunistic on M&A; returning cash to shareholders is \"a key component of our capital deployment,\" with $111 million repurchased in Q1 2022. Management remains \"open using the private placement market in the future.\"",
@@ -2967,7 +3249,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-2547f117",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Leverage tolerance following the LCD acquisition",
         "stated_position": "Leverage increased to 2.3x Debt/EBITDA on a proforma basis, a level management believes \"is manageable to operate the business and continue to pursue our capital allocation priorities\"; the credit agreement caps leverage at 3.75x in the event of an acquisition, and management will \"continue to make sure we are prudent with a focus on maintaining a strong balance sheet.\"",
@@ -2987,7 +3271,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-f4d7a7f7",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Use of international cash",
         "stated_position": "\"Bringing cash to the U.S. often triggers adverse tax consequences,\" but the company has worked to minimize the offshore balance \"through efficient repatriation activities and strategic opportunities,\" citing the final Sustainalytics purchase consideration payment funded fully with overseas cash.",
@@ -3007,7 +3293,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-a07d1425",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Integration approach for Sustainalytics, PitchBook/LCD and DBRS",
         "stated_position": "\"Every transaction we do has a unique integration plan which is tailored to the capabilities we are acquiring and the strategy we are pursuing.\" DBRS focus was \"combining our U.S. methodologies and operations\"; Sustainalytics ESG research is being leveraged across products; \"our plan is to integrate LCD into the PitchBook platform to complement the private market data that exists within it today.\"",
@@ -3027,7 +3315,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-2c9a3321",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Cloud transition",
         "stated_position": "\"Morningstar, like many companies, is in the midst of its cloud transition,\" migrating on-premise data centers to the cloud; over time management expects \"lower capital expenditures for physical hardware and higher operating expenses in certain areas for cloud computing capacity.\" New product development is \"focused on leveraging cloud native services.\"",
@@ -3047,7 +3337,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-431ca8e8",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Client mix strategy \u2014 institutional asset managers and corporates",
         "stated_position": "Management sees \"good growth prospects for Sustainalytics and Indexes\" within institutional asset managers; in the corporate market it enjoys \"a leading position in the second opinion provider business\"; DBRS Morningstar is leveraging global investor relationships and central bank acceptance of its ratings to grow corporate ratings in Europe and \"in the US it is making an entry in the middle market private corporate market.\"",
@@ -3067,7 +3359,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-63eab692",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Cyclicality of DBRS Morningstar",
         "stated_position": "Roughly two-thirds of 2021 DBRS revenue came from structured finance; in the US and Europe \"we are more susceptible to interest-rate volatility and issuance volumes in that segment.\" Management states \"our profile is very different today than it was back in 2008,\" with a business \"approaching $300 million in revenue\" that is \"more diverse across asset classes and geography, with a larger recurring-revenue base.\"",
@@ -3087,7 +3381,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-12bf90e7",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "PitchBook's competitive position in a recessionary environment",
         "stated_position": "\"we are confident in our ability to provide value to clients regardless of market environment\"; if clients consolidate research solutions, \"we are confident that our data, product, and service will stack up well against any other provider, regardless of relative cost.\"",
@@ -3107,7 +3403,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-4dcf2ebf",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "PitchBook TAM increase to $4.9bn",
         "stated_position": "Methodology \"has remained consistent with the methodology we disclosed in 2021\"; as PitchBook added data and capabilities it met more client use cases, and \"the count of firms in PitchBook's TAM grew by 26% as of our 2022 estimate, driven primarily by the companies and core client segment.\"",
@@ -3127,7 +3425,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-e9e0ba28",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Measuring Wealth Management and direct indexing investment",
         "stated_position": "Investments across the US TAMP, Morningstar Wealth Platform, Morningstar Office, ByAllAccounts and Morningstar Investor \"will allow us to serve a broader base of advisors and investors, driving license- and asset-based fees\"; direct indexing is expected \"to be a key driver of AUM growth\" and the focus is \"increasing assets and our revenue per advisor over time.\"",
@@ -3147,7 +3447,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-a665c8f5",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Rationale for investing in SMArtX",
         "stated_position": "\"SMArtX has a track record of building products that offer flexibility, advisor choice and personalization at scale, which aligns with our mission of empowering investor success\"; its technology platform \"will be integral to delivering a larger selection of investment offerings through Morningstar's TAMP.\"",
@@ -3167,7 +3469,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-94bcce01",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Backlash over the Morningstar Investor portfolio rewrite",
         "stated_position": "Management is \"excited about the June launch of Morningstar Investor,\" acknowledges feedback \"largely been focused on gaps in features, which the team is actively working to close,\" says legacy portfolio tools \"continue to be accessible and will remain so for several months,\" and reports \"a brief spike in cancellations in our weekly metrics which has since reverted to normal levels\" with \"minimal impact to net subscription numbers and revenue for this product.\"",
@@ -3187,7 +3491,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-64969917",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Investment priorities and timing of returns on investment spending",
         "stated_position": "\"This year, our investment priorities include Wealth, ESG / Morningstar Sustainalytics, and PitchBook in addition to addressing key infrastructure needs to help us scale.\" Management said it cannot guide to a specific inflection point in profitability, expects adjusted operating margins this year to be lower than a typical year, and is \"focused on getting back on a path toward levels seen in recent historical peaks,\" noting different time horizons for returns \\u2014 shorter-term for Morningstar Sustainalytics and PitchBook, longer for Wealth (direct indexing and open architecture TAMP expansion).",
@@ -3207,7 +3513,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-8e6635ca",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Sales and marketing spending discipline and operating leverage",
         "stated_position": "\"We believe that as we grow, we will have the opportunity to generate operating leverage in our sales and marketing activities. That said, we will continue to spend prudently in sales and marketing activities where we see the potential to generate attractive returns, which could result in higher levels of spend in certain periods.\"",
@@ -3227,7 +3535,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-f210862d",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Restructuring of China operations",
         "stated_position": "Morningstar \"made the decision to strategically shift our China operations to focus entirely on the China domestic market,\" requiring it to \"streamline the team in Shenzhen accordingly over the next 12 months.\" Non-China-market-focused work is being shifted to alternate locations, \"so this decision is not a cost-savings measure,\" and Morningstar \"remains committed to its long-term presence and is in the process of redefining its strategy to capitalize on the growing potential within the domestic market.\"",
@@ -3247,7 +3557,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-9ae8c9d2",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Increased appetite for large M&A and how acquisitions fit the existing business",
         "stated_position": "\"When it comes to capital allocation, our primary emphasis is supporting organic growth; however, we will continue to pursue acquisitions opportunistically.\" Over the past 10 years it completed 39 transactions; growing scale, profitability and cash flow \"expanded our capacity to do larger cash and debt-financed transactions,\" and it has \"tended to focus on larger acquisitions, which have a more substantial impact.\" But \"we do not pursue M&A simply because we have the capacity to do so; all transactions need to have strategic merit, offer compelling long-term returns, and create value.\" Each of the four largest deals since end-2016 (PitchBook, DBRS, Sustainalytics, LCD) strengthened the existing business.",
@@ -3267,7 +3579,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-b2b38e35",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Independent investigation into Morningstar Sustainalytics' research practices and alleged anti-Israel bias",
         "stated_position": "\"neither Morningstar nor Morningstar Sustainalytics supports the anti-Israel BDS campaign. However, in retrospect, our initial review was overly dismissive of the serious bias concerns raised by the organization JLens, the Illinois Investment Policy Board (IIPB), and other entities.\" A working group led by independent directors Steve Kaplan and Gail Landis engaged White & Case in October 2021; the 117-page report found no evidence of pervasive or systemic bias but identified one product that exhibited bias in its outcomes; Morningstar \"committed to adopt in full\" the recommendations and plans to complete implementation by June 2023.",
@@ -3287,7 +3601,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-3ed2bbd3",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Joe Mansueto's pledged shares and new pledging policy",
         "stated_position": "As of December 31, 2021 Joe Mansueto had pledged 1,800,000 shares as security under a bank credit agreement, down from 3,000,000 a year earlier, representing about 10% of his beneficially owned shares and 4% of total shares outstanding; the pledge \"was arranged to provide Joe some opportunity to diversify his assets, consistent with the advice Morningstar often gives investors.\" Effective July 2022 the Code of Ethics was amended to prohibit pledging more than 15% of beneficially owned Morningstar securities, with Audit Committee review; the Audit Committee determined Joe's arrangements \"do not present a significant risk of a margin call or subsequent foreclosure sale.\"",
@@ -3307,7 +3623,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-9bc5880b",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Return on capital in M&A and the price paid for the LCD acquisition",
         "stated_position": "\"We evaluate the returns of any potential M&A transaction relative to expected returns for other uses of capital. In determining the price we pay for acquisitions, we focus on cash-on-cash returns and internal rates of return.\" For LCD, management said low historical investment was insufficient to realize its \"significant growth potential, especially given secular tailwinds for private credit,\" and that it is \"confident in our ability to realize value and excess returns as we invest in the integration.\"",
@@ -3327,7 +3645,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-c923e999",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Confidence that profitability will recover and improve after margin erosion",
         "stated_position": "Management restated its position that \"there is inherent leverage in the business\" and that current investments will drive long-term returns and margin improvement, naming \"Morningstar Sustainalytics, Wealth, and PitchBook\" as the key opportunity areas; returns in Sustainalytics climate/impact metrics and PitchBook equity data are expected to materialize more quickly, while Wealth (direct indexing, open architecture TAMP) \"will take more time to materialize.\"",
@@ -3347,7 +3667,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-dae7d7c3",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Changes to incentive compensation structure and merit increases",
         "stated_position": "The \"most notable change in the 2022 compensation structure was the increase in our merit pool,\" roughly double the prior year's rate and \"almost double the weighted average market rate across our global footprint as we were focused on retaining talent in a highly competitive environment.\" Additional compensation was invested in salaries and bonuses \"to close the adjusted gender pay gap identified in a 2021 review,\" and in geographies/product areas with higher turnover (India, Morningstar Sustainalytics, DBRS Morningstar, PitchBook). Management is \"keeping a careful eye on inflation globally in our approach to 2023.\"",
@@ -3367,7 +3689,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-dcd6c8ec",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Decision to stop reporting certain KPIs (Direct/PitchBook licenses, Morningstar.com premium subscribers, Advisor Workstation clients)",
         "stated_position": "KPIs were moved to the Supplemental Deck; premium website subscriptions will be published annually rather than quarterly \"as it does not rank among our top products\"; and the company \"made the recent decision to stop disclosing the number of Advisor Workstation clients,\" concluding \"it was not as relevant a metric and not highly correlated to revenue given the heterogeneity of our client contracts.\"",
@@ -3387,7 +3711,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-af73e355",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Why the company does not disclose more detail on investment spending at DBRS and PitchBook",
         "stated_position": "Management said it has \"given directional guidelines on comparative margins within our portfolio\" in the past and \"will consider how we can better characterize and explain incremental investments going forward.\"",
@@ -3407,7 +3733,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-df07a881",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Currency in which PitchBook and other license-based products are priced",
         "stated_position": "PitchBook contracts are priced in USD while other licensed-based products are \"generally priced in the local market currency\"; the company is \"in the process of transitioning the pricing of PitchBook products to local currencies and expect to complete this project by the end of 2023.\"",
@@ -3427,7 +3755,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-0231e9ee",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "How hiring priorities have changed over time",
         "stated_position": "\"At any given time, our hiring priorities reflect our strategic priorities.\" In 2022 there was greater focus on \"Wealth, PitchBook, ESG/Morningstar Sustainalytics and DBRS Morningstar as well as on the infrastructure to help us scale,\" largely similar to 2021; the company hires \"more heavily in years after acquisitions to drive our investment thesis and returns.\"",
@@ -3447,7 +3777,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-95ca400d",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Scale of investment in Morningstar Sustainalytics and expected pace ahead",
         "stated_position": "Management is \"investing heavily in Morningstar Sustainalytics,\" hiring to expand research IP \"particularly in the new areas of impact and climate,\" with new products to come to market in 2023; \"The pace of Sustainalytics hiring is expected to slow in 2023.\" It states dollar costs are growing faster than organic revenues and that Sustainalytics' margins \"are a drag on our overall margins,\" but are expected over time to reach levels in line with the licensed-based product group average.",
@@ -3467,7 +3799,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-2f6c26a9",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Implications of ESG regulation and political backlash, including state Attorneys General inquiries",
         "stated_position": "\"We do not anticipate a material impact to Morningstar Sustainalytics or its clients from the recent inquiries initiated by the Attorney Generals of several U.S. states or more broadly from heightened scrutiny of ESG in the United States. If that were to change, we would disclose accordingly.\" Management frames Morningstar's role as providing \"the independent data and insights that make those conversations more informed.\"",
@@ -3487,7 +3821,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-de93b87d",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Comparison of Sustainalytics margins with MSCI's ESG & Climate segment",
         "stated_position": "Management declined the comparison \u2014 \"We\u2019re not familiar with the particulars of how MSCI handles its segment-level reporting\" \u2014 while acknowledging Sustainalytics \"currently has the lowest margins of our licensed-based products\" and is expected over time to approach the others.",
@@ -3507,7 +3843,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-cb98e8e8",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Plan for integrating LCD into PitchBook and Morningstar Indexes",
         "stated_position": "The plan is to \"integrate Leveraged Commentary & Data ( LCD) data, analytics, and research with PitchBook\u2019s to offer a consolidated workflow for public and private capital and debt market research,\" with LCD staff moved onto PitchBook teams; on the Indexes side, operations are transitioning from S&P to Morningstar, the LCD indexes have been renamed under the Morningstar brand, and the Indexes sales team has been trained on the suite.",
@@ -3527,7 +3865,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-77b12457",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Motivation for the LCD acquisition and target customer types",
         "stated_position": "The acquisition \"was motivated by the value that we see in Leveraged Commentary & Data\u2019s ( LCD) capabilities in private credit and leveraged loan data, research, and indexes against the backdrop of attractive secular tailwinds for private credit,\" and management has \"confirmed the private credit use cases in our total addressable market (TAM)\" after a full review of LCD's clients.",
@@ -3547,7 +3887,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-9d9e0325",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Investment in the LCD product versus letting margin fall to the bottom line",
         "stated_position": "\"As we manage through that process, we will invest to maximize long-term returns.\" PitchBook \"plans to make important investments to improve the LCD product, the LCD data set within the PitchBook platform, and our support of LCD customers, which we believe will help to accelerate growth and enhance margins.\"",
@@ -3567,7 +3909,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-b6c65a82",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "DBRS Morningstar headcount strategy and strategic initiatives through the credit cycle",
         "stated_position": "The company continues \"to invest in analytical and operations staff globally to maintain/defend the existing business, but more importantly to continue to grow the business globally,\" with initiatives in US middle market and European corporates, growing the data business, and technology investments for operational scalability. Given issuance volatility, \"we manage our headcount by slowing hiring in times of lower issuance\" but \"don\u2019t downsize or stop hiring completely.\"",
@@ -3587,7 +3931,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-17b1ba76",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Approach to the public cloud migration and its cost profile",
         "stated_position": "Management said it does not have an R&D expense line and capitalizes software development costs, follows either a \"lift and shift model\" or an \"optimize first\" model, and does \"not anticipate increased expenses to support two code bases\" because cost duplication is short. Over time it expects \"a decline in capex and related depreciation associated with the purchase and maintenance of on-premise servers and an increase in operating expenses related to our use of cloud services.\"",
@@ -3607,7 +3953,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-a1b7d403",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Retention of LCD talent and onboarding",
         "stated_position": "\"The onboarding process has been very successful, and we have seen minimal attrition.\" The company spent the first several months understanding roles and has begun transitioning the LCD reporting structure to the relevant PitchBook or Morningstar teams, adding resources in research, support, and account management.",
@@ -3627,7 +3975,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-26300da5",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Investment spending and operating margin trajectory",
         "stated_position": "Management said a significant portion of recent operating expense growth is driven by investments to build capabilities to support growth in prioritized products \u2014 PitchBook, Morningstar Sustainalytics, and Wealth Management \u2014 and that it takes a long-term view while being \"prudent with spending decisions given challenges in the economic environment,\" expecting margins this year to be lower than a typical year but focused on getting back toward recent historical peaks.",
@@ -3647,7 +3997,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-ad77d823",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "LCD integration and which PitchBook client segments it will expand",
         "stated_position": "Management said the biggest opportunities from LCD's capabilities are with lenders, investors, banks and service providers and, to a lesser extent, limited partners, and that integrating LCD data into the PitchBook platform will expand reach with those segments.",
@@ -3667,7 +4019,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-ce121a7e",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Conditions for the $50 million contingent LCD payment",
         "stated_position": "Management explained the $50 million contingent consideration, payable six months after the June 1, 2022 close, is contingent on transitioning LCD customer relationships \u2014 specifically unbundling LCD contracts from other S&P services into standalone Morningstar agreements \u2014 paid based on percentage of customer ACV successfully unbundled as of December 1, 2022.",
@@ -3687,7 +4041,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-9b8e72b3",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "DBRS Morningstar's competitive position versus Moody's and S&P",
         "stated_position": "Management said growth was driven by U.S. CMBS ratings activity \"where we enjoy a leading position,\" and that unlike Moody's and S&P, DBRS Morningstar currently has a smaller share of the U.S. corporate and CLO markets.",
@@ -3707,7 +4063,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-14c8e521",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "TAMP moving to open architecture with third-party models",
         "stated_position": "Management said demand is for flexibility and choice, with unified and separately managed accounts growing ahead of ETF and mutual fund models, and that \"we plan to open our TAMP to third-party models in the coming months, migrating to an open architecture model.\"",
@@ -3727,7 +4085,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-5bbbcb54",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Direct indexing growth opportunity and competitive advantage",
         "stated_position": "Management called direct indexing \"an attractive growth opportunity for Morningstar,\" said it believes Cerulli's projected 12.4% annual growth through 2026 is conservative, and located its competitive advantage in the breadth of capabilities and proprietary IP across Morningstar Indexes, Sustainalytics and Equity Research, brand strength with advisors, and the ability to bring all direct indexing components together in-house, with pricing generally in line with or lower than competitors.",
@@ -3747,7 +4107,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-a0af81d8",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Purpose of share repurchases",
         "stated_position": "Management said it makes significant share repurchases when it believes the return potential is attractive compared to other uses of capital, and expressly not for the purpose of share-based compensation.",
@@ -3767,7 +4129,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-779c1cf2",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Total price paid for Sustainalytics",
         "stated_position": "Management disclosed the acquisition of the remaining stake closed July 2, 2020, with three cash payments \u2014 an initial payment at closing plus earn-outs on June 30, 2021 and June 30, 2022 based on a multiple of Morningstar Sustainalytics' revenues \u2014 totalling EUR 147.1 million.",
@@ -3787,7 +4151,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-59c0e195",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Gross margin versus peers and reliance on third-party data",
         "stated_position": "Management said it is \"difficult to make direct comparisons with our peers' gross margins given differences in our business mix,\" that it does not believe its gross margin is capped, and that it does not believe it is more reliant on third-party datasets than peers or faces a higher cost of sourcing data.",
@@ -3807,7 +4173,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-3123f888",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Debt structure and funding of the LCD acquisition",
         "stated_position": "Management said the credit facility structure, particularly the term loan used for the LCD acquisition, \"is a good fit for our needs,\" that its prepayable nature will allow excess cash to pay it down over time, that a similar funding strategy was used for DBRS, and that it does not currently swap out any of its debt.",
@@ -3827,7 +4195,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-8e507b08",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Target leverage ratio and prioritization of debt repayment over share repurchases",
         "stated_position": "Management said it does not target a specific debt ratio but takes \"a conservative approach to managing our balance sheet,\" describing a historical pattern of increasing debt for acquisitions (notably PitchBook and DBRS) then paying it down, and stated that \"debt repayment will be a near-to-intermediate-term priority for deployment of excess cash.\"",
@@ -3847,7 +4217,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-dd08516e",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Senator Pat Toomey's request for information on Morningstar Sustainalytics research practices",
         "stated_position": "Management said it has responded and is answering follow-up questions, does not plan to make the response public at this time, continues to engage with legislators and other stakeholders, and will disclose any material outcome per legal/regulatory requirements or usual investor channels.",
@@ -3867,7 +4239,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-3590fdf2",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "PitchBook management incentive compensation plan",
         "stated_position": "Management described the PitchBook incentive plan adopted with the acquisition for 2017-2019 and renewed at the end of 2019 for 2020-2022, with awards tied to revenue targets specific to PitchBook's business and higher target incentives in the third year of the plan.",
@@ -3887,7 +4261,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-1a8758f2",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Integration of the Leveraged Commentary & Data acquisition into PitchBook",
         "stated_position": "Management said fifty-nine employees joined with the close of the LCD acquisition on June 1, 2022, and that PitchBook has since added staff to support the LCD product across research, product, support, account management, and sales.",
@@ -3907,7 +4283,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-97288efe",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Drivers of Morningstar Indexes growth and product partnerships",
         "stated_position": "Management attributed growth to investable product revenue supported by net inflows to higher margin products and new launches, noting roughly 60 new passive investable products launched with partners including Morgan Stanley, Blackrock, and Citigroup, with particularly strong interest in renewable energy and enhanced ESG indexes.",
@@ -3927,7 +4305,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-480ef01a",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Headcount growth plans going into 2023",
         "stated_position": "\"Heading into 2023, we are slowing headcount growth except in our fastest growing product areas. Additionally, we are adding headcount in Wealth Management to support direct indexing and develop our open architecture TAMP, although at a slowing rate.\" The reduction and shift of China operations is expected to be substantially complete by the end of the third quarter of 2023.",
@@ -3947,7 +4327,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-a09cd0bf",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Pricing strategy and pricing power across the portfolio",
         "stated_position": "\"Pricing has been a priority focus for us as we enter 2023 given the inflationary environment.\" Most success achieving price increases with license-based products; maturity of product does not generally factor into assessments; increases ranging from mid-single-digits to high-single-digits/low-double-digits; harder to raise prices in asset-based areas with \"widespread fee compression in the industry.\"",
@@ -3967,7 +4349,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-04fd7dd7",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Relative importance of corporate versus institutional investor clients for Morningstar Sustainalytics",
         "stated_position": "\"We view the institutional investor and corporate issuer client segments as equally important for the future growth and success of Sustainalytics and believe that they are interdependent.\" Success with institutional investors drives demand from corporate issuers licensing the ESG rating.",
@@ -3987,7 +4371,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-f3b4d1ad",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Sustainalytics differentiation through proprietary data",
         "stated_position": "\"Morningstar Sustainalytics offers both proprietary ESG product methodologies and proprietary data sets. The ESG information generally available in the market is unstructured, incomplete, and sometimes of low quality.\" Data sets cover a 16,000-company universe with current and historical data.",
@@ -4007,7 +4393,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-929cd921",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "DBRS Morningstar competitive position in corporate ratings by geography",
         "stated_position": "In Canada, \"we have a leading market position with a strong presence in corporate ratings with little client turnover\"; in the U.S. primarily active in private/middle market; the public investment-grade sector \"is dominated by Moody's and S&P\" and \"it remains difficult for DBRS Morningstar to compete\"; in Europe the markets are more open with a growing position.",
@@ -4027,7 +4415,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-96b8c7b3",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "PitchBook's importance to future growth and product bundling",
         "stated_position": "\"We view PitchBook as important to Morningstar's future growth given the continued convergence of private and public markets, and the increased importance of private debt, which was a driver of our acquisition of LCD.\" Starting to bundle Morningstar public equity data and ESG ratings into PitchBook, plus the Morningstar Unicorn Index built on PitchBook and Morningstar Indexes capabilities.",
@@ -4047,7 +4437,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-88e7c4e0",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "PitchBook total addressable market",
         "stated_position": "TAM built from number of qualifying firms and estimated average account revenue rather than total licenses; \"You can see from the large TAM ($4.9 billion) and our market share estimate that we have a lot of room for growth.\"",
@@ -4067,7 +4459,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-4535214d",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Cash management and capital allocation approach",
         "stated_position": "\"We continue to balance capital allocation priorities, and our approach has not changed. Historically, we have taken a conservative approach to managing cash and favor short-duration, high-quality, liquid investments.\" In the current rate environment, also \"remain focused on repayment of debt to minimize interest expense.\"",
@@ -4087,7 +4481,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-51376726",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Dividend policy and payout ratio",
         "stated_position": "\"Dividends have consistently been an important part of our capital allocation policy and we are proud to have raised the dividend every year since its inception.\" No specific payout target; average adjusted payout ratio since 2018 is in the mid-20s; announced a 4.2% quarterly dividend increase and a new $500 million share repurchase program replacing the January 2021 program.",
@@ -4107,7 +4503,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-0da02d58",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Bonus plan design",
         "stated_position": "Bonus pool funding based on performance relative to financial targets tied to the annual budget, using adjusted revenue and adjusted EBITDA, \"with a floor at 60% funding and no cap.\"",
@@ -4127,7 +4525,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-f59e4e3b",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Founder Joe Mansueto family holdings",
         "stated_position": "\"All of Joe's holdings are disclosed annually in Morningstar's proxy statement and in Schedule 13G filed with the SEC.\"",
@@ -4147,7 +4547,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-a227bf36",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "topic": "Employee turnover trends",
         "stated_position": "Trailing 12-month average turnover was 18.5% as of December 2021, up from 11.8% in 2020; through the first 11 months of 2022 the annualized rate is similar to full-year 2021; \"relatively high turnover in the Morningstar Sustainalytics product area given strong demand for ESG expertise.\"",
@@ -4167,7 +4569,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-c991b9cf",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Unusually direct admission that the reorganization had been discussed internally for an extended period before being executed."
       },
@@ -4185,7 +4589,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-8c11eaf0",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Recurring mission-statement phrasing used to frame a structural reorganization decision."
       },
@@ -4203,7 +4609,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-2387a553",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Forward-looking growth claim for the new Wealth Management platform, hedged with \"we anticipate\" \u2014 a benchmark against which later results can be measured."
       },
@@ -4221,7 +4629,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-808e5532",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Unusually assertive self-characterisation of the indexes business as \"world-class\" and framing of \"ambition,\" signalling strategic emphasis on a business competing with MSCI."
       },
@@ -4239,7 +4649,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-ae3f3018",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Positions Morningstar as a market-shaper rather than participant in ESG, while conceding the industry's \"relative nascency\" \u2014 a claim paired with a hedge on market size."
       },
@@ -4257,7 +4669,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-c75b6423",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "A notably wide hedge: management declines to size the ESG opportunity it says it is investing heavily in."
       },
@@ -4275,7 +4689,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-6ced76d2",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Reframes a sharp turnover increase as a return to normal rather than a problem, a direct attempt to reset the baseline investors judge it against."
       },
@@ -4293,7 +4709,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-cb9bd845",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "A hedged forward statement \u2014 the company disclaims forecasting while nonetheless offering a go-forward expectation qualified twice."
       },
@@ -4311,7 +4729,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-b74a54a6",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "An unusually colloquial and self-consciously disciplined framing of acquisition pricing discipline in response to a pointed question about paying 11-12 times sales."
       },
@@ -4329,7 +4749,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-b2864ecb",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Sets an explicit, recurring return standard management can be held to on the LCD deal, in place of any quantified financial detail."
       },
@@ -4347,7 +4769,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-f466d978",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "A blunt characterization of an asset it just agreed to buy from S&P Global, framing the acquisition as a turnaround/enhancement opportunity."
       },
@@ -4365,7 +4789,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-8e5b7ab3",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Confirms a strategic repositioning away from large institutional consulting contracts and away from the client-concentration model that produced the TD Ameritrade loss."
       },
@@ -4383,7 +4809,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-fc023c7d",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Reframes the wealth management goal away from advisor count toward revenue per advisor \u2014 a shift in the stated success metric."
       },
@@ -4401,7 +4829,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-e05f5978",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "A direct admission that the QDIA thesis Morningstar has promoted has not yet translated into adoption, hedging a growth narrative."
       },
@@ -4413,7 +4843,9 @@
       "quote_check": "8-K_8-K_whole: not found in the source section"
     },
     {
+      "id": "QA-FY2022-35f9491f",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Positive operating leverage claim is expressly conditioned on excluding client losses management attributes to its own strategy shift."
       },
@@ -4431,7 +4863,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-da283814",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Candid characterization of the historic limits of the Workplace franchise, against which the stated move upmarket should be measured."
       },
@@ -4449,7 +4883,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-0342ef38",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Unusually blunt, informal characterisation of competitors' M&A distraction as an opportunity \u2014 rare candour in a written Reg FD response."
       },
@@ -4467,7 +4903,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-6090a4ec",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Compact statement of the company's core competitive claim, framed as a differentiation thesis against scale-advantaged peers."
       },
@@ -4485,7 +4923,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-74e0fd8f",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Direct admission of a doubled raise pool \u2014 a specific, unusually concrete concession about labour market pressure."
       },
@@ -4503,7 +4943,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-a7f6efd8",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Candid, quantified admission of company-wide attrition deterioration, framed against a self-defined \"more normalized\" 16.6% baseline."
       },
@@ -4521,7 +4963,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-0f23f8b0",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "A hedged forward expectation on margins tied to specific segments \u2014 worth tracking against later years."
       },
@@ -4539,7 +4983,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-9294dbb1",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "An unusually direct concession to a critical question that framed Morningstar as an outlier on margin pressure; management accepts the investment framing rather than the inflation framing."
       },
@@ -4557,7 +5003,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-1971a7b4",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "An explicit admission that margins are being sacrificed, immediately hedged by the non-disclosure of long-term margin targets."
       },
@@ -4575,7 +5023,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-c96bdd30",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Quantifies the scale of the build-out in a single year; the phrase \"team members\" is the company's recurring characterisation of employees."
       },
@@ -4593,7 +5043,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-e7211c40",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Recurring claim of confidence in ESG as a growth engine, stated at the peak of the company's ESG investment cycle."
       },
@@ -4611,7 +5063,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-1d6690a0",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Unusually direct admission that a specific product investment is depressing current margins, while declining to disclose product-level profitability."
       },
@@ -4629,7 +5083,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-beb08999",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "A hedge deflecting an investor's explicit incremental-margin comparison against data/analytics peers rather than engaging with the framework."
       },
@@ -4647,7 +5103,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-d0dda03c",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Recurring refusal to commit to quantified targets, repeated alongside claims of long-term margin expansion."
       },
@@ -4665,7 +5123,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-2a85d6e0",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Frames heavy spending as a deliberate long-horizon bet, the central justification recurring across multiple answers in this filing."
       },
@@ -4683,7 +5143,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-c8faf0d9",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Explicit statement of ambition to move DBRS beyond structured finance into corporates, a directional shift in how the ratings business is characterised."
       },
@@ -4701,7 +5163,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-c3e28357",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Unusually direct admission of a management failing, reversing the company's earlier public posture on the Sustainalytics bias allegations."
       },
@@ -4719,7 +5183,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-1b6f03da",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Pre-empts the framing of the Shenzhen reductions as cost cutting; a deliberate characterisation of a headcount reduction as strategy rather than savings."
       },
@@ -4737,7 +5203,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-87fa52d3",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Defensive framing in response to investor concern about a sharp step-up in deal size; recurring 'strategic merit / long-term returns' formulation for capital allocation discipline."
       },
@@ -4755,7 +5223,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-b04f26fb",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "An explicit hedge on margin recovery timing while still committing directionally to prior peak levels."
       },
@@ -4773,7 +5243,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-5ab0f2cb",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Self-characterisation of competitive position, and the framing of Morningstar's original business as 'legacy' public company data."
       },
@@ -4791,7 +5263,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-77ad5ce5",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "A pointed characterisation of the acquired asset as under-invested by its prior owner \u2014 the recurring justification for both the price paid and the planned spending, repeated nearly verbatim later in the same filing."
       },
@@ -4809,7 +5283,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-45445308",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "An unusually direct admission about a business the company elsewhere describes as a core growth priority."
       },
@@ -4827,7 +5303,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-925ce9e3",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "An explicit ranking of internal product-level profitability that the company normally declines to disclose; sets a benchmark against which later statements can be measured."
       },
@@ -4845,7 +5323,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-a4e69069",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Management's first-order framing of the ESG political backlash as immaterial, with a conditional disclosure hedge attached."
       },
@@ -4863,7 +5343,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-313f3eb1",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "The stated reason for reducing a long-running disclosure; the rationale is worth preserving because the disclosure itself disappeared."
       },
@@ -4881,7 +5363,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-2302b201",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Frames an above-market pay increase as a deliberate retention strategy rather than cost inflation \u2014 a shift in emphasis on compensation."
       },
@@ -4899,7 +5383,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-7411be7b",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "A direct acknowledgement of an identified pay gap and remedial spending, cross-referenced to the Enterprise Sustainability Report."
       },
@@ -4917,7 +5403,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-c0467366",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "A claim explicitly flagged as recurring (\"as we've stated previously\"), offered in answer to a question noting profitability had fallen back to 2010 levels."
       },
@@ -4935,7 +5423,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-47a7fb8a",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Direct refusal to disclose, framing the limits of transparency on the very spending management cites as driving expense growth."
       },
@@ -4953,7 +5443,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-8ac974a6",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Names the three businesses explicitly designated for growth prioritization \u2014 a compact statement of strategic focus worth tracking year to year."
       },
@@ -4971,7 +5463,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-1e4ad66b",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Management goes beyond a third-party forecast to assert it is too conservative \u2014 unusually forward-leaning optimism for a written Reg FD answer."
       },
@@ -4989,7 +5483,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-fe5e290c",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Recurring hedge pattern across answers: a reassuring present-tense statement immediately followed by refusal to forecast."
       },
@@ -5007,7 +5503,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-bdf6ae88",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Acknowledges an ongoing, plural set of governmental inquiries into Sustainalytics research practices \u2014 broader than the single senator's request the question asked about."
       },
@@ -5025,7 +5523,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-cb31ef38",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "A rare, matter-of-fact confirmation, buried in an expense answer, that an independent investigation of Sustainalytics research practices took place and has concluded."
       },
@@ -5043,7 +5543,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-b5d151bc",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "A direct statement of capital allocation priority ranking debt paydown ahead of other uses, notable against the company's general refusal to set a target leverage ratio."
       },
@@ -5061,7 +5563,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-2f069ace",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Frames the China wind-down as a shift of work to India, linking a geopolitical/regulatory retreat to an operational relocation strategy."
       },
@@ -5079,7 +5583,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-f7a79a89",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Unusually direct admission of limited pricing power in the asset-based businesses, contrasted with the confident tone about license-based pricing."
       },
@@ -5097,7 +5603,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-1b408f9a",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Flat rejection of the premise of an investor question about consolidation of rating agency mandates, immediately followed by a nuanced concession about U.S. competitiveness."
       },
@@ -5115,7 +5623,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-4508154b",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Hedged positive framing on turnover while naming specific problem areas \u2014 a candid qualification within an optimistic answer."
       },
@@ -5133,7 +5643,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2022-8bbb2dcf",
       "field": "investor_qa",
+      "fiscal_year": 2022,
       "value": {
         "why_notable": "Signals an emerging cross-portfolio bundling strategy, a shift in how the product portfolio is characterised."
       },
@@ -5159,32 +5671,38 @@
         {
           "heading": "We could face significant reputational and financial consequences relating to cybersecurity and the protection of confidential information, including personal information about individuals.",
           "heading_similarity": 100.0,
-          "body_similarity": 92.5
+          "body_similarity": 92.5,
+          "id": "RISK-FY2022-edbbafa3"
         },
         {
           "heading": "Our business, products and facilities are at risk of a number of material disruptive events, including an outage of our database, technology-based products and services or network facilities, which our operational risk management and business continuity programs may not be adequate to address.",
           "heading_similarity": 100.0,
-          "body_similarity": 91.8
+          "body_similarity": 91.8,
+          "id": "RISK-FY2022-f9ce4ba9"
         },
         {
           "heading": "We could face liability for the information and data we collect, store, use, create, and distribute or the reports and other documents we publish or that are produced by our software products.",
           "heading_similarity": 100.0,
-          "body_similarity": 97.9
+          "body_similarity": 97.9,
+          "id": "RISK-FY2022-9560c38c"
         },
         {
           "heading": "Failure to protect our intellectual property rights, or claims of intellectual property infringement against us, could harm our brand and ability to compete effectively.",
           "heading_similarity": 100.0,
-          "body_similarity": 95.1
+          "body_similarity": 95.1,
+          "id": "RISK-FY2022-f76d1e7c"
         },
         {
           "heading": "Our future success depends on our ability to recruit, develop, and retain qualified employees.",
           "heading_similarity": 100.0,
-          "body_similarity": 92.4
+          "body_similarity": 92.4,
+          "id": "RISK-FY2022-80b3e524"
         },
         {
           "heading": "Fluctuations in our operating results may negatively affect our stock price.",
           "heading_similarity": 100.0,
-          "body_similarity": 93.0
+          "body_similarity": 93.0,
+          "id": "RISK-FY2022-75d40863"
         }
       ],
       "reworded": [
@@ -5195,7 +5713,8 @@
           "body_similarity": 82.3,
           "changed": "body only",
           "category_now": "Risks Related to Our Business and Industry",
-          "category_prior": "Risks Related to Our Business and Industry"
+          "category_prior": "Risks Related to Our Business and Industry",
+          "id": "RISK-FY2022-629284aa"
         },
         {
           "heading_now": "Failing to innovate our product and service offerings, create innovative, proprietary and insightful financial technology solutions, keep pace with new investor requirements and technology developments, or anticipate our clients\u2019 changing needs may negatively affect our competitive position and business results.",
@@ -5204,7 +5723,8 @@
           "body_similarity": 79.4,
           "changed": "heading and body",
           "category_now": "Risks Related to Our Business and Industry",
-          "category_prior": "Risks Related to Our Business and Industry"
+          "category_prior": "Risks Related to Our Business and Industry",
+          "id": "RISK-FY2022-0666a240"
         },
         {
           "heading_now": "Prolonged volatility or downturns affecting the financial sector, global financial markets, and the global economy may impact our results, resulting in lower revenue from asset-based fees and credit ratings business, as well as other parts of our business to a lesser extent.",
@@ -5213,7 +5733,8 @@
           "body_similarity": 76.5,
           "changed": "body only",
           "category_now": "Risks Related to Our Business and Industry",
-          "category_prior": "Risks Related to Our Business and Industry"
+          "category_prior": "Risks Related to Our Business and Industry",
+          "id": "RISK-FY2022-8e002f60"
         },
         {
           "heading_now": "Compliance failures, regulatory action, or changes in laws applicable to our credit ratings operations, investment advisory, ESG and index businesses could adversely affect our business.",
@@ -5222,7 +5743,8 @@
           "body_similarity": 82.1,
           "changed": "body only",
           "category_now": "Risks Related to Legal and Regulatory Matters",
-          "category_prior": "Risks Related to Legal and Regulatory Matters"
+          "category_prior": "Risks Related to Legal and Regulatory Matters",
+          "id": "RISK-FY2022-0923d172"
         },
         {
           "heading_now": "Today\u2019s fragmented geopolitical, regulatory, and cultural world could adversely affect our ability to maintain growth across our businesses.",
@@ -5231,7 +5753,8 @@
           "body_similarity": 70.0,
           "changed": "body only",
           "category_now": "Risks Related to Our Operations",
-          "category_prior": "Risks Related to Our Operations"
+          "category_prior": "Risks Related to Our Operations",
+          "id": "RISK-FY2022-94f9852c"
         },
         {
           "heading_now": "Our indebtedness, which has increased significantly in 2022, could adversely affect our cash flows and financial flexibility. Our variable rate indebtedness could subject us to interest rate risk, which could cause our debt service obligations to increase significantly.",
@@ -5240,7 +5763,8 @@
           "body_similarity": 82.7,
           "changed": "heading and body",
           "category_now": "Risks Related to Ownership of Our Common Stock",
-          "category_prior": "Risks Related to Ownership of Our Common Stock"
+          "category_prior": "Risks Related to Ownership of Our Common Stock",
+          "id": "RISK-FY2022-43504042"
         },
         {
           "heading_now": "The concentrated ownership position of Joe Mansueto could adversely affect our other shareholders.",
@@ -5249,61 +5773,72 @@
           "body_similarity": 81.1,
           "changed": "heading and body",
           "category_now": "Risks Related to Ownership of Our Common Stock",
-          "category_prior": "Risks Related to Ownership of Our Common Stock"
+          "category_prior": "Risks Related to Ownership of Our Common Stock",
+          "id": "RISK-FY2022-14262b16"
         }
       ],
       "added": [
         {
           "heading": "Errors in our automated advisory tools may subject us to fiduciary liability for any losses that result.",
           "category": "Risks Related to Legal and Regulatory Matters",
-          "body_chars": 2025
+          "body_chars": 2025,
+          "id": "RISK-FY2022-387c92f8"
         },
         {
           "heading": "Our growth has recently been derived to a significant extent from acquisitions. As we acquire and invest in companies or technologies, we may not realize the expected business or financial benefits and the acquisitions could prove difficult to integrate, disrupt our business, dilute stockholder value and adversely affect our operating results and the market value of our common stock.",
           "category": "Risks Related to Our Operations",
-          "body_chars": 5312
+          "body_chars": 5312,
+          "id": "RISK-FY2022-f29b282c"
         },
         {
           "heading": "Supporting our growing domestic and international operations, employee headcount and customer base could strain our resources and infrastructure, and if we are unable to scale our operations and increase productivity, we may not be able to successfully implement our business plan.",
           "category": "Risks Related to Our Operations",
-          "body_chars": 4193
+          "body_chars": 4193,
+          "id": "RISK-FY2022-1f227ecd"
         },
         {
           "heading": "As a global taxpayer, we face challenges due to increasing complexities in accounting for taxes (e.g., base erosion, minimum taxes, and tax transparency), which are high priorities in jurisdictions in which we operate and could materially affect our tax obligations and effective tax rate.",
           "category": "Risks Related to Our Operations",
-          "body_chars": 2291
+          "body_chars": 2291,
+          "id": "RISK-FY2022-79ee325b"
         },
         {
           "heading": "The future sale of shares of our common stock may negatively affect our stock price.",
           "category": "Risks Related to Ownership of Our Common Stock",
-          "body_chars": 574
+          "body_chars": 574,
+          "id": "RISK-FY2022-0b700ab1"
         }
       ],
       "removed": [
         {
           "heading": "Our acquisitions and other investments may not be efficiently integrated or may not produce the results we anticipate.",
           "category": "Risks Related to Our Business and Industry",
-          "body_chars": 2103
+          "body_chars": 2103,
+          "id": "RISK-FY2022-a3a939b4"
         },
         {
           "heading": "Our investment management operations may subject us to liability for any losses that result from a breach of our fiduciary duties or a failure to comply with our duties to clients under applicable securities laws.",
           "category": "Risks Related to Legal and Regulatory Matters",
-          "body_chars": 4301
+          "body_chars": 4301,
+          "id": "RISK-FY2022-fccacd42"
         },
         {
           "heading": "Failing to respond to technological change, keep pace with new technology developments, or adopt a successful technology strategy may negatively affect our competitive position and business results.",
           "category": "Risks Related to Our Information Technology and Security",
-          "body_chars": 4147
+          "body_chars": 4147,
+          "id": "RISK-FY2022-9db55dc1"
         },
         {
           "heading": "The continuing COVID-19 pandemic may have material and adverse impacts on our business, financial condition, and results of operations, the nature and extent of which continue to be uncertain and unpredictable.",
           "category": "Risks Related to Our Operations",
-          "body_chars": 4854
+          "body_chars": 4854,
+          "id": "RISK-FY2022-f5406cf7"
         },
         {
           "heading": "Our operations outside of the U.S. involve additional challenges that we may not be able to meet.",
           "category": "Risks Related to Our Operations",
-          "body_chars": 2381
+          "body_chars": 2381,
+          "id": "RISK-FY2022-a25e3f27"
         }
       ]
     },

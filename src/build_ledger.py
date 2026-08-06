@@ -43,6 +43,7 @@ dropped; that rule is only enforceable because the marker is on the fact itself.
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import sys
 from collections import Counter
@@ -50,8 +51,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from ledger_schema import (FactSource, LedgerFact, YearLedger,  # noqa: E402
-                           confidence_for, verify_quote)
+from ledger_schema import (ID_HEX, FactSource, LedgerFact, YearLedger,  # noqa: E402
+                           confidence_for, risk_delta_id, verify_quote)
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
@@ -131,6 +132,69 @@ def load_task_records(fy: int, task: str) -> list[dict]:
     return [json.loads(p.read_text(encoding="utf-8")) for p in paths]
 
 
+def audit_ids() -> tuple[int, int, list[str]]:
+    """Every id in the ledger must resolve to exactly one thing.
+
+    Reads the files on disk rather than only the years just built, so a partial
+    rebuild (`--fy 2023`) still checks its ids against every other year. A
+    cross-year collision that only appeared on a full rebuild would be a nasty
+    thing to discover later.
+
+    Returns (fact ids, risk-delta ids, collisions).
+    """
+    seen: dict[str, str] = {}
+    collisions: list[str] = []
+    unidentified: list[str] = []
+    n_facts = n_risk = 0
+
+    def claim(fid: str | None, where: str) -> None:
+        # A file written before ids existed, or by a different id scheme, has no
+        # `id` here. Reported as its own failure rather than raised as a KeyError:
+        # the fix is "rebuild those years", which a stack trace does not say.
+        if not fid:
+            unidentified.append(where)
+            return
+        if fid in seen:
+            collisions.append(f"{fid}: {seen[fid]} and {where}")
+        seen[fid] = where
+
+    for p in sorted(LEDGER_DIR.glob("FY*.json")):
+        d = json.loads(p.read_text(encoding="utf-8"))
+        for f in LEDGER_FIELDS:
+            for x in d.get(f) or []:
+                n_facts += 1
+                claim(x.get("id"),
+                      f"{p.name} {f} {json.dumps(x['value'], ensure_ascii=False)[:60]}")
+        for category, items in ((d.get("risk_deltas") or {}).get("deltas") or {}).items():
+            for it in items:
+                n_risk += 1
+                # `heading` or `heading_now` depending on the delta category. The
+                # first version of this line printed only `heading`, so the 46
+                # reworded collisions it caught all reported as "None" — a
+                # diagnostic that names nothing is barely better than no message.
+                label = it.get("heading") or it.get("heading_now") or "(no heading)"
+                claim(it.get("id"), f"{p.name} risk_deltas.{category} {label[:60]}")
+
+    # Two distinct failures, reported distinctly. Folding them into one list would
+    # make a missing id report as a "collision", which is the misleading-diagnostic
+    # problem this function already tripped over once.
+    problems = []
+    if collisions:
+        problems.append(
+            f"{len(collisions)} id COLLISION(S) — two different things share one id, so a "
+            f"citation to it is ambiguous:\n"
+            + "\n".join(f"    {c}" for c in collisions[:10])
+            + f"\n  Raise ID_HEX in src/ledger_schema.py (currently {ID_HEX}) and rebuild. "
+              f"Every id changes, so any output already written must be re-checked.")
+    if unidentified:
+        problems.append(
+            f"{len(unidentified)} record(s) on disk carry NO id — those years were written "
+            f"before ids existed, or by a different id scheme:\n"
+            + "\n".join(f"    {u}" for u in unidentified[:5])
+            + "\n  Rebuild every year: uv run python src/build_ledger.py")
+    return n_facts, n_risk, problems
+
+
 def attribute(item: dict, sources: list[dict],
               texts: dict) -> tuple[FactSource | None, bool, str, str]:
     """Resolve which source contains this fact's quote. See module docstring.
@@ -180,8 +244,11 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict) -> tuple[YearLedger,
                     continue
                 src, verified, check, span = attribute(item, sources, texts)
                 conf, reason = confidence_for(src.section_key if src else "", verified)
+                # `id` is deliberately not passed: LedgerFact derives it from the
+                # fact's own content, so it cannot be forgotten here or anywhere
+                # else a fact is built. See `fact_id` in ledger_schema.py.
                 fields[ledger_field].append(LedgerFact(
-                    field=ledger_field,
+                    field=ledger_field, fiscal_year=fy,
                     value={k: v for k, v in item.items() if k != "quote"},
                     source=src, confidence=conf, confidence_reason=reason,
                     quote=span, quote_verified=verified, quote_check=check,
@@ -206,7 +273,14 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict) -> tuple[YearLedger,
     earnings = sorted(r["filed"] for r in filings if "2.02" in r["items"])
 
     # --- risk deltas, from the deterministic diff --------------------------
-    risk_year = risk["years"].get(str(fy))
+    # Deep-copied before ids are attached, so building the same year twice in one
+    # process cannot mutate the shared loaded diff and make the second pass differ
+    # from the first. Idempotence has to hold within a run, not just across runs.
+    risk_year = copy.deepcopy(risk["years"].get(str(fy)))
+    if risk_year:
+        for category, items in (risk_year.get("deltas") or {}).items():
+            for it in items:
+                it["id"] = risk_delta_id(fy, category, it, risk_year.get("source") or {})
 
     # --- data-quality log --------------------------------------------------
     # DATA.md: log quality on the variables that actually enter the analysis.
@@ -338,6 +412,22 @@ def main() -> None:
     if not built:
         sys.exit("\nnothing built.")
 
+    # --- every id must resolve to exactly one thing -------------------------
+    n_facts, n_risk, problems = audit_ids()
+    print()
+    if problems:
+        sys.exit(f"FATAL: the ledger's ids are not usable as citations "
+                 f"({n_facts} facts, {n_risk} risk deltas checked)\n\n  "
+                 + "\n\n  ".join(problems))
+    print(f"ids: {n_facts + n_risk} unique ({n_facts} facts, {n_risk} risk deltas), "
+          f"no collisions at {ID_HEX} hex chars")
+
+    # A real id from this build for the report's example. Falls through every field
+    # rather than only `events`, because a year with no events is perfectly possible
+    # for another company and an empty example would read as a broken citation.
+    example_id = next((x.id for l in built for f in LEDGER_FIELDS
+                       for x in getattr(l, f)), "(none)")
+
     # --- report ------------------------------------------------------------
     lines = ["# Year ledger", "",
              f"Generated {datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')}. "
@@ -346,6 +436,16 @@ def main() -> None:
              "confidence marker. `low` means the source section's boundaries are unverified, "
              "or the quote could not be found verbatim — see `confidence_reason` on the fact. "
              "**Any claim in the outputs resting on a `low` fact must say so, or be dropped.**",
+             "",
+             # A real id from this build, not a plausible-looking invented one. An
+             # example citation that resolves to nothing has no business in the
+             # document that explains how citations work.
+             f"Every fact and risk delta also carries a stable `id` — e.g. `{example_id}` — "
+             f"hashed from its claim, its evidence and its source, so an output can cite one "
+             f"fact rather than a whole filing. Confidence and the verification result are "
+             f"deliberately NOT in the hash: a judgment about a fact is not the fact, so "
+             f"re-verifying it later must not renumber it. {n_facts + n_risk} ids this build, "
+             f"checked unique.",
              "", "## Coverage", "",
              "| Field | " + " | ".join(f"FY{l.fiscal_year}" for l in built) + " |",
              "|---|" + "---|" * len(built)]
@@ -399,7 +499,8 @@ def main() -> None:
             print(f"FY{l.fiscal_year} — {args.show}")
             for x in getattr(l, args.show, []):
                 s = x.source
-                print(f"\n  [{x.confidence}] {json.dumps(x.value, ensure_ascii=False)[:200]}")
+                print(f"\n  {x.id}  [{x.confidence}] "
+                      f"{json.dumps(x.value, ensure_ascii=False)[:200]}")
                 print(f"    source: {s.form} {s.accession} / {s.section_key}" if s
                       else "    source: NONE (quote unverified)")
                 print(f"    quote : {x.quote[:160]}")

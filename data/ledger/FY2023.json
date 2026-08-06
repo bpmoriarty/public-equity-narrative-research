@@ -215,7 +215,9 @@
   ],
   "strategic_priorities": [
     {
+      "id": "SP-FY2023-f813c65b",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "Our strategy is to deliver insights and experiences that make us essential to investor workflow."
       },
@@ -233,7 +235,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-3558bf34",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "Deliver differentiated insights across asset classes to public and private market investors"
       },
@@ -251,7 +255,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-d263222a",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "Leverage advances in AI to drive innovation across internal and external products and services"
       },
@@ -269,7 +275,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-ba0a9b36",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "Drive operational excellence and scalability to support growth targets"
       },
@@ -287,7 +295,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-55f4566c",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "Build an inclusive culture that drives exceptional talent engagement and development"
       },
@@ -305,7 +315,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-09838005",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "A key aspect of our growth strategy is to expand our investment and credit research capabilities and enhance our existing products and services."
       },
@@ -323,7 +335,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-9cfc1d58",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "New strategic structure that more tightly connects Morningstar Indexes with Morningstar Sustainalytics"
       },
@@ -341,7 +355,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-af9352db",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "Realizing returns on several years of accelerated investments to drive growth"
       },
@@ -359,7 +375,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-38efa90d",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "Focusing Morningstar Wealth on areas where we have the greatest confidence we can win \u2014 the international wealth platform and model portfolios on third-party platforms in the US \u2014 trading growth for a shorter path to profitability"
       },
@@ -377,7 +395,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-2c5bdf2d",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "Using 2024 to reset Morningstar Sustainalytics, rebuild the climate offering for European regulatory use cases, and bolster talent"
       },
@@ -395,7 +415,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-29f0b082",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "AI: remove friction for clients and colleagues; AI adoption added as a companywide goal for 2024"
       },
@@ -413,7 +435,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-de3f107b",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "Limit hiring and discretionary expenses in 2024 to continue improving profitability"
       },
@@ -431,7 +455,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-32a6b3fe",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "Prioritize debt repayment and financial flexibility, consistent with a historically conservative balance-sheet approach"
       },
@@ -449,7 +475,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-67211201",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "Company Goal 1: Delivering differentiated insights across asset classes to public and private market investors"
       },
@@ -467,7 +495,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-53b0c575",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "Company Goal 2: Establishing leading ESG positions across each business"
       },
@@ -485,7 +515,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-2812e2d1",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "Company Goal 3: Driving operational excellence and scalability to support growth"
       },
@@ -503,7 +535,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-dd22dcf5",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "Company Goal 4: Building an inclusive culture that supports exceptional talent"
       },
@@ -521,7 +555,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2023-73cf80d0",
       "field": "strategic_priorities",
+      "fiscal_year": 2023,
       "value": {
         "text": "Expanding opportunities in private and venture market transparency, credit ratings competition, and personalization"
       },
@@ -541,7 +577,9 @@
   ],
   "segments": [
     {
+      "id": "SEG-FY2023-1d2ee805",
       "field": "segments",
+      "fiscal_year": 2023,
       "value": {
         "name": "Morningstar Data and Analytics",
         "note": null
@@ -560,7 +598,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2023-8c8a1952",
       "field": "segments",
+      "fiscal_year": 2023,
       "value": {
         "name": "PitchBook",
         "note": null
@@ -579,7 +619,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2023-2a764817",
       "field": "segments",
+      "fiscal_year": 2023,
       "value": {
         "name": "Morningstar Wealth",
         "note": null
@@ -598,7 +640,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2023-475d1f99",
       "field": "segments",
+      "fiscal_year": 2023,
       "value": {
         "name": "Morningstar Credit",
         "note": null
@@ -617,7 +661,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2023-c309e602",
       "field": "segments",
+      "fiscal_year": 2023,
       "value": {
         "name": "Morningstar Retirement",
         "note": null
@@ -636,7 +682,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2023-6da9ae06",
       "field": "segments",
+      "fiscal_year": 2023,
       "value": {
         "name": "Corporate and All Other",
         "note": null
@@ -655,7 +703,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2023-3259b19a",
       "field": "segments",
+      "fiscal_year": 2023,
       "value": {
         "name": "Morningstar Data and Analytics",
         "note": "One of five reportable segments as of December 31, 2023; prior period segment information presented on a comparable basis"
@@ -674,7 +724,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2023-5acdd923",
       "field": "segments",
+      "fiscal_year": 2023,
       "value": {
         "name": "Corporate and All Other",
         "note": "Morningstar Sustainalytics and Morningstar Indexes do not individually meet quantitative segment reporting thresholds and have been combined into Corporate and All Other, which is not a reportable segment"
@@ -695,7 +747,9 @@
   ],
   "headcount": [
     {
+      "id": "HC-FY2023-d26fe89a",
       "field": "headcount",
+      "fiscal_year": 2023,
       "value": {
         "value": 11334,
         "as_stated": "As of December 31, 2023, we had 11,334 permanent, full-time employees around the world."
@@ -716,7 +770,9 @@
   ],
   "leadership": [
     {
+      "id": "LEAD-FY2023-f66d0f01",
       "field": "leadership",
+      "fiscal_year": 2023,
       "value": {
         "name": "Bevin Desmond",
         "role": "Chief Talent and Culture Officer",
@@ -740,7 +796,9 @@
   ],
   "board": [
     {
+      "id": "BRD-FY2023-4a0ccd28",
       "field": "board",
+      "fiscal_year": 2023,
       "value": {
         "name": "Joe Mansueto",
         "role": "Executive Chairman",
@@ -761,7 +819,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2023-441057f5",
       "field": "board",
+      "fiscal_year": 2023,
       "value": {
         "name": "Kunal Kapoor",
         "role": "CEO and Board member",
@@ -782,7 +842,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2023-df52c3c9",
       "field": "board",
+      "fiscal_year": 2023,
       "value": {
         "name": "Robin Diamonte",
         "role": null,
@@ -806,7 +868,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2023-621fb73d",
       "field": "board",
+      "fiscal_year": 2023,
       "value": {
         "name": "Cheryl Francis",
         "role": "Audit Committee Chair",
@@ -830,7 +894,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2023-b18ee39b",
       "field": "board",
+      "fiscal_year": 2023,
       "value": {
         "name": "Steve Joynt",
         "role": null,
@@ -854,7 +920,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2023-0bc3d5ec",
       "field": "board",
+      "fiscal_year": 2023,
       "value": {
         "name": "Steve Kaplan",
         "role": "Compensation Committee Chair",
@@ -878,7 +946,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2023-975de1d7",
       "field": "board",
+      "fiscal_year": 2023,
       "value": {
         "name": "Gail Landis",
         "role": null,
@@ -902,7 +972,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2023-b1b828f0",
       "field": "board",
+      "fiscal_year": 2023,
       "value": {
         "name": "Bill Lyons",
         "role": "NCGC Chair",
@@ -926,7 +998,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2023-a03a0558",
       "field": "board",
+      "fiscal_year": 2023,
       "value": {
         "name": "Doniel Sutton",
         "role": null,
@@ -950,7 +1024,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2023-2492a198",
       "field": "board",
+      "fiscal_year": 2023,
       "value": {
         "name": "Caroline Tsay",
         "role": null,
@@ -976,7 +1052,9 @@
   ],
   "incentive_metrics": [
     {
+      "id": "INC-FY2023-15467d28",
       "field": "incentive_metrics",
+      "fiscal_year": 2023,
       "value": {
         "metric": "Adjusted Revenue",
         "plan": "Corporate Incentive Plan (annual cash incentive)",
@@ -997,7 +1075,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2023-16467548",
       "field": "incentive_metrics",
+      "fiscal_year": 2023,
       "value": {
         "metric": "Adjusted EBITDA",
         "plan": "Corporate Incentive Plan (annual cash incentive)",
@@ -1018,7 +1098,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2023-5e6704b0",
       "field": "incentive_metrics",
+      "fiscal_year": 2023,
       "value": {
         "metric": "Individual performance factor",
         "plan": "Corporate Incentive Plan (annual cash incentive)",
@@ -1039,7 +1121,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2023-c6107240",
       "field": "incentive_metrics",
+      "fiscal_year": 2023,
       "value": {
         "metric": "Total shareholder return (TSR), absolute, over three-year performance period",
         "plan": "Long-term equity incentive \u2014 market stock units (75% of annual equity grant)",
@@ -1060,7 +1144,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2023-fc67991c",
       "field": "incentive_metrics",
+      "fiscal_year": 2023,
       "value": {
         "metric": "Adjusted Revenue CAGR (\"revenue kicker\")",
         "plan": "Long-term equity incentive \u2014 market stock units",
@@ -1081,7 +1167,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2023-d599f74c",
       "field": "incentive_metrics",
+      "fiscal_year": 2023,
       "value": {
         "metric": "Time-based vesting (no performance metric)",
         "plan": "Long-term equity incentive \u2014 restricted stock units (25% of annual equity grant)",
@@ -1102,7 +1190,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2023-6c9cf561",
       "field": "incentive_metrics",
+      "fiscal_year": 2023,
       "value": {
         "metric": "TSR and Adjusted Revenue for 2020 MSU grants (payout outcome)",
         "plan": "2020 Market Stock Units",
@@ -1123,7 +1213,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2023-b799a346",
       "field": "incentive_metrics",
+      "fiscal_year": 2023,
       "value": {
         "metric": "Maximum MSU payout range including kicker",
         "plan": "2021 Stock Incentive Plan \u2014 market stock units",
@@ -1146,7 +1238,9 @@
   ],
   "vote_results": [
     {
+      "id": "VOTE-FY2023-90011436",
       "field": "vote_results",
+      "fiscal_year": 2023,
       "value": {
         "matter": "Election of director Joe Mansueto",
         "votes_for": 38313001,
@@ -1169,7 +1263,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2023-318b9bf2",
       "field": "vote_results",
+      "fiscal_year": 2023,
       "value": {
         "matter": "Election of director Kunal Kapoor",
         "votes_for": 38479017,
@@ -1192,7 +1288,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2023-4eb51764",
       "field": "vote_results",
+      "fiscal_year": 2023,
       "value": {
         "matter": "Election of director Robin Diamonte",
         "votes_for": 32537690,
@@ -1215,7 +1313,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2023-c97ebfd1",
       "field": "vote_results",
+      "fiscal_year": 2023,
       "value": {
         "matter": "Election of director Cheryl Francis",
         "votes_for": 31189986,
@@ -1238,7 +1338,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2023-76c7ae52",
       "field": "vote_results",
+      "fiscal_year": 2023,
       "value": {
         "matter": "Election of director Steve Joynt",
         "votes_for": 28789451,
@@ -1261,7 +1363,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2023-dd4c8309",
       "field": "vote_results",
+      "fiscal_year": 2023,
       "value": {
         "matter": "Election of director Steve Kaplan",
         "votes_for": 36804621,
@@ -1284,7 +1388,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2023-9b7cf171",
       "field": "vote_results",
+      "fiscal_year": 2023,
       "value": {
         "matter": "Election of director Gail Landis",
         "votes_for": 32147041,
@@ -1307,7 +1413,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2023-c5cb3374",
       "field": "vote_results",
+      "fiscal_year": 2023,
       "value": {
         "matter": "Election of director Bill Lyons",
         "votes_for": 36655807,
@@ -1330,7 +1438,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2023-996f4246",
       "field": "vote_results",
+      "fiscal_year": 2023,
       "value": {
         "matter": "Election of director Doniel Sutton",
         "votes_for": 32614928,
@@ -1353,7 +1463,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2023-74c4ed5a",
       "field": "vote_results",
+      "fiscal_year": 2023,
       "value": {
         "matter": "Election of director Caroline Tsay",
         "votes_for": 32543974,
@@ -1376,7 +1488,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2023-4a38447e",
       "field": "vote_results",
+      "fiscal_year": 2023,
       "value": {
         "matter": "Advisory vote on Morningstar's executive compensation",
         "votes_for": 38378684,
@@ -1399,7 +1513,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2023-d0530096",
       "field": "vote_results",
+      "fiscal_year": 2023,
       "value": {
         "matter": "Ratification of the appointment of KPMG LLP as Morningstar's independent registered public accounting firm for 2024",
         "votes_for": 39387232,
@@ -1424,7 +1540,9 @@
   ],
   "events": [
     {
+      "id": "EVT-FY2023-c2083b8f",
       "field": "events",
+      "fiscal_year": 2023,
       "value": {
         "type": "segment_change",
         "description": "Effective as of December 31, 2023, the company concluded it has seven operating segments presented as five reportable segments, with Morningstar Sustainalytics and Morningstar Indexes combined into Corporate and All Other.",
@@ -1444,7 +1562,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2023-fcadc9de",
       "field": "events",
+      "fiscal_year": 2023,
       "value": {
         "type": "restructuring",
         "description": "Reduction of Shenzhen, China operations and shift of global business function work to other Morningstar locations; $15.6 million of costs in 2023 vs $35.7 million in 2022; substantially completed in Q3 2023.",
@@ -1464,7 +1584,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2023-d48d822c",
       "field": "events",
+      "fiscal_year": 2023,
       "value": {
         "type": "restructuring",
         "description": "Targeted reorganizations and headcount reductions in Morningstar Sustainalytics, Morningstar Wealth, and Morningstar DBRS, with $9.0 million of severance in 2023.",
@@ -1484,7 +1606,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2023-e7267903",
       "field": "events",
+      "fiscal_year": 2023,
       "value": {
         "type": "other",
         "description": "DBRS, Inc. entered into two SEC settlements paying $8.0 million in civil monetary penalties ($6.0 million record-keeping; $2.0 million CMBS ratings methodologies).",
@@ -1504,7 +1628,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2023-820f47c1",
       "field": "events",
+      "fiscal_year": 2023,
       "value": {
         "type": "divestiture",
         "description": "Termination Agreement and Tender Offer Agreement relating to Morningstar Japan K.K.; Morningstar paid 8 billion yen for brand license termination and sold 8,040,600 shares to SBI for net proceeds of $26.2 million and a pre-tax gain of $18.4 million.",
@@ -1524,7 +1650,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2023-eee82e8f",
       "field": "events",
+      "fiscal_year": 2023,
       "value": {
         "type": "acquisition",
         "description": "Final $50.0 million contingent payment related to the LCD acquisition.",
@@ -1544,7 +1672,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2023-fc8f78b1",
       "field": "events",
+      "fiscal_year": 2023,
       "value": {
         "type": "financing",
         "description": "Board approved a $500.0 million share repurchase program effective January 1, 2023, expiring December 31, 2025; only 8,484 shares for $1.4 million repurchased as of year-end.",
@@ -1564,7 +1694,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2023-af8e5e3f",
       "field": "events",
+      "fiscal_year": 2023,
       "value": {
         "type": "guidance_change",
         "description": "Company expects regular quarterly dividend payments of 40.5 cents per share in 2024.",
@@ -1584,7 +1716,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2023-bc3a6ca7",
       "field": "events",
+      "fiscal_year": 2023,
       "value": {
         "type": "other",
         "description": "Recognition of $13.7 million of tax benefits from a retroactive tax election for 2021 and 2022 tax periods, approved in Q2 2023.",
@@ -1604,7 +1738,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2023-9f7bdca8",
       "field": "events",
+      "fiscal_year": 2023,
       "value": {
         "type": "other",
         "description": "Revenue-type classifications updated starting Q1 2023; prior periods not restated.",
@@ -1624,7 +1760,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2023-cc51750d",
       "field": "events",
+      "fiscal_year": 2023,
       "value": {
         "type": "leadership_transition",
         "description": "Morningstar entered a Contract Services Agreement dated February 1, 2023 with Bevin Desmond, under which she provides consulting and advisory services during a transition period at an hourly rate with no equity, health coverage or other benefits.",
@@ -1644,7 +1782,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2023-90899016",
       "field": "events",
+      "fiscal_year": 2023,
       "value": {
         "type": "other",
         "description": "Separation Agreement and General Release dated February 1, 2023 with Bevin Desmond, providing a waiver and release of claims and continued vesting of previously issued restricted stock unit and market stock unit awards.",
@@ -1664,7 +1804,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2023-05068e23",
       "field": "events",
+      "fiscal_year": 2023,
       "value": {
         "type": "other",
         "description": "Annual Shareholders' Meeting held May 12, 2023: all director nominees elected, executive compensation approved on advisory basis, annual say-on-pay frequency recommended, and KPMG ratified as independent registered public accounting firm for 2023.",
@@ -1686,7 +1828,9 @@
   ],
   "notable_language": [
     {
+      "id": "LANG-FY2023-9f9f571c",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Recurring, distinctive philosophy statement explicitly refusing guidance \u2014 unusual among public companies."
       },
@@ -1704,7 +1848,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-9f223939",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Unusually direct admission of missed internal growth targets in three named businesses."
       },
@@ -1722,7 +1868,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-be715715",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Explicit framing of political backlash as a business risk \u2014 a shift in how the ESG business is characterised versus prior emphasis on ESG opportunity."
       },
@@ -1740,7 +1888,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-b9056727",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Hedged concession about the Sustainalytics growth story previously described as a driver."
       },
@@ -1758,7 +1908,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-d387c9a7",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Justifies a widening segment operating loss as deliberate investment rather than underperformance."
       },
@@ -1776,7 +1928,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-fb2fc98f",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Self-congratulatory resilience claim appended to a discussion of adverse rate and wage pressures."
       },
@@ -1794,7 +1948,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-629be216",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Standing mission language that recurs across years; useful baseline for detecting drift."
       },
@@ -1812,7 +1968,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-d88ded6c",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Explicit stated rationale for the change in metric weighting \u2014 a shift toward profitability."
       },
@@ -1830,7 +1988,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-e7cdeda5",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Framing of a miss: emphasises 'robust goals' and 'strong positive growth' while conceding below-target performance."
       },
@@ -1848,7 +2008,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-2187d3dd",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Recurring justification for CEO pay structure \u2014 low salary framed as deliberate emphasis on at-risk pay."
       },
@@ -1866,7 +2028,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-8264864d",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Committee defends a large equity target increase by pointing to below-median positioning."
       },
@@ -1884,7 +2048,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-ef3486eb",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Justification of a 100% individual performance factor for the CEO despite missing financial goals, citing cost reduction."
       },
@@ -1902,7 +2068,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-ba436538",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Explains a grant-timing practice designed to dampen stock price volatility effects on performance awards."
       },
@@ -1920,7 +2088,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-57d45987",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Standard justification for inaction, anchored to the 98.6% support level."
       },
@@ -1938,7 +2108,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-6b1f1705",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Recurring governance claim distinguishing Morningstar from typical peer practice."
       },
@@ -1956,7 +2128,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-59d246fc",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Long-running rationale for the Executive Chairman receiving no incentive compensation."
       },
@@ -1974,7 +2148,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-16065e36",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Committee justifies an exception to the anti-pledging stance for the founder's 1,800,000 pledged shares."
       },
@@ -1992,7 +2168,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-9fb8d5ec",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Unusually direct admission of a capital-allocation mistake in Morningstar Wealth."
       },
@@ -2010,7 +2188,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-47723c3a",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "'Self-inflicted wounds' is a blunt admission of execution failure rather than blaming markets alone."
       },
@@ -2028,7 +2208,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-927d03c5",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Frames two years of margin compression as a 'low-water mark,' implying a turn \u2014 a claim to watch against later years."
       },
@@ -2046,7 +2228,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-61acfc9f",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Recurring independence claim, notable given the same letter discloses SEC settlements at Morningstar DBRS."
       },
@@ -2064,7 +2248,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-7985c030",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Regulatory settlements disclosed only as a margin quantification, with no further explanation or reason given."
       },
@@ -2082,7 +2268,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-551fb62a",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Rare disclosure of a sharp deterioration in an internal culture metric, with layoffs named as the cause."
       },
@@ -2100,7 +2288,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-9e39ece5",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Careful decomposition of turnover to attribute the rise to company-initiated cuts rather than attrition."
       },
@@ -2118,7 +2308,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-42cea4e3",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Informal, personal tone; explicit assurance the letter is not AI-written amid the AI narrative."
       },
@@ -2136,7 +2328,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-43ff90fc",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "'Must-have' framing for PitchBook, a recurring positioning claim, stated even as growth decelerated."
       },
@@ -2154,7 +2348,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-55e9c1b4",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Candid acknowledgment of prior dependence on competitors, claimed as resolved."
       },
@@ -2172,7 +2368,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2023-f4d37735",
       "field": "notable_language",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Conversational self-aware aside typical of this CEO's letter voice."
       },
@@ -2192,7 +2390,9 @@
   ],
   "investor_qa": [
     {
+      "id": "QA-FY2023-67d4a8e7",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Product delivery architecture and shift to cloud for Data, Direct, and Advisor Workstation",
         "stated_position": "Direct remains a Windows desktop application connecting to databases hosted primarily in Morningstar data centers, but \"Over time, we expect the balance of back-end services to shift to the cloud,\" with most future enhancements delivered using modern web components within the legacy application; Analytics Lab is 100% web-based in AWS.",
@@ -2212,7 +2412,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-69022c0f",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Sales and renewal process for license-based products",
         "stated_position": "Management describes a \"structured and well-defined approach\" for identifying sales opportunities, notes \"The vast majority of the contracts for our license-based products include auto-renew provisions,\" a dedicated renewal team, and heavier sales team involvement for the largest clients.",
@@ -2232,7 +2434,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-4c4d2601",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Minimum cash retained on the balance sheet",
         "stated_position": "\"While there is no minimum level of cash needed for operational purposes, we do maintain an appropriate cushion throughout the year to manage working capital needs,\" to avoid frequently drawing on the revolving credit facility; regulated subsidiaries held less than $50 million to meet capital requirements as of 9/30/22.",
@@ -2252,7 +2456,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-9ccac38b",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Potential UK/EU regulation of ESG data and rating providers' pricing",
         "stated_position": "Frameworks are \"in early stages of development\"; regulations mirroring credit rating agency pricing requirements \"would impose additional compliance costs on Morningstar Sustainalytics,\" but it is difficult to accurately predict scope and impact.",
@@ -2272,7 +2478,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-15f550e7",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Possible SEC regulation of index providers as investment advisers",
         "stated_position": "\"we do not anticipate a material impact on our index business,\" citing three SEC registered investment advisors, DBRS Morningstar's NRSRO registration, and existing EU/UK regulation of the index business as \"substantial experience operating within a regulated environment.\"",
@@ -2292,7 +2500,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-8727ccc3",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "LCD indexes and assets benchmarked to them",
         "stated_position": "Management characterises the reach of the acquired LCD index franchise: one investable product directly tracks a Morningstar (formerly S&P) loan index, and roughly $75 billion in open-end fund and ETF assets use a Morningstar or Morningstar LSTA loan index as a primary prospectus benchmark.",
@@ -2312,7 +2522,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-e3f010c3",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Regulation of subsidiaries and branches in the U.K. and the UAE",
         "stated_position": "Certain of our subsidiaries and branches are regulated in the U.K. and the UAE. In the U.K., our regulator is the U.K. Financial Conduct Authority (FCA), which regulates activities related to Morningstar Indexes, Morningstar Wealth, and DBRS Morningstar. In the UAE, the Dubai Financial Services Authority (DFSA) regulates activities related to Morningstar Wealth.",
@@ -2332,7 +2544,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-d17aeef3",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Top financial and strategic priorities for the next 6-12 months; spending philosophy during a downturn",
         "stated_position": "Management says it recognizes the operating environment has changed and is \"being prudent in our approach to investments in 2023,\" limiting hiring and new investments even in fast-growing areas, with new investments concentrated in building wealth platforms, climate and impact data, and private debt capabilities. \"Our goal is to grow revenue and increase margins over time while prudently managing costs in the near term.\"",
@@ -2352,7 +2566,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-63375307",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Return targets/hurdle rates on investments",
         "stated_position": "\"Overall, we seek to earn cash on cash returns well in excess of our cost of capital,\" with base hurdle rates in the mid-teens and higher expected long-term returns for many investments made.",
@@ -2372,7 +2588,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-30864c4f",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Whether margins have bottomed and the intent for margins going forward",
         "stated_position": "Management views the 16.0% adjusted operating margin as close to an annual low point in its investment cycle, declines to call a quarterly bottom, and says it is focused on increasing margins over the near-to-medium term to be more consistent with historical peaks.",
@@ -2392,7 +2610,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-20faf381",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Relative margins by product grouping and disclosure practice as a one-segment business",
         "stated_position": "Management says it is only able to address relative margins directionally, notes license-based products \"continue to tend to offer the highest margins in aggregate,\" asset-based products have the lowest, and that it intends to cover companywide margin and relative comparisons again at the May shareholder meeting.",
@@ -2412,7 +2632,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-5c83a7e7",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Whether PitchBook is approaching market saturation and demand from client segments",
         "stated_position": "Management states it continues to see strong demand from new logos and existing clients in core segments and does not believe it is reaching saturation, and that LCD creates opportunity with private credit market participants \"where we currently have limited reach.\"",
@@ -2432,7 +2654,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-c9468d6c",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Whether PitchBook has a structural growth/profitability tradeoff versus other license products",
         "stated_position": "Management does not believe there is anything structurally different about PitchBook relative to other license-based areas; it looks at SaaS return thresholds, and with customer lifetime value well in excess of acquisition cost and a sizable addressable market it is confident in ongoing investment.",
@@ -2452,7 +2676,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-7f7332e0",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook growth drivers and enterprise licensing strategy",
         "stated_position": "Growth is driven by new logos and expansion with existing clients; management has increased enterprise licenses and \"expect significant revenue growth to come from continuing to pursue this strategy,\" with LCD integration and new datasets becoming a more important growth driver near-to-medium term.",
@@ -2472,7 +2698,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-eb8725e5",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook 2023 product roadmap and pricing strategy",
         "stated_position": "The 2023 roadmap focuses on fundraising, allocation and benchmarking workflows plus deal execution and market intelligence, including the PitchBook VC Exit Predictor and completing LCD integration; pricing strategy is \"based on continuously enhancing the value of the products and services we provide,\" reviewed annually with periodic increases.",
@@ -2492,7 +2720,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-95bd584e",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook competitive landscape",
         "stated_position": "Management says the competitive landscape has not changed materially, names S&P Capital IQ, Preqin and CB Insights as legacy competitors, cites human capital requirements as high barriers to entry, and expects additional competitors as it extends into private credit.",
@@ -2512,7 +2742,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-59bb071d",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Whether M&A would be used to expand the Indexes business",
         "stated_position": "Organic growth \"will continue to be our primary focus,\" but management does consider acquisitions when they make sense to grow global capabilities, citing Moorgate Benchmarks (2021) and LCD (2022).",
@@ -2532,7 +2764,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-d5a2a95b",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "China operations reduction and shift of work",
         "stated_position": "Management expects the reduction of operations and shift of work to other Morningstar locations to be substantially completed during the third quarter of 2023, with continued costs in severance, transformation and asset impairment categories in the first three quarters.",
@@ -2552,7 +2786,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-94a70cc1",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Culture and whether there is a tradeoff between stakeholders",
         "stated_position": "Management says cultural attributes are \"deeply woven into the fabric of our culture,\" that it intentionally guards them, and denies any tradeoff: \"We do not believe there is a tradeoff between creating shareholder value and providing a great place to work. Our people are our most important asset.\"",
@@ -2572,7 +2808,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-ee89eaba",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Real estate footprint and hybrid work",
         "stated_position": "Sharing space with another company would pose collaboration and confidentiality challenges given open space design; the company uses coworking spaces where employee populations are smaller, continuously reviews its portfolio for sublease opportunities, and has increasingly moved to unassigned seating supporting its hybrid work policy.",
@@ -2592,7 +2830,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-a271bba5",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Segment reporting structure and cost allocation for product-level margins",
         "stated_position": "\"We do not have business segments as you describe. Rather, we have one reportable segment but disclose revenue by type, or product area, to provide useful information to shareholders.\" Management says it does not define corporate overhead separately and views relative margins as directional.",
@@ -2612,7 +2852,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-c4a3a51f",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook employee incentive plan design and renewal for 2023-2025",
         "stated_position": "The plans cover three years with backloaded delivery; the renewed plan \"includes both a revenue and a profit margin target\" whereas the first two were tied to revenue and cash flow. \"The plans have been designed to encourage the meeting of stretch goals over a three-year period for a high-growth, founder-led business.\" Management says the plan \"has been effective at retaining PitchBook's leadership.\"",
@@ -2632,7 +2874,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-bdfbcb3e",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Annual incentive plan weighting and alignment with shareholders",
         "stated_position": "Management confirms the 2021-2022 structure was 67% adjusted revenue / 33% adjusted EBITDA, which \"reflected an emphasis on the top-line and promoted a growth mindset,\" and states that \"in 2023, we will be returning to a company incentive plan structure that equally weights adjusted revenue and adjusted EBITDA, a structure designed to incentivize profitable growth.\" It adds that \"stock ownership is the cornerstone of our executive compensation program.\"",
@@ -2652,7 +2896,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-8f5db9a4",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "DBRS Morningstar market share and competitive positioning in credit ratings",
         "stated_position": "Management concedes DBRS Morningstar \"has a relatively small share of total ratings in the corporate and financial institutions segments\" and is \"not a significant player in rating large, investment-grade corporates in the U.S. and Europe,\" saying it is \"instead focused on middle-market and private transactions\" where it has \"seen good progress within our targeted niche.\"",
@@ -2672,7 +2918,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-3e27bff5",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Investment in DBRS Morningstar and expected margin trajectory",
         "stated_position": "Lower 2022 margins are attributed to market conditions and \"the effect of investments (reflected in higher headcount) to execute our growth strategy,\" including expanded analytical capabilities primarily in India and middle-market corporate build-out. \"We expect these investments to deliver strong long-term returns\" and \"Our expectation is that margins continue to increase over time as we further grow and scale the credit ratings area.\"",
@@ -2692,7 +2940,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-ebd8c9af",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Long-term growth expectations for credit ratings relative to competitors",
         "stated_position": "Management sees room for growth in middle-market and private corporate markets in the U.S. and Europe and expansion in certain ABS and CLO markets, and states: \"we believe that we have the potential to grow at rates faster than the big three credit ratings agencies.\"",
@@ -2712,7 +2962,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-68a99b25",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Growth opportunity in Morningstar Indexes",
         "stated_position": "\"We continue to see opportunities for strong continued growth in the Indexes product area, supported by investor interest in our unique index products tied to the strengths of Morningstar in areas such as Sustainalytics, Morningstar Equity Research, and PitchBook.\" No specific growth guidance provided.",
@@ -2732,7 +2984,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-47e34a89",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Integration of Leveraged Commentary & Data into PitchBook and Morningstar Indexes",
         "stated_position": "\"All LCD colleagues have been integrated into the relevant teams with nominal employee attrition.\" News and research teams centralized under PitchBook; during 2023 the company expects to incorporate LCD news, research, and data into the PitchBook platform. Index calculation transition from S&P to in-house platform expected to complete \"early next year.\"",
@@ -2752,7 +3006,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-1128d0ee",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Sustainalytics contract terms and integration",
         "stated_position": "Sustainalytics contracts typically have one to two year initial terms then transition to evergreen contracts; \"As part of our integration activities, we are in the process of further aligning Sustainalytics\\u2019 contracts to standard Morningstar terms and conditions.\"",
@@ -2772,7 +3028,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-7c108124",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Dividend policy and payout ratio",
         "stated_position": "\"Dividends have consistently been an important part of our capital allocation strategy and we are proud to have increased the dividend every year since our IPO. While we don\\u2019t have a specific payout target, our average adjusted payout ratio since 2018 is in the mid-20s\"",
@@ -2792,7 +3050,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-4099b5f7",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "2023 capital allocation priorities and share repurchase approach",
         "stated_position": "\"Our decision to repurchase shares is valuation driven.\" For 2023, \"we\\u2019ll continue to take a balanced approach to capital allocation\" but with \"a near-to-intermediate term focus on using excess cash to pay down debt following the acquisition of Praemium and LCD in 2022 and the accompanying increase in our leverage levels.\"",
@@ -2812,7 +3072,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-2a3d6508",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Leverage targets, covenants and balance sheet philosophy",
         "stated_position": "Covenants require maintaining a 3.50x ratio of consolidated funded indebtedness to consolidated EBITDA (up to 3.75x temporarily for a large acquisition). \"As we noted last year, we do not target a specific debt ratio, and have taken a conservative approach to managing our balance sheet over time.\" Debt repayment will be a near-to-intermediate-term priority.",
@@ -2832,7 +3094,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-76d3c998",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Capital expenditure policy and office space",
         "stated_position": "No guidance on future capex levels, but \"we continue to follow our accounting policy to capitalize software development and will invest prudently in our offices to accommodate hybrid working and avoid taking on new space where we can.\"",
@@ -2852,7 +3116,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-a01eb12a",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Cost control levers amid revenue pressure; slowing headcount growth",
         "stated_position": "Management said sales and marketing efforts are \"critical to ensure we are driving top line performance\" and that G&A investments have been important to scale operations, but stated that \"our most significant lever when it comes to expense growth is headcount and we're slowing headcount growth broadly across the company.\"",
@@ -2872,7 +3138,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-018460fc",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Disclosure of product-area margins and PitchBook profitability",
         "stated_position": "Management declined to disclose margins by product area or commission structure, saying the 2017 PitchBook disclosure was made \"to provide transparency on the performance of the remainder of our business at the time,\" but stated PitchBook's profitability \"has continued to increase substantially since our acquisition.\"",
@@ -2892,7 +3160,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-c7cb55d0",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "DBRS Morningstar hiring priorities and geographic/sector expansion",
         "stated_position": "Hiring \"has been focused on areas where we see the best long-term growth opportunities, including the U.S. and the European Union,\" with operations staff added in Mumbai, expanded corporate credit ratings teams in the U.S. and Europe to support growth in the middle-market and private segments, and added U.S. structured finance headcount in sectors where Morningstar has not historically participated, including aviation finance.",
@@ -2912,7 +3182,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-582228c0",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Competitive-reason limits on DBRS revenue disclosure",
         "stated_position": "Management said that \"for competitive reasons\" it does not provide a detailed breakdown of DBRS Morningstar revenue by both asset class and region, but provided revenue by asset class type.",
@@ -2932,7 +3204,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-d1707660",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Pricing strategy for Morningstar Direct",
         "stated_position": "Management said it is \"focused on ensuring our pricing reflects the increased value we're providing to our clients given our investments and significant product enhancements,\" and that pricing changes are largely taking effect and expected to have an impact in 2023.",
@@ -2952,7 +3226,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-1c2ca7c1",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Morningstar Sustainalytics investment thesis and margin impact",
         "stated_position": "Management acknowledged Sustainalytics is \"the primary area of investment,\" that expenses grew faster than revenue in 2022 and that it \"had the largest impact of any product area on our decline in margins last year,\" while stating belief that investments including climate and impact data \"will provide long-term returns\" and that Sustainalytics \"will have a positive impact on margins as we grow the business and commercialize the investments we have made.\"",
@@ -2972,7 +3248,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-8aba6b07",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Positioning of license-based product areas",
         "stated_position": "Management said license-based areas performed in line with expectations and that it believes they \"are positioned for strong growth based on the quality and value of our offerings, the investments we have made to continue to meet customer needs, and the overall markets that we serve.\"",
@@ -2992,7 +3270,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-6d5b3c17",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Whether Advisor Workstation users are being migrated to Morningstar Direct",
         "stated_position": "Management directly denied the premise: \"We are not actively migrating users to Morningstar Direct and continue to enhance Advisor Workstation with an updated toolkit to help advisors better serve investors.\"",
@@ -3012,7 +3292,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-c5610ba4",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "No forward guidance and no quarterly earnings calls; shareholder engagement policy",
         "stated_position": "Management defended the policy: \"We do not provide annual guidance or conduct quarterly earnings calls because we do not want to encourage a focus on short-term results that is inconsistent with our mission to empower investor success,\" while saying it continues to evaluate and refine its approach and welcomes feedback.",
@@ -3032,7 +3314,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-e0de191d",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "ROIC, capital allocation philosophy, and margin targets",
         "stated_position": "Management said it remains \"focused on continuing to generate ROIC at levels well above our cost of capital\" and seeks \"cash-on-cash returns in the mid-teens,\" denied operating under a different philosophy from prior management while acknowledging heavier investment, and declined to give margin or return targets beyond being \"focused on driving margins closer to the historical peaks we have seen in the business.\"",
@@ -3052,7 +3336,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-fad5b0c2",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Rationale for terminating the MJKK licensing agreement and regaining the Morningstar brand in Japan",
         "stated_position": "With the termination of the licensing agreement with MJKK, the Morningstar brand in Japan is in our full control, expected to provide long-term benefits which could not be achieved under the previous structure; management believes the Japanese market offers strong growth potential and that the business in Japan could grow meaningfully, while the transaction also removes brand confusion.",
@@ -3072,7 +3358,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-f6c21917",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Plans for remaining stake in SBI Global Asset Management (formerly MJKK)",
         "stated_position": "\"We plan to sell our remaining stake in SBI Global Asset Management over time, but not to immediately finance the remaining portion of the termination payment.\"",
@@ -3092,7 +3380,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-8aa308a1",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Whether other non-US joint ventures will be exited",
         "stated_position": "\"We do not have any remaining joint ventures.\"",
@@ -3112,7 +3402,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-42249e4e",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Further investment in Japan",
         "stated_position": "Further investment will be predicated on opportunities in the market and management's assessment of the potential returns.",
@@ -3132,7 +3424,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-71c95456",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Cost management and headcount as the principal lever on expense growth",
         "stated_position": "After significant investments over the past few years, management believes it can maintain planned growth across many areas without expanding headcount; slowing the rate of headcount growth is described as the most significant lever to slow expense growth over time.",
@@ -3152,7 +3446,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-f48e8b25",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Investment time horizons by product area and expected returns",
         "stated_position": "Management laid out timing expectations: Sustainalytics climate investments \"to start paying off in the near future\"; PitchBook returns \"over a fairly short time horizon\"; Morningstar Wealth a longer timeline with returns starting in 2023 and 2024; DBRS Morningstar middle-market ratings will \"take more time to scale and gain share.\"",
@@ -3172,7 +3468,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-23e9b2c9",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Whether headcount will be reduced",
         "stated_position": "\"Outside of that transition, we do not have any plans for broader reductions in headcount,\" and staffing levels are believed appropriate to support the business.",
@@ -3192,7 +3490,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-6edda1e6",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Commitment to operating leverage and margin improvement",
         "stated_position": "Management acknowledges margins have not fully reflected potential operating leverage due to investments, but is \"committed to increasing our aggregate margins over time\" across the current mix of business areas.",
@@ -3212,7 +3512,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-da26ec02",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Pricing strategy",
         "stated_position": "\"we\u2019re focused on increasing prices where we\u2019ve added the most value,\" with increases ranging from mid-single digits to high-single-digits/low-double-digits for license-based products.",
@@ -3232,7 +3534,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-073d4421",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Climate risk metrics market opportunity and competitive position",
         "stated_position": "External definitions of market size vary widely; internal estimates size the market at more than $1 billion, and management believes regulatory compliance and reporting will be the biggest drivers of initial adoption, with climate solutions expected to drive organic growth starting in the second half of 2023.",
@@ -3252,7 +3556,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-7ddb14cf",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Market position in Second Party Opinions on green bonds",
         "stated_position": "Market share declined modestly during the year but Morningstar \"remained the market leader with 24% of the global market,\" and 2023 focus is on maintaining position with underwriters and innovating to maintain and grow share.",
@@ -3272,7 +3578,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-32961381",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Comparison of Sustainalytics to MSCI's ESG & Climate business",
         "stated_position": "Management notes MSCI's climate suite was largely built through acquisition while Morningstar is building its climate suite organically, which is pressuring current margins, and that MSCI does not to its knowledge rate green bonds.",
@@ -3292,7 +3600,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-6088b9ac",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Performance of the Moorgate Benchmarks acquisition",
         "stated_position": "Management is pleased with progress and has made \"the strategic decision to accelerate the integration of Moorgate with our primary calculation platform,\" but says the Index Services offerings have underperformed expectations due to near-term focus on operations and technology \"as well as execution missteps,\" prompting a restructuring of the team.",
@@ -3312,7 +3622,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-55231e57",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "SMArtX relationship as a model for partnering",
         "stated_position": "SMArtX is helping accelerate modernization of the US Wealth Platform technology stack and is described as \"a good example of how we can build strategic relationships and leverage external partners for important capabilities in our business going forward.\"",
@@ -3332,7 +3644,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-737afc88",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Praemium integration",
         "stated_position": "The acquisition and integration of Praemium's U.K. and International businesses \"is going well and performing as expected\"; businesses rebranded to Morningstar Wealth Platform and Wealthcraft, with technology and data migrated without client disruption.",
@@ -3352,7 +3666,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-c320c0d8",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Stock underperformance versus peers",
         "stated_position": "Management will not speculate on drivers but acknowledges that both return on invested capital and adjusted operating margins have declined despite top line growth, and states its focus is on value creation and sustainable growth, margin improvement, and attractive returns.",
@@ -3372,7 +3688,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-2fc7abdf",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Segment reporting practice",
         "stated_position": "\"We do not have business operating segments. We have one reportable segment, but disclose revenue by type and product area,\" and discussions of relative margins are directional and based on estimates.",
@@ -3392,7 +3710,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-64ec730f",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Segment reporting and margin disclosure methodology",
         "stated_position": "\"We do not have business operating segments. We have one reportable segment, but disclose revenue by type and product area, to provide useful information to shareholders.\" Relative margin discussion is \"directional and based on estimates\" because of central cost pools whose allocation \"may also change over time.\"",
@@ -3412,7 +3732,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-068b4b4a",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Risks to restoring adjusted operating margin above 20%",
         "stated_position": "\"We remain focused on improving our adjusted operating margin over time to be more consistent with historical peaks,\" but \"the biggest risks continue to be market-related.\" Long-term value creation is expected from Morningstar Wealth, Workplace, Morningstar Indexes, and DBRS Morningstar, \"even if they are subject to cyclical pressure.\"",
@@ -3432,7 +3754,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-6eef24d1",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Cyclicality of DBRS Morningstar and willingness to spend",
         "stated_position": "\"We acknowledge that the credit ratings business is a cyclical one,\" and given weakness \"we're managing expenses prudently. That said, we want to be ready when markets rebound and have made investments to support middle-market and private corporate ratings in the U.S. and Europe.\" Also notes DBRS Morningstar \"has a lower proportion of recurring revenue than its larger competitors.\"",
@@ -3452,7 +3776,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-d7b89c73",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "DBRS Morningstar competitive position and market share",
         "stated_position": "Market-leading positions in Canada; \"solid market share in the structured finance sectors in which it is active\"; share in CMBS ranged 40-50% per the SEC NRSRO report, but \"we've seen some market share pressure in CMBS following the highs noted in the report.\" Outside Canada, corporate/FI share \"is much smaller as we are not a significant player in rating the large, investment-grade corporates,\" with focus instead on middle-market and private transactions.",
@@ -3472,7 +3798,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-b8b68748",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "DBRS headcount investment and path back to company-average margins",
         "stated_position": "\"we have invested behind the business over the past several years given the significant market opportunity we see to grow and capture share in a $7.7 billion credit ratings market\"; headcount grew to \"a little over 800 employees as of the end of 2022,\" roughly half of the growth in India. \"We expect these investments to deliver strong long-term returns and deliver margin improvement over time.\"",
@@ -3492,7 +3820,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-55e77434",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook client vulnerability in a downturn",
         "stated_position": "\"the client segment that is most vulnerable in the current environment is the company segment, and, in particular start-ups and corporate development teams,\" which is \"about a third of PitchBook's client count\"; focus is on educating corporate development teams on additional use cases.",
@@ -3512,7 +3842,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-23d8fef2",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook competitive landscape",
         "stated_position": "Primary competitors are CB Insights, Preqin, and S&P Capital IQ; \"We believe that we can meet the needs of these competitors' core customers all within the PitchBook platform, giving us room to grow to a larger size than any one of these companies/segments alone.\" With LCD, also competing with LevFin Insights, Refinitiv, and Debtwire.",
@@ -3532,7 +3864,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-0c24b4db",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook pricing strategy",
         "stated_position": "Two options \u2014 seat-based and enterprise licenses. \"Over time, we have increased the number of firms on enterprise licenses and expect significant revenue growth to come from continuing to pursue this strategy.\" Prices were raised in mid-2022.",
@@ -3552,7 +3886,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-01e529ea",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook TAM construction and penetration",
         "stated_position": "\"We have highest penetration among investment banks and the greatest opportunity with the large universe of non-investment bank service providers.\" TAM built from number of qualifying firms and an estimate of average account revenue across all user types; \"we don't see significant differences in product usage statistics by user type.\"",
@@ -3572,7 +3908,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-ee8b1466",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "LCD acquisition price multiple and expected return",
         "stated_position": "\"We do not disclose expected ROI on individual transactions, but following extensive due diligence, we expect the acquisition of Leveraged Commentary & Data (LCD) to generate strong returns well above our cost of capital. So far, despite volatility in the credit markets, we are tracking slightly ahead of plan.\"",
@@ -3592,7 +3930,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-44d8ce16",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "LCD monetization and TAM expansion",
         "stated_position": "Integration of LCD into PitchBook \"provides the opportunity to better penetrate PitchBook's existing addressable market as we are able to support expanded client use cases.\" TAM estimated at $4.9 billion as of April 2022 growing to $6.5 billion as of April 2023. For Morningstar Indexes, opportunity to launch new investable products based on LCD data.",
@@ -3612,7 +3952,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-fb91efa2",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Sustainalytics independent investigation into anti-Israel bias concerns",
         "stated_position": "\"The investigation found no evidence of pervasive or systemic bias across Sustainalytics' products, but offered helpful process and procedure recommendations that Morningstar is implementing to reinforce transparency, consistency, and objectivity in our work.\" Investigation conducted by White & Case; legal fees \"were a meaningful part of our increase in professional fees in 2022.\"",
@@ -3632,7 +3974,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-28e8709b",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Accountability for returns on recent large acquisitions",
         "stated_position": "\"We have largely financed these acquisitions with additional debt, which has contributed to short-term negative impacts on our return on invested capital (ROIC) as invested capital has increased with returns expected to improve in future periods.\" DBRS Morningstar \"was tracking ahead of plan through 2021\" before market headwinds; Sustainalytics revenue \"has exceeded plan, although we have invested more heavily than initially anticipated.\"",
@@ -3652,7 +3996,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-b59d9e46",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Evolution of M&A approach under current management",
         "stated_position": "\"Our approach to acquisitions has remained consistent over time. We favor organic growth but remain opportunistic when we identify transactions that can complement our strategy and provide strong returns.\" 40 acquisitions in 15 years, 12 since 2017; \"the size of the transactions has increased in recent years\" and \"As our business and balance sheet grow, we can pursue larger transactions if they meet our criteria.\"",
@@ -3672,7 +4018,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-7d95d22a",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Exposure to SVB Financial, Signature Bank and First Republic Bank",
         "stated_position": "\"PitchBook did have a relationship with SVB Financial and Signature Bank, as well as with First Republic Bank... While all three relationships were important, we do not consider the revenue from these clients to be material to PitchBook's overall revenue base.\" PitchBook is the only product with direct exposure to PE/VC markets.",
@@ -3692,7 +4040,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-3fd2c167",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Artificial intelligence as friend or foe",
         "stated_position": "\"We view advances in Artificial Intelligence (AI) as a \"friend\" to Morningstar's business. Our data collections operations are already heavily automated and integrate GPT technology.\" Rolling out an AI chatbot powered by editorial content and fund and equity reports, targeted at advisors and asset managers.",
@@ -3712,7 +4062,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-6a0885a2",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Net zero commitment and science-based targets",
         "stated_position": "As an NZFSPA signatory, \"Morningstar is committed to taking steps to achieve net zero by 2050.\" \"Morningstar's current targets are considered 'science-based' because they are in line with what the latest climate science deems necessary to meet the goals of the Paris Agreement.\" Near-term goals include a first TCFD-aligned report; longer-term, SBTi certification.",
@@ -3732,7 +4084,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-711ef15f",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Pace of investment and headcount growth",
         "stated_position": "\"As we noted in our annual meeting, more recently we have started to slow the pace of investment and headcount growth across much of the business which will have an impact on future rates of expense growth.\"",
@@ -3746,7 +4100,9 @@
       "quote_check": "8-K_8-K_whole: diverges after 205 of 217 characters (94%) \u2014 the opening is real but the rest is paraphrased or stitched from elsewhere"
     },
     {
+      "id": "QA-FY2023-550a61b0",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Morningstar Sustainalytics SPO market share and competitive landscape",
         "stated_position": "Management acknowledged that market share has declined but asserted continued market leadership: \"while our market share has come down, we continue to be the market leader in the space,\" citing a 24% share of SPOs in 2022, down from 27% in 2021, and explaining that flat-fee pricing, existing bond programs, and LEED certifications mean bond volumes do not translate into SPO activity.",
@@ -3766,7 +4122,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-3db9155b",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Reduction and shift of China operations",
         "stated_position": "\"We have stated, and continue to believe, that we expect the activities related to our reduction and shift of our China operations will result in lower ongoing run rate costs.\" No direct answer given on non-GAAP operating income impact.",
@@ -3786,7 +4144,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-83d934c2",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "DBRS Morningstar business mix and geographic exposure",
         "stated_position": "Management declined to disclose revenue or sensitivity by asset class but characterised the mix: largest component CMBS, followed by ABS and RMBS, \"limited exposure to ratings for covered bonds and collateralized loan obligations,\" and \"we are more heavily weighted towards structured finance in the US and Europe; in Canada we have a higher exposure to corporate and financial institution ratings.\"",
@@ -3806,7 +4166,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-ba5a721f",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Real estate footprint and hybrid work policy",
         "stated_position": "Management said it \"continually review[s] our real estate portfolio and evaluate[s] opportunities to reduce or sublease space where possible,\" has \"increasingly moved to an unassigned seating model,\" believes \"in-person collaboration, supported by flexibility through a hybrid schedule, promotes innovation, engagement, and teamwork,\" and is \"looking to consolidate offices where appropriate,\" having \"closed smaller offices in favor of flexible workspaces.\"",
@@ -3826,7 +4188,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-37928736",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Investment criteria and hurdle rates for growth investments",
         "stated_position": "\"As we evaluate growth investments, we seek to earn cash-on-cash returns well in excess of our cost of capital... As our business has grown, we are focused on investments with larger net present values that we believe will have a more meaningful impact on our business.\" Management also says it has \"not made any significant changes to our investment criteria\" but \"adjusted our hurdle rates accordingly\" as cost of capital changed with rate increases.",
@@ -3846,7 +4210,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-0b211ac2",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Preference for license-based/recurring revenue versus transaction- and asset-based areas",
         "stated_position": "Roughly 70% of 2022 revenues were license-based; \"We like the recurring revenue streams that these products offer, and we often see shorter time horizons to realize returns in these product areas.\" Management continues to invest in cyclical areas but is \"managing expenses prudently in areas that have been under recent pressure.\"",
@@ -3866,7 +4232,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-479551cc",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook's long-term business model comparison and margin position",
         "stated_position": "PitchBook is \"generally a SaaS-based model\"; management notes \"PitchBook relative margins are below other licensed-based areas in Morningstar today due to our investments in growth,\" and names Factset, S&P Market Intelligence, Moody's Analytics and MSCI Analytics as comparable models, with CB Insights, Preqin and S&P Capital IQ as main competitors.",
@@ -3886,7 +4254,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-867e0d95",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "LCD integration approach",
         "stated_position": "Management is integrating LCD research, news and data into the PitchBook platform \"to support one unified platform experience, so we do not view it as a cross-selling opportunity,\" and intends to \"deliver more value to our clients and align our future price points to recognize that value.\"",
@@ -3906,7 +4276,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-9fa3d368",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "DBRS Morningstar competitive position and market share",
         "stated_position": "Management believes market-leading positions in Canadian ratings \"remain largely unchanged,\" acknowledges \"market share pressure in commercial mortgage-backed securities (CMBS) ratings,\" and states it is \"not a significant player in the large, investment-grade corporates that dominate the market in the US and Europe.\"",
@@ -3926,7 +4298,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-354eddf3",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Repositioning of the CMBS team in response to a slower expected recovery",
         "stated_position": "Management says it has \"become more pessimistic on the likely speed of the recovery in CMBS\" and as a result has \"repositioned parts of our CMBS team to other parts of Morningstar and eliminated certain roles to align our capacity with market demand.\"",
@@ -3946,7 +4320,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-dc70d688",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Strategic rationale for middle-market and private corporate ratings",
         "stated_position": "Corporate ratings \"offer particularly good opportunities for recurring revenue, which is an important driver of our interest in the private and middle market corporate markets in the US and Europe,\" where \"we don't see significant barriers to entry\"; analysts have been hired \"on a one-by-one basis.\"",
@@ -3966,7 +4342,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-fbfe9c9d",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "DBRS Morningstar long-term margin ambition versus S&P and Moody's",
         "stated_position": "DBRS Morningstar is \"currently below the corporate average\" on margin; over time management believes it can reach \"a margin profile (on a like-for-like basis) at or above the profile we shared at the time of acquisition,\" while noting S&P and Moody's have much higher margins due to size, scale and corporate ratings mix.",
@@ -3986,7 +4364,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-a2c1f31e",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Growth outlook for Morningstar Data and Direct, including generative AI use cases",
         "stated_position": "Management \"do[es] not view them as mature products,\" citing expansion of data sets and use cases, \"with interest from clients in using our data to power generative AI use cases.\"",
@@ -4006,7 +4386,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-673add3f",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "US ESG demand environment for Morningstar Sustainalytics",
         "stated_position": "Management acknowledges \"a divergence between the demand environment for Morningstar Sustainalytics in the US compared with Europe,\" \"short-term challenges in the US pipeline,\" and a slowdown in retail asset management and wealth management, while focusing in the US on core institutional segments and key ESG use cases.",
@@ -4026,7 +4408,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-f883fef2",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Competing with MSCI in ESG",
         "stated_position": "\"we've observed that MSCI is often viewed as the default option by customers in the US given the strength of their index business. We see an opportunity to challenge that positioning as we more closely align Morningstar Sustainalytics with Morningstar Indexes.\"",
@@ -4046,7 +4430,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-4ea574b2",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Cost actions in the second party opinion (SPO) business",
         "stated_position": "In response to lower 2022 activity, \"we have consolidated regional reporting structures to drive greater efficiencies, reduced research capacity to align with demand, and increased our focus on activities in markets with the most attractive growth opportunities.\"",
@@ -4066,7 +4452,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-704538c9",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Slowing investment in and refocusing Sustainalytics",
         "stated_position": "\"we are slowing down our investments in Morningstar Sustainalytics. This will better align expense growth with revenue growth\"; focus on scale and integration of ESG products within Morningstar, refocusing on \"most scalable products in mature markets, including North America and EMEA,\" and leveraging the broader Morningstar footprint in Asia Pacific.",
@@ -4086,7 +4474,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-6e34c84c",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Sustainalytics leadership transition and consolidation under Ron Bundy",
         "stated_position": "Leadership of Morningstar Sustainalytics has been consolidated under Ron Bundy, in addition to his role as President of Morningstar Indexes. Management says the transition from Michael Jantzi \"has mostly been smooth but has not been without its challenges,\" and sees a bigger opportunity through tighter integration with the rest of the business.",
@@ -4106,7 +4496,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-b11beeed",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "ESG talent turnover",
         "stated_position": "\"We have continued to see elevated voluntary turnover in Morningstar Sustainalytics relative to the broader business, reflecting the continued competitive environment for ESG talent,\" though turnover began declining meaningfully in mid-2022 while remaining above the company average.",
@@ -4126,7 +4518,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-45ae8d2a",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Morningstar Indexes competitive position and margin ambition",
         "stated_position": "Indexes has been \"the fastest growing provider in the industry for the past two years based on the latest data from Burton-Taylor International Consulting\"; management does \"not expect to reach margin levels consistent with MSCI or S&P Global's index businesses given the significant size and scale differential,\" but sees meaningful room to grow revenue and profitability.",
@@ -4146,7 +4540,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-38caa145",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Cost control actions across the company",
         "stated_position": "\"We noted in the Annual Shareholder Meeting that we were slowing hiring. We've also stopped backfilling certain roles to drive efficiency and have selectively eliminated roles elsewhere in the organization to reduce costs,\" plus reduced discretionary spend and real estate footprint optimization.",
@@ -4166,7 +4562,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-21e176bd",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Reportable segments and margin disclosure methodology",
         "stated_position": "\"We do not have business operating segments. We have one reportable segment but disclose revenue by type and product area\"; discussions of relative margins are \"directional and based on estimates,\" and allocation of central expenses \"may also change over time.\"",
@@ -4186,7 +4584,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-833888a2",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook corporate (company) segment vulnerability and long-run customer mix",
         "stated_position": "\"The segment that is most vulnerable in the current environment is the company (corporate) segment and, within that segment, we see particular vulnerability with start-ups and corporate development teams.\" Management declined to guide on long-term client or segment mix, saying they \"have large addressable markets across geography and client type and see significant opportunities across all segments, despite near-term headwinds,\" and see opportunities to help corporates consolidate further business with Morningstar as well as opportunities in private credit with the acquisition of LCD.",
@@ -4206,7 +4606,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-aa9d323d",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook total addressable market methodology and size",
         "stated_position": "\"Our methodology for sizing PitchBook's total addressable market (TAM) has remained consistent with the methodology we disclosed in 2021.\" The $6.5 billion TAM cited as of April 2023 included more than 130,000 firms, with increases since 2022 driven by \"the ongoing expansion of PitchBook data globally and the addition of new use cases.\"",
@@ -4226,7 +4628,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-ec3fbe06",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Disclosure of enterprise pricing for PitchBook",
         "stated_position": "\"For competitive reasons, we do not disclose the range of annual subscription prices for enterprise clients.\"",
@@ -4246,7 +4650,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-12288d46",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Morningstar Wealth investment priorities and path to margin accretion",
         "stated_position": "Investments in 2021 and 2022 \"were geared at building our global wealth platforms,\" mostly hiring and third-party technology partnerships to build the US and UK Wealth Platforms \"which provide digitally enabled investment and productivity services that embed us in the advisor workflow.\" To realize returns, \"our focus is on building out capabilities to attract new advisors and assets to the platforms,\" plus obtaining a greater share of existing advisors' assets and increasing automation of account openings. Management notes \"the return horizon here is longer than we see with investments in our license-based product areas.\"",
@@ -4266,7 +4672,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-0671ddb7",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Peer comparables for Morningstar Wealth and its margin profile",
         "stated_position": "\"For public company comparables, we look to Envestnet, AssetMark, SEI, and Iress (in Australia) which all have certain similar business characteristics,\" while noting important differences in composition; and \"the current Wealth business has below average margins as compared to corporate average across Morningstar.\"",
@@ -4286,7 +4694,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-1b362596",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Expense control and headcount growth",
         "stated_position": "\"We look at these cost categories closely and we are reducing discretionary costs, including travel and professional fees. Our most significant lever when it comes to expense growth is headcount and we're slowing headcount growth broadly across the company.\"",
@@ -4306,7 +4716,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-2faed888",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Product-level contribution margin visibility and planning/resource allocation process",
         "stated_position": "\"We have a comprehensive budget and three-year planning process under which we set financial targets and allocate resources across the company.\" Product area performance is reviewed regularly against budgets, investments made, and OKRs, and plans are modified based on those reviews; product-level margins rely on \"a variety of cost allocation methodologies to directionally attribute certain pools of centralized expenses.\"",
@@ -4326,7 +4738,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-1d4e7aca",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Correction of adjusted diluted EPS reported for Q2 2023",
         "stated_position": "\"We corrected the calculation of adjusted diluted net income per share and the related percentage changes of adjusted diluted net income per share for the quarter ended June 30, 2023, following the identification of a clerical error in the calculation.\" The $11.8 million SBI license termination expense was incorrectly included; a footnote in prior earnings releases also \"incorrectly noted\" that non-operating (gains) losses included interest expense, \"which was a typo.\"",
@@ -4346,7 +4760,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-683bbfc7",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "MSU plan TSR hurdle of 20% for 100% payout; whether hurdles are shareholder-friendly",
         "stated_position": "Management believes the 100% payout target for delivering 20% TSR is appropriate; TSR is absolute rather than relative, so the annual MSU award is split into two grants each year to smooth short-term market volatility; the compensation committee reviews and approves all compensation practices, and in 2020 the TSR hurdle was raised from 10% to 20% due in part to shareholder feedback.",
@@ -4366,7 +4782,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-c1fc17c4",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Exclusion of incentive compensation costs from Adjusted EBITDA in the annual incentive plan",
         "stated_position": "Adjusted EBITDA is based on a \"pre-bonus\" number to incorporate the underlying performance of the business; the company monitors the \"sharing ratio\" (projected bonus payout as a percentage of Adjusted EBITDA) and the Board has discretion to limit the bonus if the sharing ratio is not aligned with expectations.",
@@ -4386,7 +4804,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-3c954b66",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Decline in compensation and benefit expense per employee",
         "stated_position": "Management confirmed adjusted operating expense per average employee declined, due in part to the increased proportion of the employee base located in India where labor costs are lower, and to efforts to control costs in discretionary categories including professional fees, travel, and marketing.",
@@ -4406,7 +4826,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-19d1537b",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Differentiation and go-to-market for Morningstar Sustainalytics' climate suite",
         "stated_position": "Climate solutions are differentiated by detailed asset-level data and ratings that provide insights into management structure and actions; three areas of focus for the remainder of the year are increasing ESG thought leadership and voice, better leveraging the broader Morningstar sales teams, and leveraging index capabilities as a delivery channel for all climate intellectual property.",
@@ -4426,7 +4848,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-34418c37",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Disclosure of flows for asset-based products",
         "stated_position": "The company is evaluating more frequent disclosures of net flows to its asset-based products, and noted Managed Portfolios is Investment Management's flagship offering and the focus of recent investments.",
@@ -4446,7 +4870,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-ac9829e9",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook versus FactSet and MSCI in private markets",
         "stated_position": "PitchBook offers more extensive private market coverage across all entity types than FactSet or MSCI, and its suite of tools supports core private market workflows; \"FactSet and MSCI lack comparable workflow functionalities.\"",
@@ -4466,7 +4892,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-696b006b",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Whether PitchBook will expand into KYC/AML, risk, compliance and trade credit use cases",
         "stated_position": "Management is focused on executing its plan in PitchBook's core business and does not see know-your-customer or anti-money-laundering use cases as a core part of PitchBook's current strategy at this time, though they could be potential areas of future expansion, possibly in partnership with third-party application developers.",
@@ -4486,7 +4914,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-2c3e890f",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Integration of Leveraged Commentary & Data (LCD) into PitchBook",
         "stated_position": "Management stated it is in the process of integrating LCD research, news, and data into the PitchBook platform, and that LCD-related revenue is not currently included in reported PitchBook revenue.",
@@ -4506,7 +4936,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-aeb103dc",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Founder Joe Mansueto's 10b5-1 share sales",
         "stated_position": "Mansueto has filed annual 10b5-1 plans to sell a portion of his shares to diversify his investments, has never suspended a plan once filed, uses dollar-cost averaging and simple trading rules designed to minimize downward pressure on the share price; the 2023 pause reflected the SEC's longer cooling-off period.",
@@ -4526,7 +4958,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-0bfe0a1f",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Path back to \"historical peak\" adjusted operating margins",
         "stated_position": "Management defines the target as adjusted operating margins topping 20% as shown in the five-year chart at the Annual Shareholder Meeting, to be reached via revenue growth plus \"careful management of expenses,\" headcount actions at DBRS Morningstar and Morningstar Sustainalytics, cuts to travel and professional fees, real estate consolidation (London), and further automation of data collection and research.",
@@ -4546,7 +4980,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-de3da276",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Narrowing of Morningstar Sustainalytics focus and reorganizations",
         "stated_position": "The Q2 2023 targeted reorganizations were focused on DBRS Morningstar, \"reflecting the challenges in the North American commercial real estate market,\" and Morningstar Sustainalytics, \"where we have narrowed our focus to concentrate on more mature ESG markets and products that serve a global footprint,\" with further headcount reductions in Q3 2023.",
@@ -4566,7 +5002,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-53ad3d31",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Transition of China operations",
         "stated_position": "Management expects the transition of China-based activities to be substantially complete by the end of Q3 2023, after which it expects lower ongoing costs and no significant additional transformation costs; more than 260 additional employees left the China offices during July and August.",
@@ -4586,7 +5024,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-24ead1f3",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "DBRS Morningstar growth priorities and resource reallocation",
         "stated_position": "Planning for continued CMBS softness while seeing \"good growth opportunities in global corporates, including Canadian investment-grade and middle-market U.S. and European ratings\" and in ABS; resources are being reallocated to the credit practices group and new asset classes including esoteric ABS.",
@@ -4606,7 +5046,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-f3deeaf5",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "DBRS competitive position in middle-market corporate ratings",
         "stated_position": "Management is confident DBRS hires will generate returns, and while \"the largest players are entrenched in the public investment-grade corporate market in the US and Europe,\" it does not see the same challenges in private and middle-market corporate markets, believing clients value its responsiveness and research quality.",
@@ -4626,7 +5068,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-f4a0958b",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "CMBS market share pressure and divergent credit views",
         "stated_position": "Management acknowledges market share pressure in U.S. CMBS related to changing transaction mix and \"a divergence in market views that dated to late 2022,\" noting DBRS has been engaged less frequently on transactions with high office and certain retail exposures, but says the primary revenue driver was the sharp drop in overall issuance.",
@@ -4646,7 +5090,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-d7492dd0",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Sustainalytics leadership departures (Michael Jantzi, Bob Mann)",
         "stated_position": "The leadership changes \"were not part of the original integration plan,\" though management \"were also prepared for them\"; Jantzi chose to step down in 2022 to pursue new challenges, and Bob Mann \"left earlier this year as we hastened integrating Morningstar Sustainalytics into our broader operations.\"",
@@ -4666,7 +5112,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-cb649c09",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Aligning Morningstar Sustainalytics with Morningstar Indexes under Ron Bundy",
         "stated_position": "The two operate in similar markets and serve similar clients; placing both under one executive, Ron Bundy, \"allows for greater alignment around this strategic direction\" and is expected to bring investors a more holistic set of ESG products faster.",
@@ -4686,7 +5134,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-1744fae2",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Climate solutions product line strategy",
         "stated_position": "The plan is to increase ESG thought leadership, better leverage the broader Morningstar sales team, and use Morningstar Indexes as a delivery channel for climate IP; management remains \"committed to our climate suite as one of our key business initiatives going forward\" while acknowledging the buying cycle has been slow.",
@@ -4706,7 +5156,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-af4b975d",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "EU ESG ratings regulation proposal on separation of business activities",
         "stated_position": "Management believes the separation sections \"may be adjusted in the final regulation,\" continues to engage EU policymakers, and will consider safeguarding methodology independence and protecting against conflicts of interest once it has clarity.",
@@ -4726,7 +5178,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-ef97bdc8",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook pricing model and modularization",
         "stated_position": "Pricing is reviewed annually and is all-inclusive; \"At this time, we have no plans to change our approach, which we believe has several important benefits for our clients,\" citing the breadth of datasets and interconnectivity across the database.",
@@ -4746,7 +5200,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-def8ebb5",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook demand environment and sales staffing",
         "stated_position": "Demand in core venture capital and private equity segments \"remains strong\" with additional demand in private credit; management says it has a well-defined staffing model and has not observed extended sales cycles or increased sales attrition through June 2023.",
@@ -4766,7 +5222,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-63e3de40",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Capital allocation priorities and share repurchases",
         "stated_position": "The MJKK license termination is viewed as capital allocation \"similar to an M&A transaction in its impact\"; management continues \"a balanced approach to capital allocation with a near-to-intermediate term focus on paying down debt\" following Praemium and LCD, and repurchases shares when return potential is attractive.",
@@ -4786,7 +5244,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-e3c9ccf9",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "M&A-related expenses and integration wind-down",
         "stated_position": "M&A add-backs include one-time transaction and integration costs, primarily related to Praemium and LCD acquisitions including integrating LCD onto the PitchBook platform; \"We expect these activities to wind down as we move into 2024.\"",
@@ -4806,7 +5266,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-926413a5",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Disclosure practices on guidance and segment detail",
         "stated_position": "Management reiterates its \"stated practice of not issuing guidance\" and declines to disclose revenues by asset class or quarterly revenues beyond key product area level \"for competitive reasons,\" but is considering updates to AUM disclosure for asset-based product areas.",
@@ -4826,7 +5288,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-19723547",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "SEC enforcement action against DBRS Morningstar",
         "stated_position": "On September 29, 2023, the SEC issued orders resolving investigations at several financial firms, including two settlements with DBRS Morningstar resulting in a total of $8 million in penalties, which were paid early in the fourth quarter.",
@@ -4846,7 +5310,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-22f6cec6",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Morningstar Sustainalytics growth opportunity",
         "stated_position": "New regulatory requirements and demand to support ESG integration support future opportunities in continental Europe, and management continues to see an opportunity to leverage the existing Morningstar client footprint in managed product data and analytics to grow the business.",
@@ -4866,7 +5332,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-d9f1ebe7",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook market penetration and competitive position",
         "stated_position": "Greatest penetration rate is in the investment bank sector and to a lesser extent private equity; penetration analysis based on client logos as a percentage of TAM is directionally helpful but limited, and management continues to see significant growth opportunities across all primary segments.",
@@ -4886,7 +5354,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-2a54a3c6",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Vulnerability of PitchBook's corporate/company client segment",
         "stated_position": "The company segment continues to be the most vulnerable segment in the current market environment, with particular vulnerability with start-ups and corporate development teams.",
@@ -4906,7 +5376,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-95a92c38",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook pricing strategy",
         "stated_position": "PitchBook implemented a meaningful price increase in mid-2022, and management continues to look for opportunities to increase prices at renewal.",
@@ -4926,7 +5398,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-e856a79a",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "LCD acquisition integration costs and ROIC impact",
         "stated_position": "Management expects to invest close to $6 million in integration costs for LCD across 2022 and 2023; the incremental $650 million of debt incurred to fund the acquisition had an actual impact of approximately 170 basis points on 2022 ROIC, closer to 90 basis points factoring in LCD's after-tax income.",
@@ -4946,7 +5420,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-95193514",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Reporting LCD as part of PitchBook",
         "stated_position": "LCD didn't meet the threshold to be a separately disclosed key product area for 2023; in 2024 Morningstar will report LCD as part of PitchBook as the two products approach full integration, with platform integration work largely complete in the first half of 2024.",
@@ -4966,7 +5442,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-e39f1c08",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Post-acquisition priorities for LCD",
         "stated_position": "Attention is now shifting from platform integration to expanding relationships with existing clients and attracting new clients, especially in the rapidly growing private credit market.",
@@ -4986,7 +5464,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-ad92af8c",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Investment Management disclosure practices",
         "stated_position": "Managed Portfolios is Investment Management's flagship product and the directly-distributed product is the focus of recent investments; management is considering updates to how it discloses AUM but does not currently share quarterly flows.",
@@ -5006,7 +5486,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-0f1a42d4",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Return horizon and rationale for Morningstar Wealth investments",
         "stated_position": "Management expects a three-to-five-year return horizon for Morningstar Wealth investments, a longer payoff period than license-based product areas, driven by sustained net inflows.",
@@ -5026,7 +5508,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-94ca4280",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Cost reductions in Morningstar Wealth",
         "stated_position": "In the third quarter, Morningstar took actions to reduce Morningstar Wealth headcount and identified opportunities to decrease non-compensation operating costs, while continuing to prioritize and support the U.S. and international wealth platforms.",
@@ -5046,7 +5530,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-86b611ec",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Morningstar Indexes competitive position",
         "stated_position": "Growth has been driven by products leveraging proprietary research from across Morningstar and by clients opting to switch to Morningstar Index benchmarks from incumbent providers, with clients seeing the benefit of transitioning mandates to a global index provider.",
@@ -5066,7 +5552,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-ea9e7882",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Go-forward effective tax rate expectation",
         "stated_position": "Adjusting for tax reserves and discrete items, the company likely would have realized a tax rate between 27.0% and 29.0% in both periods, and expects a go-forward underlying rate within a consistent range absent discrete items and further changes in tax regulation.",
@@ -5086,7 +5574,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-700d4e65",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Budgeting and long-range planning process; approach to cost and cost of capital",
         "stated_position": "Management said its process \"is linked to our strategic objectives and designed to support long-term value creation,\" focused on \"generating strong returns on invested capital, supported by sustainable growth with increases in revenues and improvements in operating margins over time,\" with planning annual (June to December) and planning cycles focused on three-year periods; recent increases in the cost of capital \"have translated into higher hurdle rates for investment opportunities.\"",
@@ -5106,7 +5596,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-207a8a37",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Margin goal and treatment of slower-growing businesses",
         "stated_position": "Management stated it is their goal to return margins to historical levels of 20%-25%, and that businesses in the portfolio exhibiting slowing growth are expected to increase margins and be run accordingly, citing the Sustainalytics \"pivot\" as an example.",
@@ -5126,7 +5618,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-f8d0717b",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Headcount reductions in specific business units",
         "stated_position": "Management said it reduced headcount in the second and third quarters of 2023 in Morningstar Sustainalytics, Morningstar Wealth, and DBRS Morningstar \"based on our careful assessment of the current operating environment and progress against our expectations,\" and is \"taking a cautionary approach to hiring\" and managing backfills with prudence.",
@@ -5146,7 +5640,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-cb4bb837",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Real estate footprint optimization and hybrid work policy",
         "stated_position": "Morningstar has a three-day minimum in-office hybrid work policy and is looking for ways to optimize its global real estate footprint on an ongoing basis, including consolidating two London offices, downsizing Shenzhen, and reducing space in Chicago.",
@@ -5166,7 +5662,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-ccad54c1",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Capital allocation priorities: debt paydown vs. buybacks vs. M&A",
         "stated_position": "Management said it continues to take a balanced approach with a near-to-intermediate term focus on paying down debt; debt reduction remains a priority given variable-rate exposure, with share repurchases and M&A evaluated on relative return, cash-on-cash returns and internal rates of return.",
@@ -5186,7 +5684,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-5fc89dbf",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "SBTi validation commitment and climate targets",
         "stated_position": "Management said long-term goals include certification by the SBTi \"but we have not yet committed to a timeline,\" and near-term goals include publishing a first TCFD-aligned report as part of its Net Zero Financial Service Providers Alliance commitment.",
@@ -5206,7 +5706,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-1866ef1e",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Linking executive remuneration to decarbonization milestones",
         "stated_position": "Management said it is considering what additional forward-looking milestones would be appropriate and that \"Presently, we do not tie executive remuneration to our emissions milestones.\"",
@@ -5226,7 +5728,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-93674b0f",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Positioning in the private credit market",
         "stated_position": "With LCD integration nearing completion, PitchBook can address multiple private credit data and analytics use cases; and Morningstar also serves private credit through DBRS Morningstar, where it sees good opportunities to expand its presence in private and middle-market credit in the U.S. and Europe.",
@@ -5246,7 +5750,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-284603fc",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook competitive environment and growth deceleration",
         "stated_position": "Management attributed slower organic growth primarily to the global decline in private capital invested and said \"We do not see any material recent change in the competitive environment,\" while asserting PitchBook's growth \"remains strong on an absolute basis relative to any notable peer.\"",
@@ -5266,7 +5772,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-39cc7838",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "PitchBook business model: new clients vs. expansion of existing clients",
         "stated_position": "Management described the foundation of PitchBook's business model as selling to new customers and then increasing licensed users within those organizations, and said the growth opportunity with existing clients has surpassed that of new client sales.",
@@ -5286,7 +5794,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-ef205bb4",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Cloud transition out of own data centers",
         "stated_position": "Management said it is increasingly shifting data collection and storage to the cloud as part of a broader cloud transition out of its data centers, working with multiple cloud vendors, with lower capex on on-premises hardware but higher operating expenses from cloud costs on initial migration.",
@@ -5306,7 +5816,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-f60be709",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Board oversight of cybersecurity",
         "stated_position": "Management said the Audit Committee has oversight of cybersecurity risk exposures and regularly reviews and discusses cybersecurity risks with management; a chief information security officer leads a dedicated team responsible for the information security program.",
@@ -5326,7 +5838,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-b676f7f6",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Sustainalytics second-party opinion market share and competitive response",
         "stated_position": "Management acknowledged SPO market share has fallen since 2020 primarily due to increasing competition (S&P Global's acquisition of Cicero Shades of Green, Moody's integration of Vigeo Eiris, MSCI and Sustainable Fitch entering), and said it is focusing activities on areas with the most attractive growth opportunities including the U.S. securitized bond market, investing in a dedicated SPO sales effort and consolidating regional reporting structures.",
@@ -5346,7 +5860,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-006ab59a",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Where Sustainalytics missed expectations \u2014 demand vs. execution",
         "stated_position": "Management said growth \"meaningfully lagged our expectations,\" driven partly by reduced ESG product demand and partly by execution challenges: significant sales-team turnover in the first half, failure to deliver the Impact Ratings launch (methodology being revisited), and competitors having invested ahead of Morningstar in climate solutions.",
@@ -5366,7 +5882,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-0d5b2443",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "topic": "Morningstar Wealth TAMP value proposition and differentiation",
         "stated_position": "Management said it believes its platform \"is at parity with or exceeds the experience offered by many of our competitors,\" and that the offering is differentiated by the strength of Morningstar's brand with advisors and independent research, data, and insights.",
@@ -5386,7 +5904,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-d706dbac",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Recurring framing of the monthly investor Q&A as a matter of company disclosure policy rather than a required filing."
       },
@@ -5404,7 +5924,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-d6239692",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "An explicit hedge immediately after acknowledging additional compliance costs for Sustainalytics."
       },
@@ -5422,7 +5944,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-78d4a8bb",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Unusually direct admission that a flagship institutional product remains a legacy desktop application, in a year when management emphasises cloud migration."
       },
@@ -5440,7 +5964,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-2ecafb56",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Recurring framing of Morningstar's standing written-question disclosure policy, which substitutes for traditional earnings calls."
       },
@@ -5458,7 +5984,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-ea3da9b9",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Direct acknowledgement of a changed environment, opening the document's framing shift from growth to prudence."
       },
@@ -5476,7 +6004,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-0b1d3695",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Unusually direct admission that management's response was insufficient, and that much of the cost base is fixed."
       },
@@ -5494,7 +6024,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-9bbdcd5f",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Explicit admission of underperformance against its own expectations, tied to compensation outcomes."
       },
@@ -5512,7 +6044,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-6fe39144",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Blunt characterisation of margin trough, notable from a company that usually frames results in investment-cycle terms."
       },
@@ -5530,7 +6064,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-6340cd24",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Strongly promotional language about PitchBook set against the company's simultaneous caution elsewhere; a recurring claim to track across years."
       },
@@ -5548,7 +6084,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-b7150227",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Repeated framing used throughout the filing to limit disclosure of product-level profitability; a hedge on the specificity of any margin discussion."
       },
@@ -5566,7 +6104,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-0ef29876",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "An upfront hedge qualifying all margin commentary in the document as directional estimates."
       },
@@ -5584,7 +6124,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-386280aa",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Management itself flags an unusual level of shareholder scrutiny \\u2014 a signal of investor pressure in this period."
       },
@@ -5602,7 +6144,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-3a855fc2",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "A defensive claim of capital discipline made in direct response to a shareholder allegation of misalignment between management and shareholders."
       },
@@ -5620,7 +6164,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-5eac3064",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Retrospective characterisation of the prior incentive design, framing a growth emphasis that is now being reversed toward 'profitable growth' \\u2014 a notable shift in stated priority."
       },
@@ -5638,7 +6184,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-6e67f13a",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "An unusually direct, heavily hedged admission of deteriorating profitability in the ratings business."
       },
@@ -5656,7 +6204,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-a7c8b670",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Early-stage acquisition claim hedged with 'still early' \\u2014 worth revisiting against later characterisations of LCD's contribution."
       },
@@ -5674,7 +6224,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-985ca5ee",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "A recurring caveat that limits accountability for product-level profitability disclosures shareholders were pressing on."
       },
@@ -5692,7 +6244,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-018adeaa",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Framing caveat repeated in these filings; management stresses that product-area margin discussion is estimate-based and allocations \"do change from time to time,\" limiting the weight of any margin statement."
       },
@@ -5710,7 +6264,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-7a4d38a1",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "An explicit hedge attached to every product-level profitability answer in this filing."
       },
@@ -5728,7 +6284,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-199ae0c1",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "A hedged commitment: refuses specific targets while accepting margins have fallen from historical peaks \u2014 notable given the questioner's direct challenge on competitors' clarity about long-term targets."
       },
@@ -5746,7 +6304,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-3d44bae0",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Unusually direct admission that attrition is above management's own tolerance, with a specific acknowledgement of persistently high turnover in India and the Sustainalytics product area."
       },
@@ -5764,7 +6324,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-e860e433",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Signals an unusual level of shareholder pressure in this period, consistent with the pointed ROIC and engagement questions that follow."
       },
@@ -5782,7 +6344,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-50c0ab06",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Unusually direct concession to a critical investor premise about expense discipline."
       },
@@ -5800,7 +6364,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-a175cf44",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Unusually personal, informal tone in a Reg FD filing addressing stock underperformance; frames management as owner-operators."
       },
@@ -5818,7 +6384,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-b8de031f",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Rare explicit admission of \"execution missteps\" on an acquisition."
       },
@@ -5836,7 +6404,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-703e9e65",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Signals elevated investor pressure in this period \u2014 four installments of answers was not routine."
       },
@@ -5854,7 +6424,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-0c76f898",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Acknowledges the ESG investigation as a material cost driver while declining to quantify \u2014 a hedged partial disclosure on a governance matter."
       },
@@ -5872,7 +6444,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-93d35c45",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Hedge on the repeated claim of \"inherent leverage in the business,\" which investors pressed as unproven."
       },
@@ -5890,7 +6464,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-66b397f8",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "An unusually direct concession about a structural disadvantage versus larger ratings competitors."
       },
@@ -5908,7 +6484,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-9d2d63db",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Admission of share erosion in the asset class where DBRS's position was strongest, hedged with an attribution to 'prevailing credit views.'"
       },
@@ -5926,7 +6504,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-8ef1ef12",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Characterises the DBRS shortfall as external and cyclical rather than strategic \u2014 a framing that recurs throughout the filing."
       },
@@ -5944,7 +6524,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-ef272017",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Rare acknowledgement on Sustainalytics that spending outran the original acquisition case, framed as opportunity rather than overrun."
       },
@@ -5962,7 +6544,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-f963e02d",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Defends a shift toward larger deals while insisting the underlying approach is unchanged \u2014 a hedge on the acquisitiveness question."
       },
@@ -5980,7 +6564,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-2c3fd38c",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "A standing caveat that limits the reliability of any product-level profitability figure management gives; repeated later in the document."
       },
@@ -5998,7 +6584,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-7d889b7e",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "An unusually direct admission of share loss, immediately paired with a leadership claim \u2014 a hedged characterisation of the Sustainalytics competitive position."
       },
@@ -6016,7 +6604,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-e77b1b1b",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Marks a stated change of direction after years of described investment and headcount growth."
       },
@@ -6034,7 +6624,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-51018bdc",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "A recurring claim restated rather than quantified; management declines to address the specific non-GAAP question asked."
       },
@@ -6052,7 +6644,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-489f3dcf",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Defends an expanding office footprint against peer behaviour \u2014 a values-framed justification for a capital allocation decision."
       },
@@ -6070,7 +6664,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-e860b56a",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "An unusually candid admission of difficulty in a leadership transition, hedged with \"mostly.\""
       },
@@ -6088,7 +6684,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-8be85459",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "\"more urgency\" signals a shift in how Sustainalytics is being managed \u2014 from standalone to integrated."
       },
@@ -6106,7 +6704,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-9bbcd227",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "A direct downgrade of a previously stated outlook, tied to concrete headcount action."
       },
@@ -6124,7 +6724,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-25c9c9f0",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "The recurring self-characterisation of PitchBook as the model acquisition, contrasted with more qualified language about DBRS in the same answer."
       },
@@ -6142,7 +6744,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-9d80286a",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Hedged optimism about DBRS after disclosing a revenue decline \u2014 the phrasing pivots from results to long-term potential."
       },
@@ -6160,7 +6764,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-579cd15c",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Frames margin recovery to prior peaks as an explicit goal, a shift in emphasis from growth investment to cost discipline."
       },
@@ -6178,7 +6784,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-8a1cfe96",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "An unusually explicit hedge framing all product-level margin discussion as directional estimates, placed as a preamble before answering profitability questions."
       },
@@ -6196,7 +6804,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-2f1d1c8a",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "A recurring, direct acknowledgment that Morningstar Wealth's payback period is longer than the rest of the business \u2014 a hedge on prior investment enthusiasm."
       },
@@ -6214,7 +6824,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-3b1fd99e",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "A direct admission that a strategically emphasized business dilutes company margins."
       },
@@ -6232,7 +6844,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-e1828952",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Characterizes 2021 as an anomaly rather than a new baseline \u2014 a reframing of the PitchBook growth narrative."
       },
@@ -6250,7 +6864,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-1c9179e0",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Signals unusual intensity of investor scrutiny in this period, requiring multiple installments of responses."
       },
@@ -6268,7 +6884,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-bf2a296d",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Defensive framing in response to a pointed shareholder challenge that the plan is not shareholder-friendly; appeals to benchmarks rather than addressing the hurdle's difficulty."
       },
@@ -6286,7 +6904,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-202172d1",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Turns a question about a strategic gap into a promotional claim about the data asset \u2014 a rhetorical redirect rather than an answer."
       },
@@ -6304,7 +6924,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-b2910eaa",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Unusually direct confirmation of an investor's inference about declining per-employee compensation, tied openly to offshoring to India."
       },
@@ -6322,7 +6944,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-c10b059c",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Characterises Managed Portfolios as the flagship and investment focus, while conceding U.S. flows were flat \u2014 a hedge inside a positive statement."
       },
@@ -6340,7 +6964,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-7aec576c",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Unusually candid framing of an executive departure as a consequence of accelerated integration, rather than a personal decision \u2014 contrasts with the account given for Jantzi."
       },
@@ -6358,7 +6984,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-eb6c6ce9",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Direct admission of a structural problem paired with an unquantified long-term recovery hedge."
       },
@@ -6376,7 +7004,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-a858d67f",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Attributes slow climate-product sales to client priorities and product complexity \u2014 a softening of earlier enthusiasm for the ESG build-out."
       },
@@ -6394,7 +7024,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-c91d5578",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Hedged, doubly-qualified phrasing (\"focused on working to return\") for a margin objective, with no timeframe attached; a recurring claim in this period."
       },
@@ -6412,7 +7044,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-fa74f5f2",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Marks an explicit retrenchment in how the Sustainalytics business is characterised, after heavy investment."
       },
@@ -6430,7 +7064,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-65a35f86",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Refuses quantification on principle, then immediately offers a directional floor \u2014 a recurring pattern in Morningstar's investor Q&A."
       },
@@ -6448,7 +7084,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-5eff6d2f",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "An unusually direct admission that the company is behind its own goals, paired with a defense of the countercyclical investment choice."
       },
@@ -6466,7 +7104,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-349783bb",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Candid characterisation of weakness in a specific PitchBook client segment, repeated language of 'vulnerable'."
       },
@@ -6484,7 +7124,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-a45517d6",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "A hedge on the previously touted 121% net renewal rate, admitting softening while attributing it to external conditions."
       },
@@ -6502,7 +7144,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-54ee59a3",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Self-characterisation as 'industry-leading' \u2014 a competitive claim stated without qualification."
       },
@@ -6520,7 +7164,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-ae669702",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Recurring positive framing of the LCD integration; 'pleased' appears repeatedly in the same answer alongside acknowledgment that it is 'early in this process'."
       },
@@ -6538,7 +7184,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-a324af0b",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "An unusually direct admission of product failure and methodology retreat, stated without hedging."
       },
@@ -6556,7 +7204,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-9c1d1b0c",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Rare concession that competitors moved first in climate solutions \u2014 a shift from Morningstar's usual framing as a leader in ESG."
       },
@@ -6574,7 +7224,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-7b1d8c9e",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "A hedge that softens a market-share decline immediately before management concedes the decline is real and competition-driven."
       },
@@ -6592,7 +7244,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-11b20b4f",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Characterises a growth-investment business as a margin-harvest candidate \u2014 a notable shift in how Sustainalytics is described."
       },
@@ -6610,7 +7264,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-6a27c27b",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "Explicit subordination of buybacks and M&A to deleveraging, tied to the rate environment."
       },
@@ -6628,7 +7284,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-7172fe0d",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "The phrase \"fair-weather market participants\" is unusually pointed language characterising a portion of PitchBook's client base."
       },
@@ -6646,7 +7304,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2023-eb455bcd",
       "field": "investor_qa",
+      "fiscal_year": 2023,
       "value": {
         "why_notable": "A recurring self-characterisation of trust as the core asset, here deployed in the cybersecurity context."
       },
@@ -6672,32 +7332,38 @@
         {
           "heading": "Failing to maintain and protect our brand, independence, and reputation may harm our business. Our reputation and business may also be harmed by allegations made about possible conflicts of interest, by other negative publicity or media reports, or by adverse outcomes in regulatory proceedings.",
           "heading_similarity": 100.0,
-          "body_similarity": 96.6
+          "body_similarity": 96.6,
+          "id": "RISK-FY2023-1a0d0803"
         },
         {
           "heading": "We could face significant reputational and financial consequences relating to cybersecurity and the protection of confidential information, including personal information about individuals.",
           "heading_similarity": 100.0,
-          "body_similarity": 92.4
+          "body_similarity": 92.4,
+          "id": "RISK-FY2023-1ea585c5"
         },
         {
           "heading": "Our future success depends on our ability to recruit, develop, and retain qualified employees.",
           "heading_similarity": 100.0,
-          "body_similarity": 91.0
+          "body_similarity": 91.0,
+          "id": "RISK-FY2023-d4c1f445"
         },
         {
           "heading": "The concentrated ownership position of Joe Mansueto could adversely affect our other shareholders.",
           "heading_similarity": 100.0,
-          "body_similarity": 98.6
+          "body_similarity": 98.6,
+          "id": "RISK-FY2023-76af9dd0"
         },
         {
           "heading": "Fluctuations in our operating results may negatively affect our stock price.",
           "heading_similarity": 100.0,
-          "body_similarity": 93.2
+          "body_similarity": 93.2,
+          "id": "RISK-FY2023-4d2428e7"
         },
         {
           "heading": "The future sale of shares of our common stock may negatively affect our stock price.",
           "heading_similarity": 100.0,
-          "body_similarity": 95.8
+          "body_similarity": 95.8,
+          "id": "RISK-FY2023-84e4f21b"
         }
       ],
       "reworded": [
@@ -6708,7 +7374,8 @@
           "body_similarity": 89.4,
           "changed": "heading and body",
           "category_now": "Risks Related to Our Business and Industry",
-          "category_prior": "Risks Related to Our Business and Industry"
+          "category_prior": "Risks Related to Our Business and Industry",
+          "id": "RISK-FY2023-4a705e42"
         },
         {
           "heading_now": "Prolonged volatility or downturns affecting the financial sector, global financial markets, and the global economy may impact our financial results.",
@@ -6717,7 +7384,8 @@
           "body_similarity": 93.4,
           "changed": "heading only",
           "category_now": "Risks Related to Our Business and Industry",
-          "category_prior": "Risks Related to Our Business and Industry"
+          "category_prior": "Risks Related to Our Business and Industry",
+          "id": "RISK-FY2023-03ffe0fe"
         },
         {
           "heading_now": "Our business, products and facilities are at risk of a number of material disruptive events, including an outage of our database, technology-based products and services or network facilities, which our operational risk management and business continuity programs and insurance coverage may not be adequate to address.",
@@ -6726,7 +7394,8 @@
           "body_similarity": 88.0,
           "changed": "body only",
           "category_now": "Risks Related to Our Information Technology and Security",
-          "category_prior": "Risks Related to Our Information Technology and Security"
+          "category_prior": "Risks Related to Our Information Technology and Security",
+          "id": "RISK-FY2023-4a4486e7"
         },
         {
           "heading_now": "We could face liability for failing to adequately protect or properly use the information and data we collect, store, use, create, and distribute or the reports and other documents we publish or that are produced by our software products.",
@@ -6735,7 +7404,8 @@
           "body_similarity": 82.0,
           "changed": "heading and body",
           "category_now": "Risks Related to Our Information Technology and Security",
-          "category_prior": "Risks Related to Our Information Technology and Security"
+          "category_prior": "Risks Related to Our Information Technology and Security",
+          "id": "RISK-FY2023-11355afc"
         },
         {
           "heading_now": "Failure to protect our intellectual property rights, or claims of intellectual property infringement against us, could harm our brand, our financial performance and our ability to compete effectively.",
@@ -6744,7 +7414,8 @@
           "body_similarity": 87.0,
           "changed": "heading and body",
           "category_now": "Risks Related to Our Information Technology and Security",
-          "category_prior": "Risks Related to Our Information Technology and Security"
+          "category_prior": "Risks Related to Our Information Technology and Security",
+          "id": "RISK-FY2023-cb321729"
         },
         {
           "heading_now": "Compliance failures, regulatory action, or changes in laws could adversely affect our business.",
@@ -6753,7 +7424,8 @@
           "body_similarity": 47.8,
           "changed": "heading and body",
           "category_now": "Risks Related to Legal and Regulatory Matters",
-          "category_prior": "Risks Related to Legal and Regulatory Matters"
+          "category_prior": "Risks Related to Legal and Regulatory Matters",
+          "id": "RISK-FY2023-0372b823"
         },
         {
           "heading_now": "Errors in our automated advisory tools may subject us to liability for any losses that result.",
@@ -6762,7 +7434,8 @@
           "body_similarity": 94.1,
           "changed": "heading only",
           "category_now": "Risks Related to Legal and Regulatory Matters",
-          "category_prior": "Risks Related to Legal and Regulatory Matters"
+          "category_prior": "Risks Related to Legal and Regulatory Matters",
+          "id": "RISK-FY2023-40914972"
         },
         {
           "heading_now": "Our business is complex and has experienced significant growth in recent years which could strain our resources and infrastructure, and if we are unable to effectively scale our operations and increase productivity, we may not be able to successfully implement our business plan.",
@@ -6771,7 +7444,8 @@
           "body_similarity": 89.9,
           "changed": "heading and body",
           "category_now": "Risks Related to Our Operations",
-          "category_prior": "Risks Related to Our Operations"
+          "category_prior": "Risks Related to Our Operations",
+          "id": "RISK-FY2023-605de33c"
         },
         {
           "heading_now": "Our acquisitions and investments in companies or technologies may not realize the expected business or financial benefits and acquisitions could prove difficult to integrate, disrupt our business, dilute stockholder value and adversely affect our operating results and the market value of our common stock.",
@@ -6780,7 +7454,8 @@
           "body_similarity": 94.7,
           "changed": "heading only",
           "category_now": "Risks Related to Our Operations",
-          "category_prior": "Risks Related to Our Operations"
+          "category_prior": "Risks Related to Our Operations",
+          "id": "RISK-FY2023-2a50c2d5"
         },
         {
           "heading_now": "Today\u2019s fragmented geopolitical, regulatory, and cultural world could adversely affect our ability to expand our product and service offerings.",
@@ -6789,7 +7464,8 @@
           "body_similarity": 97.7,
           "changed": "heading only",
           "category_now": "Risks Related to Our Operations",
-          "category_prior": "Risks Related to Our Operations"
+          "category_prior": "Risks Related to Our Operations",
+          "id": "RISK-FY2023-b8675972"
         },
         {
           "heading_now": "As a global taxpayer, we face challenges due to increasing complexities in accounting for taxes (e.g., base erosion, minimum taxes, and tax transparency), which are high priorities in jurisdictions in which we operate and could materially affect our tax obligations and effective tax rate.",
@@ -6798,7 +7474,8 @@
           "body_similarity": 84.0,
           "changed": "body only",
           "category_now": "Risks Related to Our Operations",
-          "category_prior": "Risks Related to Our Operations"
+          "category_prior": "Risks Related to Our Operations",
+          "id": "RISK-FY2023-97eb96b4"
         },
         {
           "heading_now": "Our indebtedness, could adversely affect our cash flows and financial flexibility. Our variable rate indebtedness could subject us to interest rate risk, which could cause our debt service obligations to increase significantly.",
@@ -6807,44 +7484,52 @@
           "body_similarity": 96.0,
           "changed": "heading only",
           "category_now": "Risks Related to Our Operations",
-          "category_prior": "Risks Related to Ownership of Our Common Stock"
+          "category_prior": "Risks Related to Ownership of Our Common Stock",
+          "id": "RISK-FY2023-116c1995"
         }
       ],
       "added": [
         {
           "heading": "The AI technologies we are incorporating into certain of our products and processes may present business, legal, and reputational risks.",
           "category": "Risks Related to Our Information Technology and Security",
-          "body_chars": 2753
+          "body_chars": 2753,
+          "id": "RISK-FY2023-e9a0507d"
         },
         {
           "heading": "Several of our businesses are highly regulated throughout the world and the regulatory environment is increasingly complicated and rapidly evolving.",
           "category": "Risks Related to Legal and Regulatory Matters",
-          "body_chars": 7701
+          "body_chars": 7701,
+          "id": "RISK-FY2023-bcf57ea1"
         },
         {
           "heading": "Environmental, social, and governance considerations could expose us to potential liabilities, increased costs (regulatory or otherwise), compliance failures and reputational harm.",
           "category": "Risks Related to Legal and Regulatory Matters",
-          "body_chars": 3893
+          "body_chars": 3893,
+          "id": "RISK-FY2023-be747368"
         },
         {
           "heading": "The goodwill of our business and other intangible assets from our acquisitions could be impaired as a result of business conditions in the future, requiring us to record substantial impairments that would impact our operating income.",
           "category": "Risks Related to Our Operations",
-          "body_chars": 795
+          "body_chars": 795,
+          "id": "RISK-FY2023-4c523c70"
         },
         {
           "heading": "Our revenues, expenses, assets and liabilities are subject to fluctuations in foreign currency exchange rate.",
           "category": "Risks Related to Our Operations",
-          "body_chars": 1350
+          "body_chars": 1350,
+          "id": "RISK-FY2023-b27d5f03"
         },
         {
           "heading": "We are dependent on third-party service providers in our operations.",
           "category": "Risks Related to Our Operations",
-          "body_chars": 909
+          "body_chars": 909,
+          "id": "RISK-FY2023-96781bb7"
         },
         {
           "heading": "We cannot guarantee we will pay dividends in the future or make any repurchases of our common stock under our repurchase program.",
           "category": "Risks Related to Ownership of Our Common Stock",
-          "body_chars": 1868
+          "body_chars": 1868,
+          "id": "RISK-FY2023-f9fc6683"
         }
       ],
       "removed": []

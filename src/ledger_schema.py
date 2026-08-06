@@ -36,11 +36,13 @@ check, which is worse than not having it.
 
 from __future__ import annotations
 
+import hashlib
+import json
 import re
 import unicodedata
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 # ---------------------------------------------------------------------------
 # Confidence
@@ -386,6 +388,144 @@ class InvestorQaFacts(BaseModel):
     notable_language: list[NotableLanguage]
 
 
+# ---------------------------------------------------------------------------
+# Fact identifiers
+# ---------------------------------------------------------------------------
+#
+# WHY FACTS NEED IDS
+# ------------------
+# Without one, the most specific thing an output can cite is
+# `(form, fiscal_year, accession)` — which identifies a FILING, not a fact. For an
+# 8-K carrying 40 investor-Q&A facts, that citation means "somewhere in this
+# document", and no automated check can tell whether the claim matches its source.
+# An id makes the citation exact, so verifying an output becomes a lookup rather
+# than a reading exercise. Same principle as `verify_quote`: measure traceability
+# instead of asserting it.
+#
+# WHAT MAKES A FACT THE SAME FACT
+# -------------------------------
+# The id is a hash of the claim, the evidence, and where the evidence lives:
+#
+#   IN   field, fiscal_year, value, source form/accession/section_key, quote
+#   OUT  confidence, confidence_reason, quote_verified, quote_check, filing_date
+#
+# The asymmetry is the whole design. JUDGMENTS ABOUT a fact do not change its
+# identity; the fact's CONTENT and EVIDENCE do.
+#
+# Concretely: if the `DEF14A_director_bios` boundaries are fixed later, 51 board
+# facts flip from `low` to `high` confidence. Were confidence in the hash, every
+# one of those ids would change and every citation to them in an already-written
+# brief would break — for a change that made those facts MORE trustworthy, not
+# different. Conversely a changed `quote` SHOULD mint a new id, because the
+# evidence moved and anything citing it needs re-checking.
+#
+# `filing_date` is excluded because it comes from the inventory rather than from
+# the fact: correcting a filing date should not churn the ids of facts that did
+# not change.
+#
+# `fiscal_year` is passed separately rather than read from `source` because a fact
+# whose quote could not be verified has NO source, and two such facts with
+# identical text in different years must not collide.
+
+ID_HEX = 8  # 32 bits. Collisions are checked for at build time, never assumed away.
+
+# Short prefixes so a citation is legible in prose and an obviously wrong one — a
+# QA id supporting a segment claim — is visible to a human reader, not just to the
+# checker. Redundant with the hash by design.
+FIELD_CODES: dict[str, str] = {
+    "strategic_priorities": "SP",
+    "segments": "SEG",
+    "headcount": "HC",
+    "leadership": "LEAD",
+    "board": "BRD",
+    "incentive_metrics": "INC",
+    "vote_results": "VOTE",
+    "events": "EVT",
+    "notable_language": "LANG",
+    "investor_qa": "QA",
+}
+
+
+def _digest(payload: dict) -> str:
+    """Stable short hash of a payload.
+
+    `sort_keys=True` is what makes it stable: without it, two runs that built the
+    same dict in a different insertion order would produce different ids, and the
+    ledger would stop being idempotent in a way that is very hard to see.
+    """
+    blob = json.dumps(payload, sort_keys=True, ensure_ascii=False)
+    return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:ID_HEX]
+
+
+def fact_id(field: str, fiscal_year: int, value: dict,
+            source: FactSource | None, quote: str) -> str:
+    """The citable id for one ledger fact, e.g. `EVT-FY2023-3f9c1d2a`."""
+    return "{}-FY{}-{}".format(
+        FIELD_CODES.get(field, field.upper()[:4]),
+        fiscal_year,
+        _digest({
+            "field": field,
+            "fiscal_year": fiscal_year,
+            "value": value,
+            "form": source.form if source else None,
+            "accession": source.accession if source else None,
+            "section_key": source.section_key if source else None,
+            "quote": quote,
+        }),
+    )
+
+
+# Keys on a risk delta that MEASURE it rather than identify it. Everything else on
+# the item is identity and enters the hash.
+#
+# Named as an exclusion list rather than naming the identity keys, because the
+# three delta categories have three different shapes: `added`/`removed` carry
+# `heading` + `category`, `unchanged` carries `heading`, and `reworded` carries
+# `heading_now` / `heading_prior` / `category_now` / `category_prior`. Enumerating
+# identity keys means missing one — which is exactly the bug this list replaced,
+# where naming `heading` alone gave every reworded delta a `None` heading and 46
+# of them the same id.
+#
+# The exclusion direction is also the safer failure. A new MEASUREMENT key that
+# nobody adds here makes ids churn on a re-run: annoying and immediately visible. A
+# new IDENTITY key missing from an include-list makes two different deltas collide:
+# silent, and the thing citations cannot survive.
+RISK_DELTA_MEASUREMENT_KEYS = frozenset({
+    "id",                  # the id itself, obviously
+    "heading_similarity",  # rapidfuzz scores — a version bump must not renumber
+    "body_similarity",     #   every citation in an already-written output
+    "body_chars",
+    "changed",             # derived from the two similarity scores above
+})
+
+
+def risk_delta_id(fiscal_year: int, category: str, item: dict, source: dict) -> str:
+    """The citable id for one risk-factor delta, e.g. `RISK-FY2024-b1c07e4f`.
+
+    Risk deltas are not `LedgerFact`s — they come from the deterministic diff in
+    src/risk_diff.py and carry no quote. They still need ids, because an output
+    will say "the cybersecurity risk factor was reworded in FY2024" and a checker
+    that cannot resolve that claim leaves a whole category of statement
+    unverifiable. One unverifiable category is enough to make the check
+    decorative.
+
+    Identity is the year, the delta category, the two filings compared, and every
+    non-measurement key on the item itself.
+    """
+    return "RISK-FY{}-{}".format(
+        fiscal_year,
+        _digest({
+            "kind": "risk_delta",
+            "fiscal_year": fiscal_year,
+            "delta_category": category,
+            "item": {k: v for k, v in item.items()
+                     if k not in RISK_DELTA_MEASUREMENT_KEYS},
+            "accession": (source or {}).get("accession"),
+            "prior_accession": (source or {}).get("prior_accession"),
+        }),
+    )
+
+
 class FactSource(BaseModel):
     """Where a fact came from. Carried on every fact, per CLAUDE.md Traceability.
 
@@ -402,7 +542,13 @@ class FactSource(BaseModel):
 
 class LedgerFact(BaseModel):
     """One fact in the ledger: the payload, its source, and how far to trust it."""
+    # Assigned by the validator below, never by the caller. See `fact_id`.
+    id: str = ""
     field: str
+    # A fact's own year, carried here rather than read from `source`, because the
+    # three facts whose quotes could not be verified have no source at all — and so
+    # had no way to say which year they belonged to.
+    fiscal_year: int
     value: dict
     source: FactSource | None = None
     confidence: Confidence
@@ -410,6 +556,20 @@ class LedgerFact(BaseModel):
     quote: str
     quote_verified: bool
     quote_check: str
+
+    @model_validator(mode="after")
+    def _assign_id(self) -> "LedgerFact":
+        """Derive the id from the fact itself.
+
+        Done here rather than at each call site so it cannot be forgotten: a
+        `LedgerFact` that exists has an id, structurally. An id supplied by the
+        caller is preserved, which is what lets a ledger be re-read from disk
+        without every id being silently recomputed (and possibly changed) on load.
+        """
+        if not self.id:
+            self.id = fact_id(self.field, self.fiscal_year, self.value,
+                              self.source, self.quote)
+        return self
 
 
 class YearLedger(BaseModel):

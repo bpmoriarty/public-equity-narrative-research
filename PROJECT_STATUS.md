@@ -22,7 +22,7 @@ they anchor a narrative claim.
 
 **Last Session:** 2026-08-05
 
-**Overall Health:** 🟢 Working — milestones 1–4 complete; 1,329 facts. Milestone 5 is scoped and its three design decisions are made; build not started
+**Overall Health:** 🟢 Working — milestones 1–4 complete; 1,329 facts, all individually citable. Milestone 5 in progress: 10a done, 10b next
 
 ### What's Working
 
@@ -74,6 +74,12 @@ they anchor a narrative claim.
   54 filings, in its own `investor_qa` field. MORN publishes written answers to
   investor questions roughly monthly, and nothing else in the corpus carries
   management's voice on strategy at that frequency
+- **Every fact and risk delta carries a stable, citable `id`** —
+  `EVT-FY2021-23afc21f`, `QA-FY2023-67d4a8e7`. 1,428 of them, checked unique at
+  build time, reproducible from the fact's own content. This is what makes an
+  output's citations checkable instead of merely present: `(form, FY, accession)`
+  identifies a filing, and for an 8-K holding 40 Q&A facts that means "somewhere in
+  this document"
 - **The cache now verifies its input** (`--refresh-stale`). "A completed task is
   never re-run" is only safe while its input is unchanged, and a filename cannot
   know what it was computed from. Each cached result stores its `source_chars`,
@@ -159,11 +165,27 @@ Next is **milestone 5, the three outputs** in `output/`. Everything they need is
 in `data/ledger/`, and SPEC.md §3 is explicit that they derive from the ledger,
 never from raw sections.
 
-### Milestone 5 is scoped. Build not started — resume here.
+### Milestone 5 in progress. 10a done; 10b is next.
 
-Scoped 2026-08-05 at the user's request; the user then paused before any code was
-written. The three design questions are **answered** (see Recent Decisions) and the
-sizing below is measured, not estimated, so none of it needs re-deriving.
+Scoped 2026-08-05, three design questions answered (see Recent Decisions), sizing
+below measured rather than estimated.
+
+**10a — fact ids — is done.** 1,428 ids (1,329 facts + 99 risk deltas), unique,
+reproducible, and verified additive: strip the two new keys from the rebuilt ledger
+and it is byte-identical to the pre-change snapshot in all five years. Rebuilds are
+still byte-identical to each other. `tests/test_fact_id.py` locks the design in.
+
+Two things worth knowing before 10b:
+
+- **The uniqueness check caught a real collision on its first run.** 46 reworded
+  risk deltas shared ids because `risk_delta_id` read `item["heading"]`, which
+  exists on `added`/`removed`/`unchanged` deltas but NOT on `reworded` ones — those
+  carry `heading_now`/`heading_prior`. All 46 hashed a `None` heading. The fix
+  inverted the logic: hash every key on the item EXCEPT the named measurements, so
+  a forgotten key causes visible churn rather than a silent collision
+- **`LedgerFact` gained `fiscal_year`.** The three facts whose quotes could not be
+  verified have no `source`, so until now they had no way to say which year they
+  belonged to — a latent gap the id work exposed rather than created
 
 **Payload sizes, from `count_tokens` rather than chars/4:**
 
@@ -270,6 +292,10 @@ across 34 calls). Milestones 1–3 cost nothing.
 | 2026-08-04 | `pdfminer.six`, **not** `pypdf`, for PDF text | pypdf coerces unmapped glyphs toward whitespace, turning every digit in the FY2022 letter into a space — "fell 15%" became "fell". pdfminer preserves them as `(cid:N)`. Prefer the library that preserves what it can't interpret |
 | 2026-08-04 | Glyph offset **derived**, not hardcoded | Taken from the space glyph's frequency and validated against English sentinel words, so the decoder isn't silently wrong on a different company's font |
 | 2026-08-04 | The dual em-dash/minus glyph maps to ASCII `-` | One glyph serves both. A hyphen for an em dash is cosmetic; a lost minus sign inverts a fact |
+| 2026-08-06 | Fact ids hash **content and evidence, never judgments** | The id covers field, fiscal_year, value, source form/accession/section_key and quote. It excludes confidence, confidence_reason, quote_verified, quote_check and filing_date. If the director-bio boundaries are fixed later, 51 board facts flip `low` → `high`; were confidence in the hash, every citation to them in an already-written brief would break — for a change that made them *more* trustworthy. A changed quote, by contrast, *should* mint a new id, because the evidence moved |
+| 2026-08-06 | Risk deltas get ids too, hashed by **exclusion** not inclusion | An output will say "the cybersecurity risk factor was reworded in FY2024", and a checker that cannot resolve that leaves a whole category of claim unverifiable — enough to make the check decorative. Naming the identity keys is what caused the 46-way collision, because the three delta categories have three different shapes. Naming the *measurements* to exclude fails toward visible churn instead of silent collision |
+| 2026-08-06 | Ids are checked for collisions at build time, **fatally**, across every year on disk | Not just the years rebuilt — a partial `--fy 2023` run still audits all 1,428. Two facts sharing an id makes a citation ambiguous, and that is exactly the failure the id exists to prevent. It fired on the first run, which is the only reason the reworded-delta bug was found in minutes rather than in a written output |
+| 2026-08-06 | Example ids in generated documents must be **real** | The first draft of the ledger-report header used a plausible invented id, and the DATA.md draft did it again. A citation-shaped string that resolves to nothing has no place in the document explaining how citations work. Both now carry ids pulled from the build |
 | 2026-08-05 | **Reg FD Q&A carries full weight in the outputs, labelled** | User decision, against the recommendation of corroboration-only. It is 64% of the ledger and contains management's clearest strategy statements — material the 10-K never addresses. The cost is that the brief's centre of gravity sits on unaudited, unprompted disclosure, so the Reg FD label is load-bearing and must be enforced by the output checker rather than left to the prose |
 | 2026-08-05 | Undated events get a **separate "period unclear" block**, not a guessed date | User decision. 26 of 74 events carry no date. Placing them at their filing's date would put them in the wrong place on the timeline — a February 10-K reports the prior year — and dropping them would silently lose a third of the events. A second table loses nothing and invents nothing |
 | 2026-08-05 | Facts get **content-hashed IDs** and outputs get a citation checker | User decision. ~45 min of build, $0 in API cost. Every citation resolves to a specific fact or the build fails, which turns three of the five output constraints from trusted into mechanical. Same principle as `verify_quote`: measure traceability, do not assert it |
@@ -325,7 +351,7 @@ across 34 calls). Milestones 1–3 cost nothing.
 10. [ ] **Milestone 5 — Three outputs** to `output/`, derived only from the
         ledger. **Scoped and decided; build not started.** See "Milestone 5 is
         scoped" above for measured sizes, cost and the six findings. In order:
-    - a. [ ] Content-hashed fact IDs in `build_ledger.py`
+    - a. [x] Content-hashed fact ids — 1,428, unique, tested, additive
     - b. [ ] `src/build_pack.py` — the 219K-token citable pack (deterministic)
     - c. [ ] Event dedup/merge + the "period unclear" split (deterministic)
     - d. [ ] `timeline.md` first — cheapest to check, surfaces dedup problems
@@ -366,6 +392,7 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `data/triage/triage-8k.json` | Every triage decision with its evidence. Committed — it is the record of what was excluded |
 | `data/triage/triage-report.md` | The auditable log, including the full drop list |
 | `tests/test_verify_quote.py` | Proves the grounding check can still reject. Run it after any change to `canon` |
+| `tests/test_fact_id.py` | Proves ids are stable against judgments and sensitive to content. Run it after any change to `fact_id` or `risk_delta_id` |
 | `data/discovery/inventory.json` | **Machine source of truth** for what's in scope. Later stages read this, not config |
 | `data/discovery/discovery-report.md` | The human-readable inventory and gap analysis |
 | `data/raw/FY*/…` | Cached documents by fiscal year and form. Never delete — rebuilding means re-hitting EDGAR for all 201 |
@@ -477,6 +504,34 @@ across 34 calls). Milestones 1–3 cost nothing.
   Decisions and broken into ordered sub-steps under Next Steps item 10
 - Nothing was built and nothing was spent. Next: begin milestone 5 item 10a when
   the user is ready
+
+### 2026-08-06 — milestone 5, item 10a: fact ids
+
+- **1,428 stable ids** (1,329 facts + 99 risk deltas), so an output can cite one
+  fact rather than a whole filing. `EVT-FY2021-23afc21f`, `QA-FY2023-67d4a8e7`
+- **The design decision, and the reason it is a test:** the id hashes the claim,
+  the evidence and the source, and deliberately excludes confidence, the
+  verification result and `filing_date`. Judgments about a fact do not change its
+  identity; the fact's content and evidence do. Adding confidence to the hash would
+  break nothing visibly today — it would surface only when fixing the director-bio
+  boundaries flipped 51 board facts and silently invalidated every citation to them.
+  `tests/test_fact_id.py` asserts the insensitivity so a future change cannot lose it
+- **The build-time uniqueness check earned itself on its first run.** 46 reworded
+  risk deltas collided: `risk_delta_id` read `item["heading"]`, which `reworded`
+  deltas do not have — they carry `heading_now`/`heading_prior`. I had sampled the
+  `unchanged` category and generalised from the wrong shape. Fixed by hashing every
+  key except the named measurements, which fails toward churn rather than collision
+- Also fixed the collision *message*, which printed "None" for the 46 items it
+  caught — a diagnostic that names nothing is barely better than no message
+- **Verified additive, not just working:** strip the two new keys from the rebuilt
+  ledger and all five years are byte-identical to the pre-change snapshot. Rebuilds
+  remain byte-identical to each other, and a partial `--fy 2023` run still audits
+  all 1,428 ids
+- `LedgerFact` gained `fiscal_year`: the three unverified facts have no `source`, so
+  until now they could not say which year they belonged to
+- Fixed a contradiction in DATA.md: it still claimed "no fabricated or paraphrased
+  quote has yet been found" fifty lines below the paraphrase found last session
+- Next: 10b, `src/build_pack.py` — the 219K-token citable pack
 
 ### 2026-08-05 (continued) — 8-K triage
 

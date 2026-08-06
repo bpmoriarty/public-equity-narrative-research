@@ -406,9 +406,64 @@ and it did. For the same reason the trimmer marks its one interior deletion with
 an explicit `[... omitted ...]` marker, so a quote written across the seam fails
 verification instead of silently reading as contiguous text.
 
-All four of those failures were false negatives. **No fabricated or paraphrased
-quote has yet been found in any extraction run** — which is not the same as saying
-none will be, and is the reason the check stays.
+All four of those failures were false negatives — the check rejecting a good
+quote, not catching a bad one. **The check has caught exactly one real
+paraphrase** (the FY2022 case above) and **no fabricated quote** across 1,329
+facts. One in 1,329 is not a reason to relax: it is the rate at which this failure
+mode occurs when nothing is looking for it, and it took two changed words to turn
+a hedged statement into "a direct admission."
+
+### Fact identifiers — what an output is allowed to cite
+
+Every fact and every risk delta carries a stable `id`. **1,428 ids on the current
+run** (1,329 facts, 99 risk deltas), checked unique at build time. Two real ones,
+both resolvable in `data/ledger/`: `EVT-FY2021-23afc21f` (the 364-day revolving
+credit facility that expired unrenewed) and `QA-FY2023-67d4a8e7` (management on the
+shift to cloud delivery for Data, Direct and Advisor Workstation).
+
+This exists because `(form, fiscal_year, accession)` identifies a *filing*, not a
+fact. For an 8-K carrying 40 investor-Q&A facts, a citation at that granularity
+means "somewhere in this document" — which cannot be checked mechanically, and so
+returns traceability to being a promise rather than a test.
+
+The id is a truncated SHA-256 of the fact's claim, its evidence, and where the
+evidence lives:
+
+| In the hash | Deliberately out |
+|---|---|
+| `field`, `fiscal_year`, `value`, `quote` | `confidence`, `confidence_reason` |
+| source `form`, `accession`, `section_key` | `quote_verified`, `quote_check`, `filing_date` |
+
+**The asymmetry is the design: judgments about a fact do not change its identity;
+the fact's content and evidence do.** If the `DEF14A_director_bios` boundaries are
+fixed later (limitation 9), 51 board facts flip from `low` to `high`. Were
+confidence in the hash, every one of those ids would change and every citation to
+them in an already-written output would break — for a change that made those facts
+*more* trustworthy, not different. A changed `quote`, by contrast, *should* mint a
+new id, because the evidence moved and anything citing it needs re-checking.
+`filing_date` is excluded because it comes from the inventory rather than from the
+fact.
+
+Two properties are enforced rather than assumed:
+
+- **Uniqueness is checked, not trusted.** `build_ledger.py` audits every id on
+  disk — including years not rebuilt in a partial run — and exits fatally on a
+  collision rather than letting two facts share a citation. This fired on its first
+  run: 46 reworded risk deltas collided because the id read `item["heading"]`,
+  which exists on `added`/`removed` deltas but not on `reworded` ones, so all of
+  them hashed a `None` heading. The delta id now hashes every non-measurement key
+  on the item, an exclusion list rather than an include list, because a forgotten
+  measurement key only causes visible churn while a forgotten identity key causes
+  a silent collision.
+- **Reproducibility is tested.** `uv run python tests/test_fact_id.py` recomputes
+  all 1,329 ids from the facts' own stored content and asserts they match, then
+  asserts the id moves for a changed claim, quote, section, filing or year — and
+  does *not* move when confidence is downgraded or a quote is re-verified.
+
+Similarity scores on risk deltas (`heading_similarity`, `body_similarity`,
+`body_chars`, `changed`) are excluded for the same reason as confidence: they are
+measurements about the delta, and a `rapidfuzz` version bump that moves a score by
+0.1 must not renumber every citation.
 
 ### Confidence
 

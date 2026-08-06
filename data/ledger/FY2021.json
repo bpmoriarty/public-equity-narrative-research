@@ -96,7 +96,9 @@
   ],
   "strategic_priorities": [
     {
+      "id": "SP-FY2021-471e22f5",
       "field": "strategic_priorities",
+      "fiscal_year": 2021,
       "value": {
         "text": "Our strategy is to deliver insights and experiences essential to investing, with a keen focus on innovation across data, research, product, and delivery"
       },
@@ -114,7 +116,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2021-1ea36587",
       "field": "strategic_priorities",
+      "fiscal_year": 2021,
       "value": {
         "text": "Deliver differentiated insights across asset classes to public and private market investors"
       },
@@ -132,7 +136,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2021-bcbe7c18",
       "field": "strategic_priorities",
+      "fiscal_year": 2021,
       "value": {
         "text": "Establish a leading ESG position across each business"
       },
@@ -150,7 +156,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2021-018bc28a",
       "field": "strategic_priorities",
+      "fiscal_year": 2021,
       "value": {
         "text": "Drive operational excellence and scalability to support growth targets"
       },
@@ -168,7 +176,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2021-45276d8d",
       "field": "strategic_priorities",
+      "fiscal_year": 2021,
       "value": {
         "text": "Build an inclusive culture that drives exceptional talent engagement and development"
       },
@@ -186,7 +196,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2021-8d1b7cc4",
       "field": "strategic_priorities",
+      "fiscal_year": 2021,
       "value": {
         "text": "Expand investment and credit research capabilities and enhance existing products and services (research and development)"
       },
@@ -204,7 +216,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2021-489cc48b",
       "field": "strategic_priorities",
+      "fiscal_year": 2021,
       "value": {
         "text": "Build a comprehensive Wealth Management platform leveraging capabilities from Morningstar Office, ByAllAccounts, and Morningstar.com, including launching direct indexing through the TAMP"
       },
@@ -222,7 +236,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2021-bfd4ab64",
       "field": "strategic_priorities",
+      "fiscal_year": 2021,
       "value": {
         "text": "Expand wealth management platform capabilities internationally via the agreed acquisition of Praemium's U.K. and international business"
       },
@@ -240,7 +256,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SP-FY2021-1b10d069",
       "field": "strategic_priorities",
+      "fiscal_year": 2021,
       "value": {
         "text": "Longer term, MCIA plans to offer modular credit information products that leverage our credit expertise and embed in customer workflows"
       },
@@ -260,7 +278,9 @@
   ],
   "segments": [
     {
+      "id": "SEG-FY2021-57e41529",
       "field": "segments",
+      "fiscal_year": 2021,
       "value": {
         "name": "Morningstar Credit Information and Analytics (MCIA)",
         "note": "Document states it was launched in 2021 as a new credit solution provider separate from DBRS Morningstar"
@@ -279,7 +299,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2021-f7f2b9ad",
       "field": "segments",
+      "fiscal_year": 2021,
       "value": {
         "name": "Custom Models/CIT",
         "note": "Prior-period assets under management and advisement revised to reclassify CIT assets previously reported in Institutional Asset Management to Custom Models/CIT."
@@ -298,7 +320,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "SEG-FY2021-f3e45f62",
       "field": "segments",
+      "fiscal_year": 2021,
       "value": {
         "name": "Morningstar Advisor Workstation",
         "note": "Client count metric revised to reflect updated enterprise client reporting to include clients in Canada."
@@ -319,7 +343,9 @@
   ],
   "headcount": [
     {
+      "id": "HC-FY2021-89b3c8ce",
       "field": "headcount",
+      "fiscal_year": 2021,
       "value": {
         "value": 9556,
         "as_stated": "9,556 permanent, full-time employees around the world as of December 31, 2021"
@@ -341,7 +367,9 @@
   "leadership": [],
   "board": [
     {
+      "id": "BRD-FY2021-e7589d5c",
       "field": "board",
+      "fiscal_year": 2021,
       "value": {
         "name": "Joe Mansueto",
         "role": "chairman of the Board and executive chairman of the Company",
@@ -362,7 +390,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2021-abd94bd9",
       "field": "board",
+      "fiscal_year": 2021,
       "value": {
         "name": "Kunal Kapoor",
         "role": "chief executive officer",
@@ -383,7 +413,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2021-16e3932f",
       "field": "board",
+      "fiscal_year": 2021,
       "value": {
         "name": "Robin Diamonte",
         "role": null,
@@ -407,7 +439,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2021-d81330ec",
       "field": "board",
+      "fiscal_year": 2021,
       "value": {
         "name": "Cheryl Francis",
         "role": "Chair of the Audit Committee",
@@ -431,7 +465,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2021-6bee29c7",
       "field": "board",
+      "fiscal_year": 2021,
       "value": {
         "name": "Steve Joynt",
         "role": null,
@@ -452,7 +488,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2021-b7a62242",
       "field": "board",
+      "fiscal_year": 2021,
       "value": {
         "name": "Steve Kaplan",
         "role": "Chair of the Compensation Committee",
@@ -476,7 +514,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2021-a0a5f28c",
       "field": "board",
+      "fiscal_year": 2021,
       "value": {
         "name": "Gail Landis",
         "role": null,
@@ -500,7 +540,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2021-9b476cbc",
       "field": "board",
+      "fiscal_year": 2021,
       "value": {
         "name": "Bill Lyons",
         "role": "Chair of the Nominating and Corporate Governance Committee",
@@ -524,7 +566,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2021-45b56f4f",
       "field": "board",
+      "fiscal_year": 2021,
       "value": {
         "name": "Doniel Sutton",
         "role": null,
@@ -548,7 +592,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "BRD-FY2021-382907ee",
       "field": "board",
+      "fiscal_year": 2021,
       "value": {
         "name": "Caroline Tsay",
         "role": null,
@@ -574,7 +620,9 @@
   ],
   "incentive_metrics": [
     {
+      "id": "INC-FY2021-0a208533",
       "field": "incentive_metrics",
+      "fiscal_year": 2021,
       "value": {
         "metric": "Adjusted Revenue",
         "plan": "Corporate Incentive Plan (annual cash incentive)",
@@ -595,7 +643,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2021-10693dc6",
       "field": "incentive_metrics",
+      "fiscal_year": 2021,
       "value": {
         "metric": "Adjusted EBITDA",
         "plan": "Corporate Incentive Plan (annual cash incentive)",
@@ -616,7 +666,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2021-92a76605",
       "field": "incentive_metrics",
+      "fiscal_year": 2021,
       "value": {
         "metric": "Total Shareholder Return (absolute, three-year)",
         "plan": "Market Stock Unit (MSU) plan \u2014 2021 grants",
@@ -637,7 +689,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2021-f0c49e76",
       "field": "incentive_metrics",
+      "fiscal_year": 2021,
       "value": {
         "metric": "Performance kicker (actual performance results other than TSR, quantitative and/or qualitative, determined by the Compensation Committee)",
         "plan": "Market Stock Unit (MSU) plan \u2014 2021 grants",
@@ -658,7 +712,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2021-0271a21f",
       "field": "incentive_metrics",
+      "fiscal_year": 2021,
       "value": {
         "metric": "Individual performance adjustment applied to funded target bonus",
         "plan": "Corporate Incentive Plan (annual cash incentive)",
@@ -679,7 +735,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2021-747a36e0",
       "field": "incentive_metrics",
+      "fiscal_year": 2021,
       "value": {
         "metric": "Total shareholder return over three-year performance period (2018 MSU grants, vested 2021)",
         "plan": "Market Stock Unit plan \u2014 May and November 2018 grants",
@@ -700,7 +758,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "INC-FY2021-397f6c18",
       "field": "incentive_metrics",
+      "fiscal_year": 2021,
       "value": {
         "metric": "Maximum aggregate MSU payout range (TSR plus performance kicker)",
         "plan": "2021 Plan market stock units",
@@ -723,7 +783,9 @@
   ],
   "vote_results": [
     {
+      "id": "VOTE-FY2021-f86f62d0",
       "field": "vote_results",
+      "fiscal_year": 2021,
       "value": {
         "matter": "Election of director Joe Mansueto",
         "votes_for": 32857397,
@@ -746,7 +808,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2021-72a4367b",
       "field": "vote_results",
+      "fiscal_year": 2021,
       "value": {
         "matter": "Election of director Kunal Kapoor",
         "votes_for": 33045152,
@@ -769,7 +833,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2021-8b2a5829",
       "field": "vote_results",
+      "fiscal_year": 2021,
       "value": {
         "matter": "Election of director Robin Diamonte",
         "votes_for": 26352609,
@@ -792,7 +858,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2021-fc478242",
       "field": "vote_results",
+      "fiscal_year": 2021,
       "value": {
         "matter": "Election of director Cheryl Francis",
         "votes_for": 25376211,
@@ -815,7 +883,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2021-56d75bc7",
       "field": "vote_results",
+      "fiscal_year": 2021,
       "value": {
         "matter": "Election of director Steve Joynt",
         "votes_for": 33001535,
@@ -838,7 +908,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2021-11f22845",
       "field": "vote_results",
+      "fiscal_year": 2021,
       "value": {
         "matter": "Election of director Steve Kaplan",
         "votes_for": 32716360,
@@ -861,7 +933,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2021-dfbf0d93",
       "field": "vote_results",
+      "fiscal_year": 2021,
       "value": {
         "matter": "Election of director Gail Landis",
         "votes_for": 26385491,
@@ -884,7 +958,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2021-b713d94f",
       "field": "vote_results",
+      "fiscal_year": 2021,
       "value": {
         "matter": "Election of director Bill Lyons",
         "votes_for": 31462508,
@@ -907,7 +983,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2021-2dbf0d07",
       "field": "vote_results",
+      "fiscal_year": 2021,
       "value": {
         "matter": "Election of director Doniel Sutton",
         "votes_for": 26336003,
@@ -930,7 +1008,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2021-1c02382c",
       "field": "vote_results",
+      "fiscal_year": 2021,
       "value": {
         "matter": "Election of director Caroline Tsay",
         "votes_for": 26351760,
@@ -953,7 +1033,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2021-ded0d9e1",
       "field": "vote_results",
+      "fiscal_year": 2021,
       "value": {
         "matter": "Advisory vote on Morningstar's executive compensation",
         "votes_for": 32732639,
@@ -976,7 +1058,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "VOTE-FY2021-bcb8b17f",
       "field": "vote_results",
+      "fiscal_year": 2021,
       "value": {
         "matter": "Ratification of the appointment of KPMG LLP as Morningstar's independent registered public accounting firm for 2022",
         "votes_for": 33894817,
@@ -1001,7 +1085,9 @@
   ],
   "events": [
     {
+      "id": "EVT-FY2021-23afc21f",
       "field": "events",
+      "fiscal_year": 2021,
       "value": {
         "type": "financing",
         "description": "364-Day Revolving Credit Facility entered June 30, 2020 expired June 29, 2021 and the company chose not to renew it.",
@@ -1021,7 +1107,9 @@
       "quote_check": "verbatim after dropping 2 trailing character(s) (99.2% exact) \u2014 generation artifact, not a paraphrase"
     },
     {
+      "id": "EVT-FY2021-d58b92a3",
       "field": "events",
+      "fiscal_year": 2021,
       "value": {
         "type": "financing",
         "description": "Issuance and sale of $350.0 million aggregate principal amount of 2.32% senior notes due 2030 in a private placement; proceeds primarily used to pay off a portion of outstanding Credit Agreement debt.",
@@ -1041,7 +1129,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2021-65ebc07e",
       "field": "events",
+      "fiscal_year": 2021,
       "value": {
         "type": "financing",
         "description": "Board approved a new $400.0 million share repurchase program effective January 1, 2021, expiring December 31, 2023; only 4,900 shares for $1.3 million repurchased as of year end.",
@@ -1061,7 +1151,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2021-bda4071d",
       "field": "events",
+      "fiscal_year": 2021,
       "value": {
         "type": "financing",
         "description": "Senior credit agreement providing a five-year multi-currency facility of up to $750.0 million; $11.0 million outstanding on the term facility at December 31, 2021.",
@@ -1081,7 +1173,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2021-53206fa1",
       "field": "events",
+      "fiscal_year": 2021,
       "value": {
         "type": "acquisition",
         "description": "Purchase of the remaining interest in Sustainalytics in July 2020, generating a holding gain on the previously held equity interest of $50.9 million recognized in 2020.",
@@ -1101,7 +1195,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2021-d5ced0c0",
       "field": "events",
+      "fiscal_year": 2021,
       "value": {
         "type": "acquisition",
         "description": "Acquisition of Moorgate Benchmarks, whose entities are permissioned as U.K. and EU benchmark administrators.",
@@ -1121,7 +1217,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2021-db4a1974",
       "field": "events",
+      "fiscal_year": 2021,
       "value": {
         "type": "divestiture",
         "description": "Sale of the company's equity ownership in two equity method investments during the fourth quarter of 2020.",
@@ -1141,7 +1239,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2021-03624f99",
       "field": "events",
+      "fiscal_year": 2021,
       "value": {
         "type": "other",
         "description": "Company states it had no divestitures in 2021, 2020, or 2019.",
@@ -1161,7 +1261,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2021-5a723e00",
       "field": "events",
+      "fiscal_year": 2021,
       "value": {
         "type": "guidance_change",
         "description": "Company expects to make regular quarterly dividend payments of 36 cents per share in 2022, subject to board approval.",
@@ -1181,7 +1283,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2021-e3bfcae6",
       "field": "events",
+      "fiscal_year": 2021,
       "value": {
         "type": "other",
         "description": "Sustainalytics revenue began to be included in the organic revenue calculation in Q3 2021, so 2021 organic revenue includes only six months of Sustainalytics.",
@@ -1201,7 +1305,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2021-3a73baa8",
       "field": "events",
+      "fiscal_year": 2021,
       "value": {
         "type": "other",
         "description": "Shareholders approved the Morningstar, Inc. Amended and Restated 2011 Stock Incentive Plan at the Annual Shareholders' Meeting held May 14, 2021, covering a total of 4,126,042 shares.",
@@ -1221,7 +1327,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2021-4ba715d3",
       "field": "events",
+      "fiscal_year": 2021,
       "value": {
         "type": "other",
         "description": "All ten director nominees listed in the proxy statement were elected at the 2021 Annual Shareholders' Meeting.",
@@ -1241,7 +1349,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2021-3941a4dd",
       "field": "events",
+      "fiscal_year": 2021,
       "value": {
         "type": "other",
         "description": "Ratification of KPMG LLP as independent registered public accounting firm for 2021.",
@@ -1261,7 +1371,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2021-bdf3351a",
       "field": "events",
+      "fiscal_year": 2021,
       "value": {
         "type": "other",
         "description": "A shareholder proposal requesting a Board report on risks associated with economic activism against Israel alleged in Morningstar's business lines was not approved; it was presented only at the meeting and not submitted under Rule 14a-8.",
@@ -1281,7 +1393,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "EVT-FY2021-1dc84bf0",
       "field": "events",
+      "fiscal_year": 2021,
       "value": {
         "type": "other",
         "description": "Advisory vote approving Morningstar's executive compensation.",
@@ -1303,7 +1417,9 @@
   ],
   "notable_language": [
     {
+      "id": "LANG-FY2021-f24fa9c3",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Recurring, unusually explicit statement of Morningstar's no-guidance philosophy, framing management incentives directly."
       },
@@ -1321,7 +1437,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2021-f2312f38",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Direct admission of wage inflation and employee turnover pressure affecting the company, new emphasis relative to prior pandemic disclosure."
       },
@@ -1339,7 +1457,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2021-d431713e",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Hedged COVID framing paired with an explicit claim of no significant revenue impact \u2014 a softening from earlier pandemic uncertainty language."
       },
@@ -1357,7 +1477,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2021-ab6eddd1",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Acknowledges client losses in Investment Management, an admission embedded in otherwise positive growth commentary."
       },
@@ -1375,7 +1497,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2021-20438fb0",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Unusually direct admission that the company's own risk of inadvertent regulatory noncompliance has risen."
       },
@@ -1393,7 +1517,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2021-d362a303",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "New-for-the-year topic; a plain statement of limited impact with a forward hedge on IT infrastructure."
       },
@@ -1411,7 +1537,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2021-b443c13f",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Explicit explanation of the reversal of the COVID-era weighting change back to the pre-pandemic mix, described as 'the optimal mix'."
       },
@@ -1429,7 +1557,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2021-ff76be28",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Justifies a doubling of upside leverage purely by reference to 'market practices'."
       },
@@ -1447,7 +1577,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2021-67f1ff66",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Recurring philosophy statement reserving discretion while claiming formulaic alignment."
       },
@@ -1465,7 +1597,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2021-1912cc7c",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Explains replacement of an objective revenue metric with a committee-determined discretionary kicker, still attributed to the pandemic in 2021."
       },
@@ -1483,7 +1617,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2021-e0db34b2",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Long-recurring rationale for the Executive Chairman's nominal pay, framed as his own request."
       },
@@ -1501,7 +1637,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2021-47e0e383",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Delayed COVID-era increases restored with an explicit below-median peer positioning claim as justification."
       },
@@ -1519,7 +1657,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2021-4d959fde",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Pre-emptive framing of the year-over-year decline in reported CEO pay."
       },
@@ -1537,7 +1677,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2021-f8bc95a7",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Describes an extra equity award layered onto the bonus formula for above-target individual ratings."
       },
@@ -1555,7 +1697,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2021-3fefcbbb",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Unusually direct admission of a stock ownership compliance failure and a granted waiver."
       },
@@ -1573,7 +1717,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2021-cf48e888",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Uses the 97% say-on-pay result to justify making no changes."
       },
@@ -1591,7 +1737,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "LANG-FY2021-33df4be0",
       "field": "notable_language",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Tightening of ownership requirements announced alongside the increase in MSU maximum payout."
       },
@@ -1611,7 +1759,9 @@
   ],
   "investor_qa": [
     {
+      "id": "QA-FY2021-94eb34ad",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "DBRS Morningstar strategic direction and investment plans in credit ratings",
         "stated_position": "Management said it is \"confident in the increasing role DBRS Morningstar plays in the global markets,\" intends to \"expand our corporate ratings footprint\" and continue investing in global structured finance for traditional and non-traditional assets, framing these investments as \"a stable path towards adjacent growth in the ratings delivery and fixed income data markets.\"",
@@ -1631,7 +1781,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-28bc1e9d",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "DBRS Morningstar plans to drive market share against the legacy rating agencies",
         "stated_position": "In Canada management claims \"market-leading positions\" driven by \"local expertise, existing market presence, and extensive track record\"; beyond Canada it acknowledges \"the three large legacy credit ratings agencies enjoy safeguards against new entrants,\" and targets \"smaller, private, or transactional issues,\" European share gains as an \"eligible credit rating agency,\" and the U.S. corporate middle market leveraging \"our 45-year experience in assessing complex corporates, our more-granular pricing model, and our local expertise.\"",
@@ -1651,7 +1803,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-cb186ffa",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Whether the SEC investigation will change the credit ratings business",
         "stated_position": "Management stated it does not believe the SEC complaint against Morningstar's former credit ratings organization will cause any material disruptions or changes to current credit ratings strategy or operations.",
@@ -1671,7 +1825,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-e3b2918b",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Drivers of PitchBook growth",
         "stated_position": "Growth comes from three main drivers \u2014 growing the core customer base, \"adjacent\" customer segments, and product innovation/upgrades; in 2020 \"over half of PitchBook's growth was driven from new sales,\" and the proportion from existing clients \"should increase over time.\"",
@@ -1691,7 +1847,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-d3560757",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "PitchBook pricing strategy under Morningstar ownership",
         "stated_position": "The pricing strategy \"has not changed under Morningstar's ownership,\" although the company is \"now growing PitchBook's data feeds business and exploring more enterprise opportunities than we have in the past,\" offering seat-based and firm-wide licenses.",
@@ -1711,7 +1869,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-219c24a6",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "PitchBook management incentive plan renewal",
         "stated_position": "The PitchBook Plan was renewed for the 2020-2022 period with new annual financial performance targets tied to PitchBook revenue and cash flow; equity awards with aggregate target value of $30.0 million ($7.5M 2020, $7.5M 2021, $15.0M 2022), with upside above target and no payment if threshold conditions are not met \u2014 management believes it \"is well aligned with the creation of shareholder value.\"",
@@ -1731,7 +1891,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-2ef89bda",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Disclosure of PitchBook margins",
         "stated_position": "Management declined to give figures, stating it does not disclose margins of any product line or business area within its portfolio.",
@@ -1751,7 +1913,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-6976cc3d",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Sustainalytics pricing model",
         "stated_position": "Sustainalytics \"operates on a subscription-based pricing model for its ESG research products, which results in recurring revenue,\" while the Sustainable Finance Solutions unit combines one-time revenue with subscription-based recurring licensing revenue.",
@@ -1771,7 +1935,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-ed6e8873",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Sustainalytics management earnout structure and future ESG disclosure",
         "stated_position": "The acquisition was structured with an earnout for Sustainalytics shareholders (including current management) providing cash payments in 2021 and 2022 based on a multiple of 2020 and 2021 fiscal year revenues tracked separately; management said it \"will look for ways to provide future disclosure on impact and contribution\" as ESG capabilities are integrated.",
@@ -1791,7 +1957,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-729bcbf0",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Free cash flow priorities and capital allocation",
         "stated_position": "\"We continue to take a balanced approach to capital allocation. Our primary emphasis is supporting organic growth; however, we will continue to pursue acquisitions opportunistically.\" Dividends have had fairly consistent growth rates and payout ratios since 2010; share repurchases are evaluated like any investment and are not \"programmatic.\"",
@@ -1811,7 +1979,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-04bf1df7",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Integration of recent acquisitions versus further M&A",
         "stated_position": "Management said it is focused on effectively integrating recent acquisitions, but its ongoing strategy includes identifying opportunities that \"accelerate our ability to empower investor success,\" and it is \"always monitoring the landscape for interesting opportunities that could add to or strengthen our capabilities.\"",
@@ -1831,7 +2001,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-4dab59d6",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Characterization of M&A deal activity and multiples",
         "stated_position": "\"The market is very active in financial services and the prices paid currently reflect strong optimism on the part of acquirers.\"",
@@ -1851,7 +2023,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-af81305f",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Morningstar's position on digital assets and cryptocurrency",
         "stated_position": "Morningstar \"has come to no definitive conclusions on the long-term investment merits of cryptocurrency and its proper role in the portfolio,\" continues to monitor investor interest, carries over 120 crypto/digital asset exchange feeds, and PitchBook's Emerging Technology Research practice is slated to initiate DeFi research in late Q2 2021.",
@@ -1871,7 +2045,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-f799fcdc",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Capital allocation between organic investment and M&A",
         "stated_position": "Morningstar states it \"prioritize[s] organic growth initiatives and remain[s] opportunistic with M&A.\"",
@@ -1891,7 +2067,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-d1efeeb7",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Balance sheet and financial flexibility",
         "stated_position": "Management frames strong free cash flow and low leverage as supporting \"financial flexibility to pursue growth both organically and inorganically.\"",
@@ -1911,7 +2089,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-e3ad27d2",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Rationale for acquisitions (DBRS Morningstar, Sustainalytics)",
         "stated_position": "Stated rationales are \"mission-driven culture, unique capabilities, and expectations for strong returns on investment,\" with the credit ratings thesis being a \"Long-term opportunity to improve transparency of the credit ratings industry\" and the transaction building \"scale and increases diversification in credit ratings across markets and asset classes.\"",
@@ -1931,7 +2111,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-31558594",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "ESG strategy and positioning",
         "stated_position": "Management says ESG \"has become an essential part of long-term investing, which creates a need for an independent source of data and research on ESG risk factors,\" and that the ESG transaction \"Advances Morningstar's leadership in innovative ESG data and research while improving the accessibility of ESG-related content for all investors.\"",
@@ -1951,7 +2133,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-f38f8972",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "ESG capabilities integrated across the firm",
         "stated_position": "\"We are aligned across Morningstar to meet investor needs for ESG data, research, ratings, and solutions\" \u2014 spanning license-based, asset-based, and transaction-based offerings.",
@@ -1971,7 +2155,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-c96a1156",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Target markets identified for growth",
         "stated_position": "Morningstar says it participates in large, growing markets and has \"identified these markets as particularly favorable for longer-term growth,\" listing financial data/analysis, private capital markets data, managed accounts AUM, global credit ratings, global indexes, sustainable funds AUM, and sustainable bond/loan issuance.",
@@ -1991,7 +2177,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-9bfe7b0b",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Products expected to drive growth",
         "stated_position": "Management identifies Morningstar Data, Morningstar Direct, PitchBook, Investment Management, Workplace Solutions and DBRS Morningstar as key solutions and says \"We expect these solutions to provide a greater contribution to growth over the long-run.\"",
@@ -2011,7 +2199,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-6358f5c1",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Competitive differentiation and brand",
         "stated_position": "Differentiators cited include \"Largest Independent Analyst Research Staff,\" high-quality data, goals-based investing, design, enabling technology and investor advocacy.",
@@ -2031,7 +2221,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-e1887762",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Revenue mix and diversification",
         "stated_position": "Management presents revenue and geographic diversification as providing \"many avenues for growth and profitability,\" and says high license-based renewal rates support revenue predictability with \"all categories important to growth and profitability.\"",
@@ -2051,7 +2243,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-ce03551b",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "DBRS Morningstar's competitive position versus larger ratings peers and constraints on U.S. corporate market growth",
         "stated_position": "Management says investors' views on underlying credit quality matter more to bond pricing than which agency rates it, which \"supports our ability to compete with our larger peers in the U.S. and European structured finance markets,\" while index criteria, mandates and regulatory use of ratings benefit Canadian issuers rated by DBRS Morningstar and \"is this same dynamic that currently constrains our growth opportunities in the U.S. corporate markets.\"",
@@ -2071,7 +2265,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-d990f3a1",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Subscription/license contract structure and cash collection model",
         "stated_position": "Management characterises the subscription model as historically central: \"our subscription-based model allowed us to grow the business by taking advantage of the float created by getting paid upfront for the services we delivered over time. That model remains important today, even as our product portfolio is more diversified now.\" License products are contracted on one to three year terms, billed annually with cash collected at the beginning of the annual term.",
@@ -2091,7 +2287,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-e49773eb",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Response to low ISS carbon/environmental ratings and ESG disclosure plans",
         "stated_position": "Management states it partnered with UK-based Greenstone to calculate its global carbon footprint, published scope 1, 2 and 3 emissions for the first time in its 2020 corporate sustainability report, and that \"Our plan is to be a leader with respect to transparency in this area, and we believe that Morningstar is uniquely positioned.\" It plans to draw on its own research and Sustainalytics' ESG Assessment Platform team to analyse its global supply chain and to \"articulate public reduction targets.\"",
@@ -2111,7 +2309,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-af8c4b23",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "In-house versus third-party management within Managed Portfolios",
         "stated_position": "Management states it offers Managed Portfolios in the U.S., U.K., South Africa, Australia and India totaling $28.6 billion AUM/AUA at December 31, 2020, that it does \"not offer third-party model portfolio providers (or \"strategists\") within Managed Portfolios,\" and that it manages the asset allocation and underlying investment vehicle targets itself while mainly using third-party managers as subadvisors within the Morningstar Mutual Funds Trust.",
@@ -2131,7 +2331,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-09485b49",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Which products are gaining or losing share, and performance versus peer group",
         "stated_position": "Management claims consistent ability to grow revenue in Morningstar Data, Direct and PitchBook relative to its own market estimates, and cites its \"leadership position in the ESG space\" with Sustainalytics solutions as \"emerging standards in the marketplace for ESG investing.\" It concedes that growth in assets under management lagged its combined market estimate of over 20% in Workplace Solutions and Investment Management, attributing Investment Management client losses to a strategy shift. It states three-year average revenue growth of 15.1% (9.3% organic) versus peer average 8.2% (6.9% organic).",
@@ -2151,7 +2353,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-fc6ec7b1",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Founder Joe Mansueto's ownership succession",
         "stated_position": "Management states: \"The substance of Joe's plan is for his wife to inherit his shares and then ultimately distribute the shares to non-profits and family members.\"",
@@ -2171,7 +2375,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-13ce1a00",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Composition of license-based revenue by customer type",
         "stated_position": "Management estimates that as of December 31, 2020 approximately 33% of license-based revenues come from advisors, 25% from asset managers, and 22% from private market investors, with the remainder split among redistributors, retail investors, buyside investors and the retirement market, and states it has not disclosed specific growth rates by client type.",
@@ -2191,7 +2397,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-c83c2735",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Disclosure of TAM/SAM and market share by segment",
         "stated_position": "Management declines to provide segment-level TAM, SAM, share and rank, pointing instead to market size and growth estimates offered at its Annual Meeting presentations, and asserts \"our participation in large and growing markets have supported our aggregate growth and that we still have ample runways for growth in many of our key product areas.\"",
@@ -2211,7 +2419,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-3a5c0227",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "PitchBook client mix shift toward Companies segment",
         "stated_position": "Management said the client segment categorization was modified in 2019 and that \"Since 2016, the Company client segment has exhibited the greatest expansion, and now represents about 30% of our total client count,\" describing Companies as \"our fastest growing segment in the past 18 months\" and \"an extension of PitchBook's customer profile,\" while Core Investors \"continue to be our largest source of new business bookings.\"",
@@ -2231,7 +2441,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-476f24fc",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "PitchBook total addressable market sizing and methodology",
         "stated_position": "\"We estimate that our total addressable market is $3.5 billion globally, an increase of approximately 52.2% since the $2.3 billion figure we shared at the 2020 Annual Meeting.\" Management attributes the increase to growth in Other Investor and Company categories and higher average revenue per client, and says a firm must be active in at least one supported use case to be counted, so the estimate captures clients that are \"ready\" rather than a \"wish list.\"",
@@ -2251,7 +2463,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-f96e66b5",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "PitchBook long-term margin potential",
         "stated_position": "\"We continue to manage the business by balancing growth and profitability. PitchBook remains in growth-mode\" and management believes that as PitchBook gains scale \"PitchBook's profile will trend towards that of Morningstar's broader licensing areas.\" It declines to disclose product-level margins.",
@@ -2271,7 +2485,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-70807414",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "PitchBook competitive position versus S&P Capital IQ",
         "stated_position": "Management observes Capital IQ \"continues to pursue a partnership or acquisition strategy to build its private market data sets\" and states \"We believe PitchBook holds a competitive advantage in the market through our primary and secondary research processes and data coverage of areas important to our customers,\" citing a commissioned blind brand study in which PitchBook earned 33% of votes versus 7% for S&P Capital IQ.",
@@ -2291,7 +2507,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-ad61ec83",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Strategy for monetizing DBRS Morningstar credit data",
         "stated_position": "Management agrees credit data is a growth opportunity with four dimensions \u2014 credit ratings data (RatingsNow), credit research, fixed income reference data (where \"DBRS Morningstar does not offer a product in this area at present\"), and normalized fixed-income credit data \u2014 and states the intent to replace third-party financial metrics with internal data across DBRS Morningstar, Morningstar and PitchBook.",
@@ -2311,7 +2529,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-29e1f567",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "DBRS Morningstar EMEA growth plans",
         "stated_position": "\"Our immediate focus is on maintaining our very good coverage in the European structured markets (outside the CLO space) while building our footprint in fundamental ratings,\" with a specific objective to build demand for corporate ratings used for private placements and middle market lending, and progress cited in Spain, Italy and Portugal with momentum in France, Germany, the Netherlands and the UK.",
@@ -2331,7 +2551,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-78436de3",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "DBRS Morningstar relative profitability by region and margin ambition",
         "stated_position": "Management says it feels comfortable with profitability in \"leading\" segments even though overall revenue is of modest size relative to larger competitors; Canadian margins benefit from more fundamental ratings and recurring revenue, while US and Europe core profitability is lower given transaction-based structured finance and ongoing investment. \"Our goal, over time, is to turn more of our \"established\" market segments into \"leading\" segments, which we believe will favorably impact our margin profile.\"",
@@ -2351,7 +2573,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-93065038",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "ESG/Sustainalytics growth strategy",
         "stated_position": "\"Our growth strategy for Morningstar's ESG business encompasses three main avenues. The first is growing Sustainalytics' leadership position in ESG-related ratings, research, and data, the second is expanding Sustainalytics' position in sustainable finance, and the third is integrating Sustainalytics' IP into Morningstar's portfolio of offerings,\" with focus on expanding ESG data and research to wealth management and individual investors \"which have been underserved historically.\"",
@@ -2371,7 +2595,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-e34a79fc",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "ESG addressable market sizing",
         "stated_position": "Management says published market size estimates range from several hundred million to several billion dollars and that most \"understandably focus on the institutional investor market, which we believe is too limited a focus.\" \"Sustainalytics and Morningstar aim to make ESG investing accessible to all investors, not just professional investors,\" with additional opportunity in the corporate market. \"We continue to refine our understanding of that addressable market.\"",
@@ -2391,7 +2617,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-73755c3a",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Integration of Sustainalytics onto Morningstar infrastructure",
         "stated_position": "Management describes leveraging Morningstar technology at the corporate systems, technology operations, and product technology levels, with a \"clear roadmap to complete this adoption by end of 2021,\" and says Morningstar's platforms have wide distribution to retail wealth \"which is where we intend to increasingly surface and integrate Sustainalytics' ESG research and data.\"",
@@ -2411,7 +2639,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-50973f41",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Sustainalytics differentiation versus MSCI",
         "stated_position": "\"The primary differentiator between Sustainalytics and MSCI is that the methodology underpinning Sustainalytics' ESG Risk Rating takes an absolute approach to highlighting risk, which allows investors to evaluate companies across sectors and geographies using consistent standards,\" contrasted with MSCI's sector-relative \"best in class\" scoring; management also cites work across the whole investment value chain and \"one of the largest client service staffs in the industry.\"",
@@ -2431,7 +2661,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-635b9003",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Sustainalytics position in green/sustainable bond second party opinions and overlap with DBRS",
         "stated_position": "Management cites Environmental Finance recognizing Sustainalytics as \"the leading external reviewer of green/social/sustainability bonds with 36.5% market share,\" nearly equal to the next four competitors combined, and states \"The products of Sustainalytics and DBRS Morningstar do not overlap in these efforts\" \u2014 they are \"complementary products for issuers.\"",
@@ -2451,7 +2683,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-bc1f6c2d",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "ESG partnerships versus acquisitions",
         "stated_position": "\"we look at partnership and acquisition strategies separately. While we do not have an acquisition \"wish list\", Morningstar always surveys the landscape for value-creating acquisition opportunities.\" Management says the ESG landscape is \"flush with interesting companies\" but \"there are no specific targets in our sights at the moment,\" and that developing strong partnerships is \"an integral part of our business strategy.\"",
@@ -2471,7 +2705,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-0d6ae1b1",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Morningstar Data growth drivers and data gaps",
         "stated_position": "Management identifies four demand sources \u2014 regulation, data science and automation, changing technology platforms, and an evolving investor portfolio \u2014 says regulatory datasets including MiFID II \"have made the most meaningful contribution to Morningstar Data's revenue growth over the past three years\" with ESG datasets second, and names gaps including frontier market equity data, cryptocurrency and retail structured products.",
@@ -2491,7 +2727,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-b7b5356d",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Morningstar Direct license renewal pressure and product transition",
         "stated_position": "Management admits \"we've experienced some pressure on license renewals as we work through evolving our legacy desktop-based product toward a flexible framework,\" cites a \"gap of product market fit\" for smaller wealth managers with three seats or less, and says it is challenged at large renewals by firms cutting expenses, especially asset managers facing consolidation and fee pressure.",
@@ -2511,7 +2749,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-5121c067",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Reason for moving Morningstar Direct to the cloud",
         "stated_position": "\"We decided to evolve the Morningstar Direct framework to the cloud to provide us and our clients with increased flexibility,\" enabling more frequent and efficient enhancements and client access \"anytime, anywhere.\"",
@@ -2531,7 +2771,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-bdfcb3b4",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Distribution-agnostic strategy and competition with FactSet and Bloomberg",
         "stated_position": "\"Morningstar has always taken the approach that the data, research, ratings and other content that we provide investors can and should be consumed however our clients want to consume it.\" FactSet and Bloomberg are competitors but also redistribute Morningstar data and pay to use it; \"We have the ability to extract value from our offerings no matter the distribution channel.\"",
@@ -2551,7 +2793,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-e1d9afbb",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Client stickiness and churn causes in Data and Direct",
         "stated_position": "Management says its IP is embedded in client workflows, investment policies and compliance regimens, and \"we believe that losing access to our IP is as much a source of the stickiness as the technical consequences of switching.\" \"Churn in our core client base is more frequently due to consolidation or restructuring at our clients' firms and less so because of competitive dynamics.\"",
@@ -2571,7 +2815,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-729151a2",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Key growth areas and investing \"ahead of the curve\"",
         "stated_position": "Management identifies \"key growth areas\" as PitchBook, DBRS Morningstar, Morningstar Data, Morningstar Direct, Investment Management, and Workplace Solutions, representing \"nearly 70% of our revenue,\" with Indexes and Sustainalytics named as other fast-growing areas of heavy investment, and an intent to invest in ESG-enabled solutions across the portfolio.",
@@ -2591,7 +2837,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-1928a071",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Expected five-year business mix and margin profile",
         "stated_position": "\"We've centered our efforts on continuing to support the development of differentiated products and solutions, investing for scale in multiple areas of our business, and expanding our leadership position in ESG across the portfolio.\" Management expects license-based areas to remain the largest revenue component for the foreseeable future and does not expect mix shift to be the primary driver of margin change; rather margins should improve \"as we scale and benefit from operating leverage.\"",
@@ -2611,7 +2859,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-ce661a05",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "M&A priorities and process",
         "stated_position": "\"While we don't comment on our plans for future M&A, in the past we have made acquisitions to enhance our capabilities, particularly from a technology perspective, or to support growth in areas of the business where we see outsized potential.\" DBRS is cited as improving scale in credit ratings, Sustainalytics as supporting ESG product development, and AdviserLogic and PlanPlus as growing financial planning. Decisions weigh financial returns and strategic and cultural fit, and \"our focus on organic growth means that we don't prioritize acquisitions for the sake of activity.\"",
@@ -2631,7 +2881,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-09366742",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Competitive landscape and churn drivers for Morningstar Data and Direct",
         "stated_position": "Management said the primary driver of churn is client consolidation/restructuring, not competitive losses, and that it has \"a long, successful history of competing with various data and platform providers\" and typically wins and retains clients \"based on the unique attributes of the products and services we provide.\"",
@@ -2651,7 +2903,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-6ecfda3d",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Morningstar Data's competitive strengths",
         "stated_position": "Management characterizes Morningstar Data's advantage as proprietary datasets, like managed fund data, that competitors have historically been unable to replicate at similar breadth and depth, conceding local competitors like Financial Express can occasionally offer a competitive dataset for a particular country.",
@@ -2671,7 +2925,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-8b425f5f",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "What growth in Morningstar Direct depends on",
         "stated_position": "Management states that growth ultimately hinges on the ability to build new datasets and deliver efficiencies in clients' workflows, with client retention driven by proprietary datasets and ease of incorporating clients' own data.",
@@ -2691,7 +2947,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-8c8d87a8",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "ESG demand and integration of Sustainalytics into Morningstar Direct",
         "stated_position": "Management reports growing client demand for ESG-related datasets, particularly in Europe due to the Sustainable Finance Disclosure Regulation, and says it has continued to pull Sustainalytics functionality into Morningstar Direct, most recently company-level ESG Risk Ratings.",
@@ -2711,7 +2969,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-0fc47172",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Impact of the shift from active to passive management",
         "stated_position": "Management argues assets under active management are not in decline \"despite the headlines\" and that as long as actively-managed assets continue to show growth, active managers will continue to rely on Morningstar's services; it declines to give an apples-to-apples revenue comparison because passive AUM growth \"does not represent a perfect negative correlation with revenue on the active management side.\"",
@@ -2731,7 +2991,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-38289e41",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Automation versus passive investing as a threat to seat growth",
         "stated_position": "Management suspects automation across financial services has a greater impact on platform seat growth than passive investing, and says that even if clients reduce Direct seats, Morningstar often picks up business from the same client through data licenses or redistribution rights.",
@@ -2751,7 +3013,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-e779aef6",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Product offerings aimed at passive investors",
         "stated_position": "Management says it has added solutions specifically meeting the needs of passive investors, such as Morningstar Indexes, private equity and ESG data and analytics, and positions itself as agnostic: \"We are here to serve our clients' needs no matter what method of investing is in favor.\"",
@@ -2771,7 +3035,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-db4702c8",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Drivers of asset-based revenue growth and competitive position in Morningstar Indexes",
         "stated_position": "Management said market performance \"was not the sole contributor\" to asset-based revenue, pointing to AUM growth in Workplace Solutions \"aided by growth in new plans and participants, and new funds being added to existing plans,\" \"strengthening flows in Managed Portfolios within Investment Management and momentum in Morningstar Indexes as clients continue to seek alternative index providers.\"",
@@ -2791,7 +3057,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-42907eec",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Reliance on third-party distributors/redistributors for data products",
         "stated_position": "\"We do not consider ourselves reliant on third-party distribution. In aggregate, redistributors generate a relatively small portion of our consolidated revenue.\" Management says it aims to deliver its IP wherever clients work, and believes it has \"struck the right balance\" between direct sales and redistributors.",
@@ -2811,7 +3079,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-82799d11",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Pricing strategy for ESG data \u2014 basic vs. premium",
         "stated_position": "Basic ESG data and insights are \"value-added enhancements within our software platforms\" included in the software license and \"essentially baked into our year-over-year price increases, allowing us to negotiate from a point of strength,\" while more granular ESG data sets are sold as add-ons via entitlements.",
@@ -2831,7 +3101,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-44cdf1c3",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Sustainalytics' competitive advantages and vision",
         "stated_position": "Key differentiator is the ability to work with investors across the whole investment value chain, plus a differentiated research methodology underpinning the ESG Risk Rating capturing managed and unmanaged risk, and a large responsive customer service organization. Larger competitors can bundle ESG as an add-on; being part of Morningstar gives more bundling opportunities to extend reach, particularly in retail wealth.",
@@ -2851,7 +3123,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-1bd2d9b7",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Regulation as a barrier to entry in indexes and ESG ratings",
         "stated_position": "Management argues benchmark regulation raises barriers to entry, benefiting existing index providers and making self-indexing less economically attractive; owning the underlying ESG data (Sustainalytics) plus portfolio calculation expertise gives Morningstar \"a significant advantage.\" It views emerging ESG regulation as \"a floor, rather than ceiling\" and cites the Moorgate Benchmarks acquisition as bolstering its position as a registered benchmark administrator in the UK and EU.",
@@ -2871,7 +3145,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-be542595",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Managing conflicts of interest in independent research",
         "stated_position": "\"Morningstar has a long history of managing conflicts related to running a business based on independent research.\" It applies the same standards to ESG research as to mutual fund ratings, and its Code of Ethics prohibits salespeople from contacting mutual fund and equity analysts.",
@@ -2891,7 +3167,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-bd9582b9",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Biggest obstacle to faster PitchBook growth",
         "stated_position": "Talent is the common denominator; \"perhaps the biggest near-term challenge is to hire quickly enough at the quality we expect to meet the demand for our solutions.\" Management intends to continue to invest heavily in PitchBook's go-to-market and product development strategy.",
@@ -2911,7 +3189,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-7299a8fa",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "How the board and management prioritise projects and allocate capital",
         "stated_position": "Management names the areas it has \"called out\" as best long-run growth opportunities \u2014 Morningstar Data, Morningstar Direct, DBRS Morningstar, PitchBook, Investment Management, Workplace, and Indexes \u2014 with ESG now another key area of focus and investment. Uses the OKR framework Kunal described in his annual shareholder letter; management and Board attend an annual off-site strategy meeting; investment philosophy characterized as \"long-term oriented in nature.\"",
@@ -2931,7 +3211,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-628a68f9",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Cost growth versus revenue growth and level of investment spend",
         "stated_position": "\"Our goal over the long-term is to grow revenue in excess of expense growth and expand our adjusted operating margin,\" with the belief the opportunity set is significant and that the company is \"moving with speed to increase our leadership position in areas such as ESG.\"",
@@ -2951,7 +3233,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-6cea4afc",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Profitability by division and organizational structure",
         "stated_position": "\"We do not run our business by division and are organized around products to support our mission and growth objectives.\" License-based products tend to have the highest margins, followed by asset-based and transaction-based; management agrees competitors like MSCI in Indexes or Moody's in credit ratings have size and scale advantages.",
@@ -2971,7 +3255,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-21c3c8c2",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Capital return versus M&A",
         "stated_position": "\"Our capital allocation priorities haven\u2019t changed over the course of our company\u2019s history.\" Organic investment is top priority; acquisitions when a capability can be added at a price justifying a strong future return; consistent dividend policy and approach to buybacks; \"we don\u2019t prioritize acquisitions for the sake of activity.\"",
@@ -2991,7 +3277,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-2a5e28db",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "PitchBook's total addressable market and competitive set relative to Bloomberg and Refinitiv",
         "stated_position": "Our growth strategy at PitchBook isn't necessarily about displacing competitors, it's about ensuring that the client is using PitchBook. We seldom compete head-to-head with Bloomberg or Refinitiv; rather, we view our offering as complementary. Direct competitive set is predominantly Capital IQ, Preqin, Crunchbase and to a certain extent Mergermarket (in Europe mostly).",
@@ -3011,7 +3299,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-cffffce7",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Adapting the product set for international markets where independent advisors are less prevalent",
         "stated_position": "We believe that investors are well-served by independent advice; regulations and advisor practices vary greatly by market, so we tailor our software, data and investment management services. The best example is the acquisition of Adviser Logic in Australia. Where investors are served directly by larger institutions, Morningstar provides enterprise solutions embedded into firms' business functions.",
@@ -3031,7 +3321,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-1e2d565b",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Long-term growth opportunity in Morningstar Indexes",
         "stated_position": "Over the long-run, we expect our growth will be supported by attracting new clients that create investable products from our indexes, increased demand for ESG-related indexes (which we are well-suited to provide using Sustainalytics' expertise), and licensing of benchmark data.",
@@ -3051,7 +3343,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-73d4352d",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Margin expansion and operating leverage versus higher-margin peers (FDS, MSCI, SPGI, MCO)",
         "stated_position": "We manage our business to a model of sustainable growth where we invest heavily to capture longer-term opportunities; we are currently in a period of extraordinary investment because our opportunity set is meaningful. We will focus on making the right short-term and long-term trade-offs, which could have impacts on margin in periods of heavier investment.",
@@ -3071,7 +3365,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-9de8e52e",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Secular growth trends the company intends to capitalize on",
         "stated_position": "Whether it is ESG, indexes, retirement, wealth, data, credit ratings, or the private markets, we are at the intersection of attractive secular growth trends on which we intend to capitalize; we expect these trends to continue, especially with respect to ESG, wealth, and the private markets.",
@@ -3091,7 +3387,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-fd8039d2",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Competition for talent and compensation programs",
         "stated_position": "While we are facing competition to retain and attract employees, the mechanism associated with the increase in the bonus pool is largely related to our outperformance relative to targets. Nevertheless, to better compete for talent, we're analyzing our compensation programs and are investing more resources toward compensation in 2021 and 2022.",
@@ -3111,7 +3409,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-8e218a3d",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Pricing power across the portfolio",
         "stated_position": "We do not disclose the percentage of revenue growth that comes from price increases, but generally we expect to be compensated for the value we provide, and we believe that our license-based products, in aggregate, exhibit the most pricing power across the portfolio.",
@@ -3131,7 +3431,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-c9347d6a",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "How asset owners and managers use Sustainalytics research in their investment processes",
         "stated_position": "Sustainalytics research and ratings are used throughout the investment process, from pre-investment analysis to security selection to post-investment engagement and compliance, varying from one of many analytical inputs to being deeply embedded in investment decisions; its research is also used extensively in the creation of benchmark indexes.",
@@ -3151,7 +3453,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-571d1b6e",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "topic": "Durability of COVID-19-related cost savings",
         "stated_position": "We view most of these cost savings as temporary in nature and have seen these areas increase in 2021 as travel restrictions are easing, employees return to offices globally, and our pace of hiring has accelerated.",
@@ -3171,7 +3475,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-f23f2a75",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Frames geographic and asset-class diversification as the core defense of the ratings business \u2014 a recurring framing likely to be tested in later years."
       },
@@ -3189,7 +3495,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-d51a126c",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "An unusually direct acknowledgment of competitive disadvantage in the largest ratings market, immediately after claiming leadership in Canada."
       },
@@ -3207,7 +3515,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-17fbd865",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Positions price granularity as a competitive weapon against incumbents \u2014 a notable framing of how the company intends to win share."
       },
@@ -3225,7 +3535,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-51569fc9",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Quantifies the human research investment behind the data moat; a headcount claim that can be tracked across years."
       },
@@ -3243,7 +3555,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-73b16c11",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "A qualitative profitability assurance offered in place of any figure, immediately followed by a refusal to disclose segment margins."
       },
@@ -3261,7 +3575,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-091309e7",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Mission-first framing placed ahead of strategy and financials; \"Financial success\" appears last in the list of values, an ordering the company repeats across years."
       },
@@ -3279,7 +3595,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-50c3e1c5",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Self-description that puts acquired capabilities on equal footing with innovation, and places ESG at the end of the expansion narrative."
       },
@@ -3297,7 +3615,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-40dcefe3",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Choice of \"resilience\" rather than growth as the characterisation of the pandemic year, despite double-digit reported increases."
       },
@@ -3315,7 +3635,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-7366569d",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "The investment-highlights framing emphasises consistency, recurring revenue and operating leverage \u2014 the language of a mature compounder rather than a growth story."
       },
@@ -3333,7 +3655,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-5c4ffacf",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "An unusually direct admission of a poor third-party ESG rating and of prior non-disclosure by a company that sells ESG ratings itself."
       },
@@ -3351,7 +3675,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-05c97446",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Concedes client losses while framing them as self-inflicted by a strategy shift \u2014 a hedge that reframes a shortfall as deliberate."
       },
@@ -3369,7 +3695,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-83736070",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "The hedged phrasing \"try to operate in\" alongside the recurring \"large and growing markets\" claim that appears repeatedly in Morningstar's self-description."
       },
@@ -3387,7 +3715,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-b8111aed",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Rebuts the low ISS score by reframing on a scaled basis while first arguing that cross-company comparisons are \"difficult and of limited use\" \u2014 an argument used both ways."
       },
@@ -3405,7 +3735,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-31c3cc9d",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Management pre-emptively defends the credibility of a TAM figure it has just raised by more than 50% in one year, drawing a distinction between \"ready\" clients and a \"wish list\" \u2014 unusually defensive framing around a self-generated market estimate."
       },
@@ -3423,7 +3755,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-efd6bb3d",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "An unusually direct admission of a product-market-fit gap and price disadvantage in a flagship platform, in a document that otherwise emphasizes competitive advantage."
       },
@@ -3441,7 +3775,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-d0d7aed4",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Rare quantification of market penetration, given only in approximate ranges and hedged with \"it is fair to say\" \u2014 the level of disclosure and its hedging are both notable."
       },
@@ -3459,7 +3795,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-6ca608cd",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "An explicit statement that there is no active ESG acquisition pipeline, paired with an open-ended willingness to act \u2014 a datable baseline for later transactions."
       },
@@ -3477,7 +3815,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-8dc2d988",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Documents a redefinition of a reported client-segment category, which changes the comparability of previously disclosed client mix figures."
       },
@@ -3495,7 +3835,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-fab9f18b",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Informal, emphatic phrasing signalling a self-described shift away from the mutual fund data heritage that has historically defined Morningstar."
       },
@@ -3513,7 +3855,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-aac261c4",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "An unusually specific and candid characterization of where the business loses customers, naming price sensitivity among the causes."
       },
@@ -3531,7 +3875,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-fdb78773",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "A direct denial that the pandemic affected retention, attributing decline instead to client consolidation."
       },
@@ -3549,7 +3895,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-3d1ecbc4",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Frames the business as structurally indifferent to the active/passive shift \u2014 a recurring defensive claim worth tracking across years."
       },
@@ -3567,7 +3915,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-4495433c",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "A hedged framing that concedes the benefit of favorable markets while asserting underlying demand \u2014 the recurring claim that growth is not merely market-driven."
       },
@@ -3585,7 +3935,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-6a6fdcbb",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Unusually direct refusal to quantify the COVID-recovery contribution investors asked about."
       },
@@ -3603,7 +3955,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-52fbd578",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Management reframes a pointed question about an oversized executive team and competing internal ambitions as a happy problem, sidestepping the governance premise of the question."
       },
@@ -3621,7 +3975,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-2ce6ddc6",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "An unusually direct statement of investment discipline and long-term orientation, framed as a rebuttal to the suggestion of short-term opportunism."
       },
@@ -3639,7 +3995,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-e27611ba",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Emphatic disclaimer on M&A appetite, notable in a year featuring the Sustainalytics and Moorgate Benchmarks acquisitions."
       },
@@ -3657,7 +4015,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-70ad3e73",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "A concrete scale claim used to defend research quality as the coverage universe expanded rapidly."
       },
@@ -3675,7 +4035,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-2d90cfab",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Positions the company as welcoming ESG ratings regulation \u2014 a stance that doubles as a moat argument."
       },
@@ -3693,7 +4055,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-d785236b",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "A flat denial of the questioner's premise, notable because the same answer concedes redistribution is a higher percentage of revenue for Morningstar Data and Morningstar Research."
       },
@@ -3711,7 +4075,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-38811141",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Unusually direct admission of product gaps at PitchBook, and of referring customers to a competitor."
       },
@@ -3729,7 +4095,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-4f166e9a",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Management reframes the peer comparison both ways depending on the chosen comparison set \u2014 a hedge on the margin-gap question rather than a direct answer."
       },
@@ -3747,7 +4115,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-0c90d456",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "The framing of 'extraordinary investment' becomes the standing justification for flat margins; worth tracking across years to see when the period ends."
       },
@@ -3765,7 +4135,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-099db7ce",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Recurring 'empower investor success' mission phrasing deployed to defend a capital-allocation posture."
       },
@@ -3783,7 +4155,9 @@
       "quote_check": "verbatim match"
     },
     {
+      "id": "QA-FY2021-eb1a9b55",
       "field": "investor_qa",
+      "fiscal_year": 2021,
       "value": {
         "why_notable": "Management explicitly declines the 'one-time' characterisation investors offered, setting an expectation that compensation costs scale with performance."
       },
