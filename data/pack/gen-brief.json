@@ -1,0 +1,461 @@
+{
+ "document": "narrative-brief.md",
+ "generated_utc": "2026-08-07T20:34:41Z",
+ "model": "claude-opus-5",
+ "effort": "high",
+ "pack_sha256": "adb27b53069a7770e2674ef124123b0718f701fc9d5ff7b56398ff17149867c6",
+ "pack_ids": 1428,
+ "ask_sha256": "a924e8c54a955a322a504a1f642d61c31cd1b09e0f68de799e0137bce8b90581",
+ "system_sha256": "f551b71df6f875238eda8b5499afb4b9035c6ca4253a6fd6618753df9aff4db3",
+ "usage": {
+  "input_tokens": 34765,
+  "output_tokens": 26569,
+  "cache_creation_input_tokens": 354023,
+  "cache_read_input_tokens": 0
+ },
+ "cost_usd": 3.0507,
+ "rounds": [
+  {
+   "round": 0,
+   "usage": {
+    "input_tokens": 575,
+    "output_tokens": 6175,
+    "cache_creation_input_tokens": 354023,
+    "cache_read_input_tokens": 0
+   },
+   "checks": {
+    "citations": 122,
+    "distinct": 115,
+    "unknown": [],
+    "by_field": {
+     "board": 2,
+     "events": 13,
+     "headcount": 3,
+     "incentive_metrics": 5,
+     "investor_qa": 42,
+     "leadership": 8,
+     "notable_language": 14,
+     "risk_deltas": 5,
+     "segments": 4,
+     "strategic_priorities": 19
+    },
+    "low_confidence": [
+     "BRD-FY2021-abd94bd9",
+     "BRD-FY2021-e7589d5c"
+    ],
+    "unverified_quote": []
+   }
+  }
+ ],
+ "text": "## Where MORN stood at the start of the window\n\nAt the close of FY2021 Morningstar described itself as a single-reportable-segment business organised around product areas, with 9,556 permanent full-time employees [HC-FY2021-89b3c8ce]. The 10-K's stated strategy was \"to deliver insights and experiences essential to investing,\" built on proprietary data, analytics and independent research [SP-FY2021-471e22f5]. The stated priorities were fourfold and one of them is worth naming precisely: \"Establish a leading ESG position across each business,\" described as \"a pivotal part of our long-term strategy\" following the 2020 Sustainalytics purchase [SP-FY2021-bcbe7c18, EVT-FY2021-53206fa1]. The others were differentiated insights across asset classes, operational excellence and scalability, and an inclusive culture [SP-FY2021-1ea36587, SP-FY2021-018bc28a, SP-FY2021-45276d8d]. A wealth-platform build-out was already announced, with direct indexing planned through the TAMP and the Praemium U.K. business agreed [SP-FY2021-489cc48b, SP-FY2021-bfd4ab64].\n\nThe register matters here: much of what management said about itself in this window came through monthly written answers to investor questions filed on Form 8-K — Regulation FD voluntary disclosure, unaudited and unprompted by any requirement. The second register, the annual shareholder letter, is not available across the whole window: the pack contains letter-sourced material only for FY2022, FY2023, FY2024 and FY2025, and none for FY2021. Every letter quotation below therefore starts from FY2022, and there is no FY2021 letter against which to baseline the tone or the admissions that follow; for FY2021, management's own narrative comes only from the 10-K and the Reg FD answers. In FY2021 management framed the seven named growth areas — Data, Direct, DBRS, PitchBook, Investment Management, Workplace, Indexes — as \"nearly 70% of our revenue,\" with ESG added as another key area of focus and investment [QA-FY2021-729151a2, QA-FY2021-7299a8fa]. It also set the recurring defence of margin compression that would be tested for the rest of the window: \"we are currently in a period of extraordinary investment because our opportunity set is meaningful\" [QA-FY2021-0c90d456].\n\nGovernance was already distinctive. Joe Mansueto served as chairman and executive chairman, Kunal Kapoor as CEO since January 2017 [BRD-FY2021-e7589d5c, BRD-FY2021-abd94bd9] — both low-confidence facts, drawn from proxy director biographies whose section boundaries are unverified. The 10-K carried an explicit no-guidance philosophy that recurs verbatim in every year of the window [LANG-FY2021-f24fa9c3].\n\n## The arc\n\n**From ESG as a strategic pillar to ESG as a cost problem.** The clearest single reversal in the pack is the trajectory of Sustainalytics. In FY2021 and FY2022 the 10-K listed establishing a leading ESG position as a named strategic priority [SP-FY2021-bcbe7c18, SP-FY2022-4f07b4fe]. By FY2023 that priority had disappeared from the 10-K's list, replaced by \"Leverage advances in AI to drive innovation\" [SP-FY2023-d263222a]. The Reg FD record tracks the deterioration in unusual detail. In September 2022 management conceded Sustainalytics had \"the lowest product margins\" among licence-based products and were \"a drag on our overall margins\" [QA-FY2022-925ce9e3, QA-FY2022-45445308]. By July 2023 it stated plainly that it was \"slowing down our investments in Morningstar Sustainalytics\" to align expense growth with revenue [QA-FY2023-704538c9]. In December 2023 the admission became explicit: management attributed the shortfall partly to demand and partly to its own execution — sales-team turnover, a failed Impact Ratings launch whose methodology was being revisited, and competitors having invested ahead of Morningstar in climate [QA-FY2023-006ab59a, QA-FY2023-a324af0b, QA-FY2023-9c1d1b0c]. The FY2023 shareholder letter used the phrase \"self-inflicted wounds\" [LANG-FY2023-47723c3a]. By FY2024 the Reg FD answers confirmed Sustainalytics \"is not profitable today on an adjusted operating income basis\" [QA-FY2024-d3011d2a]. In FY2025 the bespoke corporate ratings product was wound down [QA-FY2024-5d8c4040, QA-FY2025-7cb6423a], and by January 2026 the second-party opinions product — the one Morningstar had repeatedly called market-leading [QA-FY2024-215cc336] — was slated for retirement to \"sharpen Morningstar Sustainalytics' focus on its core data, research and ratings businesses\" [SP-FY2025-6552c93b].\n\nManagement supplied two reasons: softening ESG demand, especially in the U.S. [LANG-FY2023-9f223939], and its own execution. It also disclosed a governance episode — an independent White & Case investigation into alleged anti-Israel bias, prompted by an admission that \"our initial review was overly dismissive of the serious bias concerns\" [QA-FY2022-b2b38e35, QA-FY2022-c3e28357]. The investigation found no evidence of pervasive or systemic bias but identified one product exhibiting bias in its outcomes [QA-FY2023-fb91efa2].\n\n**Wealth: heavy investment, then retreat.** The wealth build-out followed a similar shape but faster. FY2022's letter said \"I wish we had done this many years ago\" of the consolidation, while conceding \"the early financial results aren't what we'd hoped for\" [LANG-FY2022-2fae4e3b, LANG-FY2022-97bb271f]. FY2023's letter went further: \"The investments were sizable and poorly timed\" [LANG-FY2023-9fb8d5ec]. The stated remedy narrowed the ambition — focusing \"on areas where we have the greatest confidence that we can win,\" namely the international platform and third-party-distributed model portfolios [SP-FY2023-38efa90d]. Then came the structural exits: the AssetMark alliance and sale of roughly $12 billion of TAMP assets, with the U.S. TAMP to be sunset [QA-FY2024-ad65f833, QA-FY2024-9b4e7568]; and the retirement of Morningstar Office after 20 years, with clients routed to SS&C's Black Diamond [QA-FY2025-cef14118, SEG-FY2025-b7e05709]. Management's stated rationale is consistent and specific: \"The cost of maintaining and improving it is significant, and scale is important for success\" [QA-FY2024-ad65f833], and a focus on areas that \"we can scale without making significant new capital investments\" [QA-FY2025-f6dd3883]. The FY2025 letter reports the result — Wealth \"transition to profitability in 2025,\" contributing $9.6 million to adjusted operating income [LANG-FY2025-9aab1bd4].\n\n**Segment disclosure changed under regulatory pressure, not voluntarily.** The constraint on this pack forbids comparing segment counts across the window, and the reason is itself the finding. Through FY2021 and FY2022 the pack's `segments` field holds product areas Item 1 describes — PitchBook, Morningstar Data, DBRS, Direct and so on [SEG-FY2022-affde6ec, SEG-FY2022-6e503f7b]. Management insisted repeatedly in Reg FD answers that \"We do not have business operating segments. We have one reportable segment\" and that product-level margin talk was \"directional and based on estimates\" [QA-FY2023-018adeaa, QA-FY2023-a271bba5, QA-FY2023-0ef29876]. Effective December 31, 2023 the company concluded it had seven operating segments presented as five reportable ones [EVT-FY2023-c2083b8f]. The reason is stated flatly in the Reg FD record: the SEC \"objected to our aggregation of certain operating segments,\" after which the company re-evaluated ASC 280 and disaggregated — and concluded it \"had ineffective process-level controls over those changes, which resulted in the material weakness as of December 31, 2023\" [QA-FY2024-94597b7d, QA-FY2024-2d3f991f]. Management called the matter isolated to segment reporting and expected remediation in the first half of 2024 [QA-FY2024-80ea08dc]; the pack does not contain confirmation that remediation occurred. Sustainalytics and Indexes remained inside \"Corporate and All Other\" because neither individually met the quantitative thresholds [SEG-FY2023-5acdd923, QA-FY2024-d3e50b87] — meaning the two businesses management talked about most were the two shareholders could see least.\n\n**A shift from growth spending to margin discipline, visible in the pay design.** The incentive metrics are the cleanest evidence. FY2021 weighted the annual bonus 67% Adjusted Revenue / 33% Adjusted EBITDA — a weighting management described as \"the optimal mix\" and a reversion from COVID-era 50/50 [INC-FY2021-0a208533, LANG-FY2021-b443c13f]. FY2022 kept it [INC-FY2022-42de7490]. FY2023 moved to 50/50, and management stated the reason: to \"incentivize profitable growth,\" an \"increased emphasis on profitability\" [INC-FY2023-15467d28, QA-FY2023-bdfbcb3e, QA-FY2024-71ef54ce]. FY2024 replaced Adjusted EBITDA with Adjusted Operating Income and extended the 50/50 weighting to the Chief Revenue Officer, removing his revenue tilt [INC-FY2024-a958d46f, LANG-FY2024-cfef5211]. FY2024 also added \"stretch PSUs\" tied to AOI outperformance of 112.5%–125% of target — awards carrying no grant-date fair value because attainment was not deemed probable, and therefore invisible in the Summary Compensation Table [INC-FY2024-13fe47c0, LANG-FY2024-5f305c5e, LANG-FY2024-5a4db79c]. FY2025 removed the 60% bonus funding floor [LANG-FY2025-5471b5fe]. This is a five-year drift from rewarding revenue to rewarding profit, and it aligns with the operating record: severance in Sustainalytics, Wealth and DBRS in 2023 [EVT-FY2023-d48d822c], headcount falling from 12,224 at end-2022 to 10,973 at end-2025 [HC-FY2022-b5b67998, HC-FY2025-eaacb74b], and a stated goal of margins returning to \"recent historical peaks\" in the \"low 20's percent range\" [QA-FY2024-5e714350].\n\n**Leverage up for LCD, then down, then up again for CRSP.** Capital structure follows the deal cycle. The 2019 facility of up to $750.0 million [EVT-FY2021-bda4071d] gave way in May 2022 to a $1.1 billion agreement, expanded to $1.3 billion, financing the $650.0 million LCD purchase from S&P Global [EVT-FY2022-382296f8, EVT-FY2022-7e39249c, EVT-FY2022-3ba1e0d2]. Management then made debt paydown \"a near-to-intermediate-term priority\" [QA-FY2022-b5d151bc], reducing debt $137.2 million in 2023 and $273.8 million in 2024, with the covenant leverage ratio falling to 0.9x [SP-FY2023-32a6b3fe, SP-FY2024-52afaac0]. Buybacks resumed only late: $487.0 million year-to-date through October 2025, completing the $500 million programme, replaced by a new $1.0 billion three-year authorisation [QA-FY2025-4e43615b, EVT-FY2025-0a50e037]. And the cycle restarted — a new $1.5 billion facility on October 31, 2025 [EVT-FY2025-288145e1], funding the ~$365.0 million CRSP acquisition completed February 2, 2026 [EVT-FY2025-49025db0].\n\n**Leadership turnover was persistent and rarely explained.** The CFO seat turned over — Jason Dubinsky departing December 31, 2024 with a separation and consulting arrangement, succeeded by Michael Holt [LEAD-FY2024-aa1e4bf6, EVT-FY2024-a6657807, LEAD-FY2024-2e6e1164]. The accounting officer role changed three times in two months in early 2024 [LEAD-FY2024-cdeabc5f, LEAD-FY2024-991806b8, LEAD-FY2024-9c33bd63]. PitchBook's founder-CEO departed, forfeiting unvested shares and prompting termination of the PitchBook management bonus plan [QA-FY2024-baad85e8, EVT-FY2024-25b050be]. The Chief Revenue Officer left in November 2025 [LEAD-FY2025-c819bac8]. Direct Platform's president left September 12, 2025 with no reason stated in the announcement [QA-FY2025-a46a45ad]; the follow-up disclosure adds only that an interim head is in place and an external search firm has been retained, again without a reason [QA-FY2025-e62a262b]. The FY2025 letter acknowledges the pattern in aggregate — \"several long-tenured and senior leaders retired or moved on to new challenges\" — without individual reasons [LANG-FY2025-f2a82da8]. Note a documented ambiguity: Bevin Desmond's departure is recorded with two dates, May 6, 2022 and January 31, 2023, and the filings do not settle whether these are announcement versus effective dates or separate events [LEAD-FY2022-b99ce9e7, LEAD-FY2023-f66d0f01].\n\n## Where it stands now\n\nThe FY2025 10-K restates the strategy as delivering \"insights and experiences that make us essential to the investor workflow\" and lists five priorities: Win for Investors, Lead in AI, Own the Language of Markets, Scale for Impact, Build an Exceptional Culture [SP-FY2025-c2b97978, SP-FY2025-b094c00e, SP-FY2025-2672bc89, SP-FY2025-dbdf83f3, SP-FY2025-0acc5ca6, SP-FY2025-50eb8e38]. ESG appears nowhere in that list. Two theses dominate the recent Reg FD record: public-private market convergence [QA-FY2025-a624a63c] and AI, where management asserts \"basic reference data and investment details will be further commoditized in an AI-first world\" while claiming differentiation from enriched, standard-setting data [QA-FY2025-1e04266e, QA-FY2025-c55012a6].\n\nThe FY2025 risk deltas show what management chose to start disclosing. One risk was added, on liability \"stemming from the accuracy and use of our research, ratings, and published data, and our dependence on ingested third-party data, licensed content, and open-source components\" [RISK-FY2025-0024e869] — a reframing that shifts emphasis from protecting data to being liable for it and dependent on others'. Three were removed: the prior data-liability formulation it replaces, the complexity-and-growth-strain risk [RISK-FY2025-c2a8125a], and the geopolitics/regulatory-landscape expansion risk [RISK-FY2025-4b2aadc2]. Seventeen were reworded, including AI risks expanded to add \"compliance,\" and the stock-price risk retitled to include \"Our stock price may not reflect our assessment of intrinsic value\" [RISK-FY2025-0ac7dd4c, RISK-FY2025-d7eff92c]. That retitling sits alongside the accelerated buyback and the letter's acknowledgment that the decline \"created an opportunity\" [LANG-FY2025-8be72354].\n\nPitchBook, the growth engine, is showing strain management describes candidly: net logos \"slightly negative\" from January 2024 through June 2025 [QA-FY2025-dcc27fcc], corporate clients with market intelligence use cases \"choosing competitors over PitchBook\" [QA-FY2025-e69e883d], and lengthening sales cycles as clients clarify their own AI strategies [QA-FY2025-9c09559c].\n\n## What the filings raise but do not answer\n\nThe material weakness. Management stated it expected full remediation in the first half of 2024 [QA-FY2024-80ea08dc]. The pack contains no confirmation that remediation was completed or tested.\n\nSustainalytics' terminal state. The pack documents the licensed-ratings model change, the climate reset, the second-party-opinions retirement [QA-FY2025-7cb6423a, SP-FY2025-6552c93b] — and management's earlier flat statement that it did \"not have plans to move to a licensed data-only business model\" [QA-FY2024-d4ab7f3e]. What remains after the SPO exit, and whether the business reaches profitability, is not addressed.\n\nMargin target abandonment or persistence. Through FY2024 management repeatedly committed to margins in the \"low 20's percent range\" and higher [QA-FY2024-5e714350]. Asked directly in April 2025 whether it still expected to reach or exceed that peak, management answered only that \"margin expansion over the long-term is central to these efforts\" and never restated the number [QA-FY2025-ee261c03].\n\nCRSP economics. Revenue is disclosed at $55 million annually against a ~$365.0 million closing payment, with management expecting accretion to adjusted operating margin in 2026 [QA-FY2025-ed6e3050, EVT-FY2025-49025db0]. Whether the Vanguard relationship — cited as the scale rationale — carries renewal or repricing risk is not disclosed.\n\nRenewal-rate comparability. Methodology was revised in 2025 to include mid-contract changes, and the Advisor Workstation renewal rate was unavailable due to billing-system updates and a product transition [EVT-FY2025-bc8998b2, LANG-FY2025-51309d33]. The pack does not show the prior-basis figure alongside the revised one, so the direction of travel in that product is unverifiable from here.\n\nDirector-biography facts throughout are low-confidence, so board composition and tenure across the window should be treated as indicative rather than established.",
+ "quote_repair_utc": "2026-08-07T21:10:49Z",
+ "quote_repair_rounds": [],
+ "quote_repair_usage": {
+  "input_tokens": 14142,
+  "output_tokens": 6765,
+  "cache_creation_input_tokens": 0,
+  "cache_read_input_tokens": 0
+ },
+ "quote_repair_cost_usd": 0.2398,
+ "quotations_before": {
+  "checked": 45,
+  "ok": 41,
+  "elsewhere": [
+   {
+    "quote": "cannot be made",
+    "cited": [
+     "SP-FY2021-bcbe7c18",
+     "SP-FY2022-4f07b4fe",
+     "SP-FY2023-d263222a",
+     "QA-FY2022-925ce9e3",
+     "QA-FY2022-45445308",
+     "QA-FY2023-704538c9",
+     "QA-FY2023-006ab59a",
+     "QA-FY2023-a324af0b",
+     "QA-FY2023-9c1d1b0c",
+     "LANG-FY2023-47723c3a",
+     "QA-FY2024-d3011d2a",
+     "QA-FY2024-5d8c4040",
+     "QA-FY2025-7cb6423a",
+     "QA-FY2024-215cc336",
+     "SP-FY2025-6552c93b"
+    ],
+    "actual_source": [
+     "QA-FY2025-e83a645c"
+    ],
+    "actual_text": [
+     {
+      "id": "QA-FY2025-e83a645c",
+      "text": "we are currently assessing the potential impacts of the One Big Beautiful Bill (OBBB); however, an estimate of the impact of the OBBB on our consolidated financial statements cannot be made at this time"
+     }
+    ],
+    "permitted": [
+     {
+      "id": "SP-FY2021-bcbe7c18",
+      "text": "Establish a leading ESG position across each business\nThe Sustainalytics acquisition in 2020 has positioned us to successfully drive ESG across the investing landscape, which is a pivotal part of our long-term strategy. We remain focused on the growth of Sustainalytics and its ESG ratings, while prioritizing ESG integration across all areas of our business"
+     },
+     {
+      "id": "SP-FY2022-4f07b4fe",
+      "text": "Establish a leading ESG position across each business area\nWith Sustainalytics as part of the Morningstar business, we are positioned to successfully offer ESG solutions across the investing landscape, which is a pivotal part of our long-term strategy."
+     },
+     {
+      "id": "SP-FY2023-d263222a",
+      "text": "Leverage advances in AI to drive innovation across internal and external products and services\nMorningstar has always been at the forefront of technology, and we believe that AI is a significant technology that will redefine the investment landscape."
+     },
+     {
+      "id": "QA-FY2022-925ce9e3",
+      "text": "Within our licensed-based products, the margins for Direct and Data are the highest and Morningstar Sustainalytics has the lowest product margins; PitchBook’s margins are higher than those generated by Sustainalytics but below those for Data and Direct."
+     },
+     {
+      "id": "QA-FY2022-45445308",
+      "text": "As a result, Sustainalytics’ margins have been the lowest in our licensed-based product group and are a drag on our overall margins."
+     },
+     {
+      "id": "QA-FY2023-704538c9",
+      "text": "As we noted at the Annual Shareholder Meeting, we are slowing down our investments in Morningstar Sustainalytics. This will better align expense growth with revenue growth as we move forward."
+     },
+     {
+      "id": "QA-FY2023-006ab59a",
+      "text": "Execution-related challenges also contributed to the shortfall. In the first half of the year, we experienced significant turnover in the Morningstar Sustainalytics sales team as demand for professionals with ESG experience surged, with particularly significant impacts on our U.S., UK, and Asia Pacific businesses."
+     },
+     {
+      "id": "QA-FY2023-a324af0b",
+      "text": "We didn’t deliver on our Impact Ratings launch this year and are revisiting this methodology."
+     },
+     {
+      "id": "QA-FY2023-9c1d1b0c",
+      "text": "Our key competitors had invested ahead of us in this area, and we directed considerable investment over the past couple of years to developing our solution."
+     },
+     {
+      "id": "LANG-FY2023-47723c3a",
+      "text": "While the macro environment for ESG was a drag in the US, Morningstar Sustainalytics suffered equally from self-inflicted wounds. Our climate offering was too complex for the moment, forcing us to rework product road maps in this important growth area."
+     },
+     {
+      "id": "QA-FY2024-d3011d2a",
+      "text": "From the segment information we reported for the 9 months ended September 30, 2023, and the revised segment disclosure for the 12 months ended December 31, 2023, you can derive that Morningstar Sustainalytics is not profitable today on an adjusted operating income basis."
+     },
+     {
+      "id": "QA-FY2024-5d8c4040",
+      "text": "Historically, we offered a bespoke, on-demand ratings product that we ultimately concluded was not scalable."
+     },
+     {
+      "id": "QA-FY2025-7cb6423a",
+      "text": "The decline was driven in part by the decision to refocus our licensed ratings product for corporates on the use and distribution of existing ESG Risk Ratings and underlying data. We no longer offer corporates the option to contract with us to provide a rating. As a result, we have lost revenue and clients but expect improved scalability."
+     },
+     {
+      "id": "QA-FY2024-215cc336",
+      "text": "we are committed to strengthening our market-leading second party-opinion product"
+     },
+     {
+      "id": "SP-FY2025-6552c93b",
+      "text": "In January 2026, we announced our plans to retire our second-party opinions product by the end of the first quarter as part of a broader effort to sharpen Morningstar Sustainalytics’ focus on its core data, research and ratings businesses."
+     }
+    ]
+   },
+   {
+    "quote": "We do not have business operating segments. We have one reportable segment",
+    "cited": [
+     "SEG-FY2022-affde6ec",
+     "SEG-FY2022-6e503f7b",
+     "QA-FY2023-a271bba5",
+     "QA-FY2023-0ef29876",
+     "EVT-FY2023-c2083b8f",
+     "QA-FY2024-94597b7d",
+     "QA-FY2024-2d3f991f",
+     "QA-FY2024-80ea08dc",
+     "SEG-FY2023-5acdd923",
+     "QA-FY2024-d3e50b87"
+    ],
+    "actual_source": [
+     "QA-FY2023-018adeaa",
+     "QA-FY2023-21e176bd",
+     "QA-FY2023-2fc7abdf",
+     "QA-FY2023-64ec730f"
+    ],
+    "actual_text": [
+     {
+      "id": "QA-FY2023-018adeaa",
+      "text": "We do not have business operating segments. We have one reportable segment, but disclose revenue by type and product area, to provide useful information to shareholders."
+     },
+     {
+      "id": "QA-FY2023-21e176bd",
+      "text": "We do not have business operating segments. We have one reportable segment but disclose revenue by type and product area to provide useful information to shareholders."
+     },
+     {
+      "id": "QA-FY2023-2fc7abdf",
+      "text": "We do not have business operating segments. We have one reportable segment, but disclose revenue by type and product area, to provide useful information to shareholders."
+     },
+     {
+      "id": "QA-FY2023-64ec730f",
+      "text": "We do not have business operating segments. We have one reportable segment, but disclose revenue by type and product area, to provide useful information to shareholders."
+     }
+    ],
+    "permitted": [
+     {
+      "id": "SEG-FY2022-affde6ec",
+      "text": "PitchBook is our largest product area based on revenue and comprised 21.8%, 17.1%, and 14.5% of our consolidated revenue in 2022, 2021, and 2020, respectively."
+     },
+     {
+      "id": "SEG-FY2022-6e503f7b",
+      "text": "Morningstar Data is our second-largest product area based on revenue and accounted for 13.6%, 14.3%, and 15.5% of our consolidated revenue in 2022, 2021, and 2020, respectively."
+     },
+     {
+      "id": "QA-FY2023-a271bba5",
+      "text": "We do not have business segments as you describe. Rather, we have one reportable segment but disclose revenue by type, or product area, to provide useful information to shareholders."
+     },
+     {
+      "id": "QA-FY2023-0ef29876",
+      "text": "These methodologies are not complete and, like our product areas, change from time to time. As a result, our discussions of relative margins are directional and based on estimates."
+     },
+     {
+      "id": "EVT-FY2023-c2083b8f",
+      "text": "Effective as of December 31, 2023, the company concluded that it has seven operating segments which are presented as the following five reportable segments: Morningstar Data and Analytics, PitchBook, Morningstar Wealth, Morningstar Credit, and Morningstar Retirement."
+     },
+     {
+      "id": "QA-FY2024-94597b7d",
+      "text": "Upon review of our filing, the SEC evaluated our application of the standard and objected to our aggregation of certain operating segments."
+     },
+     {
+      "id": "QA-FY2024-2d3f991f",
+      "text": "Because we changed our application of FASB ASC 280 and our operating segment aggregation analysis for the fourth quarter of 2023, we determined that we had ineffective process-level controls over those changes, which resulted in the material weakness as of December 31, 2023. We are nonetheless confident in our internal control framework and the underlying financial information for the segments and the other areas of our reporting."
+     },
+     {
+      "id": "QA-FY2024-80ea08dc",
+      "text": "This control matter is isolated to segment reporting, and we expect it will be fully remediated in the first half of 2024 when we have had adequate time to test the effectiveness of the process and control improvements."
+     },
+     {
+      "id": "SEG-FY2023-5acdd923",
+      "text": "The operating segments of Morningstar Sustainalytics and Morningstar Indexes do not individually meet the quantitative segment reporting thresholds and have been combined and presented as part of Corporate and All Other, which is not a reportable segment."
+     },
+     {
+      "id": "QA-FY2024-d3e50b87",
+      "text": "Neither Morningstar Sustainalytics nor Morningstar Indexes individually meets the qualitative or quantitative segment reporting thresholds as per the accounting standards outlined in ASC 280, which include individually contributing more than 10% to either consolidated revenue or consolidated adjusted operating income. We continue to assess our reportable segments on an ongoing basis."
+     }
+    ]
+   },
+   {
+    "quote": "increased emphasis on profitability",
+    "cited": [
+     "INC-FY2021-0a208533",
+     "LANG-FY2021-b443c13f",
+     "INC-FY2022-42de7490",
+     "INC-FY2023-15467d28",
+     "QA-FY2023-bdfbcb3e",
+     "INC-FY2024-a958d46f",
+     "LANG-FY2024-cfef5211",
+     "INC-FY2024-13fe47c0",
+     "LANG-FY2024-5f305c5e",
+     "LANG-FY2025-5471b5fe",
+     "EVT-FY2023-d48d822c",
+     "HC-FY2022-b5b67998",
+     "HC-FY2025-eaacb74b",
+     "QA-FY2024-5e714350"
+    ],
+    "actual_source": [
+     "QA-FY2024-71ef54ce"
+    ],
+    "actual_text": [
+     {
+      "id": "QA-FY2024-71ef54ce",
+      "text": "In 2023, our company-level annual incentive structure equally weighted adjusted revenue and adjusted EBITDA, a structure that was designed to incentivize profitable growth. This represented an increased emphasis on profitability in the incentive structure compared to 2022 when the financial measures were weighted 67% to adjusted revenue and 33% to adjusted EBITDA."
+     }
+    ],
+    "permitted": [
+     {
+      "id": "INC-FY2021-0a208533",
+      "text": "At the beginning of 2021, the Compensation Committee established a funding formula that specifies bonus funding for Adjusted Revenue and Adjusted EBITDA based on various performance levels, with the final funding factor being weighted 67% for Adjusted Revenue and 33% for Adjusted EBITDA."
+     },
+     {
+      "id": "LANG-FY2021-b443c13f",
+      "text": "We modified our annual incentive performance measure weightings for 2021 to 67% Adjusted Revenue and 33% Adjusted EBITDA. This represents the weighting which we believe is the optimal mix of performance measures for our annual incentive plan and is what we had in place in 2019. In 2020, we modified our weightings to 50% Adjusted Revenue and 50% Adjusted EBITDA in response to the COVID-19 pandemic and the uncertainty it caused."
+     },
+     {
+      "id": "INC-FY2022-42de7490",
+      "text": "At the beginning of 2022, the Compensation Committee established a funding formula that specifies bonus funding for Adjusted Revenue and Adjusted EBITDA based on various performance levels, with the final funding factor being weighted 67% for Adjusted Revenue and 33% for Adjusted EBITDA."
+     },
+     {
+      "id": "INC-FY2023-15467d28",
+      "text": "At the beginning of 2023, the Compensation Committee established a funding formula that specifies bonus funding for various performance levels, with the final funding factor weighted 50% for Adjusted Revenue and 50% for Adjusted EBITDA, except for Danny Dunn who, based on his role as chief revenue officer, had a funding factor of 67% Adjusted Revenue and 33% Adjusted EBITDA weightings."
+     },
+     {
+      "id": "QA-FY2023-bdfbcb3e",
+      "text": "That said, in 2023, we will be returning to a company incentive plan structure that equally weights adjusted revenue and adjusted EBITDA, a structure designed to incentivize profitable growth."
+     },
+     {
+      "id": "INC-FY2024-a958d46f",
+      "text": "Adjusted Operating Income (Millions)\n$ 609.6\n$ 677.5\n111.1%\n127.8%\n50%"
+     },
+     {
+      "id": "LANG-FY2024-cfef5211",
+      "text": "Changed the weighting of financial performance in the calculation of our Chief Revenue Officer’s annual incentive from 67% Adjusted Revenue and 33% Adjusted EBITDA to 50% Adjusted Revenue and 50% AOI to align with the weighting applicable to the other NEOs."
+     },
+     {
+      "id": "INC-FY2024-13fe47c0",
+      "text": "Performance Level\nPayout Level (1)\n100% of Target AOI Goal\n0% vesting if achieved\n112.5% of Target AOI Goal\n100% vesting if achieved (2)\n125% of Target AOI Goal\n200% of base amount vesting if achieved"
+     },
+     {
+      "id": "LANG-FY2024-5f305c5e",
+      "text": "Given the attainment of the goals was not deemed probable as of the date of grant, there is no grant date fair value associated with these awards for accounting purposes that is recognized or disclosed for financial reporting purposes or in the 2024 Summary Compensation Table."
+     },
+     {
+      "id": "LANG-FY2025-5471b5fe",
+      "text": "Beginning with the 2025 annual incentive program, the Compensation Committee removed the 60% funding floor used in 2024 (and prior years) with the intention to further align with market practices and enhance alignment of pay and performance."
+     },
+     {
+      "id": "EVT-FY2023-d48d822c",
+      "text": "$9.0 million of severance expense during 2023, respectively, related to targeted reorganizations and headcount reductions in certain parts of the business, including Morningstar Sustainalytics, Morningstar Wealth, and Morningstar DBRS. During 2023, the most significant reductions were at Morningstar Sustainalytics."
+     },
+     {
+      "id": "HC-FY2022-b5b67998",
+      "text": "As of December 31, 2022, we had 12,224 permanent, full-time employees around the world."
+     },
+     {
+      "id": "HC-FY2025-eaacb74b",
+      "text": "As of December 31, 2025, we had 10,973 permanent, full-time employees around the world."
+     },
+     {
+      "id": "QA-FY2024-5e714350",
+      "text": "During his presentation at the Annual Shareholder Meeting, Jason noted that our goal was to increase our adjusted operating margins to recent historical peaks and higher. Recent peaks have been in the low 20's percent range."
+     }
+    ]
+   },
+   {
+    "quote": "stretch PSUs",
+    "cited": [
+     "INC-FY2021-0a208533",
+     "LANG-FY2021-b443c13f",
+     "INC-FY2022-42de7490",
+     "INC-FY2023-15467d28",
+     "QA-FY2023-bdfbcb3e",
+     "INC-FY2024-a958d46f",
+     "LANG-FY2024-cfef5211",
+     "INC-FY2024-13fe47c0",
+     "LANG-FY2024-5f305c5e",
+     "LANG-FY2025-5471b5fe",
+     "EVT-FY2023-d48d822c",
+     "HC-FY2022-b5b67998",
+     "HC-FY2025-eaacb74b",
+     "QA-FY2024-5e714350"
+    ],
+    "actual_source": [
+     "LANG-FY2024-5a4db79c",
+     "LANG-FY2025-a4405c1e"
+    ],
+    "actual_text": [
+     {
+      "id": "LANG-FY2024-5a4db79c",
+      "text": "The stretch PSUs are only earned if AOI exceeds long-term performance targets that are intended to be very challenging to achieve and accelerate value creation for our shareholders."
+     },
+     {
+      "id": "LANG-FY2025-a4405c1e",
+      "text": "The stretch PSUs are granted with performance goals that are designed to be extremely challenging in order to receive any vested shares. Given the attainment of the goals was not deemed probable as of the date of grant, there is no grant date fair value associated with these awards for accounting purposes"
+     }
+    ],
+    "permitted": [
+     {
+      "id": "INC-FY2021-0a208533",
+      "text": "At the beginning of 2021, the Compensation Committee established a funding formula that specifies bonus funding for Adjusted Revenue and Adjusted EBITDA based on various performance levels, with the final funding factor being weighted 67% for Adjusted Revenue and 33% for Adjusted EBITDA."
+     },
+     {
+      "id": "LANG-FY2021-b443c13f",
+      "text": "We modified our annual incentive performance measure weightings for 2021 to 67% Adjusted Revenue and 33% Adjusted EBITDA. This represents the weighting which we believe is the optimal mix of performance measures for our annual incentive plan and is what we had in place in 2019. In 2020, we modified our weightings to 50% Adjusted Revenue and 50% Adjusted EBITDA in response to the COVID-19 pandemic and the uncertainty it caused."
+     },
+     {
+      "id": "INC-FY2022-42de7490",
+      "text": "At the beginning of 2022, the Compensation Committee established a funding formula that specifies bonus funding for Adjusted Revenue and Adjusted EBITDA based on various performance levels, with the final funding factor being weighted 67% for Adjusted Revenue and 33% for Adjusted EBITDA."
+     },
+     {
+      "id": "INC-FY2023-15467d28",
+      "text": "At the beginning of 2023, the Compensation Committee established a funding formula that specifies bonus funding for various performance levels, with the final funding factor weighted 50% for Adjusted Revenue and 50% for Adjusted EBITDA, except for Danny Dunn who, based on his role as chief revenue officer, had a funding factor of 67% Adjusted Revenue and 33% Adjusted EBITDA weightings."
+     },
+     {
+      "id": "QA-FY2023-bdfbcb3e",
+      "text": "That said, in 2023, we will be returning to a company incentive plan structure that equally weights adjusted revenue and adjusted EBITDA, a structure designed to incentivize profitable growth."
+     },
+     {
+      "id": "INC-FY2024-a958d46f",
+      "text": "Adjusted Operating Income (Millions)\n$ 609.6\n$ 677.5\n111.1%\n127.8%\n50%"
+     },
+     {
+      "id": "LANG-FY2024-cfef5211",
+      "text": "Changed the weighting of financial performance in the calculation of our Chief Revenue Officer’s annual incentive from 67% Adjusted Revenue and 33% Adjusted EBITDA to 50% Adjusted Revenue and 50% AOI to align with the weighting applicable to the other NEOs."
+     },
+     {
+      "id": "INC-FY2024-13fe47c0",
+      "text": "Performance Level\nPayout Level (1)\n100% of Target AOI Goal\n0% vesting if achieved\n112.5% of Target AOI Goal\n100% vesting if achieved (2)\n125% of Target AOI Goal\n200% of base amount vesting if achieved"
+     },
+     {
+      "id": "LANG-FY2024-5f305c5e",
+      "text": "Given the attainment of the goals was not deemed probable as of the date of grant, there is no grant date fair value associated with these awards for accounting purposes that is recognized or disclosed for financial reporting purposes or in the 2024 Summary Compensation Table."
+     },
+     {
+      "id": "LANG-FY2025-5471b5fe",
+      "text": "Beginning with the 2025 annual incentive program, the Compensation Committee removed the 60% funding floor used in 2024 (and prior years) with the intention to further align with market practices and enhance alignment of pay and performance."
+     },
+     {
+      "id": "EVT-FY2023-d48d822c",
+      "text": "$9.0 million of severance expense during 2023, respectively, related to targeted reorganizations and headcount reductions in certain parts of the business, including Morningstar Sustainalytics, Morningstar Wealth, and Morningstar DBRS. During 2023, the most significant reductions were at Morningstar Sustainalytics."
+     },
+     {
+      "id": "HC-FY2022-b5b67998",
+      "text": "As of December 31, 2022, we had 12,224 permanent, full-time employees around the world."
+     },
+     {
+      "id": "HC-FY2025-eaacb74b",
+      "text": "As of December 31, 2025, we had 10,973 permanent, full-time employees around the world."
+     },
+     {
+      "id": "QA-FY2024-5e714350",
+      "text": "During his presentation at the Annual Shareholder Meeting, Jason noted that our goal was to increase our adjusted operating margins to recent historical peaks and higher. Recent peaks have been in the low 20's percent range."
+     }
+    ]
+   }
+  ],
+  "bad": []
+ },
+ "quotations": {
+  "checked": 44,
+  "ok": 44,
+  "elsewhere": [],
+  "bad": []
+ },
+ "citations": {
+  "citations": 125,
+  "distinct": 118,
+  "unknown": [],
+  "by_field": {
+   "board": 2,
+   "events": 13,
+   "headcount": 3,
+   "incentive_metrics": 5,
+   "investor_qa": 44,
+   "leadership": 8,
+   "notable_language": 15,
+   "risk_deltas": 5,
+   "segments": 4,
+   "strategic_priorities": 19
+  },
+  "low_confidence": [
+   "BRD-FY2021-abd94bd9",
+   "BRD-FY2021-e7589d5c"
+  ],
+  "unverified_quote": []
+ },
+ "text_before_quote_repair": "## Where MORN stood at the start of the window\n\nAt the close of FY2021 Morningstar described itself as a single-reportable-segment business organised around product areas, with 9,556 permanent full-time employees [HC-FY2021-89b3c8ce]. The 10-K's stated strategy was \"to deliver insights and experiences essential to investing,\" built on proprietary data, analytics and independent research [SP-FY2021-471e22f5]. The stated priorities were fourfold and one of them is worth naming precisely: \"Establish a leading ESG position across each business,\" described as \"a pivotal part of our long-term strategy\" following the 2020 Sustainalytics purchase [SP-FY2021-bcbe7c18, EVT-FY2021-53206fa1]. The others were differentiated insights across asset classes, operational excellence and scalability, and an inclusive culture [SP-FY2021-1ea36587, SP-FY2021-018bc28a, SP-FY2021-45276d8d]. A wealth-platform build-out was already announced, with direct indexing planned through the TAMP and the Praemium U.K. business agreed [SP-FY2021-489cc48b, SP-FY2021-bfd4ab64].\n\nThe register matters here: much of what management said about itself in this window came through monthly written answers to investor questions filed on Form 8-K — Regulation FD voluntary disclosure, unaudited and unprompted by any requirement. In FY2021 management framed the seven named growth areas — Data, Direct, DBRS, PitchBook, Investment Management, Workplace, Indexes — as \"nearly 70% of our revenue,\" with ESG added as another key area of focus and investment [QA-FY2021-729151a2, QA-FY2021-7299a8fa]. It also set the recurring defence of margin compression that would be tested for the rest of the window: \"we are currently in a period of extraordinary investment because our opportunity set is meaningful\" [QA-FY2021-0c90d456].\n\nGovernance was already distinctive. Joe Mansueto served as chairman and executive chairman, Kunal Kapoor as CEO since January 2017 [BRD-FY2021-e7589d5c, BRD-FY2021-abd94bd9] — both low-confidence facts, drawn from proxy director biographies whose section boundaries are unverified. The 10-K carried an explicit no-guidance philosophy that recurs verbatim in every year of the window [LANG-FY2021-f24fa9c3].\n\n## The arc\n\n**From ESG as a strategic pillar to ESG as a cost problem.** The clearest single reversal in the pack is the trajectory of Sustainalytics. In FY2021 and FY2022 the 10-K listed establishing a leading ESG position as a named strategic priority [SP-FY2021-bcbe7c18, SP-FY2022-4f07b4fe]. By FY2023 that priority had disappeared from the 10-K's list, replaced by \"Leverage advances in AI to drive innovation\" [SP-FY2023-d263222a]. The Reg FD record tracks the deterioration in unusual detail. In September 2022 management conceded Sustainalytics had \"the lowest product margins\" among licence-based products and were \"a drag on our overall margins\" [QA-FY2022-925ce9e3, QA-FY2022-45445308]. By July 2023 it stated plainly that it was \"slowing down our investments in Morningstar Sustainalytics\" to align expense growth with revenue [QA-FY2023-704538c9]. In December 2023 the admission became explicit: management attributed the shortfall partly to demand and partly to its own execution — sales-team turnover, a failed Impact Ratings launch whose methodology was being revisited, and competitors having invested ahead of Morningstar in climate [QA-FY2023-006ab59a, QA-FY2023-a324af0b, QA-FY2023-9c1d1b0c]. The FY2023 shareholder letter used the phrase \"self-inflicted wounds\" [LANG-FY2023-47723c3a]. By FY2024 the 10-K disclosed that management \"cannot be made\" of segment-level profit here in aggregate, but the Reg FD answers confirmed Sustainalytics \"is not profitable today on an adjusted operating income basis\" [QA-FY2024-d3011d2a]. In FY2025 the bespoke corporate ratings product was wound down [QA-FY2024-5d8c4040, QA-FY2025-7cb6423a], and by January 2026 the second-party opinions product — the one Morningstar had repeatedly called market-leading [QA-FY2024-215cc336] — was slated for retirement to \"sharpen Morningstar Sustainalytics' focus on its core data, research and ratings businesses\" [SP-FY2025-6552c93b].\n\nManagement supplied two reasons: softening ESG demand, especially in the U.S. [LANG-FY2023-9f223939], and its own execution. It also disclosed a governance episode — an independent White & Case investigation into alleged anti-Israel bias, prompted by an admission that \"our initial review was overly dismissive of the serious bias concerns\" [QA-FY2022-b2b38e35, QA-FY2022-c3e28357]. The investigation found no evidence of pervasive or systemic bias but identified one product exhibiting bias in its outcomes [QA-FY2023-fb91efa2].\n\n**Wealth: heavy investment, then retreat.** The wealth build-out followed a similar shape but faster. FY2022's letter said \"I wish we had done this many years ago\" of the consolidation, while conceding \"the early financial results aren't what we'd hoped for\" [LANG-FY2022-2fae4e3b, LANG-FY2022-97bb271f]. FY2023's letter went further: \"The investments were sizable and poorly timed\" [LANG-FY2023-9fb8d5ec]. The stated remedy narrowed the ambition — focusing \"on areas where we have the greatest confidence that we can win,\" namely the international platform and third-party-distributed model portfolios [SP-FY2023-38efa90d]. Then came the structural exits: the AssetMark alliance and sale of roughly $12 billion of TAMP assets, with the U.S. TAMP to be sunset [QA-FY2024-ad65f833, QA-FY2024-9b4e7568]; and the retirement of Morningstar Office after 20 years, with clients routed to SS&C's Black Diamond [QA-FY2025-cef14118, SEG-FY2025-b7e05709]. Management's stated rationale is consistent and specific: \"The cost of maintaining and improving it is significant, and scale is important for success\" [QA-FY2024-ad65f833], and a focus on areas that \"we can scale without making significant new capital investments\" [QA-FY2025-f6dd3883]. The FY2025 letter reports the result — Wealth \"transition to profitability in 2025,\" contributing $9.6 million to adjusted operating income [LANG-FY2025-9aab1bd4].\n\n**Segment disclosure changed under regulatory pressure, not voluntarily.** The constraint on this pack forbids comparing segment counts across the window, and the reason is itself the finding. Through FY2021 and FY2022 the pack's `segments` field holds product areas Item 1 describes — PitchBook, Morningstar Data, DBRS, Direct and so on [SEG-FY2022-affde6ec, SEG-FY2022-6e503f7b]. Management insisted repeatedly in Reg FD answers that \"We do not have business operating segments. We have one reportable segment\" and that product-level margin talk was \"directional and based on estimates\" [QA-FY2023-a271bba5, QA-FY2023-0ef29876]. Effective December 31, 2023 the company concluded it had seven operating segments presented as five reportable ones [EVT-FY2023-c2083b8f]. The reason is stated flatly in the Reg FD record: the SEC \"objected to our aggregation of certain operating segments,\" after which the company re-evaluated ASC 280 and disaggregated — and concluded it \"had ineffective process-level controls over those changes, which resulted in the material weakness as of December 31, 2023\" [QA-FY2024-94597b7d, QA-FY2024-2d3f991f]. Management called the matter isolated to segment reporting and expected remediation in the first half of 2024 [QA-FY2024-80ea08dc]; the pack does not contain confirmation that remediation occurred. Sustainalytics and Indexes remained inside \"Corporate and All Other\" because neither individually met the quantitative thresholds [SEG-FY2023-5acdd923, QA-FY2024-d3e50b87] — meaning the two businesses management talked about most were the two shareholders could see least.\n\n**A shift from growth spending to margin discipline, visible in the pay design.** The incentive metrics are the cleanest evidence. FY2021 weighted the annual bonus 67% Adjusted Revenue / 33% Adjusted EBITDA — a weighting management described as \"the optimal mix\" and a reversion from COVID-era 50/50 [INC-FY2021-0a208533, LANG-FY2021-b443c13f]. FY2022 kept it [INC-FY2022-42de7490]. FY2023 moved to 50/50, and management stated the reason: to \"incentivize profitable growth,\" an \"increased emphasis on profitability\" [INC-FY2023-15467d28, QA-FY2023-bdfbcb3e]. FY2024 replaced Adjusted EBITDA with Adjusted Operating Income and extended the 50/50 weighting to the Chief Revenue Officer, removing his revenue tilt [INC-FY2024-a958d46f, LANG-FY2024-cfef5211]. FY2024 also added \"stretch PSUs\" tied to AOI outperformance of 112.5%–125% of target — awards carrying no grant-date fair value because attainment was not deemed probable, and therefore invisible in the Summary Compensation Table [INC-FY2024-13fe47c0, LANG-FY2024-5f305c5e]. FY2025 removed the 60% bonus funding floor [LANG-FY2025-5471b5fe]. This is a five-year drift from rewarding revenue to rewarding profit, and it aligns with the operating record: severance in Sustainalytics, Wealth and DBRS in 2023 [EVT-FY2023-d48d822c], headcount falling from 12,224 at end-2022 to 10,973 at end-2025 [HC-FY2022-b5b67998, HC-FY2025-eaacb74b], and a stated goal of margins returning to \"recent historical peaks\" in the \"low 20's percent range\" [QA-FY2024-5e714350].\n\n**Leverage up for LCD, then down, then up again for CRSP.** Capital structure follows the deal cycle. The 2019 facility of up to $750.0 million [EVT-FY2021-bda4071d] gave way in May 2022 to a $1.1 billion agreement, expanded to $1.3 billion, financing the $650.0 million LCD purchase from S&P Global [EVT-FY2022-382296f8, EVT-FY2022-7e39249c, EVT-FY2022-3ba1e0d2]. Management then made debt paydown \"a near-to-intermediate-term priority\" [QA-FY2022-b5d151bc], reducing debt $137.2 million in 2023 and $273.8 million in 2024, with the covenant leverage ratio falling to 0.9x [SP-FY2023-32a6b3fe, SP-FY2024-52afaac0]. Buybacks resumed only late: $487.0 million year-to-date through October 2025, completing the $500 million programme, replaced by a new $1.0 billion three-year authorisation [QA-FY2025-4e43615b, EVT-FY2025-0a50e037]. And the cycle restarted — a new $1.5 billion facility on October 31, 2025 [EVT-FY2025-288145e1], funding the ~$365.0 million CRSP acquisition completed February 2, 2026 [EVT-FY2025-49025db0].\n\n**Leadership turnover was persistent and rarely explained.** The CFO seat turned over — Jason Dubinsky departing December 31, 2024 with a separation and consulting arrangement, succeeded by Michael Holt [LEAD-FY2024-aa1e4bf6, EVT-FY2024-a6657807, LEAD-FY2024-2e6e1164]. The accounting officer role changed three times in two months in early 2024 [LEAD-FY2024-cdeabc5f, LEAD-FY2024-991806b8, LEAD-FY2024-9c33bd63]. PitchBook's founder-CEO departed, forfeiting unvested shares and prompting termination of the PitchBook management bonus plan [QA-FY2024-baad85e8, EVT-FY2024-25b050be]. The Chief Revenue Officer left in November 2025 [LEAD-FY2025-c819bac8]. Direct Platform's president left September 12, 2025 with no reason stated in the announcement [QA-FY2025-a46a45ad]; the follow-up disclosure adds only that an interim head is in place and an external search firm has been retained, again without a reason [QA-FY2025-e62a262b]. The FY2025 letter acknowledges the pattern in aggregate — \"several long-tenured and senior leaders retired or moved on to new challenges\" — without individual reasons [LANG-FY2025-f2a82da8]. Note a documented ambiguity: Bevin Desmond's departure is recorded with two dates, May 6, 2022 and January 31, 2023, and the filings do not settle whether these are announcement versus effective dates or separate events [LEAD-FY2022-b99ce9e7, LEAD-FY2023-f66d0f01].\n\n## Where it stands now\n\nThe FY2025 10-K restates the strategy as delivering \"insights and experiences that make us essential to the investor workflow\" and lists five priorities: Win for Investors, Lead in AI, Own the Language of Markets, Scale for Impact, Build an Exceptional Culture [SP-FY2025-c2b97978, SP-FY2025-b094c00e, SP-FY2025-2672bc89, SP-FY2025-dbdf83f3, SP-FY2025-0acc5ca6, SP-FY2025-50eb8e38]. ESG appears nowhere in that list. Two theses dominate the recent Reg FD record: public-private market convergence [QA-FY2025-a624a63c] and AI, where management asserts \"basic reference data and investment details will be further commoditized in an AI-first world\" while claiming differentiation from enriched, standard-setting data [QA-FY2025-1e04266e, QA-FY2025-c55012a6].\n\nThe FY2025 risk deltas show what management chose to start disclosing. One risk was added, on liability \"stemming from the accuracy and use of our research, ratings, and published data, and our dependence on ingested third-party data, licensed content, and open-source components\" [RISK-FY2025-0024e869] — a reframing that shifts emphasis from protecting data to being liable for it and dependent on others'. Three were removed: the prior data-liability formulation it replaces, the complexity-and-growth-strain risk [RISK-FY2025-c2a8125a], and the geopolitics/regulatory-landscape expansion risk [RISK-FY2025-4b2aadc2]. Seventeen were reworded, including AI risks expanded to add \"compliance,\" and the stock-price risk retitled to include \"Our stock price may not reflect our assessment of intrinsic value\" [RISK-FY2025-0ac7dd4c, RISK-FY2025-d7eff92c]. That retitling sits alongside the accelerated buyback and the letter's acknowledgment that the decline \"created an opportunity\" [LANG-FY2025-8be72354].\n\nPitchBook, the growth engine, is showing strain management describes candidly: net logos \"slightly negative\" from January 2024 through June 2025 [QA-FY2025-dcc27fcc], corporate clients with market intelligence use cases \"choosing competitors over PitchBook\" [QA-FY2025-e69e883d], and lengthening sales cycles as clients clarify their own AI strategies [QA-FY2025-9c09559c].\n\n## What the filings raise but do not answer\n\nThe material weakness. Management stated it expected full remediation in the first half of 2024 [QA-FY2024-80ea08dc]. The pack contains no confirmation that remediation was completed or tested.\n\nSustainalytics' terminal state. The pack documents the licensed-ratings model change, the climate reset, the second-party-opinions retirement [QA-FY2025-7cb6423a, SP-FY2025-6552c93b] — and management's earlier flat statement that it did \"not have plans to move to a licensed data-only business model\" [QA-FY2024-d4ab7f3e]. What remains after the SPO exit, and whether the business reaches profitability, is not addressed.\n\nMargin target abandonment or persistence. Through FY2024 management repeatedly committed to margins in the \"low 20's percent range\" and higher [QA-FY2024-5e714350]. Asked directly in April 2025 whether it still expected to reach or exceed that peak, management answered only that \"margin expansion over the long-term is central to these efforts\" and never restated the number [QA-FY2025-ee261c03].\n\nCRSP economics. Revenue is disclosed at $55 million annually against a ~$365.0 million closing payment, with management expecting accretion to adjusted operating margin in 2026 [QA-FY2025-ed6e3050, EVT-FY2025-49025db0]. Whether the Vanguard relationship — cited as the scale rationale — carries renewal or repricing risk is not disclosed.\n\nRenewal-rate comparability. Methodology was revised in 2025 to include mid-contract changes, and the Advisor Workstation renewal rate was unavailable due to billing-system updates and a product transition [EVT-FY2025-bc8998b2, LANG-FY2025-51309d33]. The pack does not show the prior-basis figure alongside the revised one, so the direction of travel in that product is unverifiable from here.\n\nDirector-biography facts throughout are low-confidence, so board composition and tenure across the window should be treated as indicative rather than established.",
+ "constraint_repair_before": [
+  {
+   "name": "the years with no shareholder letter are named where letters are used",
+   "detail": "cites letter-sourced facts for [2022, 2023, 2024, 2025] and never says FY2021 has none"
+  }
+ ],
+ "constraint_repair_after": [],
+ "text_before_repair": "## Where MORN stood at the start of the window\n\nAt the close of FY2021 Morningstar described itself as a single-reportable-segment business organised around product areas, with 9,556 permanent full-time employees [HC-FY2021-89b3c8ce]. The 10-K's stated strategy was \"to deliver insights and experiences essential to investing,\" built on proprietary data, analytics and independent research [SP-FY2021-471e22f5]. The stated priorities were fourfold and one of them is worth naming precisely: \"Establish a leading ESG position across each business,\" described as \"a pivotal part of our long-term strategy\" following the 2020 Sustainalytics purchase [SP-FY2021-bcbe7c18, EVT-FY2021-53206fa1]. The others were differentiated insights across asset classes, operational excellence and scalability, and an inclusive culture [SP-FY2021-1ea36587, SP-FY2021-018bc28a, SP-FY2021-45276d8d]. A wealth-platform build-out was already announced, with direct indexing planned through the TAMP and the Praemium U.K. business agreed [SP-FY2021-489cc48b, SP-FY2021-bfd4ab64].\n\nThe register matters here: much of what management said about itself in this window came through monthly written answers to investor questions filed on Form 8-K — Regulation FD voluntary disclosure, unaudited and unprompted by any requirement. In FY2021 management framed the seven named growth areas — Data, Direct, DBRS, PitchBook, Investment Management, Workplace, Indexes — as \"nearly 70% of our revenue,\" with ESG added as another key area of focus and investment [QA-FY2021-729151a2, QA-FY2021-7299a8fa]. It also set the recurring defence of margin compression that would be tested for the rest of the window: \"we are currently in a period of extraordinary investment because our opportunity set is meaningful\" [QA-FY2021-0c90d456].\n\nGovernance was already distinctive. Joe Mansueto served as chairman and executive chairman, Kunal Kapoor as CEO since January 2017 [BRD-FY2021-e7589d5c, BRD-FY2021-abd94bd9] — both low-confidence facts, drawn from proxy director biographies whose section boundaries are unverified. The 10-K carried an explicit no-guidance philosophy that recurs verbatim in every year of the window [LANG-FY2021-f24fa9c3].\n\n## The arc\n\n**From ESG as a strategic pillar to ESG as a cost problem.** The clearest single reversal in the pack is the trajectory of Sustainalytics. In FY2021 and FY2022 the 10-K listed establishing a leading ESG position as a named strategic priority [SP-FY2021-bcbe7c18, SP-FY2022-4f07b4fe]. By FY2023 that priority had disappeared from the 10-K's list, replaced by \"Leverage advances in AI to drive innovation\" [SP-FY2023-d263222a]. The Reg FD record tracks the deterioration in unusual detail. In September 2022 management conceded Sustainalytics had \"the lowest product margins\" among licence-based products and were \"a drag on our overall margins\" [QA-FY2022-925ce9e3, QA-FY2022-45445308]. By July 2023 it stated plainly that it was \"slowing down our investments in Morningstar Sustainalytics\" to align expense growth with revenue [QA-FY2023-704538c9]. In December 2023 the admission became explicit: management attributed the shortfall partly to demand and partly to its own execution — sales-team turnover, a failed Impact Ratings launch whose methodology was being revisited, and competitors having invested ahead of Morningstar in climate [QA-FY2023-006ab59a, QA-FY2023-a324af0b, QA-FY2023-9c1d1b0c]. The FY2023 shareholder letter used the phrase \"self-inflicted wounds\" [LANG-FY2023-47723c3a]. By FY2024 the Reg FD answers confirmed Sustainalytics \"is not profitable today on an adjusted operating income basis\" [QA-FY2024-d3011d2a]. In FY2025 the bespoke corporate ratings product was wound down [QA-FY2024-5d8c4040, QA-FY2025-7cb6423a], and by January 2026 the second-party opinions product — the one Morningstar had repeatedly called market-leading [QA-FY2024-215cc336] — was slated for retirement to \"sharpen Morningstar Sustainalytics' focus on its core data, research and ratings businesses\" [SP-FY2025-6552c93b].\n\nManagement supplied two reasons: softening ESG demand, especially in the U.S. [LANG-FY2023-9f223939], and its own execution. It also disclosed a governance episode — an independent White & Case investigation into alleged anti-Israel bias, prompted by an admission that \"our initial review was overly dismissive of the serious bias concerns\" [QA-FY2022-b2b38e35, QA-FY2022-c3e28357]. The investigation found no evidence of pervasive or systemic bias but identified one product exhibiting bias in its outcomes [QA-FY2023-fb91efa2].\n\n**Wealth: heavy investment, then retreat.** The wealth build-out followed a similar shape but faster. FY2022's letter said \"I wish we had done this many years ago\" of the consolidation, while conceding \"the early financial results aren't what we'd hoped for\" [LANG-FY2022-2fae4e3b, LANG-FY2022-97bb271f]. FY2023's letter went further: \"The investments were sizable and poorly timed\" [LANG-FY2023-9fb8d5ec]. The stated remedy narrowed the ambition — focusing \"on areas where we have the greatest confidence that we can win,\" namely the international platform and third-party-distributed model portfolios [SP-FY2023-38efa90d]. Then came the structural exits: the AssetMark alliance and sale of roughly $12 billion of TAMP assets, with the U.S. TAMP to be sunset [QA-FY2024-ad65f833, QA-FY2024-9b4e7568]; and the retirement of Morningstar Office after 20 years, with clients routed to SS&C's Black Diamond [QA-FY2025-cef14118, SEG-FY2025-b7e05709]. Management's stated rationale is consistent and specific: \"The cost of maintaining and improving it is significant, and scale is important for success\" [QA-FY2024-ad65f833], and a focus on areas that \"we can scale without making significant new capital investments\" [QA-FY2025-f6dd3883]. The FY2025 letter reports the result — Wealth \"transition to profitability in 2025,\" contributing $9.6 million to adjusted operating income [LANG-FY2025-9aab1bd4].\n\n**Segment disclosure changed under regulatory pressure, not voluntarily.** The constraint on this pack forbids comparing segment counts across the window, and the reason is itself the finding. Through FY2021 and FY2022 the pack's `segments` field holds product areas Item 1 describes — PitchBook, Morningstar Data, DBRS, Direct and so on [SEG-FY2022-affde6ec, SEG-FY2022-6e503f7b]. Management insisted repeatedly in Reg FD answers that \"We do not have business operating segments. We have one reportable segment\" and that product-level margin talk was \"directional and based on estimates\" [QA-FY2023-018adeaa, QA-FY2023-a271bba5, QA-FY2023-0ef29876]. Effective December 31, 2023 the company concluded it had seven operating segments presented as five reportable ones [EVT-FY2023-c2083b8f]. The reason is stated flatly in the Reg FD record: the SEC \"objected to our aggregation of certain operating segments,\" after which the company re-evaluated ASC 280 and disaggregated — and concluded it \"had ineffective process-level controls over those changes, which resulted in the material weakness as of December 31, 2023\" [QA-FY2024-94597b7d, QA-FY2024-2d3f991f]. Management called the matter isolated to segment reporting and expected remediation in the first half of 2024 [QA-FY2024-80ea08dc]; the pack does not contain confirmation that remediation occurred. Sustainalytics and Indexes remained inside \"Corporate and All Other\" because neither individually met the quantitative thresholds [SEG-FY2023-5acdd923, QA-FY2024-d3e50b87] — meaning the two businesses management talked about most were the two shareholders could see least.\n\n**A shift from growth spending to margin discipline, visible in the pay design.** The incentive metrics are the cleanest evidence. FY2021 weighted the annual bonus 67% Adjusted Revenue / 33% Adjusted EBITDA — a weighting management described as \"the optimal mix\" and a reversion from COVID-era 50/50 [INC-FY2021-0a208533, LANG-FY2021-b443c13f]. FY2022 kept it [INC-FY2022-42de7490]. FY2023 moved to 50/50, and management stated the reason: to \"incentivize profitable growth,\" an \"increased emphasis on profitability\" [INC-FY2023-15467d28, QA-FY2023-bdfbcb3e, QA-FY2024-71ef54ce]. FY2024 replaced Adjusted EBITDA with Adjusted Operating Income and extended the 50/50 weighting to the Chief Revenue Officer, removing his revenue tilt [INC-FY2024-a958d46f, LANG-FY2024-cfef5211]. FY2024 also added \"stretch PSUs\" tied to AOI outperformance of 112.5%–125% of target — awards carrying no grant-date fair value because attainment was not deemed probable, and therefore invisible in the Summary Compensation Table [INC-FY2024-13fe47c0, LANG-FY2024-5f305c5e, LANG-FY2024-5a4db79c]. FY2025 removed the 60% bonus funding floor [LANG-FY2025-5471b5fe]. This is a five-year drift from rewarding revenue to rewarding profit, and it aligns with the operating record: severance in Sustainalytics, Wealth and DBRS in 2023 [EVT-FY2023-d48d822c], headcount falling from 12,224 at end-2022 to 10,973 at end-2025 [HC-FY2022-b5b67998, HC-FY2025-eaacb74b], and a stated goal of margins returning to \"recent historical peaks\" in the \"low 20's percent range\" [QA-FY2024-5e714350].\n\n**Leverage up for LCD, then down, then up again for CRSP.** Capital structure follows the deal cycle. The 2019 facility of up to $750.0 million [EVT-FY2021-bda4071d] gave way in May 2022 to a $1.1 billion agreement, expanded to $1.3 billion, financing the $650.0 million LCD purchase from S&P Global [EVT-FY2022-382296f8, EVT-FY2022-7e39249c, EVT-FY2022-3ba1e0d2]. Management then made debt paydown \"a near-to-intermediate-term priority\" [QA-FY2022-b5d151bc], reducing debt $137.2 million in 2023 and $273.8 million in 2024, with the covenant leverage ratio falling to 0.9x [SP-FY2023-32a6b3fe, SP-FY2024-52afaac0]. Buybacks resumed only late: $487.0 million year-to-date through October 2025, completing the $500 million programme, replaced by a new $1.0 billion three-year authorisation [QA-FY2025-4e43615b, EVT-FY2025-0a50e037]. And the cycle restarted — a new $1.5 billion facility on October 31, 2025 [EVT-FY2025-288145e1], funding the ~$365.0 million CRSP acquisition completed February 2, 2026 [EVT-FY2025-49025db0].\n\n**Leadership turnover was persistent and rarely explained.** The CFO seat turned over — Jason Dubinsky departing December 31, 2024 with a separation and consulting arrangement, succeeded by Michael Holt [LEAD-FY2024-aa1e4bf6, EVT-FY2024-a6657807, LEAD-FY2024-2e6e1164]. The accounting officer role changed three times in two months in early 2024 [LEAD-FY2024-cdeabc5f, LEAD-FY2024-991806b8, LEAD-FY2024-9c33bd63]. PitchBook's founder-CEO departed, forfeiting unvested shares and prompting termination of the PitchBook management bonus plan [QA-FY2024-baad85e8, EVT-FY2024-25b050be]. The Chief Revenue Officer left in November 2025 [LEAD-FY2025-c819bac8]. Direct Platform's president left September 12, 2025 with no reason stated in the announcement [QA-FY2025-a46a45ad]; the follow-up disclosure adds only that an interim head is in place and an external search firm has been retained, again without a reason [QA-FY2025-e62a262b]. The FY2025 letter acknowledges the pattern in aggregate — \"several long-tenured and senior leaders retired or moved on to new challenges\" — without individual reasons [LANG-FY2025-f2a82da8]. Note a documented ambiguity: Bevin Desmond's departure is recorded with two dates, May 6, 2022 and January 31, 2023, and the filings do not settle whether these are announcement versus effective dates or separate events [LEAD-FY2022-b99ce9e7, LEAD-FY2023-f66d0f01].\n\n## Where it stands now\n\nThe FY2025 10-K restates the strategy as delivering \"insights and experiences that make us essential to the investor workflow\" and lists five priorities: Win for Investors, Lead in AI, Own the Language of Markets, Scale for Impact, Build an Exceptional Culture [SP-FY2025-c2b97978, SP-FY2025-b094c00e, SP-FY2025-2672bc89, SP-FY2025-dbdf83f3, SP-FY2025-0acc5ca6, SP-FY2025-50eb8e38]. ESG appears nowhere in that list. Two theses dominate the recent Reg FD record: public-private market convergence [QA-FY2025-a624a63c] and AI, where management asserts \"basic reference data and investment details will be further commoditized in an AI-first world\" while claiming differentiation from enriched, standard-setting data [QA-FY2025-1e04266e, QA-FY2025-c55012a6].\n\nThe FY2025 risk deltas show what management chose to start disclosing. One risk was added, on liability \"stemming from the accuracy and use of our research, ratings, and published data, and our dependence on ingested third-party data, licensed content, and open-source components\" [RISK-FY2025-0024e869] — a reframing that shifts emphasis from protecting data to being liable for it and dependent on others'. Three were removed: the prior data-liability formulation it replaces, the complexity-and-growth-strain risk [RISK-FY2025-c2a8125a], and the geopolitics/regulatory-landscape expansion risk [RISK-FY2025-4b2aadc2]. Seventeen were reworded, including AI risks expanded to add \"compliance,\" and the stock-price risk retitled to include \"Our stock price may not reflect our assessment of intrinsic value\" [RISK-FY2025-0ac7dd4c, RISK-FY2025-d7eff92c]. That retitling sits alongside the accelerated buyback and the letter's acknowledgment that the decline \"created an opportunity\" [LANG-FY2025-8be72354].\n\nPitchBook, the growth engine, is showing strain management describes candidly: net logos \"slightly negative\" from January 2024 through June 2025 [QA-FY2025-dcc27fcc], corporate clients with market intelligence use cases \"choosing competitors over PitchBook\" [QA-FY2025-e69e883d], and lengthening sales cycles as clients clarify their own AI strategies [QA-FY2025-9c09559c].\n\n## What the filings raise but do not answer\n\nThe material weakness. Management stated it expected full remediation in the first half of 2024 [QA-FY2024-80ea08dc]. The pack contains no confirmation that remediation was completed or tested.\n\nSustainalytics' terminal state. The pack documents the licensed-ratings model change, the climate reset, the second-party-opinions retirement [QA-FY2025-7cb6423a, SP-FY2025-6552c93b] — and management's earlier flat statement that it did \"not have plans to move to a licensed data-only business model\" [QA-FY2024-d4ab7f3e]. What remains after the SPO exit, and whether the business reaches profitability, is not addressed.\n\nMargin target abandonment or persistence. Through FY2024 management repeatedly committed to margins in the \"low 20's percent range\" and higher [QA-FY2024-5e714350]. Asked directly in April 2025 whether it still expected to reach or exceed that peak, management answered only that \"margin expansion over the long-term is central to these efforts\" and never restated the number [QA-FY2025-ee261c03].\n\nCRSP economics. Revenue is disclosed at $55 million annually against a ~$365.0 million closing payment, with management expecting accretion to adjusted operating margin in 2026 [QA-FY2025-ed6e3050, EVT-FY2025-49025db0]. Whether the Vanguard relationship — cited as the scale rationale — carries renewal or repricing risk is not disclosed.\n\nRenewal-rate comparability. Methodology was revised in 2025 to include mid-contract changes, and the Advisor Workstation renewal rate was unavailable due to billing-system updates and a product transition [EVT-FY2025-bc8998b2, LANG-FY2025-51309d33]. The pack does not show the prior-basis figure alongside the revised one, so the direction of travel in that product is unverifiable from here.\n\nDirector-biography facts throughout are low-confidence, so board composition and tenure across the window should be treated as indicative rather than established.",
+ "repair_utc": "2026-08-07T21:30:29Z",
+ "repair_usage": {
+  "input_tokens": 7690,
+  "output_tokens": 6746,
+  "cache_creation_input_tokens": 0,
+  "cache_read_input_tokens": 0
+ },
+ "repair_cost_usd": 0.2071
+}

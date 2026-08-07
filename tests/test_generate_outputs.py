@@ -218,24 +218,76 @@ check("every field code the ledger can mint is matched by ID_RE",
 check("  including RISK, which is minted outside FIELD_CODES",
       bool(g.ID_RE.fullmatch("RISK-FY2023-0123abcd")), True)
 
-print("\nthe real documents on disk, if they have been generated")
+print("\nthe real documents on disk")
+
+# THE SKIP THAT HID ITSELF.
+#
+# This block used to `continue` when a generation record was missing, printing one
+# dim "skipped" line and then a green "29 passed, 0 failed". Six of the 35 checks
+# — every check that touches a document actually shipped — silently stopped
+# running, and the summary line said nothing was wrong. That is precisely the
+# false-assurance shape this file's own docstring warns about, one level up: a
+# suite that passes because it did not run is worse than a suite that fails.
+#
+# It went unnoticed because data/pack/ was gitignored, so the records existed in
+# the working tree and vanished in a clean checkout — the one place a green run
+# gets believed. gen-*.json are committed now (see .gitignore), so absence means
+# something is wrong rather than something is merely underived.
+#
+# The two causes are reported separately because they have different fixes:
+#   record missing -> a committed file has been deleted; restore it.
+#   index missing  -> the pack has not been built; one free, deterministic command.
+# Folding them together would print the wrong instruction half the time.
 n_docs = 0
+idx_p = ROOT / "data" / "pack" / "index.json"
+idx = json.loads(idx_p.read_text(encoding="utf-8")) if idx_p.exists() else None
+
 for slug, d in g.DOCS.items():
     rec_p = ROOT / "data" / "pack" / f"gen-{slug}.json"
-    idx_p = ROOT / "data" / "pack" / "index.json"
-    if not (rec_p.exists() and idx_p.exists()):
-        print(f"  --    {d['file']} not generated; skipped")
+    if not rec_p.exists():
+        FAIL += 1
+        print(f"  FAIL  {d['file']}: generation record {rec_p.relative_to(ROOT)} is "
+              f"MISSING.\n"
+              f"          It is a committed file — model output, the only copy of "
+              f"`text_before_repair`.\n"
+              f"          Restore it (`git checkout -- {rec_p.relative_to(ROOT)}`) or "
+              f"regenerate (~$3.50).\n"
+              f"          Without it the three checks below do not run, and this suite "
+              f"must not report green.")
         continue
+    if idx is None:
+        FAIL += 1
+        print(f"  FAIL  {d['file']}: {idx_p.relative_to(ROOT)} is missing, so no id can "
+              f"be resolved.\n"
+              f"          The pack is derived and free to rebuild: "
+              f"uv run python src/build_pack.py")
+        continue
+
     n_docs += 1
     rec = json.loads(rec_p.read_text(encoding="utf-8"))
-    idx = json.loads(idx_p.read_text(encoding="utf-8"))
+    # `shipped_text` is the body actually written to output/ — identical to `text`
+    # unless a recorded correction was applied after generation. See
+    # `apply_corrections` in src/generate_outputs.py: a correction is data in this
+    # record, never a silent hand-edit of the document.
+    shipped = rec.get("shipped_text") or rec["text"]
     check(f"{d['file']}: every id resolves",
-          g.check_citations(rec["text"], idx)["unknown"], [])
+          g.check_citations(shipped, idx)["unknown"], [])
     check(f"{d['file']}: every quotation is verbatim filing text",
-          [b["quote"] for b in g.check_quotes(rec["text"], idx)["bad"]], [])
+          [b["quote"] for b in g.check_quotes(shipped, idx)["bad"]], [])
     check(f"{d['file']}: the rendered file matches the recorded body",
-          rec["text"].strip() in (ROOT / "output" / d["file"]).read_text(encoding="utf-8"),
+          shipped.strip() in (ROOT / "output" / d["file"]).read_text(encoding="utf-8"),
           True)
+    # A correction that is not in the record is a hand-edit, which is the thing the
+    # check above exists to prevent. So the record must also be internally honest:
+    # if it claims corrections, it must carry the pre-correction text to diff against.
+    if rec.get("corrections"):
+        check(f"{d['file']}: every correction is recorded with the text it replaced",
+              bool(rec.get("text")) and shipped != rec["text"], True)
 
-print(f"\n{PASS} passed, {FAIL} failed  ({n_docs} generated document(s) checked)")
+# The count itself is asserted, so a document dropped from DOCS — or a loop that
+# quietly stops early — cannot pass by checking nothing.
+check("every configured document was checked", n_docs, len(g.DOCS))
+
+print(f"\n{PASS} passed, {FAIL} failed  ({n_docs} of {len(g.DOCS)} generated "
+      f"document(s) checked)")
 sys.exit(1 if FAIL else 0)
