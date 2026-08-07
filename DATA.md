@@ -494,6 +494,64 @@ rather than dropped.
 Locked in by `uv run python tests/test_merge_events.py` — 35 checks, fixtures drawn
 from the real filings including every pair named above.
 
+### Quotations in the outputs — the check the id check gives false assurance about
+
+Every generated document is held to two mechanical checks, and **the second one is
+where the defects are.**
+
+| Check | First-run result |
+|---|---|
+| Every `[ID]` resolves to a fact in the pack | 323 of 324 — one bad id, repaired |
+| Every quotation is character-for-character the filing's text | **110 of 118** — 8 defects |
+
+The two are not redundant, and the gap between them is the point. An id is an opaque
+string sitting beside the fact, and the model copies it accurately. A quotation is
+reconstructed from memory of something read 300,000 tokens earlier, and **a quotation
+one word off looks exactly like a correct one.** A sentence with a resolving id and a
+misquotation reads as *more* sourced than an unsourced sentence would, so the id check
+alone actively misleads.
+
+The eight, all real, in three kinds:
+
+- **Near-miss misquotation (2).** The filing says margins are in the "low 20's percent
+  range"; the draft quoted "low 20 percent range". The filing says "our most vulnerable
+  segment"; the draft quoted "the most vulnerable segment". One word, and the words are
+  no longer the company's.
+- **Phrase in no filing text anywhere (5).** "meaningfully lagged our expectations",
+  "to pursue other interests", "was a typo", "the highest churn rate in PitchBook's
+  business", "largely outside of the control or discretion of our segment leaders".
+  Each captures what a fact *means*; none is in a filing. Two of these were the more
+  damaging kind — the departure of the Direct Platform president was described as
+  "later described as 'to pursue other interests'" when the follow-up filing gives no
+  reason at all, so the repaired sentence is **more accurate than the original**.
+- **Real filing text welded to an unrelated claim (7).** These matter more than the
+  count suggests and are the reason `elsewhere` is not treated as a benign category.
+  The brief wrote that the FY2024 10-K disclosed segment-level profit "cannot be
+  made" — a verbatim phrase whose only occurrence in the pack is a fact about
+  *assessing the impact of tax legislation*. A genuine quotation attached to the wrong
+  proposition is a fabricated claim wearing a real citation. The check therefore
+  records, for each of these, the id the phrase actually came from, because the whole
+  difference between the harmless case (a term of art quoted a paragraph from its
+  citation) and the serious one is whether that source has anything to do with the
+  sentence.
+
+Both are repaired by a targeted second call that is shown each defective quotation
+beside the verified text of the facts cited with it, and must either copy the real
+characters, drop the quotation marks and paraphrase, or delete the claim. It does
+**not** resend the pack — the repair needs the document and a handful of quote fields,
+about 8,000 tokens against 354,000 — so it runs at roughly $0.30 a document rather
+than $2.22, and can repair documents already on disk without regenerating them.
+
+After repair both documents stand at **zero defects**: 44/44 and 65/65 quotations
+verbatim in a fact cited in the same paragraph, and every id resolving. The brief's
+citation count *rose* 122 → 125, because three repairs added the id the phrase
+genuinely came from rather than deleting the sentence.
+
+**What this does not establish.** The check proves a quotation is the filing's text
+and that its citation resolves. It cannot prove the sentence around the quotation is a
+fair reading of it, and no mechanical check can. `claim` text remains unverified
+paraphrase throughout — see the quote-verification section above.
+
 ### Fact identifiers — what an output is allowed to cite
 
 Every fact and every risk delta carries a stable `id`. **1,428 ids on the current

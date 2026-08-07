@@ -122,3 +122,39 @@ max_tokens = 16000
 # Opus 5 is strong at the lower effort levels and they cost materially less.
 # Raise to "high" if extraction quality proves weak on a specific task.
 effort = "medium"
+
+[generation]
+# Milestone 5e — the two prose outputs. Separate from [extraction] because the
+# job is the opposite one: extraction reads one section closely and copies what
+# it says; generation reads 1,400 facts at once and looks for what none of them
+# says on its own.
+model = "claude-opus-5"
+
+# `high`, against extraction's `medium`. Extraction is careful reading; this is
+# cross-year synthesis over the whole pack, which is the only genuinely hard
+# reasoning in the pipeline and the one place the model is being paid for
+# judgment rather than transcription. The extra thinking tokens are output
+# tokens and cost real money — roughly $0.25-0.60 a call — which is small
+# against the pack's own input cost.
+effort = "high"
+
+# Effort for the two repair passes (unresolvable ids, non-verbatim quotations).
+# `medium`, not `high`: both are mechanical substitution against text supplied in
+# the prompt -- find the real id, or copy the real characters. Neither needs the
+# cross-year reasoning the documents themselves need, and the quote repair in
+# particular runs without the pack, so its whole call is a few thousand tokens.
+repair_effort = "medium"
+
+# SECOND DELIBERATE DEVIATION from CLAUDE.md's 4096 default, same reason as
+# [extraction] and more acute here. max_tokens caps thinking PLUS the response
+# out of one shared budget, and these documents ARE the response: a 2,500-word
+# brief with citations is roughly 5,000 tokens before any thinking at all.
+# A truncated document loses its last section and says nothing about it, so
+# `generate_outputs.py` treats stop_reason == "max_tokens" as a failed call.
+max_tokens = 32000
+
+# SPEC.md 4a: "Roughly 1,500-2,500 words". Kept here rather than in the prompt
+# so the target and the measurement come from one place -- the script counts
+# words excluding bracketed citations and reports against these.
+brief_words_min = 1500
+brief_words_max = 2500

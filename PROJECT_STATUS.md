@@ -22,7 +22,7 @@ they anchor a narrative claim.
 
 **Last Session:** 2026-08-05
 
-**Overall Health:** 🟢 Working — milestones 1–4 complete; 1,329 facts, all individually citable. Milestone 5 in progress: 10a–10d done, **the first deliverable is written** — `output/timeline.md`. Nothing spent yet
+**Overall Health:** 🟢 Working — milestones 1–4 complete; 1,329 facts, all individually citable. Milestone 5 in progress: 10a–10e done, **all three deliverables are written**. $7.00 spent
 
 ### What's Working
 
@@ -85,6 +85,12 @@ they anchor a narrative claim.
   filings never dated. Rendered **deterministically, no model call**, and it asserts
   its own completeness before writing: every input id appears in exactly one table or
   the run fails
+- **All three deliverables exist.** `output/narrative-brief.md` (2,007 words,
+  125 citations) and `output/discussion-points.md` (3,527 words, 202 citations) join
+  `timeline.md`. Every id resolves and every quotation is verbatim filing text
+- **Outputs are checked, not trusted** (`src/generate_outputs.py`). Two mechanical
+  gates — ids resolve, quotations are character-for-character the filing's text — each
+  with its own repair pass, and both fatal if anything survives
 - **Event records are resolved into timeline rows** (`src/merge_events.py`). 85
   ledger records → 76 rows: 50 dated, 26 period-unclear, 8 corroborated by more than
   one filing, 10 tagged routine. Nothing dropped — every input id lands in exactly
@@ -178,7 +184,7 @@ Next is **milestone 5, the three outputs** in `output/`. Everything they need is
 in `data/ledger/`, and SPEC.md §3 is explicit that they derive from the ledger,
 never from raw sections.
 
-### Milestone 5 in progress. 10a–10d done; 10e is next.
+### Milestone 5 in progress. 10a–10e done; 10f is next.
 
 Scoped 2026-08-05, three design questions answered (see Recent Decisions), sizing
 below measured rather than estimated.
@@ -261,7 +267,44 @@ scheduled before the prose:
    in-scope filings, so marked *(predates the window)* rather than dropped
 4. A raw enum (`role_changed`) was leaking into prose descriptions
 
-Two things worth knowing before 10e:
+**10e is done: `narrative-brief.md` (2,007 words) and `discussion-points.md`
+(3,527 words) both exist**, written from the pack in two calls sharing a cached
+prefix. $7.00 all in, against a $2–3 estimate — the overrun is explained below and it
+bought something.
+
+**The finding: the id check gives false assurance.** Both documents are held to two
+mechanical checks, and they disagree sharply about how sound the prose is:
+
+| Check | First-run result |
+|---|---|
+| Every `[ID]` resolves to a fact in the pack | 323 of 324 |
+| Every quotation is character-for-character the filing's text | **110 of 118** |
+
+Ids are opaque strings sitting beside the fact and the model copies them accurately.
+Quotations are reconstructed from memory of something read 300,000 tokens earlier, and
+**a quotation one word off looks exactly like a correct one** — while a sentence
+carrying a resolving id and a misquotation reads as *more* sourced than an unsourced
+one. The filings say margins are in the "low 20's percent range"; the draft quoted
+"low 20 percent range". The worst case was a verbatim phrase, "cannot be made", welded
+into a claim about segment-level profitability — its only occurrence in the pack is a
+fact about assessing the impact of tax legislation. That is a fabricated claim wearing
+a real citation, and only the quotation check sees it.
+
+All of it is repaired, by a targeted call that does **not** resend the pack (~$0.30 a
+document instead of $2.22). Both documents now stand at zero defects — 44/44 and 65/65
+quotations verbatim in a fact cited alongside, every id resolving — and the brief's
+citation count *rose* 122 → 125, because three repairs added the id the phrase
+genuinely came from rather than cutting the sentence. `tests/test_generate_outputs.py`
+locks all of it, every fixture a real string from the first run.
+
+**A cache lesson worth carrying.** The 5-minute cache expired *between* calls, because
+the discussion-points call itself took longer than five minutes to produce 27,000
+output tokens. Its repair round then paid a fresh $2.22 write instead of a $0.18 read.
+The break-even table in `pack-report.md` assumes reads arrive promptly; when a single
+call runs for minutes, the 1-hour cache is the right choice even below its nominal
+2.3-read break-even.
+
+Two things worth knowing before 10f:
 
 - **The uniqueness check caught a real collision on its first run.** 46 reworded
   risk deltas shared ids because `risk_delta_id` read `item["heading"]`, which
@@ -378,6 +421,10 @@ across 34 calls). Milestones 1–3 cost nothing.
 | 2026-08-04 | `pdfminer.six`, **not** `pypdf`, for PDF text | pypdf coerces unmapped glyphs toward whitespace, turning every digit in the FY2022 letter into a space — "fell 15%" became "fell". pdfminer preserves them as `(cid:N)`. Prefer the library that preserves what it can't interpret |
 | 2026-08-04 | Glyph offset **derived**, not hardcoded | Taken from the space glyph's frequency and validated against English sentinel words, so the decoder isn't silently wrong on a different company's font |
 | 2026-08-04 | The dual em-dash/minus glyph maps to ASCII `-` | One glyph serves both. A hyphen for an em dash is cosmetic; a lost minus sign inverts a fact |
+| 2026-08-07 | **Quotations are checked separately from ids, and the quotation check is the one that finds defects** | Measured on the first run: 323/324 ids resolved but only 110/118 quotations were verbatim. An id is copied from beside the fact; a quotation is reconstructed from memory of text read 300,000 tokens earlier, and one word off looks identical to correct. A sentence with a resolving id and a misquotation reads as *more* sourced than an unsourced one, so the id check alone misleads |
+| 2026-08-07 | A verbatim quotation attached to the wrong claim is **a fabricated claim, not a citation error** | The brief quoted "cannot be made" in a sentence about segment-level profitability; the phrase's only occurrence in the pack is a fact about assessing tax legislation. So the check records where each such phrase actually came from, and the repair is told to delete the claim unless that source genuinely supports the sentence |
+| 2026-08-07 | The quotation repair **does not resend the pack** | It needs the document and the handful of quote fields in question — about 8,000 tokens against 354,000 — so it costs ~$0.30 a document instead of $2.22, and can repair documents already on disk rather than forcing a $6 regeneration to fix seven quotations |
+| 2026-08-07 | `discussion-points.md` is **shown the brief, explicitly as a non-source** | The two documents read the same evidence for related purposes and overlap heavily without it. It is passed after the cache breakpoint, may not be cited, and any claim carried over must be re-sourced from the pack |
 | 2026-08-06 | **`timeline.md` is rendered deterministically — no model call** | Every field the table needs is already in the ledger. The only thing a model could add is rewriting descriptions, and `claim` text is itself unverified model output (3.1% verbatim), so condensing it would put the reader two steps from the filing with no check at either step. A renderer cannot fabricate a date, drop a row or drift a description, and it asserts completeness before writing. The cost saving is incidental |
 | 2026-08-06 | Date conflicts are detected from **structured fields, not text similarity** | At a text score of 100.0 this window holds one real conflict (a departure dated 2022-05-06 and 2023-01-31 by two filings) and one non-conflict (two genuine role changes a month apart). The structured key (name, change, role) separates them because the role strings differ; a similarity score reads both as identical. Both dates are kept and neither is presented as correct — CLAUDE.md on contradictory filings |
 | 2026-08-06 | Rows predating the window are **marked, not dropped** | Four dated rows fall before FY2021 because in-scope filings describe them. They are real and sourced, so a five-year timeline marks them *(predates the window)* rather than silently opening two years early or silently discarding them |
@@ -455,7 +502,7 @@ across 34 calls). Milestones 1–3 cost nothing.
     - b. [x] `src/build_pack.py` — 1,428 ids, 332,747 tokens, byte-stable, 6 derived constraints
     - c. [x] Event merge + "period unclear" split — 85 records → 76 rows, 8 corroborated, 10 routine, nothing dropped
     - d. [x] `output/timeline.md` — 76 rows, deterministic, $0.00. Surfaced four data problems before any prose was written
-    - e. [ ] `narrative-brief.md`, then `discussion-points.md` as two calls
+    - e. [x] `narrative-brief.md` (2,007 words) and `discussion-points.md` (3,527 words), $7.00. Found an 8-defect quotation rate the id check could not see
     - f. [ ] `src/verify_outputs.py` — the five output constraints, mechanical
 11. [ ] Optional, if the board narrative proves load-bearing: per-year verified
         boundaries for `DEF14A_director_bios` and `DEF14A_proposals_and_votes`
@@ -489,6 +536,10 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `data/ledger/facts/` | Cached per-task extraction results. A completed task is never re-run |
 | `src/render_timeline.py` | Milestone 5d. Renders `output/timeline.md`. Deterministic, no model call; asserts completeness before writing |
 | `output/timeline.md` | **Deliverable 1 of 3.** Chronological reference table, every row carrying its fact id and filing |
+| `src/generate_outputs.py` | Milestone 5e. Writes both prose deliverables from the pack; checks and repairs ids and quotations |
+| `output/narrative-brief.md` | **Deliverable 2 of 3.** The five-year arc, 2,007 words, 125 citations |
+| `output/discussion-points.md` | **Deliverable 3 of 3.** Observations, open questions, and stated-vs-paid-for priorities |
+| `tests/test_generate_outputs.py` | 35 checks on the citation and quotation gates; fixtures are real strings from the first generation run |
 | `src/merge_events.py` | Milestone 5c. Merges duplicate event records, splits undated ones out, tags routine governance. Deterministic. `--show merged|unclear|possible|routine` |
 | `config/outputs.toml` | Output-stage config: merge threshold, routine patterns and the material overrides. **Change behaviour here, not in code** |
 | `tests/test_merge_events.py` | Proves same-filing records never merge and the incentive-plan row is not tagged routine. Run after any threshold change |
@@ -704,6 +755,41 @@ across 34 calls). Milestones 1–3 cost nothing.
   timeline row type SPEC.md §4b names explicitly
 - 27 checks in `tests/test_merge_events.py`, fixtures drawn from the real filings
   including both sides of that 72.9/61.7 pair
+
+### 2026-08-07 — item 10e: the two prose deliverables
+
+- **All three outputs now exist.** `narrative-brief.md` (2,007 words, 125 citations to
+  118 distinct facts) and `discussion-points.md` (3,527 words, 202 citations to 179
+  facts), from the pack in two calls sharing a cached prefix
+- **The finding: the id check gives false assurance.** 323 of 324 ids resolved on the
+  first run; only 110 of 118 quotations were verbatim filing text. Ids sit beside the
+  fact and get copied; quotations are reconstructed from memory 300,000 tokens later,
+  and one word off is invisible — "low 20's percent range" quoted as "low 20 percent
+  range", "our most vulnerable segment" as "the most vulnerable segment"
+- **The worst defect was a real quotation on a false claim.** "cannot be made" appears
+  in the pack exactly once, in a fact about assessing the impact of tax legislation;
+  the brief used it in a sentence about segment-level profitability. `elsewhere` is
+  therefore not a benign category, and the check now records where each phrase
+  actually came from
+- **Repaired for $1.19 rather than $6.** The repair call carries the document and the
+  disputed quote fields, not the 354,000-token pack. Both documents now show zero
+  defects — 44/44 and 65/65 — and the brief's citations *rose* 122 → 125, because
+  three repairs added the id the phrase genuinely came from
+- **Two bugs in my own checker, found by reading its output.** It captured US-style
+  punctuation inside the closing quote mark, and treated the gap between two adjacent
+  quotations as a quotation. Both inflated the failure count; the second produced a
+  phantom defect out of the words ` rather than a `. A third, `MIN_QUOTE_CHARS = 12`,
+  was excusing a real ten-character fabrication — swept the threshold and 4 catches it
+  with no false positives
+- **`word_count` was over-counting by ~2%**: stripping ids left `[, ]` behind and
+  `split()` counted the leftovers as words. It now removes whole citation groups
+- **Cache lesson.** The 5-minute cache expired *between* calls, because the
+  discussion-points call took longer than five minutes to produce 27,000 output tokens.
+  Its repair then paid a $2.22 write instead of a $0.18 read. When one call runs for
+  minutes, the 1-hour cache wins below its nominal 2.3-read break-even
+- 35 checks in `tests/test_generate_outputs.py`, every fixture a real string from the
+  first run; all four test files pass
+- Next: 10f, `src/verify_outputs.py` — the constraint checks, mechanical and free
 
 ### 2026-08-06 (continued) — item 10d: output/timeline.md
 
