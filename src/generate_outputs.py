@@ -673,6 +673,64 @@ def repair_quotes(client: anthropic.Anthropic, gen: dict, index: dict, md: str,
     return md, usages, rounds
 
 
+CONSTRAINT_FIX = """\
+The document below fails a binding constraint from the evidence pack it was written \
+from. The failures are listed with the data each was derived from.
+
+{failures}
+
+Fix each one, in the document's own voice and in the place it belongs — not as a \
+footnote or a bracketed aside at the end. The correction has to be somewhere the \
+reader meets it before they rely on the thing it qualifies.
+
+Every rule you wrote under still applies. In particular: state only what the data \
+below supports, do not add a citation you cannot see in the pack, and do not \
+introduce a quotation.
+
+Change nothing else. Same sections, same headings, same order, same claims, same \
+citations. Return the complete corrected document.
+
+=== DOCUMENT ===
+{doc}
+=== END OF DOCUMENT ==="""
+
+
+def repair_constraints(client: anthropic.Anthropic, gen: dict, md: str,
+                       failures: list[dict], label: str) -> tuple[str, dict]:
+    """One targeted call to fix constraint failures, without resending the pack.
+
+    Same economics as the quotation repair and for the same reason: the fix needs the
+    document and the handful of derived facts the failing check already computed, not
+    354,000 tokens of evidence. Roughly $0.25 against $2.50 to regenerate.
+
+    The alternative — hand-editing the Markdown — was rejected. Each document's
+    provenance says it was written by the model from the pack and nothing else, and a
+    hand-inserted sentence would make that false while leaving it looking true.
+    """
+    blocks = "\n\n".join(
+        f"{i}. FAILED: {f['name']}\n   {f['detail']}" for i, f in enumerate(failures, 1))
+    print(f"  calling ({label} constraint repair) …", end="", flush=True)
+    with client.messages.stream(
+        model=gen["model"], max_tokens=gen["max_tokens"],
+        output_config={"effort": gen["repair_effort"]},
+        system=[{"type": "text", "text": SYSTEM}],
+        messages=[{"role": "user",
+                   "content": CONSTRAINT_FIX.format(failures=blocks, doc=md)}],
+    ) as stream:
+        msg = stream.get_final_message()
+    u = msg.usage
+    usage = {"input_tokens": u.input_tokens, "output_tokens": u.output_tokens,
+             "cache_creation_input_tokens": getattr(u, "cache_creation_input_tokens", 0) or 0,
+             "cache_read_input_tokens": getattr(u, "cache_read_input_tokens", 0) or 0}
+    print(f" {usage['output_tokens']:,} out, ${cost(usage):.2f}")
+    if msg.stop_reason == "max_tokens":
+        sys.exit(f"FATAL: {label} constraint repair hit max_tokens — document truncated.")
+    text = "".join(b.text for b in msg.content if b.type == "text").strip()
+    if not text:
+        sys.exit(f"FATAL: {label} constraint repair returned no text.")
+    return text, usage
+
+
 def cost(u: dict) -> float:
     return (u["input_tokens"] * PRICE_IN
             + u["cache_creation_input_tokens"] * PRICE_IN * CACHE_WRITE_MULT
@@ -865,6 +923,9 @@ def main() -> None:
     ap.add_argument("--fix-quotes", action="store_true",
                     help="re-check and repair the quotations in the documents already on "
                          "disk, without regenerating them (~$0.20/doc, no pack resend)")
+    ap.add_argument("--fix-constraints", action="store_true",
+                    help="repair the hard checks src/verify_outputs.py reports, in the "
+                         "documents already on disk (~$0.25/doc, no pack resend)")
     args = ap.parse_args()
 
     payload, pack, index = load_pack()
@@ -876,8 +937,8 @@ def main() -> None:
         estimate(client, gen, pack, payload)
         return
 
-    if args.fix_quotes:
-        fix_quotes_on_disk(client, gen, pack, index, sha, args)
+    if args.fix_quotes or args.fix_constraints:
+        fix_on_disk(client, gen, pack, index, sha, args)
         return
 
     s = pack["subject"]
@@ -973,9 +1034,28 @@ def report_failures(written: list[tuple]) -> None:
                  f"Listed above and in data/pack/gen-*.json.")
 
 
-def fix_quotes_on_disk(client: anthropic.Anthropic, gen: dict, pack: dict, index: dict,
-                       sha: str, args) -> None:
-    """Re-check and repair quotations in documents that already exist.
+def constraint_failures(doc: str, body: str, pack: dict, index: dict, sha: str) -> list[dict]:
+    """The hard checks `src/verify_outputs.py` reports as failing, for one document.
+
+    Imported inside the function because verify_outputs imports this module — at
+    module level the two would form an import cycle. The checks live there and are
+    called from here so there is exactly one definition of each constraint.
+    """
+    import verify_outputs as v
+
+    cfg = tomllib.loads((ROOT / "config" / "outputs.toml").read_text(encoding="utf-8"))
+    r = v.verify(doc, body, pack, index, v.pack_facts(pack, index), cfg["verify"], sha)
+    # The two provenance checks are dropped: this path is handed the BODY, which has no
+    # footer yet, so they would fail on every call and the repair would be asked to
+    # write a sha256 into the prose. `write_doc` adds the real footer afterwards.
+    # Selected by tag rather than by a substring of the check's prose name, which gets
+    # reworded.
+    return [f for f in r.failures if f["tag"] not in ("prov_present", "prov_matches")]
+
+
+def fix_on_disk(client: anthropic.Anthropic, gen: dict, pack: dict, index: dict,
+                sha: str, args) -> None:
+    """Re-check and repair documents that already exist.
 
     Exists because the quotation check was added AFTER the first pair of documents had
     been generated, and regenerating them to fix seven quotations would have cost
@@ -1001,12 +1081,31 @@ def fix_quotes_on_disk(client: anthropic.Anthropic, gen: dict, pack: dict, index
                      f"but the pack on disk is {sha[:16]}…. The evidence moved under the "
                      f"document; regenerate rather than patch it.")
 
-        before = check_quotes(rec["text"], index)
-        print(f"{d['file']} — {before['checked']} quotations, {before['ok']} verbatim in a "
-              f"fact cited alongside, {len(before['elsewhere'])} elsewhere, "
-              f"{len(before['bad'])} matching nothing")
-        text, usages, rounds = repair_quotes(client, gen, index, rec["text"], slug,
-                                             args.max_repairs)
+        text, usages, rounds = rec["text"], [], []
+
+        if args.fix_quotes:
+            before = check_quotes(text, index)
+            print(f"{d['file']} — {before['checked']} quotations, {before['ok']} verbatim "
+                  f"in a fact cited alongside, {len(before['elsewhere'])} elsewhere, "
+                  f"{len(before['bad'])} matching nothing")
+            text, usages, rounds = repair_quotes(client, gen, index, text, slug,
+                                                 args.max_repairs)
+            rec["quotations_before"] = before
+
+        if args.fix_constraints:
+            fails = constraint_failures(d["file"], text, pack, index, sha)
+            print(f"{d['file']} — {len(fails)} hard constraint check(s) failing")
+            for f in fails:
+                print(f"      {f['name']}\n        {f['detail']}")
+            if fails:
+                text, u = repair_constraints(client, gen, text, fails, slug)
+                usages.append(u)
+                rec["constraint_repair_before"] = [
+                    {"name": f["name"], "detail": f["detail"]} for f in fails]
+                rec["constraint_repair_after"] = [
+                    {"name": f["name"], "detail": f["detail"]}
+                    for f in constraint_failures(d["file"], text, pack, index, sha)]
+
         usage = ({k: sum(u[k] for u in usages) for k in usages[0]} if usages else
                  {k: 0 for k in ("input_tokens", "output_tokens",
                                  "cache_creation_input_tokens", "cache_read_input_tokens")})
@@ -1021,12 +1120,10 @@ def fix_quotes_on_disk(client: anthropic.Anthropic, gen: dict, pack: dict, index
         # diff what the repair had actually changed, and "did it fix the quotation or
         # quietly delete the claim?" is precisely the question a repair pass has to be
         # auditable on. Never overwrite the only copy of something a model produced.
-        rec.setdefault("text_before_quote_repair", rec["text"])
-        rec.update({"quote_repair_utc": stamp, "quote_repair_rounds": rounds,
-                    "quote_repair_usage": usage,
-                    "quote_repair_cost_usd": round(cost(usage), 4),
-                    "quotations_before": before, "quotations": qchecks,
-                    "citations": checks, "text": text})
+        rec.setdefault("text_before_repair", rec["text"])
+        rec.update({"repair_utc": stamp, "quote_repair_rounds": rounds,
+                    "repair_usage": usage, "repair_cost_usd": round(cost(usage), 4),
+                    "quotations": qchecks, "citations": checks, "text": text})
         rec["usage"] = {k: rec["usage"].get(k, 0) + usage[k] for k in usage}
         rec["cost_usd"] = round(rec["cost_usd"] + cost(usage), 4)
         rec_path.write_text(json.dumps(rec, indent=1, ensure_ascii=False), encoding="utf-8")

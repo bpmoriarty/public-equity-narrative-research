@@ -22,7 +22,7 @@ they anchor a narrative claim.
 
 **Last Session:** 2026-08-05
 
-**Overall Health:** 🟢 Working — milestones 1–4 complete; 1,329 facts, all individually citable. Milestone 5 in progress: 10a–10e done, **all three deliverables are written**. $7.00 spent
+**Overall Health:** 🟢 Working — milestones 1–4 complete; 1,329 facts, all individually citable. **Milestone 5 is complete.** All three deliverables written and passing every constraint gate. $7.21 spent
 
 ### What's Working
 
@@ -85,6 +85,11 @@ they anchor a narrative claim.
   filings never dated. Rendered **deterministically, no model call**, and it asserts
   its own completeness before writing: every input id appears in exactly one table or
   the run fails
+- **Every deliverable passes its constraint gates** (`src/verify_outputs.py`).
+  12 hard checks per document — provenance matches the pack on disk, ids resolve,
+  quotations are verbatim, low-confidence facts are flagged, vote claims are dated,
+  the Reg FD register is established before first use, the shareholder-letter gap is
+  named, required sections present, length in range
 - **All three deliverables exist.** `output/narrative-brief.md` (2,007 words,
   125 citations) and `output/discussion-points.md` (3,527 words, 202 citations) join
   `timeline.md`. Every id resolves and every quotation is verbatim filing text
@@ -184,7 +189,7 @@ Next is **milestone 5, the three outputs** in `output/`. Everything they need is
 in `data/ledger/`, and SPEC.md §3 is explicit that they derive from the ledger,
 never from raw sections.
 
-### Milestone 5 in progress. 10a–10e done; 10f is next.
+### Milestone 5 complete. 10a–10f done.
 
 Scoped 2026-08-05, three design questions answered (see Recent Decisions), sizing
 below measured rather than estimated.
@@ -304,7 +309,26 @@ The break-even table in `pack-report.md` assumes reads arrive promptly; when a s
 call runs for minutes, the 1-hour cache is the right choice even below its nominal
 2.3-read break-even.
 
-Two things worth knowing before 10f:
+**10f is done.** `src/verify_outputs.py` holds each deliverable to the pack's
+binding constraints — **12 hard checks and 2 review lists per document**, deterministic
+and free, non-zero exit on any hard failure. Both documents now pass every one.
+
+**The design decision that matters here: a check that fires on correct documents is
+worse than no check.** It trains whoever reads the report to skip that line, and it is
+still firing on the day it is right. So checks are hard (decidable, gating) or review
+(known false positives, listed for a human, gating nothing) and never a blend. Two
+constraints could only be review lists, and measurement is why: "never compare segment
+counts" first fired on 6 sentences of which **6 were false positives**, and Reg FD
+labelling flagged **23 of 36 paragraphs** because the documents name the register once
+and let the `QA-` id prefix carry it thereafter.
+
+**It caught a real defect on its first run.** The brief cited shareholder letters for
+FY2022–FY2025 and never said FY2021 has none — while discussion-points stated the gap
+explicitly. That is exactly the risk constraint 6 names: an apparent change in
+leadership voice at that boundary may be a missing document rather than a change in
+tone. Repaired for $0.21.
+
+Two things worth knowing before the verification suite:
 
 - **The uniqueness check caught a real collision on its first run.** 46 reworded
   risk deltas shared ids because `risk_delta_id` read `item["heading"]`, which
@@ -421,6 +445,9 @@ across 34 calls). Milestones 1–3 cost nothing.
 | 2026-08-04 | `pdfminer.six`, **not** `pypdf`, for PDF text | pypdf coerces unmapped glyphs toward whitespace, turning every digit in the FY2022 letter into a space — "fell 15%" became "fell". pdfminer preserves them as `(cid:N)`. Prefer the library that preserves what it can't interpret |
 | 2026-08-04 | Glyph offset **derived**, not hardcoded | Taken from the space glyph's frequency and validated against English sentinel words, so the decoder isn't silently wrong on a different company's font |
 | 2026-08-04 | The dual em-dash/minus glyph maps to ASCII `-` | One glyph serves both. A hyphen for an em dash is cosmetic; a lost minus sign inverts a fact |
+| 2026-08-07 | **A check that fires on correct documents is worse than no check** | It trains the reader to skip that line, and it is still firing on the day it is right. So every check is hard (decidable, gates the run) or review (known false positives, listed for a human, gates nothing), never a blend. Measured: "never compare segment counts" fired on 6 sentences of which 6 were false positives; Reg FD labelling flagged 23 of 36 paragraphs. Both became review lists with tightened detectors |
+| 2026-08-07 | Every hard check is tested against a document that **fails** it, not only one that passes | A check exercised only on passing input would still pass if its body were `return True`. That is the failure mode that makes a verification suite worse than none, because it reports success either way |
+| 2026-08-07 | `verify_outputs.py` reads the **rendered Markdown**, and reuses the generator's own quote/citation functions | Two implementations of "is this quotation verbatim" would drift, and the one that drifted quietly would be the one that mattered. The independence that matters is the input, not a second opinion: reading the file on disk catches a hand-edited document, one written from a different pack, and one whose provenance no longer describes it |
 | 2026-08-07 | **Quotations are checked separately from ids, and the quotation check is the one that finds defects** | Measured on the first run: 323/324 ids resolved but only 110/118 quotations were verbatim. An id is copied from beside the fact; a quotation is reconstructed from memory of text read 300,000 tokens earlier, and one word off looks identical to correct. A sentence with a resolving id and a misquotation reads as *more* sourced than an unsourced one, so the id check alone misleads |
 | 2026-08-07 | A verbatim quotation attached to the wrong claim is **a fabricated claim, not a citation error** | The brief quoted "cannot be made" in a sentence about segment-level profitability; the phrase's only occurrence in the pack is a fact about assessing tax legislation. So the check records where each such phrase actually came from, and the repair is told to delete the claim unless that source genuinely supports the sentence |
 | 2026-08-07 | The quotation repair **does not resend the pack** | It needs the document and the handful of quote fields in question — about 8,000 tokens against 354,000 — so it costs ~$0.30 a document instead of $2.22, and can repair documents already on disk rather than forcing a $6 regeneration to fix seven quotations |
@@ -503,7 +530,7 @@ across 34 calls). Milestones 1–3 cost nothing.
     - c. [x] Event merge + "period unclear" split — 85 records → 76 rows, 8 corroborated, 10 routine, nothing dropped
     - d. [x] `output/timeline.md` — 76 rows, deterministic, $0.00. Surfaced four data problems before any prose was written
     - e. [x] `narrative-brief.md` (2,007 words) and `discussion-points.md` (3,527 words), $7.00. Found an 8-defect quotation rate the id check could not see
-    - f. [ ] `src/verify_outputs.py` — the five output constraints, mechanical
+    - f. [x] `src/verify_outputs.py` — 12 hard checks + 2 review lists per document, 44 tests. Caught the brief's undisclosed FY2021 letter gap
 11. [ ] Optional, if the board narrative proves load-bearing: per-year verified
         boundaries for `DEF14A_director_bios` and `DEF14A_proposals_and_votes`
 12. [ ] Run `preflight`, then `verification-suite` before treating any output as
@@ -536,6 +563,8 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `data/ledger/facts/` | Cached per-task extraction results. A completed task is never re-run |
 | `src/render_timeline.py` | Milestone 5d. Renders `output/timeline.md`. Deterministic, no model call; asserts completeness before writing |
 | `output/timeline.md` | **Deliverable 1 of 3.** Chronological reference table, every row carrying its fact id and filing |
+| `src/verify_outputs.py` | Milestone 5f. Holds the deliverables to the pack's binding constraints; deterministic, free, non-zero exit on failure |
+| `tests/test_verify_outputs.py` | 44 checks. Every hard check tested against a document that fails it as well as one that passes |
 | `src/generate_outputs.py` | Milestone 5e. Writes both prose deliverables from the pack; checks and repairs ids and quotations |
 | `output/narrative-brief.md` | **Deliverable 2 of 3.** The five-year arc, 2,007 words, 125 citations |
 | `output/discussion-points.md` | **Deliverable 3 of 3.** Observations, open questions, and stated-vs-paid-for priorities |
@@ -755,6 +784,39 @@ across 34 calls). Milestones 1–3 cost nothing.
   timeline row type SPEC.md §4b names explicitly
 - 27 checks in `tests/test_merge_events.py`, fixtures drawn from the real filings
   including both sides of that 72.9/61.7 pair
+
+### 2026-08-07 (continued) — item 10f: the constraint gates
+
+- **`src/verify_outputs.py`.** 12 hard checks and 2 review lists per document,
+  deterministic and free, non-zero exit on any hard failure. Both deliverables pass
+- **It caught a real defect immediately.** `narrative-brief.md` cited shareholder
+  letters for FY2022–FY2025 and never disclosed that FY2021 has none, while
+  `discussion-points.md` stated it explicitly. Constraint 6 exists for exactly this —
+  an apparent change in leadership voice at that boundary may be a missing document
+  rather than a change in tone. Repaired for $0.21; the inserted sentence says there is
+  "no FY2021 letter against which to baseline the tone or the admissions that follow"
+- **Hard versus review is the design decision.** A check that fires on correct
+  documents trains the reader to skip it. Measured before writing any thresholds:
+  "never compare segment counts" fired on 6 sentences, **all 6 false positives** (the
+  company's own "one reportable segment" quotation; PitchBook's "companies segment").
+  Reg FD labelling flagged **23 of 36** paragraphs, because the documents name the
+  register once and let the `QA-` prefix carry it — which is what the pack's own
+  constraint says the prefix is for
+- **Two bugs in my own checks, found by testing against failure.** The sentence
+  splitter ran over the whole body and welded the last sentence of one paragraph to the
+  next paragraph's heading — that artifact alone produced one segment-detector hit. And
+  the "QA counts as a series" check ran on sentences, while such an enumeration is
+  written with semicolons and a colon, which the splitter breaks on; it found nothing
+  until moved to paragraphs
+- **Checks carry a stable `tag`** alongside their prose name, so the constraint repair
+  can skip the two provenance checks by tag rather than by matching a substring of a
+  sentence that will get reworded
+- `render_timeline.py` raised a bare `FileNotFoundError` on a clean rebuild instead of
+  naming the stage that produces its input. Now fails loudly with the command to run
+- Verified: pack rebuilds **byte-identically** from nothing (same sha256), timeline.md
+  reproduces identically, all five test files pass (13 + 24 + 35 + 44 + 35 checks)
+- Next: item 12 — `preflight`, then `verification-suite`, before treating any output
+  as shareable
 
 ### 2026-08-07 — item 10e: the two prose deliverables
 

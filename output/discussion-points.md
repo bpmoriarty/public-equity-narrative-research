@@ -86,7 +86,7 @@ The CD&A repeats a near-identical formula in every year of the window: significa
 
 ### Provenance
 
-Written by `claude-opus-5` at `high` effort on 2026-08-07T21:12:56Z, from `data/pack/pack.json` and nothing else — no general knowledge about Morningstar, Inc. or its industry was used, and no source outside the company's own SEC filings for 2021–2025.
+Written by `claude-opus-5` at `high` effort on 2026-08-07T21:30:29Z, from `data/pack/pack.json` and nothing else — no general knowledge about Morningstar, Inc. or its industry was used, and no source outside the company's own SEC filings for 2021–2025.
 
 - **pack sha256** `adb27b53069a7770e2674ef124123b0718f701fc9d5ff7b56398ff17149867c6`
 - **3,527 words**, **202 citations** to **179 distinct facts** (none low-confidence)

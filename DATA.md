@@ -494,6 +494,58 @@ rather than dropped.
 Locked in by `uv run python tests/test_merge_events.py` — 35 checks, fixtures drawn
 from the real filings including every pair named above.
 
+### Verifying the deliverables — what a check may and may not gate on
+
+`src/verify_outputs.py` reads the rendered Markdown in `output/` and holds each
+document to the pack's binding constraints. Deterministic, free, and it exits non-zero
+on any hard failure. **12 hard checks and 2 review lists per document.**
+
+It reads the *rendered file*, not the generation record, and reuses the generator's own
+`check_citations`/`check_quotes` rather than reimplementing them. Two implementations
+of "is this quotation verbatim" would drift, and the one that drifted quietly would be
+the one that mattered. What differs is the input: this catches a document edited by
+hand after generation, one written from a different pack, and one whose provenance
+footer no longer describes it.
+
+**Hard versus review, and why the line is where it is.** A check that fires on correct
+documents is worse than no check: it trains whoever reads the report to skip that line,
+and it is still firing on the day it is right. So each check is one kind or the other,
+never a blend — hard checks are decidable with no judgment and gate the run; review
+lists are detectors with known false positives, printed with the sentence attached and
+gating nothing.
+
+Two constraints could only be review lists, and measurement is why:
+
+- **"Never compare segment counts"** first fired on 6 sentences, **all 6 false
+  positives** — the company's own "we have one reportable segment" quotation, and
+  PitchBook's "companies segment", a different sense of the word entirely. Tightened to
+  require years from *both* disclosure bases in the same sentence, it fires 0 times on
+  the real documents and still catches a synthetic cross-basis comparison.
+- **Regulation FD labelling** first flagged 23 of 36 paragraphs, because the documents
+  establish the register once and then rely on the `QA-` id prefix to carry it — which
+  is exactly what the pack's own constraint says that prefix is for. The hard check is
+  therefore that the register is named *before the first `QA-` citation*; the
+  paragraph-level list is review only.
+
+**It caught a real defect on its first run.** `narrative-brief.md` cited
+letter-sourced facts for FY2022–FY2025 and never said FY2021 has no letter — while
+`discussion-points.md` stated the gap explicitly. That is precisely the risk
+constraint 6 names: an apparent change in leadership voice across the FY2021/FY2022
+boundary may be a missing document rather than a change in tone. Repaired for $0.21 by
+a targeted call, and the inserted disclosure says so directly: *"there is no FY2021
+letter against which to baseline the tone or the admissions that follow."*
+
+**Two bugs in the checks themselves, both found by testing against failure.** The
+sentence splitter ran over the whole body at once and welded the last sentence of one
+paragraph to the first heading of the next — that artifact alone produced one of the
+segment detector's hits. And the "investor_qa counts as a series" check ran on
+sentences while a year-by-year enumeration is written with semicolons and a colon, on
+which the splitter breaks; it found nothing until it was moved to paragraphs.
+
+`uv run python tests/test_verify_outputs.py` — 44 checks. Every hard check is exercised
+against a document that should fail it *and* one that should pass; a check tested only
+against passing input would still pass if its body were `return True`.
+
 ### Quotations in the outputs — the check the id check gives false assurance about
 
 Every generated document is held to two mechanical checks, and **the second one is

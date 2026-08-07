@@ -125,6 +125,6 @@ These are real events. They appear here rather than in the chronology because no
 
 ---
 
-Generated 2026-08-06 17:11Z by `src/render_timeline.py` — deterministic, no model call, so this document contains nothing the ledger does not.
+Generated 2026-08-07 21:41Z by `src/render_timeline.py` — deterministic, no model call, so this document contains nothing the ledger does not.
 
 Input `data/pack/timeline-events.json` sha256 `c18fc052d30d8638b6dc1176c3d585de`. Morningstar, Inc., CIK 0001289419.

@@ -95,3 +95,69 @@ material_overrides = [
     '(?i)\bspecial (cash )?dividend\b',
     '(?i)\b(initiat|increas|suspend|discontinu|reduc)\w*\s+.{0,20}dividend\b',
 ]
+
+
+# ---------------------------------------------------------------------------
+# [verify] -- milestone 5f, src/verify_outputs.py
+#
+# Every value here is a property of the DELIVERABLE SPEC, not of the company.
+# Nothing company-specific belongs in this block: which years have a shareholder
+# letter, which disclose reportable segments, and which facts are low confidence
+# are all read out of data/pack/pack.json at run time, because they change with
+# the company and with every re-extraction.
+# ---------------------------------------------------------------------------
+[verify]
+
+# The documents this stage checks. timeline.md is absent on purpose -- it is
+# rendered deterministically by src/render_timeline.py, which asserts its own
+# completeness before writing, so there is no model output in it to verify.
+documents = ["narrative-brief.md", "discussion-points.md"]
+
+# Constraint 1. A paragraph resting on a low-confidence fact has to say so. These
+# are the ways a document can honestly say it; a paragraph citing such a fact and
+# containing none of them is a hard failure.
+low_confidence_flag_pattern = '(?:low[- ]confidence|unverified|indicative|not established|treated as indicative|boundaries are unverified)'
+
+# Constraint 3. A say-on-pay result for fiscal year N is voted at the meeting in
+# N+1, so a vote claim without a date is off by a year. Accepts "9 May 2025",
+# "May 9, 2025" and a bare year.
+date_pattern = '(?:\b\d{1,2}\s+\w+\s+20\d\d\b|\b\w+\s+\d{1,2},\s+20\d\d\b|\b20\d\d\b)'
+
+# Constraint 4. How the Regulation FD register may be named. Required to appear
+# before the first QA- citation, not in every paragraph -- see the module
+# docstring: requiring it per paragraph flagged 23 of 36 and would be ignored.
+reg_fd_pattern = '(?:regulation fd|reg fd|voluntary disclosure)'
+
+# Constraint 4b, the subject words that make a run of year/number pairs a claim
+# about investor Q&A volume rather than about the company.
+qa_subject_pattern = '(?:question|answer|investor q&a|reg fd|regulation fd)'
+
+# Share of a paragraph's citations that must be QA- before it is listed for
+# review as resting mostly on voluntary disclosure. Review only, never a failure.
+qa_majority_share = 0.5
+
+# SPEC.md 4a and 4c. The brief carries an explicit word target; discussion-points
+# does not, so its range is wide enough only to catch a truncated or runaway
+# document rather than to enforce a length. Sub-tables come last: in TOML,
+# everything after a [verify.x] header belongs to that sub-table, so a scalar
+# written below one would silently land in the wrong place.
+[verify.word_range]
+"narrative-brief.md" = [1500, 2500]
+"discussion-points.md" = [800, 8000]
+
+# SPEC.md 4a and 4c again: the sections each document must actually contain.
+# Matched case-insensitively as substrings, so the writer can phrase a heading
+# naturally as long as the section is there.
+[verify.required_headings]
+"narrative-brief.md" = [
+    "## Where",              # where the company stood at the start of the window
+    "## The arc",
+    "## Where it stands now",
+    "## What the filings raise",
+]
+"discussion-points.md" = [
+    "## Observations",
+    "## Open questions",
+    "## What management appears to prioritise",
+    "diverge",               # the stated-vs-paid-for section SPEC.md calls the point
+]

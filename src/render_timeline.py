@@ -166,8 +166,15 @@ def render() -> str:
                  f"{len(ids_in)} ids in, {len(set(ids_out))} out.\n"
                  f"  missing: {sorted(ids_in - set(ids_out))[:5]}")
 
-    src_hash = hashlib.sha256(
-        (PACK_DIR / "timeline-events.json").read_bytes()).hexdigest()
+    # The stamped input file, which `src/merge_events.py` writes. `timeline_block()`
+    # above recomputes the rows in memory, so the render itself does not need the file
+    # — but the document records its input's hash, and a missing input must say which
+    # stage produces it rather than raising a bare FileNotFoundError from a rebuild.
+    events = PACK_DIR / "timeline-events.json"
+    if not events.exists():
+        sys.exit(f"FATAL: {events.relative_to(ROOT)} not found.\n"
+                 f"  Build it first: uv run python src/merge_events.py")
+    src_hash = hashlib.sha256(events.read_bytes()).hexdigest()
 
     L: list[str] = [
         f"# {s['name']} ({s['ticker']}) — Timeline, FY{s['fys'][0]}–FY{s['fys'][-1]}",
