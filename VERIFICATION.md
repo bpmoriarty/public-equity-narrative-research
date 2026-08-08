@@ -17,11 +17,11 @@ that today's gates cannot see.
 Dimensions run: data-integrity **yes** · pipeline **yes** · statistical **N/A
 (justified below)** · claims-evidence **yes**
 
-> **Remediation status, 2026-08-07. Every defect D1–D8 is now fixed**, and the
+> **Remediation status, 2026-08-08. Every finding D1–D9 is fixed**, and the
 > numeric-evidence detector D2(a) is built, calibrated and enforced as a hard check.
-> One finding remains open: **D9**, surfaced while fixing D8 and left deliberately
-> because it needs a contract decision, not a patch. See *Remediation log* at the end
-> of this file for what changed and how each fix was verified.
+> Nothing from this review is outstanding. See *Remediation log* at the end of this
+> file for what changed and how each fix was verified; two measured residues and the
+> human-judgment items below are carried forward deliberately, not closed.
 >
 > Everything below describes the state at commit `0547c37`, when the suite was run,
 > and is left unedited so the finding and the fix can be read against each other.
@@ -642,7 +642,7 @@ the moment 34 quotes changed. Re-earned, not assumed:
 
 Pack sha256 moved `41b0cabb…` → `fd320ce5…`.
 
-### D9 — NEW, latent: `as_of_utc` records when the script ran, not when EDGAR was read
+### D9 — fixed 2026-08-08
 
 Found while fixing D8. `src/discover.py:531` sets `as_of = datetime.now(timezone.utc)`
 unconditionally, but the run is cache-first and `sec_requests_made` is `0` — so
@@ -659,15 +659,31 @@ field a coverage or survivorship claim would be checked against. This is also wh
 was fixed in `build_ledger.py` rather than by regenerating the inventory: re-running
 `discover.py` to add a field would itself have falsified the as-of date.
 
-The fix is to record the cache file's own vintage (`submissions_CIK*.json` mtime, or a
-`fetched_utc` written beside it) and report both — *index as of X, read at Y*. Not
-done: it needs a decision about what `as_of` should mean when the cache is warm, which
-is a judgment about the contract, not a bug fix.
+**Fixed, with the contract decided: report both.** `as_of_utc` is now a property of
+the DATA — when the submissions index was read from EDGAR — and `run_utc` is when the
+artifact was written. They answer different questions, and collapsing them into one
+field is what made the first question unanswerable.
+
+A `_meta/fetch-log.json` records each cached document's vintage at the moment of the
+live request, which is the only moment that knows it. Documents cached before the log
+existed fall back to file mtime and **say so** — `as_of_basis` carries the wording
+"inferred, not recorded" — rather than presenting a guess as a record.
+`index_age_days_at_run` states the gap, and a run reading an index 7+ days old prints
+a warning naming the age and the `--refresh` fix.
+
+Corrected in place: `as_of_utc` moved `2026-08-04T18:08:03Z` → `2026-08-04T17:56:07Z`,
+the true fetch time. `discover.py` was re-run from cache with **0 EDGAR requests**, and
+all **1,000** inventory rows are byte-identical — only `as_of_utc` changed and five
+fields were added.
+
+New `tests/test_discover.py`, 12 checks, pinning the part that fails quietly: that an
+inferred vintage labels itself, that a recorded vintage beats mtime, that a corrupt
+log degrades instead of crashing, and — the defect stated as a test — that a
+zero-request run does not claim its own clock as the as-of date.
 
 ### Still open
 
-**D9** (as-of vintage) is the only open finding, and it needs a decision about what
-`as_of` should mean when the cache is warm rather than a fix.
+No findings from this review remain open.
 
 Two measured residues are recorded rather than closed: **11 THIN figures** in
 `discussion-points.md` whose facts have no uniform table to anchor on (D2(b)), and

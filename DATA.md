@@ -12,7 +12,8 @@ asserted. Update this file when the source, universe, or as-of date changes.
 | Filing metadata | EDGAR submissions JSON API (`data.sec.gov/submissions/CIK##########.json`) |
 | Documents | Filing HTML as filed, retrieved via `edgartools` |
 | Access library | `edgartools` (version pinned in `uv.lock`) |
-| As-of date | **2026-08-04** — submissions index pulled 2026-08-04T18:08Z; documents fetched same day. *Caveat:* `inventory.json` `as_of_utc` records when `discover.py` last **ran**, not when EDGAR was last **read**; the run is cache-first, so on a later re-run the two would diverge. They agree here to within 12 minutes (index cache written 17:56:07Z), so the date above is sound as stated — see VERIFICATION.md D9 |
+| As-of date (the **data**) | **2026-08-04T17:56:07Z** — when the submissions index was read from EDGAR. `inventory.json` `as_of_utc`. Documents fetched the same day |
+| Run date (the **artifact**) | `inventory.json` `run_utc` — when `discover.py` last wrote the inventory. Differs from the as-of date on every cache-first run, and `index_age_days_at_run` records the gap. Only the as-of date bears on how current the coverage is |
 | Universe | One company at a time, per `config/company.toml` |
 | **Fiscal window** | Five fiscal years, per `config/company.toml` `[window]`. FY2021–FY2025 = `2021-01-01 .. 2025-12-31` in calendar time (`inventory.json` `window_start_date` / `window_end_date`). **This bounds the fiscal years in scope, not the documents.** |
 | **Document window** | The filing dates of the documents the ledger is actually drawn from, which run **past** the fiscal window end by construction — a 10-K, a proxy and an annual-meeting vote all report on a year after it closes. Measured, not asserted: `data/ledger/ledger-report.md` § *Document window*, and per year in `FY*.json` `data_quality.document_window` |

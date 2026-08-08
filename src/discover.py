@@ -62,6 +62,9 @@ for stream in (sys.stdout, sys.stderr):
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG_DIR = ROOT / "config"
 META_DIR = ROOT / "data" / "raw" / "_meta"
+# When each cached metadata document was actually read from EDGAR. Written at fetch
+# time, because that is the only moment that knows. See `Client.vintage_of`.
+FETCH_LOG = META_DIR / "fetch-log.json"
 OUT_DIR = ROOT / "data" / "discovery"
 
 TICKER_MAP_URL = "https://www.sec.gov/files/company_tickers.json"
@@ -114,13 +117,56 @@ class SecClient:
         self.use_cache = use_cache
         self.requests_made = 0
         self.cache_hits = 0
+        # {cache_name: (iso timestamp, how it was determined)} for everything this
+        # run read, cached or not. See `vintage_of`.
+        self.vintages: dict[str, tuple[str, str]] = {}
         META_DIR.mkdir(parents=True, exist_ok=True)
+
+    def vintage_of(self, cache_name: str) -> tuple[str | None, str]:
+        """When this cached document was actually READ FROM EDGAR, and how we know.
+
+        The distinction this exists to make: a cache-first run can execute today and
+        return an index fetched weeks ago. Stamping the run's own clock onto the
+        result — which is what `as_of_utc` used to do — asserts a freshness nothing
+        measured. With `sec_requests_made: 0` in the same file, it asserted a
+        freshness the run itself contradicted. VERIFICATION.md D9.
+
+        Recorded at fetch time in `_meta/fetch-log.json`. Falls back to the cache
+        file's mtime for documents cached before that log existed, and says which
+        source it used rather than presenting a guess as a record.
+        """
+        log = {}
+        if FETCH_LOG.exists():
+            try:
+                log = json.loads(FETCH_LOG.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                log = {}
+        if cache_name in log:
+            return log[cache_name], "recorded when the document was fetched"
+        p = META_DIR / cache_name
+        if p.exists():
+            return (datetime.fromtimestamp(p.stat().st_mtime, timezone.utc)
+                    .strftime("%Y-%m-%dT%H:%M:%SZ"),
+                    "cache file mtime — this document was cached before the fetch "
+                    "log existed, so its vintage is inferred, not recorded")
+        return None, "not cached"
+
+    def _record_vintage(self, cache_name: str, when: str) -> None:
+        log = {}
+        if FETCH_LOG.exists():
+            try:
+                log = json.loads(FETCH_LOG.read_text(encoding="utf-8"))
+            except json.JSONDecodeError:
+                log = {}
+        log[cache_name] = when
+        FETCH_LOG.write_text(json.dumps(log, indent=1, sort_keys=True), encoding="utf-8")
 
     def get_json(self, url: str, cache_name: str) -> dict:
         cache_path = META_DIR / cache_name
 
         if self.use_cache and cache_path.exists():
             self.cache_hits += 1
+            self.vintages[cache_name] = self.vintage_of(cache_name)
             with open(cache_path, encoding="utf-8") as fh:
                 return json.load(fh)
 
@@ -138,6 +184,11 @@ class SecClient:
         data = resp.json()
 
         cache_path.write_text(json.dumps(data, indent=1), encoding="utf-8")
+        # Stamped at the moment of the live request, which is the only moment that
+        # knows the answer. A later run reads this rather than its own clock.
+        now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        self._record_vintage(cache_name, now)
+        self.vintages[cache_name] = (now, "recorded when the document was fetched")
         return data
 
 
@@ -528,10 +579,47 @@ def main() -> None:
                            "disposition": disposition, "reason": reason,
                            "in_window": in_window})
 
-    as_of = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    run_utc = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    # AS-OF IS A PROPERTY OF THE DATA, NOT OF THE RUN.
+    #
+    # `as_of_utc` used to be `datetime.now()`, unconditionally, in a script that is
+    # cache-first. So a run that made zero requests still stamped its own clock on an
+    # index fetched days earlier — and `as_of_utc` is exactly the field a coverage or
+    # survivorship claim gets checked against. It was wrong by twelve minutes when the
+    # verification suite caught it, and the error grows without bound: re-run this a
+    # month from now and the inventory would claim a month-fresh index that is a month
+    # stale, with nothing anywhere to contradict it. VERIFICATION.md D9.
+    #
+    # Both are reported now, because both are real and they answer different
+    # questions. "How current is this data?" is the index vintage. "When was this
+    # artifact produced?" is the run clock. Collapsing them into one field is what
+    # made the first answer unavailable.
+    idx_cache = f"submissions_CIK{cik}.json"
+    index_fetched, vintage_basis = client.vintage_of(idx_cache)
+    stale_days = None
+    if index_fetched:
+        stale_days = round(
+            (datetime.now(timezone.utc)
+             - datetime.strptime(index_fetched, "%Y-%m-%dT%H:%M:%SZ")
+             .replace(tzinfo=timezone.utc)).total_seconds() / 86400, 1)
+        if stale_days >= 7:
+            print(f"  WARNING: the submissions index was read from EDGAR "
+                  f"{stale_days:.0f} days ago ({index_fetched}). Filings made since "
+                  f"then are not in this inventory. Re-run with --refresh to update.")
 
     inventory = {
-        "as_of_utc": as_of,
+        # The vintage of the DATA. Falls back to the run clock only if nothing is
+        # cached, which is the one case where they genuinely coincide.
+        "as_of_utc": index_fetched or run_utc,
+        "as_of_basis": vintage_basis,
+        "index_fetched_utc": index_fetched,
+        "index_age_days_at_run": stale_days,
+        "run_utc": run_utc,
+        "as_of_note": "as_of_utc is when the submissions index was READ FROM EDGAR, "
+                      "not when this script last ran — those differ on every "
+                      "cache-first run, and it is the first that a coverage claim "
+                      "depends on. run_utc is when the artifact was written.",
         "ticker": ticker,
         "cik": cik,
         "company_name": name,
@@ -580,7 +668,13 @@ def build_report(inv: dict, rows: list[dict], fy_range: list[int], fye) -> str:
     add(f"- Fiscal year end: **{inv['fiscal_year_end_month_day']}**")
     add(f"- Window: **FY{inv['first_fiscal_year']}–FY{inv['last_fiscal_year']}** "
         f"= {inv['window_start_date']} .. {inv['window_end_date']}")
-    add(f"- Submissions index as of: {inv['as_of_utc']}")
+    # Both, and labelled. "Index as of X, report written Y" is the only phrasing that
+    # lets a reader judge how current the coverage is on a cache-first run.
+    add(f"- Submissions index as of: **{inv['as_of_utc']}** "
+        f"({inv['as_of_basis']})")
+    add(f"- This report written: {inv['run_utc']}"
+        + (f" — the index was **{inv['index_age_days_at_run']} day(s) old** when it "
+           f"was read here" if inv.get("index_age_days_at_run") else ""))
     add(f"- Total filings in index: {inv['index_total_filings']} "
         f"(reaching back to {inv['index_earliest_filing']})")
     add("")
