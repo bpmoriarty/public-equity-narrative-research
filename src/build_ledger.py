@@ -46,6 +46,7 @@ import argparse
 import copy
 import json
 import sys
+import tomllib
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -64,6 +65,7 @@ FACTS_DIR = LEDGER_DIR / "facts"
 SECTIONS_MANIFEST = ROOT / "data" / "sections" / "sections-manifest.json"
 INVENTORY = ROOT / "data" / "discovery" / "inventory.json"
 RISK_DELTAS = LEDGER_DIR / "risk-deltas.json"
+CORRECTIONS = ROOT / "config" / "corrections.toml"
 
 # Which task field feeds which ledger field. Several tasks feed the same ledger
 # field on purpose: a strategic priority stated in the 10-K and one stated in the
@@ -195,6 +197,98 @@ def audit_ids() -> tuple[int, int, list[str]]:
     return n_facts, n_risk, problems
 
 
+# ---------------------------------------------------------------------------
+# Corrections
+# ---------------------------------------------------------------------------
+# See config/corrections.toml for what a correction is allowed to be. The rules
+# enforced here:
+#
+#   - The model's output in data/ledger/facts/ is never touched. A correction is
+#     applied to the value on its way into the ledger, and both the old and the new
+#     value are recorded on the fact.
+#   - A correction is matched by CONTENT, not by id, because correcting a value
+#     changes the id (`fact_id` hashes the value). Matching by id would be
+#     self-defeating: the correction's own target would stop existing the moment it
+#     was applied, and a re-run would silently no-op.
+#   - Every declared correction must match EXACTLY ONE fact. Zero means the target
+#     moved and the ledger has quietly reverted; more than one means the match keys
+#     are too loose to say which fact was meant. Both are fatal.
+
+REQUIRED_CORRECTION_KEYS = ("id", "field", "fiscal_year", "accession", "match",
+                            "set", "evidence", "reason")
+
+
+def load_corrections() -> list[dict]:
+    """Read config/corrections.toml. Absent is fine; malformed is not."""
+    if not CORRECTIONS.exists():
+        return []
+    entries = tomllib.loads(CORRECTIONS.read_text(encoding="utf-8")).get("correction", [])
+    problems = []
+    for i, c in enumerate(entries):
+        missing = [k for k in REQUIRED_CORRECTION_KEYS if not c.get(k)]
+        if missing:
+            problems.append(f"correction #{i + 1} ({c.get('id', 'unnamed')}) is missing: "
+                            f"{', '.join(missing)}")
+        # `evidence` is the whole justification for overriding a model extraction, so
+        # an empty or token one is a malformed correction rather than a lax one.
+        if len(str(c.get("evidence", ""))) < 20:
+            problems.append(f"correction #{i + 1} ({c.get('id', 'unnamed')}): `evidence` "
+                            f"must quote the filing text that establishes the correction")
+        c["_hits"] = 0
+    dupes = [k for k, n in Counter(c.get("id") for c in entries).items() if n > 1]
+    if dupes:
+        problems.append(f"duplicate correction id(s): {', '.join(map(str, dupes))}")
+    if problems:
+        sys.exit(f"FATAL: {CORRECTIONS.relative_to(ROOT)} is not usable\n\n  "
+                 + "\n  ".join(problems))
+    return entries
+
+
+def apply_corrections(corrections: list[dict], ledger_field: str, fy: int,
+                      value: dict, src: FactSource | None) -> tuple[dict, dict | None]:
+    """Patch `value` if a correction targets this fact. Returns (value, record)."""
+    for c in corrections:
+        if c["field"] != ledger_field or c["fiscal_year"] != fy:
+            continue
+        if not src or src.accession != c["accession"]:
+            continue
+        if any(value.get(k) != v for k, v in c["match"].items()):
+            continue
+        c["_hits"] += 1
+        was = {k: value.get(k) for k in c["set"]}
+        return ({**value, **c["set"]},
+                {"correction_id": c["id"], "was": was, "now": dict(c["set"]),
+                 "evidence": c["evidence"], "reason": " ".join(c["reason"].split()),
+                 "verified_by": c.get("verified_by")})
+    return value, None
+
+
+def audit_corrections(corrections: list[dict], years_built: list[int]) -> list[str]:
+    """Every correction for a year that was rebuilt must have matched exactly once.
+
+    Scoped to `years_built` so a partial rebuild (`--fy 2023`) does not report the
+    other years' corrections as unmatched — they were never offered a chance to match.
+    """
+    problems = []
+    for c in corrections:
+        if c["fiscal_year"] not in years_built:
+            continue
+        if c["_hits"] == 1:
+            continue
+        if c["_hits"] == 0:
+            problems.append(
+                f"'{c['id']}' matched NOTHING. The fact it corrects has moved or "
+                f"changed, so the ledger has silently reverted to the uncorrected "
+                f"value. Target: {c['field']} FY{c['fiscal_year']} {c['accession']} "
+                f"{json.dumps(c['match'], ensure_ascii=False)}")
+        else:
+            problems.append(
+                f"'{c['id']}' matched {c['_hits']} facts. Its `match` keys do not "
+                f"identify one fact, so which one was meant is undecidable. Add a "
+                f"distinguishing key to `match`.")
+    return problems
+
+
 def attribute(item: dict, sources: list[dict],
               texts: dict) -> tuple[FactSource | None, bool, str, str]:
     """Resolve which source contains this fact's quote. See module docstring.
@@ -222,7 +316,8 @@ def attribute(item: dict, sources: list[dict],
     return None, False, "; ".join(misses) or "no sources to check against", quote
 
 
-def build_year(fy: int, inv: dict, texts: dict, risk: dict) -> tuple[YearLedger, list[str]]:
+def build_year(fy: int, inv: dict, texts: dict, risk: dict,
+               corrections: list[dict]) -> tuple[YearLedger, list[str]]:
     warnings: list[str] = []
     fields: dict[str, list[LedgerFact]] = {f: [] for f in LEDGER_FIELDS}
 
@@ -244,15 +339,25 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict) -> tuple[YearLedger,
                     continue
                 src, verified, check, span = attribute(item, sources, texts)
                 conf, reason = confidence_for(src.section_key if src else "", verified)
+                # Applied AFTER attribution, because a correction is keyed on the
+                # accession attribution resolves — and before the fact is built,
+                # because the id is derived from the value. See load_corrections.
+                value, corr = apply_corrections(
+                    corrections, ledger_field, fy,
+                    {k: v for k, v in item.items() if k != "quote"}, src)
                 # `id` is deliberately not passed: LedgerFact derives it from the
                 # fact's own content, so it cannot be forgotten here or anywhere
                 # else a fact is built. See `fact_id` in ledger_schema.py.
                 fields[ledger_field].append(LedgerFact(
-                    field=ledger_field, fiscal_year=fy,
-                    value={k: v for k, v in item.items() if k != "quote"},
+                    field=ledger_field, fiscal_year=fy, value=value,
                     source=src, confidence=conf, confidence_reason=reason,
                     quote=span, quote_verified=verified, quote_check=check,
+                    correction=corr,
                 ))
+                if corr:
+                    warnings.append(
+                        f"FY{fy} {ledger_field}: value corrected by "
+                        f"'{corr['correction_id']}' ({corr['was']} -> {corr['now']})")
                 if not verified:
                     warnings.append(f"FY{fy} {ledger_field}: unverified quote ({check[:70]})")
 
@@ -369,6 +474,20 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict) -> tuple[YearLedger,
                  "uniqueness is enforced fatally at build time by `audit_ids`.",
     }
 
+    # CORRECTIONS ARE A DATA-QUALITY PROPERTY, so they are logged like any other
+    # rather than living only in a config file nobody downstream reads. A consumer
+    # of the ledger can ask "was any of this overridden by a human, and on what
+    # evidence" without leaving the artifact.
+    corrected = [x for f in LEDGER_FIELDS for x in fields[f] if x.correction]
+    dq["corrections"] = {
+        "n": len(corrected),
+        "applied": [{"id": x.id, "field": x.field, **x.correction} for x in corrected],
+        "basis": "config/corrections.toml — human corrections to model-extracted "
+                 "values that the cited filing contradicts, each carrying the filing "
+                 "text that establishes it. data/ledger/facts/ is never edited: the "
+                 "record of what the model returned has to stay as it was.",
+    }
+
     missing_tasks = [t for t in {t for t, _, _ in FIELD_MAP} if not task_cache.get(t)]
     dq["extraction_tasks_missing"] = sorted(missing_tasks)
     for t in missing_tasks:
@@ -396,16 +515,21 @@ def main() -> None:
     manifest = load_json(SECTIONS_MANIFEST, "Run src/extract_sections.py first (milestone 3).")
     risk = load_json(RISK_DELTAS, "Run src/risk_diff.py first.")
     texts = section_texts(manifest["sections"])
+    corrections = load_corrections()
 
     years = args.fy or list(range(inv["first_fiscal_year"], inv["last_fiscal_year"] + 1))
     years = sorted(years)
 
     print(f"Ledger — {inv['ticker']} ({inv['company_name']}), "
           f"FY{years[0]}-FY{years[-1]}")
+    if corrections:
+        print(f"  {len(corrections)} correction(s) declared in "
+              f"{CORRECTIONS.relative_to(ROOT)}")
     print()
 
     LEDGER_DIR.mkdir(parents=True, exist_ok=True)
     built: list[YearLedger] = []
+    built_years: list[int] = []
     all_warnings: list[str] = []
 
     for fy in years:
@@ -413,10 +537,9 @@ def main() -> None:
             print(f"FY{fy}  SKIPPED — no extraction results. "
                   f"Run: uv run python src/extract_facts.py --fy {fy}")
             continue
-        ledger, warnings = build_year(fy, inv, texts, risk)
+        ledger, warnings = build_year(fy, inv, texts, risk, corrections)
         all_warnings += warnings
-        path = LEDGER_DIR / f"FY{fy}.json"
-        path.write_text(json.dumps(ledger.model_dump(), indent=2), encoding="utf-8")
+        built_years.append(fy)
         built.append(ledger)
 
         dq = ledger.data_quality
@@ -434,6 +557,32 @@ def main() -> None:
 
     if not built:
         sys.exit("\nnothing built.")
+
+    # --- every declared correction must have landed, BEFORE anything is written --
+    # Fatal, because a silently unapplied correction puts the defective value back
+    # into the ledger with nothing on the artifact to say so. That is worse than a
+    # crash: the build succeeds, the outputs regenerate, and the only evidence
+    # anything is wrong is a config file nobody re-reads.
+    #
+    # Checked before the write rather than after, which is why the years above are
+    # built into memory first. The first version of this check ran after writing and
+    # was caught by its own test: the build failed loudly AND left five uncorrected
+    # year files on disk, so the next stage would have consumed the defective ledger
+    # from a run that had already announced it was broken. A loud failure that still
+    # ships the bad artifact is not a loud failure.
+    corr_problems = audit_corrections(corrections, built_years)
+    if corr_problems:
+        sys.exit(f"FATAL: {len(corr_problems)} correction(s) in "
+                 f"{CORRECTIONS.relative_to(ROOT)} did not apply cleanly. "
+                 f"NOTHING WAS WRITTEN — the ledger on disk is unchanged.\n\n  "
+                 + "\n\n  ".join(corr_problems))
+
+    for ledger in built:
+        (LEDGER_DIR / f"FY{ledger.fiscal_year}.json").write_text(
+            json.dumps(ledger.model_dump(), indent=2), encoding="utf-8")
+    n_applied = sum(c["_hits"] for c in corrections)
+    if n_applied:
+        print(f"\ncorrections: {n_applied} applied, each matching exactly one fact")
 
     # --- every id must resolve to exactly one thing -------------------------
     n_facts, n_risk, problems = audit_ids()
@@ -496,6 +645,22 @@ def main() -> None:
                   "Item 1 describes. A change in the count between such a year and a "
                   "reportable-segment year is a change in disclosure, not necessarily a "
                   "re-segmentation."]
+    applied = [(l.fiscal_year, a) for l in built
+               for a in l.data_quality["corrections"]["applied"]]
+    if applied:
+        lines += ["", "## Corrections applied", "",
+                  "Values the cited filing contradicts, overridden from "
+                  "`config/corrections.toml`. `data/ledger/facts/` — the record of what "
+                  "the extraction model returned — is not edited; the correction is a "
+                  "separate versioned artifact and both values are kept on the fact. "
+                  "Every correction must match exactly one fact or the build fails.", ""]
+        for fy, a in applied:
+            lines += [f"- **FY{fy} {a['field']}** `{a['id']}` — `{a['correction_id']}`: "
+                      f"{a['was']} → {a['now']}",
+                      f"    - *Evidence:* “{a['evidence']}”",
+                      f"    - *Reason:* {a['reason']}",
+                      f"    - *Verified by:* {a['verified_by']}"]
+
     lines += ["", "## Source sections used", ""]
     for l in built:
         used = sorted({x.source.section_key for f in LEDGER_FIELDS

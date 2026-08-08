@@ -86,12 +86,15 @@ The CD&A repeats a near-identical formula in every year of the window: significa
 
 ### Provenance
 
-Written by `claude-opus-5` at `high` effort on 2026-08-07T21:30:29Z, from `data/pack/pack.json` and nothing else — no general knowledge about Morningstar, Inc. or its industry was used, and no source outside the company's own SEC filings for 2021–2025.
+Written by `claude-opus-5` at `high` effort on 2026-08-07T20:36:11Z, from `data/pack/pack.json` and nothing else — no general knowledge about Morningstar, Inc. or its industry was used, and no source outside the company's own SEC filings for 2021–2025.
 
-- **pack sha256** `adb27b53069a7770e2674ef124123b0718f701fc9d5ff7b56398ff17149867c6`
+- **pack sha256** `41b0cabbef11d22d73c50603cce82d1f6ff1a289e274de68a38a2e58b52449db`
 - **3,527 words**, **202 citations** to **179 distinct facts** (none low-confidence)
 - Every id above was resolved against `data/pack/index.json` at generation time; **0** did not resolve.
 - Every one of the **65 quotations** was checked character for character against the verified filing text of the facts cited beside it; **65** matched there, **0** matched filing text cited elsewhere in this document, **0** did not match any.
 - **761,011** input tokens, **60,269** output, **$4.16**.
 
 Ids resolve in `data/pack/index.json` to the exact quote, section and accession each claim rests on. `claim` text in the pack is a model-written summary and is not quoted here; every quotation is copied from a `quote` field verified to occur in the named filing section.
+
+The model wrote this from pack `adb27b53069a7770e2674ef124123b0718f701fc9d5ff7b56398ff17149867c6`. The ledger has been corrected since, and every id and quotation above was re-resolved against the current pack — named at the top of this section — before this file was rewritten. The rewrite is refused if any of them fails.
+

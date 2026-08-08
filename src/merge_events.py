@@ -186,31 +186,87 @@ def _row(fact: dict, fy: int, field: str, typ: str | None,
 # Merging
 # ---------------------------------------------------------------------------
 
+# An amendment that says this is REPORTING AGAIN, not reporting differently.
+#
+# Form 8-K/A exists to supersede or complete an earlier 8-K, and when it does so it
+# says which one, in near-boilerplate language. That back-reference is the mechanical
+# signal that a second date is the ANSWER to the first rather than a disagreement
+# with it — and it is the difference between "the filings do not settle this" and
+# "the filings settle this, in the amendment."
+BACK_REFERENCE = re.compile(
+    r"as (?:previously|originally) (?:reported|announced|disclosed|filed)"
+    r"|the original (?:form|report|filing|current report)"
+    r"|(?:amends?|amended|amending|supplements?) (?:and restates? )?the "
+    r"(?:current report|original|report on form)",
+    re.I)
+
+
+def _resolving_amendment(group: list[dict]) -> dict | None:
+    """The row in `group` whose amendment supersedes the rest, if there is one.
+
+    Deliberately conservative, because claiming a conflict is resolved when it is not
+    is the worse error of the two: it presents one date as correct and drops the
+    caveat. All three must hold —
+
+      1. exactly one filing in the group is an amendment (`/A`), so there is no
+         question which record supersedes which;
+      2. its own quote back-references the original filing, so the amendment is
+         re-reporting the same event rather than reporting a further one;
+      3. it carries a date, so there is actually a settled date to name.
+
+    Anything else falls through to the unresolved branch and keeps the caveat.
+    """
+    amended = [r for r in group
+               if any(s.split("|")[0].endswith("/A") for s in r.get("sources", []))]
+    if len(amended) != 1:
+        return None
+    a = amended[0]
+    if not a.get("date"):
+        return None
+    return a if any(BACK_REFERENCE.search(q or "") for q in a.get("quotes", [])) else None
+
+
 def find_date_conflicts(rows: list[dict]) -> list[dict]:
     """Rows the filings describe identically but date differently.
 
     Detected from STRUCTURED FIELDS, not text similarity, and only for leadership
     where those fields exist: same person, same change, same role, different date.
 
-    Text similarity cannot do this job, which is why the key is structured. At a 100.0
-    text score there are exactly two pairs in this window, and they are opposites:
+    Text similarity cannot do this job, which is why the key is structured — the
+    Jason Dubinsky pair scores 100.0 on text and is TWO changes, not one: he took on
+    the principal accounting officer role in February 2024 and gave it up in March
+    when a Chief Accounting Officer was appointed. The role strings differ
+    ("principal accounting officer (in addition to Chief Financial Officer)" against
+    "principal accounting officer"), so the structured key separates them where a
+    similarity score reads both as identical.
 
-        Bevin Desmond / departed / Chief Talent and Culture Officer
-            dated 2022-05-06 in one filing and 2023-01-31 in another
-            -> ONE departure, two dates. A real conflict, and it is reported.
-        Jason Dubinsky / role changed / principal accounting officer
-            dated 2024-02-23 and 2024-03-15
-            -> TWO changes: he took the role on in February and gave it up in March
-               when a Chief Accounting Officer was appointed.
+    ---------------------------------------------------------------------------
+    TWO DATES IS NOT THE SAME THING AS AN UNSETTLED DATE
+    ---------------------------------------------------------------------------
+    This function used to emit one note for every group it found: "it may be an
+    announcement date against an effective date, or two genuinely separate changes —
+    the filings do not settle it." A hardcoded string, asserted about evidence the
+    code had not examined.
 
-    The structured key separates them where the text does not, because the role strings
-    differ — "principal accounting officer (in addition to Chief Financial Officer)"
-    against "principal accounting officer" — so only the Desmond pair is reported.
-    That distinction is invisible to a similarity score, which reads both as identical.
+    On the one group it fired on, that assertion was false. The 8-K/A reporting Bevin
+    Desmond's departure opens "As previously reported on the Original Form 8-K…" and
+    gives her last day as January 31, 2023. The filings settled it completely; the
+    document said they did not, and that sentence reached the narrative brief — the
+    one claim in it a reader could check and find wrong. See VERIFICATION.md D1.
 
-    The note states what was found and does not assert which reading is right.
-    CLAUDE.md: where the filings are ambiguous or contradict each other across years,
-    say so rather than silently picking one.
+    So the two cases are now distinguished and each gets a note that describes what
+    was actually found:
+
+      resolved   an amendment back-references the original and supersedes it. The
+                 amendment's date is the settled one and the note says so.
+      unresolved everything else. The original caveat, unchanged, which is the right
+                 treatment when the filings genuinely disagree — CLAUDE.md: where the
+                 filings are ambiguous or contradict each other, say so rather than
+                 silently picking one.
+
+    Note what this does NOT do: it never merges or drops a row. Both records stay in
+    the timeline in both cases, because two filings reporting a decision and its
+    effect are two real events. Only the note changes.
     """
     by_identity: dict[str, list[dict]] = {}
     for r in rows:
@@ -221,16 +277,30 @@ def find_date_conflicts(rows: list[dict]) -> list[dict]:
         dates = sorted({r["date"] for r in group})
         if len(dates) < 2:
             continue
+        resolver = _resolving_amendment(group)
+        if resolver:
+            others = [d for d in dates if d != resolver["date"]]
+            note = (f"The filings record this with more than one date, and they settle "
+                    f"which is which: an amendment back-references the original filing "
+                    f"and gives {resolver['date']} as the operative date. "
+                    f"{', '.join(others)} {'is' if len(others) == 1 else 'are'} the "
+                    f"earlier filing's. Both rows are kept — the announcement and the "
+                    f"event it announced are both real — but the date is not in doubt.")
+        else:
+            note = ("The filings record this with more than one date. It may be an "
+                    "announcement date against an effective date, or two genuinely "
+                    "separate changes — the filings do not settle it, so both rows are "
+                    "kept and neither date is presented as the right one.")
         out.append({
             "identity": identity,
             "dates": dates,
+            "resolved": bool(resolver),
+            "resolved_date": resolver["date"] if resolver else None,
+            "resolved_by": sorted(resolver["accessions"]) if resolver else [],
             "ids": sorted(i for r in group for i in r["ids"]),
             "filings": sorted({a for r in group for a in r["accessions"]}),
             "description": group[0]["description"],
-            "note": "The filings record this with more than one date. It may be an "
-                    "announcement date against an effective date, or two genuinely "
-                    "separate changes — the filings do not settle it, so both rows are "
-                    "kept and neither date is presented as the right one.",
+            "note": note,
         })
     return out
 

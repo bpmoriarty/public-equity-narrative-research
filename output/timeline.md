@@ -10,7 +10,7 @@ Dated events drawn from the company's SEC filings. Every row carries the fact id
 - **`×2 filings`** means two or more filings independently reported that event. That is corroboration; both ids are listed.
 - **Source ids** resolve in `data/pack/index.json` to the exact quote and section the row rests on.
 - **4 rows predate FY2021** and are marked *(predates the window)*. In-scope filings describe them — the FY2021 10-K discusses a 2019 credit agreement — so they are real and sourced, and are marked rather than dropped.
-- **‡** marks a row the filings date inconsistently. See the notes at the end.
+- **No event in this document carries conflicting dates across filings.**
 - Every row in this document is `high` confidence.
 
 ## Material events
@@ -26,14 +26,14 @@ Dated events drawn from the company's SEC filings. Every row carries the fact id
 | 29 Jun 2021 | financing | 364-Day Revolving Credit Facility entered June 30, 2020 expired June 29, 2021 and the company chose not to renew it. | `EVT-FY2021-23afc21f`<br>10-K 0001289419-22-000005 |
 | 3 Apr 2022 | financing | Morningstar entered a debt commitment letter with Bank of America, N.A. for financing of up to $1.05 billion, consisting of a five-year $650.0 million term facility and a five-year $400.0 million revolving credit facility, to assist with the acquisition. | `EVT-FY2022-842bfdfb`<br>8-K 0001104659-22-042328 |
 | 3 Apr 2022 | acquisition | Morningstar entered an Asset Purchase Agreement with S&P Global Inc. to acquire its Leveraged Commentary & Data business and related leveraged loan indices portfolio for up to $650.0 million in cash ($600.0 million at closing plus contingent payment of up to $50.0 million six months after closing), with closing expected early in Q3 2022. | `EVT-FY2022-3ba1e0d2`<br>8-K 0001104659-22-042328 |
-| 6 May 2022 | leadership transition | Bevin Desmond departed — Chief Talent and Culture Officer (stated reason: to focus more time on her family) ‡ | `LEAD-FY2022-b99ce9e7`<br>8-K 0001104659-22-059482 |
+| 6 May 2022 | leadership transition | Bevin Desmond departure announced — Chief Talent and Culture Officer (stated reason: to focus more time on her family) | `LEAD-FY2022-9fd216a3`<br>8-K 0001104659-22-059482 |
 | 6 May 2022 | other | Credit Agreement covenants restrict the Company's ability to pay dividends with respect to its capital stock. | `EVT-FY2022-0465763b`<br>8-K 0001104659-22-058246 |
 | 6 May 2022 | financing | Morningstar entered a new Credit Agreement with Bank of America, N.A. as Administrative Agent providing a five-year multi-currency credit facility of up to $1.1 billion, including a $450.0 million revolving credit facility and a delayed draw term facility of up to $650.0 million; $180.0 million was outstanding under the revolver as a rollover of the prior credit agreement. **×2 filings** | `EVT-FY2022-382296f8` `EVT-FY2022-ae7d37d3`<br>10-K 0001289419-23-000005, 8-K 0001104659-22-058246 |
 | July 2022 | restructuring | Beginning July 2022, the company began significantly reducing operations in Shenzhen, China and shifting global business functions to other Morningstar locations (Mumbai, Toronto, Madrid, Chicago), with substantial completion expected by end of Q3 2023; China work to focus solely on domestic commercial activities. **×2 filings** | `EVT-FY2022-618af085` `EVT-FY2023-fcadc9de`<br>10-K 0001289419-23-000005, 10-K 0001289419-24-000010 |
 | 30 Sep 2022 | financing | Two amendments to the 2022 Credit Agreement increasing total borrowing capacity to $1.3 billion and terminating the optional second term draw. | `EVT-FY2022-7e39249c`<br>10-K 0001289419-23-000005 |
 | 6 Dec 2022 | financing | Board approved a $500.0 million share repurchase program effective January 1, 2023, expiring December 31, 2025; only 8,484 shares for $1.4 million repurchased as of year-end. **×2 filings** | `EVT-FY2022-5d620550` `EVT-FY2023-fc8f78b1`<br>10-K 0001289419-23-000005, 10-K 0001289419-24-000010 |
 | 27 Jan 2023 | divestiture | Termination Agreement and Tender Offer Agreement relating to Morningstar Japan K.K.; Morningstar paid 8 billion yen for brand license termination and sold 8,040,600 shares to SBI for net proceeds of $26.2 million and a pre-tax gain of $18.4 million. **×2 filings** | `EVT-FY2022-e1010e2f` `EVT-FY2023-820f47c1`<br>10-K 0001289419-23-000005, 10-K 0001289419-24-000010 |
-| 31 Jan 2023 | leadership transition | Bevin Desmond departed — Chief Talent and Culture Officer (stated reason: to focus more time on her family) ‡ | `LEAD-FY2023-f66d0f01`<br>8-K/A 0001104659-23-009907 |
+| 31 Jan 2023 | leadership transition | Bevin Desmond departed — Chief Talent and Culture Officer (stated reason: to focus more time on her family) | `LEAD-FY2023-f66d0f01`<br>8-K/A 0001104659-23-009907 |
 | 1 Feb 2023 | leadership transition | Morningstar entered a Contract Services Agreement dated February 1, 2023 with Bevin Desmond, under which she provides consulting and advisory services during a transition period at an hourly rate with no equity, health coverage or other benefits. | `EVT-FY2023-cc51750d`<br>8-K/A 0001104659-23-009907 |
 | 1 Feb 2023 | other | Separation Agreement and General Release dated February 1, 2023 with Bevin Desmond, providing a waiver and release of claims and continued vesting of previously issued restricted stock unit and market stock unit awards. | `EVT-FY2023-90899016`<br>8-K/A 0001104659-23-009907 |
 | 6 Feb 2023 | acquisition | Cash payment of $50.0 million resolving contingent consideration liability related to the LCD acquisition. **×2 filings** | `EVT-FY2022-6e3330f2` `EVT-FY2023-eee82e8f`<br>10-K 0001289419-23-000005, 10-K 0001289419-24-000010 |
@@ -119,12 +119,10 @@ These are real events. They appear here rather than in the chronology because no
 - **Undated rows are never merged**, whatever their wording. Among them the two closest pairs are 1.5 points apart and fall on opposite sides of the truth — one is a single impairment reported twice, the other is two different years of dividend guidance whose wording is templated. Both are left as separate rows:
     - 99: *Recorded a $12.4 million impairment loss related to investment in SmartX Advisory Solution…* vs *$12.4 million impairment loss recorded in 2024 related to the investment in SmartX Advisor…*
     - 97: *Company expects to make regular quarterly dividend payments of 36 cents per share in 2022,…* vs *Company expects to make regular quarterly dividend payments of 37.5 cents per share in 202…*
-- **‡ 1 event the filings date inconsistently**, across 2 rows above. Every reading is kept and no date is presented as the right one:
-    - *Bevin Desmond departed — Chief Talent and Culture Officer (stated reason: to focus more time on her family)* — dated 2022-05-06 and 2023-01-31 across 2 filings. This may be an announcement date against an effective date, or two separate changes; the filings do not settle it.
 - **85 ledger records** (event and leadership facts) produced these 76 rows. Completeness is asserted at render time: every input id appears in exactly one table above, or this file is not written.
 
 ---
 
-Generated 2026-08-07 21:41Z by `src/render_timeline.py` — deterministic, no model call, so this document contains nothing the ledger does not.
+Generated 2026-08-08 00:01Z by `src/render_timeline.py` — deterministic, no model call, so this document contains nothing the ledger does not.
 
-Input `data/pack/timeline-events.json` sha256 `c18fc052d30d8638b6dc1176c3d585de`. Morningstar, Inc., CIK 0001289419.
+Input `data/pack/timeline-events.json` sha256 `6de7f66b60a1525835445f4966e47e48`. Morningstar, Inc., CIK 0001289419.

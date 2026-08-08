@@ -155,7 +155,8 @@
       "confidence_reason": null,
       "quote": "Our strategy is to deliver insights and experiences that make us essential to the investor workflow.\nWe are currently focused on the following five strategic priorities:",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SP-FY2025-b094c00e",
@@ -175,7 +176,8 @@
       "confidence_reason": null,
       "quote": "\u2022 Win for Investors: Deliver diff erentiated insights and solutions that make us essential to investors by emphasizing research as the company\u2019s research & development (R&D) engine.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SP-FY2025-2672bc89",
@@ -195,7 +197,8 @@
       "confidence_reason": null,
       "quote": "\u2022 Lead in AI to Empower Investor Success: Make Morningstar AI-native, rethinking capabilities and processes to greatly improve the speed and quality of insights and experiences essential to the investor workflow.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SP-FY2025-dbdf83f3",
@@ -215,7 +218,8 @@
       "confidence_reason": null,
       "quote": "\u2022 Own the Language of Markets: Become the trusted universal language for public and private markets.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SP-FY2025-0acc5ca6",
@@ -235,7 +239,8 @@
       "confidence_reason": null,
       "quote": "\u2022 Scale for Impact: Drive operational excellence and scalability to support profitable growth.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SP-FY2025-50eb8e38",
@@ -255,7 +260,8 @@
       "confidence_reason": null,
       "quote": "\u2022 Build an Exceptional Culture: Foster a workplace where every employee is empowered to make a difference and act with integrity.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SP-FY2025-c33e5187",
@@ -275,7 +281,8 @@
       "confidence_reason": null,
       "quote": "A key aspect of our growth strategy is to expand and enhance our existing products and services. We strive to adopt new technology, including AI, that can improve our products and services.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SP-FY2025-6552c93b",
@@ -295,7 +302,8 @@
       "confidence_reason": null,
       "quote": "In January 2026, we announced our plans to retire our second-party opinions product by the end of the first quarter as part of a broader effort to sharpen Morningstar Sustainalytics\u2019 focus on its core data, research and ratings businesses.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SP-FY2025-dbc4dfa4",
@@ -315,7 +323,8 @@
       "confidence_reason": null,
       "quote": "Company Goal One Delivering insights across asset classes to public and private market investors One of our highest-priority initiatives is to make Morningstar the common language of public and private markets.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SP-FY2025-0b3f3767",
@@ -335,7 +344,8 @@
       "confidence_reason": null,
       "quote": "Leveraging advances in artificial intelligence to drive innovation across internal and external products and services We introduced a dedicated AI goal in 2025 and made significant progress during the year in three primary areas.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SP-FY2025-e3379365",
@@ -355,7 +365,8 @@
       "confidence_reason": null,
       "quote": "Driving operational excellence and scalability to support growth targets We made important progress in companywide initiatives as well as segment-specific projects to drive scale across the business and support future growth.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SP-FY2025-bd0bed65",
@@ -375,7 +386,8 @@
       "confidence_reason": null,
       "quote": "Building an amazing culture that supports exceptional talent In an AI world, where human-in-the-loop efforts are key to our competitive edge, our people\u201410,973 permanent, full-time employees globally as of as of Dec. 31, 2025\u2014remain one of our most important assets.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SP-FY2025-1974b777",
@@ -395,7 +407,8 @@
       "confidence_reason": null,
       "quote": "We remain focused on increasing adjusted operating income and margins.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SP-FY2025-af58237c",
@@ -415,7 +428,8 @@
       "confidence_reason": null,
       "quote": "We plan to keep investing in this area, acknowledging that credit rating activity can vary widely from year to year. We remain focused on the longer-term growth trendline as we develop a more balanced set of capabilities that extend beyond our traditional areas of strength.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SP-FY2025-4bbba9e3",
@@ -435,7 +449,8 @@
       "confidence_reason": null,
       "quote": "Morningstar Wealth is now focused on its core Investment Management business, which includes Morningstar Model Portfolios and the International Wealth Platform, and Morningstar Investor, which serves the individual market.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SP-FY2025-3eb86499",
@@ -455,7 +470,8 @@
       "confidence_reason": null,
       "quote": "We expect this acquisition to be a game changer in our efforts to scale up Morningstar Indexes.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SP-FY2025-12deed69",
@@ -475,7 +491,8 @@
       "confidence_reason": null,
       "quote": "We continue to prioritize a strong balance sheet to provide flexibility.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     }
   ],
   "segments": [
@@ -498,7 +515,8 @@
       "confidence_reason": null,
       "quote": "In 2025, we updated the composition of the key product areas (Morningstar Data, Morningstar Direct, Morningstar Advisor Workstation) within the Morningstar Direct Platform segment. There were no changes to the overall composition of the Morningstar Direct Platform segment.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SEG-FY2025-3cb1643a",
@@ -519,7 +537,8 @@
       "confidence_reason": null,
       "quote": "We operate our business through five reportable segments: Morningstar Direct Platform, PitchBook, Morningstar Credit, Morningstar Wealth, and Morningstar Retirement.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SEG-FY2025-235c3abb",
@@ -540,7 +559,8 @@
       "confidence_reason": null,
       "quote": "Morningstar Credit provides investors with credit ratings, research, data, and credit analytics solutions that, we believe, contribute to the transparency of international and domestic credit markets. Morningstar Credit includes Morningstar DBRS and Morningstar Credit Analytics (MCA).",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SEG-FY2025-b7e05709",
@@ -561,7 +581,8 @@
       "confidence_reason": null,
       "quote": "In February 2025, we announced plans to retire Morningstar Office, our practice and portfolio management software for registered investment advisors (RIAs). The transition of clients to SS&C's Black Diamond and alternative platforms is underway and is expected to be completed in early 2026. In 2025, we also completed the retirement of our US Morningstar Wealth Turnkey Asset Management Platform (TAMP) following the sale of customer assets to AssetMark in 2024.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SEG-FY2025-f8d954c8",
@@ -582,7 +603,8 @@
       "confidence_reason": null,
       "quote": "Morningstar Retirement\u2019s primary offerings include managed retirement accounts (MRA), fiduciary services, and custom models.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SEG-FY2025-36f81768",
@@ -603,7 +625,8 @@
       "confidence_reason": null,
       "quote": "Corporate and All Other includes unallocated corporate expenses as well as financial results from Morningstar Sustainalytics and Morningstar Indexes.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SEG-FY2025-7671a5d5",
@@ -624,7 +647,8 @@
       "confidence_reason": null,
       "quote": "Starting in the first quarter of 2025, the company changed the name of this reportable segment to Morningstar Direct Platform. It also changed the composition of the key product areas within the segment (Morningstar Data, Morningstar Direct, and Morningstar Advisor Workstation). There were no changes to the overall composition of the reportable segment.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SEG-FY2025-48c19c34",
@@ -645,7 +669,8 @@
       "confidence_reason": null,
       "quote": "The operating segments of Morningstar Sustainalytics and Morningstar Indexes do not individually meet the quantitative segment reporting thresholds and have been combined and presented as part of Corporate and All Other, which is not a reportable segment.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "SEG-FY2025-7dfc890d",
@@ -666,7 +691,8 @@
       "confidence_reason": null,
       "quote": "The company has seven operating segments which are presented as the following five reportable segments: Morningstar Direct Platform, PitchBook, Morningstar Credit, Morningstar Wealth, and Morningstar Retirement.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     }
   ],
   "headcount": [
@@ -689,7 +715,8 @@
       "confidence_reason": null,
       "quote": "As of December 31, 2025, we had 10,973 permanent, full-time employees around the world.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     }
   ],
   "leadership": [
@@ -715,7 +742,8 @@
       "confidence_reason": null,
       "quote": "On October 8, 2025, Daniel Dunn, Chief Revenue Officer of Morningstar, Inc. (the \u201cCompany\u201d) informed the Company that he will depart the Company to pursue another opportunity effective November 21, 2025.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LEAD-FY2025-278cc81d",
@@ -739,7 +767,8 @@
       "confidence_reason": null,
       "quote": "Julie Willoughby, Head of Global Sales of the Company, will replace Mr. Dunn effective November 21, 2025. Ms. Willoughby has over 25 years of experience at the Company in various client-facing and sales roles.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     }
   ],
   "board": [
@@ -764,7 +793,8 @@
       "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
       "quote": "Two members of our executive management team, our founder and Executive Chairman, and our CEO.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "BRD-FY2025-2b6e75f9",
@@ -787,7 +817,8 @@
       "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
       "quote": "Kunal Kapoor\n50\n2017\nChief Executive Officer of Morningstar, Inc.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "BRD-FY2025-798213b4",
@@ -813,7 +844,8 @@
       "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
       "quote": "Anne Bramman\n58\n2026\n\u25cf\nAudit; Compensation",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "BRD-FY2025-6598b697",
@@ -839,7 +871,8 @@
       "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
       "quote": "Robin Diamonte\n61\n2015\n\u25cf\nAudit; NCGC",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "BRD-FY2025-d0e1a238",
@@ -865,7 +898,8 @@
       "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
       "quote": "Cheryl Francis\n72\n2002\n\u25cf\nAudit (Chair); Compensation",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "BRD-FY2025-25a84641",
@@ -891,7 +925,8 @@
       "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
       "quote": "Steve Joynt\n74\n2019\n\u25cf\nCompensation; NCGC",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "BRD-FY2025-409393c5",
@@ -917,7 +952,8 @@
       "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
       "quote": "Steve Kaplan\n66\n1999\n\u25cf\nCompensation (Chair); NCGC",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "BRD-FY2025-644422d4",
@@ -943,7 +979,8 @@
       "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
       "quote": "Bill Lyons\n70\n2007\n\u25cf\nCompensation; NCGC (Chair)",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "BRD-FY2025-4db5b855",
@@ -969,7 +1006,8 @@
       "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
       "quote": "Doniel Sutton\n52\n2021\n\u25cf\nAudit; Compensation",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "BRD-FY2025-624ec1f7",
@@ -995,7 +1033,8 @@
       "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
       "quote": "Caroline Tsay\n44\n2017\n\u25cf\nAudit; NCGC",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "BRD-FY2025-f7c9debf",
@@ -1018,7 +1057,8 @@
       "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
       "quote": "One current director, Gail Landis, has reached both the mandatory retirement age under our director retirement policy and has served on the Board for more than ten years, and is not standing for re-election.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     }
   ],
   "incentive_metrics": [
@@ -1043,7 +1083,8 @@
       "confidence_reason": null,
       "quote": "Adjusted Revenue (Millions)\n$\n2,417.8\n$2,430.6\n100.5\n%\n102.7\n%\n50\n%\n115.5\n%\n111.4\n%",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "INC-FY2025-0be6b354",
@@ -1066,7 +1107,8 @@
       "confidence_reason": null,
       "quote": "We set targets under our 2025 bonus plan, calculated as described in the Annual Incentives section of this Compensation Discussion and Analysis, of $2,417.8 million for Adjusted Revenue (+6.1% of 2024 actual Adjusted Revenue of $2,278.6 million) and $699.4 million for AOI (+3.2% of 2024 actual AOI of $677.5 million).",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "INC-FY2025-9ee4e21c",
@@ -1089,7 +1131,8 @@
       "confidence_reason": null,
       "quote": "The annual incentives are based on a financial performance factor, which is based on two equally-weighted financial performance goals (Adjusted Revenue and AOI), and an individual performance factor. All or a portion of the annual incentive payout related to individual performance may be delivered in RSUs.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "INC-FY2025-5e3b5247",
@@ -1112,7 +1155,8 @@
       "confidence_reason": null,
       "quote": "Performance Level\nShares Earned as a Percentage of Target Market Stock Units\nThreshold TSR\n0% vesting if TSR is negative 13.33%\nTarget TSR\n100% vesting if TSR is 20%\nMaximum TSR\n200% vesting if TSR is 70%",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "INC-FY2025-a6cf01d2",
@@ -1135,7 +1179,8 @@
       "confidence_reason": null,
       "quote": "100% of Target AOI Goal\n0% vesting if achieved\n112.5% of Target AOI Goal\n100% vesting if achieved (2)\n125% of Target AOI Goal\n200% of base amount vesting if achieved",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "INC-FY2025-69a6d8dc",
@@ -1158,7 +1203,8 @@
       "confidence_reason": null,
       "quote": "Adjusted Revenue CAGR achievement of 9.8% fell below the target of 15.5% for the time period of 2022 - 2024 and therefore no modifier was applied to the MSU payout.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "INC-FY2025-940526d1",
@@ -1181,7 +1227,8 @@
       "confidence_reason": null,
       "quote": "In 2025, the Compensation Committee granted RSUs to our participating NEOs that vest in four equal annual installments commencing on the first anniversary of the grant date and subject to their continued employment through the applicable vesting date.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     }
   ],
   "vote_results": [
@@ -1208,7 +1255,8 @@
       "confidence_reason": null,
       "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "VOTE-FY2025-197e2079",
@@ -1233,7 +1281,8 @@
       "confidence_reason": null,
       "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "VOTE-FY2025-ae6ac79c",
@@ -1258,7 +1307,8 @@
       "confidence_reason": null,
       "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "VOTE-FY2025-347cbfa7",
@@ -1283,7 +1333,8 @@
       "confidence_reason": null,
       "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "VOTE-FY2025-a2bf60a6",
@@ -1308,7 +1359,8 @@
       "confidence_reason": null,
       "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "VOTE-FY2025-2b6f95a2",
@@ -1333,7 +1385,8 @@
       "confidence_reason": null,
       "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "VOTE-FY2025-064c72d8",
@@ -1358,7 +1411,8 @@
       "confidence_reason": null,
       "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "VOTE-FY2025-0cd57cef",
@@ -1383,7 +1437,8 @@
       "confidence_reason": null,
       "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "VOTE-FY2025-7201adef",
@@ -1408,7 +1463,8 @@
       "confidence_reason": null,
       "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "VOTE-FY2025-9cbea842",
@@ -1433,7 +1489,8 @@
       "confidence_reason": null,
       "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "VOTE-FY2025-0400d889",
@@ -1458,7 +1515,8 @@
       "confidence_reason": null,
       "quote": "Morningstar's executive compensation was approved, on an advisory basis, with the voting as follows:",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "VOTE-FY2025-d949d7f8",
@@ -1483,7 +1541,8 @@
       "confidence_reason": null,
       "quote": "The appointment of KPMG as Morningstar's independent registered public accounting firm for 2026 was ratified with the voting as follows:",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     }
   ],
   "events": [
@@ -1507,7 +1566,8 @@
       "confidence_reason": null,
       "quote": "On February 2, 2026, we completed our previously announced acquisition of CRSP for a closing cash payment of approximately $365.0 million, subject to customary adjustments. The acquisition was financed through borrowings under the 2025 A-1 Facility, which were drawn in 2026.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "EVT-FY2025-07a1600f",
@@ -1529,7 +1589,8 @@
       "confidence_reason": null,
       "quote": "Organic revenue growth excludes revenue associated with the Dealview Technologies Limited (DealX) acquisition, which was completed in the first quarter of 2025, and foreign currency impact.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "EVT-FY2025-18708014",
@@ -1551,7 +1612,8 @@
       "confidence_reason": null,
       "quote": "We recorded a $22.7 million gain in 2025 from the contingent payment related to the sale of customer assets from the US Morningstar Wealth Turnkey Asset Management Platform (TAMP) to AssetMark (sale of US TAMP assets), compared to a $64.0 million gain in 2024.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "EVT-FY2025-4be42dcf",
@@ -1573,7 +1635,8 @@
       "confidence_reason": null,
       "quote": "Effective September 30, 2024, we sold our Commodity and Energy Data business from the Morningstar Direct Platform segment for a purchase price of $52.4 million. In the third quarter of 2024, we recorded a $45.3 million gain on sale of business in the Consolidated Statements of Income.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "EVT-FY2025-1cc662cf",
@@ -1595,7 +1658,8 @@
       "confidence_reason": null,
       "quote": "higher severance costs of $14.4 million in 2025 related to the targeted reorganizations in certain areas of the business including Morningstar Sustainalytics and Morningstar Direct Platform as well as the sunsetting of Morningstar Wealth's Office product",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "EVT-FY2025-8bbfb3a9",
@@ -1617,7 +1681,8 @@
       "confidence_reason": null,
       "quote": "PitchBook's adjusted operating income includes the impact of $4.5 million in severance costs primarily related to targeted reorganizations.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "EVT-FY2025-288145e1",
@@ -1639,7 +1704,8 @@
       "confidence_reason": null,
       "quote": "On October 31, 2025, the company terminated the 2022 Credit Agreement and entered into a new senior credit agreement (the 2025 Credit Agreement). The 2025 Credit Agreement provides the company with a multi-currency credit facility with a borrowing capacity of up to $1.5 billion",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "EVT-FY2025-0a50e037",
@@ -1661,7 +1727,8 @@
       "confidence_reason": null,
       "quote": "On October 29, 2025, the board of directors approved a new share repurchase program that authorizes the company to repurchase up to $1.0 billion in shares of the company's outstanding common stock, effective October 31, 2025 (the new share repurchase program).",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "EVT-FY2025-c7866b89",
@@ -1683,7 +1750,8 @@
       "confidence_reason": null,
       "quote": "In December 2025, our board of directors approved a regular quarterly dividend of $0.50 per share, or $19.9 million, payable on January 30, 2026 to shareholders of record as of January 2, 2026.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "EVT-FY2025-1efe0605",
@@ -1705,7 +1773,8 @@
       "confidence_reason": null,
       "quote": "In the fourth quarter of 2024, we determined $142.0 million in earnings of certain of our foreign subsidiaries to be no longer permanently reinvested. During 2025, we completed a one-time repatriation of these earnings totaling $150.0 million to the US.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "EVT-FY2025-54494fa2",
@@ -1727,7 +1796,8 @@
       "confidence_reason": null,
       "quote": "We recorded a $12.4 million impairment loss in 2024 related to our investment in SmartX Advisory Solutions.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "EVT-FY2025-bc8998b2",
@@ -1749,7 +1819,8 @@
       "confidence_reason": null,
       "quote": "In 2025, we revised our annual renewal rate methodology to include changes in the contract value in the renewal amount, including updates made mid-contract. Prior to 2025, mid-contract updates were not included except in the calculation of PitchBook's revenue renewal rate.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "EVT-FY2025-5e3e53b0",
@@ -1771,7 +1842,8 @@
       "confidence_reason": null,
       "quote": "On May 9, 2025, the Board of Directors of Morningstar, Inc. (the \"Company\" or \"Morningstar\") adopted the Morningstar, Inc. Executive Severance Policy (the \u201cSeverance Policy\u201d), effective immediately, and designated each of the Company\u2019s Chief Executive Officer, Chief Financial Officer, Chief Revenue Officer, and certain other members of the Company\u2019s executive leadership team (collectively, the \u201cParticipants\u201d) as participants in the Policy",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "EVT-FY2025-7410dc50",
@@ -1793,7 +1865,8 @@
       "confidence_reason": null,
       "quote": "On May 9, 2025, the Company held its Annual Shareholders\u2019 Meeting, for the purpose of electing directors, providing an advisory vote on Morningstar\u2019s executive compensation, and ratifying the appointment of KPMG LLP (\"KPMG\") as Morningstar\u2019s independent registered public accounting firm for 2025.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "EVT-FY2025-342133ec",
@@ -1815,7 +1888,8 @@
       "confidence_reason": null,
       "quote": "The Credit Agreement provides Morningstar with a multi-currency credit facility with a borrowing capacity of up to $1.5 billion, including a five-year $750.0 million revolving credit facility (the \u201cRevolving Credit Facility\u201d), a five-year delayed draw term facility of up to $375.0 million (the \u201cA-1 Facility\u201d) and a three-year $375.0 million term facility (the \u201cA-2 Facility\u201d and, together with the A-1 Facility and the Revolving Credit Facility, the \u201cFacility\u201d).",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "EVT-FY2025-4fd7b501",
@@ -1837,7 +1911,8 @@
       "confidence_reason": null,
       "quote": "In connection with the entry into the Credit Agreement, the Company terminated its existing credit agreement, dated as of May 6, 2022, among the Company, certain subsidiaries of the Company, Bank of America, N.A. and the other lenders party thereto (as amended, restated or supplemented from time to time, the \"Existing Credit Agreement\"). As of October 31, 2025, the aggregate principal balance outstanding under the Revolving Credit Facility was $170.0 million, which represents a rollover of amounts outstanding under the Company\u2019s previous credit agreement.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "EVT-FY2025-74e6df24",
@@ -1859,7 +1934,8 @@
       "confidence_reason": null,
       "quote": "These include, among others, that (i) the Company shall have a Consolidated Net Leverage Ratio as of the end of any fiscal quarter of the Company of not greater than 3.50 to 1.00; provided that, solely with respect to the four fiscal quarters following any Material Acquisition (as defined in the Credit Agreement), the Consolidated Net Leverage Ratio determined as of the end of such four fiscal quarters shall not be greater than 4.00 to 1.00 (ii) the Company shall have a Consolidated Interest Coverage Ratio as of the end of any fiscal quarter of not less than 3.00 to 1.00.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     }
   ],
   "notable_language": [
@@ -1881,7 +1957,8 @@
       "confidence_reason": null,
       "quote": "We do not make public financial forecasts for our business because we want to avoid creating any incentives for our management team to make speculative statements about our financial results that could influence our stock price or take actions that help us meet short-term forecasts, but may not build long-term shareholder value.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-07e3fff6",
@@ -1901,7 +1978,8 @@
       "confidence_reason": null,
       "quote": "The politicization of ESG-related business activities and investments has increased in recent years, particularly in the US. This politicization may result in Morningstar facing heightened scrutiny in this regard, and may result in the company incurring increased costs in addressing related inquiries.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-a4f24fb5",
@@ -1921,7 +1999,8 @@
       "confidence_reason": null,
       "quote": "Additionally, current regulatory uncertainty in the US \u2014 including changes and the pace of changes enacted by the current presidential administration and related leadership changes at US government agencies such as the US Securities and Exchange Commission, as well as recent and potential future US Supreme Court rulings \u2014 may impact our business.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-eecd3564",
@@ -1941,7 +2020,8 @@
       "confidence_reason": null,
       "quote": "Morningstar Sustainalytics revenue decreased $5.3 million or 4.5%. Organic revenue decreased 7.1%, largely driven by the continued streamlining of the licensed-ratings offering as the company transitions to a model focused on licensing the use and distribution of existing ratings and underlying data, as well as softness in second-party opinions.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-13c5caab",
@@ -1961,7 +2041,8 @@
       "confidence_reason": null,
       "quote": "This was partially offset by continued softness in the corporate client segment, especially with smaller firms with more limited use cases. PitchBook licensed users were relatively flat compared to the prior-year period, reflecting the addition of new logos offset by churn.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-1f786257",
@@ -1981,7 +2062,8 @@
       "confidence_reason": null,
       "quote": "Overall, our business, balance sheet, technological infrastructure, and teams have shown resilience and flexibility navigating global macroeconomic trends.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-51309d33",
@@ -2001,7 +2083,8 @@
       "confidence_reason": null,
       "quote": "In addition, the revenue renewal rate for Morningstar Advisor Workstation was not available in 2025 due to ongoing updates to our billing system and a product transition.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-ffbd19db",
@@ -2021,7 +2104,8 @@
       "confidence_reason": null,
       "quote": "However, due to a few delayed product deliveries, our CEO recommended and the Compensation Committee approved the application of negative discretion to reduce the 2025 annual incentive payout to 111.4% of target.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-3802d594",
@@ -2041,7 +2125,8 @@
       "confidence_reason": null,
       "quote": "Given the significant shareholder support, the Compensation Committee did not make changes to the Company\u2019s executive compensation program in response to the 2025 say on pay vote, but did make one enhancement to the 2025 program intended to further align pay and performance by removing the funding floor from the 2025 annual incentive funding formula, as described further below.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-5471b5fe",
@@ -2061,7 +2146,8 @@
       "confidence_reason": null,
       "quote": "Beginning with the 2025 annual incentive program, the Compensation Committee removed the 60% funding floor used in 2024 (and prior years) with the intention to further align with market practices and enhance alignment of pay and performance.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-a4405c1e",
@@ -2081,7 +2167,8 @@
       "confidence_reason": null,
       "quote": "The stretch PSUs are granted with performance goals that are designed to be extremely challenging in order to receive any vested shares. Given the attainment of the goals was not deemed probable as of the date of grant, there is no grant date fair value associated with these awards for accounting purposes",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-c6ee1d35",
@@ -2101,7 +2188,8 @@
       "confidence_reason": null,
       "quote": "Despite exceeding plan on targets for adjusted revenue and AOI, our cumulative TSR for the one- and three-year period ending December 31, 2025 was -35.1% and +2.3%, respectively. In line with our pay for performance philosophy, payouts under our long- and short-term incentive programs",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-df503ab2",
@@ -2121,7 +2209,8 @@
       "confidence_reason": null,
       "quote": "For 2025, Kunal Kapoor\u2019s salary increased 23.8% in connection with a rebalancing of his cash compensation to enhance competitiveness of his pay versus market data and with consideration to his salary remaining flat in 2024.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-8cbcd344",
@@ -2141,7 +2230,8 @@
       "confidence_reason": null,
       "quote": "In consideration of his status as our principal shareholder, Joe believes that his compensation should be directly aligned with other shareholders and be realized primarily through appreciation in the long-term value of our common stock.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-2a0db7a8",
@@ -2161,7 +2251,8 @@
       "confidence_reason": null,
       "quote": "In May 2025, with input from our independent compensation consultant, we adopted the Morningstar, Inc. Executive Severance Policy (\u201cSeverance Policy\u201d) for our NEOs (excluding Joe Mansueto) and certain other members of the executive leadership team to provide a uniform baseline and process for future executive departures and to align with market practices.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-baede2d7",
@@ -2181,7 +2272,8 @@
       "confidence_reason": null,
       "quote": "After examining these factors, the Audit Committee was satisfied that Joe possesses sufficient assets aside from his pledged Company shares to satisfy, if necessary, his indebtedness secured by those shares.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-0c2563f6",
@@ -2201,7 +2293,8 @@
       "confidence_reason": null,
       "quote": "As always, we view such developments with interest\u2014but also with patience and a long-term perspective. Our focus remains on building a business that compounds value over time.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-9c473ff3",
@@ -2221,7 +2314,8 @@
       "confidence_reason": null,
       "quote": "We expect AI models will become ubiquitous and cheap, while high-quality, structured, and verifiable data backed by human insight will become even more valuable.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-a56ba2a4",
@@ -2241,7 +2335,8 @@
       "confidence_reason": null,
       "quote": "More broadly, we believe our moat is not a single asset or technology. It is a compounding system in which data fuels research, research powers IP, and software and AI-enabled tools further embed us into our clients\u2019 workflows.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-8be72354",
@@ -2261,7 +2356,8 @@
       "confidence_reason": null,
       "quote": "While it has been painful to see the decline in our market value in 2025 and into 2026, it has also created an opportunity to increase our ownership in a business that we know as well as any and to deploy capital with high conviction.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-687b635c",
@@ -2281,7 +2377,8 @@
       "confidence_reason": null,
       "quote": "We faced headwinds in Morningstar Direct, where license growth has been flat, although that area did contribute to growth, supported by increased revenue per license and expansion with existing clients in our reporting solutions business.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-9c60a28d",
@@ -2301,7 +2398,8 @@
       "confidence_reason": null,
       "quote": "Make no mistake, though: Our analysts know that they need to con- stantly up their game to deliver essential insights.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-6716e4b8",
@@ -2321,7 +2419,8 @@
       "confidence_reason": null,
       "quote": "our manager research analysts have been unsparing in their criticism of many of the initial semiliquid funds",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-b2c8753d",
@@ -2341,7 +2440,8 @@
       "confidence_reason": null,
       "quote": "Ultimately, AI is changing how investment intelligence is delivered, not what makes it valuable. We are experimenting with updated commercial models as we continue to work closely with clients to structure solutions that meet their evolving needs and reflect the value they get from our offerings.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-9aab1bd4",
@@ -2361,7 +2461,8 @@
       "confidence_reason": null,
       "quote": "The big milestone for Morningstar Wealth was its transition to profitability in 2025, as it contributed $9.6 million to adjusted operating income.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "LANG-FY2025-f2a82da8",
@@ -2381,7 +2482,8 @@
       "confidence_reason": null,
       "quote": "In 2025, several long-tenured and senior leaders retired or moved on to new challenges.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     }
   ],
   "investor_qa": [
@@ -2405,7 +2507,8 @@
       "confidence_reason": null,
       "quote": "We plan to offer Direct Advisory Suite globally, capturing both the broker/dealers who have traditionally been Advisor Workstation clients as well as registered investment advisors. All Morningstar Advisor Workstation clients are expected to be enabled and updated to Direct Advisory Suite in 2025 and 2026 so that they can take advantage of these enhanced capabilities.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-cef14118",
@@ -2427,7 +2530,8 @@
       "confidence_reason": null,
       "quote": "We recently announced that we will be retiring Morningstar Office after 20 years and providing a streamlined transition for interested clients to SS&C\\u2019s Black Diamond Wealth Platform, which will integrate our new Direct Advisory Suite product and allow advisors to continue using the Morningstar data and research they\\u2019ve loved in Office.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-4cf7dae1",
@@ -2449,7 +2553,8 @@
       "confidence_reason": null,
       "quote": "We do not view Addepar as a competitor. They, and a number of other players in the space including Envestnet, Orion, and Black Diamond, are Morningstar Data clients, and Morningstar serves as the common data language for their users.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-881ac23d",
@@ -2471,7 +2576,8 @@
       "confidence_reason": null,
       "quote": "We have established four company strategic goals: delivering insights across asset classes to public- and private-market investors; leveraging advances in artificial intelligence to drive innovation; driving operational excellence and scalability to support growth targets; and building an amazing culture that supports exceptional talent.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-6d40dfde",
@@ -2493,7 +2599,8 @@
       "confidence_reason": null,
       "quote": "When we see these opportunities, we determine if it is more efficient to build, buy, or partner. That said, we do not believe that we require significant acquisitions to grow over the next few years.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-93ca5a6d",
@@ -2515,7 +2622,8 @@
       "confidence_reason": null,
       "quote": "From a brand perspective, we generally transition acquired brands to Morningstar using a phased endorsement strategy. So, for example, we have transitioned DBRS to Morningstar DBRS.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-265b396e",
@@ -2537,7 +2645,8 @@
       "confidence_reason": null,
       "quote": "While we actively evaluate M&A opportunities, we generally favor organic investments and maintain a high hurdle for completing transactions with a focus on evaluating long-term returns relative to other potential uses of cash. We assess overall cash-on-cash and internal rates of return based on the price we are paying and the value we expect to realize over time.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-12e3f953",
@@ -2559,7 +2668,8 @@
       "confidence_reason": null,
       "quote": "We continue to work to enhance our moat by creating hard to reproduce IP, such as the Morningstar Medalist Rating, which uses a combination of raw data and historical proprietary data sets collected over the past 40 years. We believe that our breadth of data assets and historical data sets provide a unique advantage for us to develop IP that cannot be replicated.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-3d72d9bb",
@@ -2581,7 +2691,8 @@
       "confidence_reason": null,
       "quote": "In 2020, we increased our TSR hurdle from 10% to 20%, due in part to shareholder feedback. Aligning management incentives with shareholder returns is an important part of our compensation philosophy.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-a491e75d",
@@ -2603,7 +2714,8 @@
       "confidence_reason": null,
       "quote": "While this directly impacts reporting providers, the impact on our business is not as significant. We expect that companies will continue to be required to assess material issues related to their business, and we are still well-prepared to help firms do this work and collect reported data as it becomes available.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-a46a45ad",
@@ -2625,7 +2737,8 @@
       "confidence_reason": null,
       "quote": "James Rhodes, President of Direct Platform, will be leaving the Company on Sept. 12, 2025. Frannie Besztery, Chief Operating Officer of Direct Platform, will serve as interim head until a permanent successor is appointed.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-9a100b02",
@@ -2647,7 +2760,8 @@
       "confidence_reason": null,
       "quote": "In addition, our larger competitors have significant exposure to collateralized loan obligations (CLOs) in their asset-backed securities business and issuance in this sector tends to track the leveraged loan market, which was weak in Q2 25. We do not have significant exposure to CLO ratings.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-ba39a686",
@@ -2669,7 +2783,8 @@
       "confidence_reason": null,
       "quote": "Private credit ratings accounted for roughly a quarter of Morningstar Credit\u2019s transaction-based revenue in 2024, an increase from 2021, when that level was slightly less than a fifth of transaction-based revenue.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-a5f3a162",
@@ -2691,7 +2806,8 @@
       "confidence_reason": null,
       "quote": "as we made meaningful progress in our efforts to refocus the business on model portfolios offered on third-party platforms and our International Wealth Platform. The primary drivers of the improved profitability were increased reported revenue, primarily due to higher ad sales, and lower compensation costs due in part to reductions in headcount related to sale and transition of assets in our US Turnkey Asset Management Platform (TAMP) to AssetMark, and our planned sunsetting of Morningstar Office.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-dcaf2e91",
@@ -2713,7 +2829,8 @@
       "confidence_reason": null,
       "quote": "We remain focused on growth in both our investable and licensed data products. In our investable products business, we continue to leverage Morningstar research and analysis, including in public-private market convergence. We also see opportunities to continue to grow our licensed-data business especially in the equity beta, leveraged loan, and multi-asset investment categories.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-bb31aa8d",
@@ -2735,7 +2852,8 @@
       "confidence_reason": null,
       "quote": "We expect corporate client weakness to persist until economic conditions improve, although we view the stabilization in our existing business as a positive sign. We do not disclose growth rates for customer segments or competitive win-loss rates.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-7d5cb6d9",
@@ -2757,7 +2875,8 @@
       "confidence_reason": null,
       "quote": "We have not implemented a change in our overall pricing strategy in the first half of 2025. PitchBook seeks price increases at renewal where appropriate, consistent with our historical approach, but there was no broad-based pricing action in Q2 25.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-e40e1959",
@@ -2779,7 +2898,8 @@
       "confidence_reason": null,
       "quote": "We design our incentives for continued profitable growth and margin expansion. In order to maintain an aggregate bonus pool amount that is appropriately aligned with profits, we monitor the \u201csharing ratio\u201d expressed as a projected bonus payout as a percentage of AOI each quarter. The Compensation Committee has the discretion to limit the bonus if the sharing ratio is not aligned with expectations.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-73170d03",
@@ -2801,7 +2921,8 @@
       "confidence_reason": null,
       "quote": "We remain committed to driving efficiency and scale in our corporate and unallocated expenses and reducing these costs as a percentage of revenue over time.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-76413a11",
@@ -2823,7 +2944,8 @@
       "confidence_reason": null,
       "quote": "We don\u2019t plan to provide additional forward-looking views on our effective tax rate, consistent with our broader approach to guidance.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-3953008a",
@@ -2845,7 +2967,8 @@
       "confidence_reason": null,
       "quote": "We followed a rigorous selection process in choosing Michael Holt as our next CFO, which included interviewing both internal and external candidates. Michael brings expertise in a number of key areas, including company strategy and analysis, as well as deep insight into Morningstar\u2019s operations.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-716fe9a0",
@@ -2867,7 +2990,8 @@
       "confidence_reason": null,
       "quote": "There are a number of unknowns surrounding the economic and policy impacts of the recent U.S. federal elections. We\u2019ve shared a few thoughts on the potential impact of the issues you raise.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-b715697e",
@@ -2889,7 +3013,8 @@
       "confidence_reason": null,
       "quote": "While we\u2019ve noted headwinds in the U.S. for several years, we believe a focus on assessing financially material ESG risks will continue to be an important driver across markets.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-4e7355ce",
@@ -2911,7 +3036,8 @@
       "confidence_reason": null,
       "quote": "To date we have opted to pay interest based on 1-month SOFR plus a spread based on our consolidated leverage ratio, to preserve prepayment flexibility.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-c7c38c61",
@@ -2933,7 +3059,8 @@
       "confidence_reason": null,
       "quote": "While Morningstar\u2019s insider trading policy generally restricts insiders from engaging in derivative or speculative transactions involving Morningstar stock, Morningstar has elected not to completely prohibit pledging, as it allows shareholders flexibility in financial planning without reliance on selling shares, further aligning the interests of management with those of our shareholders.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-eb1bab87",
@@ -2955,7 +3082,8 @@
       "confidence_reason": null,
       "quote": "In an earlier response, we noted that as of early July 2023 PitchBook\u2019s unlimited license contracts accounted for roughly 20% of total annual contract value related to active PitchBook accounts, while individual seat-based contracts accounted for roughly 80% and that breakdown has not changed materially as of December 31, 2024.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-8d7ea9f1",
@@ -2977,7 +3105,8 @@
       "confidence_reason": null,
       "quote": "As of September 30, 2024, assets linked to and tracking Morningstar Indexes totaled $228.2 billion, an increase of 37.5% over the prior-year period.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-ee261c03",
@@ -2999,7 +3128,8 @@
       "confidence_reason": null,
       "quote": "While we don\u2019t provide guidance, we continue to focus on increasing adjusted operating income as a driver of long-term value creation. Continued margin expansion over the long-term is central to these efforts.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-3026530c",
@@ -3021,7 +3151,8 @@
       "confidence_reason": null,
       "quote": "In addition, we plan to offer Direct Advisory Suite globally, targeting both the broker/dealers who have traditionally been Advisor Workstation clients as well as independent registered investment advisors, expanding our serviceable obtainable market.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-28f70f19",
@@ -3043,7 +3174,8 @@
       "confidence_reason": null,
       "quote": "For example, we are managing the exchange market data product (included in Morningstar Data) for profitability rather than revenue growth, and revenue for that product declined over Q4 and FY 24.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-79a347b6",
@@ -3065,7 +3197,8 @@
       "confidence_reason": null,
       "quote": "We have noted that our streamlining of the Morningstar Wealth business means that it will look a lot different, and smaller (at least in the short-term), than it previously did. But it will be more focused, and we anticipate, profitable.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-f6dd3883",
@@ -3087,7 +3220,8 @@
       "confidence_reason": null,
       "quote": "The agreement with SS&C Technologies and our decision to retire Morningstar Office mark an important step in our efforts to streamline our Morningstar Wealth offering and to focus on areas where we have the greatest confidence that we can scale without making significant new capital investments.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-7cb6423a",
@@ -3109,7 +3243,8 @@
       "confidence_reason": null,
       "quote": "The decline was driven in part by the decision to refocus our licensed ratings product for corporates on the use and distribution of existing ESG Risk Ratings and underlying data. We no longer offer corporates the option to contract with us to provide a rating. As a result, we have lost revenue and clients but expect improved scalability.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-d1f13f48",
@@ -3131,7 +3266,8 @@
       "confidence_reason": null,
       "quote": "We see several secular tailwinds for Morningstar Data, including growth of investor choice and increasing demand for personalization, as well as the accelerating convergence of public and private markets. Headwinds include industry consolidation and continued pressure on fees, especially in more challenging markets.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-7ec02818",
@@ -3153,7 +3289,8 @@
       "confidence_reason": null,
       "quote": "Michael Holt\u2019s priorities as CFO are consistent with our ongoing focus on sustainable revenue growth and creating value for shareholders. Specifically, he is focused on growing adjusted operating income (supported by higher adjusted operating margins) and free cash flows over time.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-bda3b15d",
@@ -3175,7 +3312,8 @@
       "confidence_reason": null,
       "quote": "Consistent with Morningstar\u2019s historical approach to capital allocation, under Michael we continue to preserve a strong balance sheet to maintain flexibility; prioritize funding organic growth and consider acquisitions where we see opportunities to generate long-term shareholder value; maintain and increase our dividend over time commensurate with company financial results; and repurchase shares when we have available cash.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-9c0c811b",
@@ -3197,7 +3335,8 @@
       "confidence_reason": null,
       "quote": "We did see a softening of our average engagement score over the course of last year from 69% to 64%. However, the trend over the year was positive, with stabilization in the second quarter and rising metrics in the second half of the year in response to actions by management and improving business performance.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-c9db828e",
@@ -3219,7 +3358,8 @@
       "confidence_reason": null,
       "quote": "As we work to strengthen our competitive position across the business, we are focused on putting our customers front and center. To do this, we seek to anticipate and address trends shaping the investment landscape, notably the steep growth in investment products and associated data and the accelerating convergence of public and private markets.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-124c2d43",
@@ -3241,7 +3381,8 @@
       "confidence_reason": null,
       "quote": "Our strategy is to deliver insights and experiences that make us essential to the investor workflow. Across the business, we are investing in data, research, and analytics that meet the modern investor\u2019s needs, driving operational scale across our capabilities, and developing our talent.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-18f582d9",
@@ -3263,7 +3404,8 @@
       "confidence_reason": null,
       "quote": "We remain focused on driving efficiency and scale in our unallocated corporate expenses and reducing these costs as a percentage of revenue over time.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-e900781a",
@@ -3285,7 +3427,8 @@
       "confidence_reason": null,
       "quote": "We manage headcount with the goal of supporting durable growth. We would note that in 2024, PitchBook headcount declined relative to 2023, as we benefited from the introduction of more efficient data collection efforts which allows us to operate with fewer equity data analysts.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-fa2e32de",
@@ -3307,7 +3450,8 @@
       "confidence_reason": null,
       "quote": "Direct Data represents an important part of our total addressable market and allows us to reach a broader set of use cases including quantitative research, workflow automation, and enterprise-wide data infrastructure. Our product roadmap includes several planned releases to expand our offering in that market in 2025.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-ac690213",
@@ -3329,7 +3473,8 @@
       "confidence_reason": null,
       "quote": "We have not seen a material change in the competitive environment and do not provide guidance on future renewal rates.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-8345337d",
@@ -3351,7 +3496,8 @@
       "confidence_reason": null,
       "quote": "This mix allows Morningstar Credit to maintain a high level of operating leverage, where increases in transactional issuance volumes can significantly boost incremental adjusted operating income. We believe that the current mix of variable and fixed costs for Morningstar Credit is appropriate.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-c27505a4",
@@ -3373,7 +3519,8 @@
       "confidence_reason": null,
       "quote": "We rate a wide range of private transactions. These include private and middle- market corporate issuances, asset finance transactions, risk transfer structures as well as asset-backed securities (ABS), and other structured finance transactions.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-2c8e43ac",
@@ -3395,7 +3542,8 @@
       "confidence_reason": null,
       "quote": "Our growth strategy in Investment Management is focused on Morningstar Model Portfolios and the International Wealth Platform.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-16a2b106",
@@ -3417,7 +3565,8 @@
       "confidence_reason": null,
       "quote": "One of our four strategic goals is to leverage advances in artificial intelligence to drive innovation across internal and external products and services. We\u2019re focused on three primary use cases: using AI as a tool to improve our team\u2019s productivity, using AI to improve the quality and efficiency of our operations, and using AI to get better, faster, and targeted insights and experiences to our clients.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-bd1aaa1c",
@@ -3439,7 +3588,8 @@
       "confidence_reason": null,
       "quote": "As part of Morningstar Credit, we expect that DealX will bolster our position as a leader in CMBS analytics while expanding its reach to private credit and leveraged loan markets. In Q1 25, we paid $38.5 million, net of cash acquired, related to the acquisitions of Lumonic and DealX. We are optimistic that over time, these capabilities will become meaningful growth drivers for PitchBook and Morningstar Credit.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-6b681c24",
@@ -3461,7 +3611,8 @@
       "confidence_reason": null,
       "quote": "We do not intend to disclose additional details related to the financial impact of these transactions.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-8c5a4048",
@@ -3483,7 +3634,8 @@
       "confidence_reason": null,
       "quote": "For our PitchBook platform, we adopt a simple, all-inclusive pricing philosophy that balances the value we offer with the goal of expanding client relationships. We believe that as we enhance the breadth and depth of our data and research, and improve the user experience, we can justify raising prices over time.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-bf02063b",
@@ -3505,7 +3657,8 @@
       "confidence_reason": null,
       "quote": "Broadly, our capital allocation priorities are to preserve a strong balance sheet to maintain flexibility; prioritize funding organic growth and consider acquisitions where we see opportunities to generate long-term shareholder value; maintain and increase our dividend over time commensurate with company financial results; and repurchase shares when we have available cash.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-aa8a8010",
@@ -3527,7 +3680,8 @@
       "confidence_reason": null,
       "quote": "As of our 2024 year-end, we determined that $142.0 million of foreign subsidiary earnings was not permanently reinvested. We plan to bring these earnings back to the US during 2025.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-95648f74",
@@ -3549,7 +3703,8 @@
       "confidence_reason": null,
       "quote": "Given our leverage levels, we are taking a more balanced approach to capital allocation across the priorities outlined in a related question this month.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-b01edde8",
@@ -3571,7 +3726,8 @@
       "confidence_reason": null,
       "quote": "Private credit represents an important opportunity for growth across multiple Morningstar segments. Private debt assets under management totaled roughly $3.3 trillion (including assets in evergreen structures) in 2024, a figure that PitchBook projects will grow to $4.9 trillion by 2029.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-46bdf95c",
@@ -3593,7 +3749,8 @@
       "confidence_reason": null,
       "quote": "Going forward, our teams are focused on executing on growth opportunities in our core Morningstar Direct Platform products, including Morningstar Direct, core products within Morningstar Data, and Morningstar Advisor Workstation/Direct Advisory Suite.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-ca100347",
@@ -3615,7 +3772,8 @@
       "confidence_reason": null,
       "quote": "Without commenting on our competitors\u2019 ratings methodologies, we\u2019d underscore that Morningstar DBRS follows the same analytical processes, using the same criteria, methodology, policies, and procedures to rate private market transactions that it uses to rate public market transactions.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-3d6646f5",
@@ -3637,7 +3795,8 @@
       "confidence_reason": null,
       "quote": "The private market also provides a more level playing field for smaller ratings agencies to compete, unlike the public markets where issues related to legacy investment mandates and index eligibility can come into play.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-7d507811",
@@ -3659,7 +3818,8 @@
       "confidence_reason": null,
       "quote": "When Morningstar DBRS is engaged to analyze a transaction, we typically analyze the entire capital structure. We believe providing coverage across the capital structure adds value to our investor base, some of whom are insurance companies who may buy higher risk mezzanine tranches of these transactions.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-a972c2b1",
@@ -3681,7 +3841,8 @@
       "confidence_reason": null,
       "quote": "Over the past few years, we have taken steps to diversify Morningstar Credit\u2019s revenue base with the goal of making the business less vulnerable to fluctuations in structured finance issuance, especially in commercial mortgage-backed securities.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-fa1ecb13",
@@ -3703,7 +3864,8 @@
       "confidence_reason": null,
       "quote": "To improve retention and support growth, PitchBook is focused on:\n\u2022\tEnhancing platform value through deeper data coverage and workflow integrations;",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-b7fe7e43",
@@ -3725,7 +3887,8 @@
       "confidence_reason": null,
       "quote": "Corporates tend to have more limited use cases for private market data, research, and tools in periods of slower deal activity, and they\u2019re often more sensitive to budget constraints in uncertain macro environments.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-20002ebe",
@@ -3747,7 +3910,8 @@
       "confidence_reason": null,
       "quote": "With changes over the past year, including our strategic alliance with AssetMark and our decision to retire Morningstar Office, we have refocused Morningstar Wealth on Morningstar Model Portfolios offered on third-party platforms and the International Wealth Platform, both areas where we believe that we can scale and grow more efficiently and improve profitability.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-773c3d20",
@@ -3769,7 +3933,8 @@
       "confidence_reason": null,
       "quote": "To that end, in 2025, we broadened our approach to integrated sales for clients who buy multiple products from Morningstar with an account executive collaborating with product-focused sales teams to grow strategically with the client.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-42edd6f6",
@@ -3791,7 +3956,8 @@
       "confidence_reason": null,
       "quote": "As such, the driver for adoption was to formalize an executive severance policy in alignment with current market executive compensation practices to support our ability to attract and retain top-notch talent.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-81c29cbd",
@@ -3813,7 +3979,8 @@
       "confidence_reason": null,
       "quote": "Pursuant to SEC rules, Daniel Mansueto is deemed to beneficially own (i) 56,250 Morningstar shares because he serves as the trustee of a trust associated with Joe Mansueto and (ii) 2.3 million Morningstar shares because he serves as the voting agent of certain grantor retained annuity trusts (GRATs) for the benefit of Joe Mansueto\u2019s children.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-1d72a177",
@@ -3835,7 +4002,8 @@
       "confidence_reason": null,
       "quote": "As you\u2019ve seen from our track record, if we come to the conclusion that an activity is non-core, we may exit or deemphasize those activities to enable our teams to focus on our strategic priorities.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-d67c1e6f",
@@ -3857,7 +4025,8 @@
       "confidence_reason": null,
       "quote": "We align with industry practices by not publishing a specific total addressable market (TAM) figure for Morningstar Direct Platform. This decision reflects the complexities inherent in accurately defining a TAM for products that serve such a broad and diverse audience, spanning multiple industries and use cases.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-e7d32a9d",
@@ -3879,7 +4048,8 @@
       "confidence_reason": null,
       "quote": "The increase reflects the ongoing global expansion of PitchBook\u2019s data coverage and use cases across client types, the growth of private markets, and higher demand for integrated data solutions across corporates and service providers.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-3f9d1eb5",
@@ -3901,7 +4071,8 @@
       "confidence_reason": null,
       "quote": "We have found the greatest crossover exists with firms who leverage our data and research platforms across our licensed products in Morningstar Direct Platform, PitchBook, and Morningstar Sustainalytics, most notably large multi-segment asset and wealth management firms. We do not disclose metrics on cross-selling.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-d9954cf9",
@@ -3923,7 +4094,8 @@
       "confidence_reason": null,
       "quote": "More recently, we are expanding the depth and breadth of our coverage on semi-liquid funds and other investment vehicles as part of our broader focus on meeting investor needs as public/private market convergence accelerates.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-8547296c",
@@ -3945,7 +4117,8 @@
       "confidence_reason": null,
       "quote": "Between 2022 and 2024, retention rates were higher in managed investment (including fund) data and Morningstar Essentials and lower in exchange market data, which we view as a non-core product.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-da025388",
@@ -3967,7 +4140,8 @@
       "confidence_reason": null,
       "quote": "We expect to monetize Morningstar Medalist Ratings for interval funds and related data as an extension of our current offering to asset managers. Use cases include competitive analysis, product development, and the production of fact sheets and ad hoc reports.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-d3795c21",
@@ -3989,7 +4163,8 @@
       "confidence_reason": null,
       "quote": "We do not currently provide a total addressable market (TAM) estimate for Morningstar Direct Platform or key products in that segment but are considering providing an estimate of Morningstar Direct Platform\u2019s TAM at a later date. We view the core market for Morningstar Direct as mature.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-01a266f7",
@@ -4011,7 +4186,8 @@
       "confidence_reason": null,
       "quote": "While it is a relatively mature market and we\u2019re a leader in the space, we believe that the launch of Morningstar Direct Advisory Suite (the next phase of Morningstar Advisor Workstation) positions us to capture new market share in the US, with an improved user experience, expanded AI capabilities, and new digital reporting.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-04b0005c",
@@ -4033,7 +4209,8 @@
       "confidence_reason": null,
       "quote": "While some inputs are public or standardized, the classification, calculations, and many key metrics are proprietary to Morningstar.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-e62a262b",
@@ -4055,7 +4232,8 @@
       "confidence_reason": null,
       "quote": "When we announced his departure on Aug. 29, 2025, we also shared that Frannie Besztery, Chief Operating Officer of Direct Platform, would serve as interim head until a permanent successor is appointed. We have retained Russell Reynolds, an executive search firm, to formally assist us with the search process to secure our next President of Direct Platform. We are actively considering both internal and external candidates.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-779e8d9e",
@@ -4077,7 +4255,8 @@
       "confidence_reason": null,
       "quote": "To achieve long-term AOI growth, we are focused on growing revenue at a faster pace than adjusted operating expense over time, which requires us to balance investment in the business to support growth with careful attention to expenses. We will continue to drive for profitable growth.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-a2349c26",
@@ -4099,7 +4278,8 @@
       "confidence_reason": null,
       "quote": "- Scaling our Morningstar Indexes business with the recently announced acquisition of the Center for Research in Security Prices (CRSP).\n- Database expansion and investment in research and analytics to create intellectual property built around our data, including tools that span public and private investments.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-ba9343f4",
@@ -4121,7 +4301,8 @@
       "confidence_reason": null,
       "quote": "As we see the industry evolving, we continue to enhance our databases beyond traditional mutual funds with a specific focus on semiliquid structures (including interval funds, tender offer funds, and business development companies), collective investment trusts, model portfolios, separately managed accounts and exchange-traded products. We believe that these additional datasets will unlock new capabilities and experiences in Direct to grow our user base in adjacent user segments.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-14ff3c22",
@@ -4143,7 +4324,8 @@
       "confidence_reason": null,
       "quote": "We review prices regularly and make adjustments based on the added value provided and input costs. Starting in 2023, we introduced a larger-than-usual price increase with our annual renewals, reflecting significant enhancements to the product, including new data sets, additional Morningstar IP, and the introduction of Analytics Lab. Since mid-2024, price increases have been more in line with prior years. We do not comment on future price increases.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-535da2ee",
@@ -4165,7 +4347,8 @@
       "confidence_reason": null,
       "quote": "PitchBook\u2019s data moat is built on years of investment in proprietary infrastructure, analyst expertise, and rigorous verification processes. Providers that rely on public source data scraping can surface information, but we do not believe that they can replicate our depth, context, or actionable insights.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-fab9ac70",
@@ -4187,7 +4370,8 @@
       "confidence_reason": null,
       "quote": "We have entered into agreements with leading large language model (LLM) providers including Anthropic, Perplexity, and Rogo to further expand our reach, allowing clients to access PitchBook\u2019s institutional-grade data securely through the tools they already use while maintaining control and data security.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-c46b1968",
@@ -4209,7 +4393,8 @@
       "confidence_reason": null,
       "quote": "That said, we run our firm in a decentralized manner and the PitchBook segment, like others at Morningstar, operates with relative independence.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-0bf01f85",
@@ -4231,7 +4416,8 @@
       "confidence_reason": null,
       "quote": "We believe the majority of the pressure is short-term and cyclical, while we are proactively positioning the business to capture long-term opportunities as the private markets expand and evolve.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-ca86c5de",
@@ -4253,7 +4439,8 @@
       "confidence_reason": null,
       "quote": "Morningstar currently estimates PitchBook\u2019s TAM at $11.1 billion in 2025, reflecting both the expansion of private markets globally and the growing demand for integrated data solutions across corporates, service providers, and financial sponsors.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-b61b1aef",
@@ -4275,7 +4462,8 @@
       "confidence_reason": null,
       "quote": "Morningstar Credit continues to increase market coverage in areas where we are investing, including in private credit ratings sectors such as aviation and data center transactions.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-98babd78",
@@ -4297,7 +4485,8 @@
       "confidence_reason": null,
       "quote": "Starting in 2024, our teams have refocused Morningstar Wealth on model portfolios distribution via third-party platforms and our International Wealth Platform, with the goals of more effectively scaling the business and supporting profitable and sustainable growth.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-ac49eb44",
@@ -4319,7 +4508,8 @@
       "confidence_reason": null,
       "quote": "we would note that this restructuring is in line with our broader effort to focus the business on areas where we believe that we can win longer term while also improving profitability. In particular, we continue to see a wide spectrum of client needs across our target market and expect long-term demand for specialized sustainability and climate research, ratings, and data.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-6d327018",
@@ -4341,7 +4531,8 @@
       "confidence_reason": null,
       "quote": "We acknowledge that AI is inherently disruptive and is changing how the world approaches technology and engages with information and believe that it will be a key factor shaping the workforce of the future. Disruptive technologies (personal computing, internet, mobile and most recently AI) tend to magnify the outcomes for both successful and unsuccessful adopters.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-70c4352b",
@@ -4363,7 +4554,8 @@
       "confidence_reason": null,
       "quote": "\u2022 We seek to preserve a strong balance sheet to maintain flexibility;\n\u2022 We will prioritize funding organic growth and consider acquisitions where we see opportunities to generate long-term shareholder value;\n\u2022 We aim to maintain and increase our dividend over time commensurate with company financial results; and\n\u2022 We look to repurchase shares when we have available cash and will accelerate that activity opportunistically when we believe that our shares are substantially undervalued.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-425d34cb",
@@ -4385,7 +4577,8 @@
       "confidence_reason": null,
       "quote": "In the past year, we have made several important moves to better align our product portfolio, including exiting the investment platform business in the US, with the sale of customer assets in our Turnkey Asset Management Platform (TAMP) and the announcement of our intent to wind-down Morningstar Office. We also recently announced our plans to acquire the Center for Research in Security Prices (CRSP).",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-67a74022",
@@ -4407,7 +4600,8 @@
       "confidence_reason": null,
       "quote": "Through the first 10 months of 2025, we have taken a number of deliberate steps designed to fortify our economic moat by strengthening core sources of competitive advantage, particularly intangible assets, switching costs, and network effects.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-c55012a6",
@@ -4429,7 +4623,8 @@
       "confidence_reason": null,
       "quote": "While we agree that basic reference data and investment details will be further commoditized in an AI-first world, we believe that our differentiation comes from the data that we collect and enrich with our standard-setting categorizations, calculations, and methodologies.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-1f158feb",
@@ -4451,7 +4646,8 @@
       "confidence_reason": null,
       "quote": "More broadly, our strategy is to deliver data, research, and technology across multiple distribution channels, including the PitchBook platform, direct data feeds, and emerging LLM interfaces, supporting client workflows wherever they operate.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-f357561d",
@@ -4473,7 +4669,8 @@
       "confidence_reason": null,
       "quote": "Overall, we\u2019d note that commercial models are still evolving with the growth of AI, but we\u2019re confident that the pairing of our IP with data \u2013 including hard-to-access data \u2013 offers a compelling value proposition. That means experimenting with flexible consumption- and seat-based revenue models as we seek to match price to value.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-f2b05587",
@@ -4495,7 +4692,8 @@
       "confidence_reason": null,
       "quote": "We will allocate investment towards AI where we see high potential for positive returns. While these returns may not always materialize in the first year, we believe that we can continue to expand our adjusted operating income (AOI) and AOI margins over time, building on the progress we have made in recent years.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-ce93cc3a",
@@ -4517,7 +4715,8 @@
       "confidence_reason": null,
       "quote": "Data users represent the smallest group of Direct users. Our strategic focus is on moving more users into the second and third tiers, where retention is strongest.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-25c570d1",
@@ -4539,7 +4738,8 @@
       "confidence_reason": null,
       "quote": "we are observing longer sales cycles, due in part to firms seeking to do more with fewer resources and ongoing efforts to clarify their strategies for data and artificial intelligence (AI). That said, net revenue renewal rates have remained strong and we\u2019re seeing expansion opportunities, especially with large clients.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-2b9d0362",
@@ -4561,7 +4761,8 @@
       "confidence_reason": null,
       "quote": "We believe we are well-positioned to capitalize on the tremendous growth in private debt funds across multiple parts of our business including PitchBook, Morningstar Credit, and Morningstar Direct Platform.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-3f724c6c",
@@ -4583,7 +4784,8 @@
       "confidence_reason": null,
       "quote": "From January 2024 through June 2025, the trend in PitchBook net logos was slightly negative, as churn in existing logos (especially in the corporate sector) was mostly offset by the addition of new logos. During this same period, annual contract value (ACV) per logo has increased.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-8958d245",
@@ -4605,7 +4807,8 @@
       "confidence_reason": null,
       "quote": "In short, new logos remain an important driver, but expansion at existing clients, especially large global firms, also represents a substantial and durable growth opportunity.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-4e43615b",
@@ -4627,7 +4830,8 @@
       "confidence_reason": null,
       "quote": "As you saw in our recently reported Q3 25 results, we agree with your thesis that it has been a good time to accelerate share repurchases. For the year-to-date through Oct. 28, 2025, we repurchased 1,873,729 shares for a total of $487.0 million, completing the share repurchases authorized under the three-year $500 million program effective Jan. 1, 2023.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-80f494aa",
@@ -4649,7 +4853,8 @@
       "confidence_reason": null,
       "quote": "Consistent with common practice, we treat our repurchased stock as treasury shares, which are not considered outstanding.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-5c7c819e",
@@ -4671,7 +4876,8 @@
       "confidence_reason": null,
       "quote": "Our planned acquisition of CRSP represents an important step in scaling our Morningstar Indexes business and will position us as one of the largest index providers for public US equity index funds.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-ed6e3050",
@@ -4693,7 +4899,8 @@
       "confidence_reason": null,
       "quote": "We have shared that CRSP generates $55 million in revenue annually. We believe we can bring a stronger commercial focus to grow the franchise over time and to support the scaling of Morningstar Indexes. We expect the CRSP transaction to be accretive to adjusted operating margin in 2026.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-07f734bb",
@@ -4715,7 +4922,8 @@
       "confidence_reason": null,
       "quote": "We have positioned Morningstar Indexes as a disruptor in the index space for a number of years and intend to continue to play this role. We seek to provide value-based pricing for our core index capabilities.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-be8fa3bb",
@@ -4737,7 +4945,8 @@
       "confidence_reason": null,
       "quote": "We actively monitor our return on invested capital (ROIC) and view it as a useful measure of long-term capital efficiency and value creation. We\u2019d note that outside of acquisitions our business is not capital-intensive so increases in margins and profitability have a direct impact on ROIC.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-7e5636ad",
@@ -4759,7 +4968,8 @@
       "confidence_reason": null,
       "quote": "Joe Mansueto does not have a target percent ownership in Morningstar stake each year. Joe Mansueto historically has entered into 10b5-1 plans on an annual basis to sell a portion of his Morningstar shares to diversify his investments.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-1a64014f",
@@ -4781,7 +4991,8 @@
       "confidence_reason": null,
       "quote": "As described in our Q3 25 CEO letter and responses to investor questions shared Nov. 5, 2025, our AI strategy is focused in three areas: delivering our differentiated data and intellectual property (IP); accelerating speed-to-insights in our products; and boosting the operational excellence of our teams. We have a long history of creating IP and combining it with hard-to-replicate data; we believe that leveraging these capabilities alongside the latest AI technologies will position us as a winner.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-012a15d2",
@@ -4803,7 +5014,8 @@
       "confidence_reason": null,
       "quote": "The increase was primarily driven by higher headcount in Morningstar Credit and PitchBook to support growth in those segments, offset by lower Morningstar Wealth headcount related to the completed transition of assets from our US Turnkey Asset Management Platform (TAMP) to AssetMark and the ongoing sunsetting of Morningstar Office. We do not provide guidance around future headcount. We continue to invest with a focus on driving profitable growth.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-b9505f02",
@@ -4825,7 +5037,8 @@
       "confidence_reason": null,
       "quote": "While we do not provide guidance on revenue or margins, we are optimistic about the medium-term revenue growth opportunities for our International Wealth Platform. It has gained market share from larger competitors in the UK, and we have also experienced success cross-selling other Morningstar models and funds to existing clients on the platform.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-e0591f12",
@@ -4847,7 +5060,8 @@
       "confidence_reason": null,
       "quote": "We believe that we have a significant data moat across our business. As described in responses to similar questions in September (for PitchBook) and early November (for the broader business), we believe that our moat is built around credibility and industry acceptance, our edge in collecting data in a systematic, scalable manner, the enrichment of our data and our differentiated IP, and governance that is designed to protect our data via client agreements.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-7e10d54a",
@@ -4869,7 +5083,8 @@
       "confidence_reason": null,
       "quote": "We are focused on maintaining a strong balance sheet to provide flexibility for the business. While we do not share a target leverage ratio, we would note that we have considerable headroom under our debt agreements and have been comfortable with the leverage ratios that you have seen in recent years.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-0bef7ad6",
@@ -4891,7 +5106,8 @@
       "confidence_reason": null,
       "quote": "Our board has authorized an additional $1 billion in share repurchase authority over the next three years, representing 4.8 million shares at our share price as of Nov. 24, 2025, or 11.6% of our shares outstanding as of Oct. 24, 2025.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-1de2d8ac",
@@ -4913,7 +5129,8 @@
       "confidence_reason": null,
       "quote": "While we do not disclose the percentage of data sourced directly from market participants, much of what we believe is our highest-value information comes from proprietary datasets sourced through our primary research process, including data collected via surveys and FOIA requests.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-480fff3c",
@@ -4935,7 +5152,8 @@
       "confidence_reason": null,
       "quote": "While we also remain focused on growth investments, we believe these innovations will also contribute to greater efficiency, scalability, and support margin improvement over the long-term.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-800d6304",
@@ -4957,7 +5175,8 @@
       "confidence_reason": null,
       "quote": "But we have also observed that corporates with a market intelligence use case are less sticky and some are choosing competitors over PitchBook. We do not disclose win-loss rate trends.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-78e72fc2",
@@ -4979,7 +5198,8 @@
       "confidence_reason": null,
       "quote": "That said, we acknowledge headwinds beyond the market environment. We have observed extended sales cycles for both new and existing clients, driven by resource constraints and evolving data and AI strategies. Should these continue, they could limit near-term growth. Additionally, corporate clients, historically more volatile, may continue to rationalize licenses or choose alternative solutions in uncertain environments.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-723ff13b",
@@ -5001,7 +5221,8 @@
       "confidence_reason": null,
       "quote": "PitchBook Direct Data represents a small-but-growing part of the PitchBook reportable segment, accounting for a high single-digit share of revenue for the year-to-date through September 2025.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-087470db",
@@ -5023,7 +5244,8 @@
       "confidence_reason": null,
       "quote": "In Q3 25, as part of our periodic reviews of licensed users, we conducted a rationalization of our internal user count. We also took this opportunity to refine the definition of our reported licensed user count to focus on third-party licensed users.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-09c8f8f0",
@@ -5045,7 +5267,8 @@
       "confidence_reason": null,
       "quote": "We are proud of our record and history of developing internal talent. Additionally, we find great value in approaching the external market for roles when we deem it important for key hires or when we believe we do not have a successor ready. We seek to maintain a balance of perspectives, leadership styles, expertise, backgrounds, and views on our leadership team to guide the business and maximize investor success.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-001ab33a",
@@ -5067,7 +5290,8 @@
       "confidence_reason": null,
       "quote": "We recently announced that Ron Bundy, President of Morningstar Indexes and Morningstar Sustainalytics will be retiring at the end of this year. Our new President of Sustainalytics, David Pagliaro, was a strategic hire into that leadership team just a year ago.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-7274b1ab",
@@ -5089,7 +5313,8 @@
       "confidence_reason": null,
       "quote": "As part of Morningstar\u2019s sale of US TAMP assets to AssetMark in 2024, Morningstar is entitled to payment from AssetMark based on the net flows of transitioned customers through December 1, 2025. The contingent consideration is accounted for as a gain contingency, and if realizable, will be recorded in Q4 2025.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-694658cc",
@@ -5111,7 +5336,8 @@
       "confidence_reason": null,
       "quote": "Our bonus program is designed to reward execution against clear financial targets aimed at directly supporting the creation of shareholder value. Participants are measured against group-specific revenue and adjusted operating income targets and also have exposure to overall company performance.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-d01664da",
@@ -5133,7 +5359,8 @@
       "confidence_reason": null,
       "quote": "More recently, we started to see a shift in revenue drivers with an increasing share of growth coming from expansion with existing large AUM accounts in our core customer segments.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-bf5827a3",
@@ -5153,7 +5380,8 @@
       "confidence_reason": null,
       "quote": "First and foremost, we are focused on our mission of empowering investor success.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-54b29b0e",
@@ -5173,7 +5401,8 @@
       "confidence_reason": null,
       "quote": "We operate in large and growing markets across our business and see continued runway for profitable growth. We are working to expand our moat in our current business and will consider moving into adjacencies where we believe that we are well-positioned to serve investors.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-c180dc9a",
@@ -5193,7 +5422,8 @@
       "confidence_reason": null,
       "quote": "In general, we seek to continuously enhance the value of products and services to meet our clients\\u2019 needs, and we generally expect to be compensated for the value we provide to our clients via pricing. We review our pricing strategy annually to ensure that it reflects the value we deliver to customers.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-8c6d2a9f",
@@ -5213,7 +5443,8 @@
       "confidence_reason": null,
       "quote": "Historically, MSUs have been earned above the 100% target and below the 100% target.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-34232287",
@@ -5233,7 +5464,8 @@
       "confidence_reason": null,
       "quote": "We\\u2019ve made strong progress consolidating our portfolio to fortify the Morningstar brand while continuing to clearly communicate our capabilities to the market.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-c254b262",
@@ -5253,7 +5485,8 @@
       "confidence_reason": null,
       "quote": "For competitive reasons, we do not disclose revenue breakdowns by rating type beyond the detail on structured finance and fundamental ratings shared in our supplemental quarterly presentation",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-53216f4b",
@@ -5273,7 +5506,8 @@
       "confidence_reason": null,
       "quote": "We continued to add new clients during this period, but these additions were offset by churn, primarily in our corporate client segment.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-6e1f89fe",
@@ -5293,7 +5527,8 @@
       "confidence_reason": null,
       "quote": "The $4.9 million of targeted reorganization costs in Q2 25 did have a negative impact on adjusted operating income. We do not comment on future headcount plans.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-d3a13409",
@@ -5313,7 +5548,8 @@
       "confidence_reason": null,
       "quote": "So, in percentage (but not dollar) terms, we expect the bonus pool to grow faster than profit if the 100% target is reached.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-e83a645c",
@@ -5333,7 +5569,8 @@
       "confidence_reason": null,
       "quote": "we are currently assessing the potential impacts of the One Big Beautiful Bill (OBBB); however, an estimate of the impact of the OBBB on our consolidated financial statements cannot be made at this time",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-6cde8c41",
@@ -5353,7 +5590,8 @@
       "confidence_reason": null,
       "quote": "During his tenure here, Michael centralized and scaled our Research & Investment capabilities; drove our M&A strategy leading the DBRS, Sustainalytics, and LCD acquisitions; and has been instrumental in reframing our approach to the Wealth space culminating in the AssetMark transaction.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-cc5ec4a4",
@@ -5373,7 +5611,8 @@
       "confidence_reason": null,
       "quote": "Michael was a key partner to Kunal and our former CFO, Jason Dubinsky, in allocating investment and implementing and driving a focus on growing our adjusted operating income and margin improvement.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-4aa16602",
@@ -5393,7 +5632,8 @@
       "confidence_reason": null,
       "quote": "While we\u2019ve noted headwinds in the U.S. for several years, we believe a focus on assessing financially material ESG risks will continue to be an important driver across markets.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-3572e7c1",
@@ -5413,7 +5653,8 @@
       "confidence_reason": null,
       "quote": "Joe pledged his shares because he did not want to reduce his ownership and weaken his alignment with the Company's shareholders.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-99e9a728",
@@ -5433,7 +5674,8 @@
       "confidence_reason": null,
       "quote": "If long-term interest rates continued to increase as they have since the election, that could have a dampening effect on market activity and potentially result in fewer new opportunities.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-e7460d8e",
@@ -5453,7 +5695,8 @@
       "confidence_reason": null,
       "quote": "While we don\u2019t provide guidance, we continue to focus on increasing adjusted operating income as a driver of long-term value creation. Continued margin expansion over the long-term is central to these efforts.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-5d1a9e52",
@@ -5473,7 +5716,8 @@
       "confidence_reason": null,
       "quote": "But it will be more focused, and we anticipate, profitable.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-1aab75db",
@@ -5493,7 +5737,8 @@
       "confidence_reason": null,
       "quote": "As a result, we have lost revenue and clients but expect improved scalability.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-c4a39f92",
@@ -5513,7 +5758,8 @@
       "confidence_reason": null,
       "quote": "We are also keeping a close eye on recent volatility in the market.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-8bef495b",
@@ -5533,7 +5779,8 @@
       "confidence_reason": null,
       "quote": "We don\u2019t provide guidance as to future revenue trends, but we will note that we are paying very close attention to the impact of recent tariff-related market volatility on our clients.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-fc3b218a",
@@ -5553,7 +5800,8 @@
       "confidence_reason": null,
       "quote": "While there has been turnover in the leadership of Morningstar Advisor Workstation in recent years, James Rhodes, President, Direct Platform, has led this segment since January 2022.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-01d2bf94",
@@ -5573,7 +5821,8 @@
       "confidence_reason": null,
       "quote": "focus on areas where we have the greatest confidence that we can scale without making significant new capital investments",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-8f2aa792",
@@ -5593,7 +5842,8 @@
       "confidence_reason": null,
       "quote": "The exclusion of exchange market data from the annual revenue renewal rate in 2023 was due to an oversight in our calculation.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-d1289e64",
@@ -5613,7 +5863,8 @@
       "confidence_reason": null,
       "quote": "in Morningstar Credit and Morningstar Indexes, we are building momentum and fostering the adoption of our solutions that credibly challenge traditional providers",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-a624a63c",
@@ -5633,7 +5884,8 @@
       "confidence_reason": null,
       "quote": "the accelerating convergence of public and private markets",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-9af263b9",
@@ -5653,7 +5905,8 @@
       "confidence_reason": null,
       "quote": "Overall, we view the LCD integration as a success. We retained the full LCD team and prioritized a thoughtful migration of clients to the PitchBook platform.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-4a23ce3a",
@@ -5673,7 +5926,8 @@
       "confidence_reason": null,
       "quote": "With the economic uncertainty we\u2019ve seen in recent months, the M&A environment remains challenging with very limited activity.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-1a01ce20",
@@ -5693,7 +5947,8 @@
       "confidence_reason": null,
       "quote": "We\u2019ll continue to roll out AI features in a measured, customer-informed way\u2014prioritizing use cases that deliver real value and productivity gains.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-e9bc1a6b",
@@ -5713,7 +5968,8 @@
       "confidence_reason": null,
       "quote": "we do seek to balance growth opportunities and increased profitability over time",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-44c6eb9e",
@@ -5733,7 +5989,8 @@
       "confidence_reason": null,
       "quote": "The approach did not deliver as we expected. We transitioned to a strategic partnership approach with a focus on building relationships and integrations with firms aligned to more common advisor workflows, which resulted in a decline in associated revenues starting in Q3 24.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-287717ee",
@@ -5753,7 +6010,8 @@
       "confidence_reason": null,
       "quote": "In addition, we experienced product delays, which slowed the delivery of Direct Advisory Suite and negatively impacted renewals and new client acquisition.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-15c0516e",
@@ -5773,7 +6031,8 @@
       "confidence_reason": null,
       "quote": "That said, we would not currently attribute a significant portion of revenue to cross-product synergies.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-6bce0314",
@@ -5793,7 +6052,8 @@
       "confidence_reason": null,
       "quote": "NAIC retracted the June 2024 report that you reference in 2025 primarily due to data quality issues.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-cd66714e",
@@ -5813,7 +6073,8 @@
       "confidence_reason": null,
       "quote": "We only disclose market coverage where we are able to cite independent third-party sources, and we are not aware of any sources that meet this criterion.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-fd089218",
@@ -5833,7 +6094,8 @@
       "confidence_reason": null,
       "quote": "In 2024, we overhauled and modernized our Direct Web Services product (non-core), which led to an anticipated increase in customer churn and weighed on the growth rates for Morningstar Data and the broader segment.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-dd528037",
@@ -5853,7 +6115,8 @@
       "confidence_reason": null,
       "quote": "which we view as a non-core product",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-ec0fbf66",
@@ -5873,7 +6136,8 @@
       "confidence_reason": null,
       "quote": "as part of our broader focus on meeting investor needs as public/private market convergence accelerates",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-01a15829",
@@ -5893,7 +6157,8 @@
       "confidence_reason": null,
       "quote": "We view the core market for Morningstar Direct as mature.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-6adc3921",
@@ -5913,7 +6178,8 @@
       "confidence_reason": null,
       "quote": "we estimate that we serve roughly half of US advisors through the product",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-d10b8a39",
@@ -5933,7 +6199,8 @@
       "confidence_reason": null,
       "quote": "Margin pressure has led to some defensiveness, although we would note that we are observing higher cost sensitivity in the US asset management market, compared to EMEA and APAC where we have seen stronger performance.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-d16c7ee3",
@@ -5953,7 +6220,8 @@
       "confidence_reason": null,
       "quote": "At this point, we believe that we have a good set of capabilities. We remain opportunistic around additional M&A, with a focus on strategic fit and reasonable prices.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-d66f85d2",
@@ -5973,7 +6241,8 @@
       "confidence_reason": null,
       "quote": "While the rise of AI, like other technology shifts, poses a threat for some client use cases, we are focused on harnessing it to deepen our competitive advantage.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-9535db10",
@@ -5993,7 +6262,8 @@
       "confidence_reason": null,
       "quote": "In the past, firms have often waited for several quarters of sustained momentum before re-accelerating investments in tools, and licenses.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-761a7ee3",
@@ -6013,7 +6283,8 @@
       "confidence_reason": null,
       "quote": "We do not comment on future price increases.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-a112ca58",
@@ -6033,7 +6304,8 @@
       "confidence_reason": null,
       "quote": "DAS is more than a user interface refresh\u2014it is a strategic move to embed Morningstar deeper into advisor workflows, making it harder to switch away without losing efficiency and insight.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-1e04266e",
@@ -6053,7 +6325,8 @@
       "confidence_reason": null,
       "quote": "While we agree that basic reference data and investment details will be further commoditized in an AI-first world",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-f86a21fc",
@@ -6073,7 +6346,8 @@
       "confidence_reason": null,
       "quote": "we are observing longer sales cycles, due in part to firms seeking to do more with fewer resources and ongoing efforts to clarify their strategies for data and artificial intelligence (AI)",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-dcc27fcc",
@@ -6093,7 +6367,8 @@
       "confidence_reason": null,
       "quote": "From January 2024 through June 2025, the trend in PitchBook net logos was slightly negative",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-110e5c9e",
@@ -6113,7 +6388,8 @@
       "confidence_reason": null,
       "quote": "As of April 2025, we estimated PitchBook\u2019s TAM at $11.1 million.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-7f36643c",
@@ -6133,7 +6409,8 @@
       "confidence_reason": null,
       "quote": "We have established a dedicated Responsible AI Council and a governance framework designed to protect our data in client agreements and are regularly reviewing how legal action is evolving related to AI.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-67edcf1f",
@@ -6153,7 +6430,8 @@
       "confidence_reason": null,
       "quote": "We have positioned Morningstar Indexes as a disruptor in the index space for a number of years and intend to continue to play this role.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-347558f8",
@@ -6173,7 +6451,8 @@
       "confidence_reason": null,
       "quote": "we believe that leveraging these capabilities alongside the latest AI technologies will position us as a winner",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-0d8e3358",
@@ -6193,7 +6472,8 @@
       "confidence_reason": null,
       "quote": "create a data moat that we believe competitors cannot easily replicate",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-e69e883d",
@@ -6213,7 +6493,8 @@
       "confidence_reason": null,
       "quote": "But we have also observed that corporates with a market intelligence use case are less sticky and some are choosing competitors over PitchBook.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-1fe50302",
@@ -6233,7 +6514,8 @@
       "confidence_reason": null,
       "quote": "we have seen increased churn and pressure on expansion in the past couple of quarters that have contributed to the revenue growth deceleration you note over the past two quarters. A slowdown in new business growth has also contributed, with the most significant decline in the corporate client segment.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-9c09559c",
@@ -6253,7 +6535,8 @@
       "confidence_reason": null,
       "quote": "At the same time, we have observed sales cycles for clients and prospective clients extend as firms seek to do more with fewer resources and are engaging in ongoing efforts to clarify their strategies for data and artificial intelligence.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-7e4e9ec2",
@@ -6273,7 +6556,8 @@
       "confidence_reason": null,
       "quote": "The definition change was voluntary.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-cea97315",
@@ -6293,7 +6577,8 @@
       "confidence_reason": null,
       "quote": "we have demonstrated that we opportunistically repurchase shares when we believe that valuations are attractive relative to our assessment of intrinsic value",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-e7da5b3e",
@@ -6313,7 +6598,8 @@
       "confidence_reason": null,
       "quote": "Combined with opportunities to upsell and cross-sell within existing accounts, we believe these initiatives position us to sustain growth even as markets normalize.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-d3a65d7e",
@@ -6333,7 +6619,8 @@
       "confidence_reason": null,
       "quote": "More broadly, we expect that expansion with existing large AUM accounts will continue to outpace growth from new logos even as both remain important growth drivers.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     },
     {
       "id": "QA-FY2025-0e8ba5b5",
@@ -6353,7 +6640,8 @@
       "confidence_reason": null,
       "quote": "During that time, we succeeded at bringing in many clients with significant assets under management (AUM), which created a large base and set a strong foundation for continued growth.",
       "quote_verified": true,
-      "quote_check": "verbatim match"
+      "quote_check": "verbatim match",
+      "correction": null
     }
   ],
   "risk_deltas": {
@@ -6746,6 +7034,11 @@
       "all_present": true,
       "unique_within_year": true,
       "basis": "content hash of the claim, its evidence and its source \u2014 see `fact_id` in src/ledger_schema.py. Confidence and the verification result are NOT hashed, so re-verifying a fact does not renumber it. Cross-year uniqueness is enforced fatally at build time by `audit_ids`."
+    },
+    "corrections": {
+      "n": 0,
+      "applied": [],
+      "basis": "config/corrections.toml \u2014 human corrections to model-extracted values that the cited filing contradicts, each carrying the filing text that establishes it. data/ledger/facts/ is never edited: the record of what the model returned has to stay as it was."
     },
     "extraction_tasks_missing": [],
     "board_metadata": {

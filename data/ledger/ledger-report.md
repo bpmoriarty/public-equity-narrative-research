@@ -1,6 +1,6 @@
 # Year ledger
 
-Generated 2026-08-06T16:08:46Z. MORN (Morningstar, Inc.), CIK 0001289419.
+Generated 2026-08-07T23:47:37Z. MORN (Morningstar, Inc.), CIK 0001289419.
 
 Every fact carries its source filing, an exact quote from that filing, and a confidence marker. `low` means the source section's boundaries are unverified, or the quote could not be found verbatim — see `confidence_reason` on the fact. **Any claim in the outputs resting on a `low` fact must say so, or be dropped.**
 
@@ -25,6 +25,15 @@ Every fact and risk delta also carries a stable `id` — e.g. `SP-FY2021-471e22f
 
 > **Segment counts are not comparable across the whole window.** In the years marked *product areas* the filing does not disclose reportable segments, so the `segments` field holds whatever product or business areas Item 1 describes. A change in the count between such a year and a reportable-segment year is a change in disclosure, not necessarily a re-segmentation.
 
+## Corrections applied
+
+Values the cited filing contradicts, overridden from `config/corrections.toml`. `data/ledger/facts/` — the record of what the extraction model returned — is not edited; the correction is a separate versioned artifact and both values are kept on the fact. Every correction must match exactly one fact or the build fails.
+
+- **FY2022 leadership** `LEAD-FY2022-9fd216a3` — `desmond-2022-announcement`: {'change': 'departed'} → {'change': 'departure_announced'}
+    - *Evidence:* “informed Morningstar's Chief Executive Officer that she has decided to depart Morningstar in August 2022”
+    - *Reason:* The filing reports an announcement, not a departure. On 2022-05-06 Ms. Desmond informed the CEO of a decision to depart "in August 2022"; her last day was 2023-01-31, recorded separately from the 8-K/A filed 2023-02-02. Recording this as change=departed dated 2022-05-06 put a departure on the timeline on a date it did not happen, and made the two facts look like one event dated two ways.
+    - *Verified by:* human review, 2026-08-07 (VERIFICATION.md D1)
+
 ## Source sections used
 
 - **FY2021**: 10-K_item1_business, 10-K_item7_mdna, 8-K_8-K_whole, 8-K_EX-99-1_whole, DEF14A_cdna, DEF14A_director_bios, DEF14A_incentive_tables
@@ -36,6 +45,7 @@ Every fact and risk delta also carries a stable `id` — e.g. `SP-FY2021-471e22f
 ## Warnings
 
 - FY2021: extraction task 'letter' has no result file — run src/extract_facts.py --fy 2021 --task letter
+- FY2022 leadership: value corrected by 'desmond-2022-announcement' ({'change': 'departed'} -> {'change': 'departure_announced'})
 - FY2022 investor_qa: unverified quote (8-K_8-K_whole: not found in the source section)
 - FY2023 investor_qa: unverified quote (8-K_8-K_whole: diverges after 205 of 217 characters (94%) — the openin)
 - FY2024 investor_qa: unverified quote (8-K_8-K_whole: diverges after 69 of 209 characters (33%) — the opening)

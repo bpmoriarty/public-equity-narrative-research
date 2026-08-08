@@ -200,7 +200,12 @@ def render() -> str:
         f"marked rather than dropped."
         if c["predates_window"] else
         "- Every dated row falls inside the window.",
-        "- **‡** marks a row the filings date inconsistently. See the notes at the end.",
+        # Conditional, because a legend explaining a marker that appears nowhere in
+        # the document tells the reader to go looking for something that is not there.
+        ("- **‡** marks a row that more than one filing dates differently. Whether the "
+         "filings settle which date is which is stated per event in the notes at the end."
+         if conflict_ids else
+         "- **No event in this document carries conflicting dates across filings.**"),
         "- Every row in this document is `high` confidence." if all(
             r["confidence"] == "high" for r in rendered) else
         "- Rows marked **low confidence** rest on a fact whose section boundaries are "
@@ -253,16 +258,27 @@ def render() -> str:
             L += [f"    - {p['similarity']:.0f}: *{esc(p['a']['description'][:90])}…* vs "
                   f"*{esc(p['b']['description'][:90])}…*"]
     if block.get("date_conflicts"):
-        n_conf = len(block["date_conflicts"])
-        n_rows = len(conflict_ids)
-        L += [f"- **‡ {n_conf} event{'' if n_conf == 1 else 's'} the filings date "
-              f"inconsistently**, across {n_rows} rows above. Every reading is kept and "
-              f"no date is presented as the right one:"]
-        for conf in block["date_conflicts"]:
-            L += [f"    - *{esc(conf['description'][:110])}* — dated "
+        # The note is READ OFF the conflict record rather than re-composed here.
+        #
+        # This block used to restate the "the filings do not settle it" sentence in
+        # its own words, a second hardcoded copy of an assertion about evidence the
+        # renderer had never seen. Both copies were wrong about Bevin Desmond's
+        # departure, in a document whose whole claim is that it contains nothing the
+        # ledger does not. `find_date_conflicts` examines the filings and writes the
+        # note; the renderer's job is to print it. See VERIFICATION.md D1.
+        confs = block["date_conflicts"]
+        n_settled = sum(1 for c in confs if c.get("resolved"))
+        head = (f"- **‡ {len(confs)} event{'' if len(confs) == 1 else 's'} carry more "
+                f"than one date across filings**, over {len(conflict_ids)} rows above. "
+                f"Every row is kept in every case; what differs is whether the filings "
+                f"settle which date is which")
+        head += (f" — {n_settled} of {len(confs)} do:" if n_settled else ", and none do:")
+        L += [head]
+        for conf in confs:
+            mark = "**settled**" if conf.get("resolved") else "**unsettled**"
+            L += [f"    - {mark} — *{esc(conf['description'][:110])}*, dated "
                   f"{' and '.join(conf['dates'])} across {len(conf['filings'])} filings. "
-                  f"This may be an announcement date against an effective date, or two "
-                  f"separate changes; the filings do not settle it."]
+                  f"{esc(conf['note'])}"]
     L += [f"- **{c['input_records']} ledger records** (event and leadership facts) "
           f"produced these {c['rows_after_merge']} rows. Completeness is asserted at "
           f"render time: every input id appears in exactly one table above, or this file "

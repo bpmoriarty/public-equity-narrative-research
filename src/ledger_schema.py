@@ -248,8 +248,21 @@ class Headcount(BaseModel):
 class LeadershipChange(BaseModel):
     name: str
     role: str = Field(description="The role involved.")
-    change: Literal["appointed", "departed", "promoted", "role_changed", "other"]
-    date: str | None = Field(default=None, description="ISO date if stated, else null.")
+    # `departure_announced` is separate from `departed` because collapsing them
+    # produces a dated event on a date nothing happened. An 8-K saying an executive
+    # "informed the CEO that she has decided to depart in August" reports a decision
+    # on the filing's date; the departure is a later, often different, date — and
+    # frequently a date only a later amendment supplies. Recorded as one enum value,
+    # the two become a single event the filings appear to date inconsistently, which
+    # is how this distinction was found. See VERIFICATION.md D1 and
+    # config/corrections.toml.
+    change: Literal["appointed", "departed", "departure_announced",
+                    "promoted", "role_changed", "other"]
+    date: str | None = Field(
+        default=None,
+        description="ISO date if stated, else null. The date of THIS change: for "
+                    "`departure_announced` that is the date the decision was "
+                    "announced or communicated, NOT the departure date it names.")
     stated_reason: str | None = Field(
         default=None,
         description="The reason the DOCUMENT gives. Null if it gives none — most "
@@ -556,6 +569,12 @@ class LedgerFact(BaseModel):
     quote: str
     quote_verified: bool
     quote_check: str
+    # Set when config/corrections.toml changed this fact's value. Deliberately NOT
+    # part of the id hash — see `fact_id`, which hashes the claim, its evidence and
+    # its source. The correction changes the claim, so the id changes anyway; what
+    # must not happen is the record of the correction becoming part of the identity,
+    # because then rewording the `reason` would renumber the fact.
+    correction: dict | None = None
 
     @model_validator(mode="after")
     def _assign_id(self) -> "LedgerFact":

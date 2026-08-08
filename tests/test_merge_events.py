@@ -180,7 +180,11 @@ def main() -> int:
 
     print()
     print("DATE CONFLICTS — detected from structured fields, not text")
-    # The real case: one departure, two filings, two different dates.
+    # Two filings, same structured identity, two dates -> the group is FOUND. Whether
+    # the filings settle which date is which is a separate question, tested in the
+    # block below. This was a live case until the FY2022 fact was corrected to
+    # `departure_announced`; it is kept as a fixture because detection and resolution
+    # are different failures and each needs its own test.
     desmond = [
         {**row("L1", "2022-05-06", "Bevin Desmond departed — Chief Talent and Culture "
                                    "Officer", "acc-1"),
@@ -215,6 +219,66 @@ def main() -> int:
           len(find_date_conflicts([row("A", "2022-01-01", CA_A, "acc-1"),
                                    row("B", "2022-02-01", CA_A, "acc-2")])) == 0,
           "events have no field that identifies the same real-world change")
+
+    print()
+    print("SETTLED vs UNSETTLED — a second date is not automatically a disagreement")
+    # THE REGRESSION CASE, and the reason this block exists. `find_date_conflicts`
+    # used to emit one hardcoded sentence for every group it found — "the filings do
+    # not settle it" — asserted about evidence it had never read. On the one group it
+    # fired on it was false, and that sentence reached the narrative brief as the only
+    # claim in it a reader could check and find wrong. See VERIFICATION.md D1.
+    #
+    # The live ledger no longer produces this group at all (the FY2022 fact is
+    # corrected to `departure_announced`, so the identities differ), which is exactly
+    # why the case is pinned here: the fix would otherwise have no test and no data.
+    def lead(rid, date, ident, acc, form="8-K", quote="quote"):
+        r = row(rid, date, f"{ident} row", acc)
+        r["identity"] = ident
+        r["quotes"] = [quote]
+        r["sources"] = [f"{form}|{acc}||2023-01-01"]
+        return r
+
+    IDENT = "bevin desmond | departed | chief talent and culture officer"
+    AMEND_QUOTE = ("As previously reported on the Original Form 8-K, Bevin Desmond has "
+                   "decided to depart Morningstar. Ms. Desmond's last day of employment "
+                   "was January 31, 2023.")
+    settled = find_date_conflicts([
+        lead("L1", "2022-05-06", IDENT, "acc-1"),
+        lead("L2", "2023-01-31", IDENT, "acc-2", form="8-K/A", quote=AMEND_QUOTE),
+    ])
+    check("an amendment that back-references the original SETTLES the date",
+          len(settled) == 1 and settled[0]["resolved"] is True)
+    if settled:
+        check("  and the amendment's date is named as the operative one",
+              settled[0]["resolved_date"] == "2023-01-31")
+        check("  and the note no longer claims the filings are silent",
+              "do not settle it" not in settled[0]["note"]
+              and "2023-01-31" in settled[0]["note"])
+        check("  while BOTH rows are still kept — announcement and event are both real",
+              settled[0]["dates"] == ["2022-05-06", "2023-01-31"])
+
+    # The caveat must survive everywhere it is still true, or the fix has traded one
+    # wrong assertion for the opposite one. Three ways to fail the resolution test:
+    check("two plain 8-Ks with no amendment stay UNSETTLED",
+          find_date_conflicts([lead("L1", "2022-05-06", IDENT, "acc-1"),
+                               lead("L2", "2023-01-31", IDENT, "acc-2")])[0]["resolved"]
+          is False)
+    check("an amendment with NO back-reference stays UNSETTLED",
+          find_date_conflicts([
+              lead("L1", "2022-05-06", IDENT, "acc-1"),
+              lead("L2", "2023-01-31", IDENT, "acc-2", form="8-K/A",
+                   quote="Ms. Desmond will depart at a date to be determined."),
+          ])[0]["resolved"] is False,
+          "a /A that reports something further is not a /A that supersedes")
+    check("TWO amendments stay UNSETTLED — which supersedes which is undecidable",
+          find_date_conflicts([
+              lead("L1", "2022-05-06", IDENT, "acc-1", form="8-K/A", quote=AMEND_QUOTE),
+              lead("L2", "2023-01-31", IDENT, "acc-2", form="8-K/A", quote=AMEND_QUOTE),
+          ])[0]["resolved"] is False)
+    check("the unsettled note is unchanged from before the fix",
+          "the filings do not settle it" in
+          find_date_conflicts([lead("L1", "2022-05-06", IDENT, "acc-1"),
+                               lead("L2", "2023-01-31", IDENT, "acc-2")])[0]["note"])
 
     print()
     print("UNDATED NEAR-DUPLICATES — reported, never merged")

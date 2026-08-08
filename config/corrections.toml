@@ -1,0 +1,119 @@
+# Corrections to model-extracted values.
+#
+# ---------------------------------------------------------------------------
+# WHY THIS FILE EXISTS RATHER THAN AN EDIT TO data/ledger/facts/
+# ---------------------------------------------------------------------------
+# data/ledger/facts/ is the audit record of what the extraction model actually
+# returned. It is the reason every quote in the ledger is checkable after the
+# fact, and editing it would destroy exactly the property that makes the ledger
+# worth trusting — a corrected file and a correct-in-the-first-place file are
+# indistinguishable once you have overwritten it.
+#
+# So corrections live here instead: applied by src/build_ledger.py after the raw
+# extraction is loaded and before the fact is constructed. The model's output
+# stays as it was, the correction is a separate, reviewable, version-controlled
+# artifact, and the fact carries a `correction` block recording both.
+#
+# ---------------------------------------------------------------------------
+# WHAT A CORRECTION IS AND IS NOT
+# ---------------------------------------------------------------------------
+# A correction fixes a value the CITED FILING CONTRADICTS. The `evidence` field
+# must quote the filing text that establishes it. That is the whole bar: this
+# file is not for improving a fact, disambiguating a judgment call, or importing
+# knowledge from outside the filings. If the filings do not settle it, the
+# project's rule is to say so in the output, not to correct it here.
+#
+# ---------------------------------------------------------------------------
+# EVERY CORRECTION MUST STILL MATCH SOMETHING
+# ---------------------------------------------------------------------------
+# `match` identifies the target by content, not by id, because correcting a value
+# CHANGES the id — `fact_id` hashes the value. A correction is required to match
+# exactly one fact; matching zero or several is fatal at build time. A stale
+# correction that silently no-ops would put the ledger back to the defective value
+# with nothing to show for it, which is the failure mode this project keeps
+# catching in other forms.
+
+# ---------------------------------------------------------------------------
+# TWO KINDS OF CORRECTION LIVE HERE
+# ---------------------------------------------------------------------------
+# [[correction]]          a value in the LEDGER, applied by src/build_ledger.py.
+# [[document_correction]] a sentence in a GENERATED DOCUMENT, applied by
+#                         src/generate_outputs.py --apply-corrections.
+#
+# The second exists because the deliverables are model-written prose that costs
+# ~$3.50 a pass and does not reproduce byte-for-byte. When one sentence is wrong,
+# regenerating the document to fix it throws away every other sentence that was
+# already verified — and produces a new document that has to be verified again from
+# scratch. So a sentence is corrected in place, and the mechanism refuses to let
+# that happen silently: `text` in data/pack/gen-<slug>.json keeps the model's own
+# words, `shipped_text` holds what was actually published, and
+# tests/test_generate_outputs.py checks the file on disk against `shipped_text` and
+# fails if a record claims a correction it cannot show the original for. A hand-edit
+# of output/*.md is still caught, which is the point.
+
+
+# ---------------------------------------------------------------------------
+# 1. Bevin Desmond — an announcement recorded as a completed departure
+# ---------------------------------------------------------------------------
+# The 8-K filed 2022-05-12 reports that on 2022-05-06 she INFORMED the CEO of a
+# decision to depart "in August 2022". The extractor recorded that as
+# change=departed, date=2022-05-06 — a departure on a date she had not departed.
+# Her quote, stored on the fact and verified verbatim, contains the disproof.
+#
+# The amendment filed 2023-02-02 gives the actual last day as 2023-01-31, and is
+# already captured correctly as its own FY2023 fact. So the two facts are the
+# announcement and the departure, not two readings of one date.
+#
+# This is the finding behind VERIFICATION.md D1, and the general lesson is on the
+# record here because it is not obvious: `quote_verified: true` means the quote is
+# genuine filing text. It does NOT mean the structured value is entailed by the
+# quote. Nothing in the pipeline checked the second thing.
+[[correction]]
+id = "desmond-2022-announcement"
+field = "leadership"
+fiscal_year = 2022
+accession = "0001104659-22-059482"
+match = { name = "Bevin Desmond", change = "departed", date = "2022-05-06" }
+set = { change = "departure_announced" }
+evidence = "informed Morningstar's Chief Executive Officer that she has decided to depart Morningstar in August 2022"
+reason = """
+The filing reports an announcement, not a departure. On 2022-05-06 Ms. Desmond \
+informed the CEO of a decision to depart "in August 2022"; her last day was \
+2023-01-31, recorded separately from the 8-K/A filed 2023-02-02. Recording this \
+as change=departed dated 2022-05-06 put a departure on the timeline on a date it \
+did not happen, and made the two facts look like one event dated two ways.\
+"""
+verified_by = "human review, 2026-08-07 (VERIFICATION.md D1)"
+
+
+# ---------------------------------------------------------------------------
+# 2. narrative-brief.md — a claim that the filings are silent, when they are not
+# ---------------------------------------------------------------------------
+# The consequence of correction 1 above, in the one place a reader would meet it.
+#
+# The brief told the reader the filings do not settle Desmond's departure date. The
+# 8-K/A settles it explicitly: it opens "As previously reported on the Original Form
+# 8-K" and gives her last day as January 31, 2023. The sentence was not the model
+# inventing an ambiguity — it was faithfully reporting the ‡ note that
+# src/merge_events.py generated from a hardcoded template, which asserted the same
+# thing about every multi-date event without reading any of them. Both the template
+# and the ledger value behind it are fixed; this corrects the sentence they produced.
+#
+# It is also the reason the id changed. `fact_id` hashes the value, so correcting
+# `change` renumbered the fact from LEAD-FY2022-b99ce9e7 to LEAD-FY2022-9fd216a3 and
+# the brief's citation stopped resolving — which is the mechanism working: a
+# corrected fact cannot be silently cited under its old, wrong identity.
+[[document_correction]]
+id = "brief-desmond-ambiguity"
+document = "brief"
+find = "Note a documented ambiguity: Bevin Desmond's departure is recorded with two dates, May 6, 2022 and January 31, 2023, and the filings do not settle whether these are announcement versus effective dates or separate events [LEAD-FY2022-b99ce9e7, LEAD-FY2023-f66d0f01]."
+replace = "One transition is documented in two stages: Bevin Desmond announced on May 6, 2022 that she had decided to depart, then in August 2022; the amendment records her actual last day as January 31, 2023, after which she moved to contractor status under a Contract Services Agreement [LEAD-FY2022-9fd216a3, LEAD-FY2023-f66d0f01, EVT-FY2023-cc51750d]."
+reason = """
+The document asserted the filings do not settle the date. They settle it: the 8-K/A \
+back-references the original filing and gives the last day of employment. This was \
+the only claim in the brief a reader could check against the filings and find wrong, \
+and it was an unsupported claim ABOUT THE EVIDENCE, in the direction of false \
+ambiguity. The replacement states what the two filings say and cites the third \
+record — the Contract Services Agreement — that the original sentence left out.\
+"""
+verified_by = "human review, 2026-08-07 (VERIFICATION.md D1)"

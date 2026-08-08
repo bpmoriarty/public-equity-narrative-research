@@ -1,0 +1,407 @@
+# Verification suite — public equity research (MORN, FY2021–FY2025)
+
+Run 2026-08-07 against commit `0547c37`, in an isolated git worktree
+(`%LOCALAPPDATA%\verify-copies\per-verify`) with a fresh `.venv` rebuilt from
+`uv.lock`. The original tree was read-only throughout; every artifact written by
+this review lives outside it.
+
+**Headline.** The evidence layer is verified against ground truth and is sound:
+**1,326 of 1,326 ledger quotations are genuine filing text** (a census against the
+cached filings, not a sample), the pack rebuilds **byte-identically** from a clean
+checkout, and every stage seam reconciles. Residual risk is **not** in the plumbing
+— it is concentrated in the thin layer between a fact's *quote* and the *claim built
+on it*: one confirmed factual error that reached two deliverables, one class of
+citation that does not evidence the number it is cited for, and four latent defects
+that today's gates cannot see.
+
+Dimensions run: data-integrity **yes** · pipeline **yes** · statistical **N/A
+(justified below)** · claims-evidence **yes**
+
+> **Remediation status, 2026-08-07.** **D1 and D7 are fixed** — see *Remediation
+> log* at the end of this file for what changed and how each fix was verified.
+> D2–D6 and D8 are open. Everything below describes the state at commit `0547c37`,
+> when the suite was run, and is left unedited so the finding and the fix can be
+> read against each other. The pack sha256 has since moved from `adb27b53…` to
+> `41b0cabb…`, and `LEAD-FY2022-b99ce9e7` is now `LEAD-FY2022-9fd216a3`.
+
+---
+
+## Per-dimension summaries
+
+### 1. Data integrity — inputs
+
+The as-of contract under test: *a fact tagged FY N must come from a document whose
+coverage period includes FY N.* Falsifier: a fact whose only source covers a
+different period.
+
+| Probe | Result |
+|---|---|
+| Attribution lag (fact FY vs source filing date) | **Consistent.** 10-K, DEF 14A and ARS facts are always +1 (filed the year after the period). 879 8-K facts are +0; the 61 that are +1 are *exactly* the vote-results set. |
+| Vote-results as-of basis, all five years | **One rule, five years.** FY2021←May 2022, FY2022←May 2023, FY2023←May 2024, FY2024←May 2025, FY2025←May 2026. No basis drift. |
+| Amendments / vintage | 26 in-window amendments; 25 are Form 4/A or SC 13G/A, correctly `out_of_scope`. The one in-scope `8-K/A` is handled correctly — EDGAR's `report_date` for it (2022-05-06) is stale metadata inherited from the original, and the pipeline's filing-date basis lands on the right year for its actual content. |
+| Same-event double-count | **None.** The Dec-2022 buyback appears in both the FY2022 and FY2023 ledgers and was correctly merged into one timeline row ("×2 filings"). |
+| Shareholder-letter coverage | FY2021 has **no** letter (0 ARS facts); FY2022–FY2025 have 19/22/19/19. The gap is disclosed in both prose deliverables. |
+| Low-confidence / unverified flags | 54 low-confidence facts (51 director-bio, 3 investor_qa); all 54 either excluded from prose or flagged inline. |
+
+**Not a leak, but a documentation defect.** The 12 `VOTE-FY2025` facts come from an
+8-K filed **2026-05-08**, which `inventory.json` itself marks `in_window=False`
+(`in_window` is computed on *fiscal year*, and that 8-K is fy=2026). The attribution
+is right — reaching forward is the only way to apply the same rule to FY2025 — but
+the declared window (`window_end_date: 2025-12-31`) does not describe the documents
+actually used, which run to May 2026. A reader told the window ends 2025-12-31 would
+reasonably conclude FY2025 vote results were unavailable.
+
+### 2. Pipeline — plumbing
+
+| Stage | Result |
+|---|---|
+| Clean-checkout rebuild | **PASS.** `uv sync` from the lockfile, then `build_pack.py` → `pack.json` sha256 `adb27b53…149867c6`, matching the recorded hash exactly. |
+| Determinism (run twice, diff all) | **PASS.** `pack.json`, `index.json`, `timeline-events.json` byte-identical. Only `Generated` timestamps differ — benign. |
+| `timeline.md` reproduction | **PASS.** Identical to the committed file apart from its `Generated` line. |
+| Seam A: inventory → fetch | **PASS.** 127/127 in-scope-or-triage accessions present; no unexplained extras. |
+| Seam B: fetch → sections | **PASS.** 231/231 written, 0 failed, 0 problem notes. |
+| Seam C: sections → 8-K triage | **PASS.** 75 triage-disposition 8-Ks = 75 triage records exactly; the 17 `in_scope` 8-Ks bypass triage by design (clean partition). |
+| Seam D: ledger internal | **PASS.** No id duplicated across 1,329 facts. |
+| Seam E: ledger → pack index | **PASS.** 1,329 fact ids + 99 `RISK-` ids = 1,428 index entries; the 99 reconcile exactly with the delta records in `risk-deltas.json` (unchanged 25 / reworded 50 / added 14 / removed 10). |
+| Seam F: ledger → timeline | **PASS.** All 85 event+leadership facts placed in exactly one row; none placed twice; corroborated by the producer's own counts block. |
+| Seam G: outputs → index | **PASS.** 412 citations across three documents, **all** resolve. |
+| Test suite, clean worktree | **PASS, but smaller than in the working tree** — 145 checks vs 151, because `test_generate_outputs.py` silently skips 6 when the gitignored generation records are absent. See D7. |
+| `verify_outputs.py`, clean worktree | **PASS.** 12/12 hard checks on both prose documents. |
+
+**Source re-derivation (the biggest lever).** Rather than sample, every quotation was
+re-derived from the cached filing text: **1,326/1,326 are genuine filing text.** Zero
+misquotations, zero fabrications, zero mis-sectioned quotes.
+
+*A trap worth recording:* the first pass reported 13 failures. Four were artifacts of
+comparing against `data/sections/`, which retains image filenames interleaved
+**mid-sentence** (`…we are competitive with investorquestions826002.jpg Preqin when…`).
+The trimmed copies in `data/triage/text/` — the text actually sent to the model —
+strip them, and all four match there exactly. Any future check that verifies quotes
+against `data/sections/` rather than the trimmed copy will produce the same false
+failures.
+
+### 3. Statistical — **not applicable, and this is a scope fact, not a skip**
+
+The project charter forbids exactly the work this dimension audits: *"Do not build
+XBRL parsing, financial statement reconstruction, or ratio analysis."* There is no
+estimator, no hypothesis test, no confidence interval, no p-value, no ML metric, no
+backtest, and no weighted aggregation anywhere in `src/`. The only counting is
+census-style (how many risk factors were added; how many facts a year holds), and
+those reconcile exactly against their sources (verified in Seam E).
+
+The one place statistical reasoning *does* enter is `merge_events.py`'s rapidfuzz
+similarity threshold (55 for same-date pairs, 95/60/90 for risk-factor diffs). These
+are classification thresholds, not estimators. They are tested (`test_merge_events.py`,
+24 checks), and their borderline cases are **disclosed in the output itself** —
+`timeline.md` names the two same-date pairs left unmerged and the two undated
+near-duplicates, including one it identifies as "a single impairment reported twice."
+That is the correct treatment.
+
+### 4. Claims–evidence — the words
+
+Traced mechanically: every number in both prose deliverables against the facts cited
+beside it. **74 numeric claims checked; `narrative-brief.md` had zero unmatched.**
+All 15 unmatched sat in `discussion-points.md`, and triage against the filings
+resolved 14 of them as real filing text (see the finding below) and 1 as my own
+mis-mapping.
+
+Language calibration is generally careful and deliberately hedged — "aligns with,"
+"appears to indicate," "the pack does not contain confirmation." Causal-sounding
+headings are backed by management's own stated sequence (the segment-disclosure
+change cites the SEC's objection verbatim). The register caveat, the letter gap, and
+the low-confidence director-bio caveat are all stated in the body, not buried.
+
+---
+
+## Consolidated defects
+
+Ordered by severity. Every one carries the artifact that demonstrates it.
+
+### D1 — CONFIRMED FACTUAL ERROR. A departure recorded on a date it did not happen, and a deliverable that claims the filings are silent when they are explicit
+
+**Ground truth**, re-derived from the two filings:
+
+- 8-K, filed 2022-05-12: *"On May 6, 2022, Bevin Desmond … **informed** Morningstar's
+  Chief Executive Officer that she **has decided to depart** Morningstar **in August
+  2022** …"* — an announcement, with a planned date.
+- 8-K/A, filed 2023-02-02: *"**As previously reported on the Original Form 8-K**, Bevin
+  Desmond has decided to depart … Ms. Desmond's **last day of employment** … **was
+  January 31, 2023**."*
+
+One departure: announced 6 May 2022, effective 31 January 2023.
+
+**Three consequences, each independently wrong:**
+
+1. `LEAD-FY2022-b99ce9e7` stores `{"change": "departed", "date": "2022-05-06"}`. She had
+   not departed. Note the fact's own `quote` field contains the disproof, and
+   `quote_verified: true` — the quote is genuinely verbatim. **`quote_verified` does not
+   mean the structured value is entailed by the quote**, and nothing currently checks
+   the second thing.
+2. `timeline.md` line 29 lists *"6 May 2022 | leadership transition | Bevin Desmond
+   departed"* — a dated event on a date it did not occur, in a document SPEC defines as
+   "concrete, dated events."
+3. `narrative-brief.md` ¶27 states *"the filings do not settle whether these are
+   announcement versus effective dates or separate events."* **The filings settle it
+   explicitly** — the amendment cross-references the original and gives the last day.
+   This is an unsupported claim *about the evidence*, in the direction of false
+   ambiguity, and it is the one sentence in the brief a reader could check and find wrong.
+
+**Root cause is a hardcoded template**, not a judgment: [merge_events.py:231](src/merge_events.py#L231)
+and [render_timeline.py:264](src/render_timeline.py#L264) emit "…the filings do not
+settle it" for *every* date conflict, whether or not they do.
+
+*Generalised probe run:* 6 of 59 dated facts use announcement language while asserting
+a completed act. **Five of the six are correct** — they took the stated effective date
+(McGarry 2024-01-19, Dubinsky 2024-12-31, Holt 2025-01-01, Dunn 2025-11-21). Desmond is
+the outlier precisely because her filing gave only a vague "in August 2022," so the
+extractor fell back to the announcement date — and she then left in January 2023 anyway.
+
+### D2 — A whole class of citation that does not evidence its number
+
+**21 facts** carry a `quote` that is a table *lead-in* rather than the data:
+*"Each of the nominees for director … was elected with the number of votes set forth
+below:"*. 20 are `vote_results`, 1 is an event. **Five are cited in shipped
+deliverables.**
+
+The numbers themselves are real — 9 of the 11 disputed figures were confirmed present
+in the cited section of the cited filing. The defect is traceability, and it lands
+squarely on the project's own promise, stated in the brief's provenance:
+
+> *"Ids resolve in `data/pack/index.json` to the exact quote, section and accession each
+> claim rests on."*
+
+For `discussion-points.md`'s director-dissent sentence, resolving `VOTE-FY2023-76c7ae52`
+yields the lead-in sentence, **not** `9,935,476`. The reader must go back to the filing
+and read the table. `verify_outputs.py` cannot catch this: the figures are stated as
+numbers, not quotations, so the verbatim check never inspects them.
+
+### D3 — One mis-citation: right number, wrong id
+
+`discussion-points.md`: *"8,484 shares for $1.4 million by end-2022
+[EVT-FY2022-5d620550]"*. That fact comes from the **FY2022** 10-K and contains only the
+buyback authorisation. `8,484` appears in the **FY2023** 10-K, captured as
+`EVT-FY2023-fc8f78b1` — whose description reads *"only 8,484 shares for $1.4 million
+repurchased as of year-end."* The correct id exists and the two were merged in the
+timeline; only the prose citation is wrong.
+
+### D4 — LATENT: 9 quotes stored double-encoded
+
+Nine `investor_qa` quotes hold the **literal six-character sequence** `’` where an
+apostrophe belongs. Decoded, all nine match the filing exactly, so the text is real and
+the storage is corrupt. Contained today: no deliverable contains a literal escape, and
+the one affected fact cited in the brief (`QA-FY2025-cef14118`) is paraphrased, not
+quoted.
+
+**Why it matters anyway:** if a future generation *quoted* one of these, the corrupted
+text would ship **and the verbatim check would pass** — because that check compares the
+deliverable against the fact's quote, and both would be corrupt. This is the same
+false-assurance shape the project already identified in 10e, one layer deeper.
+
+### D5 — LATENT: 3 facts with `source: null`
+
+`QA-FY2022-e05f5978`, `QA-FY2023-711ef15f`, `QA-FY2024-1e4260bd` have no source block at
+all — an id that resolves to a fact with no filing behind it, against a charter rule that
+every claim trace to a specific filing. None is cited today, and all three are
+`confidence: low` + `quote_verified: false`, so the existing low-confidence gate would
+likely catch them. Nothing gates on the null source itself.
+
+### D6 — LATENT: an image-only exhibit reported as a successful extraction
+
+`data/sections/FY2024/8-K/0001289419-24-000014/8-K_EX-99-1_whole.txt` is 163 characters
+of filenames and filer boilerplate — a press release published as JPGs. It is recorded
+`ok: True` with `problems: []`. One of 231, and it cost nothing (the same content was
+captured from the 8-K body). But SPEC puts 7.01/8.01 strategic-announcement exhibits
+**in scope**, and CLAUDE.md requires that a silently empty extraction fail loudly. An
+image-only *strategic* exhibit would vanish without a trace.
+
+### D7 — The generation records are gitignored, unrecoverable, and 6 tests silently stop running without them
+
+`data/pack/gen-brief.json` and `gen-discussion.json` are the audit record of what the
+model actually returned — including `text_before_repair`, the only copy of each
+document as first written. They live in `data/pack/`, which is gitignored on this
+stated reasoning:
+
+> *"data/pack/ is ignored, and it is the ONE artifact where 'it regenerates' is actually
+> true in the sense that matters: it is a pure, deterministic function of
+> data/ledger/…"*
+
+That is true of `pack.json` and `index.json`. It is **false of `gen-*.json`**, which are
+model output costing ~$3.50 a pass and which no re-run reproduces byte-for-byte. They
+are in the same ignored directory as the artifacts the reasoning actually covers.
+
+This is the **third instance of the same reasoning error**, and the first not caught:
+`data/ledger/facts/` and `output/` were both rescued from exactly this argument, each
+time on the grounds that model output is not regenerable. The gitignore comments record
+both rescues.
+
+**Measured consequence:** `tests/test_generate_outputs.py` runs **35 checks in the
+working tree and 29 in a clean checkout** — six checks silently dropped, reported as
+`29 passed, 0 failed  (0 generated document(s) checked)`. Nothing warns that a third of
+the suite's document-level coverage did not run. A clean CI checkout would report green
+while testing less.
+
+### D8 — The declared window does not describe the documents used
+
+Covered under Data integrity above. `DATA.md`'s coverage statement should say the
+document window runs to **2026-05-08**, and that FY2025 vote results are sourced from
+outside the fiscal window by design.
+
+---
+
+## Remediation order
+
+Cheapest and highest-impact first.
+
+1. **D1, the brief sentence and the timeline row.** Correct `LEAD-FY2022-b99ce9e7` to
+   record the announcement (or split announcement/effective), and replace the blanket
+   template with one that fires only where the filings genuinely conflict. An amendment
+   that says "as previously reported on the Original Form 8-K" is a *resolution*, not a
+   conflict — detectable mechanically. This is the only defect a reader can catch.
+2. **D2, thin quotes.** Either capture the table rows into the `quote` for
+   `vote_results`, or have `verify_outputs.py` gate on it: *a sentence stating a figure
+   must cite at least one fact whose quote contains that figure.* That check is
+   mechanical and would have caught D3 too.
+3. **D3**, one-line citation fix.
+4. **D4**, repair the 9 stored quotes and add an assertion that no `quote` contains a
+   literal `\uXXXX`.
+5. **D5**, make `source: null` a hard failure at ledger-build time.
+6. **D6**, flag a section whose text is <25 substantive words as a problem rather than
+   a success.
+7. **D7**, commit `gen-*.json` (or move them out of `data/pack/`), and make the test
+   suite **fail loudly** when the generation records are absent instead of quietly
+   running 29 checks instead of 35. The data-loss half is urgent — those files are the
+   only copy of `text_before_repair`; the silent-skip half is what let it go unnoticed.
+8. **D8**, documentation only.
+
+Items 2, 4, 5, 6 and the skip-guard half of 7 are each a few lines, and each closes a
+*class*, not an instance.
+
+---
+
+## Human-judgment residue
+
+What no test settles:
+
+1. **Model-family independence was not achievable.** The suite specifies a different
+   model family for the independent passes; the same family reviewed its own work here.
+   The ground-truth checks (census re-derivation, byte-identical rebuild, seam
+   reconciliation) do not depend on reviewer judgment and carry the weight. **The blind
+   clean-room diff of the analytical core was not run**, and the skill is explicit that a
+   same-family pass is the weakest signal, not a substitute. If any deliverable becomes
+   load-bearing, this is the gap to close first.
+2. **Is `investor_qa` over-weighted?** 850 of 1,329 facts (64%) come from voluntary
+   Reg FD investor Q&A — unaudited, self-selected, and answering questions management
+   chose to answer. The documents label the register, but a narrative built 64% on it
+   inherits management's framing. Whether that is the right evidentiary mix for an
+   investment conclusion is a judgment call.
+3. **Is attributing May-2026 votes to FY2025 the right convention?** Internally
+   consistent and defensible (say-on-pay in May 2026 votes on FY2025 pay). A reader
+   expecting a strict fiscal window may disagree.
+4. **Director-bio boundaries remain unverified** — 51 low-confidence board facts. The
+   brief flags them; whether board composition claims are usable is the reader's call.
+5. **The author is a Morningstar employee analysing Morningstar** (recorded in
+   `DATA.md`). The traceability rule is the control for this; nothing in this review
+   found a claim sourced from insider knowledge. Worth restating because it is the
+   strongest source of the exact bias the rule exists to prevent.
+
+---
+
+## What was verified against ground truth, precisely
+
+- **1,326/1,326** ledger quotations occur verbatim in the filing text they cite (census).
+- `pack.json` sha256 `adb27b53…149867c6` reproduced from a clean checkout and a fresh
+  environment.
+- All substantive artifacts byte-identical across two runs.
+- **412/412** citations in three deliverables resolve to indexed facts.
+- **85/85** event and leadership facts placed in exactly one timeline row.
+- **99/99** risk-delta records reconcile to indexed `RISK-` ids.
+- **151** project tests pass in the working tree; **145** in a clean checkout (D7);
+  **12/12** hard output checks pass on both prose documents in both.
+
+Not verified: the blind clean-room diff (residue item 1), and the substance of any claim
+resting on the 51 low-confidence director-bio facts.
+
+---
+
+## Remediation log
+
+### D1 — fixed 2026-08-07
+
+Four changes, because the defect had a root cause, an instance, and two documents
+downstream of it.
+
+**The value.** `config/corrections.toml` is new: human corrections to model-extracted
+values, applied by `build_ledger.py` between loading the extraction and building the
+fact. `data/ledger/facts/` is not touched — editing the record of what the model
+returned would destroy the property that makes the ledger checkable at all. Each
+correction carries the filing text that establishes it, and the fact keeps both
+values under a `correction` key plus a `data_quality.corrections` entry.
+
+The Desmond fact is now `change: "departure_announced"`, dated 2022-05-06 — an
+announcement on the day it was announced. `LeadershipChange.change` gained
+`departure_announced` as a distinct enum value, because collapsing it into
+`departed` is what put a departure on the timeline on a date it did not happen.
+
+**The id moved, which is the mechanism working.** `fact_id` hashes the value, so the
+correction renumbered `LEAD-FY2022-b99ce9e7` → `LEAD-FY2022-9fd216a3` and the brief's
+citation stopped resolving. A corrected fact cannot be silently cited under its old,
+wrong identity.
+
+**The root cause.** `find_date_conflicts` emitted one hardcoded sentence for every
+multi-date group — "the filings do not settle it" — asserted about evidence it had
+never read. It now distinguishes **settled** from **unsettled**: an amendment that
+back-references the original (`as previously reported`, `the Original Form 8-K`)
+supersedes it, and the note says which date is operative. Deliberately conservative —
+two amendments, no back-reference, or no date on the amendment all fall through to the
+original caveat, which is the right treatment when the filings genuinely disagree.
+`render_timeline.py` no longer restates that sentence in its own words; it prints the
+note the conflict record carries. Eight tests in `test_merge_events.py` pin both
+branches, and they matter more than usual: **the corrected ledger produces no such
+group at all**, so the fix has no live data to exercise it.
+
+**The documents.** `generate_outputs.py --apply-corrections` re-renders both
+deliverables from their generation records with `[[document_correction]]` entries
+applied. No model call, $0.00, idempotent. `text` in `gen-*.json` keeps the model's
+own words forever; `shipped_text` is what was published; the correction, its reason
+and its reviewer are printed **in the document's own provenance block**, because a
+correction the reader cannot see is a hand-edit with better paperwork.
+
+The pack hash is re-stamped — and that is only honest because it is conditional: the
+rewrite is refused unless every id resolves and every quotation still verifies against
+the pack on disk. Both hashes are printed, so "which payload did the model read" stays
+answerable.
+
+¶27 now reads that Desmond announced her departure on 6 May 2022, that the amendment
+records her last day as 31 January 2023, and cites the Contract Services Agreement the
+original sentence omitted. `timeline.md` shows *departure announced* on 6 May 2022 and
+*departed* on 31 Jan 2023, and its legend no longer explains a ‡ marker that appears
+nowhere.
+
+*Verified:* both guards fire and write nothing — a ledger correction matching zero
+facts is fatal **before** any year file is written (the first version wrote all five
+first, and its own test caught it); a document correction whose `find` misses is fatal
+with the document unchanged on disk. Re-applying twice is byte-identical. `build_pack`
+is still deterministic (`41b0cabb…` twice). All five test files pass; `verify_outputs`
+passes every hard check on both documents; `test_fact_id` confirms all 1,329 facts
+still reproduce their ids from their own stored content.
+
+### D7 — fixed 2026-08-07
+
+`data/pack/gen-*.json` are committed (`data/pack/*` plus a negation). The `.gitignore`
+comment now records all three instances of the reasoning error rather than two.
+
+`test_generate_outputs.py` fails instead of skipping, reporting the two causes
+separately — a committed record deleted, versus a pack not yet built — and asserts
+that every configured document was checked, so a loop that quietly stops early cannot
+pass by checking nothing. *Verified:* exit 1 with a record absent, exit 0 with it
+present. 37 checks, up from 35 in the working tree and 29 in a clean checkout.
+
+### Still open
+
+D2 (thin vote quotes), D3 (one mis-citation), D4 (9 double-encoded quotes), D5 (3
+facts with `source: null`), D6 (image-only exhibit passed as a success), D8 (declared
+window). D2's proposed gate — *a sentence stating a figure must cite at least one fact
+whose quote contains that figure* — would also close D3.
+
+Residue item 1 is unchanged: the blind clean-room diff has still not been run, and
+these fixes were written by the same model family that wrote the code they correct.

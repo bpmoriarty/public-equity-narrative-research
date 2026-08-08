@@ -84,6 +84,7 @@ for _s in (sys.stdout, sys.stderr):
 ROOT = Path(__file__).resolve().parent.parent
 PACK_DIR = ROOT / "data" / "pack"
 OUT_DIR = ROOT / "output"
+CORRECTIONS = ROOT / "config" / "corrections.toml"
 
 # Prices per million tokens for the generation model, used only for the estimate
 # and the run report. Kept here rather than in config because they describe the
@@ -808,7 +809,8 @@ def generate(client: anthropic.Anthropic, gen: dict, index: dict, payload: str,
 # ---------------------------------------------------------------------------
 
 def provenance(pack: dict, gen: dict, sha: str, usage: dict, checks: dict, q: dict,
-               words: int, stamp: str) -> str:
+               words: int, stamp: str, corrections: list[dict] | None = None,
+               written_from_sha: str | None = None) -> str:
     """The footer every generated document carries.
 
     Unlike `timeline.md` these are not reproducible — the same inputs give a
@@ -820,6 +822,38 @@ def provenance(pack: dict, gen: dict, sha: str, usage: dict, checks: dict, q: di
     s = pack["subject"]
     low = f"{len(checks['low_confidence'])} of them low-confidence" \
         if checks["low_confidence"] else "none low-confidence"
+
+    # THE CORRECTION NOTICE GOES IN THE DOCUMENT, not only in the JSON record.
+    #
+    # A correction the reader cannot see is a hand-edit with better paperwork. If a
+    # sentence in front of them was not written by the model that wrote the rest,
+    # they are entitled to know which one and why, in the document itself.
+    corr_block: list[str] = []
+    if corrections:
+        corr_block = ["",
+                      f"**{len(corrections)} sentence-level correction"
+                      f"{'' if len(corrections) == 1 else 's'} applied after "
+                      f"generation.** The model's own text is preserved unedited in "
+                      f"`data/pack/gen-*.json` under `text`; what is published here is "
+                      f"`shipped_text`. Each correction below fixes a statement the "
+                      f"cited filings contradict — see `config/corrections.toml`.", ""]
+        for c in corrections:
+            corr_block += [f"- **`{c['correction_id']}`** ({c['verified_by']}) — "
+                           f"{c['reason']}",
+                           f"    - *Replaced:* “{c['was'][:180]}"
+                           f"{'…' if len(c['was']) > 180 else ''}”"]
+    # Re-stamping the pack hash is only honest because it is conditional: the
+    # --apply-corrections path refuses to write unless every id in the document
+    # resolves and every quotation verifies against the pack now on disk. Both hashes
+    # are printed, so "which payload did the model actually read" is still answerable.
+    if written_from_sha and written_from_sha != sha:
+        corr_block += ["",
+                       f"The model wrote this from pack `{written_from_sha}`. The "
+                       f"ledger has been corrected since, and every id and quotation "
+                       f"above was re-resolved against the current pack — named at the "
+                       f"top of this section — before this file was rewritten. The "
+                       f"rewrite is refused if any of them fails.", ""]
+
     return "\n".join([
         "", "---", "",
         "### Provenance", "",
@@ -844,7 +878,82 @@ def provenance(pack: dict, gen: dict, sha: str, usage: dict, checks: dict, q: di
         "each claim rests on. `claim` text in the pack is a model-written summary and is "
         "not quoted here; every quotation is copied from a `quote` field verified to "
         "occur in the named filing section.",
+        *corr_block,
     ])
+
+
+# ---------------------------------------------------------------------------
+# Corrections to a document already written
+# ---------------------------------------------------------------------------
+# A generated document is model-written prose that costs ~$3.50 a pass and does not
+# reproduce byte-for-byte. So when one sentence turns out to be wrong, regenerating
+# the whole document to fix it is the expensive option AND the worse one: it
+# discards every other sentence that has already been verified, and hands back a new
+# document that has to be verified again from nothing.
+#
+# The alternative — editing output/*.md by hand — is what this project's own checks
+# exist to prevent, and rightly: a hand-edited deliverable is indistinguishable from
+# a generated one, and the record of what the model actually wrote is gone.
+#
+# So a correction is DATA, in config/corrections.toml, applied here:
+#
+#   `text`         in gen-<slug>.json stays exactly as the model wrote it, forever.
+#   `shipped_text` holds what was published, derived from `text` on every run.
+#   `corrections`  records each edit with its reason and who verified it.
+#
+# tests/test_generate_outputs.py checks output/*.md against `shipped_text`, so a
+# hand-edit is still caught. Applying is idempotent because every correction is
+# applied to `text`, never to the previous `shipped_text`.
+#
+# See VERIFICATION.md D1 for the correction this was built for.
+
+def load_document_corrections(slug: str) -> list[dict]:
+    """Corrections declared for one document. Absent file is fine; malformed is not."""
+    if not CORRECTIONS.exists():
+        return []
+    entries = [c for c in
+               tomllib.loads(CORRECTIONS.read_text(encoding="utf-8"))
+               .get("document_correction", [])
+               if c.get("document") == slug]
+    problems = [f"{c.get('id', 'unnamed')}: missing "
+                + ", ".join(k for k in ("id", "find", "replace", "reason", "verified_by")
+                            if not c.get(k))
+                for c in entries
+                if not all(c.get(k) for k in
+                           ("id", "find", "replace", "reason", "verified_by"))]
+    if problems:
+        sys.exit(f"FATAL: {CORRECTIONS.relative_to(ROOT)} is not usable\n  "
+                 + "\n  ".join(problems))
+    return entries
+
+
+def apply_document_corrections(slug: str, text: str) -> tuple[str, list[dict]]:
+    """Apply every declared correction to the model's text. Returns (text, records).
+
+    `find` must occur EXACTLY ONCE. Zero means the correction has gone stale and the
+    document has silently reverted to the defective sentence — the failure this whole
+    mechanism exists to make impossible. More than one means the anchor is ambiguous
+    and which sentence was meant is undecidable. Both are fatal.
+    """
+    out, records, problems = text, [], []
+    for c in load_document_corrections(slug):
+        n = out.count(c["find"])
+        if n != 1:
+            problems.append(
+                f"'{c['id']}' — `find` occurs {n} times in the generated text, "
+                f"expected exactly 1. "
+                + ("The document no longer contains the sentence this corrects, so it "
+                   "has reverted to whatever is there now."
+                   if n == 0 else "Extend `find` until it identifies one sentence."))
+            continue
+        out = out.replace(c["find"], c["replace"])
+        records.append({"correction_id": c["id"], "was": c["find"], "now": c["replace"],
+                        "reason": " ".join(c["reason"].split()),
+                        "verified_by": c["verified_by"]})
+    if problems:
+        sys.exit(f"FATAL: {len(problems)} correction(s) for '{slug}' did not apply. "
+                 f"NOTHING WAS WRITTEN.\n\n  " + "\n\n  ".join(problems))
+    return out, records
 
 
 DOCS = {
@@ -859,13 +968,15 @@ DOCS = {
 
 
 def write_doc(slug: str, body: str, pack: dict, gen: dict, sha: str, usage: dict,
-              checks: dict, q: dict, stamp: str) -> Path:
+              checks: dict, q: dict, stamp: str, corrections: list[dict] | None = None,
+              written_from_sha: str | None = None) -> Path:
     s = pack["subject"]
     span = f"FY{min(s['fiscal_years'])}–FY{max(s['fiscal_years'])}"
     d = DOCS[slug]
     head = d["title"].format(name=s["company_name"], ticker=s["ticker"], span=span)
     md = "\n".join([f"# {head}", "", d["lede"], "", body.strip(),
-                    provenance(pack, gen, sha, usage, checks, q, word_count(body), stamp), ""])
+                    provenance(pack, gen, sha, usage, checks, q, word_count(body), stamp,
+                               corrections, written_from_sha), ""])
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     p = OUT_DIR / d["file"]
     p.write_text(md, encoding="utf-8")
@@ -875,6 +986,66 @@ def write_doc(slug: str, body: str, pack: dict, gen: dict, sha: str, usage: dict
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+
+def rewrite_with_corrections(pack: dict, gen: dict, index: dict, sha: str) -> None:
+    """Re-render both documents from their generation records. No model call, $0.00.
+
+    Three things happen here, and the order is the safety property:
+
+      1. Every declared correction is applied to the MODEL'S text (not to whatever is
+         on disk), so the result depends only on committed inputs and re-running is
+         idempotent.
+      2. The result is re-checked against the pack ON DISK — every id must resolve and
+         every quotation must still be verbatim. This is what makes step 3 honest.
+      3. Only then is the document rewritten, carrying the current pack hash and, when
+         it differs, the hash the model actually read.
+
+    Step 2 is not a formality. The pack hash in a document is the reader's guarantee
+    that the evidence has not moved underneath it, and re-stamping it after a ledger
+    correction would be a lie if any citation had gone stale. It cannot: a stale
+    citation stops the write.
+    """
+    stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    n_corrected = 0
+    for slug, d in DOCS.items():
+        rec_p = PACK_DIR / f"gen-{slug}.json"
+        if not rec_p.exists():
+            sys.exit(f"FATAL: {rec_p.relative_to(ROOT)} not found. It is a committed "
+                     f"file; restore it rather than regenerating.")
+        rec = json.loads(rec_p.read_text(encoding="utf-8"))
+        text, records = apply_document_corrections(slug, rec["text"])
+
+        checks, qchecks = check_citations(text, index), check_quotes(text, index)
+        if checks["unknown"] or qchecks["bad"] or qchecks["elsewhere"]:
+            sys.exit(
+                f"FATAL: {d['file']} does not verify against the pack on disk, so its "
+                f"provenance hash must NOT be re-stamped. NOTHING WAS WRITTEN.\n"
+                f"  unresolved ids : {checks['unknown']}\n"
+                f"  bad quotations : {[b['quote'][:60] for b in qchecks['bad']]}\n"
+                f"  mis-cited      : {[b['quote'][:60] for b in qchecks['elsewhere']]}\n"
+                f"  Either add a document_correction for each, or regenerate the "
+                f"document against the current pack.")
+
+        written_from = rec.get("pack_sha256")
+        rec["shipped_text"] = text
+        rec["corrections"] = records
+        rec["corrections_applied_utc"] = stamp
+        rec["shipped_pack_sha256"] = sha
+        rec["citations_shipped"], rec["quotations_shipped"] = checks, qchecks
+        rec_p.write_text(json.dumps(rec, indent=1, ensure_ascii=False), encoding="utf-8")
+
+        p = write_doc(slug, text, pack, gen, sha, rec["usage"], checks, qchecks,
+                      rec["generated_utc"], records, written_from)
+        n_corrected += len(records)
+        print(f"  {p.relative_to(ROOT)} — {len(records)} correction(s), "
+              f"{word_count(text):,} words, {checks['citations']} citations "
+              f"({checks['distinct']} distinct), {qchecks['ok']}/{qchecks['checked']} "
+              f"quotations verbatim where cited"
+              + ("" if written_from == sha else f"\n     pack re-stamped "
+                                                f"{str(written_from)[:16]}… -> {sha[:16]}…"))
+    print(f"\n{n_corrected} correction(s) applied across {len(DOCS)} document(s). "
+          f"No model call; $0.00")
+
 
 def estimate(client: anthropic.Anthropic, gen: dict, pack: dict, payload: str) -> None:
     """What both documents will cost, before spending anything.
@@ -926,11 +1097,23 @@ def main() -> None:
     ap.add_argument("--fix-constraints", action="store_true",
                     help="repair the hard checks src/verify_outputs.py reports, in the "
                          "documents already on disk (~$0.25/doc, no pack resend)")
+    ap.add_argument("--apply-corrections", action="store_true",
+                    help="re-render both documents from their generation records with "
+                         "the corrections in config/corrections.toml applied. No model "
+                         "call, $0.00, idempotent.")
     args = ap.parse_args()
 
     payload, pack, index = load_pack()
     gen = load_gen_config()
     sha = hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+    # Before the client is constructed, so this path works without an API key —
+    # it spends nothing and should not require the ability to.
+    if args.apply_corrections:
+        print(f"Applying corrections — pack {sha[:16]}…")
+        rewrite_with_corrections(pack, gen, index, sha)
+        return
+
     client = anthropic.Anthropic()
 
     if args.estimate:
