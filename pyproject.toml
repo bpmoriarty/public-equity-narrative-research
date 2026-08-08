@@ -32,6 +32,8 @@ dependencies = [
     # --- environment / platform ---
     "truststore>=0.10",       # use the Windows cert store, fixes corporate-SSL failures in httpx
     "python-dotenv>=1.0",     # load EDGAR_IDENTITY and ANTHROPIC_API_KEY from .env
+    "markdown>=3.7",
+    "xhtml2pdf>=0.2.16",
 ]
 
 [tool.uv]

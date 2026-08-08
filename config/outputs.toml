@@ -161,3 +161,32 @@ qa_majority_share = 0.5
     "## What management appears to prioritise",
     "diverge",               # the stated-vs-paid-for section SPEC.md calls the point
 ]
+
+# ===========================================================================
+# PDF rendering  (src/render_pdf.py)
+# ===========================================================================
+# Presentation only. The PDFs are a second rendering of output/*.md and carry no
+# content the Markdown does not — src/render_pdf.py asserts that before writing, by
+# extracting the text back out of each finished PDF and checking every fact id
+# survived. A PDF that silently dropped a citation would look perfectly fine.
+#
+# SCALARS FIRST, SUB-TABLES LAST. Same trap this file already documents under
+# [verify.word_range]: in TOML everything after a [pdf.page] header belongs to that
+# sub-table, so a scalar written below one lands somewhere it was never meant to and
+# nothing complains. Writing this block the wrong way round put `default_font_pt`
+# inside [pdf.page] on the first attempt.
+[pdf]
+default_page = "letter portrait"
+default_font_pt = 10.5
+
+# Page geometry per document. `timeline.md` is landscape because its table carries a
+# long description column AND a source column; in portrait the description wraps to
+# five or six lines a row and the table stops being scannable. The prose documents
+# stay portrait — they are read as prose, not looked up like a reference table.
+[pdf.page]
+"timeline.md" = "letter landscape"
+
+# Base font size in points. The timeline is smaller because it is read by lookup
+# rather than continuously.
+[pdf.font_pt]
+"timeline.md" = 7.6

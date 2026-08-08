@@ -615,6 +615,8 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `tests/test_extract_sections.py` | 17 checks on the extraction guards. Pins both directions: an image-only document must fail, the legitimately short SEC letters must pass |
 | `tests/test_discover.py` | 12 checks on cache vintage — that an inferred as-of date labels itself, and that a zero-request run does not claim its own clock |
 | `data/raw/_meta/fetch-log.json` | When each cached metadata document was actually read from EDGAR. Written at fetch time, because that is the only moment that knows |
+| `src/render_pdf.py` | Renders `output/*.md` to `output/pdf/*.pdf`. Deterministic, no model call. Reads each finished PDF back and fails if a word, fact id, heading or at-risk glyph did not survive |
+| `output/pdf/` | The three deliverables as PDF. **Gitignored** — a pure function of the committed Markdown, the script and the `[pdf]` config, rebuilt in seconds with `uv run python src/render_pdf.py` |
 | `SPEC.md` | Document scope, extraction targets, ledger schema, output specs |
 | `DATA.md` | Provenance, as-of date, and 9 known limitations. Read before making any coverage claim |
 | `PROMPT.md` | The original kickoff prompt and its milestone gates |

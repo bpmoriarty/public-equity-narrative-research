@@ -97,3 +97,21 @@ data/pack/*
 # Per-run logs
 logs/
 *.log
+
+# output/pdf/ is ignored, and this is the data/pack/ case rather than the output/
+# case. The PDFs are a pure deterministic function of three committed things — the
+# Markdown in output/, src/render_pdf.py, and the [pdf] block in
+# config/outputs.toml — and they cost $0.00 and about four seconds to rebuild:
+#
+#     uv run python src/render_pdf.py
+#
+# Nothing in them is unrecoverable model output, unlike output/*.md or
+# data/pack/gen-*.json, so the reasoning that rescued those does not apply here.
+# Committing them would add a binary blob per document to the history on every
+# regeneration, and a PDF is not byte-identical across runs anyway because it carries
+# a creation timestamp.
+#
+# What makes that safe is that the render is verified: src/render_pdf.py reads each
+# finished PDF back and fails if a single word, fact id, heading or at-risk glyph did
+# not survive. A rebuilt PDF is checkably the same document, not merely assumed to be.
+output/pdf/
