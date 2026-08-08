@@ -18,7 +18,12 @@ they anchor a narrative claim.
 
 ## Current Status
 
-**Phase:** Verified — build complete, independently reviewed, every finding remediated
+**Phase:** Verified — build complete, independently reviewed, every finding
+remediated. **Productionization plan approved 2026-08-08** (multi-company
+restructure, Claude Code as primary LLM backend, process hardening); execution
+not yet started — see the plan at
+`C:\Users\bmoriar\.claude\plans\modular-brewing-teapot.md` and the 2026-08-08
+Session Log entry
 
 **Last Session:** 2026-08-08
 
@@ -602,6 +607,12 @@ across 34 calls). Milestones 1–3 cost nothing.
 14. [ ] Optional: the 11 remaining thin figures in `discussion-points.md`. Needs
         per-fact judgment about widening each quote, not a rule. Listed every run by
         the review check, so nothing is lost by leaving them
+15. [ ] **Execute the approved productionization plan** at
+        `C:\Users\bmoriar\.claude\plans\modular-brewing-teapot.md` — six phases:
+        0 hardening tripwires → 1 packaging → 2 MORN move + central paths →
+        3 Claude Code model seam (probes V1–V8 first) → 4 `pipeline` orchestrator →
+        5 test split + model mix + docs. Record the baseline before Phase 0:
+        186 test checks, 1,326 verified quotes, current `pack.json` sha256
 
 ---
 
@@ -684,6 +695,40 @@ across 34 calls). Milestones 1–3 cost nothing.
 ---
 
 ## Session Log
+
+### 2026-08-08 — planning session: productionization plan explored and approved
+
+No code changes; a planning-only session (run on Fable — building is intended
+for Opus, with Sonnet acceptable on the phases the plan marks as mechanical).
+
+- **Explored two questions:** why the build had so many process failures, and
+  how to productionize for any ticker / any window / colleagues as users. Two
+  read-only audits swept the repo: one inventoried every documented mistake
+  (the three recurring classes — gitignored model output ×3, heredoc corruption
+  ×3, non-idempotent writes ×2 — plus ~18 checker bugs and the ~38 prose
+  doctrines nothing enforces), the other mapped generalization readiness
+  (one company-name hardcoding violation in `src/`, ~33 path constants across
+  15 modules, no orchestrator, pack at 352K tokens for 5 years with 64% of
+  facts from MORN's monthly investor Q&A).
+- **Decisions made:** colleagues are in-scope users, and since they have Claude
+  Enterprise seats but no API keys, **Claude Code headless becomes the primary
+  LLM backend** (the API-key path stays as a secondary, config-selectable
+  backend); everything company-specific moves under `companies/<TICKER>/`;
+  MORN migrates in with git history; max window is ~10 fiscal years (quality
+  binds before the 1M context — comfort zone ≤ ~450–500K pack tokens);
+  balanced cost stance (~$12/company expected on the API path vs $21 measured,
+  ~$0 marginal on subscription); process hardening ships as executable tasks.
+- **The approved plan** — six phases, each with a hard verification gate — is at
+  `C:\Users\bmoriar\.claude\plans\modular-brewing-teapot.md`. Phase 0 builds
+  the tripwires that close the three recurring mistake classes; Phase 2's
+  central check is that `pack.json`'s sha256 reproduces after the MORN move
+  (manifest paths are relative, so the restructure must change zero bytes);
+  Phase 3 runs eight probe scripts (V1–V8) before wiring the Claude Code
+  backend, including the seat-allowance feasibility test.
+- **Human items surfaced:** confirm with the org that headless pipeline use
+  fits Enterprise-seat terms and Opus is available on colleagues' seats (gates
+  the whole colleagues-can-run-this goal), and pause OneDrive sync during the
+  Phase 2 file move.
 
 ### 2026-08-07 / 08 — the verification suite, and fixing everything it found
 
