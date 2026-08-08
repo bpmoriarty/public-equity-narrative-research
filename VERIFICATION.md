@@ -17,11 +17,13 @@ that today's gates cannot see.
 Dimensions run: data-integrity **yes** · pipeline **yes** · statistical **N/A
 (justified below)** · claims-evidence **yes**
 
-> **Remediation status, 2026-08-07.** **D1, D7 and D8 are fixed** — see *Remediation
-> log* at the end of this file for what changed and how each fix was verified.
-> D2–D6 are open, plus **D9**, a new latent finding surfaced while fixing D8. Everything below describes the state at commit `0547c37`,
-> when the suite was run, and is left unedited so the finding and the fix can be
-> read against each other. The pack sha256 has since moved from `adb27b53…` to
+> **Remediation status, 2026-08-07.** **D1, D7 and D8 are fixed**, and **D2(a)**
+> — the numeric-evidence detector — is built and calibrated. See *Remediation log*
+> at the end of this file for what changed and how each fix was verified. D3–D6
+> are open, plus **D9**, a new latent finding surfaced while fixing D8.
+>
+> Everything below describes the state at commit `0547c37`, when the suite was run,
+> and is left unedited so the finding and the fix can be read against each other. The pack sha256 has since moved from `adb27b53…` to
 > `41b0cabb…`, and `LEAD-FY2022-b99ce9e7` is now `LEAD-FY2022-9fd216a3`.
 
 ---
@@ -425,6 +427,58 @@ is `false` on a row twelve `VOTE-FY2025` facts depend on.
 
 `discover.py` was deliberately **not** re-run — see D9.
 
+### D2(a) — detector built and calibrated 2026-08-07
+
+The gate proposed in the remediation order — *a sentence stating a figure must cite at
+least one fact whose quote contains that figure* — is now in `verify_outputs.py`, as
+**three tiers** rather than pass/fail, because the binary throws away the distinction
+that decides what to do about a hit:
+
+| Tier | Meaning |
+|---|---|
+| **QUOTED** | the figure is in a cited fact's `quote` (or a risk delta's `heading`). The provenance promise holds. Not reported. |
+| **THIN** | it is in the cited fact's pack `claim` but **not** its quote. Real and traceable — the model read it — but resolving the id shows the reader a table lead-in instead of the number. The D2 class. |
+| **UNSOURCED** | it is in no cited fact at all, either way. The serious tier. |
+
+The `claim`/`quote` split is the mechanism: `pack.json` carries `claim`
+(`votes_against: 9935476` — what the model was shown), `index.json` deliberately
+carries only the evidence. Every checker reads the index, which is why
+`check_quotes` could never see this class: the figures are bare numbers, not
+quotations, so nothing inspected them.
+
+**Calibrated before it was written**, per 10f's rule that a check firing on correct
+documents is worse than no check:
+
+| | figures | QUOTED | THIN | UNSOURCED |
+|---|---|---|---|---|
+| `narrative-brief.md` | 19 | **19** | 0 | 0 |
+| `discussion-points.md` | 65 | 46 | **17** | **2** |
+
+**Zero false positives** — but only after two bugs in the first version of the
+tokenizer, both of which reported a defect in the document that was really a defect in
+the checker, which is the failure mode that teaches a reader to ignore a check:
+
+1. The lookbehind excluded `$`, so `$200,000` failed to match at the `2` and matched
+   the trailing `000` instead — inventing a figure the document never states. Dollar
+   amounts are the most common figure in these documents; the first run reported only
+   6 figures in the brief, against 19 once fixed.
+2. `Item 5.07` — the SEC item number for a shareholder vote — was read as the quantity
+   5.07. Asking which filing evidences 5.07 is a category error.
+
+Both are pinned as regression cases in `test_verify_outputs.py` (13 new checks, suite
+now 57).
+
+**The 2 UNSOURCED are exactly D3**, found by the check rather than by being told:
+`8,484` and `$1.4 million` cited to `EVT-FY2022-5d620550`, which contains neither.
+
+**Left as `review`, deliberately.** UNSOURCED should be promoted to a **hard** check
+once D3 clears it to zero — a figure supported by nothing a reader can resolve is not
+a style matter. THIN stays review until D2(b) decides whether to capture table rows
+into the vote quotes; making it hard today would block every build on a known,
+accepted class. The brief's clean 19/19 is asserted in the test suite; the
+discussion-points counts deliberately are **not**, because a test pinned to today's
+defect count has to be edited every time a defect is fixed.
+
 ### D9 — NEW, latent: `as_of_utc` records when the script ran, not when EDGAR was read
 
 Found while fixing D8. `src/discover.py:531` sets `as_of = datetime.now(timezone.utc)`
@@ -449,10 +503,11 @@ is a judgment about the contract, not a bug fix.
 
 ### Still open
 
-D2 (thin vote quotes), D3 (one mis-citation), D4 (9 double-encoded quotes), D5 (3
-facts with `source: null`), D6 (image-only exhibit passed as a success), D9 (as-of
-vintage). D2's proposed gate — *a sentence stating a figure must cite at least one fact
-whose quote contains that figure* — would also close D3.
+D2(b) (capture table rows into vote quotes — optional, decided on what the new
+detector shows), D3 (one mis-citation — **already located by the D2(a) detector**;
+fixing it clears UNSOURCED to zero and lets that tier become a hard check), D4 (9
+double-encoded quotes), D5 (3 facts with `source: null`), D6 (image-only exhibit
+passed as a success), D9 (as-of vintage).
 
 Residue item 1 is unchanged: the blind clean-room diff has still not been run, and
 these fixes were written by the same model family that wrote the code they correct.

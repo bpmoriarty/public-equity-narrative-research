@@ -91,6 +91,128 @@ def load() -> tuple[str, dict, dict, dict, dict]:
             cfg["verify"], gen["generation"])
 
 
+# ---------------------------------------------------------------------------
+# Numeric evidence — does the citation beside a figure actually show that figure?
+# ---------------------------------------------------------------------------
+# The gap this closes, from VERIFICATION.md D2: `check_quotes` only inspects text
+# in quotation marks. A figure stated as a bare number — "9,935,476 votes against"
+# — is never looked at, so a sentence can carry a precise figure, cite an id, and
+# have that id resolve to a sentence which does not contain the figure. The brief
+# promises the opposite: "Ids resolve to the exact quote each claim rests on."
+#
+# Three tiers, because pass/fail throws away the distinction that decides what to do:
+#
+#   QUOTED     the figure is in a cited fact's quote (or a risk delta's heading).
+#              The promise holds. Nothing to report.
+#   THIN       the figure is in the cited fact's pack `claim` but NOT its quote. The
+#              number is real and traceable to the fact — the model read it in the
+#              pack — but a reader resolving the id is shown a table lead-in
+#              ("...with the number of votes set forth below:") instead of the
+#              number. This is the D2 class: 21 vote facts carry a lead-in as their
+#              quote.
+#   UNSOURCED  the figure is in no cited fact at all, either way. The serious tier.
+#
+# CALIBRATED BEFORE IT WAS WRITTEN, per the rule from 10f that a check firing on
+# correct documents is worse than no check. Measured on both deliverables:
+#
+#            narrative-brief.md   19 numbers  QUOTED=19  THIN= 0  UNSOURCED=0
+#            discussion-points.md 65 numbers  QUOTED=46  THIN=17  UNSOURCED=2
+#
+# Zero false positives — but only after two bugs in the FIRST version of the
+# tokenizer were found and fixed, both of which reported a defect in the document
+# that was really a defect in the checker:
+#
+#   1. The lookbehind excluded `$`, so "$200,000" failed to match at the digit `2`
+#      and matched the trailing "000" instead, inventing a figure the document never
+#      states. Dollar amounts are the most common figure here.
+#   2. "Item 5.07" — the SEC item number for a shareholder vote — was read as the
+#      quantity 5.07. Asking which filing evidences 5.07 is a category error.
+#
+# Both are pinned in tests/test_verify_outputs.py.
+#
+# STILL A REVIEW CHECK, deliberately. The 2 UNSOURCED are both the single
+# mis-citation recorded as D3 (8,484 shares / $1.4 million attributed to the FY2022
+# 10-K when they are in the FY2023 one). Once D3 is fixed, UNSOURCED goes to zero
+# and this tier should be promoted to `hard` — a figure in no cited fact is not a
+# style matter. THIN stays review until D2(b) decides whether to capture table rows
+# into vote quotes; making it hard today would block every build on a known,
+# accepted class.
+
+# Figures worth checking: money, thousands-separated counts, decimals. Bare 1-2
+# digit numbers are excluded — "two of the three segments" is prose, not a filing
+# figure, and chasing it buries the signal under noise.
+NUM_RE = re.compile(r"(?<![\w.])(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+\.\d+|\d{3,})(?![\w])")
+
+# Digit strings that NAME something rather than counting it. Stripped before
+# scanning rather than filtered afterwards, so they cannot re-enter by another path.
+NOT_A_FIGURE = re.compile(
+    r"\bItems?\s+\d+(?:\.\d+)?[A-Z]?"
+    r"|\bRule\s+\d+[a-z]?-?\d*"
+    r"|\bSection\s+\d+(?:\.\d+)?"
+    r"|\b(?:Form\s+)?(?:10-[KQ]|8-K(?:/A)?|DEF\s*14A|DEFA\s*14A|SC\s*13[GD])",
+    re.I)
+
+YEAR_RE = re.compile(r"^(?:19|20)\d\d$")
+
+
+def num_norm(n: str) -> str:
+    """Thousands separators and a trailing .0 are formatting, not magnitude."""
+    n = n.replace(",", "")
+    return n[:-2] if n.endswith(".0") else n
+
+
+def numbers_in(text: str) -> set[str]:
+    """Every number appearing anywhere in a blob, normalised for comparison."""
+    return {num_norm(m) for m in re.findall(r"\d[\d,]*\.?\d*", text or "")}
+
+
+def claim_numbers(pack: dict) -> dict[str, set[str]]:
+    """{fact id -> numbers in its pack `claim`}.
+
+    Read from pack.json rather than index.json because the index deliberately does
+    not carry `claim` — it holds the evidence (quote, source), not the assertion.
+    The distinction is the whole point of this check: `claim` is what the model was
+    shown, `quote` is what the reader can verify.
+    """
+    out: dict[str, set[str]] = {}
+    for ydata in (pack.get("years") or {}).values():
+        for items in (ydata.get("facts") or {}).values():
+            for it in items or []:
+                if isinstance(it, dict) and it.get("id"):
+                    out[it["id"]] = numbers_in(
+                        json.dumps(it.get("claim"), ensure_ascii=False))
+    return out
+
+
+def numeric_evidence(paras: list[str], index: dict,
+                     claims: dict[str, set[str]]) -> dict[str, list[str]]:
+    """Classify every figure in the prose against the facts cited in its paragraph.
+
+    Paragraph scope, not sentence, because the paragraph is the pack's own citation
+    granularity — a sentence-scope check reports a figure as unsupported whenever
+    the evidence was cited one sentence earlier, which is normal, correct writing.
+    """
+    thin, unsourced = [], []
+    for p in paras:
+        ids = ID_RE.findall(p)
+        if not ids:
+            continue
+        quoted = set().union(*[
+            numbers_in((index.get(i, {}).get("quote") or "") + " "
+                       + (index.get(i, {}).get("heading") or "")) for i in ids]) \
+            if ids else set()
+        claimed = set().union(*[claims.get(i, set()) for i in ids]) if ids else set()
+        for raw in NUM_RE.findall(NOT_A_FIGURE.sub(" ", ID_RE.sub("", p))):
+            n = num_norm(raw)
+            if YEAR_RE.match(n):
+                continue
+            if n in quoted:
+                continue
+            where = f"“{raw}” in: {p[:120].strip()}…"
+            (thin if n in claimed else unsourced).append(where)
+    return {"thin": thin, "unsourced": unsourced}
+
+
 def paragraphs(body: str) -> list[str]:
     return [p for p in body.split("\n\n") if p.strip()]
 
@@ -304,6 +426,21 @@ def verify(doc: str, md: str, pack: dict, index: dict, pf: dict, cfg: dict,
              f"a count comparison spanning FY{pf['segment_product_years']} "
              f"(product areas) and FY{pf['segment_reportable_years']} (reportable "
              f"segments) is a change in disclosure, not necessarily in the business")
+
+    # --- D2: does the citation beside a figure actually show that figure? -------
+    ne = numeric_evidence(paras, index, claim_numbers(pack))
+    r.review("figures stated in prose that no cited fact EVIDENCES (in no quote, "
+             "and in no claim either)", ne["unsourced"],
+             "the serious tier. The figure is not in the quote or the claim of any "
+             "fact cited in its paragraph, so nothing the reader can resolve supports "
+             "it. Promote to a hard check once VERIFICATION.md D3 is fixed")
+    r.review("figures traceable to a cited fact's claim but NOT to its quote",
+             ne["thin"],
+             "VERIFICATION.md D2. The number is real and the model read it in the "
+             "pack, but resolving the id shows a table lead-in rather than the "
+             "figure — which is not what this document promises in its provenance. "
+             "Review, not failure, until D2(b) decides whether to capture table rows "
+             "into the vote quotes")
 
     heavy = []
     for p in paras:

@@ -229,6 +229,75 @@ check("a sentence never welds across a blank line",
 check("  and both paragraphs still yield their sentences",
       len(v.sentences("One. Two.\n\nThree.")), 3)
 
+print("\nnumeric evidence — the three tiers (VERIFICATION.md D2)")
+# A miniature index/pack pair mirroring the real shapes. The vote fact is the real
+# defect: its quote is the sentence that INTRODUCES the table, so the figure the
+# document states is nowhere in the evidence a reader can resolve.
+NE_INDEX = {
+    "VOTE-FY2023-aaaaaaaa": {
+        "field": "vote_results", "fiscal_year": 2023, "confidence": "high",
+        "quote_verified": True, "source": {},
+        "quote": "Each of the nominees for director, as listed in the proxy statement, "
+                 "was elected with the number of votes set forth below:"},
+    "LANG-FY2024-bbbbbbbb": {
+        "field": "notable_language", "fiscal_year": 2024, "confidence": "high",
+        "quote_verified": True, "source": {},
+        "quote": "Average revenue per employee increased to roughly $200,000 from "
+                 "$170,000 in 2023."},
+    "RISK-FY2025-cccccccc": {
+        "field": "risk_deltas", "fiscal_year": 2025, "confidence": "high",
+        "quote_verified": None, "source": {},
+        "heading": "We depend on 1,200 data suppliers."},
+}
+NE_CLAIMS = {
+    "VOTE-FY2023-aaaaaaaa": v.numbers_in('{"votes_against": 9935476}'),
+    "LANG-FY2024-bbbbbbbb": set(),
+    "RISK-FY2025-cccccccc": set(),
+}
+ne = lambda p: v.numeric_evidence([p], NE_INDEX, NE_CLAIMS)
+
+check("a figure inside a cited fact's quote is QUOTED — reported nowhere",
+      ne("Revenue per employee reached $200,000 [LANG-FY2024-bbbbbbbb]."),
+      {"thin": [], "unsourced": []})
+check("a figure in the claim but not the quote is THIN",
+      len(ne("9,935,476 votes were cast against [VOTE-FY2023-aaaaaaaa].")["thin"]), 1)
+check("  and is NOT reported as unsourced — it is traceable, just not evidenced",
+      ne("9,935,476 votes were cast against [VOTE-FY2023-aaaaaaaa].")["unsourced"], [])
+check("a figure in neither quote nor claim is UNSOURCED",
+      len(ne("Some 8,484 shares were repurchased [VOTE-FY2023-aaaaaaaa].")
+          ["unsourced"]), 1)
+check("a figure in a risk delta's HEADING is quotable evidence like any quote",
+      ne("It names 1,200 data suppliers [RISK-FY2025-cccccccc]."),
+      {"thin": [], "unsourced": []})
+
+print("\n  the two tokenizer bugs the first version of this check had")
+# THE REGRESSION CASES. Both reported a defect in the document that was really a
+# defect in the checker — the worst kind, because it trains a reader to ignore the
+# check. Each is a real string from discussion-points.md.
+check("a dollar amount is one figure, not its trailing zeros ($200,000 -> 200000)",
+      sorted(v.NUM_RE.findall("increased to roughly $200,000 from $170,000")),
+      ["170,000", "200,000"])
+check("  so a correctly-evidenced dollar amount does not report as unsourced",
+      ne('The letter says "$200,000" per employee [LANG-FY2024-bbbbbbbb].')
+      ["unsourced"], [])
+check("an SEC item number is a name, not a quantity (Item 5.07)",
+      v.NUM_RE.findall(v.NOT_A_FIGURE.sub(" ", "the Item 5.07 vote disclosure")), [])
+check("  likewise Item 1A, Rule 10b5-1 and a form number",
+      v.NUM_RE.findall(v.NOT_A_FIGURE.sub(
+          " ", "Item 1A of the 10-K, and Rule 10b5-1 plans, and DEF 14A")), [])
+check("a four-digit year is not a figure to evidence",
+      ne("Revenue grew through 2023 and 2024 [VOTE-FY2023-aaaaaaaa]."),
+      {"thin": [], "unsourced": []})
+
+print("\n  scope is the PARAGRAPH, because that is the pack's citation granularity")
+check("evidence cited one sentence earlier still counts",
+      ne('The letter reports "$200,000" per employee [LANG-FY2024-bbbbbbbb]. '
+         'That figure of $200,000 is the highest in the window.'),
+      {"thin": [], "unsourced": []})
+check("a paragraph citing nothing at all is not scanned",
+      ne("Revenue per employee reached $200,000 last year."),
+      {"thin": [], "unsourced": []})
+
 print("\ncheck tags are unique and stable")
 tags = [r["tag"] for r in
         v.verify("doc.md", GOOD + PROV, PACK, INDEX, PF, CFG, SHA).rows
@@ -260,6 +329,17 @@ if (ROOT / "data/pack/pack.json").exists():
         r = v.verify(doc, p.read_text(encoding="utf-8"), pack, index, pf, cfg, sha)
         check(f"{doc}: every hard check passes",
               [f["tag"] for f in r.failures], [])
+        # The numeric-evidence calibration, held where it is STABLE. The brief is
+        # asserted clean on both tiers — 19 figures, all in a cited fact's quote.
+        # discussion-points.md is deliberately NOT asserted at a count: it currently
+        # carries 2 unsourced (D3) and 17 thin (D2), and both numbers are supposed to
+        # move as those are fixed. A test pinned to today's defect count has to be
+        # edited every time a defect is fixed, which trains you to edit tests.
+        if doc == "narrative-brief.md":
+            ev = v.numeric_evidence(v.paragraphs(v.body_of(
+                p.read_text(encoding="utf-8"))), index, v.claim_numbers(pack))
+            check(f"  {doc}: every figure is in a cited fact's quote",
+                  ev, {"thin": [], "unsourced": []})
 
 print(f"\n{PASS} passed, {FAIL} failed  ({n_docs} generated document(s) checked)")
 sys.exit(1 if FAIL else 0)
