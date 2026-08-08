@@ -42,7 +42,7 @@ In FY2021 management described DBRS Morningstar as having been highly successful
 
 ### Shareholder support has been cited each year as the reason for leaving pay design alone; the most recent vote breaks the pattern
 
-The CD&A repeats a near-identical formula in every year of the window: significant shareholder support, therefore no changes made in response to the say-on-pay vote [LANG-FY2021-cf48e888, LANG-FY2022-20b1e3a4, LANG-FY2023-57d45987, LANG-FY2024-d93d15c2, LANG-FY2025-3802d594]. The underlying counts, per the Item 5.07 filings: 507,847 against at the meeting held 13 May 2022; 521,906 at 12 May 2023; 346,649 at 10 May 2024; 547,563 at the 9 May 2025 meeting; and 1,206,815 in the vote reported 8 May 2026 on fiscal 2025 compensation [VOTE-FY2021-ded0d9e1, VOTE-FY2022-9a876b5d, VOTE-FY2023-4a38447e, VOTE-FY2024-117d729d, VOTE-FY2025-0400d889, EVT-FY2022-42dca9a4, EVT-FY2023-05068e23, EVT-FY2024-d44361e4, EVT-FY2025-7410dc50]. Opposition roughly doubled to the highest level in the window in the year the CD&A itself discloses one-year TSR of -35.1% [LANG-FY2025-c6ee1d35], the CEO's salary rose 23.8% [LANG-FY2025-df503ab2], and stretch PSUs continued to be granted with no grant-date fair value recorded [LANG-FY2025-a4405c1e]. Director dissent moved in the opposite direction over the same period: Steve Joynt drew 9,935,476 against at the 10 May 2024 meeting, 550,723 at the 9 May 2025 meeting, and 279,943 in the vote reported 8 May 2026 [VOTE-FY2023-76c7ae52, VOTE-FY2024-6b1263f6, VOTE-FY2025-2b6f95a2], while Bill Lyons's against votes rose across the same three meetings from 2,068,504 to 2,597,678 to 2,434,521 [VOTE-FY2023-c5cb3374, VOTE-FY2024-74373328, VOTE-FY2025-0cd57cef].
+The CD&A repeats a near-identical formula in every year of the window: significant shareholder support, therefore no changes made in response to the say-on-pay vote [LANG-FY2021-cf48e888, LANG-FY2022-20b1e3a4, LANG-FY2023-57d45987, LANG-FY2024-d93d15c2, LANG-FY2025-3802d594]. The underlying counts, per the Item 5.07 filings: 507,847 against at the meeting held 13 May 2022; 521,906 at 12 May 2023; 346,649 at 10 May 2024; 547,563 at the 9 May 2025 meeting; and 1,206,815 in the vote reported 8 May 2026 on fiscal 2025 compensation [VOTE-FY2021-ded0d9e1, VOTE-FY2022-926e79bb, VOTE-FY2023-e5bb0bac, VOTE-FY2024-c37175fc, VOTE-FY2025-699595c1, EVT-FY2022-42dca9a4, EVT-FY2023-05068e23, EVT-FY2024-d44361e4, EVT-FY2025-7410dc50]. Opposition roughly doubled to the highest level in the window in the year the CD&A itself discloses one-year TSR of -35.1% [LANG-FY2025-c6ee1d35], the CEO's salary rose 23.8% [LANG-FY2025-df503ab2], and stretch PSUs continued to be granted with no grant-date fair value recorded [LANG-FY2025-a4405c1e]. Director dissent moved in the opposite direction over the same period: Steve Joynt drew 9,935,476 against at the 10 May 2024 meeting, 550,723 at the 9 May 2025 meeting, and 279,943 in the vote reported 8 May 2026 [VOTE-FY2023-9b2aa372, VOTE-FY2024-6b1263f6, VOTE-FY2025-666679ac], while Bill Lyons's against votes rose across the same three meetings from 2,068,504 to 2,597,678 to 2,434,521 [VOTE-FY2023-316ab547, VOTE-FY2024-74373328, VOTE-FY2025-c142ce1d].
 
 ## Open questions
 
@@ -88,7 +88,7 @@ The CD&A repeats a near-identical formula in every year of the window: significa
 
 Written by `claude-opus-5` at `high` effort on 2026-08-07T20:36:11Z, from `data/pack/pack.json` and nothing else — no general knowledge about Morningstar, Inc. or its industry was used, and no source outside the company's own SEC filings for 2021–2025.
 
-- **pack sha256** `41b0cabbef11d22d73c50603cce82d1f6ff1a289e274de68a38a2e58b52449db`
+- **pack sha256** `fd320ce531c4766f95feb4f3f0cf10d47127787706d6e3647a5281fcc65e6cf5`
 - **3,527 words**, **202 citations** to **179 distinct facts** (none low-confidence)
 - Every id above was resolved against `data/pack/index.json` at generation time; **0** did not resolve.
 - Every one of the **65 quotations** was checked character for character against the verified filing text of the facts cited beside it; **65** matched there, **0** matched filing text cited elsewhere in this document, **0** did not match any.
@@ -100,6 +100,9 @@ Ids resolve in `data/pack/index.json` to the exact quote, section and accession 
 
 - **`discussion-buyback-2023-figure`** (human review, 2026-08-07 (VERIFICATION.md D3)) — Wrong id and wrong date. The cited FY2022 10-K fact contains only the buyback authorisation, not the figures; they are in the FY2023 10-K as EVT-FY2023-fc8f78b1. And the programme was effective 2023-01-01, so "by end-2022" is impossible — the filing says "As of December 31, 2023, we repurchased a total of 8,484 shares for $1.4 million", corroborated by the FY2024 10-K's cumulative 41,784 = 8,484 + 33,300.
     - *Replaced:* “8,484 shares for $1.4 million by end-2022 [EVT-FY2022-5d620550]”
+
+**8 citations renumbered** across 8 fact(s). The claims are unchanged: repairing a fact's stored quote changes the content hash it is identified by, so the citation had to follow it. Each renumbering is checked to point at the same claim before it is applied — see `[[id_remap]]` in `config/corrections.toml`.
+
 
 The model wrote this from pack `adb27b53069a7770e2674ef124123b0718f701fc9d5ff7b56398ff17149867c6`. The ledger has been corrected since, and every id and quotation above was re-resolved against the current pack — named at the top of this section — before this file was rewritten. The rewrite is refused if any of them fails.
 

@@ -810,7 +810,8 @@ def generate(client: anthropic.Anthropic, gen: dict, index: dict, payload: str,
 
 def provenance(pack: dict, gen: dict, sha: str, usage: dict, checks: dict, q: dict,
                words: int, stamp: str, corrections: list[dict] | None = None,
-               written_from_sha: str | None = None) -> str:
+               written_from_sha: str | None = None,
+               remaps: list[dict] | None = None) -> str:
     """The footer every generated document carries.
 
     Unlike `timeline.md` these are not reproducible — the same inputs give a
@@ -846,6 +847,21 @@ def provenance(pack: dict, gen: dict, sha: str, usage: dict, checks: dict, q: di
     # --apply-corrections path refuses to write unless every id in the document
     # resolves and every quotation verifies against the pack now on disk. Both hashes
     # are printed, so "which payload did the model actually read" is still answerable.
+    # Renumberings are disclosed as a COUNT, not enumerated like a correction.
+    # Nothing the document says changed — only the identifier a citation points at —
+    # so a nine-item list of hash pairs in a reader-facing document would bury the
+    # corrections, which are the entries that do change a claim. The pairs are in
+    # `config/corrections.toml` and on the generation record for anyone auditing.
+    if remaps:
+        n_occ = sum(r["occurrences"] for r in remaps)
+        corr_block += ["",
+                       f"**{n_occ} citation{'' if n_occ == 1 else 's'} renumbered** "
+                       f"across {len(remaps)} fact(s). The claims are unchanged: "
+                       f"repairing a fact's stored quote changes the content hash it "
+                       f"is identified by, so the citation had to follow it. Each "
+                       f"renumbering is checked to point at the same claim before it "
+                       f"is applied — see `[[id_remap]]` in `config/corrections.toml`.",
+                       ""]
     if written_from_sha and written_from_sha != sha:
         corr_block += ["",
                        f"The model wrote this from pack `{written_from_sha}`. The "
@@ -927,6 +943,63 @@ def load_document_corrections(slug: str) -> list[dict]:
     return entries
 
 
+def load_id_remaps() -> list[dict]:
+    """`[[id_remap]]` entries: a fact's id changed, its claim did not.
+
+    A SEPARATE MECHANISM FROM A CORRECTION, on purpose. A correction says the
+    document was wrong. A remap says the document was right and the identifier moved
+    underneath it — which is what happens every time a fact's quote or value is
+    repaired, because `fact_id` hashes both. Recording "the buyback figure was cited
+    to the wrong filing" and "this id was renumbered when we decoded an apostrophe"
+    through the same channel would misdescribe both.
+
+    The practical reason is stronger than the semantic one: a remap can be CHECKED,
+    and free-text find/replace cannot. `apply_id_remaps` verifies that the old id is
+    genuinely gone from the index, that the new one is present, and — the part that
+    matters — that both denote the same claim. A typo'd remap fails loudly instead of
+    silently re-pointing a sentence at a different fact.
+    """
+    if not CORRECTIONS.exists():
+        return []
+    entries = tomllib.loads(CORRECTIONS.read_text(encoding="utf-8")).get("id_remap", [])
+    bad = [str(e) for e in entries
+           if not all(e.get(k) for k in ("was", "now", "reason"))]
+    if bad:
+        sys.exit(f"FATAL: id_remap entries missing was/now/reason:\n  "
+                 + "\n  ".join(bad))
+    return entries
+
+
+def apply_id_remaps(text: str, index: dict, ledger_claims: dict
+                    ) -> tuple[str, list[dict]]:
+    """Rewrite renumbered citations. Returns (text, records applied to this doc)."""
+    applied, problems = [], []
+    for e in load_id_remaps():
+        was, now = e["was"], e["now"]
+        if was in index:
+            problems.append(f"{was} -> {now}: the OLD id is still in the index, so it "
+                            f"was not renumbered and this remap is wrong or stale")
+            continue
+        if now not in index:
+            problems.append(f"{was} -> {now}: the NEW id is not in the index")
+            continue
+        # The check a find/replace cannot make: same claim on both sides.
+        if ledger_claims.get(was) and ledger_claims[was] != ledger_claims.get(now):
+            problems.append(f"{was} -> {now}: these are DIFFERENT claims. A remap may "
+                            f"only re-point a citation at the same fact under a new "
+                            f"id, never at another fact.")
+            continue
+        n = len(re.findall(rf"\b{re.escape(was)}\b", text))
+        if n:
+            text = re.sub(rf"\b{re.escape(was)}\b", now, text)
+            applied.append({"was": was, "now": now, "occurrences": n,
+                            "reason": " ".join(e["reason"].split())})
+    if problems:
+        sys.exit(f"FATAL: {len(problems)} id_remap(s) are not usable. NOTHING WAS "
+                 f"WRITTEN.\n\n  " + "\n\n  ".join(problems))
+    return text, applied
+
+
 def apply_document_corrections(slug: str, text: str) -> tuple[str, list[dict]]:
     """Apply every declared correction to the model's text. Returns (text, records).
 
@@ -969,14 +1042,15 @@ DOCS = {
 
 def write_doc(slug: str, body: str, pack: dict, gen: dict, sha: str, usage: dict,
               checks: dict, q: dict, stamp: str, corrections: list[dict] | None = None,
-              written_from_sha: str | None = None) -> Path:
+              written_from_sha: str | None = None,
+              remaps: list[dict] | None = None) -> Path:
     s = pack["subject"]
     span = f"FY{min(s['fiscal_years'])}–FY{max(s['fiscal_years'])}"
     d = DOCS[slug]
     head = d["title"].format(name=s["company_name"], ticker=s["ticker"], span=span)
     md = "\n".join([f"# {head}", "", d["lede"], "", body.strip(),
                     provenance(pack, gen, sha, usage, checks, q, word_count(body), stamp,
-                               corrections, written_from_sha), ""])
+                               corrections, written_from_sha, remaps), ""])
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     p = OUT_DIR / d["file"]
     p.write_text(md, encoding="utf-8")
@@ -1006,14 +1080,40 @@ def rewrite_with_corrections(pack: dict, gen: dict, index: dict, sha: str) -> No
     citation stops the write.
     """
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    n_corrected = 0
+    n_corrected = n_remapped = 0
+    # {id -> a canonical description of the claim}, read from the LEDGER rather than
+    # the pack, because a remapped id is by definition absent from the current pack
+    # and the old side of the mapping has to be checkable too. Read from git is not
+    # needed: the ledger keeps both facts only if both exist, so an unknown `was`
+    # simply skips the same-claim assertion and the index checks still apply.
+    ledger_claims: dict[str, str] = {}
+    for p in sorted((ROOT / "data" / "ledger").glob("FY*.json")):
+        d = json.loads(p.read_text(encoding="utf-8"))
+        for k, v in d.items():
+            if isinstance(v, list):
+                for it in v:
+                    if isinstance(it, dict) and it.get("id"):
+                        ledger_claims[it["id"]] = json.dumps(
+                            {"f": it.get("field"), "y": it.get("fiscal_year"),
+                             "v": it.get("value")}, sort_keys=True, ensure_ascii=False)
     for slug, d in DOCS.items():
         rec_p = PACK_DIR / f"gen-{slug}.json"
         if not rec_p.exists():
             sys.exit(f"FATAL: {rec_p.relative_to(ROOT)} not found. It is a committed "
                      f"file; restore it rather than regenerating.")
         rec = json.loads(rec_p.read_text(encoding="utf-8"))
+        # CORRECTIONS FIRST, REMAPS LAST, and the order is load-bearing both ways.
+        #
+        # A correction's `find` anchor is hand-written against the model's text and
+        # may contain an id — D3's does. Remapping first would move that id out from
+        # under the anchor and the correction would match nothing, which is fatal.
+        #
+        # Running remaps last also makes them a final normalisation: whatever ids a
+        # correction's `replace` introduced are brought current too, so a correction
+        # authored before a later ledger repair does not silently reintroduce a stale
+        # citation.
         text, records = apply_document_corrections(slug, rec["text"])
+        text, remaps = apply_id_remaps(text, index, ledger_claims)
 
         checks, qchecks = check_citations(text, index), check_quotes(text, index)
         if checks["unknown"] or qchecks["bad"] or qchecks["elsewhere"]:
@@ -1029,15 +1129,18 @@ def rewrite_with_corrections(pack: dict, gen: dict, index: dict, sha: str) -> No
         written_from = rec.get("pack_sha256")
         rec["shipped_text"] = text
         rec["corrections"] = records
+        rec["id_remaps"] = remaps
         rec["corrections_applied_utc"] = stamp
         rec["shipped_pack_sha256"] = sha
         rec["citations_shipped"], rec["quotations_shipped"] = checks, qchecks
         rec_p.write_text(json.dumps(rec, indent=1, ensure_ascii=False), encoding="utf-8")
 
         p = write_doc(slug, text, pack, gen, sha, rec["usage"], checks, qchecks,
-                      rec["generated_utc"], records, written_from)
+                      rec["generated_utc"], records, written_from, remaps)
         n_corrected += len(records)
+        n_remapped += sum(r["occurrences"] for r in remaps)
         print(f"  {p.relative_to(ROOT)} — {len(records)} correction(s), "
+              f"{sum(r['occurrences'] for r in remaps)} citation(s) renumbered, "
               f"{word_count(text):,} words, {checks['citations']} citations "
               f"({checks['distinct']} distinct), {qchecks['ok']}/{qchecks['checked']} "
               f"quotations verbatim where cited"

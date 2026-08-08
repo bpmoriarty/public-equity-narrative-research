@@ -563,6 +563,24 @@ def load_config() -> dict:
     return cfg
 
 
+# Image and asset filenames. Stripped before words are counted because they are
+# precisely what inflates the character count of a document that has no text in it —
+# a press release published as JPGs is mostly `something001.jpg`.
+ASSET_FILENAME = re.compile(r"\S+\.(?:jpg|jpeg|png|gif|svg|webp|bmp|tif|tiff)\b", re.I)
+WORDISH = re.compile(r"[A-Za-z]{2,}")
+
+
+def substantive_words(text: str) -> int:
+    """Word-like tokens, ignoring image filenames and single letters.
+
+    The measure the character floor could not make: 163 characters of `EX-99.1 2
+    dividendpr_031524v2.htm ... dividendpr_031524v2001.jpg ... 2 of 2` is a
+    successful-looking extraction of a document that contains no readable text.
+    See `min_substantive_words` in config/sections.toml. VERIFICATION.md D6.
+    """
+    return len(WORDISH.findall(ASSET_FILENAME.sub(" ", text)))
+
+
 def validate(key: str, text: str, cfg: dict, whole_doc: bool = False) -> tuple[bool, list[str]]:
     """Length band, anchor phrases, and over-capture markers. CLAUDE.md: log
     failures loudly rather than emitting a truncated or over-captured section."""
@@ -587,6 +605,19 @@ def validate(key: str, text: str, cfg: dict, whole_doc: bool = False) -> tuple[b
     if n < floor:
         problems.append(f"below floor: {n:,d} < {floor:,d} chars"
                         + (" (whole-document floor)" if whole_doc else ""))
+
+    # The word floor, which the character floor cannot substitute for. Applied to
+    # every section, not just whole documents: a section extraction that lands on a
+    # page of images fails the same way, and there is no kind of section for which
+    # 25 readable words is a successful read.
+    words = substantive_words(text)
+    if words < v["min_substantive_words"]:
+        assets = len(ASSET_FILENAME.findall(text))
+        problems.append(
+            f"NO USABLE TEXT: {words} substantive word(s) in {n:,d} chars"
+            + (f", and {assets} image filename(s) — the document is published as "
+               f"images, not text" if assets else
+               " — the extraction produced markup or boilerplate, not prose"))
     band = None if whole_doc else v["expected_chars"].get(key)
     if band:
         if n < band["min"]:
@@ -763,12 +794,24 @@ def main() -> None:
     all_rows = sorted(merged.values(), key=lambda r: (r["fiscal_year"], r["form"], r["key"]))
 
     ok_n = sum(1 for r in all_rows if r["ok"])
+    # Counted into the manifest as its own category rather than folded into
+    # `sections_failed`. A boundary that missed and a document that has no text in it
+    # are different problems with different fixes — the first is a pattern to correct,
+    # the second is a filing that will never yield text and has to be got from
+    # elsewhere or acknowledged as a gap. VERIFICATION.md D6.
+    no_text = [r for r in all_rows
+               if any(p.startswith("NO USABLE TEXT") for p in (r.get("problems") or []))]
     manifest = {
         "generated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "last_run_filter": {"form": args.form, "fy": args.fy, "limit": args.limit},
         "last_run_documents": len(docs),
         "sections_attempted": len(all_rows),
         "sections_written": ok_n, "sections_failed": len(all_rows) - ok_n,
+        "sections_with_no_usable_text": [
+            {"accession": r["accession"], "form": r["form"], "key": r["key"],
+             "fiscal_year": r["fiscal_year"], "chars": r.get("chars"),
+             "problem": next(p for p in r["problems"] if p.startswith("NO USABLE TEXT"))}
+            for r in no_text],
         "sections": all_rows,
     }
     manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
@@ -780,6 +823,19 @@ def main() -> None:
     run_ok = sum(1 for r in results if r["ok"])
     print(f"this run  : {len(results)} attempted, {run_ok} written, {len(results)-run_ok} failed")
     print(f"all stored: {len(all_rows)} sections, {ok_n} ok, {len(all_rows)-ok_n} failed")
+    # Printed as its own headline, not left to be found among 231 rows. This is the
+    # class that previously read as a success.
+    if no_text:
+        print()
+        print(f"!! {len(no_text)} DOCUMENT(S) YIELDED NO USABLE TEXT — extracted "
+              f"cleanly, and contain nothing to extract:")
+        for r in no_text:
+            print(f"     FY{r['fiscal_year']} {r['form']:8s} {r['key']:28s} "
+                  f"{r['accession']}")
+            print(f"       {next(p for p in r['problems'] if p.startswith('NO USABLE'))}")
+        print("   Nothing downstream can cite these. If any is a 7.01/8.01 strategic "
+              "exhibit,\n   its content has to be sourced from the filing body or "
+              "recorded as a gap.")
     # Compare against THIS RUN's success count, not the merged total: `ok_n`
     # counts every section ever stored, so on a filtered run `len(results) - ok_n`
     # goes negative, which is truthy, and printed an empty "failures:" header.

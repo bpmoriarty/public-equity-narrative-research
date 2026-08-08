@@ -17,15 +17,18 @@ that today's gates cannot see.
 Dimensions run: data-integrity **yes** · pipeline **yes** · statistical **N/A
 (justified below)** · claims-evidence **yes**
 
-> **Remediation status, 2026-08-07.** **D1, D3, D7 and D8 are fixed**, and **D2(a)**
-> — the numeric-evidence detector — is built, calibrated and now a hard check. See
-> *Remediation log* at the end of this file for what changed and how each fix was
-> verified. **D2(b), D4, D5 and D6 are open**, plus **D9**, a new latent finding
-> surfaced while fixing D8.
+> **Remediation status, 2026-08-07. Every defect D1–D8 is now fixed**, and the
+> numeric-evidence detector D2(a) is built, calibrated and enforced as a hard check.
+> One finding remains open: **D9**, surfaced while fixing D8 and left deliberately
+> because it needs a contract decision, not a patch. See *Remediation log* at the end
+> of this file for what changed and how each fix was verified.
 >
 > Everything below describes the state at commit `0547c37`, when the suite was run,
-> and is left unedited so the finding and the fix can be read against each other. The pack sha256 has since moved from `adb27b53…` to
-> `41b0cabb…`, and `LEAD-FY2022-b99ce9e7` is now `LEAD-FY2022-9fd216a3`.
+> and is left unedited so the finding and the fix can be read against each other.
+> Since then the pack sha256 has moved `adb27b53…` → `41b0cabb…` → `fd320ce5…`, and
+> 35 facts have been renumbered by quote and value repairs — `LEAD-FY2022-b99ce9e7`
+> is now `LEAD-FY2022-9fd216a3`, and the nine renumbered ids that were cited are
+> mapped in `config/corrections.toml` under `[[id_remap]]`.
 
 ---
 
@@ -516,6 +519,129 @@ for exactly one commit — long enough to prove it fired on real defects and not
 else — and is now exercised on failing input as well as passing, per this suite's own
 rule. `test_verify_outputs` is at 63.
 
+### Phase 3 — D6, D5, D4 and D2(b), fixed 2026-08-07 in one rebuild
+
+Batched deliberately: all four change a stored quote or a source, `fact_id` hashes
+both, so each would otherwise have forced its own pack rebuild and re-citation pass.
+
+#### D6 — a document with no text in it, recorded as a success
+
+The character floor asks *did we get any bytes?*, which a filing published as images
+passes. The FY2024 dividend press release is 163 characters — two JPG filenames and a
+Workiva stamp — and cleared the 120-character whole-document floor with `ok: true`
+and `problems: []`.
+
+A second floor now counts **word-like tokens after stripping image filenames**, which
+are exactly what inflates the character count in this failure. Threshold chosen from
+the measured distribution, not by feel: **12** substantive words for the defect, **82**
+for the next-shortest document (a real SEC comment letter), **354** for the shortest
+section any fact cites, 1,437 median. A 70-point gap, so the threshold is not
+load-bearing — anything from 15 to 80 separates them identically. Set at 25.
+
+`sections_with_no_usable_text` is its own manifest category and its own headline in
+the run output, because a boundary that missed and a document that has nothing in it
+are different problems with different fixes. New `tests/test_extract_sections.py`,
+17 checks, pinning both directions — the defect must fail, the legitimately short
+filings must pass.
+
+*Measured before the fix, which decided the sequencing:* **no fact was attributed to
+that exhibit**, so D6 could not manufacture D5 cases and the two were independent.
+
+#### D5 — three facts with no filing behind them, offered as evidence
+
+Not "fatal at build time" as this report proposed. Their existence is the pipeline
+working correctly — `attribute()` could not find their quote in any section, so it
+recorded no source and marked them low-confidence. Crashing on an ungrounded model
+paraphrase would be brittle.
+
+The defect was that they were **citable anyway**: all three sat in `pack.json` (which
+the model reads) and in `index.json` (which resolves citations). CLAUDE.md is
+unconditional — *if something can't be sourced, it doesn't go in*.
+
+So they are excluded from the pack and kept in the ledger, which closes the class
+through a gate that already exists: an id absent from the index is an unresolvable
+citation, which `verify_outputs.py` already fails on. Not a silent filter — the
+exclusions are counted, listed by id in `pack-report.md`, and summarised on the pack
+itself. **The summary carries ids and a count but deliberately no quote text**, since
+`pack.json` is the payload the writer reads and including the quotes would hand back
+the very evidence the exclusion withholds.
+
+#### D4 — the corruption was in what got stored, not in what got compared
+
+`canon()` **already** decoded literal `\uXXXX` escapes, deliberately and with a
+comment explaining why it is safe. The comparison was never fooled. What no one
+noticed is that `verify_quote` returned **the model's own string** as the verified
+span on an exact match — so the corrupt spelling is what the ledger stored, the pack
+indexed, and a document would quote. The function's docstring claimed the opposite:
+*"what it holds is always something the filing demonstrably contains."*
+
+Fixed by repairing what is stored, not what is compared. Plus a **fatal** assertion at
+ledger build: no stored quote may hold a literal escape. Fatal rather than a warning
+because the failure is silent by construction — a document quoting a corrupt fact
+passes the verbatim check, since that check compares the document against the same
+corrupt string. Blast radius exactly **9 facts**, one of them cited.
+
+#### D2(b) — quote the row, not the sentence introducing the table
+
+The extraction model, asked for a verbatim span supporting a vote result, returned
+*"Each of the nominees for director … was elected with the number of votes set forth
+below:"* — verbatim, correctly attributed, and containing none of the numbers the
+fact asserts. 20 of the 21 thin quotes were that one sentence, repeated per director.
+
+The fix is **selection, not synthesis**. The table renders one cell per line, so a
+director's row is itself a contiguous verbatim span containing exactly the claimed
+figures. `build_ledger.py` re-anchors onto it, guarded three ways: only for
+`vote_results`, only when the current quote lacks the numbers, and the candidate must
+still pass `verify_quote` and contain every figure — otherwise the original is kept
+and the fact stays reported as thin. **25 facts re-anchored.**
+
+**Residue, stated plainly.** THIN went **19 → 11**. The one remaining lead-in quote is
+the FY2021 *event* fact whose claim is "all nominees were elected", which the lead-in
+genuinely does evidence. The other 11 are a different class — figures inside
+incentive-metric and notable-language facts with no uniform table structure to anchor
+on. Closing those needs per-fact judgment rather than a rule, and was deliberately not
+attempted: a pipeline that constructs its own evidence should do so only where the
+rule is mechanical.
+
+#### `[[id_remap]]` — a third mechanism, and why it is not a correction
+
+Repairing 34 quotes renumbered 34 facts and orphaned **9 citations**. That is the
+mechanism working — a repaired fact must not keep being cited under its old identity —
+but the documents had to follow.
+
+A correction says the document was wrong. A remap says it was right and the identifier
+moved underneath it. Recording both through one channel would misdescribe both. The
+practical reason is stronger than the semantic one: **a remap can be checked and a
+find/replace cannot.** Every remap asserts the old id is genuinely gone from the index,
+the new one is present, and both denote the same claim (same field, fiscal year,
+value). A mistyped remap fails the build instead of silently re-pointing a sentence at
+a different fact.
+
+Corrections run first, remaps last — a correction's hand-written anchor may contain an
+id (D3's does), so remapping first would move it out from under the anchor. Running
+remaps last also makes them a final normalisation of every id the corrections wrote.
+Disclosed in each document as a count rather than nine hash pairs, so the corrections —
+the entries that do change a claim — stay legible.
+
+#### Phase 4 re-verification
+
+The 1,326/1,326 census in this report was measured against the old ledger and expired
+the moment 34 quotes changed. Re-earned, not assumed:
+
+| Check | Result |
+|---|---|
+| Quote census, re-derived from cached filings | **1,326 / 1,326** genuine filing text |
+| Stored quotes holding a literal escape | **0** |
+| Seam: ledger → pack index | 1,329 − 3 excluded + 99 risk = **1,425**, exact |
+| Excluded ids absent from the index | **clean**, no leak |
+| Citations resolving across three deliverables | **415 / 415** |
+| `build_pack` determinism (twice) | `fd320ce5…` both times |
+| `--apply-corrections` idempotence | byte-identical |
+| Test suite | 5 files, all pass (`test_extract_sections` new, 17 checks) |
+| `verify_outputs` | every hard check passes on both documents |
+
+Pack sha256 moved `41b0cabb…` → `fd320ce5…`.
+
 ### D9 — NEW, latent: `as_of_utc` records when the script ran, not when EDGAR was read
 
 Found while fixing D8. `src/discover.py:531` sets `as_of = datetime.now(timezone.utc)`
@@ -540,10 +666,12 @@ is a judgment about the contract, not a bug fix.
 
 ### Still open
 
-D2(b) (capture table rows into vote quotes — now the only thing standing between the
-THIN tier and zero; it stands at **19**), D4 (9 double-encoded quotes), D5 (3 facts
-with `source: null`), D6 (image-only exhibit passed as a success), D9 (as-of
-vintage).
+**D9** (as-of vintage) is the only open finding, and it needs a decision about what
+`as_of` should mean when the cache is warm rather than a fix.
+
+Two measured residues are recorded rather than closed: **11 THIN figures** in
+`discussion-points.md` whose facts have no uniform table to anchor on (D2(b)), and
+residue item 1 below — the blind clean-room diff, still not run.
 
 Residue item 1 is unchanged: the blind clean-room diff has still not been run, and
 these fixes were written by the same model family that wrote the code they correct.

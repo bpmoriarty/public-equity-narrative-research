@@ -361,6 +361,28 @@ def build_pack(years: dict[int, dict]) -> tuple[dict, dict]:
     }
 
     index: dict[str, dict] = {}
+    # A FACT WITH NO SOURCE IS NOT EVIDENCE, so it is not offered as any.
+    #
+    # CLAUDE.md is unconditional: "Every claim in every output must trace back to a
+    # specific filing... If something can't be sourced, it doesn't go in." These
+    # facts exist because `attribute()` in build_ledger.py could not find their quote
+    # in any section the task read — usually a stitched paraphrase rather than a
+    # fabrication, but exactly as unusable either way. The ledger keeps them, because
+    # the record of what the model returned has to survive; the PACK must not, because
+    # the pack is the evidence the writer is allowed to build on.
+    #
+    # Until now they were in both, so a document could cite an id that resolved to a
+    # fact with no filing behind it and every existing gate would pass it. Nothing
+    # gated on the null source itself. VERIFICATION.md D5.
+    #
+    # Excluding them here also closes the class with a gate that already exists: an
+    # id not in the index is an unresolvable citation, which verify_outputs.py already
+    # treats as a hard failure. No new check needed.
+    #
+    # NOT a silent filter — the exclusions are counted, listed by id, and reported in
+    # pack-report.md. A pack that quietly drops facts is the same failure in the
+    # other direction.
+    excluded: list[dict] = []
     for fy in sorted(years):
         d = years[fy]
         y = {
@@ -370,8 +392,16 @@ def build_pack(years: dict[int, dict]) -> tuple[dict, dict]:
             "facts": {},
         }
         for f in FIELDS:
-            y["facts"][f] = [compact_fact(x) for x in d[f]]
+            keep, drop = [], []
             for x in d[f]:
+                (drop if not x.get("source") else keep).append(x)
+            for x in drop:
+                excluded.append({"id": x["id"], "field": f, "fiscal_year": fy,
+                                 "confidence": x["confidence"],
+                                 "quote_check": x.get("quote_check", ""),
+                                 "quote": (x.get("quote") or "")[:160]})
+            y["facts"][f] = [compact_fact(x) for x in keep]
+            for x in keep:
                 index[x["id"]] = {
                     "field": f, "fiscal_year": fy, "confidence": x["confidence"],
                     "quote_verified": x["quote_verified"], "quote": x["quote"],
@@ -388,7 +418,23 @@ def build_pack(years: dict[int, dict]) -> tuple[dict, dict]:
                 }
         pack["years"][f"FY{fy}"] = y
 
-    return pack, index
+    # A SUMMARY travels on the pack; the detail goes to pack-report.md.
+    #
+    # Deliberately without the quote text. pack.json IS the payload the writer model
+    # reads, so putting the excluded quotes here would hand back exactly the evidence
+    # the exclusion exists to withhold — it would be a filter that filters nothing.
+    # The count and the ids are enough for the writer to know the evidence base is
+    # filtered, and are useless as evidence.
+    pack["excluded_unsourced_facts"] = {
+        "n": len(excluded),
+        "ids": [x["id"] for x in excluded],
+        "why": "no source: the fact's quote could not be located in any section the "
+               "extraction task read, so there is no filing to cite. Kept in "
+               "data/ledger/ as the record of what the model returned; excluded here "
+               "because this pack is the evidence a document may be built on "
+               "(CLAUDE.md: if something can't be sourced, it doesn't go in).",
+    }
+    return pack, index, excluded
 
 
 # ---------------------------------------------------------------------------
@@ -426,7 +472,7 @@ def main() -> None:
     args = ap.parse_args()
 
     years = load_years()
-    pack, index = build_pack(years)
+    pack, index, excluded = build_pack(years)
 
     if args.show:
         print(json.dumps(pack[args.show], indent=2, ensure_ascii=False))
@@ -456,6 +502,13 @@ def main() -> None:
     print()
     print(f"  {n_facts} facts + {n_risk} risk deltas = {len(index)} citable ids")
     print(f"  {len(payload):,} chars")
+    if excluded:
+        print()
+        print(f"  {len(excluded)} fact(s) EXCLUDED as unsourceable — kept in the "
+              f"ledger, not citable here:")
+        for x in excluded:
+            print(f"    {x['id']}  {x['field']} FY{x['fiscal_year']} "
+                  f"({x['confidence']}) — {x['quote_check'][:70]}")
 
     tokens = None if args.no_count else count_tokens(payload)
     if tokens:
@@ -528,6 +581,29 @@ def main() -> None:
               "| Field | Facts | Share |", "|---|---|---|"]
     for f, n in sorted(per_field.items(), key=lambda kv: -kv[1]):
         lines.append(f"| {f} | {n} | {100 * n / n_facts:.1f}% |")
+    lines += ["", "## Facts excluded as unsourceable", ""]
+    if excluded:
+        lines += [
+            f"**{len(excluded)}** fact(s) are in `data/ledger/` but **not** in this "
+            f"pack and **not** citable. Their quote could not be located in any "
+            f"section the extraction task read — usually a stitched paraphrase rather "
+            f"than a fabrication, and exactly as unusable either way.",
+            "",
+            "They stay in the ledger because the record of what the extraction model "
+            "returned has to survive. They are kept out of the pack because the pack "
+            "is the evidence a document may be built on, and CLAUDE.md is "
+            "unconditional: *if something can't be sourced, it doesn't go in*. An id "
+            "absent from the index is an unresolvable citation, which "
+            "`src/verify_outputs.py` already fails on — so this exclusion closes the "
+            "class through a gate that already exists. VERIFICATION.md D5.",
+            "",
+            "| Id | Field | FY | Why it could not be sourced |", "|---|---|---|---|"]
+        for x in excluded:
+            lines.append(f"| `{x['id']}` | {x['field']} | {x['fiscal_year']} | "
+                         f"{x['quote_check'][:110]} |")
+    else:
+        lines += ["None: every fact in the ledger resolved to a section containing "
+                  "its quote."]
     lines += ["", "## Binding constraints", "",
               "Derived from the ledger on every build, never hardcoded — a constraint "
               "quoting a stale count reads as though someone checked.", ""]

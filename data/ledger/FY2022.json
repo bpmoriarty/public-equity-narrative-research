@@ -1460,7 +1460,7 @@
       "correction": null
     },
     {
-      "id": "VOTE-FY2022-9a876b5d",
+      "id": "VOTE-FY2022-926e79bb",
       "field": "vote_results",
       "fiscal_year": 2022,
       "value": {
@@ -1480,9 +1480,9 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Morningstar\u2019s executive compensation was approved, on an advisory basis, with the voting as follows:",
+      "quote": "36,048,167\n521,906\n36,396\n814,216",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
@@ -1512,7 +1512,7 @@
       "correction": null
     },
     {
-      "id": "VOTE-FY2022-b56cd35d",
+      "id": "VOTE-FY2022-9945232b",
       "field": "vote_results",
       "fiscal_year": 2022,
       "value": {
@@ -1532,9 +1532,9 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "The appointment of KPMG as Morningstar\u2019s independent registered public accounting firm for 2023 was ratified with the voting as follows:",
+      "quote": "37,117,724\n239,449\n63,514",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     }
   ],
@@ -5489,7 +5489,7 @@
       "correction": null
     },
     {
-      "id": "QA-FY2022-5ab0f2cb",
+      "id": "QA-FY2022-5f79bc5e",
       "field": "investor_qa",
       "fiscal_year": 2022,
       "value": {
@@ -5504,7 +5504,7 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "PitchBook\\u2019s best-in-class coverage of the private markets complements Morningstar\\u2019s legacy public company datasets; together they are key to building one of the most comprehensive multi-asset datasets in the industry.",
+      "quote": "PitchBook\u2019s best-in-class coverage of the private markets complements Morningstar\u2019s legacy public company datasets; together they are key to building one of the most comprehensive multi-asset datasets in the industry.",
       "quote_verified": true,
       "quote_check": "verbatim match",
       "correction": null

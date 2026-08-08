@@ -1652,7 +1652,7 @@
       "correction": null
     },
     {
-      "id": "VOTE-FY2024-117d729d",
+      "id": "VOTE-FY2024-c37175fc",
       "field": "vote_results",
       "fiscal_year": 2024,
       "value": {
@@ -1672,9 +1672,9 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Morningstar's executive compensation was approved, on an advisory basis, with the voting as follows:",
+      "quote": "37,475,380\n547,563\n29,481\n1,385,885",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {

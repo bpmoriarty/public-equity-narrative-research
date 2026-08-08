@@ -1233,7 +1233,7 @@
   ],
   "vote_results": [
     {
-      "id": "VOTE-FY2025-87b13b43",
+      "id": "VOTE-FY2025-a17cce68",
       "field": "vote_results",
       "fiscal_year": 2025,
       "value": {
@@ -1253,13 +1253,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Joe Mansueto\n33,192,034\n508,755\n6,874\n1,281,152",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2025-197e2079",
+      "id": "VOTE-FY2025-1b10fae0",
       "field": "vote_results",
       "fiscal_year": 2025,
       "value": {
@@ -1279,13 +1279,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Kunal Kapoor\n33,502,488\n198,311\n6,864\n1,281,152",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2025-ae6ac79c",
+      "id": "VOTE-FY2025-c460d3c0",
       "field": "vote_results",
       "fiscal_year": 2025,
       "value": {
@@ -1305,13 +1305,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Anne Bramman\n33,646,764\n46,318\n14,581\n1,281,152",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2025-347cbfa7",
+      "id": "VOTE-FY2025-b12b4aa6",
       "field": "vote_results",
       "fiscal_year": 2025,
       "value": {
@@ -1331,13 +1331,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Robin Diamonte\n33,147,696\n552,518\n7,449\n1,281,152",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2025-a2bf60a6",
+      "id": "VOTE-FY2025-b250405f",
       "field": "vote_results",
       "fiscal_year": 2025,
       "value": {
@@ -1357,13 +1357,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Cheryl Francis\n32,212,413\n1,462,628\n32,622\n1,281,152",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2025-2b6f95a2",
+      "id": "VOTE-FY2025-666679ac",
       "field": "vote_results",
       "fiscal_year": 2025,
       "value": {
@@ -1383,13 +1383,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Steve Joynt\n33,420,268\n279,943\n7,452\n1,281,152",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2025-064c72d8",
+      "id": "VOTE-FY2025-7aa72f96",
       "field": "vote_results",
       "fiscal_year": 2025,
       "value": {
@@ -1409,13 +1409,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Steve Kaplan\n32,236,110\n1,464,664\n6,889\n1,281,152",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2025-0cd57cef",
+      "id": "VOTE-FY2025-c142ce1d",
       "field": "vote_results",
       "fiscal_year": 2025,
       "value": {
@@ -1435,13 +1435,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Bill Lyons\n31,265,595\n2,434,521\n7,547\n1,281,152",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2025-7201adef",
+      "id": "VOTE-FY2025-33b1d445",
       "field": "vote_results",
       "fiscal_year": 2025,
       "value": {
@@ -1461,13 +1461,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Doniel Sutton\n33,126,385\n473,192\n108,086\n1,281,152",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2025-9cbea842",
+      "id": "VOTE-FY2025-56bd312e",
       "field": "vote_results",
       "fiscal_year": 2025,
       "value": {
@@ -1487,13 +1487,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Caroline Tsay\n33,262,359\n437,726\n7,578\n1,281,152",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2025-0400d889",
+      "id": "VOTE-FY2025-699595c1",
       "field": "vote_results",
       "fiscal_year": 2025,
       "value": {
@@ -1513,9 +1513,9 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Morningstar's executive compensation was approved, on an advisory basis, with the voting as follows:",
+      "quote": "32,474,755\n1,206,815\n26,093\n1,281,152",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
@@ -2511,7 +2511,7 @@
       "correction": null
     },
     {
-      "id": "QA-FY2025-cef14118",
+      "id": "QA-FY2025-2a61c464",
       "field": "investor_qa",
       "fiscal_year": 2025,
       "value": {
@@ -2528,7 +2528,7 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "We recently announced that we will be retiring Morningstar Office after 20 years and providing a streamlined transition for interested clients to SS&C\\u2019s Black Diamond Wealth Platform, which will integrate our new Direct Advisory Suite product and allow advisors to continue using the Morningstar data and research they\\u2019ve loved in Office.",
+      "quote": "We recently announced that we will be retiring Morningstar Office after 20 years and providing a streamlined transition for interested clients to SS&C\u2019s Black Diamond Wealth Platform, which will integrate our new Direct Advisory Suite product and allow advisors to continue using the Morningstar data and research they\u2019ve loved in Office.",
       "quote_verified": true,
       "quote_check": "verbatim match",
       "correction": null
@@ -5405,7 +5405,7 @@
       "correction": null
     },
     {
-      "id": "QA-FY2025-c180dc9a",
+      "id": "QA-FY2025-7c11e44c",
       "field": "investor_qa",
       "fiscal_year": 2025,
       "value": {
@@ -5420,7 +5420,7 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "In general, we seek to continuously enhance the value of products and services to meet our clients\\u2019 needs, and we generally expect to be compensated for the value we provide to our clients via pricing. We review our pricing strategy annually to ensure that it reflects the value we deliver to customers.",
+      "quote": "In general, we seek to continuously enhance the value of products and services to meet our clients\u2019 needs, and we generally expect to be compensated for the value we provide to our clients via pricing. We review our pricing strategy annually to ensure that it reflects the value we deliver to customers.",
       "quote_verified": true,
       "quote_check": "verbatim match",
       "correction": null
@@ -5447,7 +5447,7 @@
       "correction": null
     },
     {
-      "id": "QA-FY2025-34232287",
+      "id": "QA-FY2025-b8526792",
       "field": "investor_qa",
       "fiscal_year": 2025,
       "value": {
@@ -5462,7 +5462,7 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "We\\u2019ve made strong progress consolidating our portfolio to fortify the Morningstar brand while continuing to clearly communicate our capabilities to the market.",
+      "quote": "We\u2019ve made strong progress consolidating our portfolio to fortify the Morningstar brand while continuing to clearly communicate our capabilities to the market.",
       "quote_verified": true,
       "quote_check": "verbatim match",
       "correction": null

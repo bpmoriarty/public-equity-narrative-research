@@ -1284,7 +1284,7 @@
   ],
   "vote_results": [
     {
-      "id": "VOTE-FY2023-90011436",
+      "id": "VOTE-FY2023-0cc94133",
       "field": "vote_results",
       "fiscal_year": 2023,
       "value": {
@@ -1304,13 +1304,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Joe Mansueto\n38,313,001\n412,322\n14,969\n838,544",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2023-318b9bf2",
+      "id": "VOTE-FY2023-ffece568",
       "field": "vote_results",
       "fiscal_year": 2023,
       "value": {
@@ -1330,13 +1330,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Kunal Kapoor\n38,479,017\n245,617\n15,658\n838,544",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2023-4eb51764",
+      "id": "VOTE-FY2023-1873d13c",
       "field": "vote_results",
       "fiscal_year": 2023,
       "value": {
@@ -1356,13 +1356,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Robin Diamonte\n32,537,690\n6,187,070\n15,532\n838,544",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2023-c97ebfd1",
+      "id": "VOTE-FY2023-03894eeb",
       "field": "vote_results",
       "fiscal_year": 2023,
       "value": {
@@ -1382,13 +1382,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Cheryl Francis\n31,189,986\n7,534,922\n15,384\n838,544",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2023-76c7ae52",
+      "id": "VOTE-FY2023-9b2aa372",
       "field": "vote_results",
       "fiscal_year": 2023,
       "value": {
@@ -1408,13 +1408,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Steve Joynt\n28,789,451\n9,935,476\n15,365\n838,544",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2023-dd4c8309",
+      "id": "VOTE-FY2023-4189f514",
       "field": "vote_results",
       "fiscal_year": 2023,
       "value": {
@@ -1434,13 +1434,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Steve Kaplan\n36,804,621\n1,920,533\n15,138\n838,544",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2023-9b7cf171",
+      "id": "VOTE-FY2023-6d19bf21",
       "field": "vote_results",
       "fiscal_year": 2023,
       "value": {
@@ -1460,13 +1460,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Gail Landis\n32,147,041\n6,578,104\n15,147\n838,544",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2023-c5cb3374",
+      "id": "VOTE-FY2023-316ab547",
       "field": "vote_results",
       "fiscal_year": 2023,
       "value": {
@@ -1486,13 +1486,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Bill Lyons\n36,655,807\n2,068,504\n15,981\n838,544",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2023-996f4246",
+      "id": "VOTE-FY2023-602de9c8",
       "field": "vote_results",
       "fiscal_year": 2023,
       "value": {
@@ -1512,13 +1512,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Doniel Sutton\n32,614,928\n6,109,944\n15,420\n838,544",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2023-74c4ed5a",
+      "id": "VOTE-FY2023-2fb21246",
       "field": "vote_results",
       "fiscal_year": 2023,
       "value": {
@@ -1538,13 +1538,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Each of the nominees for director, as listed in the proxy statement, was elected with the number of votes set forth below:",
+      "quote": "Caroline Tsay\n32,543,974\n6,181,356\n14,962\n838,544",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
-      "id": "VOTE-FY2023-4a38447e",
+      "id": "VOTE-FY2023-e5bb0bac",
       "field": "vote_results",
       "fiscal_year": 2023,
       "value": {
@@ -1564,9 +1564,9 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Morningstar's executive compensation was approved, on an advisory basis, with the voting as follows:",
+      "quote": "38,378,684\n346,649\n14,959\n838,544",
       "quote_verified": true,
-      "quote_check": "verbatim match",
+      "quote_check": "verbatim match \u2014 re-anchored from the table lead-in onto the row carrying the figures (D2)",
       "correction": null
     },
     {
@@ -3064,7 +3064,7 @@
       "correction": null
     },
     {
-      "id": "QA-FY2023-ebd8c9af",
+      "id": "QA-FY2023-1694593e",
       "field": "investor_qa",
       "fiscal_year": 2023,
       "value": {
@@ -3081,7 +3081,7 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "We are also progressing initiatives to expand our market coverage in certain asset-backed securities and collateralized loan obligation markets where we\\u2019ve made strategic investments to date. Based on these opportunities, we believe that we have the potential to grow at rates faster than the big three credit ratings agencies.",
+      "quote": "We are also progressing initiatives to expand our market coverage in certain asset-backed securities and collateralized loan obligation markets where we\u2019ve made strategic investments to date. Based on these opportunities, we believe that we have the potential to grow at rates faster than the big three credit ratings agencies.",
       "quote_verified": true,
       "quote_check": "verbatim match",
       "correction": null
@@ -3133,7 +3133,7 @@
       "correction": null
     },
     {
-      "id": "QA-FY2023-1128d0ee",
+      "id": "QA-FY2023-5ae0693a",
       "field": "investor_qa",
       "fiscal_year": 2023,
       "value": {
@@ -3150,13 +3150,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "As part of our integration activities, we are in the process of further aligning Sustainalytics\\u2019 contracts to standard Morningstar terms and conditions.",
+      "quote": "As part of our integration activities, we are in the process of further aligning Sustainalytics\u2019 contracts to standard Morningstar terms and conditions.",
       "quote_verified": true,
       "quote_check": "verbatim match",
       "correction": null
     },
     {
-      "id": "QA-FY2023-7c108124",
+      "id": "QA-FY2023-2f0f7f3a",
       "field": "investor_qa",
       "fiscal_year": 2023,
       "value": {
@@ -3173,13 +3173,13 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "Dividends have consistently been an important part of our capital allocation strategy and we are proud to have increased the dividend every year since our IPO. While we don\\u2019t have a specific payout target, our average adjusted payout ratio since 2018 is in the mid-20s with the payout defined as cash dividends paid divided by adjusted diluted net income.",
+      "quote": "Dividends have consistently been an important part of our capital allocation strategy and we are proud to have increased the dividend every year since our IPO. While we don\u2019t have a specific payout target, our average adjusted payout ratio since 2018 is in the mid-20s with the payout defined as cash dividends paid divided by adjusted diluted net income.",
       "quote_verified": true,
       "quote_check": "verbatim match",
       "correction": null
     },
     {
-      "id": "QA-FY2023-4099b5f7",
+      "id": "QA-FY2023-876c00e2",
       "field": "investor_qa",
       "fiscal_year": 2023,
       "value": {
@@ -3196,7 +3196,7 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "In 2023, we\\u2019ll continue to take a balanced approach to capital allocation. That said, we do have a near-to-intermediate term focus on using excess cash to pay down debt following the acquisition of Praemium and LCD in 2022 and the accompanying increase in our leverage levels.",
+      "quote": "In 2023, we\u2019ll continue to take a balanced approach to capital allocation. That said, we do have a near-to-intermediate term focus on using excess cash to pay down debt following the acquisition of Praemium and LCD in 2022 and the accompanying increase in our leverage levels.",
       "quote_verified": true,
       "quote_check": "verbatim match",
       "correction": null
@@ -6478,7 +6478,7 @@
       "correction": null
     },
     {
-      "id": "QA-FY2023-a7c8b670",
+      "id": "QA-FY2023-8b48a635",
       "field": "investor_qa",
       "fiscal_year": 2023,
       "value": {
@@ -6493,7 +6493,7 @@
       },
       "confidence": "high",
       "confidence_reason": null,
-      "quote": "While it\\u2019s still early, we are already seeing evidence that the combination of LCD and PitchBook is providing additional incremental value to our customers and raising their willingness to pay for it.",
+      "quote": "While it\u2019s still early, we are already seeing evidence that the combination of LCD and PitchBook is providing additional incremental value to our customers and raising their willingness to pay for it.",
       "quote_verified": true,
       "quote_check": "verbatim match",
       "correction": null

@@ -45,6 +45,7 @@ from __future__ import annotations
 import argparse
 import copy
 import json
+import re
 import sys
 import tomllib
 from collections import Counter
@@ -66,6 +67,11 @@ SECTIONS_MANIFEST = ROOT / "data" / "sections" / "sections-manifest.json"
 INVENTORY = ROOT / "data" / "discovery" / "inventory.json"
 RISK_DELTAS = LEDGER_DIR / "risk-deltas.json"
 CORRECTIONS = ROOT / "config" / "corrections.toml"
+
+# A literal backslash-u-XXXX sitting in stored text, rather than the character it
+# spells. Written with a raw string so the pattern is the six ASCII characters, not
+# an escape this file's own parser would resolve.
+LITERAL_ESCAPE = re.compile(r"\\u[0-9a-fA-F]{4}")
 
 # Which task field feeds which ledger field. Several tasks feed the same ledger
 # field on purpose: a strategic priority stated in the 10-K and one stated in the
@@ -289,6 +295,66 @@ def audit_corrections(corrections: list[dict], years_built: list[int]) -> list[s
     return problems
 
 
+# ---------------------------------------------------------------------------
+# Vote results: quote the row, not the sentence that introduces the table
+# ---------------------------------------------------------------------------
+# The extraction model, asked for a verbatim span supporting a vote result,
+# reasonably returned the sentence that introduces the table — "Each of the
+# nominees for director ... was elected with the number of votes set forth below:".
+# Verbatim, correctly attributed, and it does not contain a single one of the
+# numbers the fact asserts. 20 of the 21 thin quotes in this ledger are that
+# sentence, repeated once per director.
+#
+# It breaks the promise the deliverables make in their own provenance — "Ids
+# resolve to the exact quote each claim rests on" — for every claim resting on one.
+# VERIFICATION.md D2.
+#
+# The fix is selection, not synthesis. The table renders one cell per line:
+#
+#     Steve Joynt
+#     28,789,451
+#     9,935,476
+#     15,365
+#     838,544
+#
+# so the director's row IS a contiguous verbatim span of the section, and it
+# contains exactly the figures the fact claims. This picks that span instead. It is
+# the same thing `attribute` already does — store the span the filing demonstrably
+# contains rather than what the model asserted — applied one level further in.
+#
+# Guarded three ways, because a pipeline that constructs its own evidence is worth
+# being suspicious of:
+#   - only for `vote_results`, only when the numbers are absent from the current
+#     quote, and only when at least two of them are present to anchor on;
+#   - the candidate must appear in the section text in the table's own order;
+#   - it must then pass `verify_quote` like any other quote. If any step fails the
+#     original quote is kept and the fact stays reported as thin.
+
+VOTE_NUMBER_KEYS = ("votes_for", "votes_against", "withheld", "abstentions",
+                    "broker_non_votes")
+
+
+def evidencing_span(value: dict, text: str) -> str | None:
+    """The table row supporting a vote result, or None if it cannot be located."""
+    nums = [f"{value[k]:,}" for k in VOTE_NUMBER_KEYS if isinstance(value.get(k), int)]
+    if len(nums) < 2 or not text:
+        return None
+    # Cells in the filing's own order, separated by whatever whitespace the
+    # HTML-to-text conversion produced.
+    row = r"\s*".join(re.escape(n) for n in nums)
+    # Anchor on the subject's name where there is one, so two directors with
+    # coincidentally similar tallies cannot be confused. `matter` reads
+    # "Election of director Steve Joynt".
+    m_name = re.search(r"(?:director|nominee)\s+(.+?)\s*$",
+                       str(value.get("matter") or ""), re.I)
+    if m_name:
+        hit = re.search(re.escape(m_name.group(1).strip()) + r"\s*" + row, text)
+        if hit:
+            return hit.group(0)
+    hit = re.search(row, text)
+    return hit.group(0) if hit else None
+
+
 def attribute(item: dict, sources: list[dict],
               texts: dict) -> tuple[FactSource | None, bool, str, str]:
     """Resolve which source contains this fact's quote. See module docstring.
@@ -345,6 +411,22 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict,
                 value, corr = apply_corrections(
                     corrections, ledger_field, fy,
                     {k: v for k, v in item.items() if k != "quote"}, src)
+
+                # Re-anchor a vote result onto the row that carries its figures.
+                # See `evidencing_span`. Only when the current span does not already
+                # contain them, so a fact the model quoted well is left alone.
+                if ledger_field == "vote_results" and src and verified:
+                    sect = texts.get((src.accession, src.section_key), "")
+                    need = [f"{value[k]:,}" for k in VOTE_NUMBER_KEYS
+                            if isinstance(value.get(k), int)]
+                    if need and not all(n in span for n in need):
+                        cand = evidencing_span(value, sect)
+                        if cand:
+                            ok2, why2, span2 = verify_quote(cand, sect)
+                            if ok2 and all(n in span2 for n in need):
+                                span, check = span2, (
+                                    f"{why2} — re-anchored from the table lead-in onto "
+                                    f"the row carrying the figures (D2)")
                 # `id` is deliberately not passed: LedgerFact derives it from the
                 # fact's own content, so it cannot be forgotten here or anywhere
                 # else a fact is built. See `fact_id` in ledger_schema.py.
@@ -592,6 +674,23 @@ def main() -> None:
 
     if not built:
         sys.exit("\nnothing built.")
+
+    # --- no stored quote may hold a literal \uXXXX escape --------------------
+    # `verify_quote` repairs these now, so this can only fire if a quote reached the
+    # ledger by some path that skips it. Fatal rather than a warning, because the
+    # failure is silent by construction: a corrupt quote that a document then quotes
+    # passes the verbatim check, since that check compares the document against this
+    # same corrupt string. VERIFICATION.md D4.
+    escaped = [(f"FY{l.fiscal_year}", x.id, x.quote[:60])
+               for l in built for f in LEDGER_FIELDS for x in getattr(l, f)
+               if LITERAL_ESCAPE.search(x.quote or "")]
+    if escaped:
+        sys.exit(
+            f"FATAL: {len(escaped)} stored quote(s) hold a literal \\uXXXX escape "
+            f"rather than the character it spells. NOTHING WAS WRITTEN.\n"
+            f"  A document quoting one of these would ship corrupt text AND pass the "
+            f"verbatim check, because that check compares against this string.\n"
+            + "\n".join(f"    {fy} {i}: {q}" for fy, i, q in escaped[:8]))
 
     # --- every declared correction must have landed, BEFORE anything is written --
     # Fatal, because a silently unapplied correction puts the defective value back

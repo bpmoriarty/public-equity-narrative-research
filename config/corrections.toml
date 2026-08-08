@@ -164,3 +164,73 @@ filing says "As of December 31, 2023, we repurchased a total of 8,484 shares for
 $1.4 million", corroborated by the FY2024 10-K's cumulative 41,784 = 8,484 + 33,300.\
 """
 verified_by = "human review, 2026-08-07 (VERIFICATION.md D3)"
+
+
+# ===========================================================================
+# ID REMAPS — the fact is the same, its identifier moved
+# ===========================================================================
+# NOT corrections. A correction says the document was wrong; a remap says it was
+# right and the identifier changed underneath it. `fact_id` hashes the value AND the
+# quote, so every repair to a stored quote renumbers the fact and orphans any
+# citation to it. That is the mechanism working — a repaired fact must not keep
+# being cited under its old identity — but the documents still have to follow.
+#
+# These nine come from two Phase-3 repairs, both of which changed a stored quote:
+#
+#   D4  nine investor_qa quotes held an apostrophe as the literal six characters
+#       \u2019. verify_quote now stores the repaired spelling. One of the nine was
+#       cited (in narrative-brief.md, paraphrased rather than quoted).
+#
+#   D2b twenty vote_results quotes were the sentence introducing the results table
+#       rather than the row carrying the numbers. build_ledger.py now re-anchors
+#       them onto the row. Eight of those were cited in discussion-points.md.
+#
+# Every remap is CHECKED before it is applied — the old id must be genuinely gone
+# from the index, the new one present, and both must denote the same claim (same
+# field, fiscal year and value). A mistyped remap fails the build rather than
+# silently re-pointing a sentence at a different fact, which is the whole reason
+# this is a separate mechanism from a text find/replace.
+[[id_remap]]
+was = "QA-FY2025-cef14118"
+now = "QA-FY2025-2a61c464"
+reason = "D4: the stored quote held a literal \u2019 where an apostrophe belongs. Decoding it changed the content hash. Claim unchanged."
+
+[[id_remap]]
+was = "VOTE-FY2022-9a876b5d"
+now = "VOTE-FY2022-926e79bb"
+reason = "D2(b): quote re-anchored from the table lead-in onto the row carrying the vote figures. Claim unchanged."
+
+[[id_remap]]
+was = "VOTE-FY2023-4a38447e"
+now = "VOTE-FY2023-e5bb0bac"
+reason = "D2(b): quote re-anchored from the table lead-in onto the row carrying the vote figures. Claim unchanged."
+
+[[id_remap]]
+was = "VOTE-FY2023-76c7ae52"
+now = "VOTE-FY2023-9b2aa372"
+reason = "D2(b): quote re-anchored onto the row. This is the fact whose id, resolved, used to yield a lead-in sentence instead of the 9,935,476 votes against that discussion-points.md cites it for."
+
+[[id_remap]]
+was = "VOTE-FY2023-c5cb3374"
+now = "VOTE-FY2023-316ab547"
+reason = "D2(b): quote re-anchored from the table lead-in onto the row carrying the vote figures. Claim unchanged."
+
+[[id_remap]]
+was = "VOTE-FY2024-117d729d"
+now = "VOTE-FY2024-c37175fc"
+reason = "D2(b): quote re-anchored from the table lead-in onto the row carrying the vote figures. Claim unchanged."
+
+[[id_remap]]
+was = "VOTE-FY2025-0400d889"
+now = "VOTE-FY2025-699595c1"
+reason = "D2(b): quote re-anchored from the table lead-in onto the row carrying the vote figures. Claim unchanged."
+
+[[id_remap]]
+was = "VOTE-FY2025-0cd57cef"
+now = "VOTE-FY2025-c142ce1d"
+reason = "D2(b): quote re-anchored from the table lead-in onto the row carrying the vote figures. Claim unchanged."
+
+[[id_remap]]
+was = "VOTE-FY2025-2b6f95a2"
+now = "VOTE-FY2025-666679ac"
+reason = "D2(b): quote re-anchored from the table lead-in onto the row carrying the vote figures. Claim unchanged."

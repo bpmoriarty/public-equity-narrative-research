@@ -119,6 +119,28 @@ _ESCAPE = re.compile(r"\\u([0-9a-fA-F]{4})")
 _IMG = re.compile(r"\S+\.(?:jpg|jpeg|png|gif)\b", re.I)
 
 
+def repair_escapes(s: str) -> str:
+    """Turn a literal `\\u2019` back into the character it spells.
+
+    `canon` already decodes these so a comparison sees through them — but the
+    comparison result was all that used to change. `verify_quote` returned the
+    MODEL'S string as the verified span, so the corrupt spelling is what the ledger
+    stored, what the pack indexed, and what a document would quote. Nine
+    `investor_qa` quotes held an apostrophe as six ASCII characters.
+
+    Contained only by luck: no deliverable happened to quote one of the nine. Had a
+    document quoted it, the corrupted text would have shipped AND the verbatim check
+    would have passed, because that check compares the document against the fact's
+    quote and both would have been corrupt. That is the same false-assurance shape
+    the project found in 10f, one layer down. VERIFICATION.md D4.
+
+    Applied to what is STORED, not to what is compared — the comparison was already
+    right. Safe for the reason given at `_ESCAPE`: it changes how one character is
+    spelled and cannot turn a paraphrase into a match.
+    """
+    return _ESCAPE.sub(lambda m: chr(int(m.group(1), 16)), s)
+
+
 def canon(s: str) -> str:
     """Normalize text for quote comparison. See the module docstring.
 
@@ -180,7 +202,11 @@ def verify_quote(quote: str, source_text: str,
     if len(q) < min_chars:
         return False, f"quote too short to be evidence ({len(q)} < {min_chars} chars)", ""
     if q in hay:
-        return True, "verbatim match", quote
+        # `repair_escapes`, not `quote`. The span this returns is what the ledger
+        # stores and what every downstream citation resolves to, so returning the
+        # model's own spelling stored a defect the comparison had already seen
+        # through. See repair_escapes.
+        return True, "verbatim match", repair_escapes(quote)
 
     # Not exact. Distinguish a generation artifact from a paraphrase by WHERE it
     # diverges, not by whether it diverges.
@@ -192,7 +218,7 @@ def verify_quote(quote: str, source_text: str,
         # be wrong — canon() collapses runs of whitespace, so the two indexes
         # drift apart. Trim raw characters off the end instead, and stop at the
         # first length whose canonical form the source actually contains.
-        trimmed = quote
+        trimmed = repair_escapes(quote)
         while trimmed and canon(trimmed) not in hay:
             trimmed = trimmed[:-1]
         trimmed = trimmed.rstrip()
