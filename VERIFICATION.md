@@ -17,9 +17,9 @@ that today's gates cannot see.
 Dimensions run: data-integrity **yes** · pipeline **yes** · statistical **N/A
 (justified below)** · claims-evidence **yes**
 
-> **Remediation status, 2026-08-07.** **D1 and D7 are fixed** — see *Remediation
+> **Remediation status, 2026-08-07.** **D1, D7 and D8 are fixed** — see *Remediation
 > log* at the end of this file for what changed and how each fix was verified.
-> D2–D6 and D8 are open. Everything below describes the state at commit `0547c37`,
+> D2–D6 are open, plus **D9**, a new latent finding surfaced while fixing D8. Everything below describes the state at commit `0547c37`,
 > when the suite was run, and is left unedited so the finding and the fix can be
 > read against each other. The pack sha256 has since moved from `adb27b53…` to
 > `41b0cabb…`, and `LEAD-FY2022-b99ce9e7` is now `LEAD-FY2022-9fd216a3`.
@@ -396,11 +396,62 @@ that every configured document was checked, so a loop that quietly stops early c
 pass by checking nothing. *Verified:* exit 1 with a record absent, exit 0 with it
 present. 37 checks, up from 35 in the working tree and 29 in a clean checkout.
 
+### D8 — fixed 2026-08-07
+
+Narrower than this report originally framed it. `DATA.md` **already** named the
+May-2026 8-K, with the reasoning, in its own section — so the "coverage statement
+should say so" half was already satisfied. Re-measuring found the real gap and one
+misreading of my own:
+
+| Claim | Measured |
+|---|---|
+| Filings **outside the fiscal window** (own FY ∉ FY2021–25) | **1** — the named 8-K. `DATA.md` was right. |
+| Filings **filed after** `window_end_date` | **6** — the other five are the FY2025 10-K, proxy, two DEFA14As and the ARS, filed in early 2026 because that is when a company reports on a closed year. Ordinary. |
+| Document window behind the ledger | **2021-03-12 .. 2026-05-08**, 86 source filings |
+| Facts from filings dated after the window end | 95 of 1,326 sourced facts (7.2%) |
+
+So the defect was never a coverage error — it was that **no artifact recorded the
+document window at all**, only the fiscal one. The suite read
+`window_end_date: 2025-12-31` and reasonably inferred FY2025 votes were out of scope.
+
+Fixed by measuring it rather than writing the date into prose, per CLAUDE.md's rule
+against hard-coding a value another stage computes: `build_ledger.py` now emits
+`data_quality.document_window` per year and a *Document window* section in
+`ledger-report.md`, both derived from the filings that actually sourced facts.
+`DATA.md`'s table splits **fiscal window** from **document window** and points at the
+computed values; its named-filing section now leads with the
+outside-the-window vs. filed-after-the-window distinction, and states why `in_window`
+is `false` on a row twelve `VOTE-FY2025` facts depend on.
+
+`discover.py` was deliberately **not** re-run — see D9.
+
+### D9 — NEW, latent: `as_of_utc` records when the script ran, not when EDGAR was read
+
+Found while fixing D8. `src/discover.py:531` sets `as_of = datetime.now(timezone.utc)`
+unconditionally, but the run is cache-first and `sec_requests_made` is `0` — so
+`inventory.json` stamps an as-of date on an index it did not fetch.
+
+Contained today, and measurably so: the cached index was written `2026-08-04T17:56:07Z`
+and `as_of_utc` says `2026-08-04T18:08:03Z`. Twelve minutes, same day, so every as-of
+claim currently in `DATA.md` is sound.
+
+**Why it matters anyway:** the divergence grows without bound. Re-run `discover.py`
+from cache a month from now and `inventory.json` will claim a month-fresh index that is
+a month stale, with nothing anywhere to contradict it — and `as_of_utc` is exactly the
+field a coverage or survivorship claim would be checked against. This is also why D8
+was fixed in `build_ledger.py` rather than by regenerating the inventory: re-running
+`discover.py` to add a field would itself have falsified the as-of date.
+
+The fix is to record the cache file's own vintage (`submissions_CIK*.json` mtime, or a
+`fetched_utc` written beside it) and report both — *index as of X, read at Y*. Not
+done: it needs a decision about what `as_of` should mean when the cache is warm, which
+is a judgment about the contract, not a bug fix.
+
 ### Still open
 
 D2 (thin vote quotes), D3 (one mis-citation), D4 (9 double-encoded quotes), D5 (3
-facts with `source: null`), D6 (image-only exhibit passed as a success), D8 (declared
-window). D2's proposed gate — *a sentence stating a figure must cite at least one fact
+facts with `source: null`), D6 (image-only exhibit passed as a success), D9 (as-of
+vintage). D2's proposed gate — *a sentence stating a figure must cite at least one fact
 whose quote contains that figure* — would also close D3.
 
 Residue item 1 is unchanged: the blind clean-room diff has still not been run, and

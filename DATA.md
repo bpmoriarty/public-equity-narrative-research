@@ -12,20 +12,38 @@ asserted. Update this file when the source, universe, or as-of date changes.
 | Filing metadata | EDGAR submissions JSON API (`data.sec.gov/submissions/CIK##########.json`) |
 | Documents | Filing HTML as filed, retrieved via `edgartools` |
 | Access library | `edgartools` (version pinned in `uv.lock`) |
-| As-of date | **2026-08-04** — submissions index pulled 2026-08-04T18:08Z; documents fetched same day |
+| As-of date | **2026-08-04** — submissions index pulled 2026-08-04T18:08Z; documents fetched same day. *Caveat:* `inventory.json` `as_of_utc` records when `discover.py` last **ran**, not when EDGAR was last **read**; the run is cache-first, so on a later re-run the two would diverge. They agree here to within 12 minutes (index cache written 17:56:07Z), so the date above is sound as stated — see VERIFICATION.md D9 |
 | Universe | One company at a time, per `config/company.toml` |
-| Window | Five fiscal years, per `config/company.toml` `[window]` |
+| **Fiscal window** | Five fiscal years, per `config/company.toml` `[window]`. FY2021–FY2025 = `2021-01-01 .. 2025-12-31` in calendar time (`inventory.json` `window_start_date` / `window_end_date`). **This bounds the fiscal years in scope, not the documents.** |
+| **Document window** | The filing dates of the documents the ledger is actually drawn from, which run **past** the fiscal window end by construction — a 10-K, a proxy and an annual-meeting vote all report on a year after it closes. Measured, not asserted: `data/ledger/ledger-report.md` § *Document window*, and per year in `FY*.json` `data_quality.document_window` |
 | Subject | MORN / Morningstar, Inc., CIK 0001289419, FY2021–FY2025 |
 | Retrieved | 202 documents across 128 filings — see `data/raw/fetch-manifest.json` |
 | Extraction model | `claude-opus-5`, effort `medium`. The ledger as it stands represents **88 cached calls, 1,086,058 input / 235,841 output tokens ($11.33)** — 34 for the six core tasks, 54 for `investor_qa`. About $2.60 more was spent on 24 superseded first-pass results (see limitation 16) and one failed call, so total outlay was ~$14 |
 
-### One filing outside the window, by name
+### One filing outside the FISCAL window, by name
+
+First, the distinction that makes this section readable, because getting it wrong
+is the single easiest mistake to make about this dataset:
+
+- **Outside the fiscal window** means the filing itself belongs to a fiscal year
+  outside FY2021–FY2025. **Exactly one** filing does.
+- **Filed after the fiscal window ends** means only that the document is dated
+  after 2025-12-31. **Six** filings are, and five of them are ordinary FY2025
+  documents — the 10-K, the proxy, two DEFA14As and the ARS — filed in early 2026
+  because that is when a company reports on a year that has just closed. Nothing
+  is unusual about them, and none of them is outside the window.
 
 `0001289419-26-000028` (8-K, filed 2026-05-08) is the 202nd document and the only
 one from outside FY2021–FY2025. It carries the Item 5.07 vote taken at the
 2026-05-07 annual meeting, which is the vote on **FY2025** compensation — a
 say-on-pay result for a year in the window is reported in a filing dated after
 it, because the meeting happens the following spring.
+
+It is also why `in_window` is `false` on that row in `inventory.json` while twelve
+`VOTE-FY2025` facts nonetheless depend on it: `in_window` is computed on fiscal
+year (`src/discover.py`), and the filing's own fiscal year is 2026. The attribution
+is correct — reaching forward is the only way to apply one consistent rule to all
+five years — but the flag reads as an exclusion and is not one.
 
 Fetched by explicit accession (`src/fetch.py --accession`), not by widening the
 window: extending the window into 2026 would have swept in a sixth year of 10-Qs,

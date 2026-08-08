@@ -474,6 +474,41 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict,
                  "uniqueness is enforced fatally at build time by `audit_ids`.",
     }
 
+    # THE DOCUMENT WINDOW IS NOT THE FISCAL WINDOW, and conflating them is how a
+    # reader concludes evidence is missing when it is present.
+    #
+    # `inventory.json` declares window_start_date/window_end_date, which bound the
+    # FISCAL years in scope (FY2021-FY2025 -> 2021-01-01..2025-12-31). The documents
+    # reporting on those years are filed later — a 10-K in February, a proxy in
+    # March, and the annual-meeting vote on the prior year's pay the following May.
+    # So the documents behind this ledger run well past the declared window end, and
+    # nothing in the artifacts said so: the verification suite read
+    # window_end_date: 2025-12-31 and reasonably asked why FY2025 vote results were
+    # not out of scope. See VERIFICATION.md D8.
+    #
+    # Measured here rather than stated in prose, because a date typed into DATA.md is
+    # wrong the moment this pipeline is re-run or pointed at another company
+    # (CLAUDE.md: never hard-code a value another stage already computes).
+    fy_range = range(inv["first_fiscal_year"], inv["last_fiscal_year"] + 1)
+    inv_fy = {f["accession"]: f.get("fiscal_year") for f in inv["filings"]}
+    src_facts = [x for f in LEDGER_FIELDS for x in fields[f] if x.source]
+    filed = sorted({x.source.filing_date for x in src_facts if x.source.filing_date})
+    outside = sorted({x.source.accession for x in src_facts
+                      if inv_fy.get(x.source.accession) not in fy_range})
+    dq["document_window"] = {
+        "first_filing_date": filed[0] if filed else None,
+        "last_filing_date": filed[-1] if filed else None,
+        "n_source_filings": len({x.source.accession for x in src_facts}),
+        "sourced_from_outside_the_fiscal_window": outside,
+        "basis": "filing dates of the documents this year's facts are actually drawn "
+                 "from — NOT the fiscal window in inventory.json, which bounds the "
+                 "fiscal years in scope. Documents reporting on a fiscal year are "
+                 "filed after it ends, so this range extends past window_end_date by "
+                 "construction. Any accession listed above additionally belongs to a "
+                 "fiscal year outside the window and is used deliberately: an "
+                 "annual-meeting vote held in May of year N decides on year N-1.",
+    }
+
     # CORRECTIONS ARE A DATA-QUALITY PROPERTY, so they are logged like any other
     # rather than living only in a config file nobody downstream reads. A consumer
     # of the ledger can ask "was any of this overridden by a human, and on what
@@ -645,6 +680,41 @@ def main() -> None:
                   "Item 1 describes. A change in the count between such a year and a "
                   "reportable-segment year is a change in disclosure, not necessarily a "
                   "re-segmentation."]
+    # --- document window vs fiscal window -----------------------------------
+    dws = [l.data_quality["document_window"] for l in built]
+    firsts = [d["first_filing_date"] for d in dws if d["first_filing_date"]]
+    lasts = [d["last_filing_date"] for d in dws if d["last_filing_date"]]
+    outside_all = sorted({a for d in dws
+                          for a in d["sourced_from_outside_the_fiscal_window"]})
+    if firsts:
+        lines += ["", "## Document window", "",
+                  f"The **fiscal window** is FY{inv['first_fiscal_year']}–"
+                  f"FY{inv['last_fiscal_year']} "
+                  f"(`{inv['window_start_date']}` .. `{inv['window_end_date']}` in "
+                  f"calendar time). That bounds the fiscal years in scope, not the "
+                  f"documents.",
+                  "",
+                  f"The **document window** — the filing dates of the documents these "
+                  f"facts are actually drawn from — is **`{min(firsts)}` .. "
+                  f"`{max(lasts)}`**, across "
+                  f"{len({a for l in built for f in LEDGER_FIELDS for x in getattr(l, f) if x.source for a in [x.source.accession]})} "
+                  f"filings. It extends past the fiscal window end by construction: a "
+                  f"10-K, a proxy and an annual-meeting vote all report on a year "
+                  f"after that year has closed.",
+                  ""]
+        if outside_all:
+            one = len(outside_all) == 1
+            lines += [f"{len(outside_all)} of those filings also "
+                      f"{'belongs' if one else 'belong'} to a fiscal year outside the "
+                      f"window, and {'is' if one else 'are'} used deliberately — an "
+                      f"annual-meeting vote held in May of year N decides on year "
+                      f"N−1's compensation:", ""]
+            lines += [f"- `{a}`" for a in outside_all]
+        lines += ["", "> A reader told only that the window ends "
+                  f"`{inv['window_end_date']}` would reasonably conclude that "
+                  "evidence dated after it is out of scope. It is not. This section "
+                  "exists so that claim is measured rather than assumed."]
+
     applied = [(l.fiscal_year, a) for l in built
                for a in l.data_quality["corrections"]["applied"]]
     if applied:

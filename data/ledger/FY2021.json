@@ -4508,6 +4508,13 @@
       "unique_within_year": true,
       "basis": "content hash of the claim, its evidence and its source \u2014 see `fact_id` in src/ledger_schema.py. Confidence and the verification result are NOT hashed, so re-verifying a fact does not renumber it. Cross-year uniqueness is enforced fatally at build time by `audit_ids`."
     },
+    "document_window": {
+      "first_filing_date": "2021-03-12",
+      "last_filing_date": "2022-05-16",
+      "n_source_filings": 12,
+      "sourced_from_outside_the_fiscal_window": [],
+      "basis": "filing dates of the documents this year's facts are actually drawn from \u2014 NOT the fiscal window in inventory.json, which bounds the fiscal years in scope. Documents reporting on a fiscal year are filed after it ends, so this range extends past window_end_date by construction. Any accession listed above additionally belongs to a fiscal year outside the window and is used deliberately: an annual-meeting vote held in May of year N decides on year N-1."
+    },
     "corrections": {
       "n": 0,
       "applied": [],

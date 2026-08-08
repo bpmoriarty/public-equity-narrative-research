@@ -1,6 +1,6 @@
 # Year ledger
 
-Generated 2026-08-07T23:47:37Z. MORN (Morningstar, Inc.), CIK 0001289419.
+Generated 2026-08-08T00:15:45Z. MORN (Morningstar, Inc.), CIK 0001289419.
 
 Every fact carries its source filing, an exact quote from that filing, and a confidence marker. `low` means the source section's boundaries are unverified, or the quote could not be found verbatim — see `confidence_reason` on the fact. **Any claim in the outputs resting on a `low` fact must say so, or be dropped.**
 
@@ -24,6 +24,18 @@ Every fact and risk delta also carries a stable `id` — e.g. `SP-FY2021-471e22f
 | segments basis | **product areas** | **product areas** | reportable | reportable | reportable |
 
 > **Segment counts are not comparable across the whole window.** In the years marked *product areas* the filing does not disclose reportable segments, so the `segments` field holds whatever product or business areas Item 1 describes. A change in the count between such a year and a reportable-segment year is a change in disclosure, not necessarily a re-segmentation.
+
+## Document window
+
+The **fiscal window** is FY2021–FY2025 (`2021-01-01` .. `2025-12-31` in calendar time). That bounds the fiscal years in scope, not the documents.
+
+The **document window** — the filing dates of the documents these facts are actually drawn from — is **`2021-03-12` .. `2026-05-08`**, across 86 filings. It extends past the fiscal window end by construction: a 10-K, a proxy and an annual-meeting vote all report on a year after that year has closed.
+
+1 of those filings also belongs to a fiscal year outside the window, and is used deliberately — an annual-meeting vote held in May of year N decides on year N−1's compensation:
+
+- `0001289419-26-000028`
+
+> A reader told only that the window ends `2025-12-31` would reasonably conclude that evidence dated after it is out of scope. It is not. This section exists so that claim is measured rather than assumed.
 
 ## Corrections applied
 
