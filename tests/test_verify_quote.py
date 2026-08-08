@@ -109,10 +109,17 @@ PARAPHRASE_SOURCE = (
 
 def main() -> int:
     failures = []
+    # Counted as well as printed, so tests/run_all.py can tell whether this file
+    # still runs as many cases as it used to. A suite that silently shrinks —
+    # by losing a fixture, or by an early `return` — still reports green.
+    counts = {"pass": 0, "fail": 0}
 
     print("MUST PASS — a legitimate citation must not be rejected")
     for label, quote in MUST_PASS:
         ok, why, span = verify_quote(quote, SOURCE)
+        # An accepted quote with an empty span is a failure too: the caller uses
+        # the span to show where the match landed.
+        counts["pass" if (ok and span) else "fail"] += 1
         print(f"  {'PASS' if ok else 'BROKEN':7s} {label}")
         if not ok:
             print(f"          -> {why}")
@@ -127,6 +134,8 @@ def main() -> int:
         # other case is checked against SOURCE.
         hay = PARAPHRASE_SOURCE if label.startswith("real output") else SOURCE
         ok, why, span = verify_quote(quote, hay)
+        # Inverted: for these cases, rejection IS the passing outcome.
+        counts["fail" if ok else "pass"] += 1
         print(f"  {'BROKEN' if ok else 'REJECTED':9s} {label}")
         if ok:
             print(f"          -> accepted as: {why}")
@@ -136,6 +145,7 @@ def main() -> int:
 
     print()
     print("=" * 74)
+    print(f"{counts['pass']} passed, {counts['fail']} failed")
     if failures:
         print(f"{len(failures)} FAILURE(S):")
         for f in failures:

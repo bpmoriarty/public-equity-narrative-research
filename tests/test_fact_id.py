@@ -132,15 +132,27 @@ RISK_SRC = {"accession": "0001289419-25-000041", "prior_accession": "0001289419-
 
 def main() -> int:
     failures = []
+    counts = {"pass": 0, "fail": 0}
+
+    def tally(ok: bool) -> bool:
+        """Count a check, so tests/run_all.py can tell if the suite shrinks.
+
+        A test that quietly runs fewer checks than it used to still reports
+        green. Counting here, at the point of the check itself, is what makes
+        that visible — see tests/expected_counts.json.
+        """
+        counts["pass" if ok else "fail"] += 1
+        return ok
 
     print("MUST BE STABLE — the same fact keeps its id")
     ref = base()
     for label, got in unchanged_cases():
-        ok = got == ref
+        ok = tally(got == ref)
         print(f"  {'STABLE' if ok else 'BROKEN':7s} {label}")
         if not ok:
             failures.append(f"id moved when it should not have: {label}")
     label, ok = key_order_case()
+    tally(ok)
     print(f"  {'STABLE' if ok else 'BROKEN':7s} {label}")
     if not ok:
         failures.append(f"the digest is not order-stable: {label} — the ledger would "
@@ -149,7 +161,7 @@ def main() -> int:
     print()
     print("MUST BE INSENSITIVE — a judgment about a fact is not the fact")
     for label, ref_id, got in confidence_cases():
-        ok = got == ref_id
+        ok = tally(got == ref_id)
         print(f"  {'STABLE' if ok else 'BROKEN':7s} {label}")
         if not ok:
             failures.append(f"CONFIDENCE LEAKED INTO THE ID: {label}. Fixing the "
@@ -159,7 +171,7 @@ def main() -> int:
     print()
     print("MUST CHANGE — a different fact is a different id")
     for label, got in changed_cases():
-        ok = got != ref
+        ok = tally(got != ref)
         print(f"  {'CHANGED' if ok else 'BROKEN':8s} {label}")
         if not ok:
             failures.append(f"COLLISION: {label} produced the same id as the original")
@@ -183,6 +195,7 @@ def main() -> int:
                             RISK_SRC)),
     ]
     for label, ok in checks:
+        tally(ok)
         print(f"  {'PASS' if ok else 'BROKEN':7s} {label}")
         if not ok:
             failures.append(f"risk delta id: {label}")
@@ -210,6 +223,7 @@ def main() -> int:
                         bad += 1
                         if bad <= 3:
                             print(f"  MISMATCH {p.name} {x['id']}")
+        tally(not bad)
         print(f"  {'PASS' if not bad else 'BROKEN':7s} {n} facts checked, {bad} id(s) "
               f"not reproducible from their own stored content")
         if bad:
@@ -218,6 +232,7 @@ def main() -> int:
 
     print()
     print("=" * 74)
+    print(f"{counts['pass']} passed, {counts['fail']} failed")
     if failures:
         print(f"{len(failures)} FAILURE(S):")
         for f in failures:

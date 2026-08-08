@@ -1,0 +1,36 @@
+#!/bin/sh
+# Pre-commit checks for this repository.
+#
+# ENABLE ONCE PER CLONE (hooks are not carried by git itself):
+#
+#     git config core.hooksPath .githooks
+#
+# Storing hooks in a tracked directory rather than .git/hooks is what lets the
+# hook be reviewed, versioned and shared. .git/hooks is local-only and invisible
+# in the repository, so a check living there is a check nobody else runs.
+#
+# To bypass in a genuine emergency:  git commit --no-verify
+# If you find yourself reaching for that, the check is probably right.
+
+set -e
+
+# Prefer `uv run` so the check uses the project's locked interpreter. Fall back
+# to a bare python for environments where uv is not on PATH (some GUI git
+# clients start with a minimal environment).
+if command -v uv >/dev/null 2>&1; then
+    RUN="uv run --quiet python"
+else
+    RUN="python"
+fi
+
+# --- Raw control bytes in staged text files --------------------------------
+# Catches regex escapes corrupted by a shell heredoc (\b -> 0x08, \1 -> 0x01),
+# which has happened three times here and silently disabled the affected check
+# each time. See tools/check_control_bytes.py for the full account.
+$RUN tools/check_control_bytes.py || {
+    echo ""
+    echo "pre-commit: BLOCKED by the control-byte scan (see above)."
+    exit 1
+}
+
+exit 0

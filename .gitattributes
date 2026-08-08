@@ -1,0 +1,20 @@
+# Line-ending rules.
+#
+# This repository is developed on Windows with `core.autocrlf = true`, which
+# rewrites LF to CRLF in the working copy on checkout. That is harmless for
+# Python, Markdown and JSON, so nothing here overrides it globally — a blanket
+# `* text=auto` would renormalize the 98 committed ledger files and change
+# content that other checks hash.
+#
+# It is NOT harmless for shell scripts. A hook checked out with CRLF endings has
+# a shebang line reading `#!/bin/sh\r`, and the kernel looks for an interpreter
+# literally named "sh\r", which does not exist:
+#
+#     .githooks/pre-commit: /bin/sh^M: bad interpreter: No such file or directory
+#
+# The hook then fails to run at all. Depending on the git version that either
+# blocks every commit or — worse — is reported as a skipped hook, leaving the
+# control-byte check silently disabled, which is the exact class of failure the
+# hook exists to prevent.
+.githooks/** text eol=lf
+*.sh text eol=lf

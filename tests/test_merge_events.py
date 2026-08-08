@@ -77,8 +77,13 @@ def merge_count(rows):
 
 def main() -> int:
     failures = []
+    counts = {"pass": 0, "fail": 0}
 
     def check(label, ok, detail=""):
+        # Counted as well as printed, so tests/run_all.py can tell whether this
+        # file still runs as many checks as it used to. A suite that silently
+        # shrinks still reports green.
+        counts["pass" if ok else "fail"] += 1
         print(f"  {'PASS' if ok else 'FAIL':5s} {label}")
         if not ok:
             failures.append(f"{label}{' — ' + detail if detail else ''}")
@@ -302,6 +307,7 @@ def main() -> int:
 
     print()
     print("=" * 74)
+    print(f"{counts['pass']} passed, {counts['fail']} failed")
     if failures:
         print(f"{len(failures)} FAILURE(S):")
         for f in failures:
