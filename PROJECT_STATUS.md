@@ -19,11 +19,12 @@ they anchor a narrative claim.
 ## Current Status
 
 **Phase:** Verified — build complete, independently reviewed, every finding
-remediated. **Productionization plan approved 2026-08-08** (multi-company
-restructure, Claude Code as primary LLM backend, process hardening); execution
-not yet started — see the plan at
-`C:\Users\bmoriar\.claude\plans\modular-brewing-teapot.md` and the 2026-08-08
-Session Log entry
+remediated. **Productionizing:** the plan at
+`C:\Users\bmoriar\.claude\plans\modular-brewing-teapot.md` was approved
+2026-08-08 and **Phase 0 (hardening tripwires) is complete and pushed**
+(commits `3c78496`, `a6010bb`). Phases 1–5 not started — next is Phase 1,
+packaging `src/` into `src/equity_research/`. The repository now has a GitHub
+remote: https://github.com/bpmoriarty/public-equity-narrative-research
 
 **Last Session:** 2026-08-08
 
@@ -607,12 +608,28 @@ across 34 calls). Milestones 1–3 cost nothing.
 14. [ ] Optional: the 11 remaining thin figures in `discussion-points.md`. Needs
         per-fact judgment about widening each quote, not a rule. Listed every run by
         the review check, so nothing is lost by leaving them
-15. [ ] **Execute the approved productionization plan** at
-        `C:\Users\bmoriar\.claude\plans\modular-brewing-teapot.md` — six phases:
-        0 hardening tripwires → 1 packaging → 2 MORN move + central paths →
-        3 Claude Code model seam (probes V1–V8 first) → 4 `pipeline` orchestrator →
-        5 test split + model mix + docs. Record the baseline before Phase 0:
-        186 test checks, 1,326 verified quotes, current `pack.json` sha256
+15. [x] **Phase 0 of the productionization plan — hardening tripwires.** Done
+        2026-08-08, commits `3c78496` and `a6010bb`. See the Session Log entry
+        for what was built and how each piece was proven to fire
+16. [ ] **Phase 1 — packaging.** `git mv src/*.py src/equity_research/`, add
+        `__init__.py`, switch `pyproject.toml` to `package = true` with
+        hatchling and a `[project.scripts] pipeline` stub, add
+        `[dependency-groups] dev = ["pytest>=8"]`, and delete the 11
+        `sys.path.insert` hacks. Gate: `uv sync` clean, `run_all.py` still
+        reports 215 checks, `verify_outputs` still 1,326 quotes.
+        *Marked Sonnet-suitable in the plan*
+17. [ ] **Phases 2–5**, in order: 2 MORN move into `companies/MORN/` + central
+        `paths.py`/`settings.py` (gate: the pack sha256 must reproduce) →
+        3 Claude Code model seam, running probes V1–V8 **first** → 4 `pipeline`
+        orchestrator + `init` → 5 test split, model mix, pack subsets, docs.
+        Phase 2 needs OneDrive sync paused; Phase 3's V7 needs the Enterprise
+        seat-terms question answered first
+18. [ ] **Carry the Phase 0 additions through the Phase 2 move.**
+        `tests/test_repo_hygiene.py` walks `data/` and `output/` from the repo
+        root, and `run_all.py` discovers `tests/test_*.py`; both need their
+        roots re-pointed when MORN's data moves under `companies/MORN/`. The
+        count gate will fail loudly if a test silently stops finding artifacts,
+        which is the intended behaviour but will need a deliberate re-record
 
 ---
 
@@ -620,7 +637,10 @@ across 34 calls). Milestones 1–3 cost nothing.
 
 | File | What It Does |
 |------|--------------|
-| `CLAUDE.md` | Project rules — EDGAR access, extraction approach, traceability. Read first |
+| `CLAUDE.md` | Project rules — EDGAR access, extraction approach, traceability. Read first. Ends with **"Rules that have bitten us"**: the five doctrines whose violation recurred, each naming the check that now enforces it |
+| `tools/check_control_bytes.py` | Blocks a commit containing raw control bytes in a text file — the signature of a regex escape mangled by a shell heredoc (`\b` → 0x08). Run via `.githooks/pre-commit`; enable per clone with `git config core.hooksPath .githooks`. `--all` scans the whole tree |
+| `tests/run_all.py` | Runs every test file and compares each one's own count against `tests/expected_counts.json`, **failing in either direction**. Fewer checks than recorded is the failure it exists for: a test that stops testing still reports green |
+| `tests/test_repo_hygiene.py` | 9 checks. Every JSON carrying a top-level `usage.input_tokens` was paid for and must be tracked by git; `output/*.md` likewise; and inversely, `.env` must not be |
 | `VERIFICATION.md` | **The independent review and its remediation log.** Nine findings D1–D9, what each turned out to be, how each was fixed, and what was verified against ground truth. Read before trusting any deliverable |
 | `config/corrections.toml` | **Every human correction, as data.** `[[correction]]` (a ledger value), `[[document_correction]]` (a sentence), `[[id_remap]]` (a renumbered citation). Each carries its evidence and reviewer; each is fatal if it stops matching |
 | `tests/test_extract_sections.py` | 17 checks on the extraction guards. Pins both directions: an image-only document must fail, the legitimately short SEC letters must pass |
@@ -695,6 +715,92 @@ across 34 calls). Milestones 1–3 cost nothing.
 ---
 
 ## Session Log
+
+### 2026-08-08 (continued) — published to GitHub; Phase 0 built and verified
+
+Two things happened: the repository got a remote, and Phase 0 of the
+productionization plan was executed end to end. Run on Opus.
+
+**Published.** Remote added at
+`https://github.com/bpmoriarty/public-equity-narrative-research`, local branch
+renamed `master` → `main`. Pre-flight before pushing: no API-key patterns in any
+tracked file, `.env` untracked **and absent from every commit in the history**
+(gitignore only protects files that were never added, so that second check is
+the one that matters), 145 files / 737 KB. Flagged and left as the user's call:
+the work email is on all 29 commit authors, so removing it from `.env.example`
+does not remove it from GitHub — only a history rewrite would.
+
+**Baseline recorded first**, as the plan requires: **206** test checks green
+across 7 files, 1,326 of 1,329 quotes verified, `pack.json` sha256
+`fd320ce531c4766f95feb4f3f0cf10d47127787706d6e3647a5281fcc65e6cf5` (matching the
+value already recorded in `pack-report.md`). *The plan said 186 checks; the suite
+had grown to 206. The measured number is the one recorded.*
+
+**Built — every piece run against something that fails it before being trusted,
+per doctrine 3:**
+
+1. **Control-byte scan** — `tools/check_control_bytes.py` + `.githooks/pre-commit`,
+   enabled with `git config core.hooksPath .githooks` (once per clone, now in the
+   README). Scans **staged blobs**, not working-tree files. `.gitattributes` pins
+   the hook to LF endings, scoped to `.githooks/` so the 98 committed ledger files
+   are not renormalised — a CRLF shebang would make the hook fail to run, silently
+   disabling the check. *Proven both ways: a corrupted file blocked with byte
+   offsets and the likely escape named; a clean file with a real `\b`, a real
+   backreference, a tab and unicode passed; all 145 tracked files scanned clean.*
+   **It also caught a live corruption during its own test** — the "clean" fixture
+   was first written through a shell double-quoted string, the shell ate the
+   backslashes, and the scanner flagged the resulting 0x08. The bug reproduced
+   itself by accident, which is the best evidence the tool works.
+2. **Model-output-must-be-tracked** — `tests/test_repo_hygiene.py` finds every
+   JSON carrying a top-level `usage.input_tokens` and requires it to be neither
+   ignored nor untracked. 90 found (88 facts + 2 generation records). Also asserts
+   `output/*.md` is tracked and, inversely, that `.env` is not. *Proven by planting
+   a model-output-shaped file in a gitignored directory: named it, printed the fix.*
+3. **Test-count gate** — `tests/run_all.py` vs `tests/expected_counts.json`, failing
+   in **either** direction. Three files did not report a count, so each gained one
+   at the point of the check; **no assertion was changed**. Scraping their prose was
+   tried and rejected — a trial scraper counted a section header as a check, which is
+   precisely the checker-bug class this project already has ~18 of. *Proven on four
+   paths: fewer, more, a listed file that no longer exists, a file reporting no count.*
+5. **Content-hash cache staleness** — `source_sha256` over each section's accession,
+   key and text, replacing the length-only comparison. Records predating the field
+   fall back to length, so **nothing was invalidated**: `--estimate` still reports
+   88 cached / 0 to run. *Proven: a planted non-matching hash reports "content
+   changed with NO change in length", which the old check could not say; the correct
+   hash keeps the record cached; the digest moves on all four same-length mutations
+   (substitution, reordering, different filing, different section) and is stable on
+   identical input.*
+6. **Pack budget check** — new `[pack]` block in `config/outputs.toml`:
+   `warn_tokens = 400_000`, `max_tokens = 600_000`. The 1M context is not the
+   binding constraint; quality is, and it fails invisibly as fluent prose that
+   misquotes its own source. Current pack: 352,194 tokens, 59% of the ceiling.
+   Over the ceiling the artifacts are still written for inspection but the stage
+   exits non-zero. *Proven on all four paths — under, warn, fatal, and `--no-count`,
+   which says the budget was NOT checked rather than passing silently. A
+   misconfiguration with warn above max is refused at load.*
+4. **Advisory heredoc guard** — `tools/hook_no_heredoc.py` + `.claude/settings.json`
+   `PreToolUse` hook. Deliberately narrow and best-effort; the byte scan is the real
+   gate because it reads bytes instead of guessing shell syntax. *Proven on 7 cases,
+   including that `git commit -F -` stays allowed.*
+7. **`CLAUDE.md` — "Rules that have bitten us."** The five costliest doctrines, each
+   naming its mechanical enforcer, moved out of `.gitignore` comments and
+   `VERIFICATION.md` findings where they read as history rather than instructions.
+8. **Small fixes** — `build_pack` `MODEL` constant → config; failed extraction
+   records now carry `request_id`; and `.env.example` carried a real email address
+   five lines below its own instruction never to. Replaced with a placeholder, and
+   `discover.py` / `fetch.py` now **refuse** that placeholder rather than sending a
+   fake User-Agent to the SEC. *Proven both directions.*
+
+**Deferred, with reasons stated rather than dropped:** `_bootstrap.py` extraction
+(it lands in `src/equity_research/` in Phase 1; doing it now touches all 21 files
+twice) and `PYTHONUTF8=1` (must be set before the interpreter starts, so its home
+is the orchestrator's per-stage subprocess env in Phase 4; the scripts already
+reconfigure stdout/stderr, which covers the console failures seen so far).
+
+**Baseline held exactly after every change:** 215 checks green (206 pre-existing
++ 9 new), 1,326 of 1,329 quotes verified, every hard output check passing on both
+documents, and `pack.json` sha256 still `fd320ce5…` — **byte-identical**. No
+pipeline output changed.
 
 ### 2026-08-08 — planning session: productionization plan explored and approved
 
