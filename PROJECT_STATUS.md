@@ -18,11 +18,11 @@ they anchor a narrative claim.
 
 ## Current Status
 
-**Phase:** Building
+**Phase:** Verified — build complete, independently reviewed, every finding remediated
 
-**Last Session:** 2026-08-05
+**Last Session:** 2026-08-08
 
-**Overall Health:** 🟢 Working — milestones 1–4 complete; 1,329 facts, all individually citable. **Milestone 5 is complete.** All three deliverables written and passing every constraint gate. $7.21 spent
+**Overall Health:** 🟢 Working — milestones 1–5 complete. **The full verification suite has been run and all nine of its findings are fixed.** 1,329 ledger facts, 1,425 citable ids, three deliverables passing 13 hard checks each. Quote census re-earned after the repairs at **1,326/1,326**. $7.21 spent on generation; remediation cost $0.00 in API calls
 
 ### What's Working
 
@@ -113,6 +113,32 @@ they anchor a narrative claim.
   the normalization has been loosened three times and each loosening is exactly
   when the rejections need re-proving
 - **Coverage.** 10-K and DEF 14A complete for all five fiscal years
+- **The verification suite has been run, and every finding is fixed**
+  (`VERIFICATION.md`). Four dimensions: data-integrity, pipeline, claims-evidence,
+  and statistical — the last **N/A and justified**, because the charter forbids the
+  work that dimension audits. Nine findings D1–D9, all remediated across seven
+  commits, none of which needed a model call
+- **The evidence layer is verified against ground truth, twice.** Every quotation
+  re-derived from the cached filings — a census, not a sample — at **1,326/1,326**
+  before the repairs and again after 34 quotes changed. The pack rebuilds
+  byte-identically from a clean checkout, all stage seams reconcile, and 415/415
+  citations across the three deliverables resolve
+- **Human corrections are data, not edits** (`config/corrections.toml`). Three
+  mechanisms, each machine-checked and each fatal if it goes stale: `[[correction]]`
+  fixes a ledger value the cited filing contradicts, `[[document_correction]]` fixes
+  a sentence in a generated document, and `[[id_remap]]` re-points a citation whose
+  fact was renumbered by a repair. `data/ledger/facts/` — the record of what the
+  extraction model returned — is never edited
+- **A generated document can be corrected without regenerating it.**
+  `generate_outputs.py --apply-corrections` re-renders both deliverables from their
+  generation records. No model call, $0.00, idempotent. `text` keeps the model's own
+  words forever, `shipped_text` is what was published, and every correction prints in
+  the document's own provenance — a correction the reader cannot see is a hand-edit
+  with better paperwork
+- **Figures in prose are now evidenced, not just cited** (`figures_evidenced`, a hard
+  check). Three tiers: the figure is in a cited fact's quote, in its `claim` only, or
+  in neither. Calibrated on the real documents before it was written and it found a
+  real defect on its first run
 
 ### What's Broken or Incomplete
 
@@ -129,7 +155,23 @@ they anchor a narrative claim.
   adoption", dropping the offsetting half — the check earning its keep. The other
   two are false negatives left in place on purpose: recovering them would mean
   tolerating a 12-character tail or gaps in the source, and the second would
-  dismantle the stitched-quote defence. See DATA.md, Quote verification
+  dismantle the stitched-quote defence. See DATA.md, Quote verification.
+  **All three are now excluded from the pack** (verification finding D5) — they stay
+  in the ledger as the record of what the model returned, but nothing can cite a fact
+  with no filing behind it
+- **11 figures in `discussion-points.md` are traceable but not evidenced.** Their
+  number is in the cited fact's `claim` and not in its `quote`, so resolving the id
+  does not show a reader the figure. The vote-table class that produced 20 of these
+  is fixed; the residue is incentive-metric and language facts with no uniform table
+  to anchor on, and closing them needs per-fact judgment rather than a rule. Listed
+  every run by the `figures traceable to a cited fact's claim but NOT to its quote`
+  review check. **Not a fabrication risk** — every one was confirmed present in the
+  cited filing — but the brief's provenance promise does not hold for them
+- **The blind clean-room diff was never run.** The verification suite asks for a
+  different model family on the independent passes; the same family reviewed and then
+  repaired its own work. The ground-truth checks — census, byte-identical rebuild,
+  seam reconciliation — do not depend on reviewer judgment and carry the weight, but
+  this is the first gap to close if any deliverable becomes load-bearing
 - **`investor_qa` counts are not a series.** FY2023's 231 against FY2021's 113
   reflects how many questions were asked and how long the answers ran, not
   anything about strategy that year. Use the field for what was said, never as a
@@ -427,6 +469,17 @@ across 34 calls). Milestones 1–3 cost nothing.
 
 | Date | Decision | Why |
 |------|----------|-----|
+| 2026-08-08 | **`as_of` is a property of the DATA; `run_utc` is a property of the artifact** | `discover.py` is cache-first and `as_of_utc` was `datetime.now()` unconditionally, so a run making zero EDGAR requests stamped its own clock on an index fetched days earlier — in a file that said `sec_requests_made: 0` on the next line. Wrong by twelve minutes when caught, and the error grows without bound. Both are reported now, and a vintage inferred from file mtime says so rather than passing as a record |
+| 2026-08-08 | Corrections are **data with three distinct shapes**, never edits | A ledger value the filing contradicts, a sentence in a generated document, and a citation whose fact was renumbered are three different operations. Folding them into one channel would misdescribe all three — and the id remap is the one that can be *machine-checked* (old id gone, new id present, same claim on both sides), which a free-text find/replace never can |
+| 2026-08-08 | `data/ledger/facts/` is **never edited**, whatever the defect | It is the record of what the extraction model actually returned, and it is what makes every quote checkable after the fact. A corrected file and a correct-in-the-first-place file are indistinguishable once you overwrite it. Corrections apply on the way into the ledger instead, and the fact carries both values |
+| 2026-08-08 | A correction must be **visible in the document**, not only in the JSON | A correction the reader cannot see is a hand-edit with better paperwork. Each one prints in the provenance block with its reason and reviewer; renumberings print as a count, so the entries that actually change a claim stay legible |
+| 2026-08-08 | The pack hash may be re-stamped **only if the document still verifies against it** | The hash is the reader's guarantee that the evidence has not moved underneath the prose. Re-stamping after a ledger repair would be a lie if any citation had gone stale — so the rewrite is refused unless every id resolves and every quotation is still verbatim, and both hashes are printed |
+| 2026-08-08 | A fact with **no source is excluded from the pack**, not made fatal | Their existence is the pipeline working: `attribute()` correctly records that an ungrounded paraphrase has no filing. Crashing on that would be brittle. The defect was that they were citable anyway — so they stay in the ledger and leave the pack, which closes the class through a gate that already exists (an id absent from the index is an unresolvable citation) |
+| 2026-08-08 | The extraction floor counts **words, not characters** | A character floor asks "did we get any bytes?", which a filing published as images passes — 163 characters of JPG filenames cleared it with `ok: true`. Threshold set from the measured distribution (12 for the defect, 82 for the next-shortest real document), so it is not load-bearing: anything from 15 to 80 separates them identically |
+| 2026-08-08 | A vote quote is **the table row, not the sentence introducing the table** | Selection, not synthesis: the table renders one cell per line, so a director's row is itself a contiguous verbatim span containing exactly the claimed figures. Guarded three ways and it falls back to the original quote if any guard fails — a pipeline that constructs its own evidence should only do so where the rule is mechanical |
+| 2026-08-07 | **`quote_verified: true` does not mean the value follows from the quote** | The Desmond fact stored `change: departed, date: 2022-05-06` with a genuinely verbatim quote that says she *informed the CEO she had decided to depart in August*. The quote contained its own disproof. Two independent things need checking and only one was: that the quote is real, and that the structured value is entailed by it |
+| 2026-08-07 | A new check ships as **review for one commit**, then earns `hard` | `figures_evidenced` was calibrated on the real documents before it was written, shipped as a review list, fired on two real defects and nothing else, and only then was allowed to stop a build. The same doctrine as 10f: a check that fires on correct documents is worse than no check |
+| 2026-08-07 | Detection is built **before** the defect it will find is fixed | D2(a)'s numeric gate was built first and then located D3 by itself, rather than D3 being fixed by hand and the check trusted on assertion. It also proved the check on a known positive |
 | 2026-08-04 | Python 3.13, not 3.14/3.15 | Matches `sec-extraction-v3`; `tomllib` in stdlib, full wheel coverage |
 | 2026-08-04 | Version floors (`>=`), not exact pins | Building now, not reproducing a validated run. Tighten `edgartools`/`beautifulsoup4`/`lxml` to `==` once hand-checked end-to-end |
 | 2026-08-04 | `tomllib` for config, no TOML package | Only reading config, never writing it |
@@ -532,9 +585,23 @@ across 34 calls). Milestones 1–3 cost nothing.
     - e. [x] `narrative-brief.md` (2,007 words) and `discussion-points.md` (3,527 words), $7.00. Found an 8-defect quotation rate the id check could not see
     - f. [x] `src/verify_outputs.py` — 12 hard checks + 2 review lists per document, 44 tests. Caught the brief's undisclosed FY2021 letter gap
 11. [ ] Optional, if the board narrative proves load-bearing: per-year verified
-        boundaries for `DEF14A_director_bios` and `DEF14A_proposals_and_votes`
-12. [ ] Run `preflight`, then `verification-suite` before treating any output as
-        shareable
+        boundaries for `DEF14A_director_bios` and `DEF14A_proposals_and_votes`.
+        The verification suite raised its priority — 51 low-confidence director-bio
+        facts, and whether board-composition claims are usable is still the reader's
+        call
+12. [x] **`preflight` and the full `verification-suite`, both run.** Preflight on
+        2026-08-06 (verdict GO, two real findings). The verification suite on
+        2026-08-07 in an isolated worktree with a fresh venv — four dimensions, nine
+        findings, **all nine now fixed**. See `VERIFICATION.md` for the report and
+        the remediation log
+13. [ ] **Close the model-family gap.** The suite asks for a different model family
+        on the independent passes and it was not achievable — the same family
+        reviewed and then repaired its own work, and the blind clean-room diff of the
+        analytical core was never run. Do this before treating any deliverable as
+        load-bearing; it is the one item the ground-truth checks cannot substitute for
+14. [ ] Optional: the 11 remaining thin figures in `discussion-points.md`. Needs
+        per-fact judgment about widening each quote, not a rule. Listed every run by
+        the review check, so nothing is lost by leaving them
 
 ---
 
@@ -543,6 +610,11 @@ across 34 calls). Milestones 1–3 cost nothing.
 | File | What It Does |
 |------|--------------|
 | `CLAUDE.md` | Project rules — EDGAR access, extraction approach, traceability. Read first |
+| `VERIFICATION.md` | **The independent review and its remediation log.** Nine findings D1–D9, what each turned out to be, how each was fixed, and what was verified against ground truth. Read before trusting any deliverable |
+| `config/corrections.toml` | **Every human correction, as data.** `[[correction]]` (a ledger value), `[[document_correction]]` (a sentence), `[[id_remap]]` (a renumbered citation). Each carries its evidence and reviewer; each is fatal if it stops matching |
+| `tests/test_extract_sections.py` | 17 checks on the extraction guards. Pins both directions: an image-only document must fail, the legitimately short SEC letters must pass |
+| `tests/test_discover.py` | 12 checks on cache vintage — that an inferred as-of date labels itself, and that a zero-request run does not claim its own clock |
+| `data/raw/_meta/fetch-log.json` | When each cached metadata document was actually read from EDGAR. Written at fetch time, because that is the only moment that knows |
 | `SPEC.md` | Document scope, extraction targets, ledger schema, output specs |
 | `DATA.md` | Provenance, as-of date, and 9 known limitations. Read before making any coverage claim |
 | `PROMPT.md` | The original kickoff prompt and its milestone gates |
@@ -563,12 +635,12 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `data/ledger/facts/` | Cached per-task extraction results. A completed task is never re-run |
 | `src/render_timeline.py` | Milestone 5d. Renders `output/timeline.md`. Deterministic, no model call; asserts completeness before writing |
 | `output/timeline.md` | **Deliverable 1 of 3.** Chronological reference table, every row carrying its fact id and filing |
-| `src/verify_outputs.py` | Milestone 5f. Holds the deliverables to the pack's binding constraints; deterministic, free, non-zero exit on failure |
-| `tests/test_verify_outputs.py` | 44 checks. Every hard check tested against a document that fails it as well as one that passes |
+| `src/verify_outputs.py` | Milestone 5f. Holds the deliverables to the pack's binding constraints — **13 hard checks and 3 review lists** per document; deterministic, free, non-zero exit on failure |
+| `tests/test_verify_outputs.py` | 63 checks. Every hard check tested against a document that fails it as well as one that passes |
 | `src/generate_outputs.py` | Milestone 5e. Writes both prose deliverables from the pack; checks and repairs ids and quotations |
-| `output/narrative-brief.md` | **Deliverable 2 of 3.** The five-year arc, 2,007 words, 125 citations |
+| `output/narrative-brief.md` | **Deliverable 2 of 3.** The five-year arc, 2,089 words, 126 citations |
 | `output/discussion-points.md` | **Deliverable 3 of 3.** Observations, open questions, and stated-vs-paid-for priorities |
-| `tests/test_generate_outputs.py` | 35 checks on the citation and quotation gates; fixtures are real strings from the first generation run |
+| `tests/test_generate_outputs.py` | 38 checks on the citation and quotation gates; fixtures are real strings from the first generation run. Fails loudly if a committed generation record is missing rather than skipping itself |
 | `src/merge_events.py` | Milestone 5c. Merges duplicate event records, splits undated ones out, tags routine governance. Deterministic. `--show merged|unclear|possible|routine` |
 | `config/outputs.toml` | Output-stage config: merge threshold, routine patterns and the material overrides. **Change behaviour here, not in code** |
 | `tests/test_merge_events.py` | Proves same-filing records never merge and the incentive-plan row is not tagged routine. Run after any threshold change |
@@ -610,6 +682,66 @@ across 34 calls). Milestones 1–3 cost nothing.
 ---
 
 ## Session Log
+
+### 2026-08-07 / 08 — the verification suite, and fixing everything it found
+
+Seven commits, `400c789` → `a223c57`. **No model calls; the whole remediation cost
+$0.00 in API spend.**
+
+- **Ran the full verification suite** in an isolated worktree with a fresh venv, the
+  original tree read-only throughout. Four dimensions; the statistical one is **N/A
+  and that is a scope fact, not a skip** — the charter forbids the work it audits, and
+  there is no estimator, test, CI or metric anywhere in `src/`
+- **The evidence layer held.** Every quotation re-derived from the cached filings —
+  a census, not a sample — **1,326/1,326** genuine filing text. Byte-identical pack
+  rebuild from a clean checkout, all seams reconciling, 412/412 citations resolving
+- **Nine findings, all now fixed.** The full account is in `VERIFICATION.md`; the
+  ones that changed how I think about this pipeline:
+  - **D1 — `quote_verified: true` does not mean the value follows from the quote.**
+    The Desmond fact recorded a *departure* on the day she *announced* one, and its
+    own verbatim quote contained the disproof. It reached two deliverables, and the
+    brief told the reader "the filings do not settle" a question the 8-K/A settles
+    explicitly. Root cause was a hardcoded template asserting ambiguity about evidence
+    it had never read
+  - **D7 — a test that skipped itself.** `data/pack/gen-*.json` are model output —
+    the only copy of `text_before_repair` — sitting in a gitignored directory under a
+    justification describing the *other* files beside them. Third instance of that
+    reasoning in this repo, first not caught. The measured cost: the suite ran 29
+    checks in a clean checkout instead of 35 and reported green
+  - **D4 — the corruption was in what got stored, not what got compared.** `canon()`
+    already saw through the literal `’` escapes; `verify_quote` then returned the
+    *model's* string as the verified span, so the corrupt spelling was what got stored
+    and cited — while its docstring claimed the opposite
+  - **D9 — as-of described the run, not the data.** Found while fixing D8, because
+    re-running `discover.py` to add a field would itself have falsified the timestamp
+- **Two defects were found by a check rather than by reading.** D2(a)'s numeric-
+  evidence gate was deliberately built *before* D3 was fixed, and it located D3 on its
+  own — then reading the filing to fix it turned up a second error in the same six
+  words that the suite had missed: the buyback figure was dated to 2022, before the
+  programme was effective
+- **I found bugs in my own checks repeatedly, and that is the recurring lesson.**
+  Three of four initial seam failures and four of thirteen quote failures were my
+  artifacts. The numeric gate's first version read `$200,000` as `000` (the lookbehind
+  excluded `$`) and `Item 5.07` as a quantity — both reporting a defect in the document
+  that was really a defect in the checker, which is the failure mode that teaches a
+  reader to ignore a check. Every one is now a pinned regression case
+- **Corrections became a first-class mechanism** rather than hand-edits:
+  `config/corrections.toml` with three shapes, each machine-checked and each fatal if
+  it goes stale. `data/ledger/facts/` is never touched. A generated document can now be
+  corrected in place — `--apply-corrections`, $0.00, idempotent — with the model's own
+  text preserved and every correction printed in the document's provenance
+- **Phase 4 re-verification, because the census expired** when 34 quotes changed:
+  1,326/1,326 again, 0 literal escapes, seam `1,329 − 3 + 99 = 1,425` exact, 415/415
+  citations resolving, determinism confirmed twice at `fd320ce5…`, all seven test files
+  passing, `verify_outputs` green on both documents
+- Test suite grew 5 files → **7** (186 checks): `test_extract_sections.py` and
+  `test_discover.py` are new, and `verify_outputs` went from 12 hard checks to 13
+- **What is deliberately still open:** the blind clean-room diff was never run (same
+  model family reviewed and repaired its own work), 11 figures remain traceable but
+  not evidenced, and the human-judgment residue stands — whether 64% `investor_qa` is
+  the right evidentiary mix, the May-2026 vote convention, the 51 low-confidence
+  director bios, and the analyst-analysing-own-employer bias the traceability rule
+  exists to control
 
 ### 2026-08-04
 
