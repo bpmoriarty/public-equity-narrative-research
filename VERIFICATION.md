@@ -17,10 +17,11 @@ that today's gates cannot see.
 Dimensions run: data-integrity **yes** · pipeline **yes** · statistical **N/A
 (justified below)** · claims-evidence **yes**
 
-> **Remediation status, 2026-08-07.** **D1, D7 and D8 are fixed**, and **D2(a)**
-> — the numeric-evidence detector — is built and calibrated. See *Remediation log*
-> at the end of this file for what changed and how each fix was verified. D3–D6
-> are open, plus **D9**, a new latent finding surfaced while fixing D8.
+> **Remediation status, 2026-08-07.** **D1, D3, D7 and D8 are fixed**, and **D2(a)**
+> — the numeric-evidence detector — is built, calibrated and now a hard check. See
+> *Remediation log* at the end of this file for what changed and how each fix was
+> verified. **D2(b), D4, D5 and D6 are open**, plus **D9**, a new latent finding
+> surfaced while fixing D8.
 >
 > Everything below describes the state at commit `0547c37`, when the suite was run,
 > and is left unedited so the finding and the fix can be read against each other. The pack sha256 has since moved from `adb27b53…` to
@@ -479,6 +480,42 @@ accepted class. The brief's clean 19/19 is asserted in the test suite; the
 discussion-points counts deliberately are **not**, because a test pinned to today's
 defect count has to be edited every time a defect is fixed.
 
+### D3 — fixed 2026-08-07, and it was two errors, not one
+
+This report recorded D3 as "right number, wrong id." Reading the filing to fix it
+found a **second error in the same six words**, which the suite had missed:
+
+- **Wrong id.** `EVT-FY2022-5d620550` is the FY2022 10-K and carries only the
+  authorisation — *"approved a new share repurchase program … up to $500.0 million …
+  effective January 1, 2023."* No shares, no dollars. The figures are in the FY2023
+  10-K as `EVT-FY2023-fc8f78b1`.
+- **Wrong date.** The document said the buyback took 8,484 shares *"by end-2022"*.
+  The programme was **effective 2023-01-01** — nothing could be repurchased under it
+  in 2022. The FY2023 10-K states *"As of December 31, 2023, we repurchased a total of
+  8,484 shares for $1.4 million under this authorization"*, and the FY2024 10-K
+  corroborates it arithmetically: cumulative **41,784 = 8,484 (2023) + 33,300 (2024)**.
+
+The date error also inverted the sentence's own argument. "Dormant" is demonstrated by
+8,484 shares in the programme's *first full year*; dated to 2022 it describes a
+programme that had not started, which evidences nothing.
+
+Fixed as a `[[document_correction]]`, so the model's text is preserved and the
+correction is disclosed in the document's provenance. No model call, $0.00.
+
+**The detector found this, not a reader.** Those two figures were the only ones in
+either deliverable appearing in no cited fact at all. That is the argument for having
+built D2(a) first.
+
+*Verified:* UNSOURCED went **2 → 0** across both documents. THIN went **17 → 19** —
+correctly, because `EVT-FY2023-fc8f78b1`'s quote stops two sentences before the
+repurchase total, so the figure is now traceable but still not evidenced. That is a
+D2(b) case and is deliberately left for D2(b) rather than pre-empted for one fact.
+
+**UNSOURCED promoted to a hard check** (`figures_evidenced`). It shipped as `review`
+for exactly one commit — long enough to prove it fired on real defects and nothing
+else — and is now exercised on failing input as well as passing, per this suite's own
+rule. `test_verify_outputs` is at 63.
+
 ### D9 — NEW, latent: `as_of_utc` records when the script ran, not when EDGAR was read
 
 Found while fixing D8. `src/discover.py:531` sets `as_of = datetime.now(timezone.utc)`
@@ -503,11 +540,10 @@ is a judgment about the contract, not a bug fix.
 
 ### Still open
 
-D2(b) (capture table rows into vote quotes — optional, decided on what the new
-detector shows), D3 (one mis-citation — **already located by the D2(a) detector**;
-fixing it clears UNSOURCED to zero and lets that tier become a hard check), D4 (9
-double-encoded quotes), D5 (3 facts with `source: null`), D6 (image-only exhibit
-passed as a success), D9 (as-of vintage).
+D2(b) (capture table rows into vote quotes — now the only thing standing between the
+THIN tier and zero; it stands at **19**), D4 (9 double-encoded quotes), D5 (3 facts
+with `source: null`), D6 (image-only exhibit passed as a success), D9 (as-of
+vintage).
 
 Residue item 1 is unchanged: the blind clean-room diff has still not been run, and
 these fixes were written by the same model family that wrote the code they correct.

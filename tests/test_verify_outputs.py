@@ -52,7 +52,18 @@ def check(name: str, got, want) -> None:
 SHA = "a" * 64
 
 PACK = {
-    "years": {"FY2021": {}, "FY2022": {}, "FY2023": {}},
+    # FY2022 carries a `facts` block so the numeric-evidence tiers are reachable
+    # end-to-end. `claim` is what the model was shown; `quote` is what a reader can
+    # resolve. The vote fact below states 507,847 in BOTH (-> QUOTED) and 15,365 in
+    # the claim only (-> THIN), which is the whole distinction under test.
+    "years": {"FY2021": {},
+              "FY2022": {"facts": {"vote_results": [{
+                  "id": "VOTE-FY2022-44444444",
+                  "claim": {"matter": "say-on-pay", "votes_against": 507847,
+                            "abstentions": 15365},
+                  "quote": "Say-on-pay was approved with 507,847 votes against.",
+                  "src": "8-K|acc|8K_item507|2022-05-13"}]}},
+              "FY2023": {}},
     "constraints": [{
         "rule": "Never compare segment counts across the whole window.",
         "scope": "product/business areas: FY2021, FY2022; reportable segments: FY2023. "
@@ -288,6 +299,32 @@ check("  likewise Item 1A, Rule 10b5-1 and a form number",
 check("a four-digit year is not a figure to evidence",
       ne("Revenue grew through 2023 and 2024 [VOTE-FY2023-aaaaaaaa]."),
       {"thin": [], "unsourced": []})
+
+print("\n  UNSOURCED is a HARD check — exercised on failing input, not just passing")
+# This file's own rule: a check tested only against passing input would still pass
+# if its body were `return True`. The failing fixture is the real defect, shortened —
+# 8,484 shares for $1.4 million cited to a fact carrying only the authorisation.
+# VERIFICATION.md D3, which this check found rather than was told about.
+UNSOURCED_DOC = GOOD + ("\n\nThe successor buyback was dormant: 8,484 shares for "
+                        "$1.4 million [VOTE-FY2022-44444444].")
+check("a figure in neither the quote nor the claim FAILS the hard check",
+      run(UNSOURCED_DOC)["figures_evidenced"], False)
+check("  while the same document without it passes",
+      run(GOOD)["figures_evidenced"], True)
+
+# THIN must NOT fail the build. It is measured, recorded, and deferred to D2(b);
+# a hard gate on it would block every build on a known class.
+THIN_DOC = GOOD + ("\n\nThere were 15,365 abstentions on the matter "
+                   "[VOTE-FY2022-44444444].")
+check("a figure in the claim but not the quote does NOT fail the build",
+      run(THIN_DOC)["figures_evidenced"], True)
+check("  but it IS surfaced for review",
+      reviews(THIN_DOC)["figures traceable to a cited fact's claim but NOT to its "
+                        "quote"], 1)
+check("a figure present in the quote is reported in neither tier",
+      (run(GOOD)["figures_evidenced"],
+       reviews(GOOD)["figures traceable to a cited fact's claim but NOT to its quote"]),
+      (True, 0))
 
 print("\n  scope is the PARAGRAPH, because that is the pack's citation granularity")
 check("evidence cited one sentence earlier still counts",

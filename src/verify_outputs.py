@@ -130,13 +130,22 @@ def load() -> tuple[str, dict, dict, dict, dict]:
 #
 # Both are pinned in tests/test_verify_outputs.py.
 #
-# STILL A REVIEW CHECK, deliberately. The 2 UNSOURCED are both the single
-# mis-citation recorded as D3 (8,484 shares / $1.4 million attributed to the FY2022
-# 10-K when they are in the FY2023 one). Once D3 is fixed, UNSOURCED goes to zero
-# and this tier should be promoted to `hard` — a figure in no cited fact is not a
-# style matter. THIN stays review until D2(b) decides whether to capture table rows
-# into vote quotes; making it hard today would block every build on a known,
-# accepted class.
+# UNSOURCED IS NOW A HARD CHECK; THIN REMAINS REVIEW.
+#
+# The 2 UNSOURCED this check found on its first run were both D3 — 8,484 shares and
+# $1.4 million cited to the FY2022 10-K, which carries only the buyback
+# authorisation. Reading the filing to fix it turned up a second error in the same
+# six words that the verification suite had missed: the programme was effective
+# 2023-01-01, so the document's "by end-2022" was not merely mis-cited but
+# impossible. Both corrected, tier went to zero, check promoted.
+#
+# That sequence is the argument for the promotion. The check shipped as `review` for
+# one commit, fired on two real defects and nothing else, and only then was allowed
+# to stop a build.
+#
+# THIN stays review. It stands at 19 and every one is a known instance of D2 —
+# making it hard would block every build on a class that has been measured,
+# recorded, and deliberately deferred to D2(b).
 
 # Figures worth checking: money, thousands-separated counts, decimals. Bare 1-2
 # digit numbers are excluded — "two of the three segments" is prose, not a filing
@@ -429,11 +438,17 @@ def verify(doc: str, md: str, pack: dict, index: dict, pf: dict, cfg: dict,
 
     # --- D2: does the citation beside a figure actually show that figure? -------
     ne = numeric_evidence(paras, index, claim_numbers(pack))
-    r.review("figures stated in prose that no cited fact EVIDENCES (in no quote, "
-             "and in no claim either)", ne["unsourced"],
-             "the serious tier. The figure is not in the quote or the claim of any "
-             "fact cited in its paragraph, so nothing the reader can resolve supports "
-             "it. Promote to a hard check once VERIFICATION.md D3 is fixed")
+    # HARD as of the D3 fix. It shipped as a review check for exactly one commit —
+    # long enough to prove it fired on real defects and nothing else. It found the
+    # only two unsourced figures in either deliverable (8,484 shares and $1.4
+    # million, cited to a 10-K containing neither), those were corrected, and the
+    # tier went to zero. A figure supported by nothing a reader can resolve is not a
+    # style matter, and the check has now earned the right to stop a build.
+    r.hard("figures_evidenced",
+           "every figure stated in prose appears in a fact cited beside it",
+           not ne["unsourced"],
+           "; ".join(ne["unsourced"][:5])
+           + (f" (+{len(ne['unsourced']) - 5} more)" if len(ne["unsourced"]) > 5 else ""))
     r.review("figures traceable to a cited fact's claim but NOT to its quote",
              ne["thin"],
              "VERIFICATION.md D2. The number is real and the model read it in the "

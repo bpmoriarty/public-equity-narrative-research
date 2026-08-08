@@ -117,3 +117,50 @@ ambiguity. The replacement states what the two filings say and cites the third \
 record — the Contract Services Agreement — that the original sentence left out.\
 """
 verified_by = "human review, 2026-08-07 (VERIFICATION.md D1)"
+
+
+# ---------------------------------------------------------------------------
+# 3. discussion-points.md — a repurchase figure cited to the wrong 10-K, on the
+#    wrong side of the date the programme even began
+# ---------------------------------------------------------------------------
+# VERIFICATION.md D3, and it was found by the D2(a) numeric-evidence detector rather
+# than by reading: 8,484 and 1.4 were the only two figures in either deliverable that
+# appeared in NO cited fact, in neither its quote nor its claim.
+#
+# Two errors in six words, not the one the verification report recorded:
+#
+#   WRONG ID.   EVT-FY2022-5d620550 is the FY2022 10-K and carries only the
+#               authorisation — "approved a new share repurchase program ... up to
+#               $500.0 million ... effective January 1, 2023". No shares, no dollars.
+#               The figures are in the FY2023 10-K, captured as EVT-FY2023-fc8f78b1,
+#               whose claim reads "only 8,484 shares for $1.4 million repurchased as
+#               of year-end."
+#
+#   WRONG DATE. "by end-2022" is not possible. The programme was effective
+#               January 1, 2023, so nothing could be repurchased under it in 2022.
+#               The FY2023 10-K says "As of December 31, 2023, we repurchased a total
+#               of 8,484 shares for $1.4 million under this authorization". The
+#               FY2024 10-K corroborates it arithmetically: 41,784 cumulative =
+#               8,484 (2023) + 33,300 (2024).
+#
+# The date error also inverted the point the sentence was making. "Dormant" is
+# demonstrated by 8,484 shares in the programme's FIRST FULL YEAR; dated to 2022 it
+# describes a programme that had not started, which evidences nothing.
+#
+# NOTE this leaves the figure THIN rather than QUOTED: EVT-FY2023-fc8f78b1's quote
+# stops two sentences before the repurchase total, so resolving the id still does not
+# show a reader the number. That is D2(b)'s decision — whether to widen these quotes
+# to include the data — and is deliberately not pre-empted here for one fact.
+[[document_correction]]
+id = "discussion-buyback-2023-figure"
+document = "discussion"
+find = "8,484 shares for $1.4 million by end-2022 [EVT-FY2022-5d620550]"
+replace = "8,484 shares for $1.4 million by end-2023 [EVT-FY2023-fc8f78b1]"
+reason = """
+Wrong id and wrong date. The cited FY2022 10-K fact contains only the buyback \
+authorisation, not the figures; they are in the FY2023 10-K as EVT-FY2023-fc8f78b1. \
+And the programme was effective 2023-01-01, so "by end-2022" is impossible — the \
+filing says "As of December 31, 2023, we repurchased a total of 8,484 shares for \
+$1.4 million", corroborated by the FY2024 10-K's cumulative 41,784 = 8,484 + 33,300.\
+"""
+verified_by = "human review, 2026-08-07 (VERIFICATION.md D3)"
