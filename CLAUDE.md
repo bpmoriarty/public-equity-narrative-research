@@ -71,3 +71,52 @@ explicitly rather than silently picking one reading.
 - Fail loudly with useful errors. A silently empty extraction is worse than a
   crash.
 - Idempotent re-runs. Running any stage twice should not corrupt or duplicate.
+
+## Rules that have bitten us
+
+Each of these describes a mistake that was made **more than once** in this
+repository, after the reasoning against it had already been written down
+somewhere. They are collected here because they were previously scattered across
+`.gitignore` comments, `VERIFICATION.md` findings and module docstrings — where
+they read as history rather than as instructions.
+
+Where a rule has a mechanical enforcer, it is named. Prefer trusting the
+enforcer over remembering the rule; that is the entire point of building it.
+
+**1. Model output is never "regenerable".** A re-run buys *a* valid answer, not
+*the* answer the committed documents cite. Anything that cost tokens —
+`data/ledger/facts/`, `data/pack/gen-*.json`, `output/*.md` — is committed,
+whatever else in the same directory is derived and ignored. Applied wrongly
+three times, each time to a different artifact, twice *after* the explanation
+had been written into `.gitignore` directly above.
+*Enforced by `tests/test_repo_hygiene.py`.*
+
+**2. Never write source through a shell heredoc.** Backslash escapes do not
+survive it: `\b` has arrived on disk as byte 0x08 and `\1` as 0x01, three times.
+The file still imports, still lints, still looks right in an editor — and the
+regex built on it silently matches nothing, so the check it powers reports green
+forever. Use Write/Edit. This is the worst failure shape available here: a
+checker that passes *because* it is broken.
+*Enforced by `tools/check_control_bytes.py` via `.githooks/pre-commit`, with an
+advisory `PreToolUse` hook in `.claude/settings.json`.*
+
+**3. Run every new hard check against something that fails it, before trusting
+it.** A check that has only ever seen correct input is untested — you have
+confirmed it does not fire, not that it can. Roughly eighteen bugs in this
+project were in checkers rather than in what they checked. New checks that could
+plausibly misfire ship as `review` for one commit and are promoted to `hard`
+after their output has been read once.
+
+**4. Writers merge, never clobber. Run twice, diff nothing.** Two stages have
+overwritten a manifest another stage owned. If a stage writes a shared file, it
+reads the existing content and merges; if it writes its own, running it twice
+produces byte-identical output. Any run-to-run difference — a timestamp inside a
+payload, unsorted keys — is a bug, not cosmetic: `pack.json` deliberately holds
+no timestamp because prompt caching only hits on a byte-identical prefix.
+
+**5. Counts must reconcile across every stage boundary.** A stage reporting
+"32/32 succeeded" is describing what it attempted, not what arrived. Eleven
+filings once vanished between stages while both ends reported complete success.
+State the number in and the number out, and account for the difference —
+explicitly dropped, explicitly empty — or fail. A silent drop is
+indistinguishable from a clean run.

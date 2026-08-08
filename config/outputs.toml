@@ -3,6 +3,37 @@
 # Read-only to the pipeline, like every other file in config/. Change behaviour
 # here rather than in src/.
 
+[pack]
+
+# The model the token count is measured against. It must be the model the
+# generation stage actually calls: tokenisation differs between model families,
+# so counting against one and sending to another gives a number that looks
+# authoritative and is wrong.
+model = "claude-opus-5"
+
+# How large the pack may get, in tokens.
+#
+# The context window is NOT the binding constraint. A 1M-token window leaves
+# roughly 958,000 usable after the system prompt, the ask and room to answer —
+# but quality degrades long before that. The measured MORN pack was 352,194
+# tokens, and 7 of 98 quotations in the first generation pass came back
+# defective: subtly misquoted, or attributed to the wrong year. Recall across a
+# very long payload is the limit, and it arrives quietly, as plausible prose
+# that does not match the source.
+#
+# So these are quality thresholds, not capacity ones:
+#
+#   warn_tokens  the pack is entering the range where quote defects were
+#                observed. Still builds; prints its composition so the largest
+#                contributors are visible.
+#   max_tokens   refuse. A pack this size can still be sent, and the model will
+#                still answer confidently — that is the problem.
+#
+# Raising these is a decision about how much unverified prose is acceptable, so
+# it belongs here in config where it is visible, rather than in a constant.
+warn_tokens = 400_000
+max_tokens = 600_000
+
 [timeline]
 # Two records describe the same event when they share a date, come from DIFFERENT
 # filings, and their descriptions are at least this similar (rapidfuzz

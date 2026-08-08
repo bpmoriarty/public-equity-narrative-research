@@ -30,6 +30,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import sys
 import time
 import tomllib
@@ -56,6 +57,10 @@ RAW_DIR = ROOT / "data" / "raw"
 ATTACH_CACHE = RAW_DIR / "_meta" / "attachments"
 INVENTORY = ROOT / "data" / "discovery" / "inventory.json"
 LOG_PATH = RAW_DIR / "fetch-log.jsonl"
+
+# See the note on the identical constant in src/discover.py.
+PLACEHOLDER_RE = re.compile(r"(?i)\b(example\.(?:com|org|net)|your[._ ]?name|"
+                            r"your[._ ]?email|name@host)\b")
 
 ARCHIVE_URL = "https://www.sec.gov/Archives/edgar/data/{cik}/{nodash}/{filename}"
 
@@ -119,6 +124,10 @@ def get_identity() -> str:
     ident = os.getenv("EDGAR_IDENTITY", "").strip()
     if not ident or "@" not in ident:
         sys.exit("FATAL: EDGAR_IDENTITY not set. See .env.example.")
+    if PLACEHOLDER_RE.search(ident):
+        sys.exit(f"FATAL: EDGAR_IDENTITY is still the .env.example placeholder "
+                 f"({ident!r}). Put a real name and email in .env — the SEC uses it "
+                 f"to contact you, and blocks requests carrying a fake one.")
     return ident
 
 

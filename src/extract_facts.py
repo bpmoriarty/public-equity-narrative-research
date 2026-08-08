@@ -55,6 +55,7 @@ prefix to cache and a cache write would be pure overhead.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 import tomllib
@@ -439,6 +440,36 @@ def build_prompt(task: str, fy: int, sources: list[dict]) -> str:
     return "\n".join(parts)
 
 
+def source_digest(sources: list[dict]) -> str:
+    """A sha256 over the exact text a unit would be extracted from.
+
+    The cache key for a result is a filename, and a filename does not know what
+    it was computed from. Something has to record the input, or a cached answer
+    silently outlives the document it answered.
+
+    `source_chars` was that record, and it caught the real incident it was built
+    for — one over-aggressive stripping rule shortened the input of 24 of 54
+    investor_qa units. But a length is a weak fingerprint. These edits change the
+    text and not the count, and each would leave the length check reporting
+    "unchanged":
+
+        - a boilerplate phrase swapped for one of the same length
+        - two sections gathered in a different order
+        - a section replaced by a same-length section from a different filing
+        - any correction that substitutes rather than removes
+
+    So the identity of each section is hashed alongside its text: a unit built
+    from different filings is a different question even when the characters
+    happen to total the same.
+    """
+    h = hashlib.sha256()
+    for s in sources:
+        h.update(f"{s['accession']}\x00{s['key']}\x00".encode("utf-8"))
+        h.update(s["text"].encode("utf-8"))
+        h.update(b"\x00")
+    return h.hexdigest()
+
+
 def plan_tasks(sections: list[dict], inv: dict, tri: dict | None, years: list[int],
                only_task: str | None) -> list[dict]:
     """Every unit of work, with its sources resolved.
@@ -462,7 +493,8 @@ def plan_tasks(sections: list[dict], inv: dict, tri: dict | None, years: list[in
                 for group in gather_investor_qa(sections, tri, fy):
                     plan.append({"fy": fy, "task": task, "unit": group[0]["accession"],
                                  "sources": group,
-                                 "chars": sum(len(s["text"]) for s in group)})
+                                 "chars": sum(len(s["text"]) for s in group),
+                                 "sha": source_digest(group)})
                 continue
             if task == "events_8k":
                 sources = gather_8k(sections, inv, fy)
@@ -471,7 +503,8 @@ def plan_tasks(sections: list[dict], inv: dict, tri: dict | None, years: list[in
             else:
                 sources = gather_plain(sections, fy, spec["sections"])
             plan.append({"fy": fy, "task": task, "unit": None, "sources": sources,
-                         "chars": sum(len(s["text"]) for s in sources)})
+                         "chars": sum(len(s["text"]) for s in sources),
+                         "sha": source_digest(sources)})
     return plan
 
 
@@ -509,7 +542,12 @@ def run_one(client: anthropic.Anthropic, cfg: dict, unit: dict) -> dict:
         )
     except Exception as exc:
         return {"fiscal_year": fy, "task": task, "unit": uk, "ok": False,
-                "error": f"{type(exc).__name__}: {exc}"}
+                "error": f"{type(exc).__name__}: {exc}",
+                # The id Anthropic support needs to trace a failed call on their
+                # side. Present on API errors, absent on local ones (a connection
+                # that never left, a response that failed schema validation), so
+                # it is read defensively rather than assumed.
+                "request_id": getattr(exc, "request_id", None)}
 
     # A structured response cut off by max_tokens is a failed call, not a short
     # answer: the JSON is incomplete. Surface it rather than storing a partial.
@@ -536,6 +574,10 @@ def run_one(client: anthropic.Anthropic, cfg: dict, unit: dict) -> dict:
         # builder re-reads these to verify quotes, so it must be exact.
         "sources": [{k: s[k] for k in s if k != "text"} for s in unit["sources"]],
         "source_chars": unit["chars"],
+        # The fingerprint the staleness check prefers. `source_chars` is kept
+        # beside it: it still reads usefully in a report, and records written
+        # before this field existed are compared on length alone.
+        "source_sha256": unit["sha"],
         "facts": resp.parsed_output.model_dump(),
     }
 
@@ -573,8 +615,13 @@ def main() -> None:
     # This is not hypothetical. Fixing one over-aggressive stripping rule changed
     # the input of 24 of 54 cached investor_qa results, all silently, because the
     # cache key is a filename and a filename does not know what it was computed
-    # from. Comparing the stored source_chars against the current source text
+    # from. Comparing the stored fingerprint against the current source text
     # catches exactly that, for every task, at no cost.
+    #
+    # The fingerprint is `source_sha256` (see source_digest). Records written
+    # before that field existed fall back to `source_chars`, which is weaker —
+    # it cannot see a substitution that preserves length — but it is what those
+    # records have, and silently treating them as fresh would be worse.
     stale, cached = [], []
     if not args.force:
         for u in list(plan):
@@ -583,12 +630,21 @@ def main() -> None:
                 continue
             plan.remove(u)
             try:
-                was = json.loads(p.read_text(encoding="utf-8")).get("source_chars")
+                rec = json.loads(p.read_text(encoding="utf-8"))
             except (json.JSONDecodeError, OSError):
-                was = None
-            (stale if was is not None and was != u["chars"] else cached).append((u, was))
+                rec = {}
+            was_sha = rec.get("source_sha256")
+            was_chars = rec.get("source_chars")
+            if was_sha is not None:
+                is_stale, basis = was_sha != u["sha"], "hash"
+            elif was_chars is not None:
+                is_stale, basis = was_chars != u["chars"], "length"
+            else:
+                # Nothing recorded at all — no basis on which to claim staleness.
+                is_stale, basis = False, "none"
+            (stale if is_stale else cached).append((u, was_chars, basis))
         if args.refresh_stale:
-            plan += [u for u, _ in stale]
+            plan += [u for u, _, _ in stale]
 
     ex = cfg["extraction"]
     print(f"Fact extraction — {ex['model']}, effort={ex['effort']}, "
@@ -606,11 +662,20 @@ def main() -> None:
         print()
         print(f"  *** {len(stale)} CACHED RESULT(S) ARE STALE — their source text has changed "
               f"since extraction ***")
-        for u, was in sorted(stale, key=lambda t: (t[0]["fy"], t[0].get("unit") or "")):
-            print(f"      FY{u['fy']} {u['task']}"
-                  + (f" [{u['unit']}]" if u.get("unit") else "")
-                  + f": extracted against {was:,d} chars, source is now {u['chars']:,d} "
-                    f"({u['chars'] - was:+,d})")
+        for u, was, basis in sorted(stale, key=lambda t: (t[0]["fy"], t[0].get("unit") or "")):
+            where = (f"      FY{u['fy']} {u['task']}"
+                     + (f" [{u['unit']}]" if u.get("unit") else "") + ": ")
+            if was is None:
+                print(where + f"source text has changed (detected by {basis})")
+            elif was == u["chars"]:
+                # Only the hash can see this one, and it is the case the length
+                # check was blind to: a substitution, a reordering, or a swap
+                # for different text of the same size.
+                print(where + f"content changed with NO change in length "
+                              f"({u['chars']:,d} chars) — caught by the source hash")
+            else:
+                print(where + f"extracted against {was:,d} chars, source is now "
+                              f"{u['chars']:,d} ({u['chars'] - was:+,d})")
         if not args.refresh_stale:
             print()
             print("  These were NOT re-run. A stale result answers a question about a "

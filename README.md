@@ -18,7 +18,35 @@ cp .env.example .env          # Git Bash
 
 # 3. Point the pipeline at a company
 #    Edit config/company.toml: set `ticker` and the [window] fiscal years.
+
+# 4. Enable the pre-commit checks (once per clone — git does not carry hooks)
+git config core.hooksPath .githooks
 ```
+
+Step 4 is not optional housekeeping. The hook runs
+`tools/check_control_bytes.py`, which blocks a commit containing raw control
+bytes in a text file — the signature of a regex escape mangled by a shell
+heredoc (`\b` arriving as byte 0x08). That has happened three times here, and
+each time it silently disabled the check built on the affected pattern while
+everything still reported green. Run it over the whole tree at any time with:
+
+```bash
+uv run python tools/check_control_bytes.py --all
+```
+
+### Running the tests
+
+```bash
+uv run python tests/run_all.py          # every test file, with the count gate
+uv run python tests/test_<name>.py      # one file
+```
+
+`run_all.py` compares each file's own `N passed, M failed` line against
+`tests/expected_counts.json` and fails if the number moved **in either
+direction**. Fewer checks than recorded is the failure this exists for: a test
+that stops testing still reports green. More checks means new ones were added
+without recording them — re-record deliberately with `--update` and commit the
+result alongside the tests that caused it.
 
 Every command runs through uv, which activates the environment for you:
 

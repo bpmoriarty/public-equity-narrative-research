@@ -67,6 +67,12 @@ META_DIR = ROOT / "data" / "raw" / "_meta"
 FETCH_LOG = META_DIR / "fetch-log.json"
 OUT_DIR = ROOT / "data" / "discovery"
 
+# The .env.example placeholder, so a copied-but-not-edited template fails here
+# rather than reaching the SEC as a fake User-Agent. Kept in sync with
+# .env.example by hand; the cost of drift is a missed warning, not a wrong run.
+PLACEHOLDER_RE = re.compile(r"(?i)\b(example\.(?:com|org|net)|your[._ ]?name|"
+                            r"your[._ ]?email|name@host)\b")
+
 TICKER_MAP_URL = "https://www.sec.gov/files/company_tickers.json"
 SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK{cik}.json"
 # Older filings spill out of the main submissions file into shards served here.
@@ -95,6 +101,13 @@ def get_identity() -> str:
             "FATAL: EDGAR_IDENTITY is not set, or has no email address in it.\n"
             "The SEC blocks requests without a descriptive User-Agent.\n"
             "Copy .env.example to .env and set EDGAR_IDENTITY=\"Name email@host\"."
+        )
+    if PLACEHOLDER_RE.search(ident):
+        sys.exit(
+            f"FATAL: EDGAR_IDENTITY is still the .env.example placeholder ({ident!r}).\n"
+            "The SEC requires a real, contactable identity — it is how they reach you\n"
+            "if the pipeline misbehaves, and requests carrying an obviously fake one\n"
+            "get blocked. Put your own name and email in .env."
         )
     return ident
 

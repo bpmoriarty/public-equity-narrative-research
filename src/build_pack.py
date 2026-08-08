@@ -50,6 +50,7 @@ import argparse
 import hashlib
 import json
 import sys
+import tomllib
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -61,6 +62,7 @@ from merge_events import timeline_block  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 LEDGER_DIR = ROOT / "data" / "ledger"
 PACK_DIR = ROOT / "data" / "pack"
+CONFIG = ROOT / "config" / "outputs.toml"
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
@@ -71,7 +73,27 @@ FIELDS = ["strategic_priorities", "segments", "headcount", "leadership", "board"
           "incentive_metrics", "vote_results", "events", "notable_language",
           "investor_qa"]
 
-MODEL = "claude-opus-5"
+
+def load_pack_config() -> dict:
+    """The [pack] block: the model tokens are measured against, and the budget.
+
+    A missing block is fatal rather than defaulted. A default would mean the
+    build silently runs with no budget at all, which is indistinguishable from
+    a build that passed one.
+    """
+    if not CONFIG.exists():
+        sys.exit(f"FATAL: {CONFIG} not found.")
+    cfg = tomllib.loads(CONFIG.read_text(encoding="utf-8")).get("pack")
+    if not cfg:
+        sys.exit(f"FATAL: {CONFIG} has no [pack] block. It carries the token "
+                 f"budget and the model the count is measured against.")
+    for key in ("model", "warn_tokens", "max_tokens"):
+        if key not in cfg:
+            sys.exit(f"FATAL: [pack] in {CONFIG} is missing `{key}`.")
+    if cfg["warn_tokens"] > cfg["max_tokens"]:
+        sys.exit(f"FATAL: [pack] warn_tokens ({cfg['warn_tokens']:,}) is above "
+                 f"max_tokens ({cfg['max_tokens']:,}); the warning could never fire.")
+    return cfg
 
 
 # ---------------------------------------------------------------------------
@@ -441,7 +463,7 @@ def build_pack(years: dict[int, dict]) -> tuple[dict, dict]:
 # Size
 # ---------------------------------------------------------------------------
 
-def count_tokens(text: str) -> int | None:
+def count_tokens(text: str, model: str) -> int | None:
     """Exact token count from the API. Free, and the reason we never guess a cost.
 
     Returns None rather than failing the build if it cannot reach the API: the pack
@@ -458,10 +480,72 @@ def count_tokens(text: str) -> int | None:
         import anthropic
         client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
         return client.messages.count_tokens(
-            model=MODEL, messages=[{"role": "user", "content": text}]).input_tokens
+            model=model, messages=[{"role": "user", "content": text}]).input_tokens
     except Exception as e:                                   # noqa: BLE001
         print(f"  (token count unavailable: {type(e).__name__}: {e})")
         return None
+
+
+def check_budget(tokens: int | None, pcfg: dict, per_field: dict[str, int],
+                 n_facts: int) -> bool:
+    """Print the size verdict. False means the pack is over the hard ceiling.
+
+    The failure this guards against does not look like a failure. An oversized
+    pack is still accepted by the API and still produces confident, well-formed
+    prose; what degrades is recall over the payload, and the symptom is a
+    quotation that is subtly wrong. That is invisible at the point of
+    generation, which is why the limit has to be enforced here.
+    """
+    warn, hard = int(pcfg["warn_tokens"]), int(pcfg["max_tokens"])
+    print()
+
+    if tokens is None:
+        # Not silently OK: an unchecked budget must not read as a passed one.
+        print(f"  BUDGET NOT CHECKED — no token count available (--no-count, or "
+              f"the API was unreachable).")
+        print(f"  The limits are {warn:,} warn / {hard:,} max. Re-run without "
+              f"--no-count to check them.")
+        return True
+
+    if tokens < warn:
+        print(f"  budget: {tokens:,} tokens — under the {warn:,} warning "
+              f"({100 * tokens / hard:.0f}% of the {hard:,} ceiling)")
+        return True
+
+    # Fact counts, not token counts: a field's share of the facts is the best
+    # cheap proxy for its share of the payload, and it is what we already have.
+    top = sorted(per_field.items(), key=lambda kv: -kv[1])[:3]
+    biggest = ", ".join(f"{f} {100 * n / n_facts:.0f}%" for f, n in top)
+
+    if tokens <= hard:
+        print(f"  *** PACK BUDGET WARNING — {tokens:,} tokens, over the "
+              f"{warn:,} warning threshold ***")
+        print(f"      Largest fields by fact count: {biggest}")
+        print(f"      Quote defects were observed at 352,194 tokens (7 of 98 "
+              f"quotations in one pass), so this is the range where generation")
+        print(f"      quality, not capacity, becomes the constraint. It will "
+              f"still build. Consider narrowing the window, or building the")
+        print(f"      subset-specific packs rather than sending this one to "
+              f"every call.")
+        return True
+
+    print("=" * 72)
+    print(f"  FATAL: pack is {tokens:,} tokens, above the {hard:,} ceiling.")
+    print()
+    print(f"  Largest fields by fact count: {biggest}")
+    print("  The files were still written, so the pack can be inspected — but "
+          "the generation")
+    print("  stage must not run against it. A pack this size still returns "
+          "fluent prose; what")
+    print("  it stops doing reliably is quoting its own contents correctly.")
+    print()
+    print("  Options, cheapest first:")
+    print("    - narrow the fiscal-year window in config/company.toml")
+    print("    - build a subset pack for calls that do not need everything")
+    print("    - drop quote text from the oldest facts of the largest field")
+    print("    - raise [pack] max_tokens in config/outputs.toml, if the "
+          "quality risk is accepted")
+    return False
 
 
 def main() -> None:
@@ -471,6 +555,7 @@ def main() -> None:
     ap.add_argument("--no-count", action="store_true", help="skip the API token count")
     args = ap.parse_args()
 
+    pcfg = load_pack_config()
     years = load_years()
     pack, index, excluded = build_pack(years)
 
@@ -510,7 +595,7 @@ def main() -> None:
             print(f"    {x['id']}  {x['field']} FY{x['fiscal_year']} "
                   f"({x['confidence']}) — {x['quote_check'][:70]}")
 
-    tokens = None if args.no_count else count_tokens(payload)
+    tokens = None if args.no_count else count_tokens(payload, pcfg["model"])
     if tokens:
         # Cache economics, printed because they are the reason the payload has no
         # timestamp in it — and because caching is NOT automatically the cheaper
@@ -617,6 +702,12 @@ def main() -> None:
     print(f"wrote {(PACK_DIR / 'pack.json').relative_to(ROOT)}, "
           f"index.json, pack-report.md")
     print(f"{len(pack['constraints'])} binding constraints, all derived from the ledger")
+
+    # Last, so the artifacts and the composition report exist to be inspected
+    # whatever the verdict — but non-zero, so the orchestrator stops here rather
+    # than generating documents from an oversized payload.
+    if not check_budget(tokens, pcfg, per_field, n_facts):
+        sys.exit(1)
 
 
 if __name__ == "__main__":
