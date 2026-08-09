@@ -27,10 +27,9 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "src"))
-from merge_events import (DATE_RE, classify_routine, clusters,  # noqa: E402
-                          find_date_conflicts, find_pairs, find_undated_pairs,
-                          load_config, merge_cluster)
+from equity_research.merge_events import (DATE_RE, classify_routine, clusters,  # noqa: E402
+                                          find_date_conflicts, find_pairs, find_undated_pairs,
+                                          load_config, merge_cluster)
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):

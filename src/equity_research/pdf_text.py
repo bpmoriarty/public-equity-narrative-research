@@ -44,11 +44,11 @@ from pathlib import Path
 
 from pdfminer.high_level import extract_text
 
+from equity_research._bootstrap import ROOT
+
 for _stream in (sys.stdout, sys.stderr):
     if hasattr(_stream, "reconfigure"):
         _stream.reconfigure(encoding="utf-8", errors="replace")
-
-ROOT = Path(__file__).resolve().parent.parent
 
 CID_RE = re.compile(r"\(cid:(\d+)\)")
 

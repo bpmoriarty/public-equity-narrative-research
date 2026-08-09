@@ -112,6 +112,8 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
 
+from equity_research._bootstrap import ROOT
+
 # Inline-XBRL filings are XHTML; parsing them with the HTML parser is correct and
 # standard, so silence the advisory warning rather than switching parsers (the
 # XML parser is stricter and chokes on real-world filing markup).
@@ -121,7 +123,6 @@ for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
-ROOT = Path(__file__).resolve().parent.parent
 CONFIG_DIR = ROOT / "config"
 MANIFEST = ROOT / "data" / "raw" / "fetch-manifest.json"
 OUT_DIR = ROOT / "data" / "sections"
@@ -536,8 +537,7 @@ def extract_whole(path: Path) -> dict:
     """Short documents are taken entire — there is no section to locate."""
     suffix = path.suffix.lower()
     if suffix == ".pdf":
-        sys.path.insert(0, str(ROOT / "src"))
-        from pdf_text import extract as pdf_extract
+        from equity_research.pdf_text import extract as pdf_extract
         text, report = pdf_extract(path)
         return {"text": fix_chars(text).strip(),
                 "boundary_basis": "whole document (PDF)",

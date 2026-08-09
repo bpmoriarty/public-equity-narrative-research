@@ -99,11 +99,28 @@ def git(*args: str) -> bytes:
 
 
 def staged_paths() -> list[str]:
-    """Paths added, copied or modified in the index — what a commit would write.
+    """Paths a commit would write a blob for.
 
-    Deletions and renames-away are excluded: there is no blob left to check.
+    A: added.  C: copied.  M: modified.  R: renamed.  T: type changed.
+    Only D (deleted) is excluded, because a deletion leaves no blob to check.
+
+    R IS INCLUDED, and that is the whole point of this docstring. This filter
+    originally read ACM, on the reasoning that "renames are excluded: there is
+    no blob left to check". That reasoning confuses the two halves of a rename.
+    Git reports a rename under its DESTINATION path, and the destination very
+    much has a blob — often a modified one, since `git mv` plus edits is one
+    R entry, not an R plus an M.
+
+    The bug was found by the Phase 1 packaging commit, where 15 modules were
+    moved with `git mv` and edited in the same commit: the scanner cheerfully
+    reported "clean (14 files)" while skipping every one of the 15 files whose
+    contents had actually changed. A commit that is mostly renames — exactly
+    what the companies/ restructure will be — was the blind spot.
+
+    That failure mode is the one this whole tool exists to prevent: a checker
+    that reports green *because* it is not looking.
     """
-    out = git("diff", "--cached", "--name-only", "--diff-filter=ACM", "-z")
+    out = git("diff", "--cached", "--name-only", "--diff-filter=ACMRT", "-z")
     return [p for p in out.decode("utf-8", "replace").split("\0") if p]
 
 

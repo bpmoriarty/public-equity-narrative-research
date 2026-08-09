@@ -86,13 +86,11 @@ import tomllib
 from collections import Counter
 from datetime import datetime, timezone
 from itertools import combinations
-from pathlib import Path
 
 from rapidfuzz import fuzz
 
-ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from ledger_schema import canon  # noqa: E402
+from equity_research._bootstrap import ROOT
+from equity_research.ledger_schema import canon
 
 LEDGER_DIR = ROOT / "data" / "ledger"
 PACK_DIR = ROOT / "data" / "pack"

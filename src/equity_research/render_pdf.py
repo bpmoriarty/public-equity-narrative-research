@@ -66,7 +66,8 @@ import markdown
 from pdfminer.high_level import extract_text
 from xhtml2pdf import pisa
 
-ROOT = Path(__file__).resolve().parent.parent
+from equity_research._bootstrap import ROOT
+
 OUT_DIR = ROOT / "output"
 PDF_DIR = OUT_DIR / "pdf"
 CONFIG = ROOT / "config" / "outputs.toml"

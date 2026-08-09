@@ -53,13 +53,11 @@ import sys
 import tomllib
 from collections import Counter
 from datetime import datetime, timezone
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from ledger_schema import canon  # noqa: E402
-from merge_events import timeline_block  # noqa: E402
+from equity_research._bootstrap import ROOT
+from equity_research.ledger_schema import canon
+from equity_research.merge_events import timeline_block
 
-ROOT = Path(__file__).resolve().parent.parent
 LEDGER_DIR = ROOT / "data" / "ledger"
 PACK_DIR = ROOT / "data" / "pack"
 CONFIG = ROOT / "config" / "outputs.toml"

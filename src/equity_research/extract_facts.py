@@ -64,20 +64,16 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import anthropic
-import truststore
-from dotenv import load_dotenv
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from ledger_schema import TASK_MODELS  # noqa: E402
-
-truststore.inject_into_ssl()           # use the Windows cert store (corporate SSL)
-load_dotenv()
+from equity_research._bootstrap import ROOT
+from equity_research.ledger_schema import TASK_MODELS
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
-ROOT = Path(__file__).resolve().parent.parent
+# ROOT comes from _bootstrap (imported above), which also injects the Windows
+# cert store and loads .env — see that module for why both live in one place.
 SECTIONS_MANIFEST = ROOT / "data" / "sections" / "sections-manifest.json"
 INVENTORY = ROOT / "data" / "discovery" / "inventory.json"
 FACTS_DIR = ROOT / "data" / "ledger" / "facts"

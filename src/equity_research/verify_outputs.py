@@ -57,15 +57,13 @@ import re
 import sys
 import tomllib
 from datetime import datetime, timezone
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+from equity_research._bootstrap import ROOT
+from equity_research.generate_outputs import (ID_RE, check_citations, check_quotes,
+                                              verified_text, word_count)
+
 PACK_DIR = ROOT / "data" / "pack"
 OUT_DIR = ROOT / "output"
-
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from generate_outputs import (ID_RE, check_citations, check_quotes,  # noqa: E402
-                              verified_text, word_count)
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):

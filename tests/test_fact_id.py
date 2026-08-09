@@ -27,9 +27,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "src"))
-from ledger_schema import (FactSource, LedgerFact,  # noqa: E402
-                           fact_id, risk_delta_id)
+from equity_research.ledger_schema import (FactSource, LedgerFact,  # noqa: E402
+                                           fact_id, risk_delta_id)
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):

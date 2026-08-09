@@ -26,12 +26,11 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "src"))
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
-import generate_outputs as g  # noqa: E402
+import equity_research.generate_outputs as g  # noqa: E402
 
 PASS = FAIL = 0
 
@@ -211,7 +210,7 @@ check("an id outside brackets is still not prose",
       g.word_count("Alpha QA-FY2024-5e714350 beta."), 2)
 
 print("\nthe id pattern tracks ledger_schema, so a new field cannot become uncheckable")
-from ledger_schema import FIELD_CODES  # noqa: E402
+from equity_research.ledger_schema import FIELD_CODES  # noqa: E402
 check("every field code the ledger can mint is matched by ID_RE",
       sorted({code for code in FIELD_CODES.values()
               if not g.ID_RE.fullmatch(f"{code}-FY2023-0123abcd")}), [])

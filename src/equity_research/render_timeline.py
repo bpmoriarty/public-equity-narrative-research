@@ -47,11 +47,9 @@ import sys
 import tomllib
 from collections import Counter
 from datetime import datetime, timezone
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from merge_events import timeline_block  # noqa: E402
+from equity_research._bootstrap import ROOT
+from equity_research.merge_events import timeline_block
 
 PACK_DIR = ROOT / "data" / "pack"
 OUT_DIR = ROOT / "output"

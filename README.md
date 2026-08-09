@@ -39,6 +39,7 @@ uv run python tools/check_control_bytes.py --all
 ```bash
 uv run python tests/run_all.py          # every test file, with the count gate
 uv run python tests/test_<name>.py      # one file
+uv run pytest                           # the same gate, via pytest
 ```
 
 `run_all.py` compares each file's own `N passed, M failed` line against
@@ -48,10 +49,19 @@ that stops testing still reports green. More checks means new ones were added
 without recording them — re-record deliberately with `--update` and commit the
 result alongside the tests that caused it.
 
-Every command runs through uv, which activates the environment for you:
+`uv run pytest` enforces exactly the same three properties per file — exit code,
+zero failed checks, and the recorded check *count*. It deliberately does not use
+`pytest --collect-only` for counting: that counts test functions, not checks, so
+a file falling from 63 checks to 3 would still collect as one test and pass. See
+the docstring in `tests/suite_test.py`.
+
+## Running a stage
+
+The pipeline is an installable package (`src/equity_research/`), so stages run as
+modules. Every command goes through uv, which activates the environment for you:
 
 ```bash
-uv run python src/<stage>.py
+uv run python -m equity_research.<stage>     # e.g. ...equity_research.build_pack
 ```
 
 ## Layout
@@ -61,7 +71,8 @@ config/            company config, section patterns, 8-K item filters
   company.toml       ticker, CIK, fiscal-year window, rate limits  <- the file you edit
   forms.toml         in-scope forms, 8-K item filter, gap signals
   sections.toml      section boundary regexes + validation rules
-src/                 pipeline modules
+src/equity_research/ pipeline modules (an installable package; run with -m)
+  _bootstrap.py      ROOT, the Windows cert store, and .env — imported first by every stage
 data/raw/            cached filings by year/form — never delete, never re-fetch
 data/sections/       extracted target sections as cleaned text
 data/ledger/         per-year structured JSON records

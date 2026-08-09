@@ -36,6 +36,40 @@ dependencies = [
     "xhtml2pdf>=0.2.16",
 ]
 
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[project.scripts]
+pipeline = "equity_research.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# The distribution is named "public-equity-research" (hyphens, per PyPI convention)
+# but the importable package directory is "equity_research" (underscores, a valid
+# Python identifier) — hatchling can't infer that mapping from the project name
+# alone, so the wheel target is spelled out explicitly.
+[tool.hatch.build.targets.wheel]
+packages = ["src/equity_research"]
+
 [tool.uv]
-# A collection of runnable pipeline scripts, not an installable library.
-package = false
+# An installable package (src/equity_research/), not just a collection of loose
+# scripts — `python -m equity_research.<module>` and the modules' own imports of
+# each other both depend on it being installed rather than merely present on disk.
+package = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# ONLY *_test.py — deliberately NOT pytest's usual `test_*.py` as well.
+#
+# The files named test_*.py in tests/ are standalone scripts: they do their work
+# in main() and report "N passed, M failed", rather than exposing test_* functions.
+# Letting pytest collect them would import all eight for nothing — it would find
+# no test functions, report "no tests ran" for each, and pay their import cost.
+#
+# tests/suite_test.py is the pytest entry point. It runs each of those scripts as
+# a subprocess and asserts the check COUNT as well as the result, which is the
+# property `pytest --collect-only` structurally cannot see. See that file's
+# docstring for why the count is the part that matters.
+python_files = ["*_test.py"]

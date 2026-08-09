@@ -71,17 +71,15 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import anthropic
-import truststore
-from dotenv import load_dotenv
 
-truststore.inject_into_ssl()           # use the Windows cert store (corporate SSL)
-load_dotenv()
+from equity_research._bootstrap import ROOT
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
-ROOT = Path(__file__).resolve().parent.parent
+# ROOT comes from _bootstrap (imported above), which also injects the Windows
+# cert store and loads .env — see that module for why both live in one place.
 PACK_DIR = ROOT / "data" / "pack"
 OUT_DIR = ROOT / "output"
 CORRECTIONS = ROOT / "config" / "corrections.toml"
@@ -97,8 +95,7 @@ CACHE_READ_MULT = 0.10
 # Any id the pack can mint: field code, fiscal year, 8 hex characters. Built from
 # the same code table the ids are built from, so a new field cannot be minted in
 # ledger_schema.py and silently become uncheckable here.
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from ledger_schema import FIELD_CODES, ID_HEX, canon  # noqa: E402
+from equity_research.ledger_schema import FIELD_CODES, ID_HEX, canon
 
 ID_RE = re.compile(
     r"\b(?:" + "|".join(sorted({*FIELD_CODES.values(), "RISK"})) + r")"
@@ -1327,7 +1324,7 @@ def constraint_failures(doc: str, body: str, pack: dict, index: dict, sha: str) 
     module level the two would form an import cycle. The checks live there and are
     called from here so there is exactly one definition of each constraint.
     """
-    import verify_outputs as v
+    import equity_research.verify_outputs as v
 
     cfg = tomllib.loads((ROOT / "config" / "outputs.toml").read_text(encoding="utf-8"))
     r = v.verify(doc, body, pack, index, v.pack_facts(pack, index), cfg["verify"], sha)

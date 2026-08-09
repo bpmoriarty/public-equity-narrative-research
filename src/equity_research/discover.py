@@ -31,16 +31,11 @@ import sys
 import time
 import tomllib
 from datetime import date, datetime, timezone
-from pathlib import Path
 
 import httpx
-import truststore
-from dotenv import load_dotenv
 import os
 
-# Use the Windows certificate store. Without this, corporate SSL inspection
-# makes httpx fail to verify sec.gov's certificate.
-truststore.inject_into_ssl()
+from equity_research._bootstrap import ROOT
 
 # Force UTF-8 on stdout/stderr.
 #
@@ -57,9 +52,8 @@ for stream in (sys.stdout, sys.stderr):
     if hasattr(stream, "reconfigure"):
         stream.reconfigure(encoding="utf-8", errors="replace")
 
-# Paths are all relative to the project root (this file's parent's parent), so
-# the script works no matter which directory it is invoked from.
-ROOT = Path(__file__).resolve().parent.parent
+# ROOT comes from _bootstrap (imported above), which also injects the Windows
+# cert store and loads .env — see that module for why both live in one place.
 CONFIG_DIR = ROOT / "config"
 META_DIR = ROOT / "data" / "raw" / "_meta"
 # When each cached metadata document was actually read from EDGAR. Written at fetch
@@ -94,7 +88,6 @@ def load_config() -> dict:
 
 def get_identity() -> str:
     """The User-Agent the SEC requires. Fail loudly if it is missing."""
-    load_dotenv(ROOT / ".env")
     ident = os.getenv("EDGAR_IDENTITY", "").strip()
     if not ident or "@" not in ident:
         sys.exit(

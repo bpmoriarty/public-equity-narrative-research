@@ -38,20 +38,19 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import httpx
-import truststore
-from dotenv import load_dotenv
 import os
 
-truststore.inject_into_ssl()
+from equity_research._bootstrap import ROOT
 
-# See src/discover.py for why this is necessary on Windows: the console's cp1252
-# code page cannot encode many characters that appear in filing metadata, and
-# printing one would otherwise kill the run.
+# See src/equity_research/discover.py for why this is necessary on Windows: the
+# console's cp1252 code page cannot encode many characters that appear in
+# filing metadata, and printing one would otherwise kill the run.
 for _stream in (sys.stdout, sys.stderr):
     if hasattr(_stream, "reconfigure"):
         _stream.reconfigure(encoding="utf-8", errors="replace")
 
-ROOT = Path(__file__).resolve().parent.parent
+# ROOT comes from _bootstrap (imported above), which also injects the Windows
+# cert store and loads .env — see that module for why both live in one place.
 CONFIG_DIR = ROOT / "config"
 RAW_DIR = ROOT / "data" / "raw"
 ATTACH_CACHE = RAW_DIR / "_meta" / "attachments"
@@ -120,7 +119,6 @@ def load_settings() -> dict:
 
 
 def get_identity() -> str:
-    load_dotenv(ROOT / ".env")
     ident = os.getenv("EDGAR_IDENTITY", "").strip()
     if not ident or "@" not in ident:
         sys.exit("FATAL: EDGAR_IDENTITY not set. See .env.example.")

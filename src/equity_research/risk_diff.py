@@ -61,15 +61,15 @@ import json
 import sys
 import tomllib
 from datetime import datetime, timezone
-from pathlib import Path
 
 from rapidfuzz import fuzz
+
+from equity_research._bootstrap import ROOT
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
-ROOT = Path(__file__).resolve().parent.parent
 SECTIONS_MANIFEST = ROOT / "data" / "sections" / "sections-manifest.json"
 OUT_DIR = ROOT / "data" / "ledger"
 

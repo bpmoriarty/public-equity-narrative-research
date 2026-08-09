@@ -52,15 +52,14 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from ledger_schema import (ID_HEX, FactSource, LedgerFact, YearLedger,  # noqa: E402
-                           confidence_for, risk_delta_id, verify_quote)
+from equity_research._bootstrap import ROOT
+from equity_research.ledger_schema import (ID_HEX, FactSource, LedgerFact, YearLedger,
+                                           confidence_for, risk_delta_id, verify_quote)
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
-ROOT = Path(__file__).resolve().parent.parent
 LEDGER_DIR = ROOT / "data" / "ledger"
 FACTS_DIR = LEDGER_DIR / "facts"
 SECTIONS_MANIFEST = ROOT / "data" / "sections" / "sections-manifest.json"

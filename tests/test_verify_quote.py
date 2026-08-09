@@ -19,10 +19,8 @@ permissive, which is precisely when the rejection cases need re-proving.
 from __future__ import annotations
 
 import sys
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from ledger_schema import verify_quote  # noqa: E402
+from equity_research.ledger_schema import verify_quote
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
