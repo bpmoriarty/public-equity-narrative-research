@@ -21,12 +21,21 @@ they anchor a narrative claim.
 **Phase:** Verified — build complete, independently reviewed, every finding
 remediated. **Productionizing:** the plan at
 `C:\Users\bmoriar\.claude\plans\modular-brewing-teapot.md` was approved
-2026-08-08 and **Phase 0 (hardening tripwires) is complete and pushed**
-(commits `3c78496`, `a6010bb`). Phases 1–5 not started — next is Phase 1,
-packaging `src/` into `src/equity_research/`. The repository now has a GitHub
-remote: https://github.com/bpmoriarty/public-equity-narrative-research
+2026-08-08. **Phases 0 (hardening tripwires) and 1 (packaging) are complete and
+pushed** (commits `3c78496`, `a6010bb`, `8a904df`, `fec3785`). Next is **Phase 2**
+— moving MORN into `companies/MORN/` and adding `paths.py`/`settings.py`. The
+repository has a GitHub remote:
+https://github.com/bpmoriarty/public-equity-narrative-research
 
-**Last Session:** 2026-08-08
+> **Paths changed in Phase 1.** The pipeline modules now live in
+> `src/equity_research/` and run as `uv run python -m equity_research.<stage>`;
+> `uv run python src/<stage>.py` no longer works. The **Important Files** table
+> below is updated. Earlier **Session Log** entries and the *What's Working*
+> section still name the old `src/<stage>.py` paths — those are dated records of
+> what was true when written, and are deliberately left as history rather than
+> rewritten.
+
+**Last Session:** 2026-08-09
 
 **Overall Health:** 🟢 Working — milestones 1–5 complete. **The full verification suite has been run and all nine of its findings are fixed.** 1,329 ledger facts, 1,425 citable ids, three deliverables passing 13 hard checks each. Quote census re-earned after the repairs at **1,326/1,326**. $7.21 spent on generation; remediation cost $0.00 in API calls
 
@@ -611,25 +620,39 @@ across 34 calls). Milestones 1–3 cost nothing.
 15. [x] **Phase 0 of the productionization plan — hardening tripwires.** Done
         2026-08-08, commits `3c78496` and `a6010bb`. See the Session Log entry
         for what was built and how each piece was proven to fire
-16. [ ] **Phase 1 — packaging.** `git mv src/*.py src/equity_research/`, add
-        `__init__.py`, switch `pyproject.toml` to `package = true` with
-        hatchling and a `[project.scripts] pipeline` stub, add
-        `[dependency-groups] dev = ["pytest>=8"]`, and delete the 11
-        `sys.path.insert` hacks. Gate: `uv sync` clean, `run_all.py` still
-        reports 215 checks, `verify_outputs` still 1,326 quotes.
-        *Marked Sonnet-suitable in the plan*
+16. [x] **Phase 1 — packaging.** Done 2026-08-09, commit `fec3785`. Steps 1–4
+        (the moves, `pyproject.toml`, imports, `_bootstrap.py`) were delegated to
+        a Sonnet subagent; the test-harness step and the review were done on
+        Opus. All 15 modules moved with history preserved, 15 `sys.path.insert`
+        hacks removed (not the 11 the plan claimed). See the Session Log entry
 17. [ ] **Phases 2–5**, in order: 2 MORN move into `companies/MORN/` + central
         `paths.py`/`settings.py` (gate: the pack sha256 must reproduce) →
         3 Claude Code model seam, running probes V1–V8 **first** → 4 `pipeline`
         orchestrator + `init` → 5 test split, model mix, pack subsets, docs.
         Phase 2 needs OneDrive sync paused; Phase 3's V7 needs the Enterprise
-        seat-terms question answered first
-18. [ ] **Carry the Phase 0 additions through the Phase 2 move.**
+        seat-terms question answered first.
+        **Two plan corrections found by executing Phase 1 — do not re-derive:**
+        (a) Phase 5's "count gate switches to `pytest --collect-only -q`" is
+        wrong and was deliberately not done — `--collect-only` counts test
+        *functions*, so one wrapper per file counts 8 forever and a file falling
+        from 63 checks to 3 still passes, which is the exact D7 failure the gate
+        exists to catch. `tests/suite_test.py` asserts the per-file check *count*
+        instead; keep that design when Phase 5 splits the suite.
+        (b) The plan's Phase 1 gate ("`verify_outputs` still 1,326 quotes") names
+        a number that command does not print — 1,326 is the fact count from
+        `data/pack/pack-report.md`. The usable Phase 1/2 gates are the pack
+        sha256 reproducing and `extract_facts --estimate` reporting 88 cached
+18. [ ] **Carry the Phase 0 and 1 additions through the Phase 2 move.**
         `tests/test_repo_hygiene.py` walks `data/` and `output/` from the repo
         root, and `run_all.py` discovers `tests/test_*.py`; both need their
         roots re-pointed when MORN's data moves under `companies/MORN/`. The
         count gate will fail loudly if a test silently stops finding artifacts,
-        which is the intended behaviour but will need a deliberate re-record
+        which is the intended behaviour but will need a deliberate re-record.
+        `tests/suite_test.py` reads the same discovery, so it follows for free.
+        **Already handled:** `tools/check_control_bytes.py` was blind to renames
+        until `fec3785` (it filtered `--diff-filter=ACM`, which excludes `R`), so
+        a mostly-rename commit went unscanned. It is now `ACMRT`. Phase 2 is
+        almost entirely renames, so this had to be fixed before it, not during
 
 ---
 
@@ -638,49 +661,51 @@ across 34 calls). Milestones 1–3 cost nothing.
 | File | What It Does |
 |------|--------------|
 | `CLAUDE.md` | Project rules — EDGAR access, extraction approach, traceability. Read first. Ends with **"Rules that have bitten us"**: the five doctrines whose violation recurred, each naming the check that now enforces it |
-| `tools/check_control_bytes.py` | Blocks a commit containing raw control bytes in a text file — the signature of a regex escape mangled by a shell heredoc (`\b` → 0x08). Run via `.githooks/pre-commit`; enable per clone with `git config core.hooksPath .githooks`. `--all` scans the whole tree |
+| `tools/check_control_bytes.py` | Blocks a commit containing raw control bytes in a text file — the signature of a regex escape mangled by a shell heredoc (`\b` → 0x08). Run via `.githooks/pre-commit`; enable per clone with `git config core.hooksPath .githooks`. `--all` scans the whole tree. Selects staged files with `--diff-filter=ACMRT`; **the `R` is load-bearing** — it filtered `ACM` until `fec3785` and was therefore blind to renames, silently skipping every modified file in a `git mv` commit |
 | `tests/run_all.py` | Runs every test file and compares each one's own count against `tests/expected_counts.json`, **failing in either direction**. Fewer checks than recorded is the failure it exists for: a test that stops testing still reports green |
+| `tests/suite_test.py` | The pytest front-end (`uv run pytest`). Asserts exit code, zero failures, **and the recorded check count** per file. Deliberately not `pytest --collect-only`, which counts test functions and so cannot see a file shrinking from 63 checks to 3. Named `suite_test.py`, not `test_suite.py`, because `run_all.py` globs `test_*.py` and would otherwise recurse |
+| `src/equity_research/_bootstrap.py` | `ROOT`, the Windows cert store, and `.env` — imported first by every stage, for its side effects as much as its value. **Do not delete as unused.** Exists because each module used to compute its own `ROOT` two directories up, which the Phase 1 move made silently wrong by one level |
 | `tests/test_repo_hygiene.py` | 9 checks. Every JSON carrying a top-level `usage.input_tokens` was paid for and must be tracked by git; `output/*.md` likewise; and inversely, `.env` must not be |
 | `VERIFICATION.md` | **The independent review and its remediation log.** Nine findings D1–D9, what each turned out to be, how each was fixed, and what was verified against ground truth. Read before trusting any deliverable |
 | `config/corrections.toml` | **Every human correction, as data.** `[[correction]]` (a ledger value), `[[document_correction]]` (a sentence), `[[id_remap]]` (a renumbered citation). Each carries its evidence and reviewer; each is fatal if it stops matching |
 | `tests/test_extract_sections.py` | 17 checks on the extraction guards. Pins both directions: an image-only document must fail, the legitimately short SEC letters must pass |
 | `tests/test_discover.py` | 12 checks on cache vintage — that an inferred as-of date labels itself, and that a zero-request run does not claim its own clock |
 | `data/raw/_meta/fetch-log.json` | When each cached metadata document was actually read from EDGAR. Written at fetch time, because that is the only moment that knows |
-| `src/render_pdf.py` | Renders `output/*.md` to `output/pdf/*.pdf`. Deterministic, no model call. Reads each finished PDF back and fails if a word, fact id, heading or at-risk glyph did not survive |
-| `output/pdf/` | The three deliverables as PDF. **Gitignored** — a pure function of the committed Markdown, the script and the `[pdf]` config, rebuilt in seconds with `uv run python src/render_pdf.py` |
+| `src/equity_research/render_pdf.py` | Renders `output/*.md` to `output/pdf/*.pdf`. Deterministic, no model call. Reads each finished PDF back and fails if a word, fact id, heading or at-risk glyph did not survive |
+| `output/pdf/` | The three deliverables as PDF. **Gitignored** — a pure function of the committed Markdown, the script and the `[pdf]` config, rebuilt in seconds with `uv run python -m equity_research.render_pdf` |
 | `SPEC.md` | Document scope, extraction targets, ledger schema, output specs |
 | `DATA.md` | Provenance, as-of date, and 9 known limitations. Read before making any coverage claim |
 | `PROMPT.md` | The original kickoff prompt and its milestone gates |
 | `config/company.toml` | Ticker, CIK, window, rate limits. **The only file to edit to retarget** |
 | `config/forms.toml` | In-scope forms, 8-K item filter, gap signals, scope-extension block |
 | `config/sections.toml` | Section boundary regexes, anchor phrases, validation rules |
-| `src/discover.py` | Milestone 1. Inventory and gap analysis. No documents downloaded |
-| `src/fetch.py` | Milestone 2. Cache-first document downloader. `--dry-run`, `--limit` |
-| `src/pdf_text.py` | PDF text extraction with subsetted-font glyph decoding. `--selftest` |
-| `src/extract_sections.py` | Milestone 3. Section location + validation. **Read its KNOWN LIMITS docstring** before trusting any proxy section |
+| `src/equity_research/discover.py` | Milestone 1. Inventory and gap analysis. No documents downloaded |
+| `src/equity_research/fetch.py` | Milestone 2. Cache-first document downloader. `--dry-run`, `--limit` |
+| `src/equity_research/pdf_text.py` | PDF text extraction with subsetted-font glyph decoding. `--selftest` |
+| `src/equity_research/extract_sections.py` | Milestone 3. Section location + validation. **Read its KNOWN LIMITS docstring** before trusting any proxy section |
 | `data/sections/sections-manifest.json` | Every section with char count, boundary basis, and validation result |
-| `src/risk_diff.py` | Deterministic year-over-year risk factor diff. No model calls |
-| `src/ledger_schema.py` | Ledger shape, confidence rules, and `verify_quote` — the grounding check |
-| `src/extract_facts.py` | Milestone 4a. The only stage that spends tokens. `--estimate` costs nothing |
-| `src/build_ledger.py` | Milestone 4b. Assembles, verifies every quote, validates, writes |
+| `src/equity_research/risk_diff.py` | Deterministic year-over-year risk factor diff. No model calls |
+| `src/equity_research/ledger_schema.py` | Ledger shape, confidence rules, and `verify_quote` — the grounding check |
+| `src/equity_research/extract_facts.py` | Milestone 4a. The only stage that spends tokens. `--estimate` costs nothing |
+| `src/equity_research/build_ledger.py` | Milestone 4b. Assembles, verifies every quote, validates, writes |
 | `data/ledger/FY*.json` | **The ledger.** Everything downstream derives from here, never from raw sections |
 | `data/ledger/ledger-report.md` | Cross-year coverage, confidence counts, and comparability warnings |
 | `data/ledger/facts/` | Cached per-task extraction results. A completed task is never re-run |
-| `src/render_timeline.py` | Milestone 5d. Renders `output/timeline.md`. Deterministic, no model call; asserts completeness before writing |
+| `src/equity_research/render_timeline.py` | Milestone 5d. Renders `output/timeline.md`. Deterministic, no model call; asserts completeness before writing |
 | `output/timeline.md` | **Deliverable 1 of 3.** Chronological reference table, every row carrying its fact id and filing |
-| `src/verify_outputs.py` | Milestone 5f. Holds the deliverables to the pack's binding constraints — **13 hard checks and 3 review lists** per document; deterministic, free, non-zero exit on failure |
+| `src/equity_research/verify_outputs.py` | Milestone 5f. Holds the deliverables to the pack's binding constraints — **13 hard checks and 3 review lists** per document; deterministic, free, non-zero exit on failure |
 | `tests/test_verify_outputs.py` | 63 checks. Every hard check tested against a document that fails it as well as one that passes |
-| `src/generate_outputs.py` | Milestone 5e. Writes both prose deliverables from the pack; checks and repairs ids and quotations |
+| `src/equity_research/generate_outputs.py` | Milestone 5e. Writes both prose deliverables from the pack; checks and repairs ids and quotations |
 | `output/narrative-brief.md` | **Deliverable 2 of 3.** The five-year arc, 2,089 words, 126 citations |
 | `output/discussion-points.md` | **Deliverable 3 of 3.** Observations, open questions, and stated-vs-paid-for priorities |
 | `tests/test_generate_outputs.py` | 38 checks on the citation and quotation gates; fixtures are real strings from the first generation run. Fails loudly if a committed generation record is missing rather than skipping itself |
-| `src/merge_events.py` | Milestone 5c. Merges duplicate event records, splits undated ones out, tags routine governance. Deterministic. `--show merged|unclear|possible|routine` |
+| `src/equity_research/merge_events.py` | Milestone 5c. Merges duplicate event records, splits undated ones out, tags routine governance. Deterministic. `--show merged|unclear|possible|routine` |
 | `config/outputs.toml` | Output-stage config: merge threshold, routine patterns and the material overrides. **Change behaviour here, not in code** |
 | `tests/test_merge_events.py` | Proves same-filing records never merge and the incentive-plan row is not tagged routine. Run after any threshold change |
-| `src/build_pack.py` | Milestone 5a. Assembles the citable pack from the ledger. Deterministic, no model calls. `--show constraints` prints the binding rules |
+| `src/equity_research/build_pack.py` | Milestone 5a. Assembles the citable pack from the ledger. Deterministic, no model calls. `--show constraints` prints the binding rules |
 | `data/pack/pack.json` | The payload the writers read. Gitignored — reproducible from the ledger; its sha256 in `pack-report.md` is the audit link |
 | `data/pack/index.json` | `{id → fact}`. What `verify_outputs.py` resolves citations through |
-| `src/triage_8k.py` | Judges the 75 conditional 7.01/8.01 8-Ks. Deterministic, no model calls |
+| `src/equity_research/triage_8k.py` | Judges the 75 conditional 7.01/8.01 8-Ks. Deterministic, no model calls |
 | `config/forms.toml` `[eight_k.triage]` | Triage patterns, headline window, size cap. Change behaviour here, not in code |
 | `data/triage/triage-8k.json` | Every triage decision with its evidence. Committed — it is the record of what was excluded |
 | `data/triage/triage-report.md` | The auditable log, including the full drop list |
@@ -715,6 +740,105 @@ across 34 calls). Milestones 1–3 cost nothing.
 ---
 
 ## Session Log
+
+### 2026-08-09 — Phase 1: packaging, a pytest front-end, and a bug in a Phase 0 checker
+
+Commit `fec3785`, pushed. Baseline measured before starting: 215 checks green,
+`pack.json` sha256 `fd320ce5…`, 88 cached extractions.
+
+**How the work was split.** Steps 1–4 (file moves, `pyproject.toml`, imports,
+`_bootstrap.py`) went to a **Sonnet subagent**; the test-harness work and all
+review stayed on Opus. The subagent was given the hazard below explicitly rather
+than left to find it, and was told not to commit. Every number it reported was
+re-run here rather than taken on trust — which mattered, see the gate correction.
+
+**The hazard the refactor had to survive.** Every module computed
+`ROOT = Path(__file__).resolve().parent.parent` — correct while the file lived in
+`src/`, silently wrong by one directory once it lived in `src/equity_research/`.
+Nothing would have raised. Every `data/` and `output/` path would have quietly
+repointed into `src/`, and `extract_facts` would have offered to re-run all 88
+cached extractions at roughly $12. Now computed once in `_bootstrap.py`.
+
+Worth recording *which* check catches this, because it is not the obvious one:
+the test suite passes either way, since `tests/` did not move. The gate that
+would have failed is `extract_facts --estimate` reporting 88 cached / 0 to run.
+
+**What was built**
+- All 15 modules `git mv`'d into `src/equity_research/` (history preserved),
+  plus `__init__.py`, `_bootstrap.py` (ROOT + truststore + dotenv, previously
+  copy-pasted across four modules) and a `cli.py` stub for `[project.scripts]`
+- `pyproject.toml`: `package = true`, hatchling, an explicit wheel target (the
+  distribution is `public-equity-research` but the package dir is
+  `equity_research`, which hatchling cannot infer), pytest in a dev group
+- **15** `sys.path.insert` hacks removed — 8 in `src/`, 7 in `tests/`. The plan
+  said 11. Same stale-baseline drift as the 186-vs-206 check count in Phase 0
+- Restored `from pathlib import Path` in four modules where it had been dropped
+  while `Path` was still used in annotations. No runtime bug — those files use
+  `from __future__ import annotations` — but type checkers and
+  `typing.get_type_hints()` would fail on them
+- README: stage commands are now `python -m equity_research.<stage>`
+
+**A deliberate deviation from the plan.** Phase 5 specifies that the count gate
+switch to comparing `pytest --collect-only -q`. That would have *disarmed the
+tripwire Phase 0 built*: `--collect-only` counts test functions, and the plan's
+own design is one `def test_all()` per file, so it would report 8 forever. A file
+falling from 63 checks to 3 would still pass — the exact D7 failure (35 checks in
+the working tree vs 29 in a clean checkout, both green) the gate exists to catch.
+
+Instead `tests/suite_test.py` runs each script-style test file and asserts three
+things: exit 0, zero failed checks, and the recorded check **count**. It is named
+`suite_test.py` and not `test_suite.py` because `run_all.py` globs `test_*.py`
+and would otherwise discover a file that runs `run_all` — recursively. Proven
+against failing input in all four directions before being trusted: fewer checks
+than recorded, more checks, a recorded file missing from disk, and a file on disk
+missing from the record.
+
+**A bug found in a Phase 0 checker.** `tools/check_control_bytes.py` selected
+staged files with `--diff-filter=ACM`, which excludes `R`. Git reports a rename
+under its *destination* path, and that destination has a blob — often a modified
+one, since `git mv` plus edits is one `R` entry, not `R` plus `M`. On this very
+commit the scanner reported **"clean (14 files)" while skipping all 15 files
+whose contents had actually changed.**
+
+Now `ACMRT`; coverage on this commit went 14 → 30 files. Verified by planting a
+real `0x08` byte in a renamed file and confirming the scanner names the file,
+line, column and offset and exits 1 — that byte was invisible before the fix.
+**Phase 2 is almost entirely renames**, so the scanner would have been nearly
+blind through the whole MORN move. This is the third checker bug in the project's
+tally and the failure mode the tool exists to prevent: a checker reporting green
+because it is not looking.
+
+**A correction to my own gate.** I had written the Phase 1 gate as
+"`verify_outputs` still reports 1,326 quotes". The subagent pushed back that no
+such line is printed, and it was right: `verify_outputs` reports per-document
+hard checks, and 1,326 is the *fact* count from `data/pack/pack-report.md`. The
+plan carries the same error. The usable gates are the pack sha256 and
+`--estimate`; both are now recorded in Next Steps item 17.
+
+**Verification, all re-run after the last change**
+
+| Check | Result |
+|---|---|
+| `run_all.py` | 215 checks / 8 files, all passing — unchanged |
+| `pytest` | 10 passed (8 files + 2 structural guards) |
+| `verify_outputs` | 2 documents, every hard check passed |
+| `build_pack` | `pack.json` sha256 `fd320ce5…` — byte-identical, **regenerated** not merely untouched |
+| `extract_facts --estimate` | 88 cached, 0 to run |
+| control-byte scan | clean over all 30 staged files |
+
+Regenerating the pack rather than just hashing the existing file is the point:
+it shows the moved modules *produce* identical output. `data/` and `output/`
+stayed clean through the regeneration, which is rule 4 ("run twice, diff
+nothing") holding.
+
+**Left alone deliberately.** `build_pack.count_tokens` still repeats the
+truststore/`load_dotenv` preamble locally. Redundant now but harmless, and
+removing it shifts when a network-adjacent call runs — deferred to Phase 2.
+
+**Environment note.** OneDrive locked the package's `dist-info` directory during
+a `uv sync` twice today, once for the subagent and once here. Both cleared on
+retry, but Phase 2 moves ~44 MB of untracked data and a lock mid-`git mv` is a
+worse failure than one mid-install. Pause sync before starting it.
 
 ### 2026-08-08 (continued) — published to GitHub; Phase 0 built and verified
 
