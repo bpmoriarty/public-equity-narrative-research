@@ -105,14 +105,20 @@ import argparse
 import json
 import re
 import sys
-import tomllib
 import warnings
 from datetime import datetime, timezone
 from pathlib import Path
 
 from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
 
+from equity_research import settings
 from equity_research._bootstrap import ROOT
+from equity_research.paths import add_ticker_arg, paths
+
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
 
 # Inline-XBRL filings are XHTML; parsing them with the HTML parser is correct and
 # standard, so silence the advisory warning rather than switching parsers (the
@@ -123,9 +129,10 @@ for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
-CONFIG_DIR = ROOT / "config"
-MANIFEST = ROOT / "data" / "raw" / "fetch-manifest.json"
-OUT_DIR = ROOT / "data" / "sections"
+# Config is resolved per file by `settings.load_config` — company.toml from the
+# company folder, forms/sections from config/ — so there is no directory constant.
+MANIFEST = P.fetch_manifest
+OUT_DIR = P.sections
 
 # HTML5's replacement table for numeric character references in the C1 range.
 # Format fact 2 above: without this, proxies are full of control characters.
@@ -556,11 +563,9 @@ def extract_whole(path: Path) -> dict:
 # ---------------------------------------------------------------------------
 
 def load_config() -> dict:
-    cfg = {}
-    for name in ("company", "forms", "sections"):
-        with open(CONFIG_DIR / f"{name}.toml", "rb") as fh:
-            cfg[name] = tomllib.load(fh)
-    return cfg
+    """See discover.load_config: company.toml is company-scoped, the other two
+    are global defaults a company may override."""
+    return settings.load_config("company", "forms", "sections", P=P)
 
 
 # Image and asset filenames. Stripped before words are counted because they are
@@ -669,6 +674,8 @@ def main() -> None:
     ap.add_argument("--fy", type=int, help="only this fiscal year")
     ap.add_argument("--show", help="print this section key to stdout and exit")
     ap.add_argument("--limit", type=int, help="process at most N documents")
+    add_ticker_arg(ap)
+
     args = ap.parse_args()
 
     if not MANIFEST.exists():
@@ -704,7 +711,7 @@ def main() -> None:
 
     results: list[dict] = []
     for n, rec in enumerate(docs, 1):
-        path = ROOT / rec["path"]
+        path = P.resolve(rec["path"])
         form, fy, acc = rec["form"], rec["fiscal_year"], rec["accession"]
         dest_dir = OUT_DIR / f"FY{fy}" / form.replace(" ", "-").replace("/", "-") / acc
         base = {"accession": acc, "form": form, "fiscal_year": fy,
@@ -852,7 +859,7 @@ def main() -> None:
         if not hits:
             sys.exit(f"\nno written section matching --show {args.show}")
         print("\n" + "=" * 72)
-        print((ROOT / hits[0]["out"]).read_text(encoding="utf-8"))
+        print(P.resolve(hits[0]["out"]).read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

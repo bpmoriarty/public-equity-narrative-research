@@ -35,6 +35,12 @@ for _s in (sys.stdout, sys.stderr):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
 import equity_research.extract_sections as e  # noqa: E402
+from equity_research.paths import paths  # noqa: E402
+
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
 
 PASS = FAIL = 0
 
@@ -50,7 +56,7 @@ def check(name: str, got, want) -> None:
 
 
 CFG = {"sections": tomllib.loads(
-    (ROOT / "config" / "sections.toml").read_text(encoding="utf-8"))}
+    (P.config_dir / "sections.toml").read_text(encoding="utf-8"))}
 FLOOR = CFG["sections"]["validation"]["min_substantive_words"]
 
 # THE DEFECT, verbatim from
@@ -118,7 +124,7 @@ check("  and reports the no-text problem, not only the character floor",
 
 print("\nthe manifest on disk records the class, if sections have been extracted")
 import json  # noqa: E402
-mp = ROOT / "data" / "sections" / "sections-manifest.json"
+mp = P.sections_manifest
 if mp.exists():
     man = json.loads(mp.read_text(encoding="utf-8"))
     listed = man.get("sections_with_no_usable_text", [])

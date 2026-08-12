@@ -73,6 +73,17 @@ from pathlib import Path
 import anthropic
 
 from equity_research._bootstrap import ROOT
+from equity_research.paths import add_ticker_arg, paths
+
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+#
+# Bound HERE, above the path constants below, and not with the other
+# equity_research imports further down: this module interleaves imports with
+# module-level constants, so a binding placed after the last import would sit
+# below the PACK_DIR/OUT_DIR lines that use it.
+P = paths()
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
@@ -80,9 +91,9 @@ for _s in (sys.stdout, sys.stderr):
 
 # ROOT comes from _bootstrap (imported above), which also injects the Windows
 # cert store and loads .env — see that module for why both live in one place.
-PACK_DIR = ROOT / "data" / "pack"
-OUT_DIR = ROOT / "output"
-CORRECTIONS = ROOT / "config" / "corrections.toml"
+PACK_DIR = P.pack
+OUT_DIR = P.output
+CORRECTIONS = P.corrections_toml
 
 # Prices per million tokens for the generation model, used only for the estimate
 # and the run report. Kept here rather than in config because they describe the
@@ -309,7 +320,7 @@ def load_pack() -> tuple[str, dict, dict]:
 
 def load_gen_config() -> dict:
     """Generation settings from config/company.toml, with the reasons alongside them."""
-    cfg = tomllib.loads((ROOT / "config" / "company.toml").read_text(encoding="utf-8"))
+    cfg = tomllib.loads(P.company_toml.read_text(encoding="utf-8"))
     if "generation" not in cfg:
         sys.exit("FATAL: config/company.toml has no [generation] block.")
     return cfg["generation"]
@@ -1084,7 +1095,7 @@ def rewrite_with_corrections(pack: dict, gen: dict, index: dict, sha: str) -> No
     # needed: the ledger keeps both facts only if both exist, so an unknown `was`
     # simply skips the same-claim assertion and the index checks still apply.
     ledger_claims: dict[str, str] = {}
-    for p in sorted((ROOT / "data" / "ledger").glob("FY*.json")):
+    for p in sorted(P.ledger.glob("FY*.json")):
         d = json.loads(p.read_text(encoding="utf-8"))
         for k, v in d.items():
             if isinstance(v, list):
@@ -1201,6 +1212,8 @@ def main() -> None:
                     help="re-render both documents from their generation records with "
                          "the corrections in config/corrections.toml applied. No model "
                          "call, $0.00, idempotent.")
+    add_ticker_arg(ap)
+
     args = ap.parse_args()
 
     payload, pack, index = load_pack()
@@ -1326,7 +1339,7 @@ def constraint_failures(doc: str, body: str, pack: dict, index: dict, sha: str) 
     """
     import equity_research.verify_outputs as v
 
-    cfg = tomllib.loads((ROOT / "config" / "outputs.toml").read_text(encoding="utf-8"))
+    cfg = tomllib.loads((P.config_dir / "outputs.toml").read_text(encoding="utf-8"))
     r = v.verify(doc, body, pack, index, v.pack_facts(pack, index), cfg["verify"], sha)
     # The two provenance checks are dropped: this path is handed the BODY, which has no
     # footer yet, so they would fail on every call and the repair would be asked to

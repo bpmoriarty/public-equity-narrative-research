@@ -19,23 +19,31 @@ desktop.ini
 memory/
 
 # --- Generated pipeline artifacts ---
-# data/raw/ is deliberately NOT ignored below in spirit, but it is large and
-# re-fetchable. See DATA.md: the cache is precious locally (never re-hit EDGAR)
-# but it is a *copy* of public EDGAR documents, so it does not belong in git.
-data/raw/
+#
+# Every pattern below is scoped to `companies/*/` so it applies to each company
+# folder as it is added, not just to MORN. The reasoning attached to each pattern
+# is unchanged from when it was written against the old top-level `data/` and
+# `output/` layout; only the paths moved (Phase 2, 2026-08-12).
+#
+# companies/<TICKER>/data/raw/ is deliberately NOT ignored below in spirit, but it
+# is large and re-fetchable. See DATA.md: the cache is precious locally (never
+# re-hit EDGAR) but it is a *copy* of public EDGAR documents, so it does not
+# belong in git.
+companies/*/data/raw/
 
 # Extracted sections regenerate from data/raw/ deterministically and for free.
-data/sections/
+companies/*/data/sections/
 
 # Trimmed copies of the triage documents, held so the exact text sent to a model
 # is an artifact on disk. Ignored for the same reason as data/raw/: it is a *copy*
 # of public EDGAR documents, and it regenerates from them for free.
 #
 # The triage DECISIONS beside it are committed — see below.
-data/triage/text/
+companies/*/data/triage/text/
 
-# data/ledger/ IS COMMITTED. It was ignored on the same "it regenerates"
-# reasoning as data/sections/, and for the ledger that reasoning is wrong:
+# companies/*/data/ledger/ IS COMMITTED. It was ignored on the same
+# "it regenerates" reasoning as data/sections/, and for the ledger that reasoning
+# is wrong:
 #
 #   - data/ledger/facts/ is model output. It cost $4.52 to produce and a re-run
 #     would not reproduce it byte-for-byte, so it is the ONLY artifact in this
@@ -48,31 +56,33 @@ data/triage/text/
 #
 # 904 KB, and it is the analytical substance of the project. It belongs in git.
 
-# data/triage/triage-8k.json AND triage-report.md ARE COMMITTED (178 KB). They
-# regenerate deterministically, so by the rule above they could be ignored — but
-# they are the audit record config/forms.toml explicitly asks for ("Log every
-# triage decision; a silent drop here loses real events"), and 15 filings were
-# dropped from the history on the strength of them. A record of what was excluded
-# has to survive in the repository, or the exclusion is undocumented.
+# companies/*/data/triage/triage-8k.json AND triage-report.md ARE COMMITTED
+# (178 KB). They regenerate deterministically, so by the rule above they could be
+# ignored — but they are the audit record config/forms.toml explicitly asks for
+# ("Log every triage decision; a silent drop here loses real events"), and 15
+# filings were dropped from the history on the strength of them. A record of what
+# was excluded has to survive in the repository, or the exclusion is undocumented.
 
-# data/pack/ is ignored, and for MOST of what it holds "it regenerates" is
-# actually true in the sense that matters: pack.json, index.json and
-# timeline-events.json are a pure, deterministic function of data/ledger/, which IS
-# committed. A clean checkout reproduces them byte-for-byte for free. Committing
-# them would store a second copy of ~900 KB of the same content.
+# companies/*/data/pack/ is ignored, and for MOST of what it holds
+# "it regenerates" is actually true in the sense that matters: pack.json,
+# index.json and timeline-events.json are a pure, deterministic function of
+# data/ledger/, which IS committed. A clean checkout reproduces them
+# byte-for-byte for free. Committing them would store a second copy of ~900 KB of
+# the same content.
 #
 # What makes that safe is the sha256 of pack.json, recorded in pack-report.md and
 # stamped onto every generated output. Without the hash, ignoring the pack would
 # lose the answer to "which payload was this document written from"; with it, the
 # answer is reproducible on demand.
 #
-# THE EXCEPTION, and the reason this is `data/pack/*` with a negation rather than
-# `data/pack/`: gen-brief.json and gen-discussion.json are NOT derived from
-# data/ledger/. They are model output — the raw response, the usage, and
-# `text_before_repair`, which is the ONLY copy of each document as first written,
-# before the citation and quotation repair rounds edited it. ~$3.50 a pass, and no
-# re-run reproduces them byte-for-byte. They were sitting in an ignored directory
-# under a justification that describes the OTHER files beside them.
+# THE EXCEPTION, and the reason this is `companies/*/data/pack/*` with a negation
+# rather than `companies/*/data/pack/`: gen-brief.json and gen-discussion.json are
+# NOT derived from data/ledger/. They are model output — the raw response, the
+# usage, and `text_before_repair`, which is the ONLY copy of each document as
+# first written, before the citation and quotation repair rounds edited it. ~$3.50
+# a pass, and no re-run reproduces them byte-for-byte. They were sitting in an
+# ignored directory under a justification that describes the OTHER files beside
+# them.
 #
 # This is the third time the "it regenerates" argument has been applied to model
 # output in this repository. data/ledger/facts/ and output/ were both rescued from
@@ -81,11 +91,11 @@ data/triage/text/
 # a clean checkout instead of 35 and reported green, because the six document-level
 # checks quietly skip when these files are absent. That test now fails loudly
 # instead. Fixed 2026-08-07, VERIFICATION.md D7.
-data/pack/*
-!data/pack/gen-*.json
+companies/*/data/pack/*
+!companies/*/data/pack/gen-*.json
 
-# output/ IS COMMITTED — the earlier "final deliverables regenerate from
-# data/ledger/" reasoning was wrong for the same reason it was wrong for the
+# companies/*/output/ IS COMMITTED — the earlier "final deliverables regenerate
+# from data/ledger/" reasoning was wrong for the same reason it was wrong for the
 # ledger. The three deliverables are model-written prose. They cost real money to
 # produce (~$3.50 a full pass), and a re-run will NOT reproduce them
 # byte-for-byte, so "regenerable" is not true in the sense that matters. They are
@@ -98,12 +108,13 @@ data/pack/*
 logs/
 *.log
 
-# output/pdf/ is ignored, and this is the data/pack/ case rather than the output/
-# case. The PDFs are a pure deterministic function of three committed things — the
-# Markdown in output/, src/render_pdf.py, and the [pdf] block in
-# config/outputs.toml — and they cost $0.00 and about four seconds to rebuild:
+# companies/*/output/pdf/ is ignored, and this is the data/pack/ case rather than
+# the output/ case. The PDFs are a pure deterministic function of three committed
+# things — the Markdown in companies/<TICKER>/output/, src/equity_research/render_pdf.py,
+# and the [pdf] block in config/outputs.toml — and they cost $0.00 and about four
+# seconds to rebuild:
 #
-#     uv run python src/render_pdf.py
+#     uv run python -m equity_research.render_pdf
 #
 # Nothing in them is unrecoverable model output, unlike output/*.md or
 # data/pack/gen-*.json, so the reasoning that rescued those does not apply here.
@@ -111,7 +122,7 @@ logs/
 # regeneration, and a PDF is not byte-identical across runs anyway because it carries
 # a creation timestamp.
 #
-# What makes that safe is that the render is verified: src/render_pdf.py reads each
+# What makes that safe is that the render is verified: render_pdf.py reads each
 # finished PDF back and fails if a single word, fact id, heading or at-risk glyph did
 # not survive. A rebuilt PDF is checkably the same document, not merely assumed to be.
-output/pdf/
+companies/*/output/pdf/

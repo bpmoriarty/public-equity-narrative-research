@@ -29,13 +29,19 @@ import json
 import re
 import sys
 import time
-import tomllib
 from datetime import date, datetime, timezone
 
 import httpx
 import os
 
+from equity_research import settings
 from equity_research._bootstrap import ROOT
+from equity_research.paths import add_ticker_arg, paths
+
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
 
 # Force UTF-8 on stdout/stderr.
 #
@@ -54,12 +60,13 @@ for stream in (sys.stdout, sys.stderr):
 
 # ROOT comes from _bootstrap (imported above), which also injects the Windows
 # cert store and loads .env — see that module for why both live in one place.
-CONFIG_DIR = ROOT / "config"
-META_DIR = ROOT / "data" / "raw" / "_meta"
+# Config is no longer read through a directory constant: `settings.load_config`
+# resolves each file to config/ or companies/<TICKER>/ depending on its scope.
+META_DIR = P.meta
 # When each cached metadata document was actually read from EDGAR. Written at fetch
 # time, because that is the only moment that knows. See `Client.vintage_of`.
 FETCH_LOG = META_DIR / "fetch-log.json"
-OUT_DIR = ROOT / "data" / "discovery"
+OUT_DIR = P.discovery
 
 # The .env.example placeholder, so a copied-but-not-edited template fails here
 # rather than reaching the SEC as a fake User-Agent. Kept in sync with
@@ -78,12 +85,14 @@ SHARD_URL = "https://data.sec.gov/submissions/{name}"
 # ---------------------------------------------------------------------------
 
 def load_config() -> dict:
-    """Read the three config files. Read-only: this script never writes them."""
-    cfg = {}
-    for name in ("company", "forms", "sections"):
-        with open(CONFIG_DIR / f"{name}.toml", "rb") as fh:  # "rb" — tomllib needs binary
-            cfg[name] = tomllib.load(fh)
-    return cfg
+    """Read the three config files. Read-only: this script never writes them.
+
+    Delegates to `settings.load_config`, which knows that `company.toml` is
+    company-scoped (companies/<TICKER>/) while `forms.toml` and `sections.toml`
+    are global defaults in config/ that a company may override. Reading all
+    three from one directory stopped being correct in Phase 2.
+    """
+    return settings.load_config("company", "forms", "sections", P=P)
 
 
 def get_identity() -> str:
@@ -519,6 +528,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Milestone 1 — discover available filings.")
     ap.add_argument("--refresh", action="store_true",
                     help="ignore the metadata cache and re-fetch the index from EDGAR")
+    add_ticker_arg(ap)
+
     args = ap.parse_args()
 
     cfg = load_config()

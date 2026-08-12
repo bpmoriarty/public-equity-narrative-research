@@ -74,14 +74,20 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from equity_research._bootstrap import ROOT
+from equity_research.paths import add_ticker_arg, paths
+
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
-SECTIONS_MANIFEST = ROOT / "data" / "sections" / "sections-manifest.json"
-INVENTORY = ROOT / "data" / "discovery" / "inventory.json"
-TRIAGE_DIR = ROOT / "data" / "triage"
+SECTIONS_MANIFEST = P.sections_manifest
+INVENTORY = P.inventory
+TRIAGE_DIR = P.triage
 
 
 # ---------------------------------------------------------------------------
@@ -89,7 +95,7 @@ TRIAGE_DIR = ROOT / "data" / "triage"
 # ---------------------------------------------------------------------------
 
 def load_config() -> dict:
-    with open(ROOT / "config" / "forms.toml", "rb") as fh:
+    with open(P.config_dir / "forms.toml", "rb") as fh:
         forms = tomllib.load(fh)
     tri = forms["eight_k"]["triage"]
     # Compile once. A bad pattern in config should fail here, loudly, naming the
@@ -296,7 +302,7 @@ def triage(cfg: dict, inv: dict, manifest: dict) -> list[dict]:
         rows = by_acc.get(acc, [])
         docs = []
         for r in sorted(rows, key=lambda r: r["doc_type"]):
-            raw = re.sub(r"\s+", " ", (ROOT / r["out"]).read_text(encoding="utf-8"))
+            raw = re.sub(r"\s+", " ", P.resolve(r["out"]).read_text(encoding="utf-8"))
             is_body = r["doc_type"].upper().startswith("8-K")
             net = strip_boilerplate(raw, is_body, bp)
             over = len(net) > cap
@@ -454,6 +460,8 @@ def main() -> None:
     ap.add_argument("--show", choices=["read", "date_only"],
                     help="print the filings with this decision, with their evidence")
     ap.add_argument("--fy", type=int, action="append", help="only this fiscal year (repeatable)")
+    add_ticker_arg(ap)
+
     args = ap.parse_args()
 
     cfg = load_config()

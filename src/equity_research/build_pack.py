@@ -57,10 +57,16 @@ from datetime import datetime, timezone
 from equity_research._bootstrap import ROOT
 from equity_research.ledger_schema import canon
 from equity_research.merge_events import timeline_block
+from equity_research.paths import add_ticker_arg, paths
 
-LEDGER_DIR = ROOT / "data" / "ledger"
-PACK_DIR = ROOT / "data" / "pack"
-CONFIG = ROOT / "config" / "outputs.toml"
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
+
+LEDGER_DIR = P.ledger
+PACK_DIR = P.pack
+CONFIG = P.config_dir / "outputs.toml"
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
@@ -551,6 +557,8 @@ def main() -> None:
     ap.add_argument("--show", choices=["constraints", "how_to_use", "field_notes"],
                     help="print this block and exit")
     ap.add_argument("--no-count", action="store_true", help="skip the API token count")
+    add_ticker_arg(ap)
+
     args = ap.parse_args()
 
     pcfg = load_pack_config()

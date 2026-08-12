@@ -65,19 +65,25 @@ from datetime import datetime, timezone
 from rapidfuzz import fuzz
 
 from equity_research._bootstrap import ROOT
+from equity_research.paths import add_ticker_arg, paths
+
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
-SECTIONS_MANIFEST = ROOT / "data" / "sections" / "sections-manifest.json"
-OUT_DIR = ROOT / "data" / "ledger"
+SECTIONS_MANIFEST = P.sections_manifest
+OUT_DIR = P.ledger
 
 RISK_KEY = "10-K_item1a_risk_factors"
 
 
 def load_thresholds() -> dict:
-    with open(ROOT / "config" / "sections.toml", "rb") as fh:
+    with open(P.config_dir / "sections.toml", "rb") as fh:
         cfg = tomllib.load(fh)
     if "risk_diff" not in cfg:
         sys.exit("FATAL: config/sections.toml has no [risk_diff] table.")
@@ -94,7 +100,7 @@ def load_factors() -> dict[int, dict]:
     for r in rows:
         if r["key"] != RISK_KEY or not r.get("ok"):
             continue
-        path = ROOT / r["out"].replace(".txt", ".factors.json")
+        path = P.resolve(r["out"].replace(".txt", ".factors.json"))
         if not path.exists():
             print(f"  WARNING: FY{r['fiscal_year']} risk section has no factors file at {path}")
             continue
@@ -206,6 +212,8 @@ def sanity_check(fy: int, prior_n: int, current_n: int, d: dict) -> list[str]:
 def main() -> None:
     ap = argparse.ArgumentParser(description="Deterministic year-over-year risk factor diff.")
     ap.add_argument("--fy", type=int, help="print this year's deltas in full")
+    add_ticker_arg(ap)
+
     args = ap.parse_args()
 
     th = load_thresholds()

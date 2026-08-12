@@ -211,6 +211,12 @@ check("an id outside brackets is still not prose",
 
 print("\nthe id pattern tracks ledger_schema, so a new field cannot become uncheckable")
 from equity_research.ledger_schema import FIELD_CODES  # noqa: E402
+from equity_research.paths import paths  # noqa: E402
+
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
 check("every field code the ledger can mint is matched by ID_RE",
       sorted({code for code in FIELD_CODES.values()
               if not g.ID_RE.fullmatch(f"{code}-FY2023-0123abcd")}), [])
@@ -238,11 +244,11 @@ print("\nthe real documents on disk")
 #   index missing  -> the pack has not been built; one free, deterministic command.
 # Folding them together would print the wrong instruction half the time.
 n_docs = 0
-idx_p = ROOT / "data" / "pack" / "index.json"
+idx_p = P.pack / "index.json"
 idx = json.loads(idx_p.read_text(encoding="utf-8")) if idx_p.exists() else None
 
 for slug, d in g.DOCS.items():
-    rec_p = ROOT / "data" / "pack" / f"gen-{slug}.json"
+    rec_p = P.pack / f"gen-{slug}.json"
     if not rec_p.exists():
         FAIL += 1
         print(f"  FAIL  {d['file']}: generation record {rec_p.relative_to(ROOT)} is "
@@ -274,7 +280,7 @@ for slug, d in g.DOCS.items():
     check(f"{d['file']}: every quotation is verbatim filing text",
           [b["quote"] for b in g.check_quotes(shipped, idx)["bad"]], [])
     check(f"{d['file']}: the rendered file matches the recorded body",
-          shipped.strip() in (ROOT / "output" / d["file"]).read_text(encoding="utf-8"),
+          shipped.strip() in (P.output / d["file"]).read_text(encoding="utf-8"),
           True)
     # A correction that is not in the record is a hand-edit, which is the thing the
     # check above exists to prevent. So the record must also be internally honest:

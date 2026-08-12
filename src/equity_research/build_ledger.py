@@ -55,17 +55,23 @@ from pathlib import Path
 from equity_research._bootstrap import ROOT
 from equity_research.ledger_schema import (ID_HEX, FactSource, LedgerFact, YearLedger,
                                            confidence_for, risk_delta_id, verify_quote)
+from equity_research.paths import add_ticker_arg, paths
+
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
-LEDGER_DIR = ROOT / "data" / "ledger"
+LEDGER_DIR = P.ledger
 FACTS_DIR = LEDGER_DIR / "facts"
-SECTIONS_MANIFEST = ROOT / "data" / "sections" / "sections-manifest.json"
-INVENTORY = ROOT / "data" / "discovery" / "inventory.json"
+SECTIONS_MANIFEST = P.sections_manifest
+INVENTORY = P.inventory
 RISK_DELTAS = LEDGER_DIR / "risk-deltas.json"
-CORRECTIONS = ROOT / "config" / "corrections.toml"
+CORRECTIONS = P.corrections_toml
 
 # A literal backslash-u-XXXX sitting in stored text, rather than the character it
 # spells. Written with a raw string so the pattern is the six ASCII characters, not
@@ -121,7 +127,7 @@ def section_texts(manifest_rows: list[dict]) -> dict[tuple[str, str], str]:
     out = {}
     for r in manifest_rows:
         if r.get("ok") and r.get("out"):
-            out[(r["accession"], r["key"])] = (ROOT / r["out"]).read_text(encoding="utf-8")
+            out[(r["accession"], r["key"])] = P.resolve(r["out"]).read_text(encoding="utf-8")
     return out
 
 
@@ -133,10 +139,12 @@ def load_task_records(fy: int, task: str) -> list[dict]:
     glob would silently pick up a different task's files the moment one task name
     becomes a prefix of another, and it would do so without any error.
     """
-    paths = sorted(FACTS_DIR.glob(f"FY{fy}_{task}.json"))
+    # Not named `paths`: that is the module-level CompanyPaths factory imported
+    # at the top, and shadowing it inside a function is a trap for the next edit.
+    fact_files = sorted(FACTS_DIR.glob(f"FY{fy}_{task}.json"))
     if task in PER_FILING_TASKS:
-        paths += sorted(FACTS_DIR.glob(f"FY{fy}_{task}_*.json"))
-    return [json.loads(p.read_text(encoding="utf-8")) for p in paths]
+        fact_files += sorted(FACTS_DIR.glob(f"FY{fy}_{task}_*.json"))
+    return [json.loads(p.read_text(encoding="utf-8")) for p in fact_files]
 
 
 def audit_ids() -> tuple[int, int, list[str]]:
@@ -625,6 +633,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Milestone 4b — assemble the year ledger.")
     ap.add_argument("--fy", type=int, action="append", help="only this fiscal year (repeatable)")
     ap.add_argument("--show", help="print this ledger field for the selected year(s)")
+    add_ticker_arg(ap)
+
     args = ap.parse_args()
 
     inv = load_json(INVENTORY, "Run src/discover.py first (milestone 1).")

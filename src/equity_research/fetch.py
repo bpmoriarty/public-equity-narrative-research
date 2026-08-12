@@ -41,6 +41,12 @@ import httpx
 import os
 
 from equity_research._bootstrap import ROOT
+from equity_research.paths import add_ticker_arg, paths
+
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
 
 # See src/equity_research/discover.py for why this is necessary on Windows: the
 # console's cp1252 code page cannot encode many characters that appear in
@@ -51,10 +57,9 @@ for _stream in (sys.stdout, sys.stderr):
 
 # ROOT comes from _bootstrap (imported above), which also injects the Windows
 # cert store and loads .env — see that module for why both live in one place.
-CONFIG_DIR = ROOT / "config"
-RAW_DIR = ROOT / "data" / "raw"
+RAW_DIR = P.raw
 ATTACH_CACHE = RAW_DIR / "_meta" / "attachments"
-INVENTORY = ROOT / "data" / "discovery" / "inventory.json"
+INVENTORY = P.inventory
 LOG_PATH = RAW_DIR / "fetch-log.jsonl"
 
 # See the note on the identical constant in src/discover.py.
@@ -114,7 +119,8 @@ def keep_attachment(doc_type: str, filename: str) -> tuple[bool, str]:
 # ---------------------------------------------------------------------------
 
 def load_settings() -> dict:
-    with open(CONFIG_DIR / "company.toml", "rb") as fh:
+    # company.toml is company-scoped as of Phase 2; it is no longer in config/.
+    with open(P.company_toml, "rb") as fh:
         return tomllib.load(fh)
 
 
@@ -226,6 +232,8 @@ def main() -> None:
     ap.add_argument("--accession", action="append", default=None, metavar="ACC",
                     help="fetch this accession even if it is outside the fiscal-year window "
                          "(repeatable). Deliberate, narrow override — see DATA.md.")
+    add_ticker_arg(ap)
+
     args = ap.parse_args()
 
     if not INVENTORY.exists():

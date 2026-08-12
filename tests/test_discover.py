@@ -32,6 +32,12 @@ for _s in (sys.stdout, sys.stderr):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
 import equity_research.discover as d  # noqa: E402
+from equity_research.paths import paths  # noqa: E402
+
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
 
 PASS = FAIL = 0
 
@@ -94,7 +100,7 @@ check("a truncated log does not raise", bool(ts2), True)
 check("  and the fallback labels itself as inferred", "mtime" in how2, True)
 
 print("\nthe real inventory reports the data's vintage, not the run's clock")
-inv_p = ROOT / "data" / "discovery" / "inventory.json"
+inv_p = P.inventory
 if inv_p.exists():
     inv = json.loads(inv_p.read_text(encoding="utf-8"))
     check("as_of_utc and run_utc are both present and distinct fields",

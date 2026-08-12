@@ -30,6 +30,12 @@ for _s in (sys.stdout, sys.stderr):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
 import equity_research.verify_outputs as v  # noqa: E402
+from equity_research.paths import paths  # noqa: E402
+
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
 
 PASS = FAIL = 0
 
@@ -351,13 +357,13 @@ check("segment bases read off the pack's own constraint",
 
 print("\nthe real documents on disk, if they have been generated")
 n_docs = 0
-if (ROOT / "data/pack/pack.json").exists():
+if (P.pack / "pack.json").exists():
     payload, pack, index, cfg, _gen = v.load()
     import hashlib
     sha = hashlib.sha256(payload.encode("utf-8")).hexdigest()
     pf = v.pack_facts(pack, index)
     for doc in cfg["documents"]:
-        p = ROOT / "output" / doc
+        p = P.output / doc
         if not p.exists():
             print(f"  --    {doc} not generated; skipped")
             continue

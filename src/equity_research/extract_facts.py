@@ -67,6 +67,12 @@ import anthropic
 
 from equity_research._bootstrap import ROOT
 from equity_research.ledger_schema import TASK_MODELS
+from equity_research.paths import add_ticker_arg, paths
+
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
@@ -74,10 +80,10 @@ for _s in (sys.stdout, sys.stderr):
 
 # ROOT comes from _bootstrap (imported above), which also injects the Windows
 # cert store and loads .env — see that module for why both live in one place.
-SECTIONS_MANIFEST = ROOT / "data" / "sections" / "sections-manifest.json"
-INVENTORY = ROOT / "data" / "discovery" / "inventory.json"
-FACTS_DIR = ROOT / "data" / "ledger" / "facts"
-TRIAGE = ROOT / "data" / "triage" / "triage-8k.json"
+SECTIONS_MANIFEST = P.sections_manifest
+INVENTORY = P.inventory
+FACTS_DIR = P.facts
+TRIAGE = P.triage_json
 
 # Published Claude Opus 5 rates, per million tokens. Used only to print an
 # estimate before spending anything; nothing depends on them being current.
@@ -229,7 +235,7 @@ TASKS: dict[str, dict] = {
 # ---------------------------------------------------------------------------
 
 def load_config() -> dict:
-    with open(ROOT / "config" / "company.toml", "rb") as fh:
+    with open(P.company_toml, "rb") as fh:
         return tomllib.load(fh)
 
 
@@ -258,7 +264,7 @@ def load_triage() -> dict | None:
 
 
 def read_section(row: dict) -> str:
-    return (ROOT / row["out"]).read_text(encoding="utf-8")
+    return P.resolve(row["out"]).read_text(encoding="utf-8")
 
 
 def gather_plain(sections: list[dict], fy: int, keys: list[str]) -> list[dict]:
@@ -388,7 +394,7 @@ def gather_investor_qa(sections: list[dict], tri: dict, fy: int) -> list[list[di
             if not (s["accession"] == acc and s["key"] in keyed
                     and s.get("ok") and s.get("out")):
                 continue
-            tp = ROOT / keyed[s["key"]]
+            tp = P.resolve(keyed[s["key"]])
             if not tp.exists():
                 sys.exit(f"FATAL: trimmed text {tp} is missing but the triage log "
                          "names it. Re-run src/triage_8k.py.")
@@ -589,6 +595,8 @@ def main() -> None:
     ap.add_argument("--refresh-stale", action="store_true",
                     help="re-run only those cached results whose source text has changed "
                          "since they were extracted (costs tokens)")
+    add_ticker_arg(ap)
+
     args = ap.parse_args()
 
     cfg = load_config()

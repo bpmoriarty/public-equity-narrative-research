@@ -50,6 +50,14 @@ for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
+from equity_research.paths import paths  # noqa: E402
+
+# ROOT stays: this file walks the WHOLE repository looking for paid model output,
+# which is a repo-level question, not a per-company one — a company folder added
+# tomorrow with ignored facts/ must fail this suite too. `P` is only for the
+# checks that name a specific company's artifacts.
+P = paths()
+
 PASS = FAIL = 0
 
 # Directories with nothing git could ever be expected to track.
@@ -160,7 +168,7 @@ def main() -> int:
 
     print()
     print("THE DELIVERABLES MUST BE TRACKED — model-written prose, ~$3.50 a pass")
-    docs = sorted((ROOT / "output").glob("*.md"))
+    docs = sorted(P.output.glob("*.md"))
     check("output/ contains generated documents", bool(docs),
           "No .md files in output/. If the pipeline has not been run this is "
           "expected; if it has, the deliverables are missing.")

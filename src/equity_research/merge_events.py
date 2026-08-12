@@ -91,10 +91,16 @@ from rapidfuzz import fuzz
 
 from equity_research._bootstrap import ROOT
 from equity_research.ledger_schema import canon
+from equity_research.paths import add_ticker_arg, paths
 
-LEDGER_DIR = ROOT / "data" / "ledger"
-PACK_DIR = ROOT / "data" / "pack"
-CONFIG = ROOT / "config" / "outputs.toml"
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
+
+LEDGER_DIR = P.ledger
+PACK_DIR = P.pack
+CONFIG = P.config_dir / "outputs.toml"
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
@@ -529,6 +535,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Milestone 5c — merge and split event records.")
     ap.add_argument("--show", choices=["merged", "dated", "unclear", "possible", "routine"],
                     help="print a view and exit")
+    add_ticker_arg(ap)
+
     args = ap.parse_args()
 
     block = timeline_block()

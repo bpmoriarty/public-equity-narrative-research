@@ -50,10 +50,16 @@ from datetime import datetime, timezone
 
 from equity_research._bootstrap import ROOT
 from equity_research.merge_events import timeline_block
+from equity_research.paths import add_ticker_arg, paths
 
-PACK_DIR = ROOT / "data" / "pack"
-OUT_DIR = ROOT / "output"
-CONFIG = ROOT / "config" / "outputs.toml"
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
+
+PACK_DIR = P.pack
+OUT_DIR = P.output
+CONFIG = P.config_dir / "outputs.toml"
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
@@ -86,7 +92,7 @@ def subject() -> dict:
     config/company.toml carries a `resolved_name` tripwire rather than an input, so
     the authoritative name is whatever discovery resolved and the ledger recorded.
     """
-    p = sorted((ROOT / "data" / "ledger").glob("FY*.json"))
+    p = sorted(P.ledger.glob("FY*.json"))
     if not p:
         sys.exit("FATAL: no ledger. Run src/build_ledger.py first.")
     years = [json.loads(x.read_text(encoding="utf-8")) for x in p]
@@ -295,6 +301,8 @@ def render() -> str:
 def main() -> None:
     ap = argparse.ArgumentParser(description="Milestone 5d — render output/timeline.md.")
     ap.add_argument("--stdout", action="store_true", help="print instead of writing")
+    add_ticker_arg(ap)
+
     args = ap.parse_args()
 
     text = render()

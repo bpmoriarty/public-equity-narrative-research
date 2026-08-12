@@ -45,6 +45,12 @@ from pathlib import Path
 from pdfminer.high_level import extract_text
 
 from equity_research._bootstrap import ROOT
+from equity_research.paths import add_ticker_arg, paths
+
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
 
 for _stream in (sys.stdout, sys.stderr):
     if hasattr(_stream, "reconfigure"):
@@ -179,7 +185,7 @@ def extract(path: Path, pages: list[int] | None = None) -> tuple[str, dict]:
 
 def _selftest() -> None:
     """Run against the one PDF this module exists for, and report quality."""
-    manifest = ROOT / "data" / "raw" / "fetch-manifest.json"
+    manifest = P.fetch_manifest
     if not manifest.exists():
         sys.exit("FATAL: run src/fetch.py first — no fetch-manifest.json.")
     recs = json.loads(manifest.read_text(encoding="utf-8"))["records"]
@@ -188,7 +194,7 @@ def _selftest() -> None:
         sys.exit("No ARS PDF in the manifest; nothing to self-test against.")
 
     rec = pdfs[0]
-    path = ROOT / rec["path"]
+    path = P.resolve(rec["path"])
     print(f"self-test: {rec['form']} FY{rec['fiscal_year']}  {path.name}  ({rec['bytes']:,d} bytes)")
     print()
 
@@ -229,6 +235,8 @@ def main() -> None:
     ap.add_argument("--selftest", action="store_true", help="run against the FY2022 ARS and report quality")
     ap.add_argument("pdf", nargs="?", help="a PDF to extract")
     ap.add_argument("--pages", help="0-indexed page range, e.g. 0-11")
+    add_ticker_arg(ap)
+
     args = ap.parse_args()
 
     if args.selftest:

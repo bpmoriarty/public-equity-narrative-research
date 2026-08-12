@@ -61,9 +61,15 @@ from datetime import datetime, timezone
 from equity_research._bootstrap import ROOT
 from equity_research.generate_outputs import (ID_RE, check_citations, check_quotes,
                                               verified_text, word_count)
+from equity_research.paths import add_ticker_arg, paths
 
-PACK_DIR = ROOT / "data" / "pack"
-OUT_DIR = ROOT / "output"
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
+
+PACK_DIR = P.pack
+OUT_DIR = P.output
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
@@ -80,8 +86,8 @@ def load() -> tuple[str, dict, dict, dict, dict]:
             sys.exit(f"FATAL: data/pack/{f} not found.\n"
                      f"  Build it: uv run python src/build_pack.py")
     payload = (PACK_DIR / "pack.json").read_text(encoding="utf-8")
-    cfg = tomllib.loads((ROOT / "config" / "outputs.toml").read_text(encoding="utf-8"))
-    gen = tomllib.loads((ROOT / "config" / "company.toml").read_text(encoding="utf-8"))
+    cfg = tomllib.loads((P.config_dir / "outputs.toml").read_text(encoding="utf-8"))
+    gen = tomllib.loads(P.company_toml.read_text(encoding="utf-8"))
     if "verify" not in cfg:
         sys.exit("FATAL: config/outputs.toml has no [verify] block.")
     return (payload, json.loads(payload),
@@ -506,6 +512,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Milestone 5f — verify the deliverables.")
     ap.add_argument("--only", help="one document, by file name")
     ap.add_argument("--review", action="store_true", help="print the review lists too")
+    add_ticker_arg(ap)
+
     args = ap.parse_args()
 
     payload, pack, index, cfg, gen = load()

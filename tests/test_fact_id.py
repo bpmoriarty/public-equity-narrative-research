@@ -29,6 +29,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 from equity_research.ledger_schema import (FactSource, LedgerFact,  # noqa: E402
                                            fact_id, risk_delta_id)
+from equity_research.paths import paths
+
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
@@ -202,12 +208,14 @@ def main() -> int:
     # --- against the real ledger, if it has been built ---------------------
     print()
     print("THE BUILT LEDGER — every stored id must be reproducible from the fact itself")
-    paths = sorted((ROOT / "data" / "ledger").glob("FY*.json"))
-    if not paths:
-        print("  SKIPPED  no ledger on disk — run src/build_ledger.py")
+    # Not `paths` — that name belongs to the CompanyPaths factory imported above.
+    ledger_files = sorted(P.ledger.glob("FY*.json"))
+    if not ledger_files:
+        print("  SKIPPED  no ledger on disk — run "
+              "uv run python -m equity_research.build_ledger")
     else:
         n = bad = 0
-        for p in paths:
+        for p in ledger_files:
             d = json.loads(p.read_text(encoding="utf-8"))
             for field, facts in d.items():
                 if not isinstance(facts, list) or not facts or not isinstance(facts[0], dict):

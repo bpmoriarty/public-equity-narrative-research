@@ -67,10 +67,16 @@ from pdfminer.high_level import extract_text
 from xhtml2pdf import pisa
 
 from equity_research._bootstrap import ROOT
+from equity_research.paths import add_ticker_arg, paths
 
-OUT_DIR = ROOT / "output"
+# Every data/ and output/ path for the company this run operates on.
+# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
+# single company under companies/ -- see equity_research/paths.py.
+P = paths()
+
+OUT_DIR = P.output
 PDF_DIR = OUT_DIR / "pdf"
-CONFIG = ROOT / "config" / "outputs.toml"
+CONFIG = P.config_dir / "outputs.toml"
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
@@ -275,6 +281,8 @@ def render_one(md_path: Path, cfg: dict, stamp: str) -> tuple[Path, dict]:
 def main() -> None:
     ap = argparse.ArgumentParser(description="Render output/*.md to output/pdf/*.pdf.")
     ap.add_argument("--only", help="one file name, e.g. timeline.md")
+    add_ticker_arg(ap)
+
     args = ap.parse_args()
 
     if not CONFIG.exists():
