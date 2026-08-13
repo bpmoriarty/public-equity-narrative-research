@@ -7,9 +7,9 @@ mainly produces is a RECORD — forms.toml asks for it in as many words: "Log ev
 triage decision; a silent drop here loses real events."
 
 Run it:
-    uv run python src/triage_8k.py
-    uv run python src/triage_8k.py --show read        # only the keep decisions
-    uv run python src/triage_8k.py --show date_only   # audit the drops by eye
+    uv run python -m equity_research.triage_8k
+    uv run python -m equity_research.triage_8k --show read        # only the keep decisions
+    uv run python -m equity_research.triage_8k --show date_only   # audit the drops by eye
 
 Writes:
     data/triage/triage-8k.json     one record per filing, with the evidence
@@ -57,7 +57,7 @@ Workiva-generated EX-99.1 with the body reduced to a stub that just points at th
 exhibit. FY2024 contains both shapes.
 
 This is why triage routes DOCUMENTS and not filings. A filing-level decision
-combined with the "bodies only, never exhibits" rule in src/extract_facts.py
+combined with the "bodies only, never exhibits" rule in src/equity_research/extract_facts.py
 would read the early years and silently read nothing at all for the late ones,
 while reporting the same number of filings processed in both.
 """
@@ -285,7 +285,7 @@ def triage(cfg: dict, inv: dict, manifest: dict) -> list[dict]:
                if r["in_window"] and r["disposition"] == "triage"}
     if not targets:
         sys.exit("FATAL: no filings with disposition 'triage' in the inventory. "
-                 "Run src/discover.py first (milestone 1).")
+                 "Run `uv run python -m equity_research.discover` first (milestone 1).")
 
     by_acc: dict[str, list[dict]] = {}
     for r in manifest["sections"]:
@@ -465,8 +465,8 @@ def main() -> None:
     args = ap.parse_args()
 
     cfg = load_config()
-    inv = load_json(INVENTORY, "Run src/discover.py first (milestone 1).")
-    manifest = load_json(SECTIONS_MANIFEST, "Run src/extract_sections.py first (milestone 3).")
+    inv = load_json(INVENTORY, "Run `uv run python -m equity_research.discover` first (milestone 1).")
+    manifest = load_json(SECTIONS_MANIFEST, "Run `uv run python -m equity_research.extract_sections` first (milestone 3).")
 
     records = triage(cfg, inv, manifest)
 

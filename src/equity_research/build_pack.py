@@ -4,9 +4,9 @@ Deterministic. No network, no model calls. Reads `data/ledger/FY*.json` and writ
 one payload plus the reverse index the output checker needs.
 
 Run it:
-    uv run python src/build_pack.py
-    uv run python src/build_pack.py --show constraints
-    uv run python src/build_pack.py --no-count      # skip the token count
+    uv run python -m equity_research.build_pack
+    uv run python -m equity_research.build_pack --show constraints
+    uv run python -m equity_research.build_pack --no-count      # skip the token count
 
 Writes:
     data/pack/pack.json         the payload sent to the model
@@ -54,8 +54,9 @@ import tomllib
 from collections import Counter
 from datetime import datetime, timezone
 
+from equity_research import settings
 from equity_research._bootstrap import ROOT
-from equity_research.ledger_schema import canon
+from equity_research.ledger_schema import FIELDS, canon
 from equity_research.merge_events import timeline_block
 from equity_research.paths import add_ticker_arg, paths
 
@@ -72,10 +73,9 @@ for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
-# Same order as the ledger, so the two artifacts read the same way.
-FIELDS = ["strategic_priorities", "segments", "headcount", "leadership", "board",
-          "incentive_metrics", "vote_results", "events", "notable_language",
-          "investor_qa"]
+# Same order as the ledger, so the two artifacts read the same way — guaranteed
+# now rather than maintained by hand: FIELDS is imported from ledger_schema,
+# which derives it from FIELD_CODES.
 
 
 def load_pack_config() -> dict:
@@ -106,20 +106,20 @@ def load_pack_config() -> dict:
 
 def load_years() -> dict[int, dict]:
     if not LEDGER_DIR.exists():
-        sys.exit(f"FATAL: {LEDGER_DIR} not found. Run src/build_ledger.py first.")
+        sys.exit(f"FATAL: {LEDGER_DIR} not found. Run `uv run python -m equity_research.build_ledger` first.")
     years = {}
     for p in sorted(LEDGER_DIR.glob("FY*.json")):
         d = json.loads(p.read_text(encoding="utf-8"))
         years[d["fiscal_year"]] = d
     if not years:
-        sys.exit(f"FATAL: no FY*.json in {LEDGER_DIR}. Run src/build_ledger.py first.")
+        sys.exit(f"FATAL: no FY*.json in {LEDGER_DIR}. Run `uv run python -m equity_research.build_ledger` first.")
     # A fact without an id cannot be cited, which is the entire purpose of the
     # pack. Better to refuse than to emit a payload with uncitable facts in it.
     for fy, d in years.items():
         missing = sum(1 for f in FIELDS for x in d[f] if not x.get("id"))
         if missing:
             sys.exit(f"FATAL: FY{fy} has {missing} fact(s) with no id. That ledger was "
-                     f"built before ids existed.\n  Rebuild: uv run python src/build_ledger.py")
+                     f"built before ids existed.\n  Rebuild: uv run python -m equity_research.build_ledger")
     return years
 
 
@@ -379,7 +379,7 @@ def build_pack(years: dict[int, dict]) -> tuple[dict, dict]:
                            "carry `heading_now`/`heading_prior`; added/removed carry "
                            "`heading`.",
         },
-        # Merged, split and classified event rows from src/merge_events.py.
+        # Merged, split and classified event rows from src/equity_research/merge_events.py.
         # Imported rather than run as a separate step, so the ordering cannot be got
         # wrong by running two scripts in the wrong sequence.
         "timeline": timeline_block(include_quotes=False),
@@ -477,10 +477,12 @@ def count_tokens(text: str, model: str) -> int | None:
     try:
         import os
 
-        import truststore
-        from dotenv import load_dotenv
-        truststore.inject_into_ssl()
-        load_dotenv(ROOT / ".env")
+        # truststore.inject_into_ssl() and load_dotenv() used to be repeated here.
+        # Both now happen once, at import, in _bootstrap -- which this module
+        # already imports for ROOT. They were idempotent so the duplication was
+        # harmless, but it meant a network-adjacent call ran at a different moment
+        # depending on which stage you entered through. Deferred from Phase 1
+        # deliberately, because collapsing it changes that timing.
         import anthropic
         client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
         return client.messages.count_tokens(
@@ -605,17 +607,25 @@ def main() -> None:
     if tokens:
         # Cache economics, printed because they are the reason the payload has no
         # timestamp in it — and because caching is NOT automatically the cheaper
-        # option. A read is 0.1x input price, so a cache only repays its own write:
-        #   5-minute write is 1.25x  ->  break-even at 1.25/0.9 = 1.4 reads
-        #   1-hour   write is 2.0x   ->  break-even at 2.0/0.9  = 2.3 reads
-        # Below those, paying full price each time is cheaper. Worth knowing before
-        # 10d/10e rather than assuming caching always wins.
+        # option. A read is 0.1x input price, so a cache only repays its own write
+        # after `break_even_reads` reads; below that, paying full price each time
+        # is cheaper.
+        #
+        # Every number here now comes from settings.py. It used to be six literals
+        # in this function (5, 0.5, 1.25, 2.0, 6.25, 10) plus two break-evens
+        # written out by hand in the comment above — and one of those, the
+        # 1-hour figure, said 2.3 while the line below it computed and printed
+        # 2.2. The report and the terminal disagreed on the same run.
+        price = settings.price_for(pcfg["model"])
+        per_m = tokens / 1e6
         print(f"  {tokens:,} tokens")
-        for label, mult, be in (("5-minute", 1.25, 1.25 / 0.9), ("1-hour", 2.0, 2.0 / 0.9)):
-            print(f"  {label:9s} cache: ${tokens / 1e6 * 5 * mult:.2f} to write, "
-                  f"${tokens / 1e6 * 0.5:.2f} per read "
-                  f"— cheaper than paying full price from {be:.1f} reads on")
-        print(f"  no cache: ${tokens / 1e6 * 5:.2f} per call")
+        for label, ttl in (("5-minute", "5m"), ("1-hour", "1h")):
+            mult = settings.CACHE_WRITE_MULTIPLIER[ttl]
+            print(f"  {label:9s} cache: ${per_m * price.input * mult:.2f} to write, "
+                  f"${per_m * price.input * settings.CACHE_READ_MULTIPLIER:.2f} per read "
+                  f"— cheaper than paying full price from "
+                  f"{settings.break_even_reads(ttl):.1f} reads on")
+        print(f"  no cache: ${per_m * price.input:.2f} per call")
 
     per_field = {f: sum(len(y["facts"][f]) for y in pack["years"].values()) for f in FIELDS}
     print()
@@ -654,14 +664,16 @@ def main() -> None:
         lines += [
             "",
             "### Cost per call, and whether to cache", "",
-            "Caching is not automatically cheaper. A cached read is 0.1x input price, so a "
-            "cache has to repay its own write before it wins.", "",
+            f"Caching is not automatically cheaper. A cached read is "
+            f"{settings.CACHE_READ_MULTIPLIER:g}x input price, so a cache has to repay "
+            f"its own write before it wins. Prices as of {settings.PRICES_AS_OF}.", "",
             "| | Cost | Break-even |", "|---|---|---|",
-            f"| No cache | ${tokens / 1e6 * 5:.2f} per call | — |",
-            f"| 5-minute cache | ${tokens / 1e6 * 6.25:.2f} write + "
-            f"${tokens / 1e6 * 0.5:.2f} per read | cheaper from **1.4 reads** on |",
-            f"| 1-hour cache | ${tokens / 1e6 * 10:.2f} write + "
-            f"${tokens / 1e6 * 0.5:.2f} per read | cheaper from **2.3 reads** on |",
+            f"| No cache | ${per_m * price.input:.2f} per call | — |",
+            *[f"| {label} cache | "
+              f"${per_m * price.input * settings.CACHE_WRITE_MULTIPLIER[ttl]:.2f} write + "
+              f"${per_m * price.input * settings.CACHE_READ_MULTIPLIER:.2f} per read | "
+              f"cheaper from **{settings.break_even_reads(ttl):.1f} reads** on |"
+              for label, ttl in (("5-minute", "5m"), ("1-hour", "1h"))],
             "",
             "Only two of the four planned generation calls need the whole pack — the "
             "narrative brief and the observations half of discussion-points. The timeline "
@@ -685,7 +697,7 @@ def main() -> None:
             "is the evidence a document may be built on, and CLAUDE.md is "
             "unconditional: *if something can't be sourced, it doesn't go in*. An id "
             "absent from the index is an unresolvable citation, which "
-            "`src/verify_outputs.py` already fails on — so this exclusion closes the "
+            "`src/equity_research/verify_outputs.py` already fails on — so this exclusion closes the "
             "class through a gate that already exists. VERIFICATION.md D5.",
             "",
             "| Id | Field | FY | Why it could not be sourced |", "|---|---|---|---|"]

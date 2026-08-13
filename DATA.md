@@ -42,11 +42,11 @@ it, because the meeting happens the following spring.
 
 It is also why `in_window` is `false` on that row in `inventory.json` while twelve
 `VOTE-FY2025` facts nonetheless depend on it: `in_window` is computed on fiscal
-year (`src/discover.py`), and the filing's own fiscal year is 2026. The attribution
+year (`src/equity_research/discover.py`), and the filing's own fiscal year is 2026. The attribution
 is correct — reaching forward is the only way to apply one consistent rule to all
 five years — but the flag reads as an exclusion and is not one.
 
-Fetched by explicit accession (`src/fetch.py --accession`), not by widening the
+Fetched by explicit accession (`uv run python -m equity_research.fetch --accession`), not by widening the
 window: extending the window into 2026 would have swept in a sixth year of 10-Qs,
 Form 4s and earnings 8-Ks and quietly changed what every coverage claim in this
 file means. Coverage claims therefore remain "FY2021–FY2025, plus one named 8-K
@@ -145,7 +145,7 @@ has to survive them.
    That letter (`ARS`, accession 0001104659-23-039633) was filed as a PDF;
    FY2023–FY2025 are HTML. The PDF embeds a subsetted font with no ToUnicode
    CMap — it records glyph *ids* with no table saying which characters they are.
-   `src/pdf_text.py` recovers the text by deriving the glyph-to-character offset
+   `src/equity_research/pdf_text.py` recovers the text by deriving the glyph-to-character offset
    from the document itself (+29 for this font, derived from the space glyph's
    frequency, not hardcoded) and validating the result against English sentinel
    words. The decode reported 0 unmapped glyphs, 0 undecoded markers, and a
@@ -196,7 +196,7 @@ has to survive them.
    Both fail the same way: a heading appears once in the front-of-proxy summary
    and again at the real section, and no single global rule separated them across
    all sections and years (three were tried; each fixed one section and broke
-   another). See the KNOWN LIMITS note in `src/extract_sections.py`.
+   another). See the KNOWN LIMITS note in `src/equity_research/extract_sections.py`.
 
    **Consequence, and how it is handled:** every ledger field carries a
    `confidence` marker, and anything sourced from these two sections is recorded
@@ -250,7 +250,7 @@ has to survive them.
    absence of disclosure.
 
 13. **15 of the 75 conditional 7.01/8.01 8-Ks were dropped from the history.**
-   `src/triage_8k.py` judged them on content; the decisions and their evidence are
+   `src/equity_research/triage_8k.py` judged them on content; the decisions and their evidence are
    in `data/triage/triage-8k.json`, and the full drop list is printed in
    `data/triage/triage-report.md` for audit. All 15 are quarterly dividend
    declarations. Nothing else was dropped: a `date_only` decision requires
@@ -320,7 +320,7 @@ has to survive them.
      few cents in duplicated boilerplate rather than discarding a document.
      Removing boilerplate is a cost optimization; losing content is a correctness
      failure, and when they conflict the optimization loses.
-   - **The cache detects a changed input.** `src/extract_facts.py` compares each
+   - **The cache detects a changed input.** `src/equity_research/extract_facts.py` compares each
      cached result's stored `source_chars` against the current source text and
      refuses to treat a mismatch as done. "A completed task is never re-run" is
      only safe while its input is unchanged, and a filename cannot know what it
@@ -353,7 +353,7 @@ pipeline never reads as a gap in the disclosure.
 
 Every fact in the ledger carries an exact quote from its source section, and the
 builder checks that the quote actually occurs in that section before storing it
-(`verify_quote` in `src/ledger_schema.py`). This exists because a model asked for
+(`verify_quote` in `src/equity_research/ledger_schema.py`). This exists because a model asked for
 a citation always produces something citation-shaped. The failure that matters is
 not a missing source, it is a *plausible* source for a claim the filing never
 made — and nothing downstream can distinguish that from a real extraction.
@@ -428,7 +428,7 @@ times, and each loosening is exactly when the rejections need re-proving.
 | 3 of the first 4 investor-Q&A failures | the model emitted a unicode escape as literal text — the six characters `\u2019` — where the character `’` belongs | decode literal `\uXXXX` escapes before comparing |
 | 1 investor-Q&A failure | a Workiva image placeholder (`…9262025003.jpg`) sits *inside* a sentence in the extracted text | drop bare image filenames on both sides |
 
-The last of those was self-inflicted and is worth naming: `src/triage_8k.py`
+The last of those was self-inflicted and is worth naming: `src/equity_research/triage_8k.py`
 strips those placeholders before sending text to a model, while verification runs
 against the untrimmed section. Trimming the model's input cannot make a bad quote
 pass — that direction is safe by construction — but it can make a good one fail,
@@ -515,7 +515,7 @@ from the real filings including every pair named above.
 
 ### Verifying the deliverables — what a check may and may not gate on
 
-`src/verify_outputs.py` reads the rendered Markdown in `output/` and holds each
+`src/equity_research/verify_outputs.py` reads the rendered Markdown in `output/` and holds each
 document to the pack's binding constraints. Deterministic, free, and it exits non-zero
 on any hard failure. **12 hard checks and 2 review lists per document.**
 

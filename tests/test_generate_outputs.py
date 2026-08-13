@@ -265,14 +265,14 @@ for slug, d in g.DOCS.items():
         print(f"  FAIL  {d['file']}: {idx_p.relative_to(ROOT)} is missing, so no id can "
               f"be resolved.\n"
               f"          The pack is derived and free to rebuild: "
-              f"uv run python src/build_pack.py")
+              f"uv run python -m equity_research.build_pack")
         continue
 
     n_docs += 1
     rec = json.loads(rec_p.read_text(encoding="utf-8"))
     # `shipped_text` is the body actually written to output/ — identical to `text`
     # unless a recorded correction was applied after generation. See
-    # `apply_corrections` in src/generate_outputs.py: a correction is data in this
+    # `apply_corrections` in src/equity_research/generate_outputs.py: a correction is data in this
     # record, never a silent hand-edit of the document.
     shipped = rec.get("shipped_text") or rec["text"]
     check(f"{d['file']}: every id resolves",

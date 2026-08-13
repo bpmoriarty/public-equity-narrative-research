@@ -10,8 +10,8 @@ DOWNLOADS NO FILING DOCUMENTS. Only two kinds of metadata are fetched:
 Fetching the documents themselves is milestone 2.
 
 Run it:
-    uv run python src/discover.py              # uses cache if present
-    uv run python src/discover.py --refresh    # re-fetch the index from EDGAR
+    uv run python -m equity_research.discover              # uses cache if present
+    uv run python -m equity_research.discover --refresh    # re-fetch the index from EDGAR
 
 Writes:
     data/raw/_meta/                     cached metadata, with the as-of date

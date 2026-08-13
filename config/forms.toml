@@ -112,7 +112,7 @@ date_only_items = [
 ]
 
 # ---------------------------------------------------------------------------
-# Triage of the conditional 7.01/8.01 filings (src/triage_8k.py)
+# Triage of the conditional 7.01/8.01 filings (src/equity_research/triage_8k.py)
 # ---------------------------------------------------------------------------
 # Added 2026-08-05. `conditional_items` above says these filings get fetched and
 # then judged on content; this is the judgment, and it is deterministic.
@@ -232,7 +232,7 @@ body_ends_at = '(?i)\bSIGNATURES\b'
 # directly by the Q&A heading — no Item 9.01, no numbered question — so neither
 # original alternative matched, and the stripper discarded everything from the
 # caution to the end of the document: 6,500 characters including the entire Q&A.
-# See the CONSERVATIVE FALLBACK note in src/triage_8k.py; the pattern fix and the
+# See the CONSERVATIVE FALLBACK note in src/equity_research/triage_8k.py; the pattern fix and the
 # fallback are independent, and the fallback is the one that makes this safe.
 forward_looking_start = '(?i)Caution\s+Concerning\s+Forward-Looking\s+Statements'
 forward_looking_end = '(?i)(Item\s+9\.01|Investor\s+Questions|\b1\.\s+[A-Z])'

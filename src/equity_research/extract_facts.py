@@ -4,10 +4,10 @@ The first stage in this pipeline that spends money. Everything before it is
 deterministic parsing.
 
 Run it:
-    uv run python src/extract_facts.py --estimate         # token count + cost, no calls
-    uv run python src/extract_facts.py --fy 2023          # one year
-    uv run python src/extract_facts.py                    # all years
-    uv run python src/extract_facts.py --fy 2023 --task comp --force
+    uv run python -m equity_research.extract_facts --estimate         # token count + cost, no calls
+    uv run python -m equity_research.extract_facts --fy 2023          # one year
+    uv run python -m equity_research.extract_facts                    # all years
+    uv run python -m equity_research.extract_facts --fy 2023 --task comp --force
 
 Writes one file per task:
     data/ledger/facts/FY<year>_<task>.json
@@ -16,8 +16,8 @@ Writes one file per task:
 WHAT THE MODEL IS AND IS NOT ASKED TO DO
 ---------------------------------------------------------------------------
 Not asked: anything a computer can do exactly. Section boundaries are structural
-HTML parsing (src/extract_sections.py). Risk factor deltas are string similarity
-(src/risk_diff.py) — the largest section in the filing, and it never reaches an
+HTML parsing (src/equity_research/extract_sections.py). Risk factor deltas are string similarity
+(src/equity_research/risk_diff.py) — the largest section in the filing, and it never reaches an
 API call. Filing dates, accession numbers and earnings cadence come from the
 inventory.
 
@@ -55,6 +55,7 @@ prefix to cache and a cache write would be pure overhead.
 from __future__ import annotations
 
 import argparse
+import functools
 import hashlib
 import json
 import sys
@@ -65,6 +66,7 @@ from pathlib import Path
 
 import anthropic
 
+from equity_research import settings
 from equity_research._bootstrap import ROOT
 from equity_research.ledger_schema import TASK_MODELS
 from equity_research.paths import add_ticker_arg, paths
@@ -85,9 +87,14 @@ INVENTORY = P.inventory
 FACTS_DIR = P.facts
 TRIAGE = P.triage_json
 
-# Published Claude Opus 5 rates, per million tokens. Used only to print an
-# estimate before spending anything; nothing depends on them being current.
-PRICE_IN, PRICE_OUT = 5.00, 25.00
+# Placeholder for the company's name inside a prompt, substituted in
+# `build_prompt` from the resolved name in inventory.json.
+#
+# A plain `str.replace` of a sentinel rather than `str.format`: several asks
+# contain literal braces (JSON shapes, `{null}`), and format() would either
+# choke on them or need every one escaped. A sentinel cannot collide with
+# anything the asks actually say.
+COMPANY_TOKEN = "<COMPANY>"
 
 SYSTEM = """\
 You extract facts from SEC filings for a narrative and governance history of a \
@@ -196,8 +203,8 @@ TASKS: dict[str, dict] = {
         # See gather_investor_qa and the PER-FILING note in its docstring.
         "sections": ["triage:investor_qa"],
         "per_filing": True,
-        "ask": "This is one Regulation FD filing in which Morningstar published written "
-               "answers to questions submitted by investors.\n"
+        "ask": "This is one Regulation FD filing in which " + COMPANY_TOKEN +
+               " published written answers to questions submitted by investors.\n"
                "- topics: the exchanges that bear on STRATEGY, CAPITAL ALLOCATION, "
                "PORTFOLIO CHANGES, GOVERNANCE, or COMPETITIVE POSITION. For each, what was "
                "asked about and what management said, in management's own phrasing.\n"
@@ -241,13 +248,13 @@ def load_config() -> dict:
 
 def load_sections() -> list[dict]:
     if not SECTIONS_MANIFEST.exists():
-        sys.exit(f"FATAL: {SECTIONS_MANIFEST} not found. Run src/extract_sections.py first.")
+        sys.exit(f"FATAL: {SECTIONS_MANIFEST} not found. Run `uv run python -m equity_research.extract_sections` first.")
     return json.loads(SECTIONS_MANIFEST.read_text(encoding="utf-8"))["sections"]
 
 
 def load_inventory() -> dict:
     if not INVENTORY.exists():
-        sys.exit(f"FATAL: {INVENTORY} not found. Run src/discover.py first.")
+        sys.exit(f"FATAL: {INVENTORY} not found. Run `uv run python -m equity_research.discover` first.")
     return json.loads(INVENTORY.read_text(encoding="utf-8"))
 
 
@@ -397,7 +404,7 @@ def gather_investor_qa(sections: list[dict], tri: dict, fy: int) -> list[list[di
             tp = P.resolve(keyed[s["key"]])
             if not tp.exists():
                 sys.exit(f"FATAL: trimmed text {tp} is missing but the triage log "
-                         "names it. Re-run src/triage_8k.py.")
+                         "names it. Re-run `uv run python -m equity_research.triage_8k`.")
             srcs.append({"key": s["key"], "accession": s["accession"], "form": s["form"],
                          "filing_date": s["filing_date"], "items": s.get("items", []),
                          "text": tp.read_text(encoding="utf-8")})
@@ -422,9 +429,25 @@ def gather_investor_qa(sections: list[dict], tri: dict, fy: int) -> list[list[di
             + "\n  Triage marked these as carrying Q&A content, so an empty result here "
               "means the content was lost between triage and extraction — most likely "
               "over-aggressive boilerplate stripping. Inspect "
-              "data/triage/text/<accession>/ and re-run src/triage_8k.py.")
+              "data/triage/text/<accession>/ and re-run `uv run python -m equity_research.triage_8k`.")
     out.sort(key=lambda g: g[0]["filing_date"])
     return out
+
+
+@functools.lru_cache(maxsize=1)
+def company_name() -> str:
+    """The resolved company name, for prompts that need to name the company.
+
+    From inventory.json, not company.toml. company.toml's `resolved_name` is
+    documented in that file as informational and a tripwire — discovery resolves
+    the real name from the SEC's own mapping and writes it to the inventory,
+    which every later stage treats as the source of truth. Reading the config
+    value here would let a hand-typed name reach a prompt.
+
+    Cached because `build_prompt` runs once per unit (88 of them for MORN) and
+    the answer cannot change inside one process.
+    """
+    return load_inventory()["company_name"]
 
 
 def build_prompt(task: str, fy: int, sources: list[dict]) -> str:
@@ -437,7 +460,7 @@ def build_prompt(task: str, fy: int, sources: list[dict]) -> str:
         head += f" — section {s['key']} ==="
         parts += [head, s["text"], ""]
     parts += ["=== END OF DOCUMENT TEXT ===", "",
-              TASKS[task]["ask"], "",
+              TASKS[task]["ask"].replace(COMPANY_TOKEN, company_name()), "",
               "Extract only from the document text above."]
     return "\n".join(parts)
 
@@ -491,7 +514,7 @@ def plan_tasks(sections: list[dict], inv: dict, tri: dict | None, years: list[in
                     # the triage log, and producing zero units would look like
                     # "this year has no Q&A filings".
                     sys.exit(f"FATAL: task '{task}' needs data/triage/triage-8k.json. "
-                             "Run src/triage_8k.py first.")
+                             "Run `uv run python -m equity_research.triage_8k` first.")
                 for group in gather_investor_qa(sections, tri, fy):
                     plan.append({"fy": fy, "task": task, "unit": group[0]["accession"],
                                  "sources": group,
@@ -712,13 +735,20 @@ def main() -> None:
             label = u['task'] + (f" {u['unit']}" if u.get('unit') else '')
             print(f"  FY{u['fy']} {label:34s} {u['chars']:>9,d} chars  {n:>8,d} tokens")
         worst_out = len(plan) * ex["max_tokens"]
+        # Priced from the model the run will actually use, via the one table in
+        # settings.py. Previously PRICE_IN/PRICE_OUT were module constants of
+        # 5.00/25.00 here and again in generate_outputs.py, so a price change or
+        # a switch to Sonnet for some tasks would have left this estimate quietly
+        # quoting Opus rates.
+        price = settings.price_for(ex["model"])
         print()
-        print(f"input   : {total_in:,d} tokens  ->  ${total_in / 1e6 * PRICE_IN:,.2f}")
+        print(f"input   : {total_in:,d} tokens  ->  ${total_in / 1e6 * price.input:,.2f}")
         print(f"output  : at most {worst_out:,d} tokens (max_tokens x {len(plan)} calls)  ->  "
-              f"${worst_out / 1e6 * PRICE_OUT:,.2f} worst case")
-        print(f"total   : ${total_in / 1e6 * PRICE_IN:,.2f} to "
-              f"${(total_in / 1e6 * PRICE_IN) + (worst_out / 1e6 * PRICE_OUT):,.2f}")
-        print("\nestimate only — no extraction calls were made.")
+              f"${worst_out / 1e6 * price.output:,.2f} worst case")
+        print(f"total   : ${total_in / 1e6 * price.input:,.2f} to "
+              f"${(total_in / 1e6 * price.input) + (worst_out / 1e6 * price.output):,.2f}")
+        print(f"\nestimate only — no extraction calls were made. "
+              f"Prices as of {settings.PRICES_AS_OF}.")
         return
 
     # --- run ---------------------------------------------------------------

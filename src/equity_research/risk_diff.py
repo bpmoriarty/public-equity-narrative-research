@@ -5,8 +5,8 @@ year over year", and is explicit about the method: "Diff rather than summarizing
 each year independently." This module does exactly that, with `rapidfuzz`.
 
 Run it:
-    uv run python src/risk_diff.py                # all year pairs + report
-    uv run python src/risk_diff.py --fy 2023      # one year's deltas, verbose
+    uv run python -m equity_research.risk_diff                # all year pairs + report
+    uv run python -m equity_research.risk_diff --fy 2023      # one year's deltas, verbose
 
 Writes:
     data/ledger/risk-deltas.json
@@ -93,7 +93,7 @@ def load_thresholds() -> dict:
 def load_factors() -> dict[int, dict]:
     """{fiscal_year: {"accession":..., "filing_date":..., "factors":[...]}}"""
     if not SECTIONS_MANIFEST.exists():
-        sys.exit(f"FATAL: {SECTIONS_MANIFEST} not found. Run src/extract_sections.py first.")
+        sys.exit(f"FATAL: {SECTIONS_MANIFEST} not found. Run `uv run python -m equity_research.extract_sections` first.")
     rows = json.loads(SECTIONS_MANIFEST.read_text(encoding="utf-8"))["sections"]
 
     out: dict[int, dict] = {}
@@ -219,7 +219,7 @@ def main() -> None:
     th = load_thresholds()
     data = load_factors()
     if not data:
-        sys.exit("FATAL: no risk factor files found. Run src/extract_sections.py --form 10-K.")
+        sys.exit("FATAL: no risk factor files found. Run `uv run python -m equity_research.extract_sections` --form 10-K.")
 
     years = sorted(data)
     print(f"Risk factor diff — FY{years[0]}-FY{years[-1]}")

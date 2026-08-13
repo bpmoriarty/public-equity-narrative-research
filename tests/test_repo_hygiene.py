@@ -40,6 +40,7 @@ Anything matching that shape was paid for. It must be tracked by git.
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -80,6 +81,38 @@ def check(name: str, ok: bool, detail: str = "") -> None:
         if detail:
             for line in detail.splitlines():
                 print(f"          {line}")
+
+
+# A string literal that IS a path: starts with data/ or output/ and contains no
+# whitespace. The whitespace test is what separates a path from prose about a
+# path -- "data/ledger/ as the record of what the model returned" mentions a
+# directory in a sentence and is fine, while "data/pack/pack.json" is a path
+# being built without asking paths.py.
+#
+# Deliberately narrow. A check that fires on the two perfectly good error
+# messages in build_pack.py and extract_facts.py would be read once, dismissed,
+# and then ignored on the day it was right.
+PATH_LITERAL = re.compile(r'["\'](?:data|output)/[^"\'\s]*["\']')
+
+# paths.py is the definition site -- it is where these literals are SUPPOSED to
+# live. settings.py names config filenames, not data paths, but is excluded with
+# it so the pair that owns path resolution is treated the same way.
+PATH_LINT_EXEMPT = {"paths.py", "settings.py"}
+
+
+def path_literals() -> list[str]:
+    """Every hardcoded data/ or output/ path literal in the package."""
+    src = ROOT / "src" / "equity_research"
+    out = []
+    for p in sorted(src.glob("*.py")):
+        if p.name in PATH_LINT_EXEMPT:
+            continue
+        for i, line in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
+            if line.lstrip().startswith("#"):
+                continue
+            if PATH_LITERAL.search(line):
+                out.append(f"{p.name}:{i}: {line.strip()[:90]}")
+    return out
 
 
 def git(*args: str) -> subprocess.CompletedProcess:
@@ -177,6 +210,18 @@ def main() -> int:
         check(f"tracked: {rel}", rel in tracked,
               f"{rel} is not tracked. It is the only artifact anyone outside "
               f"this repo reads, and every citation check runs against it.")
+
+    print()
+    print("PATHS COME FROM CompanyPaths — a literal here would find the wrong company")
+    offenders = path_literals()
+    check("no hardcoded data/ or output/ path literals in src/equity_research/",
+          not offenders,
+          "These build a path from a string instead of asking paths.py, so they "
+          "resolve to the repository root rather than to the company being run "
+          "-- which reads or writes the wrong company's files without failing:\n" +
+          "\n".join(f"  {o}" for o in offenders) +
+          "\nUse the matching CompanyPaths property (P.ledger, P.pack, P.output, "
+          "...) or P.resolve() for a manifest-relative value.")
 
     print()
     print("SECRETS MUST NOT BE TRACKED — the inverse of the rule above")

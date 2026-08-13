@@ -99,7 +99,7 @@ say_on_pay_patterns = [
 # Routine annual-meeting governance. These are TAGGED, never dropped — the timeline
 # can render them compactly or omit them, but the decision belongs to the stage that
 # writes the document, not to this one. A silent drop here would lose real events,
-# the same reasoning that governs src/triage_8k.py.
+# the same reasoning that governs src/equity_research/triage_8k.py.
 patterns = [
     '(?i)\bdirector nominees?\b.{0,40}\belected\b',
     '(?i)\belection of director\b',
@@ -129,7 +129,7 @@ material_overrides = [
 
 
 # ---------------------------------------------------------------------------
-# [verify] -- milestone 5f, src/verify_outputs.py
+# [verify] -- milestone 5f, src/equity_research/verify_outputs.py
 #
 # Every value here is a property of the DELIVERABLE SPEC, not of the company.
 # Nothing company-specific belongs in this block: which years have a shareholder
@@ -140,7 +140,7 @@ material_overrides = [
 [verify]
 
 # The documents this stage checks. timeline.md is absent on purpose -- it is
-# rendered deterministically by src/render_timeline.py, which asserts its own
+# rendered deterministically by src/equity_research/render_timeline.py, which asserts its own
 # completeness before writing, so there is no model output in it to verify.
 documents = ["narrative-brief.md", "discussion-points.md"]
 
@@ -194,10 +194,10 @@ qa_majority_share = 0.5
 ]
 
 # ===========================================================================
-# PDF rendering  (src/render_pdf.py)
+# PDF rendering  (src/equity_research/render_pdf.py)
 # ===========================================================================
 # Presentation only. The PDFs are a second rendering of output/*.md and carry no
-# content the Markdown does not — src/render_pdf.py asserts that before writing, by
+# content the Markdown does not — src/equity_research/render_pdf.py asserts that before writing, by
 # extracting the text back out of each finished PDF and checking every fact id
 # survived. A PDF that silently dropped a citation would look perfectly fine.
 #

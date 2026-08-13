@@ -9,7 +9,7 @@
 # worth trusting — a corrected file and a correct-in-the-first-place file are
 # indistinguishable once you have overwritten it.
 #
-# So corrections live here instead: applied by src/build_ledger.py after the raw
+# So corrections live here instead: applied by src/equity_research/build_ledger.py after the raw
 # extraction is loaded and before the fact is constructed. The model's output
 # stays as it was, the correction is a separate, reviewable, version-controlled
 # artifact, and the fact carries a `correction` block recording both.
@@ -36,9 +36,9 @@
 # ---------------------------------------------------------------------------
 # TWO KINDS OF CORRECTION LIVE HERE
 # ---------------------------------------------------------------------------
-# [[correction]]          a value in the LEDGER, applied by src/build_ledger.py.
+# [[correction]]          a value in the LEDGER, applied by src/equity_research/build_ledger.py.
 # [[document_correction]] a sentence in a GENERATED DOCUMENT, applied by
-#                         src/generate_outputs.py --apply-corrections.
+#                         uv run python -m equity_research.generate_outputs --apply-corrections.
 #
 # The second exists because the deliverables are model-written prose that costs
 # ~$3.50 a pass and does not reproduce byte-for-byte. When one sentence is wrong,
@@ -95,7 +95,7 @@ verified_by = "human review, 2026-08-07 (VERIFICATION.md D1)"
 # 8-K/A settles it explicitly: it opens "As previously reported on the Original Form
 # 8-K" and gives her last day as January 31, 2023. The sentence was not the model
 # inventing an ambiguity — it was faithfully reporting the ‡ note that
-# src/merge_events.py generated from a hardcoded template, which asserted the same
+# src/equity_research/merge_events.py generated from a hardcoded template, which asserted the same
 # thing about every multi-date event without reading any of them. Both the template
 # and the ledger value behind it are fixed; this corrects the sentence they produced.
 #

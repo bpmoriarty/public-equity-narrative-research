@@ -17,16 +17,16 @@ timeline document cannot do for itself:
    stage decides what to render.
 
 Run it:
-    uv run python src/merge_events.py
-    uv run python src/merge_events.py --show merged
-    uv run python src/merge_events.py --show unclear
-    uv run python src/merge_events.py --show possible
+    uv run python -m equity_research.merge_events
+    uv run python -m equity_research.merge_events --show merged
+    uv run python -m equity_research.merge_events --show unclear
+    uv run python -m equity_research.merge_events --show possible
 
 Writes:
     data/pack/timeline-events.json
     data/pack/timeline-report.md
 
-`src/build_pack.py` imports `timeline_block` and embeds the result, so the ordering
+`src/equity_research/build_pack.py` imports `timeline_block` and embeds the result, so the ordering
 is handled by the import rather than by remembering to run two scripts in sequence.
 
 ---------------------------------------------------------------------------
@@ -432,7 +432,7 @@ def classify_routine(row: dict, cfg: dict) -> bool:
 
 
 def timeline_block(include_quotes: bool = True) -> dict:
-    """The whole stage, as data. Imported by src/build_pack.py.
+    """The whole stage, as data. Imported by src/equity_research/build_pack.py.
 
     `include_quotes=False` strips the per-row quotes. Inside the full pack every
     row's `ids` resolve to facts that carry those same quotes in the same payload, so

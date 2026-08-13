@@ -1,8 +1,8 @@
 """Render the finished deliverables to PDF.
 
 Run it:
-    uv run python src/render_pdf.py
-    uv run python src/render_pdf.py --only timeline.md
+    uv run python -m equity_research.render_pdf
+    uv run python -m equity_research.render_pdf --only timeline.md
 
 Reads:  output/*.md          the three deliverables, whatever they currently are
 Writes: output/pdf/*.pdf

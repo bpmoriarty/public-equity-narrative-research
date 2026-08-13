@@ -5,10 +5,10 @@ writes cleaned text to data/sections/. Section-targeted, not linear: a 10-K runs
 420,000 characters of text and the three in-scope items are a fraction of it.
 
 Run it:
-    uv run python src/extract_sections.py                  # everything
-    uv run python src/extract_sections.py --form 10-K      # one form type
-    uv run python src/extract_sections.py --fy 2021        # one fiscal year
-    uv run python src/extract_sections.py --show 10-K_item1a_risk_factors --fy 2021
+    uv run python -m equity_research.extract_sections                  # everything
+    uv run python -m equity_research.extract_sections --form 10-K      # one form type
+    uv run python -m equity_research.extract_sections --fy 2021        # one fiscal year
+    uv run python -m equity_research.extract_sections --show 10-K_item1a_risk_factors --fy 2021
 
 Writes:
     data/sections/FY<year>/<form>/<accession>/<key>.txt
@@ -537,7 +537,43 @@ def extract_letter(whole_text: str, cfg: dict) -> dict:
 # Whole-document forms
 # ---------------------------------------------------------------------------
 
-WHOLE_DOC_FORMS = {"8-K", "8-K/A", "ARS", "DEFA14A", "CORRESP", "UPLOAD"}
+# Forms with a dedicated structural extractor above: `extract_10k` walks 10-K
+# item boundaries, `find_proxy_sections` walks the proxy's. Everything else in
+# forms.toml is taken entire, because there is no internal structure to locate.
+#
+# This is the ONLY hand-maintained half of the whole-document rule, and it is
+# keyed to the existence of code in this file rather than to anything about a
+# particular company — so adding a form to forms.toml does not require editing
+# it. Adding a new structural extractor does.
+STRUCTURED_FORMS = {"10-K", "DEF 14A"}
+
+
+def whole_doc_forms(forms_cfg: list[dict]) -> set[str]:
+    """Every form taken entire, derived from forms.toml.
+
+    Was hardcoded as {"8-K", "8-K/A", "ARS", "DEFA14A", "CORRESP", "UPLOAD"},
+    which meant adding a form to forms.toml silently produced a filing that
+    reached the `else` branch and was skipped with no section extracted — a
+    config change whose effect was a quiet omission three stages downstream.
+
+    Amendments are included for the forms that declare `include_amendments`,
+    which is where "8-K/A" came from. Verified at the time of the change to
+    reproduce the previous hardcoded set exactly, form for form.
+
+    ARS is here and ALSO has a section: the document is kept whole as the source
+    of record, and `extract_letter` then locates the shareholder letter inside
+    it. Whole-document is about how the text is obtained, not about whether
+    anything is extracted from it afterwards.
+    """
+    out: set[str] = set()
+    for entry in forms_cfg:
+        form = entry["form"]
+        if form in STRUCTURED_FORMS:
+            continue
+        out.add(form)
+        if entry.get("include_amendments"):
+            out.add(f"{form}/A")
+    return out
 
 
 def extract_whole(path: Path) -> dict:
@@ -679,8 +715,10 @@ def main() -> None:
     args = ap.parse_args()
 
     if not MANIFEST.exists():
-        sys.exit(f"FATAL: {MANIFEST} not found. Run src/fetch.py first (milestone 2).")
+        sys.exit(f"FATAL: {MANIFEST} not found. Run `uv run python -m equity_research.fetch` first (milestone 2).")
     cfg = load_config()
+    # Derived from forms.toml, not a literal set — see whole_doc_forms().
+    whole_forms = whole_doc_forms(cfg["forms"]["forms"])
     recs = json.loads(MANIFEST.read_text(encoding="utf-8"))["records"]
 
     # Only primary documents carry the target sections; exhibits are separate
@@ -729,7 +767,7 @@ def main() -> None:
                     rf["factors"] = split_risk_factors(doc, a, b)
             elif form == "DEF 14A" and rec["doc_type"].upper().startswith("DEF"):
                 sections = find_proxy_sections(Doc(path))
-            elif form in WHOLE_DOC_FORMS or rec["doc_type"].upper().startswith("EX-"):
+            elif form in whole_forms or rec["doc_type"].upper().startswith("EX-"):
                 # Keys become filenames, so strip anything the filesystem would
                 # read as a path separator: form "8-K/A" produced the key
                 # "8-K/A_8-K/A_whole", which Windows resolved as nested

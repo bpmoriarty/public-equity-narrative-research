@@ -54,7 +54,7 @@ Confidence = Literal["high", "low"]
 # in code, rather than left to prose in DATA.md, so the ledger cannot quietly
 # disagree with the documented limitation.
 #
-# See the KNOWN LIMITS block in src/extract_sections.py: every 10-K section and
+# See the KNOWN LIMITS block in src/equity_research/extract_sections.py: every 10-K section and
 # the proxy CD&A and incentive tables have hand-verified boundaries; the two
 # remaining proxy sections do not, and anything drawn from them is `low`.
 LOW_CONFIDENCE_SECTIONS = {
@@ -112,7 +112,7 @@ _ESCAPE = re.compile(r"\\u([0-9a-fA-F]{4})")
 # the Workiva-generated exhibits from FY2024 onward are full of them — so a quote
 # that a human would call verbatim contains no such token and the source does.
 #
-# This one is a self-inflicted failure worth naming: src/triage_8k.py strips these
+# This one is a self-inflicted failure worth naming: src/equity_research/triage_8k.py strips these
 # before sending text to the model, while verification runs against the untrimmed
 # section. Trimming cannot make a bad quote pass, but it can make a good one fail,
 # and it did. Removing the artifact on both sides is the fix.
@@ -368,7 +368,7 @@ class VoteResult(BaseModel):
 
 
 # ---------------------------------------------------------------------------
-# Per-task response models.  One per extraction task in src/extract_facts.py.
+# Per-task response models.  One per extraction task in src/equity_research/extract_facts.py.
 #
 # Deliberately narrow: each task sees one source and answers only what that
 # source can support. A single all-fields model per year would invite the model
@@ -417,7 +417,7 @@ class InvestorQaFacts(BaseModel):
     """Deliberately has NO `events` list.
 
     These filings do announce transactions sometimes, and the temptation is to
-    collect events here too. But src/triage_8k.py already routes any filing with a
+    collect events here too. But src/equity_research/triage_8k.py already routes any filing with a
     material signal to the events path, and the 10-K's MD&A independently covers
     every transaction in this window. Adding events here would produce a third
     account of the same acquisition, sourced to the weakest of the three
@@ -484,6 +484,20 @@ FIELD_CODES: dict[str, str] = {
     "investor_qa": "QA",
 }
 
+# The ledger's fields, in the order every artifact presents them.
+#
+# Derived from FIELD_CODES rather than written out again: dicts preserve
+# insertion order, so the list and the citation prefixes cannot disagree about
+# which fields exist. build_ledger.py and build_pack.py each carried their own
+# copy of this list — identical, in the same order, and nothing checked that.
+# A field added to FIELD_CODES but missed in one of the copies would have minted
+# citable ids that the pack then never assembled, or assembled facts the ledger
+# never wrote, depending on which copy was stale.
+#
+# A tuple, not a list: every use is read-only iteration, and immutability means
+# a caller cannot append to the shared definition by accident.
+FIELDS: tuple[str, ...] = tuple(FIELD_CODES)
+
 
 def _digest(payload: dict) -> str:
     """Stable short hash of a payload.
@@ -542,7 +556,7 @@ def risk_delta_id(fiscal_year: int, category: str, item: dict, source: dict) -> 
     """The citable id for one risk-factor delta, e.g. `RISK-FY2024-b1c07e4f`.
 
     Risk deltas are not `LedgerFact`s — they come from the deterministic diff in
-    src/risk_diff.py and carry no quote. They still need ids, because an output
+    src/equity_research/risk_diff.py and carry no quote. They still need ids, because an output
     will say "the cybersecurity risk factor was reworded in FY2024" and a checker
     that cannot resolve that claim leaves a whole category of statement
     unverifiable. One unverifiable category is enough to make the check
@@ -645,7 +659,7 @@ class YearLedger(BaseModel):
     # this is voluntary disclosure and a company can simply stop.
     investor_qa: list[LedgerFact]
     # Null with a reason when it cannot be computed — never empty, which would
-    # read as "nothing changed". See src/risk_diff.py.
+    # read as "nothing changed". See src/equity_research/risk_diff.py.
     risk_deltas: dict | None
     data_quality: dict
 

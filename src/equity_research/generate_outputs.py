@@ -4,9 +4,9 @@ The first stage in milestone 5 that spends money. Two model calls, sharing one
 cached prompt prefix.
 
 Run it:
-    uv run python src/generate_outputs.py --estimate     # cost, no spend
-    uv run python src/generate_outputs.py                # both documents
-    uv run python src/generate_outputs.py --only brief   # one of them
+    uv run python -m equity_research.generate_outputs --estimate     # cost, no spend
+    uv run python -m equity_research.generate_outputs                # both documents
+    uv run python -m equity_research.generate_outputs --only brief   # one of them
 
 Writes:
     output/narrative-brief.md      deliverable 2 of 3
@@ -35,7 +35,7 @@ Prompt caching hits only on a byte-identical PREFIX. So the shared material — 
 system prompt and the whole 353k-token pack — goes first and carries the cache
 breakpoint; everything that differs between the two documents goes after it.
 
-That is the only reason `pack.json` contains no timestamp (see src/build_pack.py):
+That is the only reason `pack.json` contains no timestamp (see src/equity_research/build_pack.py):
 a single varying byte anywhere in the prefix turns a $0.18 read back into a $1.77
 call, with nothing looking broken except the bill.
 
@@ -62,6 +62,7 @@ does not disturb the cached prefix.
 from __future__ import annotations
 
 import argparse
+import functools
 import hashlib
 import json
 import re
@@ -72,6 +73,7 @@ from pathlib import Path
 
 import anthropic
 
+from equity_research import settings
 from equity_research._bootstrap import ROOT
 from equity_research.paths import add_ticker_arg, paths
 
@@ -95,13 +97,11 @@ PACK_DIR = P.pack
 OUT_DIR = P.output
 CORRECTIONS = P.corrections_toml
 
-# Prices per million tokens for the generation model, used only for the estimate
-# and the run report. Kept here rather than in config because they describe the
-# vendor's price list, not this company or this pipeline.
-PRICE_IN = 5.00
-PRICE_OUT = 25.00
-CACHE_WRITE_MULT = 1.25                # 5-minute ephemeral cache
-CACHE_READ_MULT = 0.10
+# Prices live in settings.MODEL_PRICES, with a PRICES_AS_OF date. They describe
+# the vendor's price list rather than this company, which is why they are in code
+# and not config -- but they were spelled out here AND in extract_facts.py AND in
+# six format strings in build_pack.py, so "in code" had come to mean "in three
+# places". See `cost()` below.
 
 # Any id the pack can mint: field code, fiscal year, 8 hex characters. Built from
 # the same code table the ids are built from, so a new field cannot be minted in
@@ -313,7 +313,7 @@ def load_pack() -> tuple[str, dict, dict]:
     p, i = PACK_DIR / "pack.json", PACK_DIR / "index.json"
     for f in (p, i):
         if not f.exists():
-            sys.exit(f"FATAL: {f} not found.\n  Build it: uv run python src/build_pack.py")
+            sys.exit(f"FATAL: {f} not found.\n  Build it: uv run python -m equity_research.build_pack")
     payload = p.read_text(encoding="utf-8")
     return payload, json.loads(payload), json.loads(i.read_text(encoding="utf-8"))
 
@@ -740,11 +740,36 @@ def repair_constraints(client: anthropic.Anthropic, gen: dict, md: str,
     return text, usage
 
 
-def cost(u: dict) -> float:
-    return (u["input_tokens"] * PRICE_IN
-            + u["cache_creation_input_tokens"] * PRICE_IN * CACHE_WRITE_MULT
-            + u["cache_read_input_tokens"] * PRICE_IN * CACHE_READ_MULT
-            + u["output_tokens"] * PRICE_OUT) / 1e6
+@functools.lru_cache(maxsize=1)
+def generation_model() -> str:
+    """The model the generation calls use, for pricing a usage record.
+
+    A usage dict records tokens but not which model produced them, so pricing
+    has to come from somewhere. Every call in this module — both documents and
+    both repair kinds — uses `gen["model"]`, so the configured generation model
+    is the right answer for all of them. Cached because `cost()` is called from
+    eleven places, several inside loops.
+
+    If per-task models arrive (Phase 5 plans Sonnet for the repair rounds), this
+    is the single place that has to learn to take the model as an argument.
+    """
+    return load_gen_config()["model"]
+
+
+def cost(u: dict, model: str | None = None) -> float:
+    """Dollar cost of one usage record, at the prices in settings.py.
+
+    The four multipliers used to be module constants here (5.00, 25.00, 1.25,
+    0.10), duplicating extract_facts.py and build_pack.py. They now come from
+    one table with a recorded as-of date — see settings.PRICES_AS_OF.
+    """
+    price = settings.price_for(model or generation_model())
+    return (u["input_tokens"] * price.input
+            + u["cache_creation_input_tokens"] * price.input
+              * settings.CACHE_WRITE_MULTIPLIER["5m"]
+            + u["cache_read_input_tokens"] * price.input
+              * settings.CACHE_READ_MULTIPLIER
+            + u["output_tokens"] * price.output) / 1e6
 
 
 def generate(client: anthropic.Anthropic, gen: dict, index: dict, payload: str,
@@ -1037,9 +1062,26 @@ def apply_document_corrections(slug: str, text: str) -> tuple[str, list[dict]]:
     return out, records
 
 
+# Spelled-out year counts for the document lede. A lookup table rather than a
+# number-to-words library because `settings.MAX_WINDOW_YEARS` caps the window at
+# 10, so this table is complete for every window the pipeline will accept — and
+# `window()` refuses anything longer before generation is ever reached.
+_YEAR_WORDS = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
+               6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten"}
+
+
+def span_words(n_years: int) -> str:
+    """"five-year", for the lede. Falls back to digits rather than failing."""
+    return f"{_YEAR_WORDS.get(n_years, str(n_years))}-year"
+
+
 DOCS = {
+    # `lede` is .format()-ed exactly like `title`. "A five-year read" was
+    # hardcoded here, which was true only for a five-year window: a three-year
+    # run would have shipped a document whose own first sentence misdescribed
+    # its scope, above a title that correctly said FY2023-FY2025.
     "brief": {"file": "narrative-brief.md", "title": "{name} ({ticker}) — Narrative brief, {span}",
-              "lede": "A five-year read of what changed and what it appears to indicate, "
+              "lede": "A {span_words} read of what changed and what it appears to indicate, "
                       "drawn only from the company's own SEC filings."},
     "discussion": {"file": "discussion-points.md",
                    "title": "{name} ({ticker}) — Discussion points, {span}",
@@ -1056,7 +1098,11 @@ def write_doc(slug: str, body: str, pack: dict, gen: dict, sha: str, usage: dict
     span = f"FY{min(s['fiscal_years'])}–FY{max(s['fiscal_years'])}"
     d = DOCS[slug]
     head = d["title"].format(name=s["company_name"], ticker=s["ticker"], span=span)
-    md = "\n".join([f"# {head}", "", d["lede"], "", body.strip(),
+    # len(), not max-min+1: if a year is missing from the pack the document
+    # covers fewer years than the span implies, and the lede should say what the
+    # document actually reads, not what the window asked for.
+    lede = d["lede"].format(span_words=span_words(len(s["fiscal_years"])))
+    md = "\n".join([f"# {head}", "", lede, "", body.strip(),
                     provenance(pack, gen, sha, usage, checks, q, word_count(body), stamp,
                                corrections, written_from_sha, remaps), ""])
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -1170,10 +1216,11 @@ def estimate(client: anthropic.Anthropic, gen: dict, pack: dict, payload: str) -
             {"type": "text", "text": PACK_PREAMBLE + payload},
             {"type": "text", "text": brief_ask(pack, gen)}]}]).input_tokens
 
-    write = n * PRICE_IN * CACHE_WRITE_MULT / 1e6
-    read = n * PRICE_IN * CACHE_READ_MULT / 1e6
-    full = n * PRICE_IN / 1e6
-    out_max = 2 * gen["max_tokens"] * PRICE_OUT / 1e6
+    price = settings.price_for(gen["model"])
+    write = n * price.input * settings.CACHE_WRITE_MULTIPLIER["5m"] / 1e6
+    read = n * price.input * settings.CACHE_READ_MULTIPLIER / 1e6
+    full = n * price.input / 1e6
+    out_max = 2 * gen["max_tokens"] * price.output / 1e6
 
     print(f"Estimate — {gen['model']}, effort={gen['effort']}, "
           f"max_tokens={gen['max_tokens']:,}")
@@ -1206,7 +1253,7 @@ def main() -> None:
                     help="re-check and repair the quotations in the documents already on "
                          "disk, without regenerating them (~$0.20/doc, no pack resend)")
     ap.add_argument("--fix-constraints", action="store_true",
-                    help="repair the hard checks src/verify_outputs.py reports, in the "
+                    help="repair the hard checks src/equity_research/verify_outputs.py reports, in the "
                          "documents already on disk (~$0.25/doc, no pack resend)")
     ap.add_argument("--apply-corrections", action="store_true",
                     help="re-render both documents from their generation records with "
@@ -1331,7 +1378,7 @@ def report_failures(written: list[tuple]) -> None:
 
 
 def constraint_failures(doc: str, body: str, pack: dict, index: dict, sha: str) -> list[dict]:
-    """The hard checks `src/verify_outputs.py` reports as failing, for one document.
+    """The hard checks `src/equity_research/verify_outputs.py` reports as failing, for one document.
 
     Imported inside the function because verify_outputs imports this module — at
     module level the two would form an import cycle. The checks live there and are
@@ -1370,7 +1417,7 @@ def fix_on_disk(client: anthropic.Anthropic, gen: dict, pack: dict, index: dict,
         rec_path = PACK_DIR / f"gen-{slug}.json"
         if not rec_path.exists():
             sys.exit(f"FATAL: {rec_path} not found — nothing to repair. "
-                     f"Generate first: uv run python src/generate_outputs.py")
+                     f"Generate first: uv run python -m equity_research.generate_outputs")
         rec = json.loads(rec_path.read_text(encoding="utf-8"))
         if rec.get("pack_sha256") != sha:
             sys.exit(f"FATAL: {d['file']} was written from pack {rec.get('pack_sha256','?')[:16]}…, "

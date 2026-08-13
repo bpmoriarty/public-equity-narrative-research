@@ -3,9 +3,9 @@
 Deterministic. No network, no model calls, free to run as often as you like.
 
 Run it:
-    uv run python src/verify_outputs.py
-    uv run python src/verify_outputs.py --only narrative-brief.md
-    uv run python src/verify_outputs.py --review        # also print the review lists
+    uv run python -m equity_research.verify_outputs
+    uv run python -m equity_research.verify_outputs --only narrative-brief.md
+    uv run python -m equity_research.verify_outputs --review        # also print the review lists
 
 Reads `output/*.md` and `data/pack/`, writes `data/pack/verify-report.md`, and exits
 non-zero if any hard check fails.
@@ -84,7 +84,7 @@ def load() -> tuple[str, dict, dict, dict, dict]:
     for f in ("pack.json", "index.json"):
         if not (PACK_DIR / f).exists():
             sys.exit(f"FATAL: data/pack/{f} not found.\n"
-                     f"  Build it: uv run python src/build_pack.py")
+                     f"  Build it: uv run python -m equity_research.build_pack")
     payload = (PACK_DIR / "pack.json").read_text(encoding="utf-8")
     cfg = tomllib.loads((P.config_dir / "outputs.toml").read_text(encoding="utf-8"))
     gen = tomllib.loads(P.company_toml.read_text(encoding="utf-8"))
@@ -535,7 +535,7 @@ def main() -> None:
         p = OUT_DIR / doc
         if not p.exists():
             sys.exit(f"FATAL: {p} not found.\n"
-                     f"  Generate it: uv run python src/generate_outputs.py")
+                     f"  Generate it: uv run python -m equity_research.generate_outputs")
         r = verify(doc, p.read_text(encoding="utf-8"), pack, index, pf, cfg, sha)
         reports.append(r)
 
@@ -560,7 +560,10 @@ def main() -> None:
 
     total = sum(len(r.failures) for r in reports)
     print("=" * 72)
-    print(f"wrote data/pack/verify-report.md")
+    # Printed from the real path rather than a literal: with the report now under
+    # companies/<TICKER>/, a hardcoded "data/pack/..." would name a file that does
+    # not exist and send a reader looking in the wrong place.
+    print(f"wrote {(PACK_DIR / 'verify-report.md').relative_to(ROOT).as_posix()}")
     if total:
         sys.exit(f"\nFATAL: {total} hard check(s) failed across "
                  f"{sum(1 for r in reports if r.failures)} document(s).")

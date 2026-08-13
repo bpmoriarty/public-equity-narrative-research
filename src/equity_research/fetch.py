@@ -11,9 +11,9 @@ is never re-requested. Re-running this script with a warm cache makes zero
 network requests and is safe at any time.
 
 Run it:
-    uv run python src/fetch.py                 # fetch anything missing
-    uv run python src/fetch.py --dry-run       # list what WOULD be fetched
-    uv run python src/fetch.py --limit 5       # fetch 5 filings, for a first look
+    uv run python -m equity_research.fetch                 # fetch anything missing
+    uv run python -m equity_research.fetch --dry-run       # list what WOULD be fetched
+    uv run python -m equity_research.fetch --limit 5       # fetch 5 filings, for a first look
 
 Writes:
     data/raw/FY<year>/<form>/<accession>/<filename>   the documents
@@ -62,7 +62,7 @@ ATTACH_CACHE = RAW_DIR / "_meta" / "attachments"
 INVENTORY = P.inventory
 LOG_PATH = RAW_DIR / "fetch-log.jsonl"
 
-# See the note on the identical constant in src/discover.py.
+# See the note on the identical constant in src/equity_research/discover.py.
 PLACEHOLDER_RE = re.compile(r"(?i)\b(example\.(?:com|org|net)|your[._ ]?name|"
                             r"your[._ ]?email|name@host)\b")
 
@@ -237,7 +237,7 @@ def main() -> None:
     args = ap.parse_args()
 
     if not INVENTORY.exists():
-        sys.exit(f"FATAL: {INVENTORY} not found. Run src/discover.py first (milestone 1).")
+        sys.exit(f"FATAL: {INVENTORY} not found. Run `uv run python -m equity_research.discover` first (milestone 1).")
 
     settings = load_settings()
     edgar_cfg = settings["edgar"]
@@ -265,7 +265,7 @@ def main() -> None:
         missing = want - {r["accession"] for r in work}
         if missing:
             sys.exit(f"FATAL: accession(s) not in the inventory: {sorted(missing)}\n"
-                     "Check the accession number, or re-run src/discover.py if the "
+                     "Check the accession number, or re-run `uv run python -m equity_research.discover` if the "
                      "filing is newer than the inventory's as-of date.")
     else:
         work = [r for r in inv["filings"]

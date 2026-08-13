@@ -6,8 +6,8 @@ reads the cached extraction results, the deterministic risk diff and the filing
 inventory, verifies every quote, and writes one validated record per year.
 
 Run it:
-    uv run python src/build_ledger.py
-    uv run python src/build_ledger.py --fy 2023 --show incentive_metrics
+    uv run python -m equity_research.build_ledger
+    uv run python -m equity_research.build_ledger --fy 2023 --show incentive_metrics
 
 Writes:
     data/ledger/FY<year>.json
@@ -53,8 +53,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from equity_research._bootstrap import ROOT
-from equity_research.ledger_schema import (ID_HEX, FactSource, LedgerFact, YearLedger,
-                                           confidence_for, risk_delta_id, verify_quote)
+from equity_research.ledger_schema import (FIELDS, ID_HEX, FactSource, LedgerFact,
+                                           YearLedger, confidence_for, risk_delta_id,
+                                           verify_quote)
 from equity_research.paths import add_ticker_arg, paths
 
 # Every data/ and output/ path for the company this run operates on.
@@ -111,9 +112,8 @@ FIELD_MAP: list[tuple[str, str, str]] = [
 # ledger has to collect all of them. See gather_investor_qa in extract_facts.py.
 PER_FILING_TASKS = {"investor_qa"}
 
-LEDGER_FIELDS = ["strategic_priorities", "segments", "headcount", "leadership",
-                 "board", "incentive_metrics", "vote_results", "events",
-                 "notable_language", "investor_qa"]
+# FIELDS comes from ledger_schema, where it is derived from FIELD_CODES — this
+# module and build_pack.py used to keep separate copies of the same list.
 
 
 def load_json(p: Path, what: str) -> dict:
@@ -175,7 +175,7 @@ def audit_ids() -> tuple[int, int, list[str]]:
 
     for p in sorted(LEDGER_DIR.glob("FY*.json")):
         d = json.loads(p.read_text(encoding="utf-8"))
-        for f in LEDGER_FIELDS:
+        for f in FIELDS:
             for x in d.get(f) or []:
                 n_facts += 1
                 claim(x.get("id"),
@@ -199,14 +199,14 @@ def audit_ids() -> tuple[int, int, list[str]]:
             f"{len(collisions)} id COLLISION(S) — two different things share one id, so a "
             f"citation to it is ambiguous:\n"
             + "\n".join(f"    {c}" for c in collisions[:10])
-            + f"\n  Raise ID_HEX in src/ledger_schema.py (currently {ID_HEX}) and rebuild. "
+            + f"\n  Raise ID_HEX in src/equity_research/ledger_schema.py (currently {ID_HEX}) and rebuild. "
               f"Every id changes, so any output already written must be re-checked.")
     if unidentified:
         problems.append(
             f"{len(unidentified)} record(s) on disk carry NO id — those years were written "
             f"before ids existed, or by a different id scheme:\n"
             + "\n".join(f"    {u}" for u in unidentified[:5])
-            + "\n  Rebuild every year: uv run python src/build_ledger.py")
+            + "\n  Rebuild every year: uv run python -m equity_research.build_ledger")
     return n_facts, n_risk, problems
 
 
@@ -392,7 +392,7 @@ def attribute(item: dict, sources: list[dict],
 def build_year(fy: int, inv: dict, texts: dict, risk: dict,
                corrections: list[dict]) -> tuple[YearLedger, list[str]]:
     warnings: list[str] = []
-    fields: dict[str, list[LedgerFact]] = {f: [] for f in LEDGER_FIELDS}
+    fields: dict[str, list[LedgerFact]] = {f: [] for f in FIELDS}
 
     # --- facts from the extraction tasks -----------------------------------
     task_cache: dict[str, list[dict]] = {}
@@ -481,7 +481,7 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict,
     # A field empty because extraction failed must be distinguishable from a
     # field empty because the filings genuinely disclosed nothing.
     dq: dict[str, dict] = {}
-    for f in LEDGER_FIELDS:
+    for f in FIELDS:
         facts = fields[f]
         confs = Counter(x.confidence for x in facts)
         dq[f] = {
@@ -549,7 +549,7 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict,
     # cross-year audit runs, so it cannot truthfully assert global uniqueness. The
     # global check is `audit_ids` in this module, and it is fatal — a collision
     # anywhere means no ledger gets to claim it was built.
-    fact_ids = [x.id for f in LEDGER_FIELDS for x in fields[f]]
+    fact_ids = [x.id for f in FIELDS for x in fields[f]]
     risk_ids = [it["id"] for items in ((risk_year or {}).get("deltas") or {}).values()
                 for it in items]
     dq["ids"] = {
@@ -558,7 +558,7 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict,
         "all_present": all(fact_ids) and all(risk_ids),
         "unique_within_year": len(set(fact_ids + risk_ids)) == len(fact_ids) + len(risk_ids),
         "basis": "content hash of the claim, its evidence and its source — see `fact_id` "
-                 "in src/ledger_schema.py. Confidence and the verification result are NOT "
+                 "in src/equity_research/ledger_schema.py. Confidence and the verification result are NOT "
                  "hashed, so re-verifying a fact does not renumber it. Cross-year "
                  "uniqueness is enforced fatally at build time by `audit_ids`.",
     }
@@ -580,7 +580,7 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict,
     # (CLAUDE.md: never hard-code a value another stage already computes).
     fy_range = range(inv["first_fiscal_year"], inv["last_fiscal_year"] + 1)
     inv_fy = {f["accession"]: f.get("fiscal_year") for f in inv["filings"]}
-    src_facts = [x for f in LEDGER_FIELDS for x in fields[f] if x.source]
+    src_facts = [x for f in FIELDS for x in fields[f] if x.source]
     filed = sorted({x.source.filing_date for x in src_facts if x.source.filing_date})
     outside = sorted({x.source.accession for x in src_facts
                       if inv_fy.get(x.source.accession) not in fy_range})
@@ -602,7 +602,7 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict,
     # rather than living only in a config file nobody downstream reads. A consumer
     # of the ledger can ask "was any of this overridden by a human, and on what
     # evidence" without leaving the artifact.
-    corrected = [x for f in LEDGER_FIELDS for x in fields[f] if x.correction]
+    corrected = [x for f in FIELDS for x in fields[f] if x.correction]
     dq["corrections"] = {
         "n": len(corrected),
         "applied": [{"id": x.id, "field": x.field, **x.correction} for x in corrected],
@@ -616,7 +616,8 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict,
     dq["extraction_tasks_missing"] = sorted(missing_tasks)
     for t in missing_tasks:
         warnings.append(f"FY{fy}: extraction task '{t}' has no result file — "
-                        f"run src/extract_facts.py --fy {fy} --task {t}")
+                        f"run `uv run python -m equity_research.extract_facts "
+                        f"--fy {fy} --task {t}`")
 
     ledger = YearLedger(
         fiscal_year=fy,
@@ -624,7 +625,7 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict,
         filings=filings, earnings_release_dates=earnings,
         risk_deltas=risk_year,
         data_quality={**dq, "board_metadata": board_meta},
-        **{f: fields[f] for f in LEDGER_FIELDS},
+        **{f: fields[f] for f in FIELDS},
     )
     return ledger, warnings
 
@@ -637,9 +638,9 @@ def main() -> None:
 
     args = ap.parse_args()
 
-    inv = load_json(INVENTORY, "Run src/discover.py first (milestone 1).")
-    manifest = load_json(SECTIONS_MANIFEST, "Run src/extract_sections.py first (milestone 3).")
-    risk = load_json(RISK_DELTAS, "Run src/risk_diff.py first.")
+    inv = load_json(INVENTORY, "Run `uv run python -m equity_research.discover` first (milestone 1).")
+    manifest = load_json(SECTIONS_MANIFEST, "Run `uv run python -m equity_research.extract_sections` first (milestone 3).")
+    risk = load_json(RISK_DELTAS, "Run `uv run python -m equity_research.risk_diff` first.")
     texts = section_texts(manifest["sections"])
     corrections = load_corrections()
 
@@ -661,7 +662,7 @@ def main() -> None:
     for fy in years:
         if not any(load_task_records(fy, t) for t in {t for t, _, _ in FIELD_MAP}):
             print(f"FY{fy}  SKIPPED — no extraction results. "
-                  f"Run: uv run python src/extract_facts.py --fy {fy}")
+                  f"Run: uv run python -m equity_research.extract_facts --fy {fy}")
             continue
         ledger, warnings = build_year(fy, inv, texts, risk, corrections)
         all_warnings += warnings
@@ -669,12 +670,12 @@ def main() -> None:
         built.append(ledger)
 
         dq = ledger.data_quality
-        tot = sum(dq[f]["n"] for f in LEDGER_FIELDS)
-        low = sum(dq[f]["low_confidence"] for f in LEDGER_FIELDS)
-        unv = sum(dq[f]["unverified_quotes"] for f in LEDGER_FIELDS)
+        tot = sum(dq[f]["n"] for f in FIELDS)
+        low = sum(dq[f]["low_confidence"] for f in FIELDS)
+        unv = sum(dq[f]["unverified_quotes"] for f in FIELDS)
         print(f"FY{fy}  {tot:>3d} facts  ({tot-low} high / {low} low confidence)  "
               f"{unv} unverified quote(s)  {len(ledger.filings)} filing(s)")
-        for f in LEDGER_FIELDS:
+        for f in FIELDS:
             d = dq[f]
             flag = "" if d["populated"] else "   <- EMPTY"
             print(f"       {f:22s} {d['n']:>3d}  "
@@ -691,7 +692,7 @@ def main() -> None:
     # passes the verbatim check, since that check compares the document against this
     # same corrupt string. VERIFICATION.md D4.
     escaped = [(f"FY{l.fiscal_year}", x.id, x.quote[:60])
-               for l in built for f in LEDGER_FIELDS for x in getattr(l, f)
+               for l in built for f in FIELDS for x in getattr(l, f)
                if LITERAL_ESCAPE.search(x.quote or "")]
     if escaped:
         sys.exit(
@@ -740,7 +741,7 @@ def main() -> None:
     # A real id from this build for the report's example. Falls through every field
     # rather than only `events`, because a year with no events is perfectly possible
     # for another company and an empty example would read as a broken citation.
-    example_id = next((x.id for l in built for f in LEDGER_FIELDS
+    example_id = next((x.id for l in built for f in FIELDS
                        for x in getattr(l, f)), "(none)")
 
     # --- report ------------------------------------------------------------
@@ -764,7 +765,7 @@ def main() -> None:
              "", "## Coverage", "",
              "| Field | " + " | ".join(f"FY{l.fiscal_year}" for l in built) + " |",
              "|---|" + "---|" * len(built)]
-    for f in LEDGER_FIELDS:
+    for f in FIELDS:
         cells = []
         for l in built:
             d = l.data_quality[f]
@@ -805,7 +806,7 @@ def main() -> None:
                   f"The **document window** — the filing dates of the documents these "
                   f"facts are actually drawn from — is **`{min(firsts)}` .. "
                   f"`{max(lasts)}`**, across "
-                  f"{len({a for l in built for f in LEDGER_FIELDS for x in getattr(l, f) if x.source for a in [x.source.accession]})} "
+                  f"{len({a for l in built for f in FIELDS for x in getattr(l, f) if x.source for a in [x.source.accession]})} "
                   f"filings. It extends past the fiscal window end by construction: a "
                   f"10-K, a proxy and an annual-meeting vote all report on a year "
                   f"after that year has closed.",
@@ -841,7 +842,7 @@ def main() -> None:
 
     lines += ["", "## Source sections used", ""]
     for l in built:
-        used = sorted({x.source.section_key for f in LEDGER_FIELDS
+        used = sorted({x.source.section_key for f in FIELDS
                        for x in getattr(l, f) if x.source})
         lines.append(f"- **FY{l.fiscal_year}**: {', '.join(used)}")
     if all_warnings:

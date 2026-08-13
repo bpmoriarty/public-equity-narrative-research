@@ -26,12 +26,12 @@ The cost saving is incidental. If the model added something checkable it would b
 worth $0.30. It doesn't.
 
 The judgment calls the ledger cannot make are all made upstream in
-src/merge_events.py, where they are config-driven, tested, and auditable — which is
+src/equity_research/merge_events.py, where they are config-driven, tested, and auditable — which is
 the right place for them.
 
 Run it:
-    uv run python src/render_timeline.py
-    uv run python src/render_timeline.py --stdout
+    uv run python -m equity_research.render_timeline
+    uv run python -m equity_research.render_timeline --stdout
 
 Writes:
     output/timeline.md
@@ -94,7 +94,7 @@ def subject() -> dict:
     """
     p = sorted(P.ledger.glob("FY*.json"))
     if not p:
-        sys.exit("FATAL: no ledger. Run src/build_ledger.py first.")
+        sys.exit("FATAL: no ledger. Run `uv run python -m equity_research.build_ledger` first.")
     years = [json.loads(x.read_text(encoding="utf-8")) for x in p]
     return {"ticker": years[0]["ticker"], "name": years[0]["company_name"],
             "cik": years[0]["cik"],
@@ -170,14 +170,14 @@ def render() -> str:
                  f"{len(ids_in)} ids in, {len(set(ids_out))} out.\n"
                  f"  missing: {sorted(ids_in - set(ids_out))[:5]}")
 
-    # The stamped input file, which `src/merge_events.py` writes. `timeline_block()`
+    # The stamped input file, which `src/equity_research/merge_events.py` writes. `timeline_block()`
     # above recomputes the rows in memory, so the render itself does not need the file
     # — but the document records its input's hash, and a missing input must say which
     # stage produces it rather than raising a bare FileNotFoundError from a rebuild.
     events = PACK_DIR / "timeline-events.json"
     if not events.exists():
         sys.exit(f"FATAL: {events.relative_to(ROOT)} not found.\n"
-                 f"  Build it first: uv run python src/merge_events.py")
+                 f"  Build it first: uv run python -m equity_research.merge_events")
     src_hash = hashlib.sha256(events.read_bytes()).hexdigest()
 
     L: list[str] = [
@@ -290,7 +290,7 @@ def render() -> str:
 
     L += ["", "---", "",
           f"Generated {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')}Z by "
-          f"`src/render_timeline.py` — deterministic, no model call, so this document "
+          f"`src/equity_research/render_timeline.py` — deterministic, no model call, so this document "
           f"contains nothing the ledger does not.",
           "",
           f"Input `data/pack/timeline-events.json` sha256 `{src_hash[:32]}`. "

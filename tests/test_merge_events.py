@@ -39,7 +39,7 @@ CFG = load_config()
 
 
 def row(rid, date, desc, accession, conf="high", typ="other"):
-    """A candidate timeline row, shaped as src/merge_events.py builds them."""
+    """A candidate timeline row, shaped as src/equity_research/merge_events.py builds them."""
     return {"ids": [rid], "fiscal_years": [2023], "field": "events", "type": typ,
             "date": date, "date_precision": "day" if date and len(date) == 10 else None,
             "date_as_stated": date, "description": desc, "quotes": [f"quote for {rid}"],

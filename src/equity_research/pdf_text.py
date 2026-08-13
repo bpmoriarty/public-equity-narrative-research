@@ -7,7 +7,7 @@ comment letters are also PDFs, but the SEC files a `.txt` twin of each, so they
 never come through here.
 
 Self-test — extracts the FY2022 letter and reports quality:
-    uv run python src/pdf_text.py --selftest
+    uv run python -m equity_research.pdf_text --selftest
 
 ---------------------------------------------------------------------------
 WHY NOT pypdf
@@ -187,7 +187,7 @@ def _selftest() -> None:
     """Run against the one PDF this module exists for, and report quality."""
     manifest = P.fetch_manifest
     if not manifest.exists():
-        sys.exit("FATAL: run src/fetch.py first — no fetch-manifest.json.")
+        sys.exit("FATAL: run `uv run python -m equity_research.fetch` first — no fetch-manifest.json.")
     recs = json.loads(manifest.read_text(encoding="utf-8"))["records"]
     pdfs = [r for r in recs if r["filename"].lower().endswith(".pdf") and r["form"] == "ARS"]
     if not pdfs:
