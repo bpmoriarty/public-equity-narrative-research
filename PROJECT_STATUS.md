@@ -21,21 +21,31 @@ they anchor a narrative claim.
 **Phase:** Verified — build complete, independently reviewed, every finding
 remediated. **Productionizing:** the plan at
 `C:\Users\bmoriar\.claude\plans\modular-brewing-teapot.md` was approved
-2026-08-08. **Phases 0 (hardening tripwires) and 1 (packaging) are complete and
-pushed** (commits `3c78496`, `a6010bb`, `8a904df`, `fec3785`). Next is **Phase 2**
-— moving MORN into `companies/MORN/` and adding `paths.py`/`settings.py`. The
-repository has a GitHub remote:
-https://github.com/bpmoriarty/public-equity-narrative-research
+2026-08-08. **Phases 0 (hardening tripwires), 1 (packaging) and 2 (the MORN move
++ paths/settings) are complete and pushed** (commits `3c78496`, `a6010bb`,
+`8a904df`, `fec3785`, `147a6ee`, `800a543`, `d6201dd`). Next is **Phase 3** — the
+model seam, making Claude Code the primary backend. The repository has a GitHub
+remote: https://github.com/bpmoriarty/public-equity-narrative-research
 
-> **Paths changed in Phase 1.** The pipeline modules now live in
-> `src/equity_research/` and run as `uv run python -m equity_research.<stage>`;
-> `uv run python src/<stage>.py` no longer works. The **Important Files** table
-> below is updated. Earlier **Session Log** entries and the *What's Working*
-> section still name the old `src/<stage>.py` paths — those are dated records of
-> what was true when written, and are deliberately left as history rather than
-> rewritten.
+> **Phase 3 is gated on a question outside the code.** It runs probes V1–V8
+> before any wiring, and **V7 is the Enterprise seat-terms question**: whether
+> headless Claude Code use fits the org's agreement, and whether Opus is
+> available on the seat. Phase 3 makes that the primary model backend for
+> colleagues who have seats but no API keys, so the answer could change the
+> design. Worth resolving before starting.
 
-**Last Session:** 2026-08-09
+> **Paths changed in Phases 1 and 2.** Modules live in `src/equity_research/` and
+> run as `uv run python -m equity_research.<stage>`; `uv run python
+> src/<stage>.py` no longer works. MORN's data, output and two config files now
+> live under `companies/MORN/` — `data/`, `output/`, `config/company.toml` and
+> `config/corrections.toml` are no longer at the repository root.
+> `config/forms.toml`, `sections.toml` and `outputs.toml` stay global.
+> The **Important Files** table below is current. Earlier **Session Log** entries
+> and the *What's Working* section still name the old paths — those are dated
+> records of what was true when written, and are deliberately left as history
+> rather than rewritten (26 such references, counted).
+
+**Last Session:** 2026-08-13
 
 **Overall Health:** 🟢 Working — milestones 1–5 complete. **The full verification suite has been run and all nine of its findings are fixed.** 1,329 ledger facts, 1,425 citable ids, three deliverables passing 13 hard checks each. Quote census re-earned after the repairs at **1,326/1,326**. $7.21 spent on generation; remediation cost $0.00 in API calls
 
@@ -625,12 +635,12 @@ across 34 calls). Milestones 1–3 cost nothing.
         a Sonnet subagent; the test-harness step and the review were done on
         Opus. All 15 modules moved with history preserved, 15 `sys.path.insert`
         hacks removed (not the 11 the plan claimed). See the Session Log entry
-17. [ ] **Phases 2–5**, in order: 2 MORN move into `companies/MORN/` + central
-        `paths.py`/`settings.py` (gate: the pack sha256 must reproduce) →
-        3 Claude Code model seam, running probes V1–V8 **first** → 4 `pipeline`
-        orchestrator + `init` → 5 test split, model mix, pack subsets, docs.
-        Phase 2 needs OneDrive sync paused; Phase 3's V7 needs the Enterprise
-        seat-terms question answered first.
+17. [ ] **Phases 3–5**, in order: 3 Claude Code model seam, running probes
+        V1–V8 **first** → 4 `pipeline` orchestrator + `init` → 5 test split,
+        model mix, pack subsets, docs. **Phase 3's V7 needs the Enterprise
+        seat-terms question answered first** — it is the one blocker that is not
+        a coding task, and Phase 3 makes Claude Code the primary backend for
+        colleagues who have seats but no API keys.
         **Two plan corrections found by executing Phase 1 — do not re-derive:**
         (a) Phase 5's "count gate switches to `pytest --collect-only -q`" is
         wrong and was deliberately not done — `--collect-only` counts test
@@ -642,17 +652,37 @@ across 34 calls). Milestones 1–3 cost nothing.
         a number that command does not print — 1,326 is the fact count from
         `data/pack/pack-report.md`. The usable Phase 1/2 gates are the pack
         sha256 reproducing and `extract_facts --estimate` reporting 88 cached
-18. [ ] **Carry the Phase 0 and 1 additions through the Phase 2 move.**
-        `tests/test_repo_hygiene.py` walks `data/` and `output/` from the repo
-        root, and `run_all.py` discovers `tests/test_*.py`; both need their
-        roots re-pointed when MORN's data moves under `companies/MORN/`. The
-        count gate will fail loudly if a test silently stops finding artifacts,
-        which is the intended behaviour but will need a deliberate re-record.
-        `tests/suite_test.py` reads the same discovery, so it follows for free.
-        **Already handled:** `tools/check_control_bytes.py` was blind to renames
-        until `fec3785` (it filtered `--diff-filter=ACM`, which excludes `R`), so
-        a mostly-rename commit went unscanned. It is now `ACMRT`. Phase 2 is
-        almost entirely renames, so this had to be fixed before it, not during
+        (**confirmed in Phase 2**: the sha reproduced and the estimate held).
+        (c) Phase 2 was done as **one commit, not the moves-only commit the plan
+        specifies**. Split that way the first commit is broken by construction —
+        data under `companies/MORN/` while the code still reads `data/`. Rename
+        detection was never at risk, because the moved files and the edited files
+        are disjoint sets, so splitting bought a broken commit and nothing else
+18. [x] **Carry the Phase 0 and 1 additions through the Phase 2 move.** Done in
+        `800a543`. `tests/test_repo_hygiene.py` keeps `ROOT` for the
+        repo-wide model-output walk (a company added tomorrow with an ignored
+        `facts/` must fail the suite too) and uses `P` only for the checks that
+        name one company's artifacts. `run_all.py` and `tests/suite_test.py`
+        needed no change — `tests/` did not move. The count gate did fire once,
+        exactly as intended, when the new path-literal lint took
+        `test_repo_hygiene.py` from 9 checks to 10; re-recorded to 216.
+        **Already handled beforehand:** `tools/check_control_bytes.py` was blind
+        to renames until `fec3785` (it filtered `--diff-filter=ACM`, which
+        excludes `R`). Phase 2's migration commit was 107 renames out of 130
+        files — it would have been almost entirely unscanned
+19. [ ] **Idempotency: two committed artifacts change on every re-run.**
+        Re-running `build_ledger` or `render_timeline` rewrites
+        `ledger-report.md` and `output/timeline.md` with a new generation
+        timestamp and *nothing else* — content, and `timeline.md`'s input sha,
+        are otherwise identical. Found during Phase 2 and restored so the commits
+        carry no churn, but it is the "run twice, diff nothing" case from
+        CLAUDE.md rule 4. **Phase 5 already plans idempotency tests; fix it
+        there**, either by dropping the timestamp or by moving it out of the
+        committed file
+20. [ ] **`DATA.md` still describes `data/` and `output/` as top-level.** Its
+        `src/<module>.py` references were fixed in `d6201dd`, but the data-path
+        narrative needs prose changes rather than a substitution. The plan puts
+        it in Phase 5 with the README and CLAUDE.md updates
 
 ---
 
@@ -665,57 +695,59 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `tests/run_all.py` | Runs every test file and compares each one's own count against `tests/expected_counts.json`, **failing in either direction**. Fewer checks than recorded is the failure it exists for: a test that stops testing still reports green |
 | `tests/suite_test.py` | The pytest front-end (`uv run pytest`). Asserts exit code, zero failures, **and the recorded check count** per file. Deliberately not `pytest --collect-only`, which counts test functions and so cannot see a file shrinking from 63 checks to 3. Named `suite_test.py`, not `test_suite.py`, because `run_all.py` globs `test_*.py` and would otherwise recurse |
 | `src/equity_research/_bootstrap.py` | `ROOT`, the Windows cert store, and `.env` — imported first by every stage, for its side effects as much as its value. **Do not delete as unused.** Exists because each module used to compute its own `ROOT` two directories up, which the Phase 1 move made silently wrong by one level |
-| `tests/test_repo_hygiene.py` | 9 checks. Every JSON carrying a top-level `usage.input_tokens` was paid for and must be tracked by git; `output/*.md` likewise; and inversely, `.env` must not be |
+| `tests/test_repo_hygiene.py` | 10 checks. Every JSON carrying a top-level `usage.input_tokens` was paid for and must be tracked by git; `companies/MORN/output/*.md` likewise; and inversely, `.env` must not be. Also the **path-literal lint**: a `"data/…"` or `"output/…"` string in `src/equity_research/` outside `paths.py` resolves to the repo root instead of the company being run. Requires the literal to contain no whitespace, so prose *about* a path is not flagged |
+| `src/equity_research/paths.py` | **Every filesystem path, resolved per company.** `CompanyPaths` owns the 49 joins that were spread across 15 modules. `resolve()` re-roots a manifest-relative string — the reason the MORN move rewrote no manifest and `pack.json` kept its sha256. Ticker order: `--ticker` → `EQR_TICKER` → the single company; two with no ticker is a **hard error**, never a first-match guess |
+| `src/equity_research/settings.py` | Config layering (global `config/*.toml` + optional `companies/<T>/overrides/`), window validation at 1–10 years, and the **one pricing table** with `PRICES_AS_OF`. Arrays replace wholesale on merge, including arrays of tables — `sections.toml` pattern order is load-bearing and element-wise merging would produce an order neither file describes |
 | `VERIFICATION.md` | **The independent review and its remediation log.** Nine findings D1–D9, what each turned out to be, how each was fixed, and what was verified against ground truth. Read before trusting any deliverable |
-| `config/corrections.toml` | **Every human correction, as data.** `[[correction]]` (a ledger value), `[[document_correction]]` (a sentence), `[[id_remap]]` (a renumbered citation). Each carries its evidence and reviewer; each is fatal if it stops matching |
+| `companies/MORN/corrections.toml` | **Every human correction, as data.** `[[correction]]` (a ledger value), `[[document_correction]]` (a sentence), `[[id_remap]]` (a renumbered citation). Each carries its evidence and reviewer; each is fatal if it stops matching |
 | `tests/test_extract_sections.py` | 17 checks on the extraction guards. Pins both directions: an image-only document must fail, the legitimately short SEC letters must pass |
 | `tests/test_discover.py` | 12 checks on cache vintage — that an inferred as-of date labels itself, and that a zero-request run does not claim its own clock |
-| `data/raw/_meta/fetch-log.json` | When each cached metadata document was actually read from EDGAR. Written at fetch time, because that is the only moment that knows |
-| `src/equity_research/render_pdf.py` | Renders `output/*.md` to `output/pdf/*.pdf`. Deterministic, no model call. Reads each finished PDF back and fails if a word, fact id, heading or at-risk glyph did not survive |
-| `output/pdf/` | The three deliverables as PDF. **Gitignored** — a pure function of the committed Markdown, the script and the `[pdf]` config, rebuilt in seconds with `uv run python -m equity_research.render_pdf` |
+| `companies/MORN/data/raw/_meta/fetch-log.json` | When each cached metadata document was actually read from EDGAR. Written at fetch time, because that is the only moment that knows. **Not present for MORN** — every document was cached before this log existed, which is why `discover.vintage_of()` falls back to the cache file's mtime and labels that vintage *inferred, not recorded*. It appears the first time a document is fetched. The separate `companies/MORN/data/raw/fetch-log.jsonl` is `fetch.py`'s own per-document log and does exist |
+| `src/equity_research/render_pdf.py` | Renders `companies/MORN/output/*.md` to `companies/MORN/output/pdf/*.pdf`. Deterministic, no model call. Reads each finished PDF back and fails if a word, fact id, heading or at-risk glyph did not survive |
+| `companies/MORN/output/pdf/` | The three deliverables as PDF. **Gitignored** — a pure function of the committed Markdown, the script and the `[pdf]` config, rebuilt in seconds with `uv run python -m equity_research.render_pdf` |
 | `SPEC.md` | Document scope, extraction targets, ledger schema, output specs |
 | `DATA.md` | Provenance, as-of date, and 9 known limitations. Read before making any coverage claim |
 | `PROMPT.md` | The original kickoff prompt and its milestone gates |
-| `config/company.toml` | Ticker, CIK, window, rate limits. **The only file to edit to retarget** |
+| `companies/MORN/company.toml` | Ticker, CIK, window, rate limits. **The only file to edit to retarget** |
 | `config/forms.toml` | In-scope forms, 8-K item filter, gap signals, scope-extension block |
 | `config/sections.toml` | Section boundary regexes, anchor phrases, validation rules |
 | `src/equity_research/discover.py` | Milestone 1. Inventory and gap analysis. No documents downloaded |
 | `src/equity_research/fetch.py` | Milestone 2. Cache-first document downloader. `--dry-run`, `--limit` |
 | `src/equity_research/pdf_text.py` | PDF text extraction with subsetted-font glyph decoding. `--selftest` |
 | `src/equity_research/extract_sections.py` | Milestone 3. Section location + validation. **Read its KNOWN LIMITS docstring** before trusting any proxy section |
-| `data/sections/sections-manifest.json` | Every section with char count, boundary basis, and validation result |
+| `companies/MORN/data/sections/sections-manifest.json` | Every section with char count, boundary basis, and validation result |
 | `src/equity_research/risk_diff.py` | Deterministic year-over-year risk factor diff. No model calls |
 | `src/equity_research/ledger_schema.py` | Ledger shape, confidence rules, and `verify_quote` — the grounding check |
 | `src/equity_research/extract_facts.py` | Milestone 4a. The only stage that spends tokens. `--estimate` costs nothing |
 | `src/equity_research/build_ledger.py` | Milestone 4b. Assembles, verifies every quote, validates, writes |
-| `data/ledger/FY*.json` | **The ledger.** Everything downstream derives from here, never from raw sections |
-| `data/ledger/ledger-report.md` | Cross-year coverage, confidence counts, and comparability warnings |
-| `data/ledger/facts/` | Cached per-task extraction results. A completed task is never re-run |
-| `src/equity_research/render_timeline.py` | Milestone 5d. Renders `output/timeline.md`. Deterministic, no model call; asserts completeness before writing |
-| `output/timeline.md` | **Deliverable 1 of 3.** Chronological reference table, every row carrying its fact id and filing |
+| `companies/MORN/data/ledger/FY*.json` | **The ledger.** Everything downstream derives from here, never from raw sections |
+| `companies/MORN/data/ledger/ledger-report.md` | Cross-year coverage, confidence counts, and comparability warnings |
+| `companies/MORN/data/ledger/facts/` | Cached per-task extraction results. A completed task is never re-run |
+| `src/equity_research/render_timeline.py` | Milestone 5d. Renders `companies/MORN/output/timeline.md`. Deterministic, no model call; asserts completeness before writing |
+| `companies/MORN/output/timeline.md` | **Deliverable 1 of 3.** Chronological reference table, every row carrying its fact id and filing |
 | `src/equity_research/verify_outputs.py` | Milestone 5f. Holds the deliverables to the pack's binding constraints — **13 hard checks and 3 review lists** per document; deterministic, free, non-zero exit on failure |
 | `tests/test_verify_outputs.py` | 63 checks. Every hard check tested against a document that fails it as well as one that passes |
 | `src/equity_research/generate_outputs.py` | Milestone 5e. Writes both prose deliverables from the pack; checks and repairs ids and quotations |
-| `output/narrative-brief.md` | **Deliverable 2 of 3.** The five-year arc, 2,089 words, 126 citations |
-| `output/discussion-points.md` | **Deliverable 3 of 3.** Observations, open questions, and stated-vs-paid-for priorities |
+| `companies/MORN/output/narrative-brief.md` | **Deliverable 2 of 3.** The five-year arc, 2,089 words, 126 citations |
+| `companies/MORN/output/discussion-points.md` | **Deliverable 3 of 3.** Observations, open questions, and stated-vs-paid-for priorities |
 | `tests/test_generate_outputs.py` | 38 checks on the citation and quotation gates; fixtures are real strings from the first generation run. Fails loudly if a committed generation record is missing rather than skipping itself |
 | `src/equity_research/merge_events.py` | Milestone 5c. Merges duplicate event records, splits undated ones out, tags routine governance. Deterministic. `--show merged|unclear|possible|routine` |
 | `config/outputs.toml` | Output-stage config: merge threshold, routine patterns and the material overrides. **Change behaviour here, not in code** |
 | `tests/test_merge_events.py` | Proves same-filing records never merge and the incentive-plan row is not tagged routine. Run after any threshold change |
 | `src/equity_research/build_pack.py` | Milestone 5a. Assembles the citable pack from the ledger. Deterministic, no model calls. `--show constraints` prints the binding rules |
-| `data/pack/pack.json` | The payload the writers read. Gitignored — reproducible from the ledger; its sha256 in `pack-report.md` is the audit link |
-| `data/pack/index.json` | `{id → fact}`. What `verify_outputs.py` resolves citations through |
+| `companies/MORN/data/pack/pack.json` | The payload the writers read. Gitignored — reproducible from the ledger; its sha256 in `pack-report.md` is the audit link |
+| `companies/MORN/data/pack/index.json` | `{id → fact}`. What `verify_outputs.py` resolves citations through |
 | `src/equity_research/triage_8k.py` | Judges the 75 conditional 7.01/8.01 8-Ks. Deterministic, no model calls |
 | `config/forms.toml` `[eight_k.triage]` | Triage patterns, headline window, size cap. Change behaviour here, not in code |
-| `data/triage/triage-8k.json` | Every triage decision with its evidence. Committed — it is the record of what was excluded |
-| `data/triage/triage-report.md` | The auditable log, including the full drop list |
+| `companies/MORN/data/triage/triage-8k.json` | Every triage decision with its evidence. Committed — it is the record of what was excluded |
+| `companies/MORN/data/triage/triage-report.md` | The auditable log, including the full drop list |
 | `tests/test_verify_quote.py` | Proves the grounding check can still reject. Run it after any change to `canon` |
 | `tests/test_fact_id.py` | Proves ids are stable against judgments and sensitive to content. Run it after any change to `fact_id` or `risk_delta_id` |
 | `../../.claude/skills/` | The `preflight`, `verification-suite` and other skills live TWO levels up, in the `Coding Projects` folder. Claude Code only auto-loads skills from the session's own directory and `~/.claude`, so they are **not** invocable as `/preflight` from this project — read `SKILL.md` by path and follow it |
-| `data/discovery/inventory.json` | **Machine source of truth** for what's in scope. Later stages read this, not config |
-| `data/discovery/discovery-report.md` | The human-readable inventory and gap analysis |
-| `data/raw/FY*/…` | Cached documents by fiscal year and form. Never delete — rebuilding means re-hitting EDGAR for all 201 |
-| `data/raw/fetch-manifest.json` | Every document with size, SHA-256, source URL |
+| `companies/MORN/data/discovery/inventory.json` | **Machine source of truth** for what's in scope. Later stages read this, not config |
+| `companies/MORN/data/discovery/discovery-report.md` | The human-readable inventory and gap analysis |
+| `companies/MORN/data/raw/FY*/…` | Cached documents by fiscal year and form. Never delete — rebuilding means re-hitting EDGAR for all 201 |
+| `companies/MORN/data/raw/fetch-manifest.json` | Every document with size, SHA-256, source URL |
 
 ---
 
@@ -740,6 +772,145 @@ across 34 calls). Milestones 1–3 cost nothing.
 ---
 
 ## Session Log
+
+### 2026-08-13 — Phase 2: MORN into `companies/MORN/`, `paths.py`, `settings.py`
+
+Commits `800a543` (the migration) and `d6201dd` (step 4, the hardcoding fixes),
+both pushed. OneDrive sync was paused for the session, at the plan's instruction.
+
+**Baseline recorded before anything moved**, and reconciled after: 805 files and
+51,070,196 bytes under `data/ output/ config/`, 110 of them tracked; 215 checks;
+88 cached extractions; `pack.json` sha256 `fd320ce5…`.
+
+**The move.** `git mv` of `config/company.toml`, `config/corrections.toml`,
+`data/` and `output/` into `companies/MORN/`. One correction to the plan's
+method: `git mv` on a whole *directory* renames it in the working tree — carrying
+untracked and ignored files along — and stages the tracked renames, so the
+plan's separate "plain `mv` for the ~44 MB of untracked data" step was not
+needed. Afterwards: 805 files, 51,070,196 bytes, unchanged; 107 renames + the 3
+global tomls that stayed in `config/` = the 110 tracked files counted going in.
+
+`output/` failed once with "Permission denied" — a background Acrobat process
+held `output/pdf/discussion-points.pdf`, which blocked renaming `output/pdf/`,
+which blocked renaming `output/`. Located by probing each item with an in-place
+rename rather than guessing. It cleared on retry and the whole directory moved
+intact. Worth knowing the shape: a single locked file blocks its whole ancestor
+chain, and the lock was on the least valuable artifact in the repo.
+
+**Why no manifest was rewritten — the load-bearing part.** The four manifests
+store paths as ROOT-relative forward-slash strings. Measured before relying on
+it: 893 such strings, **zero** absolute paths. Every one of those relative paths
+still exists unchanged under `companies/MORN/`, so only the base they are joined
+onto moved — `ROOT / rec["path"]` became `P.resolve(rec["path"])`. The manifests
+are byte-identical, which is what lets `pack.json` keep its sha256, which is what
+keeps the hash stamped on the committed deliverables honest.
+
+**`paths.py`** — `CompanyPaths`, a frozen dataclass, owns all 49 joins that were
+spread across 15 modules. `resolve()` re-roots a manifest string and *raises* on
+an absolute path or an unexpected prefix rather than producing a path that points
+nowhere. Ticker resolution is `--ticker` → `EQR_TICKER` → the single company when
+there is exactly one; two or more with no ticker is a hard error, not a
+first-match guess, because reading the wrong company's filings produces a
+flawless-looking run over entirely wrong data. It reads `--ticker` from
+`sys.argv` directly, since module-level path constants are evaluated at import,
+before argparse runs; `add_ticker_arg()` still declares the flag on all 14 stages
+so `--help` lists it and `--tickr` is rejected rather than silently falling back.
+
+**`settings.py`** — config layering (global `config/*.toml` deep-merged with
+optional `companies/<T>/overrides/`), window validation at 1–10 years, and one
+pricing table with `PRICES_AS_OF`. The merge rule replaces arrays wholesale
+including arrays of tables, because `sections.toml` holds ordered pattern lists
+where first match wins and element-wise merging would produce an order neither
+file describes.
+
+**Config split:** `company.toml` and `corrections.toml` are company-owned and
+moved; `forms.toml`, `sections.toml` and `outputs.toml` stay global and are now
+overridable per company.
+
+#### Step 4 — deriving what was hardcoded
+
+- The investor_qa prompt said "in which **Morningstar** published written
+  answers" — a company name inside a prompt, in a pipeline whose purpose is
+  running against any ticker. Now `<COMPANY>` from `inventory.json`, not from
+  `company.toml`, whose `resolved_name` that file documents as informational and
+  a tripwire. Checked rather than assumed that this does not invalidate the 88
+  cached results: `source_digest` hashes accession, section key and section
+  text, never the prompt.
+- `"A five-year read"` sat above a title that correctly templated FY2021–FY2025.
+  Now formatted from the years the pack covers, and verified to render
+  byte-identically for the current window.
+- `WHOLE_DOC_FORMS` derived from `forms.toml`; verified to reproduce the previous
+  six-form set exactly, and verified in the other direction (a form added to
+  config is picked up).
+- One `FIELDS` in `ledger_schema.py`, derived from `FIELD_CODES`, replacing
+  identical copies in `build_ledger.py` and `build_pack.py`.
+- One pricing table replacing 8 literals across 3 files.
+- 112 stale `src/<stage>.py` references from the Phase 1 packaging: 92 in code
+  and tests, 20 in config comments and `DATA.md`. `PROJECT_STATUS.md` (26) and
+  `VERIFICATION.md` (3) left as dated history.
+
+#### Three findings worth keeping
+
+**A cost figure that disagreed with itself.** `build_pack.py` computed the
+1-hour cache break-even as `2.0/0.9` and printed **2.2**, while a comment above
+that line and a hardcoded markdown table below it both said **2.3**. One run put
+2.2 on the terminal and 2.3 into `pack-report.md`. 2.2 is correct;
+`settings.break_even_reads()` is now the only source. Every dollar figure in the
+regenerated report is unchanged — only the break-even moved, to agree with the
+number beside it. Contained: `pack-report.md` is gitignored and no committed
+deliverable cites it.
+
+**A latent `NameError` I introduced and nearly shipped.** Removing
+`PRICE_IN`/`PRICE_OUT` from `extract_facts.py` left them referenced in the
+estimate path. `--estimate` still reported clean, because with 0 tasks planned it
+returns *before* reaching those lines — it would have fired on the first run with
+something to price. The same shape as every checker bug in this project: green
+because the code path was never reached.
+
+**Timestamp churn in two committed artifacts.** Re-running `build_ledger` or
+`render_timeline` rewrites `ledger-report.md` and `output/timeline.md` with a new
+timestamp and nothing else. Good news about the migration — content and
+`timeline.md`'s input sha are identical — but it is the "run twice, diff nothing"
+case. Both restored so the commits carry no churn; recorded as Next Steps item 19
+for Phase 5.
+
+#### The path-literal lint, and why it is narrower than the plan said
+
+The plan specifies a regex over `src/` for `"data/` and `"output/`. Written that
+way it fires on two perfectly good error messages that mention `data/ledger/` and
+`data/triage/text/` **in sentences**. A check that fires on correct code gets
+dismissed, and is still being dismissed on the day it is right — the same
+reasoning already recorded in `verify_outputs.py` about hard versus review
+checks. It now also requires the literal to contain no whitespace, which is what
+separates a path from prose about a path.
+
+Proven against failing input before being trusted (doctrine 3): seven crafted
+cases covering both directions, then a real violation planted in `render_pdf.py`,
+which the suite caught by file, line and content; the file was restored
+byte-identically afterwards. `test_repo_hygiene.py` went 9 → 10 checks and the
+count gate caught the change itself, in the "more than recorded" direction.
+
+#### Verification
+
+| Gate | Result |
+| --- | --- |
+| `pack.json` sha256 | `fd320ce5…` — **regenerated**, then `cmp`'d byte-for-byte against a pre-move copy |
+| `extract_facts --estimate` | 88 cached, 0 to run |
+| `tests/run_all.py` | 215 → **216** checks (the new lint), all passing |
+| `pytest` | 10 passed |
+| `verify_outputs` | 2 documents, every hard check passed |
+| control-byte scan | clean over 130 staged files, then all 159 tracked |
+| `.gitignore` | 16 path classes checked with `git check-ignore -v` in both directions; untracked 695 → 0; zero tracked-but-ignored |
+| `paths.py` / `settings.py` | 67 assertions, 24 of them exercising the guards |
+
+The 88-cached line is the gate that catches a wrong path base. **The test suite
+is not** — `tests/` did not move, so it passes either way. Same lesson as the
+`ROOT` hazard in Phase 1: the gate that matters is the one that touches the moved
+thing.
+
+Also closed the two Phase 2 risks the plan listed: the stale permission rule in
+`.claude/settings.local.json` (it named `src/verify_outputs.py`), and
+`core.longpaths` is now set — the deepest path is 99 relative, ~194 absolute.
 
 ### 2026-08-09 — Phase 1: packaging, a pytest front-end, and a bug in a Phase 0 checker
 
