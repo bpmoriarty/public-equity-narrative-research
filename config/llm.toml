@@ -1,0 +1,67 @@
+# WHICH ENGINE THE MODEL CALLS GO THROUGH
+#
+# Global, not per-company: this describes the machine the pipeline runs on and
+# what that machine has access to, not the company being researched. A company
+# may still override it at companies/<TICKER>/overrides/llm.toml if it needs to.
+
+[llm]
+# "claude_code" (default) — runs the bundled Claude Code CLI headlessly. Needs a
+#                           Claude seat and NO API key. This is the path for
+#                           colleagues, almost none of whom have API keys.
+# "api"                   — the anthropic SDK. Needs ANTHROPIC_API_KEY in .env.
+backend = "claude_code"
+
+# Where the Claude Code executable is. LEAVE THIS EMPTY unless discovery fails.
+#
+# Resolution order is: this setting, then `claude` on PATH, then a binary found
+# inside an installed IDE extension, newest version first.
+#
+# The third case is the normal one and it is worth understanding. Most people
+# use Claude Code through the VS Code extension and never install the CLI — but
+# the extension SHIPS the CLI, at
+#     ~/.vscode/extensions/anthropic.claude-code-<VERSION>/resources/native-binary/claude.exe
+# That path carries the version number, so it moves every time the extension
+# updates (three versions were installed side by side on the machine this was
+# built on). Discovery globs and takes the newest, so it keeps working across
+# updates without anyone editing this file.
+#
+# Set this only if you use Claude Code somewhere discovery cannot see — another
+# IDE, the desktop app, or a non-standard install location.
+binary_path = ""
+
+# Simultaneous headless calls. The top-level CLAUDE.md caps concurrency at 5;
+# 2 is lower still because a seat meters on rolling usage windows rather than
+# per-second rate limits, so pacing matters more than burst speed. Measured: one
+# fiscal year (17 units) took 11.9 minutes of call time at this setting.
+max_concurrent_requests = 2
+
+# How many times to re-ask when the response does not match the required schema.
+# 1, not 0 and not 5. The CLI has no structured-output parameter, so the schema
+# travels in the prompt and is validated locally afterwards — measured at 16/17
+# valid first time on real extraction units, which is often enough to need a
+# retry and far too often to pretend it never happens. A model that cannot
+# produce the schema twice will not produce it on the fifth attempt either, and
+# every attempt pays for the whole prompt again.
+max_schema_retries = 1
+
+# Seconds before a headless call is killed. The slowest real extraction unit
+# measured 87 seconds; a whole-pack generation call is much larger. Set well
+# above anything observed rather than tuned to it.
+timeout_seconds = 1800
+
+# ---------------------------------------------------------------------------
+# PER-STAGE OVERRIDES
+# ---------------------------------------------------------------------------
+# Any stage may pick a different backend without a code change. The reason this
+# exists: extraction is the token-heavy stage, and measured head to head on one
+# fiscal year it costs about twice as much through claude_code as through the
+# API ($4.68 vs $2.28), because the CLI always cache-WRITES the prompt at 2x
+# input price and never reads it back. Anyone who does hold an API key can move
+# just that stage across.
+#
+# On a subscription seat those dollars are NOTIONAL — what the API would have
+# charged — so for a colleague with no key the comparison is not "twice as
+# expensive", it is "possible at all".
+#
+# [llm.extract_facts]
+# backend = "api"

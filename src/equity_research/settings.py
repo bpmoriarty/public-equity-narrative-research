@@ -60,7 +60,12 @@ from equity_research.paths import CompanyPaths, paths
 # ---------------------------------------------------------------------------
 
 # Live in config/, may be overridden per company via companies/<T>/overrides/.
-GLOBAL_CONFIGS = ("forms", "sections", "outputs")
+#
+# `llm` is global for a different reason than the other three: it describes the
+# machine the pipeline runs on and what that machine can reach — a Claude seat,
+# an API key, where the CLI lives — rather than anything about a company. It is
+# layerable anyway, so a company that needs a different backend can say so.
+GLOBAL_CONFIGS = ("forms", "sections", "outputs", "llm")
 
 # Live in companies/<T>/, never layered.
 COMPANY_CONFIGS = ("company", "corrections")

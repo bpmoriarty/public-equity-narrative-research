@@ -1,0 +1,476 @@
+"""The model seam: one interface, two backends.
+
+WHY THIS EXISTS
+---------------
+Colleagues have Claude Enterprise seats and, in almost every case, no API key.
+The pipeline therefore has to be able to reach a model without one. Claude Code
+headless is that path, and it is the DEFAULT. The anthropic-SDK path stays as a
+config-selectable secondary for whoever does hold a key.
+
+Everything downstream of a model call — quote verification, the 13 hard checks,
+pack-sha provenance, PDF read-back — operates on files that have already been
+written, so it is call-path agnostic. The blast radius of this module is itself
+plus its call sites in extract_facts, generate_outputs and build_pack.
+
+===========================================================================
+WHAT THE PROBES MEASURED, 2026-08-13 (claude.exe 2.1.231)
+===========================================================================
+These are measurements, not assumptions, and several contradict the plan.
+
+1. THE BINARY IS USUALLY NOT ON PATH. Most colleagues run Claude Code through
+   the VS Code extension, which SHIPS the CLI rather than depending on one:
+       ~/.vscode/extensions/anthropic.claude-code-<VER>/resources/native-binary/claude.exe
+   That path carries the version, so it moves on every extension update — three
+   versions were installed side by side on the development machine. Discovery
+   must glob and take the newest. See `find_binary`.
+
+2. EVERY CALL CARRIES A ~20,400-TOKEN HARNESS PREAMBLE, and it is unavoidable.
+   `--allowed-tools ""` is rejected outright ("argument missing"), so tools are
+   denied by name instead. `--system-prompt` REPLACES Claude Code's own prompt
+   and saves 4,525 tokens a call; `--append-system-prompt` would only add.
+   Running from a neutral working directory saves a further ~4,500, because
+   otherwise both CLAUDE.md files are loaded into every call.
+
+3. THE PROMPT IS ALWAYS CACHE-**WRITTEN** AT 1h TTL, WHICH BILLS AT 2x INPUT.
+   `input_tokens` comes back as ~2 no matter how large the prompt is; the whole
+   thing lands in `cache_creation_input_tokens`. There is no flag to opt out.
+   This is the single biggest cost difference from the API path, where the same
+   content is ordinary 1x input.
+
+4. AN IDENTICAL PROMPT DOES NOT CACHE ACROSS CALLS. Two fresh calls sending a
+   byte-identical 60KB prefix seconds apart produced byte-identical usage:
+   22,691 written and 20,443 read, both times. Only Claude Code's OWN prefix is
+   read back; user content never is. So there is no point trying to order calls
+   to share a cached pack — it will not happen.
+
+5. `--resume` PRESERVES CONTEXT BUT SAVES NOTHING. The resumed turn recalled the
+   first turn's content correctly, and re-wrote the entire conversation at 2x:
+   cache_read 0, cache_creation 34,316. Turn 2 cost MORE than turn 1. The plan's
+   "run both documents and their repair rounds in one resumed session so the
+   1.4 MB pack is not re-ingested" DOES NOT WORK, and its failure is invisible
+   from the outside — you get the right answer at full price.
+   => Repair rounds must be SELF-CONTAINED and pack-free (the plan's fallback:
+      an index excerpt of ~15-25K tokens), not resumed.
+
+6. Cost, measured head to head on FY2024's 17 extraction units:
+       API path            $2.28
+       Claude Code path    $4.68     (2.0x)
+   Generation is far less affected, because it is ~4 large calls rather than 88
+   small ones: roughly $8 against $7.00. Whole company ≈ $32 vs ≈ $18 notional.
+   On a subscription seat those dollars are NOTIONAL — they are what the API
+   would have charged. The real currency is seat allowance.
+
+7. Structured output works via a schema embedded in the prompt plus local
+   pydantic validation: 16/17 units validated first time and NONE wrapped their
+   output in a markdown fence. The one failure returned malformed JSON, so
+   `max_schema_retries` defaults to 1 rather than 0 — at ~1-in-17 you would
+   expect roughly five failures across a full company.
+
+8. `stop_reason` reliably distinguishes truncation, so the existing
+   "truncation is a FAILED call, never a stored partial" rule survives intact.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import subprocess
+import tempfile
+from dataclasses import dataclass, field
+from pathlib import Path
+from shutil import which
+from typing import Any, Protocol
+
+from pydantic import BaseModel
+
+from equity_research import settings
+
+# Tools are denied by name because an empty allow-list is rejected. Denying them
+# also means `num_turns` comes back as 1 without needing `--max-turns`, which
+# does not exist in 2.1.231 despite the plan specifying it.
+DENIED_TOOLS = ("Bash,Read,Write,Edit,Glob,Grep,WebFetch,WebSearch,Task,"
+                "NotebookEdit,TodoWrite")
+
+# How long to wait on one headless call. The slowest real extraction unit
+# measured 87s; a whole-pack generation call is much larger, so this is set well
+# above anything observed rather than tuned to it.
+DEFAULT_TIMEOUT_S = 1800
+
+
+# ---------------------------------------------------------------------------
+# The canonical result
+# ---------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class LLMResult:
+    """One model response, in the shape the audit records already store.
+
+    `backend` and `model` are stamped onto every record so the audit trail
+    survives the engine change — a facts file written through Claude Code and
+    one written through the API must be distinguishable after the fact, or
+    "which engine produced this?" becomes unanswerable the moment both have run.
+    """
+
+    text: str
+    usage: dict[str, Any]
+    backend: str
+    model: str
+    stop_reason: str | None = None
+    cost_usd: float | None = None
+    session_id: str | None = None
+    parsed: BaseModel | None = None
+    raw: dict[str, Any] | None = field(default=None, repr=False)
+
+    @property
+    def truncated(self) -> bool:
+        """A structured response cut off by the output cap is a FAILED call.
+
+        The JSON is incomplete, so storing it would put a partial record into the
+        ledger. Callers check this and fail rather than persisting.
+        """
+        return self.stop_reason == "max_tokens"
+
+
+class BackendError(RuntimeError):
+    """A call that did not produce a usable response. Never a silent None."""
+
+
+# ---------------------------------------------------------------------------
+# Backend protocol
+# ---------------------------------------------------------------------------
+
+class Backend(Protocol):
+    name: str
+
+    def generate(self, *, model: str, system: str, prompt: str, max_tokens: int,
+                 effort: str, schema: type[BaseModel] | None = None,
+                 cache: bool = False) -> LLMResult:
+        ...
+
+    def count_tokens(self, *, model: str, system: str, prompt: str) -> int | None:
+        """Exact input tokens, or None when the backend cannot say.
+
+        None is a real answer, not a failure: Claude Code exposes no
+        count-tokens endpoint. Callers must present an estimate as approximate
+        rather than printing a confident number they did not measure.
+        """
+        ...
+
+
+# ---------------------------------------------------------------------------
+# Locating the Claude Code binary
+# ---------------------------------------------------------------------------
+
+EXTENSION_GLOB = "anthropic.claude-code-*/resources/native-binary/claude.exe"
+
+
+def _extension_candidates() -> list[Path]:
+    """Claude Code binaries shipped inside IDE extensions, oldest first."""
+    roots = [
+        Path.home() / ".vscode" / "extensions",
+        Path.home() / ".vscode-insiders" / "extensions",
+        Path.home() / ".vscode-server" / "extensions",
+    ]
+    found: list[Path] = []
+    for root in roots:
+        if root.is_dir():
+            found.extend(sorted(root.glob(EXTENSION_GLOB)))
+            # Non-Windows hosts ship the binary without the extension.
+            found.extend(sorted(root.glob(EXTENSION_GLOB[:-4])))
+    return found
+
+
+def find_binary(configured: str | None = None) -> Path:
+    """Locate the Claude Code executable.
+
+    Order: an explicit config value, then PATH, then a binary discovered inside
+    an installed IDE extension (newest wins).
+
+    Discovery matters more than it looks. Most colleagues use Claude Code
+    THROUGH VS CODE and have never installed the CLI, so requiring `claude` on
+    PATH would mean asking each of them to install something before they could
+    run the pipeline at all — which is the friction this backend exists to
+    remove. Reaching into another program's install directory is admittedly
+    brittle, so the failure is made loud and specific rather than mysterious:
+    a missing binary must not surface three stages later as "extraction returned
+    nothing".
+    """
+    if configured:
+        p = Path(os.path.expandvars(configured)).expanduser()
+        if not p.is_file():
+            raise BackendError(
+                f"FATAL: [llm] binary_path points at {p}, which does not exist.\n"
+                "Fix the path, or remove the setting to fall back to PATH and "
+                "IDE-extension discovery."
+            )
+        return p
+
+    on_path = which("claude")
+    if on_path:
+        return Path(on_path)
+
+    cands = _extension_candidates()
+    if cands:
+        return cands[-1]           # newest version sorts last
+
+    raise BackendError(
+        "FATAL: no Claude Code executable found.\n"
+        "Looked in three places, in order:\n"
+        "  1. [llm] binary_path in config — not set\n"
+        "  2. `claude` on PATH — not found\n"
+        f"  3. IDE extensions matching {EXTENSION_GLOB}\n"
+        f"     under {Path.home() / '.vscode' / 'extensions'} — none found\n\n"
+        "If you use Claude Code inside VS Code, the CLI ships with the extension "
+        "and is normally discovered automatically; if you use another IDE or the "
+        "desktop app, set [llm] binary_path in config to the executable."
+    )
+
+
+# ---------------------------------------------------------------------------
+# Claude Code backend (default)
+# ---------------------------------------------------------------------------
+
+def _schema_instruction(schema: type[BaseModel]) -> str:
+    """The schema, in the prompt, because the CLI has no structured-output flag.
+
+    Measured: 16/17 real extraction units returned valid JSON first time and none
+    added a markdown fence. The remaining failure is handled by a bounded retry
+    in `generate`, not by loosening the parse.
+    """
+    return ("\n\n=== REQUIRED OUTPUT FORMAT ===\n"
+            "Return ONLY a single JSON object conforming to this JSON Schema. "
+            "No prose before or after it, no markdown fence, no explanation.\n\n"
+            + json.dumps(schema.model_json_schema(), indent=2))
+
+
+def _strip_fence(text: str) -> str:
+    """Remove a ```json fence if one appears despite the instruction not to."""
+    t = text.strip()
+    if not t.startswith("```"):
+        return t
+    t = t[3:]
+    if "\n" in t:
+        t = t.split("\n", 1)[1]
+    return t.rsplit("```", 1)[0].strip()
+
+
+class ClaudeCodeBackend:
+    """Headless `claude --print`. The default: needs a seat, not an API key."""
+
+    name = "claude_code"
+
+    def __init__(self, binary: Path | None = None, *, configured: str | None = None,
+                 timeout_s: int = DEFAULT_TIMEOUT_S, max_schema_retries: int = 1):
+        self.binary = binary or find_binary(configured)
+        self.timeout_s = timeout_s
+        self.max_schema_retries = max_schema_retries
+        # A neutral working directory, so the project's two CLAUDE.md files are
+        # not loaded into every call. Measured cost of not doing this: 4,525
+        # tokens per call, which across 88 extraction units is ~400K tokens of
+        # instructions the model does not need in order to read one filing.
+        self._cwd = Path(tempfile.mkdtemp(prefix="eqr-llm-"))
+
+    def _invoke(self, *, model: str, system: str, prompt: str, effort: str) -> dict:
+        cmd = [
+            str(self.binary), "--print",
+            "--output-format", "json",
+            "--model", model,
+            "--effort", effort,
+            # REPLACES Claude Code's own system prompt (-4,525 tokens/call).
+            # `--append-system-prompt` would keep both.
+            "--system-prompt", system,
+            "--disallowed-tools", DENIED_TOOLS,
+        ]
+        try:
+            proc = subprocess.run(cmd, input=prompt.encode("utf-8"),
+                                  capture_output=True, cwd=self._cwd,
+                                  timeout=self.timeout_s)
+        except subprocess.TimeoutExpired:
+            raise BackendError(
+                f"claude_code call exceeded {self.timeout_s}s and was killed."
+            ) from None
+
+        out = proc.stdout.decode("utf-8", errors="replace")
+        if proc.returncode != 0 or not out.strip():
+            err = proc.stderr.decode("utf-8", errors="replace")[:600]
+            raise BackendError(
+                f"claude_code exited {proc.returncode} with no usable output.\n"
+                f"binary: {self.binary}\nstderr: {err}"
+            )
+        try:
+            env = json.loads(out)
+        except json.JSONDecodeError as exc:
+            raise BackendError(
+                f"claude_code did not return a JSON envelope ({exc}).\n"
+                f"first 400 chars: {out[:400]}"
+            ) from None
+
+        if env.get("is_error"):
+            raise BackendError(
+                f"claude_code reported is_error=true: "
+                f"{str(env.get('result'))[:400]}"
+            )
+        return env
+
+    def generate(self, *, model: str, system: str, prompt: str, max_tokens: int,
+                 effort: str, schema: type[BaseModel] | None = None,
+                 cache: bool = False) -> LLMResult:
+        # `max_tokens` and `cache` are accepted for interface parity and are
+        # deliberately unused here: the CLI exposes no output cap, and it always
+        # cache-writes the prompt at 1h TTL with no way to opt out or to get a
+        # read back (measured — see notes 3 and 4 in the module docstring).
+        del max_tokens, cache
+
+        body = prompt + (_schema_instruction(schema) if schema else "")
+        attempts = 1 + (self.max_schema_retries if schema else 0)
+        last: Exception | None = None
+
+        for attempt in range(attempts):
+            env = self._invoke(model=model, system=system, prompt=body, effort=effort)
+            text = (env.get("result") or "").strip()
+            result = LLMResult(
+                text=text,
+                usage=env.get("usage") or {},
+                backend=self.name,
+                model=model,
+                stop_reason=env.get("stop_reason"),
+                cost_usd=env.get("total_cost_usd"),
+                session_id=env.get("session_id"),
+                raw=env,
+            )
+            if schema is None:
+                return result
+            try:
+                parsed = schema.model_validate_json(_strip_fence(text))
+            except Exception as exc:                                # noqa: BLE001
+                last = exc
+                # Retry ONCE with the failure named. Not a loop: a model that
+                # cannot produce the schema twice will not produce it on the
+                # fifth attempt either, and each try costs a full prompt.
+                body = (prompt + _schema_instruction(schema)
+                        + f"\n\nYour previous reply could not be parsed: "
+                          f"{type(exc).__name__}. Return ONLY the JSON object.")
+                continue
+            return LLMResult(
+                text=text, usage=result.usage, backend=self.name, model=model,
+                stop_reason=result.stop_reason, cost_usd=result.cost_usd,
+                session_id=result.session_id, parsed=parsed, raw=env,
+            )
+
+        raise BackendError(
+            f"claude_code returned output that did not match {schema.__name__} "
+            f"after {attempts} attempt(s): {type(last).__name__}: "
+            f"{str(last)[:300]}"
+        )
+
+    def count_tokens(self, *, model: str, system: str, prompt: str) -> int | None:
+        """Not available. See the Backend protocol — None is a real answer.
+
+        Claude Code exposes no count-tokens endpoint, and guessing would put a
+        confident wrong number in front of someone deciding whether to spend.
+        Callers fall back to a labelled approximation.
+        """
+        del model, system, prompt
+        return None
+
+
+# ---------------------------------------------------------------------------
+# API backend (secondary)
+# ---------------------------------------------------------------------------
+
+class ApiBackend:
+    """The anthropic SDK path. Requires ANTHROPIC_API_KEY."""
+
+    name = "api"
+
+    def __init__(self, client: Any | None = None):
+        if client is None:
+            import anthropic
+            client = anthropic.Anthropic()
+        self.client = client
+
+    def generate(self, *, model: str, system: str, prompt: str, max_tokens: int,
+                 effort: str, schema: type[BaseModel] | None = None,
+                 cache: bool = False) -> LLMResult:
+        content: Any = prompt
+        if cache:
+            # Real prompt caching, unlike the claude_code path: the API returns
+            # cache READS on a repeated prefix, which is what makes the pack
+            # worth caching across generation calls at all.
+            content = [{"type": "text", "text": prompt,
+                        "cache_control": {"type": "ephemeral"}}]
+        kwargs: dict[str, Any] = {
+            "model": model, "max_tokens": max_tokens,
+            "output_config": {"effort": effort},
+            "system": system,
+            "messages": [{"role": "user", "content": content}],
+        }
+        if schema is not None:
+            resp = self.client.messages.parse(**kwargs, output_format=schema)
+            parsed = getattr(resp, "parsed_output", None)
+        else:
+            resp = self.client.messages.create(**kwargs)
+            parsed = None
+
+        text = "".join(b.text for b in resp.content if getattr(b, "type", None) == "text")
+        usage = resp.usage.model_dump() if hasattr(resp.usage, "model_dump") else dict(resp.usage)
+        return LLMResult(text=text.strip(), usage=usage, backend=self.name,
+                         model=model, stop_reason=resp.stop_reason,
+                         parsed=parsed, raw=None)
+
+    def count_tokens(self, *, model: str, system: str, prompt: str) -> int | None:
+        return self.client.messages.count_tokens(
+            model=model, system=system,
+            messages=[{"role": "user", "content": prompt}]).input_tokens
+
+
+# ---------------------------------------------------------------------------
+# Selection
+# ---------------------------------------------------------------------------
+
+BACKENDS = {"claude_code": ClaudeCodeBackend, "api": ApiBackend}
+
+
+def get_backend(cfg: dict | None = None, *, stage: str | None = None) -> Backend:
+    """Build the backend named by config, with an optional per-stage override.
+
+    `[llm] backend = "claude_code"` is the default. A stage may override it —
+    `[llm.extract_facts] backend = "api"` — so whoever does hold an API key can
+    move the token-heavy stage onto it without any code change.
+    """
+    cfg = cfg or {}
+    llm = cfg.get("llm", {}) if isinstance(cfg, dict) else {}
+    chosen = llm.get("backend", "claude_code")
+    binary_path = llm.get("binary_path")
+
+    if stage and isinstance(llm.get(stage), dict):
+        chosen = llm[stage].get("backend", chosen)
+        binary_path = llm[stage].get("binary_path", binary_path)
+
+    if chosen not in BACKENDS:
+        raise BackendError(
+            f"FATAL: unknown [llm] backend {chosen!r}. "
+            f"Known: {', '.join(sorted(BACKENDS))}."
+        )
+    if chosen == "claude_code":
+        return ClaudeCodeBackend(configured=binary_path)
+    return ApiBackend()
+
+
+def describe_cost(result: LLMResult) -> str:
+    """A one-line cost note that does not overstate what it knows.
+
+    The claude_code backend reports `total_cost_usd`, but on a subscription seat
+    that figure is NOTIONAL — what the API would have charged — and saying
+    "$0.28" without qualification invites someone to add it to a real budget.
+    """
+    if result.backend == "claude_code":
+        if result.cost_usd is None:
+            return "subscription usage — no dollar spend"
+        return (f"subscription usage — no dollar spend "
+                f"(${result.cost_usd:.3f} API-equivalent)")
+    u = result.usage
+    price = settings.price_for(result.model)
+    dollars = (u.get("input_tokens", 0) * price.input
+               + u.get("output_tokens", 0) * price.output) / 1e6
+    return f"${dollars:.3f}"
