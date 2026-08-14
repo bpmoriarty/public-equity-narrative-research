@@ -125,6 +125,37 @@ CACHE_WRITE_MULTIPLIER = {"5m": 1.25, "1h": 2.00}
 CACHE_READ_MULTIPLIER = 0.10
 
 
+# Characters per token, for backends that cannot count exactly.
+#
+# Calibrated against the one exact measurement this project has: pack.json is
+# 936,868 characters and the API counted 352,194 tokens, giving 2.66.
+#
+# NOT the usual chars/4 rule of thumb. These payloads are JSON and prompt text
+# dense with punctuation and field names, so chars/4 under-counts by about a
+# third — and under-counting is the wrong direction to be wrong in for a budget
+# check, because it waves through a payload that is actually over the ceiling.
+#
+# HOW MUCH TO TRUST IT: against the pack it was calibrated on it lands within 12
+# tokens, but that is circular and proves the arithmetic rather than the
+# generalisation. Everything printed from it is labelled "estimated".
+#
+# Measured on a SECOND, different payload: the FY2024 extraction prompts are
+# 203,422 tokens exactly, and this ratio estimates 223,475 — about 10% high.
+# The reason is content type. Filing prose runs nearer 2.92 chars/token while
+# the JSON pack runs 2.66, because JSON spends more characters on structure.
+#
+# One ratio is kept rather than two, deliberately. Splitting them would buy ~10%
+# accuracy on a number that is labelled approximate anyway, and 2.66 errs HIGH
+# on prose — which is the safe direction for a budget check and for a cost
+# estimate shown to someone deciding whether to spend.
+CHARS_PER_TOKEN = 2.66
+
+
+def estimate_tokens(text: str) -> int:
+    """Approximate token count for a backend that cannot measure one."""
+    return round(len(text) / CHARS_PER_TOKEN)
+
+
 def break_even_reads(ttl: str) -> float:
     """How many cached reads before a cache write repays itself.
 

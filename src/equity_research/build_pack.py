@@ -54,7 +54,7 @@ import tomllib
 from collections import Counter
 from datetime import datetime, timezone
 
-from equity_research import settings
+from equity_research import model_client, settings
 from equity_research._bootstrap import ROOT
 from equity_research.ledger_schema import FIELDS, canon
 from equity_research.merge_events import timeline_block
@@ -467,33 +467,42 @@ def build_pack(years: dict[int, dict]) -> tuple[dict, dict]:
 # Size
 # ---------------------------------------------------------------------------
 
-def count_tokens(text: str, model: str) -> int | None:
-    """Exact token count from the API. Free, and the reason we never guess a cost.
+# The chars-per-token calibration lives in settings.CHARS_PER_TOKEN, because
+# extract_facts needs the same fallback and a stage should not import a sibling
+# stage for a constant. Re-exported here so the existing name keeps working.
+CHARS_PER_TOKEN = settings.CHARS_PER_TOKEN
 
-    Returns None rather than failing the build if it cannot reach the API: the pack
-    is deterministic and useful without a size estimate, so a network problem must
-    not stop the stage from producing it.
+
+def count_tokens(text: str, model: str, cfg: dict | None = None) -> tuple[int | None, str]:
+    """Token count for the payload, and how it was arrived at.
+
+    Returns (tokens, basis) where basis is "exact", "estimated" or "unavailable".
+
+    The backend decides. The API backend counts exactly, for free. The
+    claude_code backend CANNOT — the CLI exposes no count-tokens endpoint — and
+    returns None rather than guessing, so the fallback happens here where the
+    approximation can be labelled as one.
+
+    That distinction has to survive into the report. An estimate presented as a
+    measurement is how a budget check ends up waving through a pack nobody
+    actually measured, and the failure it guards against is invisible at
+    generation time.
     """
     try:
-        import os
-
-        # truststore.inject_into_ssl() and load_dotenv() used to be repeated here.
-        # Both now happen once, at import, in _bootstrap -- which this module
-        # already imports for ROOT. They were idempotent so the duplication was
-        # harmless, but it meant a network-adjacent call ran at a different moment
-        # depending on which stage you entered through. Deferred from Phase 1
-        # deliberately, because collapsing it changes that timing.
-        import anthropic
-        client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-        return client.messages.count_tokens(
-            model=model, messages=[{"role": "user", "content": text}]).input_tokens
+        backend = model_client.get_backend(cfg or {}, stage="build_pack")
+        exact = backend.count_tokens(model=model, system="", prompt=text)
+        if exact is not None:
+            return exact, "exact"
     except Exception as e:                                   # noqa: BLE001
-        print(f"  (token count unavailable: {type(e).__name__}: {e})")
-        return None
+        print(f"  (exact token count unavailable: {type(e).__name__}: {e})")
+
+    if not text:
+        return None, "unavailable"
+    return round(len(text) / CHARS_PER_TOKEN), "estimated"
 
 
 def check_budget(tokens: int | None, pcfg: dict, per_field: dict[str, int],
-                 n_facts: int) -> bool:
+                 n_facts: int, basis: str = "exact") -> bool:
     """Print the size verdict. False means the pack is over the hard ceiling.
 
     The failure this guards against does not look like a failure. An oversized
@@ -501,21 +510,32 @@ def check_budget(tokens: int | None, pcfg: dict, per_field: dict[str, int],
     prose; what degrades is recall over the payload, and the symptom is a
     quotation that is subtly wrong. That is invisible at the point of
     generation, which is why the limit has to be enforced here.
+
+    `basis` says whether the count was measured or approximated. It is printed
+    on every line that quotes a number, because a colleague running on a Claude
+    seat has no way to get an exact count and should not be shown one that looks
+    exact. The thresholds still bind either way — an approximate number over the
+    ceiling still stops the build.
     """
     warn, hard = int(pcfg["warn_tokens"]), int(pcfg["max_tokens"])
     print()
 
     if tokens is None:
         # Not silently OK: an unchecked budget must not read as a passed one.
-        print(f"  BUDGET NOT CHECKED — no token count available (--no-count, or "
-              f"the API was unreachable).")
+        print(f"  BUDGET NOT CHECKED — no token count available (--no-count).")
         print(f"  The limits are {warn:,} warn / {hard:,} max. Re-run without "
               f"--no-count to check them.")
         return True
 
+    # "~" and the basis word, so an estimate never reads as a measurement.
+    approx = "" if basis == "exact" else "~"
+    note = "" if basis == "exact" else (
+        f"  (estimated at {CHARS_PER_TOKEN} chars/token — this backend cannot "
+        f"count exactly)")
+
     if tokens < warn:
-        print(f"  budget: {tokens:,} tokens — under the {warn:,} warning "
-              f"({100 * tokens / hard:.0f}% of the {hard:,} ceiling)")
+        print(f"  budget: {approx}{tokens:,} tokens — under the {warn:,} warning "
+              f"({100 * tokens / hard:.0f}% of the {hard:,} ceiling){note}")
         return True
 
     # Fact counts, not token counts: a field's share of the facts is the best
@@ -524,8 +544,8 @@ def check_budget(tokens: int | None, pcfg: dict, per_field: dict[str, int],
     biggest = ", ".join(f"{f} {100 * n / n_facts:.0f}%" for f, n in top)
 
     if tokens <= hard:
-        print(f"  *** PACK BUDGET WARNING — {tokens:,} tokens, over the "
-              f"{warn:,} warning threshold ***")
+        print(f"  *** PACK BUDGET WARNING — {approx}{tokens:,} tokens, over the "
+              f"{warn:,} warning threshold ***{note}")
         print(f"      Largest fields by fact count: {biggest}")
         print(f"      Quote defects were observed at 352,194 tokens (7 of 98 "
               f"quotations in one pass), so this is the range where generation")
@@ -536,7 +556,8 @@ def check_budget(tokens: int | None, pcfg: dict, per_field: dict[str, int],
         return True
 
     print("=" * 72)
-    print(f"  FATAL: pack is {tokens:,} tokens, above the {hard:,} ceiling.")
+    print(f"  FATAL: pack is {approx}{tokens:,} tokens, above the {hard:,} "
+          f"ceiling.{note}")
     print()
     print(f"  Largest fields by fact count: {biggest}")
     print("  The files were still written, so the pack can be inspected — but "
@@ -603,7 +624,9 @@ def main() -> None:
             print(f"    {x['id']}  {x['field']} FY{x['fiscal_year']} "
                   f"({x['confidence']}) — {x['quote_check'][:70]}")
 
-    tokens = None if args.no_count else count_tokens(payload, pcfg["model"])
+    llm_cfg = settings.load_config("llm", P=P)["llm"]
+    tokens, basis = ((None, "unavailable") if args.no_count
+                     else count_tokens(payload, pcfg["model"], llm_cfg))
     if tokens:
         # Cache economics, printed because they are the reason the payload has no
         # timestamp in it — and because caching is NOT automatically the cheaper
@@ -658,7 +681,10 @@ def main() -> None:
         "this file instead.", "",
         f"- **{len(index)} citable ids** — {n_facts} facts + {n_risk} risk deltas",
         f"- **{len(payload):,} chars**"
-        + (f", **{tokens:,} tokens**" if tokens else ""),
+        # The basis travels with the number. A reader comparing this report
+        # against a budget needs to know whether 352,194 was counted or inferred.
+        + (f", **{'' if basis == 'exact' else '~'}{tokens:,} tokens** "
+           f"({basis})" if tokens else ""),
     ]
     if tokens:
         lines += [
@@ -724,7 +750,7 @@ def main() -> None:
     # Last, so the artifacts and the composition report exist to be inspected
     # whatever the verdict — but non-zero, so the orchestrator stops here rather
     # than generating documents from an oversized payload.
-    if not check_budget(tokens, pcfg, per_field, n_facts):
+    if not check_budget(tokens, pcfg, per_field, n_facts, basis):
         sys.exit(1)
 
 

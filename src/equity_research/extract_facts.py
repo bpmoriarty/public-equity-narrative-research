@@ -64,9 +64,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 
-import anthropic
-
-from equity_research import settings
+from equity_research import model_client, settings
 from equity_research._bootstrap import ROOT
 from equity_research.ledger_schema import TASK_MODELS
 from equity_research.paths import add_ticker_arg, paths
@@ -549,21 +547,27 @@ def out_path(fy: int, task: str, unit: str | None = None) -> Path:
     return FACTS_DIR / f"FY{fy}_{task}.json"
 
 
-def run_one(client: anthropic.Anthropic, cfg: dict, unit: dict) -> dict:
-    """One extraction call. Returns a record; never raises."""
+def run_one(backend: model_client.Backend, cfg: dict, unit: dict) -> dict:
+    """One extraction call. Returns a record; never raises.
+
+    Takes a Backend rather than an anthropic client, so the same code runs on a
+    Claude seat (no API key) or through the SDK. Which one produced a record is
+    stamped into it as `backend`, because once both have run, "what engine wrote
+    this?" has to stay answerable from the file itself.
+    """
     fy, task, uk = unit["fy"], unit["task"], unit.get("unit")
     ex = cfg["extraction"]
     prompt = build_prompt(task, fy, unit["sources"])
     started = datetime.now(timezone.utc)
 
     try:
-        resp = client.messages.parse(
+        resp = backend.generate(
             model=ex["model"],
-            max_tokens=ex["max_tokens"],
-            output_config={"effort": ex["effort"]},
             system=SYSTEM,
-            messages=[{"role": "user", "content": prompt}],
-            output_format=TASK_MODELS[task],
+            prompt=prompt,
+            max_tokens=ex["max_tokens"],
+            effort=ex["effort"],
+            schema=TASK_MODELS[task],
         )
     except Exception as exc:
         return {"fiscal_year": fy, "task": task, "unit": uk, "ok": False,
@@ -574,15 +578,21 @@ def run_one(client: anthropic.Anthropic, cfg: dict, unit: dict) -> dict:
                 # it is read defensively rather than assumed.
                 "request_id": getattr(exc, "request_id", None)}
 
-    # A structured response cut off by max_tokens is a failed call, not a short
-    # answer: the JSON is incomplete. Surface it rather than storing a partial.
-    if resp.stop_reason == "max_tokens":
+    # A structured response cut off by the output cap is a failed call, not a
+    # short answer: the JSON is incomplete. Surface it rather than storing a
+    # partial. Measured on both backends — `stop_reason` distinguishes this
+    # reliably, which is what lets the rule survive the engine change.
+    if resp.truncated:
         return {"fiscal_year": fy, "task": task, "unit": uk, "ok": False,
                 "error": f"hit max_tokens ({ex['max_tokens']}) — response truncated. "
                          "Raise max_tokens in config/company.toml [extraction]."}
     if resp.stop_reason == "refusal":
         return {"fiscal_year": fy, "task": task, "unit": uk, "ok": False,
-                "error": f"model declined: {resp.stop_details}"}
+                "error": f"model declined: {resp.text[:200]}"}
+    if resp.parsed is None:
+        return {"fiscal_year": fy, "task": task, "unit": uk, "ok": False,
+                "error": "backend returned no parsed output for a schema-constrained "
+                         "call — this should be unreachable; treat as a bug."}
 
     return {
         "fiscal_year": fy,
@@ -591,10 +601,17 @@ def run_one(client: anthropic.Anthropic, cfg: dict, unit: dict) -> dict:
         "ok": True,
         "extracted_utc": started.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "model": resp.model,
+        # Which engine produced this record. Added when the Claude Code backend
+        # arrived: the 88 files committed before it have no `backend` key, and
+        # their absence means "api", which is what tests/test_repo_hygiene.py
+        # relies on to keep recognising them as paid model output.
+        "backend": resp.backend,
         "effort": ex["effort"],
         "stop_reason": resp.stop_reason,
-        "usage": {"input_tokens": resp.usage.input_tokens,
-                  "output_tokens": resp.usage.output_tokens},
+        # Kept whole rather than picking two keys: the claude_code backend
+        # reports cache_creation/cache_read, which is where its real cost lives,
+        # and dropping them would make its usage records unreadable.
+        "usage": dict(resp.usage),
         # Which filing and section each fact could have come from. The ledger
         # builder re-reads these to verify quotes, so it must be exact.
         "sources": [{k: s[k] for k in s if k != "text"} for s in unit["sources"]],
@@ -603,7 +620,7 @@ def run_one(client: anthropic.Anthropic, cfg: dict, unit: dict) -> dict:
         # beside it: it still reads usefully in a report, and records written
         # before this field existed are compared on length alone.
         "source_sha256": unit["sha"],
-        "facts": resp.parsed_output.model_dump(),
+        "facts": resp.parsed.model_dump(),
     }
 
 
@@ -674,8 +691,25 @@ def main() -> None:
             plan += [u for u, _, _ in stale]
 
     ex = cfg["extraction"]
+
+    # Resolved before the header prints, so the header states the concurrency
+    # and engine that will ACTUALLY be used. It previously printed
+    # [extraction].max_concurrent_requests unconditionally, which would have
+    # claimed 5 on a backend that paces at 2.
+    llm_cfg = settings.load_config("llm", P=P)["llm"]
+    backend = model_client.get_backend(llm_cfg, stage="extract_facts")
+    workers = int(ex["max_concurrent_requests"])
+    if backend.name == "claude_code":
+        # A seat meters on rolling usage windows rather than per-second rate
+        # limits, so the seat path paces slower. Lower of the two wins, so
+        # neither config can accidentally raise the other.
+        workers = min(workers, int(llm_cfg.get("llm", {}).get(
+            "max_concurrent_requests", 2)))
+    workers = max(1, workers)
+
     print(f"Fact extraction — {ex['model']}, effort={ex['effort']}, "
-          f"max_tokens={ex['max_tokens']}, concurrency={ex['max_concurrent_requests']}")
+          f"max_tokens={ex['max_tokens']}, concurrency={workers}, "
+          f"backend={backend.name}")
     print(f"  years           : {', '.join(f'FY{y}' for y in sorted(years))}")
     print(f"  tasks to run    : {len(plan)}")
     print(f"  already cached  : {len(cached)}" + ("  (use --force to redo)" if cached else ""))
@@ -718,22 +752,25 @@ def main() -> None:
         print("nothing to do.")
         return
 
-    client = anthropic.Anthropic()
-
     # --- estimate ----------------------------------------------------------
-    # count_tokens is free and exact for the model in question, which beats a
-    # chars/4 guess. Output tokens cannot be counted in advance, so they are
-    # bounded by max_tokens — a deliberate over-estimate, clearly labelled.
+    # Exact where the backend can count, approximate where it cannot. Output
+    # tokens cannot be counted in advance on either, so they are bounded by
+    # max_tokens — a deliberate over-estimate, clearly labelled.
     if args.estimate:
-        total_in = 0
+        total_in, exact = 0, True
         for u in plan:
-            n = client.messages.count_tokens(
-                model=ex["model"], system=SYSTEM,
-                messages=[{"role": "user", "content": build_prompt(u["task"], u["fy"], u["sources"])}],
-            ).input_tokens
+            prompt = build_prompt(u["task"], u["fy"], u["sources"])
+            n = backend.count_tokens(model=ex["model"], system=SYSTEM, prompt=prompt)
+            if n is None:
+                # The claude_code backend has no count-tokens endpoint. Fall back
+                # to the calibrated ratio and say so, rather than printing a
+                # number that looks measured.
+                exact = False
+                n = settings.estimate_tokens(prompt)
             total_in += n
             label = u['task'] + (f" {u['unit']}" if u.get('unit') else '')
-            print(f"  FY{u['fy']} {label:34s} {u['chars']:>9,d} chars  {n:>8,d} tokens")
+            print(f"  FY{u['fy']} {label:34s} {u['chars']:>9,d} chars  "
+                  f"{'' if exact else '~'}{n:>8,d} tokens")
         worst_out = len(plan) * ex["max_tokens"]
         # Priced from the model the run will actually use, via the one table in
         # settings.py. Previously PRICE_IN/PRICE_OUT were module constants of
@@ -749,6 +786,10 @@ def main() -> None:
               f"${(total_in / 1e6 * price.input) + (worst_out / 1e6 * price.output):,.2f}")
         print(f"\nestimate only — no extraction calls were made. "
               f"Prices as of {settings.PRICES_AS_OF}.")
+        if not exact:
+            print(f"Token counts are ESTIMATED ({backend.name} cannot count "
+                  f"exactly); dollars are what the API would charge, not what a "
+                  f"seat is billed.")
         return
 
     # --- run ---------------------------------------------------------------
@@ -756,8 +797,8 @@ def main() -> None:
     done, failed = 0, []
     # Each result is written the moment it arrives, so a crash costs only the
     # tasks in flight (CLAUDE.md: save incrementally, per file).
-    with ThreadPoolExecutor(max_workers=ex["max_concurrent_requests"]) as pool:
-        futures = {pool.submit(run_one, client, cfg, u): u for u in plan}
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        futures = {pool.submit(run_one, backend, cfg, u): u for u in plan}
         for fut in as_completed(futures):
             rec = fut.result()
             fy, task, uk = rec["fiscal_year"], rec["task"], rec.get("unit")
