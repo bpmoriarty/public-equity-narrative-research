@@ -23,16 +23,32 @@ remediated. **Productionizing:** the plan at
 `C:\Users\bmoriar\.claude\plans\modular-brewing-teapot.md` was approved
 2026-08-08. **Phases 0 (hardening tripwires), 1 (packaging) and 2 (the MORN move
 + paths/settings) are complete and pushed** (commits `3c78496`, `a6010bb`,
-`8a904df`, `fec3785`, `147a6ee`, `800a543`, `d6201dd`). Next is **Phase 3** — the
-model seam, making Claude Code the primary backend. The repository has a GitHub
-remote: https://github.com/bpmoriarty/public-equity-narrative-research
+`8a904df`, `fec3785`, `147a6ee`, `800a543`, `d6201dd`, `446ce88`). **Phase 3 is
+two-thirds done** (`0facceb`, `15bd33e`). The repository has a GitHub remote:
+https://github.com/bpmoriarty/public-equity-narrative-research
 
-> **Phase 3 is gated on a question outside the code.** It runs probes V1–V8
-> before any wiring, and **V7 is the Enterprise seat-terms question**: whether
-> headless Claude Code use fits the org's agreement, and whether Opus is
-> available on the seat. Phase 3 makes that the primary model backend for
-> colleagues who have seats but no API keys, so the answer could change the
-> design. Worth resolving before starting.
+> **The seat-terms question is answered.** Headless Claude Code use fits the
+> org's terms and Opus is available on the seat. The operating assumption, from
+> the user: **API keys are unavailable in almost every case** for colleagues who
+> will use this. That makes the Claude Code backend the only path most of them
+> have, not merely the default — and it is why the budget check and the cost
+> estimate were both rebuilt to work without an API key rather than degrading to
+> "not checked".
+
+> **Phase 3 remaining: `generate_outputs` only.** `model_client.py` exists and
+> both `extract_facts` and `build_pack` route through it. `generate_outputs`
+> does not, deliberately: its **id-repair** rounds assume a resumed session, and
+> the probes showed `--resume` re-writes the whole conversation at 2x rather
+> than reading it back. That is a redesign (self-contained, pack-free repair
+> carrying an index excerpt), not a call-site swap. The **quote**-repair rounds
+> are already pack-free one-shots and need nothing.
+
+> **Colleagues reach Claude Code through VS Code, not the CLI.** The CLI is
+> normally not installed; the extension *ships* it, at a version-stamped path
+> that moves on every update. `model_client.find_binary` therefore resolves
+> PATH → configured path → discovered extension binary (newest wins). This is
+> the single point where the pipeline meets the outside world on someone else's
+> machine, and it is the thing most likely to break for a colleague.
 
 > **Paths changed in Phases 1 and 2.** Modules live in `src/equity_research/` and
 > run as `uv run python -m equity_research.<stage>`; `uv run python
@@ -45,7 +61,7 @@ remote: https://github.com/bpmoriarty/public-equity-narrative-research
 > records of what was true when written, and are deliberately left as history
 > rather than rewritten (26 such references, counted).
 
-**Last Session:** 2026-08-13
+**Last Session:** 2026-08-14
 
 **Overall Health:** 🟢 Working — milestones 1–5 complete. **The full verification suite has been run and all nine of its findings are fixed.** 1,329 ledger facts, 1,425 citable ids, three deliverables passing 13 hard checks each. Quote census re-earned after the repairs at **1,326/1,326**. $7.21 spent on generation; remediation cost $0.00 in API calls
 
@@ -635,12 +651,11 @@ across 34 calls). Milestones 1–3 cost nothing.
         a Sonnet subagent; the test-harness step and the review were done on
         Opus. All 15 modules moved with history preserved, 15 `sys.path.insert`
         hacks removed (not the 11 the plan claimed). See the Session Log entry
-17. [ ] **Phases 3–5**, in order: 3 Claude Code model seam, running probes
-        V1–V8 **first** → 4 `pipeline` orchestrator + `init` → 5 test split,
-        model mix, pack subsets, docs. **Phase 3's V7 needs the Enterprise
-        seat-terms question answered first** — it is the one blocker that is not
-        a coding task, and Phase 3 makes Claude Code the primary backend for
-        colleagues who have seats but no API keys.
+17. [ ] **Phases 3–5**, in order: 3 Claude Code model seam (**two-thirds done**,
+        `0facceb` + `15bd33e`; `generate_outputs` remains) → 4 `pipeline`
+        orchestrator + `init` → 5 test split, model mix, pack subsets, docs.
+        The seat-terms blocker is cleared: headless use fits the terms, Opus is
+        on the seat, and API keys are unavailable for almost all colleagues.
         **Two plan corrections found by executing Phase 1 — do not re-derive:**
         (a) Phase 5's "count gate switches to `pytest --collect-only -q`" is
         wrong and was deliberately not done — `--collect-only` counts test
@@ -683,6 +698,22 @@ across 34 calls). Milestones 1–3 cost nothing.
         `src/<module>.py` references were fixed in `d6201dd`, but the data-path
         narrative needs prose changes rather than a substitution. The plan puts
         it in Phase 5 with the README and CLAUDE.md updates
+21. [ ] **Finish Phase 3: rewire `generate_outputs`.** The only remaining call
+        site, and the only one needing a REDESIGN rather than a swap. Its
+        **id-repair** rounds assume a resumed session; `--resume` re-writes the
+        whole conversation at 2x instead of reading it back, so repairs must
+        become self-contained and pack-free, carrying an index excerpt of
+        ~15–25K tokens. The **quote**-repair rounds are already pack-free
+        one-shots and need no change, which makes this smaller than it looks.
+        **Test against a deliberately broken document** — an id that does not
+        resolve — rather than by doing a full generation run: a real run costs
+        ~$8 and produces deliverables that then need verifying, and unlike
+        extraction there are no cached results to check against
+22. [ ] **All eight probes are answered — do not re-run them.** V1–V8 are
+        recorded in the Session Log entry for 2026-08-14 and, authoritatively,
+        in the `model_client.py` module docstring. The five that contradicted
+        the plan are the reason that docstring is long; read it before changing
+        anything about how model calls are made
 
 ---
 
@@ -697,7 +728,9 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `src/equity_research/_bootstrap.py` | `ROOT`, the Windows cert store, and `.env` — imported first by every stage, for its side effects as much as its value. **Do not delete as unused.** Exists because each module used to compute its own `ROOT` two directories up, which the Phase 1 move made silently wrong by one level |
 | `tests/test_repo_hygiene.py` | 10 checks. Every JSON carrying a top-level `usage.input_tokens` was paid for and must be tracked by git; `companies/MORN/output/*.md` likewise; and inversely, `.env` must not be. Also the **path-literal lint**: a `"data/…"` or `"output/…"` string in `src/equity_research/` outside `paths.py` resolves to the repo root instead of the company being run. Requires the literal to contain no whitespace, so prose *about* a path is not flagged |
 | `src/equity_research/paths.py` | **Every filesystem path, resolved per company.** `CompanyPaths` owns the 49 joins that were spread across 15 modules. `resolve()` re-roots a manifest-relative string — the reason the MORN move rewrote no manifest and `pack.json` kept its sha256. Ticker order: `--ticker` → `EQR_TICKER` → the single company; two with no ticker is a **hard error**, never a first-match guess |
-| `src/equity_research/settings.py` | Config layering (global `config/*.toml` + optional `companies/<T>/overrides/`), window validation at 1–10 years, and the **one pricing table** with `PRICES_AS_OF`. Arrays replace wholesale on merge, including arrays of tables — `sections.toml` pattern order is load-bearing and element-wise merging would produce an order neither file describes |
+| `src/equity_research/settings.py` | Config layering (global `config/*.toml` + optional `companies/<T>/overrides/`), window validation at 1–10 years, and the **one pricing table** with `PRICES_AS_OF`. Arrays replace wholesale on merge, including arrays of tables — `sections.toml` pattern order is load-bearing and element-wise merging would produce an order neither file describes. Also `CHARS_PER_TOKEN = 2.66`, the calibrated fallback for backends that cannot count tokens |
+| `src/equity_research/model_client.py` | **The model seam.** One interface, two backends: `claude_code` (default — needs a seat, no API key) and `api`. **Read its module docstring before changing anything about model calls** — it records eight measured findings, including that every headless call cache-*writes* its prompt at 2× input price, that an identical prompt does *not* cache, and that `--resume` preserves context while saving nothing. Several contradict the plan |
+| `config/llm.toml` | Which engine model calls go through, and where the Claude Code binary is. `binary_path` is normally empty: discovery is PATH → this setting → the binary bundled inside the VS Code extension, newest version. Per-stage overrides let anyone holding an API key move just the token-heavy stage across |
 | `VERIFICATION.md` | **The independent review and its remediation log.** Nine findings D1–D9, what each turned out to be, how each was fixed, and what was verified against ground truth. Read before trusting any deliverable |
 | `companies/MORN/corrections.toml` | **Every human correction, as data.** `[[correction]]` (a ledger value), `[[document_correction]]` (a sentence), `[[id_remap]]` (a renumbered citation). Each carries its evidence and reviewer; each is fatal if it stops matching |
 | `tests/test_extract_sections.py` | 17 checks on the extraction guards. Pins both directions: an image-only document must fail, the legitimately short SEC letters must pass |
@@ -772,6 +805,106 @@ across 34 calls). Milestones 1–3 cost nothing.
 ---
 
 ## Session Log
+
+### 2026-08-14 — Phase 3: the model seam, and eight probes that rewrote the plan
+
+Commits `0facceb` (the seam) and `15bd33e` (two of three call sites), both
+pushed. The plan insisted probes run **before** any wiring. That was right: five
+of its assumptions turned out to be wrong, and two of the five would have
+produced a design that works and quietly costs several times what it should.
+
+#### What the probes found
+
+| # | The plan assumed | Measured |
+| --- | --- | --- |
+| V2 | `--max-turns 1` bounds the call | **The flag does not exist** in 2.1.231. Denying tools gives `num_turns: 1` anyway |
+| V1 | `--system-prompt` is available | Yes, and it **replaces** Claude Code's own — saving 4,525 tokens a call. A neutral cwd saves ~4,500 more by not loading both CLAUDE.md files |
+| V3 | the JSON envelope carries usage | Yes: `session_id`, `total_cost_usd`, `usage`, `stop_reason`, `is_error`, `num_turns`, plus `--effort` |
+| V4 | a schema may need prompt-embedding | Confirmed and it works — **16/17** valid first time, and **none** wrapped output in a markdown fence |
+| V5 | truncation must stay visible | `stop_reason` distinguishes it. Largest real output 8,252 tokens against a 16,000 budget |
+| V6 | one resumed session avoids re-sending the pack | **Does not work.** Fidelity holds, economics do not: `cache_read 0`, `cache_creation 34,316`, and turn 2 cost MORE than turn 1 |
+| V7 | ~$0 marginal on a subscription | 2.0x the API path on real work — see below |
+| V8 | Windows argv caps at 32K, use stdin | Correct; stdin carries ~180K-char prompts fine |
+
+**The two that mattered most.** Every headless call **cache-writes its prompt at
+1-hour TTL, billed at 2x input**, with no way to opt out — `input_tokens` comes
+back as ~2 no matter how large the prompt is. And an **identical prompt does not
+cache**: two fresh calls sending a byte-identical 60KB prefix seconds apart
+produced byte-identical usage (22,691 written / 20,443 read) and identical cost
+to the cent. Only Claude Code's own prefix is read back; user content never is.
+
+Together those kill the plan's generation design and also kill the obvious
+mitigation — there is no ordering of calls that makes the pack cheaper.
+
+#### V7: a real fiscal year, measured both ways
+
+FY2024's 17 extraction units, run through headless Claude Code (**not** written
+to `data/ledger/facts/` — a probe must not be able to overwrite $11 of committed
+model output):
+
+- 16/17 succeeded; one returned malformed JSON, which is why
+  `max_schema_retries` defaults to **1** rather than 0
+- 11.9 minutes of call time at concurrency 2 → roughly an hour for five years
+- **$4.68 against the API path's $2.28 for the same 17 units — 2.0x**
+- Whole company ≈ $32 vs ≈ $18
+
+**Those dollars are notional on a seat.** They are what the API would have
+charged; the currency actually spent is seat allowance. For a colleague with no
+API key the comparison is not "twice as expensive", it is "possible at all".
+
+#### Batching was considered, and rejected on the measurements
+
+A first reading blamed the ~20K harness preamble and proposed batching the 88
+extraction calls into ~5. The measurements say otherwise: the **harness is the
+cheap part** — a shared prefix, cache-read at 0.1x, about 18 cents across the
+whole year. The 2x penalty falls on **content**, which batching does not reduce.
+Recomputed from the measured split, batching FY2024 from 17 calls to 3 would cut
+the bill about **13%**, while costing retry granularity, cache precision and
+output headroom. Not done.
+
+#### What was built
+
+`model_client.py` — a `Backend` protocol, both backends, and `LLMResult`
+carrying a `backend`/`model` stamp so a record written through Claude Code stays
+distinguishable from one written through the API. Plus `config/llm.toml`, a
+global config so it layers per company.
+
+Three deliberate choices:
+
+- **`count_tokens` returns `None` on the seat path rather than guessing.** There
+  is no endpoint for it, and a confident wrong number in front of someone
+  deciding whether to spend is worse than an admitted gap. The estimate is made
+  at the call site, where it can be labelled.
+- **`describe_cost` never presents notional seat usage as dollars spent.**
+- **`find_binary` fails naming all three places it looked.** A missing binary
+  must not surface three stages later as "extraction returned nothing".
+
+#### The estimator, and distrusting it on purpose
+
+`settings.CHARS_PER_TOKEN = 2.66`, calibrated on `pack.json` (936,868 chars =
+352,194 tokens). Not chars/4, which under-counts JSON by about a third — and
+under-counting is the wrong direction for a budget check, because it waves
+through a payload that is over the ceiling.
+
+Against the pack it was calibrated on it lands 12 tokens out, but that is
+circular. Checked against a **second, unrelated payload**: FY2024's extraction
+prompts are 203,422 tokens exactly and the ratio estimates 223,475 — **10%
+high**, because filing prose runs nearer 2.92 chars/token than JSON's 2.66. One
+ratio kept rather than two: splitting them buys 10% on a number already labelled
+approximate, and erring high is the safe direction.
+
+This is what keeps the pack budget check alive without an API key. Otherwise it
+would have printed `BUDGET NOT CHECKED` on every run for every colleague — the
+exact shape of a tripwire that has quietly stopped being one.
+
+#### Verification
+
+`extract_facts --estimate`: **88 cached, 0 to run**, `backend=claude_code`,
+`concurrency=2` — the gate that catches a broken extraction path.
+`pack.json` sha256 `fd320ce5…` unchanged. 216 checks, pytest 10 passed,
+`verify_outputs` green on both documents, control-byte scan clean over 161
+tracked files. `model_client` itself carries 26 assertions including two real
+model calls, one schema-constrained and correctly parsed.
 
 ### 2026-08-13 — Phase 2: MORN into `companies/MORN/`, `paths.py`, `settings.py`
 
