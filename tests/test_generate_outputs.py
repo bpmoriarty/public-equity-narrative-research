@@ -31,6 +31,7 @@ for _s in (sys.stdout, sys.stderr):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
 import equity_research.generate_outputs as g  # noqa: E402
+from equity_research import model_client  # noqa: E402
 
 PASS = FAIL = 0
 
@@ -222,6 +223,161 @@ check("every field code the ledger can mint is matched by ID_RE",
               if not g.ID_RE.fullmatch(f"{code}-FY2023-0123abcd")}), [])
 check("  including RISK, which is minted outside FIELD_CODES",
       bool(g.ID_RE.fullmatch("RISK-FY2023-0123abcd")), True)
+
+print("\nindex_excerpt — what an id repair is given instead of the pack")
+
+# The id repair stopped resending the 353,000-token pack when the engine moved to
+# a Claude seat, because a resumed conversation there re-writes everything at 2x
+# and reads nothing back. What replaced it is a slice of the index, and these
+# checks are about the property that makes the slice defensible: a hallucinated id
+# still names a REAL field and a REAL fiscal year, because ID_RE only matches
+# known field codes. Only the content hash is invented.
+
+check("a hallucinated id still names its slice", g.slice_of("QA-FY2024-deadbeef"),
+      ("QA", "FY2024"))
+check("  and so does a real one", g.slice_of("BRD-FY2021-e7589d5c"), ("BRD", "FY2021"))
+
+ex, meta = g.index_excerpt(INDEX, ["QA-FY2024-deadbeef"])
+check("the excerpt offers every real id in the broken id's slice",
+      "QA-FY2024-5e714350" in ex, True)
+check("  and counts what it offered", meta["ids_offered"], 1)
+check("  from exactly one slice", meta["slices"], ["QA-FY2024"])
+
+# THE RESTRICTION IS THE POINT, so it is checked rather than assumed. A repair
+# shown facts from every year could "fix" a citation by reaching for a different
+# year's fact that happens to fit the sentence — which is how a claim acquires
+# support it never had.
+check("ids from other years are NOT offered", "QA-FY2023-2a54a3c6" in ex, False)
+check("ids from other fields are NOT offered", "BRD-FY2021-e7589d5c" in ex, False)
+
+ex2, meta2 = g.index_excerpt(INDEX, ["QA-FY2023-deadbeef", "BRD-FY2021-deadbeef"])
+check("two broken ids in different slices open both slices",
+      meta2["slices"], ["BRD-FY2021", "QA-FY2023"])
+check("  offering every id in both (2 in QA-FY2023, 1 in BRD-FY2021)",
+      meta2["ids_offered"], 3)
+
+# An id invented for a year the pack has nothing in at all. The excerpt must SAY
+# the slice is empty. Rendering nothing would read as "the excerpt was cut short",
+# and the model's next move — delete the claim or hunt for a substitute — differs
+# between those two readings.
+ex3, meta3 = g.index_excerpt(INDEX, ["MDNA-FY2019-deadbeef"])
+check("an empty slice says so rather than rendering blank",
+      "the pack holds no fact of this field for this year" in ex3, True)
+check("  and reports zero ids offered", meta3["ids_offered"], 0)
+
+check("a low-confidence fact is marked as one",
+      "(low confidence)" in g.index_excerpt(INDEX, ["BRD-FY2021-x0000000"])[0], True)
+check("a risk delta contributes its heading, having no quote field",
+      "Our stock price may not reflect" in
+      g.index_excerpt(INDEX, ["RISK-FY2025-x0000000"])[0], True)
+
+print("\nindex_excerpt — the budget, proven against input that exceeds it")
+
+# Built to overflow. The ladder must step the QUOTE length down and keep every id,
+# never drop ids to fit: a slice shown in part would tell the model the fact it
+# wants does not exist, and the instruction for that case is to delete the claim.
+def fat_index(n: int, quote_len: int = 600) -> dict:
+    return {f"QA-FY2030-{i:08x}": {
+        "field": "investor_qa", "fiscal_year": 2030, "confidence": "high",
+        "quote_verified": True, "source": {"form": "8-K", "filing_date": "2030-01-01"},
+        "quote": f"fact {i} " + "x" * quote_len} for i in range(n)}
+
+
+small = g.index_excerpt(fat_index(20), ["QA-FY2030-ffffffff"])[1]
+check("a slice that fits keeps full-length quotes",
+      small["quote_chars"], g.QUOTE_CHARS_LADDER[0])
+check("  and is not flagged over budget", small["over_budget"], False)
+
+big_ex, big = g.index_excerpt(fat_index(400), ["QA-FY2030-ffffffff"])
+check("an oversized slice steps the quote length down",
+      big["quote_chars"] < g.QUOTE_CHARS_LADDER[0], True)
+check("  brings the excerpt inside the budget",
+      big["estimated_tokens"] <= g.EXCERPT_TOKEN_BUDGET, True)
+check("  and still offers every id in the slice", big["ids_offered"], 400)
+check("  with the truncation marked, not silent", "…[truncated]" in big_ex, True)
+
+huge_ex, huge = g.index_excerpt(fat_index(3000), ["QA-FY2030-ffffffff"])
+check("a slice too big even without quotes drops to ids only",
+      huge["quote_chars"], 0)
+check("  admits it is over budget rather than trimming the slice",
+      huge["over_budget"], True)
+check("  and STILL offers every id", huge["ids_offered"], 3000)
+
+print("\nslice_census — so 'not shown' is distinguishable from 'not in the pack'")
+
+cen = g.slice_census(INDEX)
+check("the census counts every slice, including ones not excerpted",
+      sorted(line.split()[0] for line in cen.splitlines()),
+      ["BRD-FY2021", "LANG-FY2021", "QA-FY2023", "QA-FY2024", "QA-FY2025",
+       "RISK-FY2025"])
+check("  with the right count on a slice holding two facts",
+      "QA-FY2023      2 facts" in cen, True)
+
+print("\nrepair_ids — the loop, without spending anything")
+
+
+class FakeBackend:
+    """Records what it was asked and returns a document with the ids removed.
+
+    Exists so the repair LOOP is testable: how many calls it makes, when it stops,
+    and — the one that costs money if it is wrong — that it makes none at all when
+    there is nothing to repair.
+    """
+
+    name, cache_ttl = "fake", "5m"
+
+    def __init__(self, reply):
+        self.reply, self.prompts = reply, []
+
+    def generate(self, *, model, system, prompt, max_tokens, effort,
+                 schema=None, cache_prefix=None, stream=False):
+        self.prompts.append(prompt)
+        return model_client.LLMResult(
+            text=self.reply(prompt), usage={}, backend=self.name, model=model,
+            cache_ttl=self.cache_ttl, stop_reason="end_turn")
+
+    def count_tokens(self, *, model, system, prompt):
+        return None
+
+
+GEN = {"model": "claude-opus-5", "max_tokens": 100, "effort": "high",
+       "repair_effort": "medium"}
+CLEAN = "Everything here resolves [QA-FY2024-5e714350]."
+BROKEN = "A real one [QA-FY2024-5e714350] and an invented one [QA-FY2024-deadbeef]."
+
+b = FakeBackend(lambda p: CLEAN)
+out, usages, rounds = g.repair_ids(b, GEN, INDEX, CLEAN, "t", 2)
+check("a document with no broken ids costs ZERO calls", len(b.prompts), 0)
+check("  and comes back untouched", out, CLEAN)
+check("  with round 0 recorded so the check is on the record", len(rounds), 1)
+
+b = FakeBackend(lambda p: CLEAN)
+out, usages, rounds = g.repair_ids(b, GEN, INDEX, BROKEN, "t", 2)
+check("one broken id takes one call", len(b.prompts), 1)
+check("  and stops as soon as it resolves", g.check_citations(out, INDEX)["unknown"], [])
+check("  recording the excerpt it was given", rounds[1]["excerpt"]["ids_offered"], 1)
+
+# The model that cannot fix it. Two rounds, then it gives up and lets the caller's
+# own report_failures exit non-zero -- it does not loop until it works.
+b = FakeBackend(lambda p: BROKEN)
+out, usages, rounds = g.repair_ids(b, GEN, INDEX, BROKEN, "t", 2)
+check("an unfixable id stops at max_rounds", len(b.prompts), 2)
+check("  and the still-broken id survives to be reported, not swallowed",
+      g.check_citations(out, INDEX)["unknown"], ["QA-FY2024-deadbeef"])
+
+b = FakeBackend(lambda p: CLEAN)
+out, _, _ = g.repair_ids(b, GEN, INDEX, BROKEN, "t", 0)
+check("max_rounds=0 disables repair entirely", len(b.prompts), 0)
+check("  leaving the document exactly as it was", out, BROKEN)
+
+# THE PROMPT MUST NOT CARRY THE PACK. This is the whole reason the round was
+# rebuilt, and it is the kind of regression that shows up only on the bill.
+b = FakeBackend(lambda p: CLEAN)
+g.repair_ids(b, GEN, INDEX, BROKEN, "t", 1)
+sent = b.prompts[0]
+check("the repair prompt carries the document", BROKEN in sent, True)
+check("  and names the broken id", "QA-FY2024-deadbeef" in sent, True)
+check("  and is nowhere near pack-sized", len(sent) < 200_000, True)
 
 print("\nthe real documents on disk")
 

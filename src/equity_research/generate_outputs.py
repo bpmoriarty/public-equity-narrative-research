@@ -33,17 +33,42 @@ THE CACHE, AND WHY THE ORDER OF THE PROMPT MATTERS
 ---------------------------------------------------------------------------
 Prompt caching hits only on a byte-identical PREFIX. So the shared material — the
 system prompt and the whole 353k-token pack — goes first and carries the cache
-breakpoint; everything that differs between the two documents goes after it.
+breakpoint; everything that differs between the two documents goes after it. The
+two parts are handed to the backend as separate arguments for exactly that
+reason: glue them together at the call site and the breakpoint has nowhere to go.
 
 That is the only reason `pack.json` contains no timestamp (see src/equity_research/build_pack.py):
 a single varying byte anywhere in the prefix turns a $0.18 read back into a $1.77
 call, with nothing looking broken except the bill.
 
 Measured break-evens for this payload: a 5-minute cache write costs 1.25x input
-price and repays itself from 1.4 reads on. Two documents back to back is 2 reads,
-so the cache is worth writing — but only while the run is sequential and inside
-the TTL. A re-run an hour later pays a fresh write. That is the real cost of
-iterating on these prompts and it is printed by --estimate rather than hidden.
+price and repays itself from 1.4 reads on; a 1-hour write costs 2.0x and repays
+from 2.2. Two documents back to back is only 2 reads, so on paper the 5-minute
+TTL wins — but a high-effort call over a pack this size can take longer than five
+minutes to return, and when it does the second call pays a fresh write instead of
+a read. `[llm] cache_ttl` is therefore "1h": paying 2.0x for a read that happens
+beats paying 1.25x twice for one that does not.
+
+ALL OF WHICH APPLIES TO THE API BACKEND ONLY. Claude Code cache-WRITES every
+prompt at 1h TTL, bills it at 2x input, and never reads user content back — two
+calls sending a byte-identical 60KB prefix seconds apart produced identical usage
+and identical cost. No ordering avoids it, which is why `--estimate` prices the
+two engines with different arithmetic rather than the same numbers under a
+different heading.
+
+---------------------------------------------------------------------------
+NEITHER REPAIR PASS RESENDS THE PACK
+---------------------------------------------------------------------------
+Both documents are held to their evidence after they are written: every id must
+resolve in the pack index, every quotation must be verbatim in a fact cited
+beside it. Both repairs run as SELF-CONTAINED calls carrying the document plus
+the specific evidence in question, and neither carries the pack.
+
+The id repair used to be a second turn in the generation conversation, which is
+the cheapest possible shape on the API and does not survive on a seat: `--resume`
+re-writes the whole conversation at 2x and reads nothing back, so the resumed
+turn cost MORE than the original. See the note above `repair_ids` for what
+replaced it, and — the part worth reading before changing it — what that gives up.
 
 ---------------------------------------------------------------------------
 THE SECOND CALL SEES THE FIRST DOCUMENT
@@ -71,9 +96,7 @@ import tomllib
 from datetime import datetime, timezone
 from pathlib import Path
 
-import anthropic
-
-from equity_research import settings
+from equity_research import model_client, settings
 from equity_research._bootstrap import ROOT
 from equity_research.paths import add_ticker_arg, paths
 
@@ -330,14 +353,16 @@ def load_gen_config() -> dict:
 # Prompt assembly
 # ---------------------------------------------------------------------------
 
-def cached_blocks(payload: str) -> list[dict]:
-    """The shared prefix: preamble + pack, with the cache breakpoint on it.
+def cache_prefix(payload: str) -> str:
+    """The shared prefix both documents send: preamble + pack.
 
-    One block, one breakpoint, identical for both calls. Everything document-specific
-    is appended after it by the caller.
+    Handed to the backend as its own argument rather than glued to the front of
+    the ask, because on the API path this is where the cache breakpoint goes and
+    a breakpoint has to fall between the shared part and the varying part. The
+    backend decides what to do with it — the API marks it, Claude Code, which
+    cannot read a cache back, simply concatenates.
     """
-    return [{"type": "text", "text": PACK_PREAMBLE + payload,
-             "cache_control": {"type": "ephemeral"}}]
+    return PACK_PREAMBLE + payload
 
 
 def brief_ask(pack: dict, gen: dict) -> str:
@@ -529,46 +554,246 @@ def word_count(md: str) -> int:
 # The call
 # ---------------------------------------------------------------------------
 
-def run(client: anthropic.Anthropic, gen: dict, blocks: list[dict],
-        label: str) -> tuple[str, dict]:
-    """One streamed call. Returns (text, usage).
+def call(backend: model_client.Backend, gen: dict, prompt: str, label: str, *,
+         effort: str | None = None, cache_prefix: str | None = None) -> tuple[str, dict]:
+    """One call through the seam. Returns (text, usage).
 
-    Streamed because a high-effort call over a 353k-token pack can run past the
-    non-streaming request timeout; a request that dies at the timeout has still been
-    paid for. Streaming also means a stall is visible rather than looking like a hang.
+    Every model call in this module goes through here — both documents and all
+    three repair kinds — so the rules below hold once rather than four times.
+    They previously did not: the same twelve lines of usage-unpacking and
+    stop_reason handling were copied at four call sites, and the copies had
+    already drifted (one checked for a refusal, three did not).
+
+    Streamed always. A high-effort call over a 353k-token pack can run past the
+    non-streaming request timeout, and a request that dies at the timeout has
+    still been paid for. The flag is inert on the Claude Code backend, which is
+    a subprocess with its own timeout.
+
+    `cache_prefix` is the pack, when the call needs it. Two of the four kinds of
+    call here do not, which is the entire point of the repair design.
     """
     print(f"  calling ({label}) …", end="", flush=True)
-    with client.messages.stream(
-        model=gen["model"],
-        max_tokens=gen["max_tokens"],
-        output_config={"effort": gen["effort"]},
-        system=[{"type": "text", "text": SYSTEM}],
-        messages=[{"role": "user", "content": blocks}],
-    ) as stream:
-        msg = stream.get_final_message()
+    resp = backend.generate(
+        model=gen["model"], system=SYSTEM, prompt=prompt,
+        max_tokens=gen["max_tokens"], effort=effort or gen["effort"],
+        cache_prefix=cache_prefix, stream=True,
+    )
+    usage = usage_dict(resp)
+    read = usage["cache_read_input_tokens"]
+    print(f" {usage['output_tokens']:,} out"
+          + (f", {read:,} cached" if read else "")
+          + f", {money(usage, backend)}")
 
-    u = msg.usage
-    usage = {
-        "input_tokens": u.input_tokens,
-        "output_tokens": u.output_tokens,
-        "cache_creation_input_tokens": getattr(u, "cache_creation_input_tokens", 0) or 0,
-        "cache_read_input_tokens": getattr(u, "cache_read_input_tokens", 0) or 0,
-    }
-    print(f" {usage['output_tokens']:,} out, "
-          f"{usage['cache_read_input_tokens']:,} cached, ${cost(usage):.2f}")
-
-    # A document cut off at max_tokens is a failed call, not a shorter document: the
-    # last section is missing and nothing in the file says so.
-    if msg.stop_reason == "max_tokens":
+    # A document cut off at the output cap is a failed call, not a shorter
+    # document: the last section is missing and nothing in the file says so.
+    if resp.truncated:
         sys.exit(f"FATAL: {label} hit max_tokens ({gen['max_tokens']}) — the document is "
                  f"truncated.\n  Raise max_tokens in config/company.toml [generation].")
-    if msg.stop_reason == "refusal":
-        sys.exit(f"FATAL: {label} — model declined: {msg.stop_details}")
+    if resp.stop_reason == "refusal":
+        sys.exit(f"FATAL: {label} — model declined: {resp.text[:300]}")
+    if not resp.text:
+        sys.exit(f"FATAL: {label} returned no text (stop_reason={resp.stop_reason}).")
+    return resp.text, usage
 
-    text = "".join(b.text for b in msg.content if b.type == "text").strip()
-    if not text:
-        sys.exit(f"FATAL: {label} returned no text (stop_reason={msg.stop_reason}).")
-    return text, usage
+
+def usage_dict(resp: model_client.LLMResult) -> dict:
+    """The four token counts that carry cost, normalised across backends.
+
+    Narrowed to four keys — unlike extract_facts, which stores each response's
+    usage whole — because these get SUMMED across a document's rounds and a sum
+    needs the same keys in every term. The backend-specific extras are not lost:
+    `rounds` in the generation record keeps the backend, the cache TTL and the
+    engine's own cost figure for each call.
+    """
+    u = resp.usage or {}
+    return {k: int(u.get(k, 0) or 0) for k in settings.USAGE_KEYS}
+
+
+# ---------------------------------------------------------------------------
+# Repairing unresolvable ids — WITHOUT resending the pack
+# ---------------------------------------------------------------------------
+#
+# This used to be a second turn in the same conversation: the pack went back as a
+# cached prefix, the document as the assistant turn, the list of broken ids as a
+# follow-up. That is the cheapest possible shape on the API — the pack is a cache
+# READ at a tenth of input price — and it does not survive the move to a Claude
+# seat. Measured on claude.exe 2.1.231: `--resume` re-writes the entire
+# conversation at 2x input and reads nothing back, so turn 2 cost MORE than turn
+# 1. The failure is invisible from outside: you get the right document at full
+# price. (model_client.py module docstring, note 5.)
+#
+# So the repair is now SELF-CONTAINED and pack-free on both backends: the
+# document, the broken ids, and a slice of the index. One shape to maintain and
+# to test, and it is cheaper on the API too.
+#
+# WHICH SLICE, AND WHY IT IS A DEFENSIBLE ONE
+# An id that does not resolve still tells you where it was aiming. ID_RE only
+# matches KNOWN field codes, so a hallucinated id like QA-FY2023-deadbeef has a
+# real field and a real fiscal year — only the content hash is invented. The
+# slice is therefore (field, fiscal year), and it is a complete answer within
+# its bounds: every real id the document could have meant, if it meant what it
+# said about field and year.
+#
+# Measured on the MORN pack: 1,425 ids across 53 slices, largest 230. Rendered
+# with full quotes the largest slice is ~23,200 estimated tokens, which is why
+# the budget below is 25,000 and the quote length steps down rather than the
+# slice being cut short. A slice shown in part is worse than a smaller quote:
+# the model would conclude the id does not exist and delete a true claim.
+#
+# WHAT IT GIVES UP. If the model wrote QA-FY2023-… while meaning a real FY2024
+# fact, the right id is not in front of it and the instruction is to delete the
+# claim. That is the safe direction — deleting a supported claim costs a
+# sentence, inventing support costs the document its credibility — and the slice
+# census below tells the model when that is what happened, so it deletes
+# knowingly rather than because the pack looked empty.
+
+EXCERPT_TOKEN_BUDGET = 25_000
+
+# Quote lengths tried in order until the excerpt fits the budget. 0 means ids and
+# provenance only, which is a poor excerpt but an honest one; it is reported.
+QUOTE_CHARS_LADDER = (240, 120, 60, 0)
+
+
+def slice_of(fact_id: str) -> tuple[str, str]:
+    """The (field code, fiscal year) an id belongs to — real or hallucinated."""
+    code, fy, _ = fact_id.split("-", 2)
+    return code, fy
+
+
+def slice_census(index: dict) -> str:
+    """How many real ids exist in every slice of the pack.
+
+    Cheap (53 lines for MORN) and it does a specific job: it lets the model see
+    that, say, QA-FY2024 holds 162 facts it has not been shown, so "the id I
+    meant is not here" is distinguishable from "the pack has nothing".
+    """
+    counts: dict[tuple[str, str], int] = {}
+    for i in index:
+        counts[slice_of(i)] = counts.get(slice_of(i), 0) + 1
+    return "\n".join(f"  {code}-{fy}   {n:>4} facts"
+                     for (code, fy), n in sorted(counts.items()))
+
+
+def _entry_line(fact_id: str, entry: dict, quote_chars: int) -> str:
+    src = entry.get("source") or {}
+    head = f"  {fact_id}  [{src.get('form', '?')} {src.get('filing_date', '?')}]"
+    if entry.get("confidence") != "high":
+        head += "  (low confidence)"
+    if quote_chars == 0:
+        return head + "\n"
+    q = " ".join((entry.get("quote") or entry.get("heading") or "").split())
+    if len(q) > quote_chars:
+        q = q[:quote_chars] + " …[truncated]"
+    return f"{head}\n      {q}\n"
+
+
+def index_excerpt(index: dict, unknown: list[str]) -> tuple[str, dict]:
+    """The slices the broken ids point at, rendered to fit a token budget.
+
+    Returns (text, meta). `meta` is recorded in the generation record and printed,
+    because a repair that was given less evidence than it asked for must not look
+    like one that was given all of it.
+    """
+    wanted = sorted({slice_of(i) for i in unknown})
+    members = {k: sorted(i for i in index if slice_of(i) == k) for k in wanted}
+
+    for quote_chars in QUOTE_CHARS_LADDER:
+        blocks = []
+        for key in wanted:
+            code, fy = key
+            ids = members[key]
+            body = "".join(_entry_line(i, index[i], quote_chars) for i in ids)
+            blocks.append(f"--- every real {code} id in {fy} ({len(ids)} facts) ---\n"
+                          + (body or "  (this slice is empty — the pack holds no "
+                                      "fact of this field for this year)\n"))
+        text = "\n".join(blocks)
+        tokens = settings.estimate_tokens(text)
+        if tokens <= EXCERPT_TOKEN_BUDGET or quote_chars == QUOTE_CHARS_LADDER[-1]:
+            break
+
+    return text, {
+        "slices": [f"{c}-{fy}" for c, fy in wanted],
+        "ids_offered": sum(len(v) for v in members.values()),
+        "quote_chars": quote_chars,
+        "estimated_tokens": tokens,
+        "over_budget": tokens > EXCERPT_TOKEN_BUDGET,
+    }
+
+
+ID_FIX = """\
+Ids in the document below do not exist in the evidence pack. Each one is a \
+citation to nothing.
+
+THE IDS THAT DO NOT RESOLVE
+{unknown}
+
+You are NOT being shown the pack again. You are shown, in full, every real fact \
+id in the same field and the same fiscal year as each broken id — which is where \
+the fact you meant will be, if you meant the field and year you wrote.
+
+{excerpt}
+For orientation, the number of facts in every slice of the pack, including the \
+ones you are not being shown:
+
+{census}
+
+For each broken id, do exactly one of these:
+
+  (a) If you can see the fact you meant in the lists above, replace the broken id \
+with its real id, copied CHARACTER FOR CHARACTER.
+  (b) Otherwise, delete the claim the broken id supported. If its sentence has \
+other citations that genuinely support what remains, you may keep the part they \
+support and drop the rest.
+
+Do not invent a replacement id. Do not move a citation from elsewhere in the \
+document to cover the gap. Do not keep a sentence whose only support was a broken \
+id. If the fact you meant is in a slice you were not shown, you cannot cite it \
+from here — delete the claim.
+
+The quotations above are for IDENTIFICATION ONLY and some are truncated. Do not \
+copy them into the document as quotations; every quotation in the finished \
+document is checked character for character against the fact cited beside it.
+
+Return the complete corrected document in the same format. Change nothing else: \
+same sections, same headings, same order, same citations everywhere they already \
+resolved.
+
+=== DOCUMENT ===
+{doc}
+=== END OF DOCUMENT ==="""
+
+
+def repair_ids(backend: model_client.Backend, gen: dict, index: dict, md: str,
+               label: str, max_rounds: int) -> tuple[str, list[dict], list[dict]]:
+    """Hold the finished document to its citations, without the pack.
+
+    Two rounds at most, as before: an id the model cannot resolve twice is one
+    the pack does not contain, and the instruction for that case is to drop the
+    sentence rather than keep looking.
+    """
+    usages, rounds = [], [{"round": 0, "checks": check_citations(md, index)}]
+    for n in range(1, max_rounds + 1):
+        unknown = rounds[-1]["checks"]["unknown"]
+        if not unknown:
+            break
+        excerpt, meta = index_excerpt(index, unknown)
+        print(f"  {len(unknown)} unresolvable id(s) — id repair round {n}: "
+              + ", ".join(unknown[:6]) + (" …" if len(unknown) > 6 else ""))
+        print(f"      excerpt: {meta['ids_offered']} real ids from "
+              f"{len(meta['slices'])} slice(s) ({', '.join(meta['slices'])}), "
+              f"quotes at {meta['quote_chars'] or 'no'} chars, "
+              f"~{meta['estimated_tokens']:,} tokens"
+              + ("  !! OVER BUDGET" if meta["over_budget"] else ""))
+        prompt = ID_FIX.format(
+            unknown="\n".join(f"  {c}" for c in unknown),
+            excerpt=excerpt, census=slice_census(index), doc=md)
+        fixed, usage = call(backend, gen, prompt, f"{label} id repair {n}",
+                            effort=gen["repair_effort"])
+        md = fixed
+        usages.append(usage)
+        rounds.append({"round": n, "usage": usage, "excerpt": meta,
+                       "checks": check_citations(md, index)})
+    return md, usages, rounds
 
 
 QUOTE_FIX = """\
@@ -635,7 +860,7 @@ def _problem_block(items: list[dict], with_source: bool) -> str:
     return "\n\n".join(out)
 
 
-def repair_quotes(client: anthropic.Anthropic, gen: dict, index: dict, md: str,
+def repair_quotes(backend: model_client.Backend, gen: dict, index: dict, md: str,
                   label: str, max_rounds: int) -> tuple[str, list[dict], list[dict]]:
     """Hold the finished document to its quotations.
 
@@ -643,6 +868,9 @@ def repair_quotes(client: anthropic.Anthropic, gen: dict, index: dict, md: str,
     of quote fields in question — about 8,000 tokens against 354,000 — so this runs at
     roughly $0.20 a round instead of $2.22, and can be run against documents already
     on disk without regenerating them.
+
+    This was the only repair round already built this way, which is why it needed
+    nothing when the engine changed. `repair_ids` above is now its twin.
     """
     usages, rounds = [], [{"round": 0, "checks": check_quotes(md, index)}]
     for n in range(1, max_rounds + 1):
@@ -656,26 +884,11 @@ def repair_quotes(client: anthropic.Anthropic, gen: dict, index: dict, md: str,
             print(f"      A  “{b['quote'][:74]}”")
         for b in elsew:
             print(f"      B  “{b['quote'][:60]}” ← really {', '.join(b['actual_source'][:2])}")
-        print(f"  calling ({label} quote repair {n}) …", end="", flush=True)
-        with client.messages.stream(
-            model=gen["model"], max_tokens=gen["max_tokens"],
-            output_config={"effort": gen["repair_effort"]},
-            system=[{"type": "text", "text": SYSTEM}],
-            messages=[{"role": "user", "content": QUOTE_FIX.format(
-                group_a=_problem_block(bad, with_source=False),
-                group_b=_problem_block(elsew, with_source=True), doc=md)}],
-        ) as stream:
-            msg = stream.get_final_message()
-        u = msg.usage
-        usage = {"input_tokens": u.input_tokens, "output_tokens": u.output_tokens,
-                 "cache_creation_input_tokens": getattr(u, "cache_creation_input_tokens", 0) or 0,
-                 "cache_read_input_tokens": getattr(u, "cache_read_input_tokens", 0) or 0}
-        print(f" {usage['output_tokens']:,} out, ${cost(usage):.2f}")
-        if msg.stop_reason == "max_tokens":
-            sys.exit(f"FATAL: {label} quote repair {n} hit max_tokens — document truncated.")
-        fixed = "".join(b.text for b in msg.content if b.type == "text").strip()
-        if not fixed:
-            sys.exit(f"FATAL: {label} quote repair {n} returned no text.")
+        prompt = QUOTE_FIX.format(
+            group_a=_problem_block(bad, with_source=False),
+            group_b=_problem_block(elsew, with_source=True), doc=md)
+        fixed, usage = call(backend, gen, prompt, f"{label} quote repair {n}",
+                            effort=gen["repair_effort"])
         md = fixed
         usages.append(usage)
         rounds.append({"round": n, "usage": usage, "checks": check_quotes(md, index)})
@@ -704,7 +917,7 @@ citations. Return the complete corrected document.
 === END OF DOCUMENT ==="""
 
 
-def repair_constraints(client: anthropic.Anthropic, gen: dict, md: str,
+def repair_constraints(backend: model_client.Backend, gen: dict, md: str,
                        failures: list[dict], label: str) -> tuple[str, dict]:
     """One targeted call to fix constraint failures, without resending the pack.
 
@@ -718,26 +931,8 @@ def repair_constraints(client: anthropic.Anthropic, gen: dict, md: str,
     """
     blocks = "\n\n".join(
         f"{i}. FAILED: {f['name']}\n   {f['detail']}" for i, f in enumerate(failures, 1))
-    print(f"  calling ({label} constraint repair) …", end="", flush=True)
-    with client.messages.stream(
-        model=gen["model"], max_tokens=gen["max_tokens"],
-        output_config={"effort": gen["repair_effort"]},
-        system=[{"type": "text", "text": SYSTEM}],
-        messages=[{"role": "user",
-                   "content": CONSTRAINT_FIX.format(failures=blocks, doc=md)}],
-    ) as stream:
-        msg = stream.get_final_message()
-    u = msg.usage
-    usage = {"input_tokens": u.input_tokens, "output_tokens": u.output_tokens,
-             "cache_creation_input_tokens": getattr(u, "cache_creation_input_tokens", 0) or 0,
-             "cache_read_input_tokens": getattr(u, "cache_read_input_tokens", 0) or 0}
-    print(f" {usage['output_tokens']:,} out, ${cost(usage):.2f}")
-    if msg.stop_reason == "max_tokens":
-        sys.exit(f"FATAL: {label} constraint repair hit max_tokens — document truncated.")
-    text = "".join(b.text for b in msg.content if b.type == "text").strip()
-    if not text:
-        sys.exit(f"FATAL: {label} constraint repair returned no text.")
-    return text, usage
+    return call(backend, gen, CONSTRAINT_FIX.format(failures=blocks, doc=md),
+                f"{label} constraint repair", effort=gen["repair_effort"])
 
 
 @functools.lru_cache(maxsize=1)
@@ -756,81 +951,54 @@ def generation_model() -> str:
     return load_gen_config()["model"]
 
 
-def cost(u: dict, model: str | None = None) -> float:
+def cost(u: dict, model: str | None = None, *, ttl: str = "5m") -> float:
     """Dollar cost of one usage record, at the prices in settings.py.
 
     The four multipliers used to be module constants here (5.00, 25.00, 1.25,
     0.10), duplicating extract_facts.py and build_pack.py. They now come from
     one table with a recorded as-of date — see settings.PRICES_AS_OF.
+
+    `ttl` decides the cache-write multiplier and defaults to the API's 5 minutes.
+    Callers holding a backend pass its own — Claude Code always writes at 1 hour,
+    which is 2.0x rather than 1.25x, and pricing its records at the default would
+    under-report a headless run by more than a third.
     """
-    price = settings.price_for(model or generation_model())
-    return (u["input_tokens"] * price.input
-            + u["cache_creation_input_tokens"] * price.input
-              * settings.CACHE_WRITE_MULTIPLIER["5m"]
-            + u["cache_read_input_tokens"] * price.input
-              * settings.CACHE_READ_MULTIPLIER
-            + u["output_tokens"] * price.output) / 1e6
+    return settings.usage_cost(u, model or generation_model(), ttl=ttl)
 
 
-def generate(client: anthropic.Anthropic, gen: dict, index: dict, payload: str,
+def money(usage: dict, backend: model_client.Backend) -> str:
+    """A cost string that does not claim more than it knows.
+
+    On a subscription seat there is no dollar spend at all — the figure is what
+    the same tokens would have cost through the API. Printing a bare "$4.68"
+    invites someone to put it in a budget, and the whole reason this backend
+    exists is that the people using it have no API bill to put it in.
+    """
+    d = cost(usage, ttl=backend.cache_ttl)
+    if backend.name == "claude_code":
+        return f"${d:.2f} API-equivalent"
+    return f"${d:.2f}"
+
+
+def generate(backend: model_client.Backend, gen: dict, index: dict, payload: str,
              ask: str, label: str, max_repairs: int) -> tuple[str, dict, list[dict]]:
-    """Generate one document, then hold it to its citations.
+    """Generate one document, then hold it to its citations and its quotations.
 
-    If ids do not resolve, the model is shown exactly which ones and asked to fix
-    them, in the same conversation so the pack is a cache read rather than a second
-    full-price send. Two rounds at most: an id it cannot fix twice is one the pack
-    does not contain, and the instruction is to drop the sentence.
+    This is the only call here that carries the pack. Both repair passes are
+    pack-free and self-contained — see the note above `repair_ids`.
     """
-    blocks = cached_blocks(payload) + [{"type": "text", "text": ask}]
-    text, usage = run(client, gen, blocks, label)
+    text, usage = call(backend, gen, ask, label, cache_prefix=cache_prefix(payload))
     usages = [usage]
     rounds = [{"round": 0, "usage": usage, "checks": check_citations(text, index)}]
 
-    for n in range(1, max_repairs + 1):
-        chk = rounds[-1]["checks"]
-        if not chk["unknown"]:
-            break
-        print(f"  {len(chk['unknown'])} unresolvable id(s) — repair round {n}: "
-              + ", ".join(chk["unknown"][:6])
-              + (" …" if len(chk["unknown"]) > 6 else ""))
-        repair = (
-            "These ids in your document do not exist in the pack:\n\n"
-            + "\n".join(f"  {c}" for c in chk["unknown"])
-            + "\n\nEach one is a citation to nothing. For each, either find the fact you "
-              "meant and copy its real id character for character, or delete the claim it "
-              "supports. Do not invent a replacement id and do not keep a sentence whose "
-              "only support was one of these.\n\n"
-              "Return the complete corrected document in the same format. Change nothing "
-              "else.")
-        blocks2 = (cached_blocks(payload) + [{"type": "text", "text": ask}])
-        msgs = [{"role": "user", "content": blocks2},
-                {"role": "assistant", "content": [{"type": "text", "text": text}]},
-                {"role": "user", "content": repair}]
-        print(f"  calling ({label} repair {n}) …", end="", flush=True)
-        with client.messages.stream(
-            model=gen["model"], max_tokens=gen["max_tokens"],
-            output_config={"effort": gen["effort"]},
-            system=[{"type": "text", "text": SYSTEM}], messages=msgs,
-        ) as stream:
-            msg = stream.get_final_message()
-        u = msg.usage
-        usage = {"input_tokens": u.input_tokens, "output_tokens": u.output_tokens,
-                 "cache_creation_input_tokens": getattr(u, "cache_creation_input_tokens", 0) or 0,
-                 "cache_read_input_tokens": getattr(u, "cache_read_input_tokens", 0) or 0}
-        print(f" {usage['output_tokens']:,} out, ${cost(usage):.2f}")
-        if msg.stop_reason == "max_tokens":
-            sys.exit(f"FATAL: {label} repair {n} hit max_tokens — document truncated.")
-        fixed = "".join(b.text for b in msg.content if b.type == "text").strip()
-        if not fixed:
-            sys.exit(f"FATAL: {label} repair {n} returned no text.")
-        text = fixed
-        usages.append(usage)
-        rounds.append({"round": n, "usage": usage, "checks": check_citations(text, index)})
+    text, id_usages, id_rounds = repair_ids(backend, gen, index, text, label, max_repairs)
+    usages += id_usages
+    rounds.append({"stage": "ids", "rounds": id_rounds})
 
     # Quotations are checked AFTER the ids, and separately, because fixing a
     # quotation may delete the claim it supported and therefore its citation — so the
     # id check has to run once more at the end, on the document that will be written.
-    text, q_usages, q_rounds = repair_quotes(client, gen, index, text, label, max_repairs)
+    text, q_usages, q_rounds = repair_quotes(backend, gen, index, text, label, max_repairs)
     usages += q_usages
     rounds.append({"stage": "quotes", "rounds": q_rounds})
 
@@ -844,7 +1012,8 @@ def generate(client: anthropic.Anthropic, gen: dict, index: dict, payload: str,
 def provenance(pack: dict, gen: dict, sha: str, usage: dict, checks: dict, q: dict,
                words: int, stamp: str, corrections: list[dict] | None = None,
                written_from_sha: str | None = None,
-               remaps: list[dict] | None = None) -> str:
+               remaps: list[dict] | None = None,
+               backend: str = "api", cache_ttl: str = "5m") -> str:
     """The footer every generated document carries.
 
     Unlike `timeline.md` these are not reproducible — the same inputs give a
@@ -921,7 +1090,13 @@ def provenance(pack: dict, gen: dict, sha: str, usage: dict, checks: dict, q: di
         f"**{q['ok']}** matched there, **{len(q['elsewhere'])}** matched filing text "
         f"cited elsewhere in this document, **{len(q['bad'])}** did not match any.",
         f"- **{usage['input_tokens'] + usage['cache_read_input_tokens'] + usage['cache_creation_input_tokens']:,}** "
-        f"input tokens, **{usage['output_tokens']:,}** output, **${cost(usage):.2f}**.",
+        f"input tokens, **{usage['output_tokens']:,}** output, "
+        f"**${cost(usage, ttl=cache_ttl):.2f}**"
+        # A seat is not billed in dollars. The figure is still worth printing —
+        # it is the only unit in which two runs can be compared — but a reader
+        # who takes it for an invoice line has been misled by this document.
+        + (" (API-equivalent; written on a Claude subscription seat, which is "
+           "not billed in dollars)" if backend == "claude_code" else "") + ".",
         "",
         "Ids resolve in `data/pack/index.json` to the exact quote, section and accession "
         "each claim rests on. `claim` text in the pack is a model-written summary and is "
@@ -1093,7 +1268,17 @@ DOCS = {
 def write_doc(slug: str, body: str, pack: dict, gen: dict, sha: str, usage: dict,
               checks: dict, q: dict, stamp: str, corrections: list[dict] | None = None,
               written_from_sha: str | None = None,
-              remaps: list[dict] | None = None) -> Path:
+              remaps: list[dict] | None = None,
+              backend: str = "api", cache_ttl: str = "5m") -> Path:
+    """Render one document and its provenance footer.
+
+    `backend` and `cache_ttl` default to what every record written before the
+    Claude Code seam implies — the API, at the 5-minute TTL that was the only one
+    used then. That is the same convention extract_facts uses for its `backend`
+    field, and it has the property that matters here: re-rendering an existing
+    document produces the same footer it already has, byte for byte, rather than
+    silently restating its cost under a different price.
+    """
     s = pack["subject"]
     span = f"FY{min(s['fiscal_years'])}–FY{max(s['fiscal_years'])}"
     d = DOCS[slug]
@@ -1104,7 +1289,8 @@ def write_doc(slug: str, body: str, pack: dict, gen: dict, sha: str, usage: dict
     lede = d["lede"].format(span_words=span_words(len(s["fiscal_years"])))
     md = "\n".join([f"# {head}", "", lede, "", body.strip(),
                     provenance(pack, gen, sha, usage, checks, q, word_count(body), stamp,
-                               corrections, written_from_sha, remaps), ""])
+                               corrections, written_from_sha, remaps,
+                               backend, cache_ttl), ""])
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     p = OUT_DIR / d["file"]
     p.write_text(md, encoding="utf-8")
@@ -1190,7 +1376,8 @@ def rewrite_with_corrections(pack: dict, gen: dict, index: dict, sha: str) -> No
         rec_p.write_text(json.dumps(rec, indent=1, ensure_ascii=False), encoding="utf-8")
 
         p = write_doc(slug, text, pack, gen, sha, rec["usage"], checks, qchecks,
-                      rec["generated_utc"], records, written_from, remaps)
+                      rec["generated_utc"], records, written_from, remaps,
+                      rec.get("backend", "api"), rec.get("cache_ttl", "5m"))
         n_corrected += len(records)
         n_remapped += sum(r["occurrences"] for r in remaps)
         print(f"  {p.relative_to(ROOT)} — {len(records)} correction(s), "
@@ -1204,43 +1391,102 @@ def rewrite_with_corrections(pack: dict, gen: dict, index: dict, sha: str) -> No
           f"No model call; $0.00")
 
 
-def estimate(client: anthropic.Anthropic, gen: dict, pack: dict, payload: str) -> None:
+def count_prompt(backend: model_client.Backend, gen: dict, text: str) -> tuple[int, str]:
+    """(tokens, basis) for a prompt, asking the backend before estimating.
+
+    Same contract as build_pack.count_tokens and for the same reason: the API can
+    count exactly and for free, Claude Code cannot count at all, and the caller
+    has to be able to say which it got. A colleague with no API key still gets a
+    number — labelled — rather than "cost unknown", because an estimate that
+    stops working for the people who most need it is not a cost gate.
+    """
+    try:
+        n = backend.count_tokens(model=gen["model"], system=SYSTEM, prompt=text)
+    except Exception as exc:                                        # noqa: BLE001
+        print(f"  (exact count unavailable: {type(exc).__name__}: "
+              f"{str(exc)[:120]})")
+        n = None
+    if n is not None:
+        return n, "exact"
+    return settings.estimate_tokens(SYSTEM + text), "estimated"
+
+
+def estimate(backend: model_client.Backend, gen: dict, pack: dict, payload: str) -> None:
     """What both documents will cost, before spending anything.
 
-    Input is counted exactly; output cannot be counted in advance and is bounded by
-    max_tokens, which is a deliberate over-estimate and labelled as one.
-    """
-    n = client.messages.count_tokens(
-        model=gen["model"], system=[{"type": "text", "text": SYSTEM}],
-        messages=[{"role": "user", "content": [
-            {"type": "text", "text": PACK_PREAMBLE + payload},
-            {"type": "text", "text": brief_ask(pack, gen)}]}]).input_tokens
+    Output cannot be counted in advance and is bounded by max_tokens, which is a
+    deliberate over-estimate and labelled as one.
 
+    The two backends are priced by DIFFERENT arithmetic, not the same numbers
+    with a different label, and the estimate says so. On the API the pack is
+    written once and read back for the second document. Claude Code writes it
+    twice: it cache-writes every prompt at 1h TTL, bills that at 2x input, and
+    never reads user content back — measured, two calls with a byte-identical
+    prefix produced identical usage. Showing the API's cache saving to someone on
+    a seat would understate their run by about half.
+    """
+    n, basis = count_prompt(backend, gen, cache_prefix(payload) + brief_ask(pack, gen))
+    approx = "~" if basis != "exact" else ""
     price = settings.price_for(gen["model"])
-    write = n * price.input * settings.CACHE_WRITE_MULTIPLIER["5m"] / 1e6
-    read = n * price.input * settings.CACHE_READ_MULTIPLIER / 1e6
     full = n * price.input / 1e6
     out_max = 2 * gen["max_tokens"] * price.output / 1e6
+    seat = backend.name == "claude_code"
 
-    print(f"Estimate — {gen['model']}, effort={gen['effort']}, "
+    print(f"Estimate — {backend.name}, {gen['model']}, effort={gen['effort']}, "
           f"max_tokens={gen['max_tokens']:,}")
     print()
-    print(f"  prompt: {n:,} tokens (system + pack + ask)")
+    print(f"  prompt: {approx}{n:,} tokens (system + pack + ask), {basis}")
     print()
-    print(f"  call 1  narrative-brief      cache WRITE   ${write:.2f}")
-    print(f"  call 2  discussion-points    cache READ    ${read:.2f}  "
-          f"(+ the brief, a few thousand tokens)")
-    print(f"  input, this run                            ${write + read:.2f}"
-          f"   vs ${2 * full:.2f} uncached")
-    print(f"  output, worst case                         ${out_max:.2f}  "
-          f"(2 x max_tokens; the real figure will be well under)")
+
+    if seat:
+        write = full * settings.CACHE_WRITE_MULTIPLIER["1h"]
+        print(f"  call 1  narrative-brief      cache WRITE   {approx}${write:.2f}")
+        print(f"  call 2  discussion-points    cache WRITE   {approx}${write:.2f}  "
+              f"(+ the brief, a few thousand tokens)")
+        print(f"  input, this run                            {approx}${2 * write:.2f}")
+        print(f"  output, worst case                         {approx}${out_max:.2f}  "
+              f"(2 x max_tokens; the real figure will be well under)")
+        print()
+        print(f"  TOTAL, worst case                          {approx}${2 * write + out_max:.2f}")
+        print()
+        print("  NOT A BILL. A Claude seat is not charged in dollars; these are what "
+              "the same tokens would cost through the API, which is the only unit "
+              "available for comparing one run against another.")
+        print("  Both calls WRITE the pack because this engine never reads user "
+              "content back from its cache. There is no ordering that avoids it.")
+    else:
+        write = full * settings.CACHE_WRITE_MULTIPLIER[backend.cache_ttl]
+        read = full * settings.CACHE_READ_MULTIPLIER
+        print(f"  call 1  narrative-brief      cache WRITE   {approx}${write:.2f}  "
+              f"(TTL {backend.cache_ttl})")
+        print(f"  call 2  discussion-points    cache READ    {approx}${read:.2f}  "
+              f"(+ the brief, a few thousand tokens)")
+        print(f"  input, this run                            {approx}${write + read:.2f}"
+              f"   vs {approx}${2 * full:.2f} uncached")
+        print(f"  output, worst case                         {approx}${out_max:.2f}  "
+              f"(2 x max_tokens; the real figure will be well under)")
+        print()
+        print(f"  TOTAL, worst case                          "
+              f"{approx}${write + read + out_max:.2f}")
+        print()
+        # Said out loud, because the flattering reading is available and wrong.
+        # Both repair passes are pack-free now, so a clean run is only two calls
+        # — below the 2.2 reads a 1-hour write needs to repay itself.
+        if write + read > 2 * full:
+            print(f"  On this run the cache COSTS {approx}${write + read - 2 * full:.2f} "
+                  f"rather than saving: two calls is below the "
+                  f"{settings.break_even_reads(backend.cache_ttl):.1f} reads a "
+                  f"{backend.cache_ttl} write needs to repay itself. It pays from the "
+                  f"third call inside the TTL on — a re-run, or a second "
+                  f"--only pass.")
+        print(f"  A RE-RUN after the {backend.cache_ttl} TTL expires pays a fresh cache "
+              f"write ({approx}${write:.2f}), not a read.")
+
     print()
-    print(f"  TOTAL, worst case                          ${write + read + out_max:.2f}")
-    print()
-    print("  A repair round, if citations do not resolve, is a cache read plus one "
-          "output: ~$0.30.")
-    print(f"  A RE-RUN more than 5 minutes later pays a fresh cache write "
-          f"(${write:.2f}), not a read.")
+    print(f"  Repair rounds do NOT resend the pack — id repair carries an index "
+          f"excerpt of up to ~{EXCERPT_TOKEN_BUDGET:,} tokens, quote and constraint "
+          f"repair a few thousand. Budget a few tenths of a dollar each, not "
+          f"{approx}${full:.2f}.")
 
 
 def main() -> None:
@@ -1252,6 +1498,9 @@ def main() -> None:
     ap.add_argument("--fix-quotes", action="store_true",
                     help="re-check and repair the quotations in the documents already on "
                          "disk, without regenerating them (~$0.20/doc, no pack resend)")
+    ap.add_argument("--fix-ids", action="store_true",
+                    help="re-check and repair unresolvable citations in the documents "
+                         "already on disk (no pack resend; carries an index excerpt)")
     ap.add_argument("--fix-constraints", action="store_true",
                     help="repair the hard checks src/equity_research/verify_outputs.py reports, in the "
                          "documents already on disk (~$0.25/doc, no pack resend)")
@@ -1267,21 +1516,23 @@ def main() -> None:
     gen = load_gen_config()
     sha = hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
-    # Before the client is constructed, so this path works without an API key —
-    # it spends nothing and should not require the ability to.
+    # Before the backend is constructed, so this path works with neither an API
+    # key nor a Claude Code install — it spends nothing and should not require
+    # the ability to.
     if args.apply_corrections:
         print(f"Applying corrections — pack {sha[:16]}…")
         rewrite_with_corrections(pack, gen, index, sha)
         return
 
-    client = anthropic.Anthropic()
+    backend = model_client.get_backend(
+        settings.load_config("llm", P=P), stage="generate_outputs")
 
     if args.estimate:
-        estimate(client, gen, pack, payload)
+        estimate(backend, gen, pack, payload)
         return
 
-    if args.fix_quotes or args.fix_constraints:
-        fix_on_disk(client, gen, pack, index, sha, args)
+    if args.fix_quotes or args.fix_constraints or args.fix_ids:
+        fix_on_disk(backend, gen, pack, index, sha, args)
         return
 
     s = pack["subject"]
@@ -1289,6 +1540,9 @@ def main() -> None:
           f"FY{min(s['fiscal_years'])}-FY{max(s['fiscal_years'])}")
     print(f"  pack {len(index):,} ids, sha256 {sha[:16]}…")
     print(f"  {gen['model']}, effort={gen['effort']}, max_tokens={gen['max_tokens']:,}")
+    print(f"  backend={backend.name}"
+          + ("  (dollar figures are API-equivalent; a seat is not billed in dollars)"
+             if backend.name == "claude_code" else ""))
     print()
 
     PACK_DIR.mkdir(parents=True, exist_ok=True)
@@ -1309,7 +1563,7 @@ def main() -> None:
 
         ask = brief_ask(pack, gen) if slug == "brief" else discussion_ask(pack, brief_md)
         stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-        text, usage, rounds = generate(client, gen, index, payload, ask, slug,
+        text, usage, rounds = generate(backend, gen, index, payload, ask, slug,
                                        args.max_repairs)
         # Recomputed on the FINAL text rather than read off the last repair round:
         # a quotation fix can delete a claim and its citation with it, so the numbers
@@ -1321,14 +1575,21 @@ def main() -> None:
         (PACK_DIR / f"gen-{slug}.json").write_text(json.dumps({
             "document": DOCS[slug]["file"], "generated_utc": stamp,
             "model": gen["model"], "effort": gen["effort"],
+            # Which engine wrote this, and the cache TTL its usage is priced at.
+            # Both are needed to read the record back: the same token counts cost
+            # 1.25x or 2.0x depending on the engine, and no field in `usage` says
+            # which one produced them.
+            "backend": backend.name, "cache_ttl": backend.cache_ttl,
             "pack_sha256": sha, "pack_ids": len(index),
             "ask_sha256": hashlib.sha256(ask.encode("utf-8")).hexdigest(),
             "system_sha256": hashlib.sha256(SYSTEM.encode("utf-8")).hexdigest(),
-            "usage": usage, "cost_usd": round(cost(usage), 4),
+            "usage": usage,
+            "cost_usd": round(cost(usage, ttl=backend.cache_ttl), 4),
             "rounds": rounds, "citations": checks, "quotations": qchecks, "text": text,
         }, indent=1, ensure_ascii=False), encoding="utf-8")
 
-        p = write_doc(slug, text, pack, gen, sha, usage, checks, qchecks, stamp)
+        p = write_doc(slug, text, pack, gen, sha, usage, checks, qchecks, stamp,
+                      backend=backend.name, cache_ttl=backend.cache_ttl)
         if slug == "brief":
             brief_md = text
         written.append((p, checks, qchecks, usage))
@@ -1355,9 +1616,9 @@ def main() -> None:
         print(f"     fields cited: {checks['by_field']}")
         print()
 
-    spent = sum(cost(u) for u in total)
+    spent = {k: sum(u[k] for u in total) for k in settings.USAGE_KEYS}
     print("=" * 72)
-    print(f"{len(written)} document(s), ${spent:.2f}")
+    print(f"{len(written)} document(s), {money(spent, backend)}")
     report_failures(written)
 
 
@@ -1396,7 +1657,7 @@ def constraint_failures(doc: str, body: str, pack: dict, index: dict, sha: str) 
     return [f for f in r.failures if f["tag"] not in ("prov_present", "prov_matches")]
 
 
-def fix_on_disk(client: anthropic.Anthropic, gen: dict, pack: dict, index: dict,
+def fix_on_disk(backend: model_client.Backend, gen: dict, pack: dict, index: dict,
                 sha: str, args) -> None:
     """Re-check and repair documents that already exist.
 
@@ -1405,6 +1666,11 @@ def fix_on_disk(client: anthropic.Anthropic, gen: dict, pack: dict, index: dict,
     $6 and thrown away analysis that was otherwise sound. The repair needs the
     document and the quote fields in question — not the 354,000-token pack — so this
     path runs at about a twentieth of the price.
+
+    `--fix-ids` joined it for free when the id repair stopped needing the pack.
+    That is worth noticing as a design signal rather than a convenience: a repair
+    that can run against a document on disk is one whose inputs are all written
+    down, which is also what makes it testable without a generation run.
 
     The body is read from `data/pack/gen-<slug>.json` rather than from the rendered
     Markdown, so the title, lede and provenance footer this script adds are never fed
@@ -1426,13 +1692,28 @@ def fix_on_disk(client: anthropic.Anthropic, gen: dict, pack: dict, index: dict,
 
         text, usages, rounds = rec["text"], [], []
 
+        if args.fix_ids:
+            before = check_citations(text, index)
+            print(f"{d['file']} — {before['citations']} citations to "
+                  f"{before['distinct']} distinct facts, "
+                  f"{len(before['unknown'])} unresolvable")
+            text, id_usages, id_rounds = repair_ids(backend, gen, index, text, slug,
+                                                    args.max_repairs)
+            usages += id_usages
+            rec["citations_before"] = before
+            rec["id_repair_rounds"] = id_rounds
+
         if args.fix_quotes:
             before = check_quotes(text, index)
             print(f"{d['file']} — {before['checked']} quotations, {before['ok']} verbatim "
                   f"in a fact cited alongside, {len(before['elsewhere'])} elsewhere, "
                   f"{len(before['bad'])} matching nothing")
-            text, usages, rounds = repair_quotes(client, gen, index, text, slug,
-                                                 args.max_repairs)
+            # `usages +=`, not `usages =`. An id repair may have run first, and
+            # rebinding here would drop its tokens from the record — the cost
+            # would read as if only the quote repair had happened.
+            text, q_usages, rounds = repair_quotes(backend, gen, index, text, slug,
+                                                   args.max_repairs)
+            usages += q_usages
             rec["quotations_before"] = before
 
         if args.fix_constraints:
@@ -1441,7 +1722,7 @@ def fix_on_disk(client: anthropic.Anthropic, gen: dict, pack: dict, index: dict,
             for f in fails:
                 print(f"      {f['name']}\n        {f['detail']}")
             if fails:
-                text, u = repair_constraints(client, gen, text, fails, slug)
+                text, u = repair_constraints(backend, gen, text, fails, slug)
                 usages.append(u)
                 rec["constraint_repair_before"] = [
                     {"name": f["name"], "detail": f["detail"]} for f in fails]
@@ -1449,9 +1730,7 @@ def fix_on_disk(client: anthropic.Anthropic, gen: dict, pack: dict, index: dict,
                     {"name": f["name"], "detail": f["detail"]}
                     for f in constraint_failures(d["file"], text, pack, index, sha)]
 
-        usage = ({k: sum(u[k] for u in usages) for k in usages[0]} if usages else
-                 {k: 0 for k in ("input_tokens", "output_tokens",
-                                 "cache_creation_input_tokens", "cache_read_input_tokens")})
+        usage = {k: sum(u.get(k, 0) for u in usages) for k in settings.USAGE_KEYS}
         checks, qchecks = check_citations(text, index), check_quotes(text, index)
         stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -1464,14 +1743,27 @@ def fix_on_disk(client: anthropic.Anthropic, gen: dict, pack: dict, index: dict,
         # quietly delete the claim?" is precisely the question a repair pass has to be
         # auditable on. Never overwrite the only copy of something a model produced.
         rec.setdefault("text_before_repair", rec["text"])
+        repair_cost = cost(usage, ttl=backend.cache_ttl)
         rec.update({"repair_utc": stamp, "quote_repair_rounds": rounds,
-                    "repair_usage": usage, "repair_cost_usd": round(cost(usage), 4),
+                    "repair_backend": backend.name,
+                    "repair_cache_ttl": backend.cache_ttl,
+                    "repair_usage": usage, "repair_cost_usd": round(repair_cost, 4),
                     "quotations": qchecks, "citations": checks, "text": text})
         rec["usage"] = {k: rec["usage"].get(k, 0) + usage[k] for k in usage}
-        rec["cost_usd"] = round(rec["cost_usd"] + cost(usage), 4)
+        # The two halves of this sum may have been priced at different multipliers
+        # — a document generated through the API and repaired on a seat is the
+        # normal case now — so they are added as DOLLARS, already priced, rather
+        # than by re-pricing the merged token counts at one TTL.
+        rec["cost_usd"] = round(rec["cost_usd"] + repair_cost, 4)
         rec_path.write_text(json.dumps(rec, indent=1, ensure_ascii=False), encoding="utf-8")
 
-        p = write_doc(slug, text, pack, gen, sha, rec["usage"], checks, qchecks, stamp)
+        # The record's own backend, not the one doing the repair: the footer
+        # describes how the DOCUMENT was produced, and most of its tokens are the
+        # generation call's. `rec["cost_usd"]` above already adds the two halves
+        # as dollars, each priced at its own multiplier.
+        p = write_doc(slug, text, pack, gen, sha, rec["usage"], checks, qchecks, stamp,
+                      backend=rec.get("backend", "api"),
+                      cache_ttl=rec.get("cache_ttl", "5m"))
         written.append((p, checks, qchecks, usage))
         total.append(usage)
         print(f"  -> {p.relative_to(ROOT)} — {word_count(text):,} words, "
@@ -1479,8 +1771,9 @@ def fix_on_disk(client: anthropic.Anthropic, gen: dict, pack: dict, index: dict,
               f"alongside, {len(qchecks['bad'])} matching nothing")
         print()
 
+    spent = {k: sum(u[k] for u in total) for k in settings.USAGE_KEYS}
     print("=" * 72)
-    print(f"{len(written)} document(s) repaired, ${sum(cost(u) for u in total):.2f}")
+    print(f"{len(written)} document(s) repaired, {money(spent, backend)}")
     report_failures(written)
 
 

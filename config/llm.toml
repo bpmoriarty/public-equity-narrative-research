@@ -44,6 +44,34 @@ max_concurrent_requests = 2
 # every attempt pays for the whole prompt again.
 max_schema_retries = 1
 
+# How long the API backend's prompt cache lives: "5m" or "1h". IGNORED by the
+# claude_code backend, which always writes at 1 hour and offers no way to say
+# otherwise.
+#
+# "1h", not the API's "5m" default, and the reason is a measured loss. The
+# generation stage sends the same ~353,000-token pack for both documents, so the
+# second call should be a cache READ at a tenth of the price. It was not: a
+# high-effort call over a pack that size can take more than five minutes to
+# return, so the cache had already expired when the second call arrived and it
+# paid a fresh write — $2.22 that the design had counted as $0.18.
+#
+# READ THIS BEFORE ASSUMING THE CACHE SAVES MONEY HERE. It barely does, and for
+# exactly two calls it does not. A 1-hour write costs 2.0x input and each read
+# 0.1x, so N calls inside the hour cost 2.0 + 0.1(N-1) against N uncached. That
+# breaks even at N = 2.11. The generation stage now makes exactly TWO calls
+# carrying the pack — both repair passes were rebuilt to be pack-free — so a
+# single clean run pays 2.1x where sending it twice uncached would pay 2.0x.
+# About 5% worse, and `--estimate` prints both numbers side by side rather than
+# quietly showing the flattering one.
+#
+# It is still the right default, for the case that is not a single clean run.
+# From the third call inside the hour on, caching wins and keeps winning: a run
+# plus one `--only discussion` iteration is 2.3x against 3.0x. Iterating on these
+# prompts is the normal way this stage is used. "5m" would be cheaper still when
+# it hits (1.35x) and materially worse when it misses (2.5x), and it has been
+# measured missing.
+cache_ttl = "1h"
+
 # Seconds before a headless call is killed. The slowest real extraction unit
 # measured 87 seconds; a whole-pack generation call is much larger. Set well
 # above anything observed rather than tuned to it.

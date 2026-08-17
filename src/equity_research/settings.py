@@ -50,8 +50,10 @@ rather than silently producing a worse document.
 from __future__ import annotations
 
 import tomllib
+from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 from equity_research.paths import CompanyPaths, paths
 
@@ -170,6 +172,45 @@ def break_even_reads(ttl: str) -> float:
             f"FATAL: unknown cache TTL {ttl!r}; "
             f"known: {', '.join(sorted(CACHE_WRITE_MULTIPLIER))}"
         ) from None
+
+
+# The token counts that carry cost. Every other field a backend reports is
+# descriptive; these four are the ones a price is applied to.
+USAGE_KEYS = ("input_tokens", "output_tokens",
+              "cache_creation_input_tokens", "cache_read_input_tokens")
+
+
+def usage_cost(usage: Mapping[str, Any], model: str, *, ttl: str = "5m") -> float:
+    """Dollar cost of one usage record, at the prices above.
+
+    The same four-term sum was written out in generate_outputs.py and, in
+    pieces, in extract_facts.py and build_pack.py. It is here so the multipliers
+    and the arithmetic that uses them cannot drift apart — which they already
+    did once, in two directions, over the 1-hour write multiplier.
+
+    `ttl` picks the WRITE multiplier and is not cosmetic: the same token counts
+    cost 1.25x through the API's 5-minute cache and 2.0x through Claude Code,
+    which always writes at 1 hour. Passing the wrong one under-reports a
+    headless run by 37%.
+
+    Missing keys count as zero rather than raising, because the two backends
+    genuinely report different sets: the API omits cache fields when nothing was
+    cached, and Claude Code reports ~2 input tokens with the whole prompt in
+    cache_creation. A KeyError here would turn a cost line into a crash.
+    """
+    price = price_for(model)
+    try:
+        write = CACHE_WRITE_MULTIPLIER[ttl]
+    except KeyError:
+        raise SystemExit(
+            f"FATAL: unknown cache TTL {ttl!r}; "
+            f"known: {', '.join(sorted(CACHE_WRITE_MULTIPLIER))}"
+        ) from None
+    return (usage.get("input_tokens", 0) * price.input
+            + usage.get("cache_creation_input_tokens", 0) * price.input * write
+            + usage.get("cache_read_input_tokens", 0) * price.input
+              * CACHE_READ_MULTIPLIER
+            + usage.get("output_tokens", 0) * price.output) / 1e6
 
 
 def price_for(model: str) -> ModelPrice:

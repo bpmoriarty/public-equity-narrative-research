@@ -115,6 +115,11 @@ class LLMResult:
     usage: dict[str, Any]
     backend: str
     model: str
+    # Which write multiplier prices this record's cache_creation tokens. Carried
+    # on the result rather than looked up later because a usage dict on its own
+    # cannot say: the same numbers cost 1.25x or 2.0x depending on the engine
+    # that produced them, and the engine is not recoverable from the tokens.
+    cache_ttl: str = "5m"
     stop_reason: str | None = None
     cost_usd: float | None = None
     session_id: str | None = None
@@ -141,10 +146,30 @@ class BackendError(RuntimeError):
 
 class Backend(Protocol):
     name: str
+    cache_ttl: str
 
     def generate(self, *, model: str, system: str, prompt: str, max_tokens: int,
                  effort: str, schema: type[BaseModel] | None = None,
-                 cache: bool = False) -> LLMResult:
+                 cache_prefix: str | None = None,
+                 stream: bool = False) -> LLMResult:
+        """One model call.
+
+        `cache_prefix` is content that goes BEFORE `prompt` and is the same
+        across a series of calls — for generation, the 353K-token pack that both
+        documents read. It is a separate argument rather than something the
+        caller concatenates because on the API path it carries the cache
+        breakpoint, and a breakpoint has to fall between the shared part and the
+        varying part. Concatenating first would put the whole prompt inside the
+        cached prefix, and two documents with different asks would then share no
+        prefix at all.
+
+        `stream` asks for a streamed request. It changes nothing about the
+        result; it exists because a high-effort call over a very large prompt can
+        run past the non-streaming request timeout, and a request that dies at
+        the timeout has still been paid for.
+
+        Both are inert on the Claude Code backend — see its `generate`.
+        """
         ...
 
     def count_tokens(self, *, model: str, system: str, prompt: str) -> int | None:
@@ -259,6 +284,12 @@ class ClaudeCodeBackend:
 
     name = "claude_code"
 
+    # Not a setting. The CLI writes its cache at a 1-hour TTL and offers no flag
+    # to change or disable it, so anything pricing a headless usage record has to
+    # use the 1h multiplier (2.0x) rather than the API's default 1.25x. Recorded
+    # here so the cost code can ask the backend instead of assuming.
+    cache_ttl = "1h"
+
     def __init__(self, binary: Path | None = None, *, configured: str | None = None,
                  timeout_s: int = DEFAULT_TIMEOUT_S, max_schema_retries: int = 1):
         self.binary = binary or find_binary(configured)
@@ -314,13 +345,23 @@ class ClaudeCodeBackend:
 
     def generate(self, *, model: str, system: str, prompt: str, max_tokens: int,
                  effort: str, schema: type[BaseModel] | None = None,
-                 cache: bool = False) -> LLMResult:
-        # `max_tokens` and `cache` are accepted for interface parity and are
-        # deliberately unused here: the CLI exposes no output cap, and it always
-        # cache-writes the prompt at 1h TTL with no way to opt out or to get a
-        # read back (measured — see notes 3 and 4 in the module docstring).
-        del max_tokens, cache
+                 cache_prefix: str | None = None,
+                 stream: bool = False) -> LLMResult:
+        # `max_tokens` and `stream` are accepted for interface parity and are
+        # deliberately unused: the CLI exposes no output cap, and `--print` is
+        # a subprocess that returns when it returns, so there is no timeout to
+        # stream around. The subprocess timeout does that job instead.
+        #
+        # `cache_prefix` is CONCATENATED rather than marked. There is nothing to
+        # mark: the CLI always cache-writes the whole prompt at 1h TTL with no
+        # opt-out, and never reads user content back — two calls sending a
+        # byte-identical 60KB prefix seconds apart produced identical usage and
+        # identical cost (module docstring, notes 3 and 4). So splitting the
+        # prompt here would buy nothing. It is still passed as a separate
+        # argument by the caller because the API backend needs the split.
+        del max_tokens, stream
 
+        prompt = (cache_prefix or "") + prompt
         body = prompt + (_schema_instruction(schema) if schema else "")
         attempts = 1 + (self.max_schema_retries if schema else 0)
         last: Exception | None = None
@@ -333,6 +374,7 @@ class ClaudeCodeBackend:
                 usage=env.get("usage") or {},
                 backend=self.name,
                 model=model,
+                cache_ttl=self.cache_ttl,
                 stop_reason=env.get("stop_reason"),
                 cost_usd=env.get("total_cost_usd"),
                 session_id=env.get("session_id"),
@@ -353,8 +395,9 @@ class ClaudeCodeBackend:
                 continue
             return LLMResult(
                 text=text, usage=result.usage, backend=self.name, model=model,
-                stop_reason=result.stop_reason, cost_usd=result.cost_usd,
-                session_id=result.session_id, parsed=parsed, raw=env,
+                cache_ttl=self.cache_ttl, stop_reason=result.stop_reason,
+                cost_usd=result.cost_usd, session_id=result.session_id,
+                parsed=parsed, raw=env,
             )
 
         raise BackendError(
@@ -383,22 +426,35 @@ class ApiBackend:
 
     name = "api"
 
-    def __init__(self, client: Any | None = None):
+    def __init__(self, client: Any | None = None, *, cache_ttl: str = "1h"):
         if client is None:
             import anthropic
             client = anthropic.Anthropic()
         self.client = client
+        if cache_ttl not in settings.CACHE_WRITE_MULTIPLIER:
+            raise BackendError(
+                f"FATAL: [llm] cache_ttl = {cache_ttl!r} is not a TTL the API "
+                f"accepts. Valid: "
+                f"{', '.join(sorted(settings.CACHE_WRITE_MULTIPLIER))}."
+            )
+        self.cache_ttl = cache_ttl
 
     def generate(self, *, model: str, system: str, prompt: str, max_tokens: int,
                  effort: str, schema: type[BaseModel] | None = None,
-                 cache: bool = False) -> LLMResult:
-        content: Any = prompt
-        if cache:
-            # Real prompt caching, unlike the claude_code path: the API returns
-            # cache READS on a repeated prefix, which is what makes the pack
-            # worth caching across generation calls at all.
-            content = [{"type": "text", "text": prompt,
-                        "cache_control": {"type": "ephemeral"}}]
+                 cache_prefix: str | None = None,
+                 stream: bool = False) -> LLMResult:
+        content: list[dict[str, Any]] = []
+        if cache_prefix:
+            # The breakpoint goes on the SHARED block and nothing else. A cache
+            # hits only on a byte-identical prefix, so everything that differs
+            # between calls has to sit after this block — which is why the caller
+            # hands the two parts over separately instead of one string.
+            content.append({
+                "type": "text", "text": cache_prefix,
+                "cache_control": {"type": "ephemeral", "ttl": self.cache_ttl},
+            })
+        content.append({"type": "text", "text": prompt})
+
         kwargs: dict[str, Any] = {
             "model": model, "max_tokens": max_tokens,
             "output_config": {"effort": effort},
@@ -408,6 +464,10 @@ class ApiBackend:
         if schema is not None:
             resp = self.client.messages.parse(**kwargs, output_format=schema)
             parsed = getattr(resp, "parsed_output", None)
+        elif stream:
+            with self.client.messages.stream(**kwargs) as s:
+                resp = s.get_final_message()
+            parsed = None
         else:
             resp = self.client.messages.create(**kwargs)
             parsed = None
@@ -415,10 +475,20 @@ class ApiBackend:
         text = "".join(b.text for b in resp.content if getattr(b, "type", None) == "text")
         usage = resp.usage.model_dump() if hasattr(resp.usage, "model_dump") else dict(resp.usage)
         return LLMResult(text=text.strip(), usage=usage, backend=self.name,
-                         model=model, stop_reason=resp.stop_reason,
-                         parsed=parsed, raw=None)
+                         model=model, cache_ttl=self.cache_ttl,
+                         stop_reason=resp.stop_reason, parsed=parsed, raw=None)
 
     def count_tokens(self, *, model: str, system: str, prompt: str) -> int | None:
+        """Exact input tokens. Free, and NOT reliably available.
+
+        Observed on 2026-08-16: this endpoint returned 500 for every request,
+        including a two-word control, while `messages.create` on the same key
+        worked normally. So the callers' "fall back to an estimate and label it"
+        path is not a courtesy to seat users who cannot count — it is a live path
+        for API users too, and it has to stay usable rather than merely present.
+        No retry here: three consecutive attempts failed in under a second each,
+        and retrying a service-wide 500 only delays the fallback.
+        """
         return self.client.messages.count_tokens(
             model=model, system=system,
             messages=[{"role": "user", "content": prompt}]).input_tokens
@@ -442,10 +512,12 @@ def get_backend(cfg: dict | None = None, *, stage: str | None = None) -> Backend
     llm = cfg.get("llm", {}) if isinstance(cfg, dict) else {}
     chosen = llm.get("backend", "claude_code")
     binary_path = llm.get("binary_path")
+    cache_ttl = llm.get("cache_ttl", "1h")
 
     if stage and isinstance(llm.get(stage), dict):
         chosen = llm[stage].get("backend", chosen)
         binary_path = llm[stage].get("binary_path", binary_path)
+        cache_ttl = llm[stage].get("cache_ttl", cache_ttl)
 
     if chosen not in BACKENDS:
         raise BackendError(
@@ -454,7 +526,7 @@ def get_backend(cfg: dict | None = None, *, stage: str | None = None) -> Backend
         )
     if chosen == "claude_code":
         return ClaudeCodeBackend(configured=binary_path)
-    return ApiBackend()
+    return ApiBackend(cache_ttl=cache_ttl)
 
 
 def describe_cost(result: LLMResult) -> str:
@@ -469,8 +541,4 @@ def describe_cost(result: LLMResult) -> str:
             return "subscription usage — no dollar spend"
         return (f"subscription usage — no dollar spend "
                 f"(${result.cost_usd:.3f} API-equivalent)")
-    u = result.usage
-    price = settings.price_for(result.model)
-    dollars = (u.get("input_tokens", 0) * price.input
-               + u.get("output_tokens", 0) * price.output) / 1e6
-    return f"${dollars:.3f}"
+    return f"${settings.usage_cost(result.usage, result.model, ttl=result.cache_ttl):.3f}"
