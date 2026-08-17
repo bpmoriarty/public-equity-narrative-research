@@ -24,8 +24,10 @@ remediated. **Productionizing:** the plan at
 2026-08-08. **Phases 0 (hardening tripwires), 1 (packaging) and 2 (the MORN move
 + paths/settings) are complete and pushed** (commits `3c78496`, `a6010bb`,
 `8a904df`, `fec3785`, `147a6ee`, `800a543`, `d6201dd`, `446ce88`). **Phase 3 is
-two-thirds done** (`0facceb`, `15bd33e`). The repository has a GitHub remote:
-https://github.com/bpmoriarty/public-equity-narrative-research
+complete** (`0facceb`, `15bd33e`, `a7a5890`, `8296182`) — every model call in the
+pipeline now goes through one seam and runs on a Claude seat with no API key.
+**Next is Phase 4**, the `pipeline` orchestrator. The repository has a GitHub
+remote: https://github.com/bpmoriarty/public-equity-narrative-research
 
 > **The seat-terms question is answered.** Headless Claude Code use fits the
 > org's terms and Opus is available on the seat. The operating assumption, from
@@ -35,13 +37,16 @@ https://github.com/bpmoriarty/public-equity-narrative-research
 > estimate were both rebuilt to work without an API key rather than degrading to
 > "not checked".
 
-> **Phase 3 remaining: `generate_outputs` only.** `model_client.py` exists and
-> both `extract_facts` and `build_pack` route through it. `generate_outputs`
-> does not, deliberately: its **id-repair** rounds assume a resumed session, and
-> the probes showed `--resume` re-writes the whole conversation at 2x rather
-> than reading it back. That is a redesign (self-contained, pack-free repair
-> carrying an index excerpt), not a call-site swap. The **quote**-repair rounds
-> are already pack-free one-shots and need nothing.
+> **Neither repair pass resends the pack — and that changed the cache
+> arithmetic.** The id repair was rebuilt as a self-contained, pack-free call
+> carrying a slice of the index, because `--resume` re-writes the whole
+> conversation at 2x rather than reading it back. Doing so removed the prompt
+> cache's best customer: generation now makes exactly **two** pack-carrying
+> calls, and a 1-hour cache write needs 2.2 reads to repay itself. So a single
+> clean run pays about **5% more than not caching at all**, and only wins from
+> the third call inside the TTL on — a re-run, an `--only` pass. `1h` stays for
+> that reason, and `--estimate` prints the comparison rather than the flattering
+> half of it.
 
 > **Colleagues reach Claude Code through VS Code, not the CLI.** The CLI is
 > normally not installed; the extension *ships* it, at a version-stamped path
@@ -61,7 +66,17 @@ https://github.com/bpmoriarty/public-equity-narrative-research
 > records of what was true when written, and are deliberately left as history
 > rather than rewritten (26 such references, counted).
 
-**Last Session:** 2026-08-14
+> **One hole closed that nothing had ever reported.** A citation whose *field
+> code* does not exist — `MDNA-FY2021-deadbeef` — was invisible to every check
+> here, because `ID_RE` is built from the real field codes and read anything else
+> as prose. A reader sees a bracketed citation; `check_citations`, the repair
+> round and `verify_outputs` all saw a word. Found by writing that token as a
+> test fixture and watching no repair run. Zero occurrences in either document,
+> so it was latent — but `mdna` is a real task name in `extract_facts`, so it was
+> reachable. Now reported as `malformed`, fatal at generation time, and a
+> `review` line in `verify_outputs` for one commit before it is promoted to hard.
+
+**Last Session:** 2026-08-17
 
 **Overall Health:** 🟢 Working — milestones 1–5 complete. **The full verification suite has been run and all nine of its findings are fixed.** 1,329 ledger facts, 1,425 citable ids, three deliverables passing 13 hard checks each. Quote census re-earned after the repairs at **1,326/1,326**. $7.21 spent on generation; remediation cost $0.00 in API calls
 
@@ -651,9 +666,9 @@ across 34 calls). Milestones 1–3 cost nothing.
         a Sonnet subagent; the test-harness step and the review were done on
         Opus. All 15 modules moved with history preserved, 15 `sys.path.insert`
         hacks removed (not the 11 the plan claimed). See the Session Log entry
-17. [ ] **Phases 3–5**, in order: 3 Claude Code model seam (**two-thirds done**,
-        `0facceb` + `15bd33e`; `generate_outputs` remains) → 4 `pipeline`
-        orchestrator + `init` → 5 test split, model mix, pack subsets, docs.
+17. [ ] **Phases 3–5**, in order: 3 Claude Code model seam (**done**, `0facceb`,
+        `15bd33e`, `a7a5890`, `8296182`) → **4 `pipeline` orchestrator + `init`
+        (next)** → 5 test split, model mix, pack subsets, docs.
         The seat-terms blocker is cleared: headless use fits the terms, Opus is
         on the seat, and API keys are unavailable for almost all colleagues.
         **Two plan corrections found by executing Phase 1 — do not re-derive:**
@@ -698,22 +713,38 @@ across 34 calls). Milestones 1–3 cost nothing.
         `src/<module>.py` references were fixed in `d6201dd`, but the data-path
         narrative needs prose changes rather than a substitution. The plan puts
         it in Phase 5 with the README and CLAUDE.md updates
-21. [ ] **Finish Phase 3: rewire `generate_outputs`.** The only remaining call
-        site, and the only one needing a REDESIGN rather than a swap. Its
-        **id-repair** rounds assume a resumed session; `--resume` re-writes the
-        whole conversation at 2x instead of reading it back, so repairs must
-        become self-contained and pack-free, carrying an index excerpt of
-        ~15–25K tokens. The **quote**-repair rounds are already pack-free
-        one-shots and need no change, which makes this smaller than it looks.
-        **Test against a deliberately broken document** — an id that does not
-        resolve — rather than by doing a full generation run: a real run costs
-        ~$8 and produces deliverables that then need verifying, and unlike
-        extraction there are no cached results to check against
+21. [x] **Finish Phase 3: rewire `generate_outputs`.** Done 2026-08-17,
+        `a7a5890`. The id repair became self-contained and pack-free, carrying a
+        (field, fiscal year) slice of the index — ~14,900 tokens on the largest
+        real case, against a 25,000 budget where the *quote length* steps down
+        rather than the slice being cut short. Tested against a deliberately
+        broken document as planned, not by a ~$8 generation run: the fixable case
+        recovered the original id exactly and changed 0 words; the must-delete
+        case dropped the claim and invented nothing. $1.07 API-equivalent for
+        both. See the Session Log entry
 22. [ ] **All eight probes are answered — do not re-run them.** V1–V8 are
         recorded in the Session Log entry for 2026-08-14 and, authoritatively,
         in the `model_client.py` module docstring. The five that contradicted
         the plan are the reason that docstring is long; read it before changing
         anything about how model calls are made
+23. [ ] **Promote the malformed-citation check in `verify_outputs` from `review`
+        to `hard`.** Added in `8296182` as a review line per CLAUDE.md rule 3 — a
+        new check gets its output read once before it is allowed to stop
+        anything. **Its output has now been read: 0 on both documents.** Change
+        `r.review("citations naming a field code that does not exist", …)` to an
+        `r.hard(...)` with a tag, and expect the check count to move. It is
+        already fatal in `generate_outputs.report_failures`, which is the gate
+        that runs before a document is ever written
+24. [ ] **`count_tokens` is not reliably available, even with an API key.** On
+        2026-08-16 it returned 500 for every request, including a two-word
+        control, while `messages.create` on the same key worked normally. Three
+        attempts, all failing inside a second. Both `build_pack` and
+        `generate_outputs` already fall back to `settings.CHARS_PER_TOKEN` and
+        **label the number as estimated**, so nothing broke — but this means the
+        labelled-estimate path is the live one for API users too, not a courtesy
+        to seat users who cannot count. Worth re-checking whether exact counting
+        has come back before treating any "estimated" figure as a limitation of
+        the seat backend specifically
 
 ---
 
@@ -730,7 +761,7 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `src/equity_research/paths.py` | **Every filesystem path, resolved per company.** `CompanyPaths` owns the 49 joins that were spread across 15 modules. `resolve()` re-roots a manifest-relative string — the reason the MORN move rewrote no manifest and `pack.json` kept its sha256. Ticker order: `--ticker` → `EQR_TICKER` → the single company; two with no ticker is a **hard error**, never a first-match guess |
 | `src/equity_research/settings.py` | Config layering (global `config/*.toml` + optional `companies/<T>/overrides/`), window validation at 1–10 years, and the **one pricing table** with `PRICES_AS_OF`. Arrays replace wholesale on merge, including arrays of tables — `sections.toml` pattern order is load-bearing and element-wise merging would produce an order neither file describes. Also `CHARS_PER_TOKEN = 2.66`, the calibrated fallback for backends that cannot count tokens |
 | `src/equity_research/model_client.py` | **The model seam.** One interface, two backends: `claude_code` (default — needs a seat, no API key) and `api`. **Read its module docstring before changing anything about model calls** — it records eight measured findings, including that every headless call cache-*writes* its prompt at 2× input price, that an identical prompt does *not* cache, and that `--resume` preserves context while saving nothing. Several contradict the plan |
-| `config/llm.toml` | Which engine model calls go through, and where the Claude Code binary is. `binary_path` is normally empty: discovery is PATH → this setting → the binary bundled inside the VS Code extension, newest version. Per-stage overrides let anyone holding an API key move just the token-heavy stage across |
+| `config/llm.toml` | Which engine model calls go through, and where the Claude Code binary is. `binary_path` is normally empty: discovery is PATH → this setting → the binary bundled inside the VS Code extension, newest version. `cache_ttl` applies to the API path only and its comment carries the arithmetic for why `1h` is barely worth it. Per-stage overrides let anyone holding an API key move just the token-heavy stage across |
 | `VERIFICATION.md` | **The independent review and its remediation log.** Nine findings D1–D9, what each turned out to be, how each was fixed, and what was verified against ground truth. Read before trusting any deliverable |
 | `companies/MORN/corrections.toml` | **Every human correction, as data.** `[[correction]]` (a ledger value), `[[document_correction]]` (a sentence), `[[id_remap]]` (a renumbered citation). Each carries its evidence and reviewer; each is fatal if it stops matching |
 | `tests/test_extract_sections.py` | 17 checks on the extraction guards. Pins both directions: an image-only document must fail, the legitimately short SEC letters must pass |
@@ -758,12 +789,12 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `companies/MORN/data/ledger/facts/` | Cached per-task extraction results. A completed task is never re-run |
 | `src/equity_research/render_timeline.py` | Milestone 5d. Renders `companies/MORN/output/timeline.md`. Deterministic, no model call; asserts completeness before writing |
 | `companies/MORN/output/timeline.md` | **Deliverable 1 of 3.** Chronological reference table, every row carrying its fact id and filing |
-| `src/equity_research/verify_outputs.py` | Milestone 5f. Holds the deliverables to the pack's binding constraints — **13 hard checks and 3 review lists** per document; deterministic, free, non-zero exit on failure |
+| `src/equity_research/verify_outputs.py` | Milestone 5f. Holds the deliverables to the pack's binding constraints — **13 hard checks and 4 review lists** per document; deterministic, free, non-zero exit on failure. The newest review line (citations naming a field code that does not exist) is due for promotion to hard — Next Step 23 |
 | `tests/test_verify_outputs.py` | 63 checks. Every hard check tested against a document that fails it as well as one that passes |
-| `src/equity_research/generate_outputs.py` | Milestone 5e. Writes both prose deliverables from the pack; checks and repairs ids and quotations |
+| `src/equity_research/generate_outputs.py` | Milestone 5e. Writes both prose deliverables from the pack; checks and repairs ids and quotations. **Read the note above `repair_ids` before changing how repairs work** — it records why they carry an index slice rather than the pack, and what that gives up. Only `generate` sends the pack; all three repair kinds are self-contained |
 | `companies/MORN/output/narrative-brief.md` | **Deliverable 2 of 3.** The five-year arc, 2,089 words, 126 citations |
 | `companies/MORN/output/discussion-points.md` | **Deliverable 3 of 3.** Observations, open questions, and stated-vs-paid-for priorities |
-| `tests/test_generate_outputs.py` | 38 checks on the citation and quotation gates; fixtures are real strings from the first generation run. Fails loudly if a committed generation record is missing rather than skipping itself |
+| `tests/test_generate_outputs.py` | 91 checks on the citation, quotation, index-excerpt and repair-loop gates; fixtures are real strings from the first generation run. Covers that a clean document costs **zero** model calls and that a repair prompt is nowhere near pack-sized. Fails loudly if a committed generation record is missing rather than skipping itself |
 | `src/equity_research/merge_events.py` | Milestone 5c. Merges duplicate event records, splits undated ones out, tags routine governance. Deterministic. `--show merged|unclear|possible|routine` |
 | `config/outputs.toml` | Output-stage config: merge threshold, routine patterns and the material overrides. **Change behaviour here, not in code** |
 | `tests/test_merge_events.py` | Proves same-filing records never merge and the incentive-plan row is not tagged routine. Run after any threshold change |
@@ -805,6 +836,134 @@ across 34 calls). Milestones 1–3 cost nothing.
 ---
 
 ## Session Log
+
+### 2026-08-17 — Phase 3 finished: the id repair, rebuilt without the pack
+
+Commits `a7a5890` (the rewire) and `8296182` (a hole it exposed). Phase 3 is
+complete: every model call in the pipeline goes through `model_client`, and the
+whole thing runs on a Claude seat with no API key.
+
+#### Why this one stage needed a redesign
+
+`generate_outputs` was the last call site, and the only one that could not be
+swapped over. Its id repair — shown which citations do not resolve, asked to fix
+them — was a **second turn in the generation conversation**, so the 353,000-token
+pack came back as a cache read at a tenth of the price. That is the cheapest
+possible shape on the API and it does not exist on a seat: V6 measured `--resume`
+re-writing the entire conversation at 2x and reading nothing back, so the resumed
+turn cost *more* than the original.
+
+The repair now carries the document, the broken ids, and **a slice of the index**.
+
+**Which slice is the whole design.** A hallucinated id still names a real field
+and a real fiscal year — `ID_RE` only matches known field codes, so only the
+content hash is ever invented. `QA-FY2024-deadbeef` says the model was aiming at
+investor Q&A in FY2024. So the slice is (field, fiscal year), and within those
+bounds it is complete: every id the document could have meant.
+
+Sized from the data rather than guessed: **1,425 ids across 53 slices, largest
+230**. Rendered with full quotes the largest comes to ~23,200 estimated tokens, so
+the budget is 25,000 and **the quote length steps down** (240 → 120 → 60 → none)
+rather than the slice being cut short. That ordering is the point — a slice shown
+in part would tell the model the fact it wants does not exist, and the instruction
+for that case is to delete the claim.
+
+**What it gives up, since it is a real trade.** An id aimed at the wrong *year*
+can only be deleted, not repaired. That is the safe direction — deleting a
+supported claim costs a sentence, inventing support costs the document — and a
+census of every slice's id count travels with the excerpt so the model deletes
+knowingly rather than because the pack looked empty.
+
+`--fix-ids` fell out for free beside the existing `--fix-quotes`. Worth noticing
+as a signal rather than a convenience: a repair that can run against a document on
+disk is one whose inputs are all written down, which is also what makes it
+testable without a generation run.
+
+#### Tested against a real model on a broken document, writing nothing
+
+| Case | Setup | Outcome |
+| --- | --- | --- |
+| Fixable | A real QA id replaced by a hallucinated one in the same slice | Recovered the **original id exactly**. Invented nothing. 0 words changed. 162-id excerpt, ~14,900 tokens |
+| Must delete | A **real** field code (`HC-FY2021`) whose one fact cannot support the sentence | Deleted the claim (−27 words), introduced no id, lost no other citation |
+
+$1.07 API-equivalent for both. A full generation run was deliberately not done:
+~$8, and unlike extraction there are no cached results to check the output
+against. The second case is the one that mattered — a genuine-but-wrong substitute
+was sitting in the excerpt and it did not take it.
+
+#### The cache arithmetic changed under me, and the config comment was already wrong
+
+Making the repairs pack-free removed the prompt cache's best customer. N calls
+inside the TTL cost `2.0 + 0.1(N−1)` against N uncached, which breaks even at
+**N = 2.11** — and generation now makes exactly **two** pack-carrying calls. So a
+single clean run pays about **5% more than not caching at all**.
+
+`1h` stays, because from the third call on it wins and keeps winning (2.3x against
+3.0x for a run plus one `--only` pass), and iterating on these prompts is how the
+stage is actually used. `5m` is cheaper when it hits (1.35x) and worse when it
+misses (2.5x), and it has been measured missing. `--estimate` now prints the
+comparison and says outright when the cache is costing rather than saving.
+
+I found this only because I made `--estimate` print "vs uncached" and the two
+numbers came out the wrong way round. The first draft of that config comment
+justified `1h` with reasoning the same commit had already invalidated.
+
+#### A hole nothing had ever reported
+
+`MDNA-FY2021-deadbeef` was **invisible to every check in this project**. `ID_RE`
+is built from the real field codes, so a token with an unrecognised prefix was
+prose: `check_citations` did not report it, the repair round never saw it, and
+`verify_outputs` imports the same regex. A reader sees a bracketed citation; every
+check sees a word. Same defect as an unresolvable id, only quieter.
+
+Found by writing exactly that token as a test fixture and watching no repair run.
+All six versions of both documents were then scanned: **zero occurrences**, so it
+was latent. Closed anyway, because `mdna` is a real task name in `extract_facts` —
+MD&A is a thing this pipeline has a word for, it just is not a field code.
+
+Reported as `malformed`, **separately from `unknown`**, because the repair differs:
+an unknown id has a slice to search, a malformed one has no real field at all, so
+the excerpt says "no slice to show" and the instruction is to delete. A lower-cased
+real id (`qa-FY2024-…`) counts too — ids are minted uppercase, so a lower-cased
+one resolves to nothing, and a model lower-casing an id it copied is likelier than
+one inventing a field code.
+
+#### Tests: 216 → 269 checks, and three defects in my own tests
+
+Every new check was run against planted faults before being trusted (rule 3). Nine
+faults across the two commits — a budget ladder that never steps down, a slice
+that quietly widens, an empty slice rendering blank, a repair loop that calls with
+nothing to repair, an unmarked truncation, the malformed computation made blind,
+its membership test inverted, its shape regex restricted to uppercase, and
+`malformed` folded away — and every one was caught by a **named** check.
+
+The faults found three defects in the tests themselves, which is the argument for
+planting them:
+
+- A wrong expected count, and **a check that could not fail** (it built a fresh
+  fake backend and asserted it had made no calls).
+- `rounds[1]` and `prompts[0]` indexed unguarded, so when a check's own subject
+  regressed the file died with an `IndexError` and ~60 later checks never ran. A
+  crash fails the suite, but it fails it with a traceback instead of the name of
+  what broke.
+- **The fault-prover itself was lying.** It counted `FAIL` lines without checking
+  the file reached its summary, so a fault that crashed the suite after one
+  failure was reported as "1 check caught it" when 90 checks had not run.
+
+#### Also fixed, and one thing recorded
+
+`fix_on_disk` rebound `usages` instead of appending, so an id repair followed by a
+quote repair would have reported only the quote repair's cost. Id repair now uses
+`[generation] repair_effort`, which is what that setting's own comment always said
+it was for. `settings.usage_cost` is now the single definition of the four-term
+cost sum, with `ttl` choosing the write multiplier — the same tokens cost 1.25x
+through the API's cache and 2.0x through Claude Code, and pricing a headless run
+at the default under-reports it by 37%.
+
+Recorded as Next Step 24: **`count_tokens` returned 500 for every request**,
+including a two-word control, while `messages.create` on the same key worked. The
+"estimate and label it" fallback is a live path for API users, not a courtesy to
+seat users who cannot count.
 
 ### 2026-08-14 — Phase 3: the model seam, and eight probes that rewrote the plan
 
