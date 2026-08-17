@@ -131,9 +131,40 @@ CORRECTIONS = P.corrections_toml
 # ledger_schema.py and silently become uncheckable here.
 from equity_research.ledger_schema import FIELD_CODES, ID_HEX, canon
 
+# RISK is minted outside FIELD_CODES: risk deltas come from a deterministic diff
+# rather than from an extraction task, so they have no entry in the task table.
+KNOWN_CODES = frozenset({*FIELD_CODES.values(), "RISK"})
+
 ID_RE = re.compile(
-    r"\b(?:" + "|".join(sorted({*FIELD_CODES.values(), "RISK"})) + r")"
+    r"\b(?:" + "|".join(sorted(KNOWN_CODES)) + r")"
     r"-FY\d{4}-[0-9a-f]{" + str(ID_HEX) + r"}\b")
+
+# The same SHAPE, with any uppercase prefix at all — which is what catches a
+# citation to a field code that does not exist.
+#
+# THE HOLE THIS CLOSES. ID_RE is built from the real field codes, so a token like
+# MDNA-FY2021-deadbeef is not a citation as far as it is concerned: it is prose.
+# `check_citations` therefore did not report it, the id-repair round never saw it,
+# and verify_outputs — which imports this same regex — passed it too. A reader
+# sees a bracketed citation; every check in the project sees a word.
+#
+# That is the same defect as an unresolvable id, only quieter, and it is not
+# far-fetched: `mdna` is a real task name in extract_facts, so MD&A is a thing
+# this pipeline has a word for. It just is not a field code, and a model writing
+# from memory of the schema is exactly the situation where the two get confused.
+#
+# Found by writing that token as a test fixture and watching no repair happen.
+# All six versions of the two MORN documents were then scanned: zero occurrences,
+# so this was latent rather than active.
+#
+# The prefix is matched case-INSENSITIVELY and then compared against the codes
+# case-sensitively, so `qa-FY2024-5e714350` is reported as malformed. Ids are
+# minted uppercase, so a lowercased one resolves to nothing in the index — and a
+# model lower-casing an id it copied is likelier than one inventing a field code.
+# Matching only [A-Z] here would let that through as prose, which is the exact
+# hole this exists to close.
+ID_SHAPE_RE = re.compile(
+    r"\b([A-Za-z]{2,8})-FY(\d{4})-([0-9a-f]{" + str(ID_HEX) + r"})\b")
 
 
 # ---------------------------------------------------------------------------
@@ -392,14 +423,24 @@ def check_citations(md: str, index: dict) -> dict:
     is worse than no citation at all.
 
     Returns counts plus the unresolved ids, which the repair round is given.
+
+    `malformed` is reported SEPARATELY from `unknown` rather than folded in,
+    because the two need different repairs. An unknown id names a real field and
+    year, so the repair can be handed that slice of the index and asked to find
+    what was meant. A malformed one names a field that does not exist, so there
+    is no slice to show and nothing to search — only the list of fields that are
+    real, and the instruction to delete.
     """
     cited = ID_RE.findall(md)
     unknown = sorted({c for c in cited if c not in index})
     known = [c for c in cited if c in index]
+    malformed = sorted({m.group(0) for m in ID_SHAPE_RE.finditer(md)
+                        if m.group(1) not in KNOWN_CODES})
     return {
         "citations": len(cited),
         "distinct": len(set(cited)),
         "unknown": unknown,
+        "malformed": malformed,
         "by_field": {f: sum(1 for c in set(known) if index[c]["field"] == f)
                      for f in sorted({index[c]["field"] for c in known})},
         "low_confidence": sorted({c for c in known if index[c]["confidence"] != "high"}),
@@ -697,6 +738,16 @@ def index_excerpt(index: dict, unknown: list[str]) -> tuple[str, dict]:
     wanted = sorted({slice_of(i) for i in unknown})
     members = {k: sorted(i for i in index if slice_of(i) == k) for k in wanted}
 
+    # Reachable: a round may have only MALFORMED ids, which name no real field and
+    # so have no slice. Saying so beats rendering an empty region under a heading
+    # that promises "every real fact id in the same field and year".
+    if not wanted:
+        return ("  (no slice to show — none of the broken citations names a real "
+                "field, so there is no part of the index they could have meant. "
+                "Use the census below.)\n",
+                {"slices": [], "ids_offered": 0, "quote_chars": 0,
+                 "estimated_tokens": 0, "over_budget": False})
+
     for quote_chars in QUOTE_CHARS_LADDER:
         blocks = []
         for key in wanted:
@@ -720,20 +771,33 @@ def index_excerpt(index: dict, unknown: list[str]) -> tuple[str, dict]:
     }
 
 
+MALFORMED_BLOCK = """\
+
+THESE CITATIONS NAME A FIELD THAT DOES NOT EXIST AT ALL
+{malformed}
+
+The part before the first hyphen is a field code, and these are not among the \
+pack's field codes. There is no slice of the index to search for them, so option \
+(a) below is not available: unless the census tells you which real field holds \
+the fact you meant, and you can see it in the lists above, the claim goes.
+"""
+
+
 ID_FIX = """\
 Ids in the document below do not exist in the evidence pack. Each one is a \
 citation to nothing.
 
 THE IDS THAT DO NOT RESOLVE
 {unknown}
-
+{malformed_block}
 You are NOT being shown the pack again. You are shown, in full, every real fact \
 id in the same field and the same fiscal year as each broken id — which is where \
 the fact you meant will be, if you meant the field and year you wrote.
 
 {excerpt}
 For orientation, the number of facts in every slice of the pack, including the \
-ones you are not being shown:
+ones you are not being shown. The field codes listed here are the only ones that \
+exist:
 
 {census}
 
@@ -773,19 +837,29 @@ def repair_ids(backend: model_client.Backend, gen: dict, index: dict, md: str,
     """
     usages, rounds = [], [{"round": 0, "checks": check_citations(md, index)}]
     for n in range(1, max_rounds + 1):
-        unknown = rounds[-1]["checks"]["unknown"]
-        if not unknown:
+        chk = rounds[-1]["checks"]
+        unknown, malformed = chk["unknown"], chk["malformed"]
+        if not unknown and not malformed:
             break
+        # Only the well-formed ones have a slice to show. A malformed id names no
+        # real field, so there is nothing to excerpt for it — the census carries
+        # the only information that helps, which is which fields exist.
         excerpt, meta = index_excerpt(index, unknown)
-        print(f"  {len(unknown)} unresolvable id(s) — id repair round {n}: "
-              + ", ".join(unknown[:6]) + (" …" if len(unknown) > 6 else ""))
+        print(f"  {len(unknown)} unresolvable id(s)"
+              + (f" and {len(malformed)} naming a field that does not exist"
+                 if malformed else "")
+              + f" — id repair round {n}: "
+              + ", ".join((unknown + malformed)[:6])
+              + (" …" if len(unknown + malformed) > 6 else ""))
         print(f"      excerpt: {meta['ids_offered']} real ids from "
-              f"{len(meta['slices'])} slice(s) ({', '.join(meta['slices'])}), "
+              f"{len(meta['slices'])} slice(s) ({', '.join(meta['slices']) or 'none'}), "
               f"quotes at {meta['quote_chars'] or 'no'} chars, "
               f"~{meta['estimated_tokens']:,} tokens"
               + ("  !! OVER BUDGET" if meta["over_budget"] else ""))
         prompt = ID_FIX.format(
-            unknown="\n".join(f"  {c}" for c in unknown),
+            unknown="\n".join(f"  {c}" for c in unknown) or "  (none)",
+            malformed_block=(MALFORMED_BLOCK.format(
+                malformed="\n".join(f"  {c}" for c in malformed)) if malformed else ""),
             excerpt=excerpt, census=slice_census(index), doc=md)
         fixed, usage = call(backend, gen, prompt, f"{label} id repair {n}",
                             effort=gen["repair_effort"])
@@ -1356,11 +1430,13 @@ def rewrite_with_corrections(pack: dict, gen: dict, index: dict, sha: str) -> No
         text, remaps = apply_id_remaps(text, index, ledger_claims)
 
         checks, qchecks = check_citations(text, index), check_quotes(text, index)
-        if checks["unknown"] or qchecks["bad"] or qchecks["elsewhere"]:
+        if (checks["unknown"] or checks["malformed"]
+                or qchecks["bad"] or qchecks["elsewhere"]):
             sys.exit(
                 f"FATAL: {d['file']} does not verify against the pack on disk, so its "
                 f"provenance hash must NOT be re-stamped. NOTHING WAS WRITTEN.\n"
                 f"  unresolved ids : {checks['unknown']}\n"
+                f"  bogus field    : {checks['malformed']}\n"
                 f"  bad quotations : {[b['quote'][:60] for b in qchecks['bad']]}\n"
                 f"  mis-cited      : {[b['quote'][:60] for b in qchecks['elsewhere']]}\n"
                 f"  Either add a document_correction for each, or regenerate the "
@@ -1607,6 +1683,9 @@ def main() -> None:
         if checks["unknown"]:
             print(f"  !! {len(checks['unknown'])} id(s) STILL do not resolve after "
                   f"{args.max_repairs} repair round(s): {', '.join(checks['unknown'])}")
+        if checks["malformed"]:
+            print(f"  !! {len(checks['malformed'])} citation(s) name a field code that "
+                  f"does not exist: {', '.join(checks['malformed'])}")
         if checks["unverified_quote"]:
             print(f"  !! cites {len(checks['unverified_quote'])} fact(s) whose quote is "
                   f"unverified: {', '.join(checks['unverified_quote'])}")
@@ -1625,16 +1704,25 @@ def main() -> None:
 def report_failures(written: list[tuple]) -> None:
     """Exit non-zero if anything unciteable or unquotable survived the repairs.
 
-    Both are fatal and for the same reason: a claim carrying a citation that resolves
-    to nothing, or quotation marks around words the filing does not contain, reads as
-    MORE sourced than an unsourced sentence. A document that fails either check is
-    not a shorter or rougher document, it is a misleading one.
+    All three are fatal and for the same reason: a claim carrying a citation that
+    resolves to nothing, or quotation marks around words the filing does not contain,
+    reads as MORE sourced than an unsourced sentence. A document that fails any of
+    these checks is not a shorter or rougher document, it is a misleading one.
+
+    `malformed` is fatal here even though verify_outputs reports it as review for
+    now (CLAUDE.md rule 3 — a new check is read once before it can stop anything).
+    The asymmetry is deliberate: this gate runs at generation time, AFTER the
+    repair rounds have had two chances at it, and a false positive costs a re-run.
+    The other gate runs against documents already committed, where a false
+    positive would condemn artifacts that are fine.
     """
     bad_ids = sum(len(c["unknown"]) for _, c, _, _ in written)
+    bad_pfx = sum(len(c.get("malformed", ())) for _, c, _, _ in written)
     bad_q = sum(len(q["bad"]) for _, _, q, _ in written)
-    if bad_ids or bad_q:
-        sys.exit(f"\nFATAL: {bad_ids} unresolvable citation(s) and {bad_q} "
-                 f"non-verbatim quotation(s) survived across the outputs. "
+    if bad_ids or bad_q or bad_pfx:
+        sys.exit(f"\nFATAL: {bad_ids} unresolvable citation(s), {bad_pfx} citing a "
+                 f"field code that does not exist, and {bad_q} non-verbatim "
+                 f"quotation(s) survived across the outputs. "
                  f"Listed above and in data/pack/gen-*.json.")
 
 
@@ -1696,7 +1784,8 @@ def fix_on_disk(backend: model_client.Backend, gen: dict, pack: dict, index: dic
             before = check_citations(text, index)
             print(f"{d['file']} — {before['citations']} citations to "
                   f"{before['distinct']} distinct facts, "
-                  f"{len(before['unknown'])} unresolvable")
+                  f"{len(before['unknown'])} unresolvable, "
+                  f"{len(before['malformed'])} naming no real field")
             text, id_usages, id_rounds = repair_ids(backend, gen, index, text, slug,
                                                     args.max_repairs)
             usages += id_usages

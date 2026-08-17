@@ -197,6 +197,49 @@ check("a fact whose quote was never verified is surfaced",
 check("fields are tallied over distinct, resolvable ids",
       c["by_field"], {"board": 1, "investor_qa": 1, "notable_language": 1})
 
+print("\ncheck_citations — a field code that does not exist")
+
+# THE HOLE. ID_RE is built from the real field codes, so before `malformed` existed
+# a token like MDNA-FY2021-deadbeef was prose as far as every check was concerned:
+# check_citations did not report it, the repair round never saw it, verify_outputs
+# imported the same regex and passed it too. A reader sees a citation.
+#
+# Not a contrived example. `mdna` is a real task name in extract_facts — MD&A is a
+# thing this pipeline has a word for. It is simply not a field code.
+m = g.check_citations("Real [QA-FY2024-5e714350], invented field "
+                      "[MDNA-FY2021-deadbeef].", INDEX)
+check("a citation with an unreal field code is reported",
+      m["malformed"], ["MDNA-FY2021-deadbeef"])
+check("  and is NOT counted among the resolvable citations", m["citations"], 1)
+check("  nor among the unresolvable ids, which have a real slice to search",
+      m["unknown"], [])
+
+# The other three directions, so the check is bounded on both sides. A regex that
+# flags everything is as useless as one that flags nothing.
+check("a real id is not flagged",
+      g.check_citations("[QA-FY2024-5e714350]", INDEX)["malformed"], [])
+check("a real code with an unknown hash is 'unknown', not 'malformed'",
+      g.check_citations("[QA-FY2024-deadbeef]", INDEX)["malformed"], [])
+check("RISK is a real code even though it is not in FIELD_CODES",
+      g.check_citations("[RISK-FY2025-d7eff92c]", INDEX)["malformed"], [])
+check("prose that merely contains capitals and a year is not flagged",
+      g.check_citations("The FY2021 10-K and the FY2024 DEF 14A.", INDEX)["malformed"],
+      [])
+check("a hash of the wrong length is not an id at all",
+      g.check_citations("[QQQ-FY2021-dead]", INDEX)["malformed"], [])
+check("uppercase hex is not the id shape either",
+      g.check_citations("[QQQ-FY2021-DEADBEEF]", INDEX)["malformed"], [])
+
+# A REAL id, lower-cased. Ids are minted uppercase, so this resolves to nothing —
+# and a model lower-casing an id it copied is likelier than one inventing a whole
+# field code. Matching only [A-Z] in the shape regex would read this as prose,
+# which is the same hole one step along.
+check("a real code in lower case is malformed, not prose",
+      g.check_citations("[qa-FY2024-5e714350]", INDEX)["malformed"],
+      ["qa-FY2024-5e714350"])
+check("  and is not silently counted as the real citation it resembles",
+      g.check_citations("[qa-FY2024-5e714350]", INDEX)["citations"], 0)
+
 print("\nword_count")
 # The leftover-bracket bug: stripping ids alone leaves `[, ]`, which str.split() counts
 # as two more words. The count is what the document is held to against SPEC.md's
@@ -355,7 +398,8 @@ b = FakeBackend(lambda p: CLEAN)
 out, usages, rounds = g.repair_ids(b, GEN, INDEX, BROKEN, "t", 2)
 check("one broken id takes one call", len(b.prompts), 1)
 check("  and stops as soon as it resolves", g.check_citations(out, INDEX)["unknown"], [])
-check("  recording the excerpt it was given", rounds[1]["excerpt"]["ids_offered"], 1)
+check("  recording the excerpt it was given",
+      rounds[1]["excerpt"]["ids_offered"] if len(rounds) > 1 else "NO ROUND RAN", 1)
 
 # The model that cannot fix it. Two rounds, then it gives up and lets the caller's
 # own report_failures exit non-zero -- it does not loop until it works.
@@ -370,11 +414,49 @@ out, _, _ = g.repair_ids(b, GEN, INDEX, BROKEN, "t", 0)
 check("max_rounds=0 disables repair entirely", len(b.prompts), 0)
 check("  leaving the document exactly as it was", out, BROKEN)
 
+# A citation whose FIELD CODE is not real. The repair loop must ACT on these, not
+# merely report them — the gap this closes was that nothing acted, because nothing
+# saw them.
+def sent_prompt(fake: "FakeBackend") -> str:
+    """The first prompt, or "" if no call was made.
+
+    Guarded for the same reason as the round index above: when the subject of
+    these checks regresses there IS no prompt, and `prompts[0]` would raise an
+    IndexError that takes the rest of the file down with it. Proven — planting
+    exactly that fault is how this helper came to exist.
+    """
+    return fake.prompts[0] if fake.prompts else ""
+
+
+b = FakeBackend(lambda p: CLEAN)
+out, _, rounds_m = g.repair_ids(b, GEN, INDEX, "Bad [MDNA-FY2021-deadbeef].", "t", 1)
+check("a malformed citation triggers a repair round", len(b.prompts), 1)
+check("  and the prompt says the field itself is not real",
+      "NAME A FIELD THAT DOES NOT EXIST" in sent_prompt(b), True)
+check("  and offers the census rather than a slice that cannot exist",
+      "no slice to show" in sent_prompt(b), True)
+# Guarded rather than indexed straight in: when this check's own subject regresses,
+# no round runs and `rounds_m[1]` is an IndexError. A crash still stops the suite,
+# but it stops it with a traceback instead of the name of what broke -- and the
+# checks after it never run at all.
+check("  recording that no ids were offered",
+      rounds_m[1]["excerpt"]["ids_offered"] if len(rounds_m) > 1
+      else "NO REPAIR ROUND RAN", 0)
+
+# Mixed: one of each. Both must reach the prompt, under their own headings, and the
+# well-formed one must still get its slice.
+b = FakeBackend(lambda p: CLEAN)
+g.repair_ids(b, GEN, INDEX, "One [QA-FY2024-deadbeef] two [MDNA-FY2021-deadbeef].",
+             "t", 1)
+check("an unresolvable id and a malformed one travel in the same round",
+      sorted(s for s in ("QA-FY2024-deadbeef", "MDNA-FY2021-deadbeef",
+                         "QA-FY2024-5e714350") if s not in sent_prompt(b)), [])
+
 # THE PROMPT MUST NOT CARRY THE PACK. This is the whole reason the round was
 # rebuilt, and it is the kind of regression that shows up only on the bill.
 b = FakeBackend(lambda p: CLEAN)
 g.repair_ids(b, GEN, INDEX, BROKEN, "t", 1)
-sent = b.prompts[0]
+sent = sent_prompt(b)
 check("the repair prompt carries the document", BROKEN in sent, True)
 check("  and names the broken id", "QA-FY2024-deadbeef" in sent, True)
 check("  and is nowhere near pack-sized", len(sent) < 200_000, True)

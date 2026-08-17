@@ -339,6 +339,22 @@ def verify(doc: str, md: str, pack: dict, index: dict, pf: dict, cfg: dict,
     c = check_citations(body, index)
     r.hard("ids_resolve", "every citation resolves to a fact in the pack", not c["unknown"],
            ", ".join(c["unknown"]))
+
+    # A citation whose FIELD CODE does not exist — MDNA-FY2021-deadbeef. Until this
+    # existed, ID_RE (built from the real codes) read such a token as prose, so it
+    # was invisible to `ids_resolve` above and to the repair round that feeds it: a
+    # reader saw a citation, every check saw a word.
+    #
+    # REVIEW, NOT HARD, FOR THIS ONE COMMIT. CLAUDE.md rule 3 — a new check gets its
+    # output read once before it is allowed to stop anything, because roughly
+    # eighteen bugs in this project were in checkers rather than in what they
+    # checked. It is already fatal in generate_outputs.report_failures, which runs
+    # at generation time where a false positive costs a re-run rather than
+    # condemning a committed artifact. Promote to hard next commit.
+    r.review("citations naming a field code that does not exist", c["malformed"],
+             "Not the same as an unresolvable id: the field itself is not real, so "
+             "there is no slice of the index the claim could have meant. Expected "
+             "zero — this fired on nothing when it was added.")
     q = check_quotes(body, index)
     r.hard("quotes_verbatim", "every quotation is verbatim in a fact cited in the same paragraph",
            not q["bad"] and not q["elsewhere"],

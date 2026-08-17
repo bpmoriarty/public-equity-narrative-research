@@ -1,11 +1,11 @@
 {
   "note": "Expected check counts per test file. tests/run_all.py fails if any file's count differs in EITHER direction \u2014 fewer means checks silently disappeared (see VERIFICATION.md D7), more means new checks were added without recording them. Re-record with: uv run python tests/run_all.py --update",
-  "total": 253,
+  "total": 269,
   "counts": {
     "test_discover.py": 12,
     "test_extract_sections.py": 17,
     "test_fact_id.py": 19,
-    "test_generate_outputs.py": 75,
+    "test_generate_outputs.py": 91,
     "test_merge_events.py": 44,
     "test_repo_hygiene.py": 10,
     "test_verify_outputs.py": 63,

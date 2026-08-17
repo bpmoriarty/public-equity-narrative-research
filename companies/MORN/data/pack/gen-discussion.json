@@ -301,12 +301,13 @@
    "verified_by": "human review, 2026-08-07 (VERIFICATION.md D3)"
   }
  ],
- "corrections_applied_utc": "2026-08-08T02:01:58Z",
+ "corrections_applied_utc": "2026-08-17T15:35:21Z",
  "shipped_pack_sha256": "fd320ce531c4766f95feb4f3f0cf10d47127787706d6e3647a5281fcc65e6cf5",
  "citations_shipped": {
   "citations": 202,
   "distinct": 179,
   "unknown": [],
+  "malformed": [],
   "by_field": {
    "events": 26,
    "headcount": 3,
