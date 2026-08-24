@@ -112,7 +112,7 @@ import sys
 import time
 from dataclasses import dataclass, field
 
-from equity_research.paths import known_tickers, resolve_ticker
+from equity_research.paths import known_tickers, paths, resolve_ticker
 
 
 # ---------------------------------------------------------------------------
@@ -140,23 +140,41 @@ class Stage:
     # know which stage it was.
     remedy: str = ""
 
+    # What `pipeline status` looks at, as CompanyPaths ATTRIBUTE NAMES —
+    # ("inventory",), not ("data/discovery/inventory.json",).
+    #
+    # Names rather than path strings for two reasons. A "data/..." literal here
+    # would resolve against the repository root instead of the company being
+    # run, which is the failure the path-literal lint in
+    # tests/test_repo_hygiene.py exists to catch — and it does catch it, which is
+    # how four missing CompanyPaths properties were found while writing `status`.
+    # And it keeps the answer to "where does this live" in paths.py, where the
+    # rest of the pipeline reads it from.
+    artifacts: tuple[str, ...] = ()
+
 
 # Dependency order. See HOW THE ORDER WAS DERIVED in the module docstring —
 # every stage sits after the stages whose files it reads.
 STAGES: tuple[Stage, ...] = (
     Stage("discover",
-          "the filing inventory and gap analysis"),
+          "the filing inventory and gap analysis",
+          artifacts=("inventory",)),
     Stage("fetch",
-          "cached filing documents and the fetch manifest"),
+          "cached filing documents and the fetch manifest",
+          artifacts=("fetch_manifest", "raw")),
     Stage("extract_sections",
-          "the target sections as cleaned text, and their manifest"),
+          "the target sections as cleaned text, and their manifest",
+          artifacts=("sections_manifest", "sections")),
     Stage("triage_8k",
-          "a judgment on every conditional 7.01/8.01 8-K"),
+          "a judgment on every conditional 7.01/8.01 8-K",
+          artifacts=("triage_json",)),
     Stage("risk_diff",
-          "year-over-year risk factor deltas"),
+          "year-over-year risk factor deltas",
+          artifacts=("risk_deltas",)),
     Stage("extract_facts",
           "per-task extraction results in the facts cache",
           spends=True,
+          artifacts=("facts",),
           remedy="A non-zero exit here is often NOT a crash. This stage stops "
                  "deliberately when a cached result's source text has changed "
                  "since it was extracted, because a stale result answers a "
@@ -166,29 +184,39 @@ STAGES: tuple[Stage, ...] = (
                  "results, rebuild them with --refresh-stale (this COSTS "
                  "TOKENS), or leave them and accept the gap knowingly."),
     Stage("build_ledger",
-          "the per-year ledger, every quote verified"),
+          "the per-year ledger, every quote verified",
+          artifacts=("ledger",)),
     Stage("merge_events",
-          "merged timeline events, with duplicates and undated rows split out"),
+          "merged timeline events, with duplicates and undated rows split out",
+          artifacts=("timeline_events",)),
     Stage("render_timeline",
-          "output/timeline.md — deliverable 1 of 3"),
+          "output/timeline.md — deliverable 1 of 3",
+          artifacts=("timeline_md",)),
     Stage("build_pack",
-          "the citable pack and its id index"),
+          "the citable pack and its id index",
+          artifacts=("pack",)),
     Stage("generate_outputs",
           "narrative-brief.md and discussion-points.md — deliverables 2 and 3",
           spends=True,
-          remedy="This stage regenerates both documents from scratch every "
-                 "time; it has no cache. If it failed part way, the documents "
-                 "on disk may be from the previous run — check them against "
-                 "the pack sha256 in their provenance footer before trusting "
-                 "them."),
+          # `output` also holds timeline.md, so the file count here is coarser
+          # than this stage. That is fine: for a spending stage `status` reports
+          # the stage's own --check-fresh verdict, which is exact.
+          artifacts=("output",),
+          remedy="If this failed part way, the documents on disk may be from "
+                 "the previous run. It will not silently regenerate them — it "
+                 "compares each document's stamped pack sha against the pack on "
+                 "disk first — so re-run it and read what it says about each "
+                 "one before trusting either."),
     Stage("verify_outputs",
           "verify-report.md, and a non-zero exit if any hard check failed",
+          artifacts=("verify_report",),
           remedy="The deliverables did not pass their own checks. This gates "
                  "the PDF render on purpose — see the stage output above for "
                  "which check failed, and generate_outputs' --fix-* flags for "
                  "the repair passes."),
     Stage("render_pdf",
-          "the three deliverables as PDF, each read back and verified"),
+          "the three deliverables as PDF, each read back and verified",
+          artifacts=("pdf",)),
 )
 
 BY_NAME = {s.name: s for s in STAGES}
@@ -279,10 +307,17 @@ def probe_stage(stage: Stage, ticker: str) -> int | None:
     return None
 
 
-def show_estimate(stage: Stage, ticker: str) -> None:
-    """Print the stage's own cost estimate, verbatim and unparsed."""
+def show_estimate(stage: Stage, ticker: str, *extra: str) -> None:
+    """Print the stage's own cost estimate, verbatim and unparsed.
+
+    `extra` exists for one case: `extract_facts --estimate` returns before
+    pricing anything when every task is cached, so asking it what a forced
+    re-run would cost needs `--force` as well. Without that, `pipeline estimate`
+    printed "this is what a forced re-run would cost" above no figures at all.
+    """
     sys.stdout.flush()
-    subprocess.run(stage_command(stage, "--estimate"), env=child_env(ticker))
+    subprocess.run(stage_command(stage, "--estimate", *extra),
+                   env=child_env(ticker))
     sys.stdout.flush()
 
 
@@ -618,6 +653,133 @@ def cmd_stages(args: argparse.Namespace) -> int:
     return 0
 
 
+# ---------------------------------------------------------------------------
+# status
+# ---------------------------------------------------------------------------
+#
+# WHAT THIS COMMAND WILL NOT TELL YOU, AND WHY
+# Whether a deterministic stage's output is up to date. It cannot: eleven of the
+# thirteen stages have no way to answer that without doing their work, and the
+# tempting substitute — comparing modification times — is wrong here. Every
+# stage's own staleness logic is content-based (`extract_facts` fingerprints the
+# source text; `generate_outputs` compares a stamped pack hash), precisely
+# because an mtime says when a file was written and not what it was written
+# from. A `status` that guessed from mtimes would contradict the stages on the
+# cases that matter and agree with them everywhere else, which is the worst
+# available combination.
+#
+# So: presence and size are reported as presence and size, the two stages that
+# CAN answer are asked, and the header says which is which. `pipeline run` is
+# what finds out; this is what you read first.
+
+def describe(path) -> str:
+    """One line about one artifact: what is there, not whether it is current."""
+    if not path.exists():
+        return "absent"
+    if path.is_dir():
+        files = [p for p in path.rglob("*") if p.is_file()]
+        size = sum(p.stat().st_size for p in files)
+        return f"{len(files):,} file(s), {size / 1_048_576:.1f} MB"
+    return f"{path.stat().st_size / 1024:,.0f} KB"
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    ticker = resolve_company(args.ticker)
+    P = paths(ticker)
+
+    print(f"pipeline status — {ticker}")
+    print(f"  {P.company.relative_to(P.root).as_posix()}")
+    print()
+    print("  Presence and size only. Whether a deterministic stage needs "
+          "re-running is not")
+    print("  something this can answer — see the note above `describe` in "
+          "cli.py. The two")
+    print("  stages that spend money answer for themselves, below.")
+    print()
+
+    for i, stage in enumerate(STAGES, 1):
+        marks = []
+        for name in stage.artifacts:
+            path = getattr(P, name)
+            marks.append(f"{path.relative_to(P.company).as_posix()}: "
+                         f"{describe(path)}")
+        flag = "$$" if stage.spends else "  "
+        head = f"  {flag} {i:2d}. {stage.name:18s} "
+        print(head + (marks[0] if marks else "—"))
+        for extra in marks[1:]:
+            # Indented to the width of the header rather than a hand-counted
+            # string, which was one character out.
+            print(" " * len(head) + extra)
+
+    # The authoritative part. Asking costs nothing and constructs no backend.
+    print()
+    print("  The stages that spend money, in their own words:")
+    for stage in (s for s in STAGES if s.spends):
+        print(f"    {stage.name}")
+        verdict = probe_stage(stage, ticker)
+        if verdict == CHECK_FRESH_NOTHING:
+            print(f"         -> nothing to do")
+        elif verdict == CHECK_FRESH_WORK:
+            print(f"         -> HAS WORK. `pipeline {ticker}` will show the "
+                  f"cost and ask.")
+        else:
+            print(f"         -> could not say; `pipeline {ticker}` will treat "
+                  f"that as work")
+    return 0
+
+
+def cmd_estimate(args: argparse.Namespace) -> int:
+    """What the spending stages would cost, and whether they would run at all.
+
+    Deliberately prints the price EVEN WHEN there is nothing to do — which is the
+    opposite of what the gate does, for a reason. At the gate an unasked-for
+    price reads as an imminent charge. Here the price is the question, so the
+    honest answer is "this is what it would cost, and here is whether you would
+    actually be charged it."
+
+    Spends nothing: `--estimate` and `--check-fresh` both make no model call.
+    """
+    ticker = resolve_company(args.ticker)
+    spenders = [s for s in STAGES if s.spends]
+
+    print(f"pipeline estimate — {ticker}")
+    print(f"  {len(spenders)} of {len(STAGES)} stages can spend money. "
+          f"Nothing below makes a model call.")
+
+    outstanding = []
+    for stage in spenders:
+        print()
+        print("-" * 72)
+        print(f"{stage.name} — {stage.produces}")
+        print("-" * 72)
+        verdict = probe_stage(stage, ticker)
+        print()
+        if verdict == CHECK_FRESH_WORK or verdict is None:
+            outstanding.append(stage.name)
+            # There is real work, so the stage's own estimate already describes
+            # exactly it. Do not force: forcing would quote a bigger number than
+            # the one about to be spent.
+            show_estimate(stage, ticker)
+        else:
+            # Nothing outstanding, so an unforced estimate prices nothing. The
+            # question this command answers is "what would it cost", so ask for
+            # the whole job and label it as hypothetical in the summary.
+            show_estimate(stage, ticker, "--force")
+
+    print()
+    print("=" * 72)
+    if outstanding:
+        print(f"  {len(outstanding)} stage(s) have work: "
+              f"{', '.join(outstanding)}")
+        print(f"  `uv run pipeline {ticker}` will show each cost again and ask "
+              f"before spending it.")
+    else:
+        print(f"  Nothing outstanding. The figures above are what a forced "
+              f"re-run would cost;")
+        print(f"  `uv run pipeline {ticker}` would spend nothing.")
+    return 0
+
+
 def cmd_run(args: argparse.Namespace) -> int:
     ticker = resolve_company(args.ticker)
     stages = select(STAGES, args.start_from, args.only)
@@ -639,7 +801,7 @@ def cmd_run(args: argparse.Namespace) -> int:
 # Entry point
 # ---------------------------------------------------------------------------
 
-SUBCOMMANDS = ("run", "stages")
+SUBCOMMANDS = ("run", "stages", "status", "estimate")
 
 
 def normalise_argv(argv: list[str]) -> list[str]:
@@ -681,6 +843,20 @@ def build_parser() -> argparse.ArgumentParser:
 
     s = sub.add_parser("stages", help="list the stages and exit")
     s.set_defaults(func=cmd_stages)
+
+    st = sub.add_parser("status",
+                        help="what exists on disk for a company, and what the "
+                             "two spending stages say about themselves")
+    st.add_argument("ticker", nargs="?", default=None,
+                    help="company to report on")
+    st.set_defaults(func=cmd_status)
+
+    e = sub.add_parser("estimate",
+                       help="what the two spending stages would cost, and "
+                            "whether they have anything to do")
+    e.add_argument("ticker", nargs="?", default=None,
+                   help="company to price")
+    e.set_defaults(func=cmd_estimate)
 
     return ap
 

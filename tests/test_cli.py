@@ -155,6 +155,21 @@ check("exactly the two stages that call a model are marked as spending",
 check("every spending stage carries a remedy for a non-zero exit",
       [s.name for s in cli.STAGES if s.spends and not s.remedy], [])
 
+# Artifacts are CompanyPaths ATTRIBUTE NAMES, so a typo is silent until someone
+# runs `status` — getattr would raise on a name that does not exist, and a name
+# that exists but means something else would report the wrong file forever.
+from equity_research.paths import paths as _paths  # noqa: E402
+
+_P = _paths("MORN")
+check("every stage declares what it leaves behind",
+      [s.name for s in cli.STAGES if not s.artifacts], [])
+check("every declared artifact is a real CompanyPaths attribute",
+      [f"{s.name}:{a}" for s in cli.STAGES for a in s.artifacts
+       if not hasattr(_P, a)], [])
+check("  and resolves inside the company folder",
+      [f"{s.name}:{a}" for s in cli.STAGES for a in s.artifacts
+       if not str(getattr(_P, a)).startswith(str(_P.company))], [])
+
 # ---------------------------------------------------------------------------
 print()
 print("ORDER — every consumer runs after the stage that writes what it reads")
@@ -278,6 +293,17 @@ check("`stages` is left alone", cli.normalise_argv(["stages"]), ["stages"])
 check("an option is left alone for argparse to handle",
       cli.normalise_argv(["--help"]), ["--help"])
 check("no arguments is left alone", cli.normalise_argv([]), [])
+# Every subcommand must be in SUBCOMMANDS, or `pipeline status MORN` is read as
+# `pipeline run status MORN` and dies on a company called "status".
+parser = cli.build_parser()
+check("`status` is not mistaken for a ticker",
+      cli.normalise_argv(["status", "MORN"]), ["status", "MORN"])
+check("`estimate` is not mistaken for a ticker",
+      cli.normalise_argv(["estimate", "MORN"]), ["estimate", "MORN"])
+check("SUBCOMMANDS lists every subcommand the parser accepts",
+      sorted(cli.SUBCOMMANDS),
+      sorted(k for a in parser._subparsers._group_actions
+             for k in getattr(a, "choices", {}) or {}))
 
 # ---------------------------------------------------------------------------
 print()
@@ -460,6 +486,50 @@ finally:
 
 check("stdout is flushed before the child is spawned",
       order[:2], ["flush", "spawn"])
+
+# ---------------------------------------------------------------------------
+print()
+print("STATUS — reports what is there, and does not guess at freshness")
+# ---------------------------------------------------------------------------
+
+check("a missing artifact is reported as absent",
+      cli.describe(_P.company / "no-such-file.json"), "absent")
+check("a real file is reported by size",
+      cli.describe(_P.inventory).endswith("KB"), True)
+check("a directory is reported by file count",
+      "file(s)" in cli.describe(_P.facts), True)
+
+# The two spending stages are the only ones that can answer for themselves, so
+# they are the only ones `status` may speak for. If a third stage ever gains a
+# --check-fresh, this is the check that says so.
+probed = [s.name for s in cli.STAGES if s.spends]
+check("only the spending stages are asked to report on themselves",
+      probed, ["extract_facts", "generate_outputs"])
+
+# `estimate` prices a stage with nothing outstanding by forcing it — otherwise
+# extract_facts returns before printing any figure and the summary claims a
+# number that is not on screen.
+priced: list[tuple[str, tuple]] = []
+real_probe, real_estimate = cli.probe_stage, cli.show_estimate
+try:
+    cli.show_estimate = lambda stage, ticker, *extra: priced.append(
+        (stage.name, extra))
+    cli.probe_stage = lambda stage, ticker: cli.CHECK_FRESH_NOTHING
+    with quiet():
+        cli.cmd_estimate(type("A", (), {"ticker": "MORN"})())
+    check("with nothing outstanding, both stages are priced with --force",
+          priced, [("extract_facts", ("--force",)),
+                   ("generate_outputs", ("--force",))])
+
+    priced.clear()
+    cli.probe_stage = lambda stage, ticker: cli.CHECK_FRESH_WORK
+    with quiet():
+        cli.cmd_estimate(type("A", (), {"ticker": "MORN"})())
+    check("with real work, the estimate is NOT forced — it must quote the "
+          "amount about to be spent",
+          priced, [("extract_facts", ()), ("generate_outputs", ())])
+finally:
+    cli.probe_stage, cli.show_estimate = real_probe, real_estimate
 
 print(f"\n{PASS} passed, {FAIL} failed")
 sys.exit(1 if FAIL else 0)

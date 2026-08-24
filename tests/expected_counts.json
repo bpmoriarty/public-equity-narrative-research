@@ -1,8 +1,8 @@
 {
   "note": "Expected check counts per test file. tests/run_all.py fails if any file's count differs in EITHER direction \u2014 fewer means checks silently disappeared (see VERIFICATION.md D7), more means new checks were added without recording them. Re-record with: uv run python tests/run_all.py --update",
-  "total": 361,
+  "total": 373,
   "counts": {
-    "test_cli.py": 85,
+    "test_cli.py": 97,
     "test_discover.py": 12,
     "test_extract_sections.py": 17,
     "test_fact_id.py": 19,
