@@ -59,7 +59,8 @@ import tomllib
 from datetime import datetime, timezone
 
 from equity_research._bootstrap import ROOT
-from equity_research.generate_outputs import (ID_RE, check_citations, check_quotes,
+from equity_research.generate_outputs import (ID_RE, PACK_SHA_RE, check_citations,
+                                              check_quotes, stamped_pack_sha,
                                               verified_text, word_count)
 from equity_research.paths import add_ticker_arg, paths
 
@@ -327,12 +328,16 @@ def verify(doc: str, md: str, pack: dict, index: dict, pf: dict, cfg: dict,
     ids = ID_RE.findall(body)
 
     # --- provenance: is this document written from the pack on disk? -----------
-    stated = re.search(r"pack sha256\*{0,2}\s*`([0-9a-f]{64})`", md)
+    # `stamped_pack_sha` comes from generate_outputs, which WRITES this footer.
+    # This check used to carry its own copy of the regex; the generation stage's
+    # freshness check now asks the same question, and two spellings of "which
+    # pack is this document from" is how they come to disagree.
+    stated = stamped_pack_sha(md)
     r.hard("prov_present", "provenance records the pack it was written from", bool(stated))
     if stated:
-        r.hard("prov_matches", "that pack is the one on disk", stated.group(1) == sha,
-               "" if stated.group(1) == sha else
-               f"document says {stated.group(1)[:16]}…, pack on disk is {sha[:16]}…. "
+        r.hard("prov_matches", "that pack is the one on disk", stated == sha,
+               "" if stated == sha else
+               f"document says {stated[:16]}…, pack on disk is {sha[:16]}…. "
                f"Regenerate, or rebuild the pack from the ledger it was written from.")
 
     # --- constraint 5: ids resolve, quotations are the filing's characters ------

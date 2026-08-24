@@ -93,6 +93,7 @@ import json
 import re
 import sys
 import tomllib
+from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -1083,6 +1084,165 @@ def generate(backend: model_client.Backend, gen: dict, index: dict, payload: str
 # Writing
 # ---------------------------------------------------------------------------
 
+# The footer's pack-sha line, as a pattern. Defined next to the function that
+# WRITES that line, because the writer owns the format and a reader that guesses
+# it is a second definition waiting to disagree.
+#
+# verify_outputs.py imports this rather than carrying its own copy. It had one:
+# the same regex, spelled out again, powering the `prov_matches` hard check. Two
+# spellings of "which pack is this document from" is precisely the shape of the
+# ID_RE/malformed hole -- one definition, applied in one place and not the other.
+PACK_SHA_RE = re.compile(r"pack sha256\*{0,2}\s*`([0-9a-f]{64})`")
+
+
+def stamped_pack_sha(md: str) -> str | None:
+    """The pack sha256 a document's provenance footer claims it came from."""
+    m = PACK_SHA_RE.search(md)
+    return m.group(1) if m else None
+
+
+# ---------------------------------------------------------------------------
+# Is there anything to generate?
+# ---------------------------------------------------------------------------
+#
+# THE RULE, in one sentence: a document needs regenerating only if it is missing
+# or the pack it is stamped with is not the pack on disk. Everything else is
+# reported and never spent on.
+#
+# That line was drawn by measurement, not taste. The obvious design -- compare
+# the generation record's inputs against today's inputs -- was tried first and
+# is wrong here. Measured on the committed MORN records:
+#
+#   pack_sha256     recorded adb27b53, current fd320ce5   DIFFERS
+#   system_sha256   recorded f551b71d, current 0cebb053   DIFFERS
+#   ask_sha256      brief matches; discussion matches nothing reproducible
+#
+# All three differ because those fields describe the ORIGINAL generation in
+# August, and the documents have since been re-stamped against a rebuilt pack by
+# --apply-corrections. `shipped_pack_sha256` is fd320ce5 and so is the footer in
+# each document. So the input-comparison design would declare both deliverables
+# stale and ask to spend about eight dollars regenerating documents that pass
+# every hard check -- the exact accident this whole feature exists to prevent.
+#
+# The discussion's ask is not even reproducible: it embeds the brief as a prior
+# draft, and which spelling of the brief it embeds depends on how the stage was
+# invoked (a full run passes the raw generated text, --only discussion reads the
+# file, footer included). Hashing it would report staleness that means nothing.
+#
+# What DOES mean something is the question verify_outputs already asks as a hard
+# check: is this document written from the pack that is on disk now? If the pack
+# moved, the document's citations may no longer resolve and it must be looked at.
+# If the pack has not moved, a verified document is current no matter what the
+# prompt looked like when it was written.
+#
+# A changed system prompt or model is a reason a re-run would produce something
+# DIFFERENT, not a reason the shipped document is WRONG. So it is printed, with
+# --force offered, and it does not trigger a spend by itself. Same for a brief
+# rewritten after the discussion that de-duplicates against it.
+
+
+@dataclass(frozen=True)
+class DocStatus:
+    """Whether one document needs generating, and what has drifted since."""
+
+    slug: str
+    file: str
+    exists: bool
+    stamped: str | None          # pack sha the document claims
+    current: str                 # pack sha on disk
+    drift: tuple[str, ...] = ()  # informational only, never forces work
+
+    @property
+    def stale(self) -> bool:
+        """The only condition that spends money."""
+        return not self.exists or self.stamped != self.current
+
+    @property
+    def why(self) -> str:
+        if not self.exists:
+            return "not on disk"
+        if self.stamped is None:
+            return "no pack sha in its provenance footer"
+        if self.stamped != self.current:
+            return (f"written from pack {self.stamped[:16]}…, "
+                    f"pack on disk is {self.current[:16]}…")
+        return f"written from pack {self.stamped[:16]}…, which is the one on disk"
+
+
+def document_status(slug: str, sha: str, gen: dict) -> DocStatus:
+    """Read one document and its record; decide whether it needs generating."""
+    path = OUT_DIR / DOCS[slug]["file"]
+    if not path.exists():
+        return DocStatus(slug, DOCS[slug]["file"], False, None, sha)
+
+    md = path.read_text(encoding="utf-8")
+    stamped = stamped_pack_sha(md)
+
+    # Drift: recorded against current, for everything that changes what a re-run
+    # would produce without making the shipped document wrong.
+    drift: list[str] = []
+    rec_p = PACK_DIR / f"gen-{slug}.json"
+    if rec_p.exists():
+        try:
+            rec = json.loads(rec_p.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            rec = {}
+        if rec.get("system_sha256") not in (None, hashlib.sha256(
+                SYSTEM.encode("utf-8")).hexdigest()):
+            drift.append("the system prompt has changed since this was written")
+        for field in ("model", "effort"):
+            was = rec.get(field)
+            if was is not None and was != gen.get(field):
+                drift.append(f"{field} was {was}, config now says {gen[field]}")
+        # The discussion de-duplicates against the brief. A brief rewritten
+        # afterwards does not invalidate the discussion's citations, but it does
+        # mean the overlap it was avoiding was a different document's.
+        if slug == "discussion":
+            brief_rec = PACK_DIR / "gen-brief.json"
+            if brief_rec.exists():
+                try:
+                    b = json.loads(brief_rec.read_text(encoding="utf-8"))
+                except (json.JSONDecodeError, OSError):
+                    b = {}
+                mine = rec.get("corrections_applied_utc") or rec.get("generated_utc")
+                theirs = b.get("corrections_applied_utc") or b.get("generated_utc")
+                if mine and theirs and theirs > mine:
+                    drift.append("the brief has been rewritten since this was "
+                                 "generated, so its de-duplication is against "
+                                 "an older draft")
+    else:
+        drift.append(f"no gen-{slug}.json record, so nothing is known about how "
+                     f"it was written")
+
+    return DocStatus(slug, DOCS[slug]["file"], True, stamped, sha,
+                     tuple(drift))
+
+
+def report_status(statuses: list[DocStatus], *, force: bool) -> list[DocStatus]:
+    """Print what needs generating and why; return the documents to generate."""
+    todo = statuses if force else [s for s in statuses if s.stale]
+
+    for s in statuses:
+        mark = "STALE" if s.stale else "current"
+        print(f"  {s.file:24s} {mark:8s} {s.why}")
+        for d in s.drift:
+            print(f"                           note: {d}")
+
+    if force and not any(s.stale for s in statuses):
+        print()
+        print("  --force: regenerating documents that are current. This spends "
+              "money and replaces text that cannot be reproduced.")
+    elif not todo:
+        print()
+        print("  Nothing to generate. Every document is written from the pack "
+              "on disk.")
+        if any(s.drift for s in statuses):
+            print("  The notes above change what a re-run would PRODUCE, not "
+                  "whether what is shipped is correct — so they do not make "
+                  "anything stale. Use --force to regenerate anyway.")
+    return todo
+
+
 def provenance(pack: dict, gen: dict, sha: str, usage: dict, checks: dict, q: dict,
                words: int, stamp: str, corrections: list[dict] | None = None,
                written_from_sha: str | None = None,
@@ -1584,6 +1744,14 @@ def main() -> None:
                     help="re-render both documents from their generation records with "
                          "the corrections in config/corrections.toml applied. No model "
                          "call, $0.00, idempotent.")
+    ap.add_argument("--force", action="store_true",
+                    help="regenerate even documents already written from the pack "
+                         "on disk. COSTS MONEY and replaces text that cannot be "
+                         "reproduced.")
+    ap.add_argument("--check-fresh", action="store_true",
+                    help="report which documents need generating and exit. Makes no "
+                         "model call and needs no backend; exit 0 if nothing is "
+                         "stale, 4 if something is.")
     add_ticker_arg(ap)
 
     args = ap.parse_args()
@@ -1600,11 +1768,49 @@ def main() -> None:
         rewrite_with_corrections(pack, gen, index, sha)
         return
 
+    # --- is there anything to generate? ------------------------------------
+    # Above the backend, for the same reason --apply-corrections is: answering
+    # "no" costs nothing and must not require the ability to spend. A colleague
+    # with neither an API key nor a Claude Code install can still run the whole
+    # pipeline over a company whose documents are current.
+    #
+    # Also above --estimate, so the estimate can say "nothing to generate"
+    # instead of pricing two calls nobody is going to make.
+    wanted = [s for s in ("brief", "discussion")
+              if not args.only or args.only == s]
+    statuses = [document_status(s, sha, gen) for s in wanted]
+
+    if args.check_fresh:
+        print(f"Freshness — pack {sha[:16]}…")
+        stale = report_status(statuses, force=False)
+        # A distinct code, so `pipeline` can tell "nothing to do" from "work is
+        # needed" without parsing this output. 4, not 1: nothing failed.
+        sys.exit(4 if stale else 0)
+
+    if not (args.fix_quotes or args.fix_constraints or args.fix_ids
+            or args.estimate):
+        print(f"Documents — pack {sha[:16]}…")
+        todo = report_status(statuses, force=args.force)
+        if not todo:
+            return
+        # Narrow the run to what actually needs doing. `brief` is still read from
+        # disk further down when it is not being regenerated, because the
+        # discussion call is given it for de-duplication.
+        wanted = [s.slug for s in todo]
+        print()
+
     backend = model_client.get_backend(
         settings.load_config("llm", P=P), stage="generate_outputs")
 
     if args.estimate:
+        # What it would cost IF it ran, and separately whether it needs to. A
+        # price for two calls, printed next to "both documents are current", is
+        # the number a cost gate must not quote as though it were about to be
+        # spent.
         estimate(backend, gen, pack, payload)
+        print()
+        print(f"Documents — pack {sha[:16]}…")
+        report_status(statuses, force=args.force)
         return
 
     if args.fix_quotes or args.fix_constraints or args.fix_ids:
@@ -1629,7 +1835,10 @@ def main() -> None:
     # given the brief for de-duplication, so it reads the one on disk if the call
     # was skipped. Order is not optional here.
     for slug in ("brief", "discussion"):
-        if args.only and args.only != slug:
+        # `wanted` is --only narrowed by the freshness check above, so a brief
+        # that is already current is skipped here exactly as an --only discussion
+        # run skips it — same path, same de-duplication read from disk.
+        if slug not in wanted:
             if slug == "brief":
                 p = OUT_DIR / DOCS["brief"]["file"]
                 brief_md = p.read_text(encoding="utf-8") if p.exists() else None

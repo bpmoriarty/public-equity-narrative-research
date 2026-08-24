@@ -635,6 +635,10 @@ def main() -> None:
     ap.add_argument("--refresh-stale", action="store_true",
                     help="re-run only those cached results whose source text has changed "
                          "since they were extracted (costs tokens)")
+    ap.add_argument("--check-fresh", action="store_true",
+                    help="report whether there is any extraction to do and exit. "
+                         "Makes no model call; exit 0 if nothing is outstanding, "
+                         "4 if something is.")
     add_ticker_arg(ap)
 
     args = ap.parse_args()
@@ -743,6 +747,25 @@ def main() -> None:
                   "document that no longer exists in that form.")
             print("  Re-run them with:  --refresh-stale   (costs tokens)")
     print()
+
+    # --- is there anything to do? ------------------------------------------
+    # Answered with an exit code so the Phase 4 cost gate does not have to read
+    # this stage's prose to find out. Above the `not plan` return below, so the
+    # question is always answered rather than only when there is work.
+    #
+    # 4, not 1: nothing has failed. And stale-but-not-refreshed counts as
+    # outstanding, because the run below would exit non-zero over it — a gate
+    # told "nothing to do" and then handed a failure would be worse than one
+    # told to look.
+    if args.check_fresh:
+        if plan:
+            print(f"{len(plan)} task(s) outstanding.")
+        elif stale and not args.refresh_stale:
+            print(f"{len(stale)} cached result(s) are stale and were not "
+                  f"rebuilt; --refresh-stale would cost tokens.")
+        else:
+            print("nothing to do.")
+        sys.exit(4 if (plan or (stale and not args.refresh_stale)) else 0)
 
     if not plan:
         if stale and not args.refresh_stale:
