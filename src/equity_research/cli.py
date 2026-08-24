@@ -62,26 +62,38 @@ every stage comes after the stages whose files it reads.
 
 WHAT HAPPENS AT A STAGE THAT SPENDS MONEY
 -----------------------------------------
-Two stages make model calls: `extract_facts` and `generate_outputs`. The cost
-gate that prompts before letting them run is a separate piece of work, and
-until it exists this orchestrator **stops** when it reaches one of them rather
-than running it.
+Two stages make model calls: `extract_facts` and `generate_outputs`. Each goes
+through a gate that asks the stage two questions, in this order, and spends
+nothing to ask either:
 
-That is not caution for its own sake. `generate_outputs` has no cache and no
-freshness check: it regenerates both prose documents every time it is invoked,
-at roughly eight dollars, overwriting the committed deliverables. Those
-documents are the one artifact in this repository that a re-run does not
-reproduce (CLAUDE.md rule 1). An orchestrator that walks into that stage
-unattended is a one-command way to destroy them, so it does not walk into it.
+  1. Have you anything to do?   `<stage> --check-fresh`  -> exit 0 or 4
+  2. What would it cost?        `<stage> --estimate`     -> printed verbatim
 
-Pass `--skip-spending` to step over those stages and keep going. They are then
-reported as skipped and counted — never dropped silently.
+Only then is anyone asked to approve it. Question 1 is what keeps the gate from
+being a nuisance: on a cached re-run both stages answer "nothing", so a full
+`pipeline MORN` neither prompts nor spends, which is the ordinary case. The
+prompt appears only when something has actually changed.
+
+Both questions are answered BY THE STAGE. The alternative was for this file to
+read the stages' output looking for "nothing to do", which makes an orchestrator
+depend on the wording of other programs' print statements.
+
+The care here is aimed at `generate_outputs` specifically. It has no cache of
+its own beyond that freshness check, it regenerates both prose documents at
+roughly eight dollars, and those documents are the one artifact here that a
+re-run does not reproduce (CLAUDE.md rule 1). An unattended run must not be able
+to destroy them, so an unanswerable prompt — a closed or piped stdin — counts as
+"no", never as consent.
+
+`--yes` approves the gates in advance; the stages still run only if they have
+work. `--skip-spending` steps over them without asking even when they do have
+work, and they are reported as skipped and counted, never dropped silently.
 
 EXIT CODES
 ----------
-    0   every selected stage completed
+    0   every selected stage completed, or had nothing to do
     1   a stage failed; the chain stopped there
-    3   the chain stopped at a stage that spends money. Nothing was spent.
+    3   a cost gate was not approved; the chain stopped there. Nothing spent.
 
 3 rather than another 1 because "a stage is broken" and "there is a decision
 for you to make" need different answers from whatever is reading the code.
@@ -213,9 +225,121 @@ def child_env(ticker: str) -> dict[str, str]:
     return env
 
 
-def stage_command(stage: Stage) -> list[str]:
+def stage_command(stage: Stage, *flags: str) -> list[str]:
     """The argv for a stage. `sys.executable`, so the venv python is used."""
-    return [sys.executable, "-m", f"equity_research.{stage.name}"]
+    return [sys.executable, "-m", f"equity_research.{stage.name}", *flags]
+
+
+# ---------------------------------------------------------------------------
+# The cost gate
+# ---------------------------------------------------------------------------
+#
+# Two stages spend money. Neither is allowed to run unattended, and neither is
+# allowed to be interrupted for nothing. That needs two questions answered in
+# order, and both are answered BY THE STAGE, not by this file:
+#
+#   1. Is there anything to do?   `<stage> --check-fresh`  -> exit 0 or 4
+#   2. What would it cost?        `<stage> --estimate`     -> printed verbatim
+#
+# The probe is an exit code rather than prose on purpose. The alternative was
+# for this file to read the stage's output and look for "nothing to do", which
+# makes an orchestrator depend on the wording of thirteen other programs'
+# print statements.
+#
+# Question 1 is what stops the gate being a nuisance. On a cached re-run both
+# stages answer "nothing", so a full `pipeline MORN` never prompts at all and
+# never spends -- which is the ordinary case. The prompt appears only when
+# something has actually changed.
+#
+# Neither probe nor estimate makes a model call, so reaching the prompt has
+# already cost nothing.
+
+CHECK_FRESH_NOTHING = 0    # the stage has nothing outstanding
+CHECK_FRESH_WORK = 4       # the stage has work, and it costs money
+
+
+def probe_stage(stage: Stage, ticker: str) -> int | None:
+    """Ask a spending stage whether it has anything to do.
+
+    Returns the raw exit code, or None if the stage could not answer -- which is
+    treated as "assume there is work", never as "assume there is none".
+    """
+    sys.stdout.flush()
+    proc = subprocess.run(stage_command(stage, "--check-fresh"),
+                          env=child_env(ticker), capture_output=True,
+                          text=True, encoding="utf-8", errors="replace")
+    # The probe's own words are worth showing: "3 task(s) outstanding" or "both
+    # documents are written from the pack on disk" is the reason the gate is
+    # about to appear, or not.
+    for line in (proc.stdout + proc.stderr).splitlines():
+        if line.strip():
+            print(f"         {line.rstrip()}")
+    if proc.returncode in (CHECK_FRESH_NOTHING, CHECK_FRESH_WORK):
+        return proc.returncode
+    return None
+
+
+def show_estimate(stage: Stage, ticker: str) -> None:
+    """Print the stage's own cost estimate, verbatim and unparsed."""
+    sys.stdout.flush()
+    subprocess.run(stage_command(stage, "--estimate"), env=child_env(ticker))
+    sys.stdout.flush()
+
+
+def confirm(question: str) -> bool:
+    """Ask the operator. Anything but an explicit yes is a no.
+
+    A closed or piped stdin raises EOFError rather than blocking, and that is
+    read as "no" and said out loud. The alternative -- treating an unanswerable
+    question as consent -- is how an unattended run spends money.
+    """
+    try:
+        answer = input(f"{question} [y/N] ").strip().lower()
+    except EOFError:
+        print()
+        print("         stdin is not interactive, so nothing approved it. "
+              "Pass --yes to approve in advance.")
+        return False
+    return answer in ("y", "yes")
+
+
+GATE_NOTHING = "nothing"     # the stage has no work; do not run it
+GATE_APPROVED = "approved"   # run it
+GATE_DECLINED = "declined"   # stop the chain, spend nothing
+
+
+def cost_gate(stage: Stage, ticker: str, assume_yes: bool) -> str:
+    """Decide whether a spending stage runs. Spends nothing itself.
+
+    The order matters. The probe comes first so that an up-to-date pipeline is
+    never interrupted to approve work that does not exist, and the estimate is
+    only printed when there is something to price.
+
+    A probe that cannot answer is treated as "there is work". The failure mode
+    that direction is an unnecessary prompt; the other direction silently skips
+    a stage that had something to do, which is the failure this whole gate is
+    here to prevent.
+    """
+    verdict = probe_stage(stage, ticker)
+
+    if verdict == CHECK_FRESH_NOTHING:
+        return GATE_NOTHING
+
+    if verdict is None:
+        print(f"         (the stage could not say whether it has work; "
+              f"assuming it does)")
+
+    print()
+    show_estimate(stage, ticker)
+    print()
+
+    if assume_yes:
+        print(f"         --yes: approved without asking")
+        return GATE_APPROVED
+
+    return (GATE_APPROVED
+            if confirm(f"         Run {stage.name} and spend the above?")
+            else GATE_DECLINED)
 
 
 def run_stage(stage: Stage, ticker: str) -> int:
@@ -262,15 +386,21 @@ class ChainResult:
     selected: list[str] = field(default_factory=list)
     ran: list[str] = field(default_factory=list)
     skipped: list[str] = field(default_factory=list)
+    # Spending stages the gate asked about and found nothing to do. Kept apart
+    # from `skipped`, which means "you told me not to": one is the pipeline
+    # being up to date, the other is an instruction. Reporting them together
+    # would hide the ordinary case inside a flag.
+    nothing_to_do: list[str] = field(default_factory=list)
     not_reached: list[str] = field(default_factory=list)
     failed_at: str | None = None
-    stopped_at: str | None = None
+    declined_at: str | None = None
 
     @property
     def accounted(self) -> int:
         """How many selected stages have an outcome recorded."""
-        return (len(self.ran) + len(self.skipped) + len(self.not_reached)
-                + (1 if self.failed_at else 0) + (1 if self.stopped_at else 0))
+        return (len(self.ran) + len(self.skipped) + len(self.nothing_to_do)
+                + len(self.not_reached)
+                + (1 if self.failed_at else 0) + (1 if self.declined_at else 0))
 
     def reconciles(self) -> bool:
         return self.accounted == len(self.selected)
@@ -278,7 +408,7 @@ class ChainResult:
     def exit_code(self) -> int:
         if self.failed_at:
             return 1
-        if self.stopped_at:
+        if self.declined_at:
             return 3
         return 0
 
@@ -287,9 +417,9 @@ def select(stages: tuple[Stage, ...], first: str | None,
            only: str | None) -> list[Stage]:
     """The stages to walk: all of them, one of them, or a suffix from `first`.
 
-    `--from` exists because the chain stops at the first stage that spends
-    money, so without it there is no way to exercise the seven stages that come
-    after `extract_facts` through this orchestrator at all.
+    `--from` exists so a chain that stopped can be resumed from where it
+    stopped — a declined gate, or a stage that failed and has since been fixed —
+    without re-walking the stages that already succeeded.
     """
     if only:
         if only not in BY_NAME:
@@ -310,16 +440,22 @@ def unknown_stage(name: str) -> str:
 
 
 def run_chain(stages: list[Stage], ticker: str, *, runner=run_stage,
-              skip_spending: bool = False,
-              dry_run: bool = False) -> ChainResult:
-    """Walk the stages in order. Stop at the first failure or spending stage.
+              skip_spending: bool = False, assume_yes: bool = False,
+              gate=None, dry_run: bool = False) -> ChainResult:
+    """Walk the stages in order. Stop at the first failure or declined gate.
 
     `runner` is injected so the chain's own logic — ordering, halting, counting
     — can be tested without launching thirteen subprocesses. It takes
     `(stage, ticker)` and returns an exit code, exactly like `run_stage`.
+
+    `gate` is injected for the same reason: the real one launches two
+    subprocesses and reads stdin, neither of which belongs in a test of whether
+    the chain counted correctly. It takes `(stage, ticker, assume_yes)` and
+    returns one of the GATE_* verdicts below.
     """
     result = ChainResult(selected=[s.name for s in stages])
     total = len(stages)
+    gate = cost_gate if gate is None else gate
 
     for i, stage in enumerate(stages):
         remaining = [s.name for s in stages[i + 1:]]
@@ -330,35 +466,46 @@ def run_chain(stages: list[Stage], ticker: str, *, runner=run_stage,
             result.skipped.append(stage.name)
             continue
 
-        if stage.spends:
-            # The cost gate is not built yet. Until it is, this is where an
-            # unattended run stops — see the module docstring for why this
-            # matters more for generate_outputs than for extract_facts.
-            #
-            # `--dry-run` stops here too, rather than printing the command and
-            # walking on. A dry run exists to report what the real run would
-            # do; one that described a longer chain than the real run takes
-            # would be worse than not having it.
+        if stage.spends and not dry_run:
             print()
-            print(f"[{i + 1:2d}/{total}] {stage.name} — STOPPED")
-            print(f"         This stage makes model calls, and the cost gate "
-                  f"that prompts first is not built yet.")
-            print(f"         Nothing has been spent.")
+            print("-" * 72)
+            print(f"[{i + 1:2d}/{total}] {stage.name} — {stage.produces}")
+            print(f"         This stage makes model calls. Checking whether it "
+                  f"has anything to do.")
+            print("-" * 72)
+            verdict = gate(stage, ticker, assume_yes)
+
+            if verdict == GATE_NOTHING:
+                print(f"         nothing to do — not run, nothing spent")
+                result.nothing_to_do.append(stage.name)
+                continue
+
+            if verdict == GATE_DECLINED:
+                print()
+                print(f"         not approved — stopping here. Nothing spent.")
+                print(f"         Resume when you are ready:")
+                print(f"           uv run pipeline {ticker} --from {stage.name}")
+                if remaining:
+                    print(f"         Or continue past it:")
+                    print(f"           uv run pipeline {ticker} "
+                          f"--from {remaining[0]}")
+                result.declined_at = stage.name
+                result.not_reached = remaining
+                return result
+
+            # Approved. Fall through to the ordinary run below.
             print()
-            print(f"         See what it would cost, for free:")
-            print(f"           uv run python -m equity_research.{stage.name} "
-                  f"--estimate --ticker {ticker}")
-            print(f"         Run it deliberately, then resume the chain:")
-            print(f"           uv run python -m equity_research.{stage.name} "
-                  f"--ticker {ticker}")
-            if remaining:
-                print(f"           uv run pipeline {ticker} "
-                      f"--from {remaining[0]}")
-            print(f"         Or step over the stages that spend:")
-            print(f"           uv run pipeline {ticker} --skip-spending")
-            result.stopped_at = stage.name
-            result.not_reached = remaining
-            return result
+            print(f"         approved — running {stage.name}")
+
+        elif stage.spends and dry_run:
+            # A dry run must not prompt, and must not pretend it would have been
+            # approved either. It reports that the gate is where a decision
+            # happens and counts the stage as reached.
+            print()
+            print(f"[{i + 1:2d}/{total}] {stage.name} — would ask before running "
+                  f"(spends money)")
+            result.ran.append(stage.name)
+            continue
 
         print()
         print("-" * 72)
@@ -398,14 +545,16 @@ def print_summary(result: ChainResult, ticker: str) -> None:
     print(f"  registry        : {len(STAGES)} stages")
     print(f"  selected        : {len(result.selected)}")
     print(f"  ran             : {len(result.ran)}")
+    if result.nothing_to_do:
+        print(f"  nothing to do   : {len(result.nothing_to_do)}  "
+              f"({', '.join(result.nothing_to_do)})")
     if result.skipped:
         print(f"  skipped         : {len(result.skipped)}  "
               f"({', '.join(result.skipped)})")
     if result.failed_at:
         print(f"  FAILED at       : {result.failed_at}")
-    if result.stopped_at:
-        print(f"  stopped at      : {result.stopped_at}  "
-              f"(spends tokens; nothing spent)")
+    if result.declined_at:
+        print(f"  not approved    : {result.declined_at}  (nothing spent)")
     if result.not_reached:
         print(f"  not reached     : {len(result.not_reached)}  "
               f"({', '.join(result.not_reached)})")
@@ -463,9 +612,9 @@ def cmd_stages(args: argparse.Namespace) -> int:
         flag = "  $$" if s.spends else "    "
         print(f"{flag} {i:2d}. {s.name:18s} {s.produces}")
     print()
-    print("  $$ marks the stages that make model calls. `pipeline run` stops "
-          "at these\n     rather than running them; --skip-spending steps "
-          "over them.")
+    print("  $$ marks the stages that make model calls. `pipeline run` asks "
+          "each of them\n     whether it has work, shows what it would cost, "
+          "and asks before running it.")
     return 0
 
 
@@ -481,7 +630,7 @@ def cmd_run(args: argparse.Namespace) -> int:
         print("  --dry-run: commands are printed, nothing is executed")
 
     result = run_chain(stages, ticker, skip_spending=args.skip_spending,
-                       dry_run=args.dry_run)
+                       assume_yes=args.assume_yes, dry_run=args.dry_run)
     print_summary(result, ticker)
     return result.exit_code()
 
@@ -520,9 +669,12 @@ def build_parser() -> argparse.ArgumentParser:
     r.add_argument("--from", dest="start_from", metavar="STAGE",
                    help="start at this stage and continue to the end")
     r.add_argument("--only", metavar="STAGE", help="run just this one stage")
+    r.add_argument("--yes", "-y", dest="assume_yes", action="store_true",
+                   help="approve the cost gates in advance. The stages still "
+                        "run only if they have work to do.")
     r.add_argument("--skip-spending", action="store_true",
-                   help="step over the stages that make model calls, instead "
-                        "of stopping at them")
+                   help="step over the stages that make model calls without "
+                        "asking, even if they have work to do")
     r.add_argument("--dry-run", action="store_true",
                    help="print the stage commands without executing any")
     r.set_defaults(func=cmd_run)
