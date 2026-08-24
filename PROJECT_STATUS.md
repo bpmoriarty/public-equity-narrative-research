@@ -26,14 +26,33 @@ remediated. **Productionizing:** the plan at
 `8a904df`, `fec3785`, `147a6ee`, `800a543`, `d6201dd`, `446ce88`). **Phase 3 is
 complete** (`0facceb`, `15bd33e`, `a7a5890`, `8296182`) — every model call in the
 pipeline now goes through one seam and runs on a Claude seat with no API key.
-**Phase 4 is half built**: 4.1 the orchestrator (`0ce6e3d`), 4.2 the cost gate
-(`45bf0b9`) and 4.3 the generation freshness check (`e2c8784`) are done, with a
-manifest-writer bug fix (`664bf6f`) and the scope document (`99b6b90`) alongside
-them. **`uv run pipeline MORN --yes` now runs all thirteen stages from cache in
-41 seconds and spends nothing.** Remaining in Phase 4: `status`, `estimate`,
-`init` + `companies/_template/`, tests for `cli.py`, and the timestamp churn.
-The repository has a GitHub remote:
+**Phase 4 is COMPLETE and pushed** — `99b6b90` (scope), `664bf6f` (manifest
+writers), `0ce6e3d` (4.1 orchestrator), `e2c8784` (4.3 freshness), `45bf0b9`
+(4.2 cost gate), `4ae2a9e` (status), `a37fab3` (paths), `9665ec2` (4.4/4.5),
+`7b8884b` (4.7 tests), `5e5c1a1` (rule 2), `8e07663` (4.6 init), `7da59e9`
+(4.8 the clock). **Next is Phase 5.** The repository has a GitHub remote:
 https://github.com/bpmoriarty/public-equity-narrative-research
+
+```
+uv run pipeline init TSLA       scaffold a new company from companies/_template/
+uv run pipeline status MORN     what is on disk, per stage
+uv run pipeline estimate MORN   what the two spending stages would cost
+uv run pipeline MORN [--yes]    all thirteen stages, in order
+uv run pipeline stages          the registry
+```
+
+**All six of Phase 4's gates are met**, including the one that was false until
+the last commit: `pipeline MORN --yes` runs end to end from cache in ~40
+seconds, spends nothing, verify green — and leaves `git status` clean. The test
+suite went **269 → 400** checks across the phase, with six new enforcers, each
+proven against planted faults.
+
+> **Four of this phase's most valuable findings came from running things, not
+> reading them.** Three broken manifest writers, a freshness design overturned by
+> measurement, a check count that moved when a second company existed, and
+> encoding corruption the control-byte scanner could not see. None was visible in
+> code review, and two were only visible from a state the author was not in — a
+> colleague's, not this repository's.
 
 > **The orchestrator's first full run found three broken manifest writers.**
 > `fetch`, `extract_sections` and `triage_8k` were still using
@@ -58,6 +77,26 @@ https://github.com/bpmoriarty/public-equity-narrative-research
 > check. A changed system prompt means a re-run would produce something
 > *different*, not that what shipped is *wrong* — so drift is reported, `--force`
 > is offered, and neither spends.
+
+> **Committed artifacts carry no wall clock.** Eight files changed on every full
+> run with no change of substance, from five deterministic stages. The clock
+> moved to the gitignored `data/_meta/run-log.json` rather than being deleted;
+> five stages write that one file, so `settings.record_run` merges. **The one
+> exemption is `as_of_utc` / `index_fetched_utc` in `inventory.json`** — they
+> record when EDGAR was *read*, not when the script ran, and stamping the run's
+> clock on them is VERIFICATION.md D9. Dates are fine in these files; a *time of
+> day* is not, because only a clock changes between two runs over identical
+> inputs.
+
+> **Never edit source through the shell — CLAUDE.md rule 2 now says so.** It
+> covered heredocs and backslash escapes; it did not cover encodings. Five test
+> files edited with PowerShell string replacement came back with 7–34 mojibake
+> sequences each, because `Get-Content -Raw` reads cp1252. The control-byte scan
+> reported **clean** — mojibake is not a control byte. What it broke was three
+> fixtures containing an ellipsis and curly quotes, i.e. those tests' ability to
+> detect a misquotation. Caught only because those three checks failed loudly;
+> corruption in a comment would have been committed. Enforced now by the
+> mojibake check in `tests/test_repo_hygiene.py`.
 
 > **The seat-terms question is answered.** Headless Claude Code use fits the
 > org's terms and Opus is available on the seat. The operating assumption, from
@@ -697,12 +736,11 @@ across 34 calls). Milestones 1–3 cost nothing.
         Opus. All 15 modules moved with history preserved, 15 `sys.path.insert`
         hacks removed (not the 11 the plan claimed). See the Session Log entry
 17. [ ] **Phases 3–5**, in order: 3 Claude Code model seam (**done**, `0facceb`,
-        `15bd33e`, `a7a5890`, `8296182`) → **4 `pipeline` orchestrator + `init`
-        (IN PROGRESS — 4.1/4.2/4.3 done in `0ce6e3d`, `45bf0b9`, `e2c8784`;
-        `status`, `estimate`, `init`, `cli.py` tests and the churn remain. The
-        item-by-item scope is `PHASE4_SCOPE.md`, written from the code before any
-        of it was built — read that rather than re-deriving it)** → 5 test split,
-        model mix, pack subsets, docs.
+        `15bd33e`, `a7a5890`, `8296182`) → 4 `pipeline` orchestrator + `init`
+        (**done** — twelve commits, see Current Status; the item-by-item scope is
+        `PHASE4_SCOPE.md`, written from the code before any of it was built and
+        kept verbatim so the reasoning can be checked against what got built) →
+        **5 test split, model mix, pack subsets, docs (NEXT)**.
         The seat-terms blocker is cleared: headless use fits the terms, Opus is
         on the seat, and API keys are unavailable for almost all colleagues.
         **Two plan corrections found by executing Phase 1 — do not re-derive:**
@@ -734,19 +772,19 @@ across 34 calls). Milestones 1–3 cost nothing.
         to renames until `fec3785` (it filtered `--diff-filter=ACM`, which
         excludes `R`). Phase 2's migration commit was 107 renames out of 130
         files — it would have been almost entirely unscanned
-19. [ ] **Idempotency: eight committed artifacts change on every full run —
-        timestamps only.** Now measured exactly, because `pipeline MORN` touches
-        every stage instead of the few you would run by hand: `discovery-report.md`,
-        `inventory.json`, `ledger-report.md`, `risk-deltas.json`,
-        `risk-diff-report.md`, `triage-8k.json`, `triage-report.md` and
-        `output/timeline.md` — 8 files, 8 changed lines, every one a clock reading.
-        **Smaller than it looked:** the five `FY*.json` ledger files are stable, and
-        `gen-*.json` churns only on `--apply-corrections`. So this is four or five
-        timestamp writers, not thirteen files. The orchestrator turns it from a
-        cosmetic annoyance into a structural one — every `pipeline run` now dirties
-        the tree — which is the "run twice, diff nothing" case from CLAUDE.md rule
-        4. Fix by dropping the timestamp or moving it out of the committed file.
-        Scoped as Phase 4.8; **still undecided whether it lands in Phase 4 or 5**
+19. [x] **Idempotency: the eight committed artifacts no longer change on a
+        re-run.** Done 2026-08-24 as Phase 4.8, commit `7da59e9`. Five
+        deterministic stages stamped the run's clock inside committed files;
+        the clock moved to the gitignored `data/_meta/run-log.json`, written
+        through `settings.record_run`, which MERGES because five stages share
+        that one file. Verified directly, not by proxy: two consecutive
+        `pipeline MORN --yes` runs leave all eight byte-identical, and
+        `git status` on `companies/` is clean afterwards.
+        **What remains is Phase 5's half of it:** the static enforcer added here
+        (no wall clock in a committed artifact) catches the one way this has ever
+        broken, but it cannot *prove* idempotency. That needs the stages run
+        twice against small fixtures — Phase 5 item 2, now better specified than
+        when it was written
 20. [ ] **`DATA.md` still describes `data/` and `output/` as top-level.** Its
         `src/<module>.py` references were fixed in `d6201dd`, but the data-path
         narrative needs prose changes rather than a substitution. The plan puts
@@ -795,13 +833,17 @@ across 34 calls). Milestones 1–3 cost nothing.
         heuristic's blind spot is documented in `test_repo_hygiene.py`: a
         display-only use on neither kind of line will misfire. A data scan over
         all four manifests (662 path values) is the backstop
-26. [ ] **`pipeline init` will break five test files, and the fix is a decision.**
-        Five of the eight test files call `paths()` with no ticker and depend on
-        MORN being the *only* company; `resolve_ticker` hard-errors on two, by
-        design. So the moment `init` scaffolds a second company folder the suite
-        stops running. **Pin `EQR_TICKER=MORN` in `tests/run_all.py` and
-        `tests/suite_test.py`** — that is Phase 5's conftest work pulled forward
-        by one item, and it has to happen before or with Phase 4.6
+26. [x] **The fixture company is named once, and the fix went deeper than the
+        diagnosis.** Done 2026-08-24 in `8e07663`. Six test files (not five —
+        `test_repo_hygiene` too) called `paths()` bare and depended on MORN being
+        the only company. **Exporting a fixture `P` fixed nothing**: every stage
+        module resolves the ticker at IMPORT time, because its path constants are
+        module-level, so `import equity_research.discover` is itself the ambiguous
+        call and it happens first. `tests/fixture.py` therefore sets `EQR_TICKER`
+        and **must be imported before any stage module** — that ordering is
+        load-bearing and commented as such in all six files. Verified with a
+        throwaway second company present: all nine files pass by hand as well as
+        through the runner
 27. [ ] **One path the cost gate's proofs cannot cover: `--yes` against a stale
         document.** Declining was proven four ways (closed stdin, `n`, `maybe`,
         `--skip-spending`) and all four stop the chain having spent nothing. The
@@ -809,6 +851,21 @@ across 34 calls). Milestones 1–3 cost nothing.
         exercise it for free, so it is covered only by injecting a fake gate into
         `run_chain`. "The gate approves correctly" is an untested claim; the first
         real stale run is the test. Worth doing deliberately, watched, once
+28. [ ] **`test_repo_hygiene.py`'s `check()` has a different signature from every
+        other test file's, and it caught me three times in one session.** It is
+        `check(name, ok: bool, detail: str)`; the other eight are
+        `check(name, got, want)`. Passing `want` as `detail` produces a check that
+        fails for the wrong reason, or worse, one that passes vacuously. Worth
+        unifying when Phase 5 splits the suite — the two forms are both
+        reasonable, but not in the same directory
+29. [ ] **A whole-company run makes no EDGAR requests, and that is worth
+        re-testing when a new company is added.** Every `pipeline MORN` run in
+        Phase 4 reported `sec_requests_made: 0` — the cache holds, exactly as
+        CLAUDE.md requires. A first run for a NEW company is the opposite case
+        and has never been exercised: `discover` and `fetch` will make hundreds
+        of requests at the configured 0.15s delay. Watch the first `pipeline
+        init` + run for a real second company before assuming the rate limiting
+        behaves
 
 ---
 
@@ -821,8 +878,12 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `tests/run_all.py` | Runs every test file and compares each one's own count against `tests/expected_counts.json`, **failing in either direction**. Fewer checks than recorded is the failure it exists for: a test that stops testing still reports green |
 | `tests/suite_test.py` | The pytest front-end (`uv run pytest`). Asserts exit code, zero failures, **and the recorded check count** per file. Deliberately not `pytest --collect-only`, which counts test functions and so cannot see a file shrinking from 63 checks to 3. Named `suite_test.py`, not `test_suite.py`, because `run_all.py` globs `test_*.py` and would otherwise recurse |
 | `src/equity_research/_bootstrap.py` | `ROOT`, the Windows cert store, and `.env` — imported first by every stage, for its side effects as much as its value. **Do not delete as unused.** Exists because each module used to compute its own `ROOT` two directories up, which the Phase 1 move made silently wrong by one level |
-| `tests/test_repo_hygiene.py` | 17 checks. Every JSON carrying a top-level `usage.input_tokens` was paid for and must be tracked by git; `companies/MORN/output/*.md` likewise; and inversely, `.env` must not be. Also two path lints. The **path-literal lint**: a `"data/…"` or `"output/…"` string in `src/equity_research/` outside `paths.py` resolves to the repo root instead of the company being run. And the **manifest-path lint** (added `664bf6f`): `relative_to(ROOT)` used to build a stored value rather than a message for a human — the bug that broke three writers for eleven days. Read the comment above `stores_root_relative_path` before changing it; it records why the check reads source rather than data, and the one misfire it can produce |
-| `src/equity_research/cli.py` | **The `pipeline` orchestrator.** `uv run pipeline MORN` walks all thirteen stages in dependency order, one subprocess each; `pipeline stages` lists them. The order is a topological sort of what each module's own path constants say it reads and writes — **not** the plan's order, and note that `build_pack` does *not* depend on `merge_events` having run (it recomputes the merge in memory). The two spending stages go through a cost gate that asks the stage whether it has work before asking you to approve anything. Exit codes: 0 complete, 1 a stage failed, 3 a gate was not approved. Writes no files |
+| `tests/test_repo_hygiene.py` | 27 checks, and the home of most of this project's mechanical enforcers. **Its `check()` is `(name, ok, detail)` — every other test file's is `(name, got, want)`.** Every JSON carrying a top-level `usage.input_tokens` was paid for and must be tracked by git; `companies/MORN/output/*.md` likewise; and inversely, `.env` must not be. Then four lints: **no wall clock** in a committed artifact (dates are fine, a time of day is not — only a clock changes between two runs over identical inputs); **no mojibake** in any tracked text file, the blind spot the control-byte scan cannot see; the **template** must agree with every company config and carry no real CIK; and two path lints. The **path-literal lint**: a `"data/…"` or `"output/…"` string in `src/equity_research/` outside `paths.py` resolves to the repo root instead of the company being run. And the **manifest-path lint** (added `664bf6f`): `relative_to(ROOT)` used to build a stored value rather than a message for a human — the bug that broke three writers for eleven days. Read the comment above `stores_root_relative_path` before changing it; it records why the check reads source rather than data, and the one misfire it can produce |
+| `src/equity_research/cli.py` | **The `pipeline` orchestrator** — `init`, `status`, `estimate`, `run`, `stages`. `uv run pipeline MORN` walks all thirteen stages in dependency order, one subprocess each. The order is a topological sort of what each module's own path constants say it reads and writes — **not** the plan's order, and note that `build_pack` does *not* depend on `merge_events` having run (it recomputes the merge in memory). The two spending stages go through a cost gate that asks the stage whether it has work (`--check-fresh`) before asking you to approve anything, so a cached re-run never prompts. **An unanswerable prompt — closed or piped stdin — counts as no, never as consent.** Exit codes: 0 complete, 1 a stage failed, 3 a gate was not approved. Writes no files |
+| `companies/_template/` | What `pipeline init` copies. Hand-maintained on purpose: `company.toml` is 170 lines of which 125 are comments, and no TOML writer preserves comments — generating it would produce 25 correct settings and destroy the 125 lines explaining them. Kept honest by two checks in `test_repo_hygiene.py`: it must agree with every real company's config on every key, and its `ticker`/`cik`/`resolved_name` must be **empty**, because a template shipping a real CIK would scaffold a config pointing at the wrong company |
+| `tests/fixture.py` | Names the fixture company (MORN) once, for the six test files that read its artifacts. **Sets `EQR_TICKER`, and must be imported before any stage module** — stage modules resolve the ticker at import time, so `import equity_research.discover` is itself an ambiguous call once a second company exists. Exporting `P` alone did not fix it; that is why this sets the environment variable |
+| `src/equity_research/settings.py` | Config layering, window validation, the **one pricing table** with `PRICES_AS_OF`, and `record_run` — where a deterministic stage's clock goes now that committed artifacts carry none. Five stages write that one run log, so `record_run` **merges** rather than replacing (CLAUDE.md rule 4). Also `CHARS_PER_TOKEN = 2.66`, the calibrated fallback for backends that cannot count tokens |
+| `companies/MORN/data/_meta/run-log.json` | When each deterministic stage last ran. **Gitignored** — that is the whole point. Its contents used to live inside eight committed artifacts, which meant every re-run produced a diff with no change of substance |
 | `src/equity_research/paths.py` | **Every filesystem path, resolved per company.** `CompanyPaths` owns the 49 joins that were spread across 15 modules. `resolve()` re-roots a manifest-relative string — the reason the MORN move rewrote no manifest and `pack.json` kept its sha256. Ticker order: `--ticker` → `EQR_TICKER` → the single company; two with no ticker is a **hard error**, never a first-match guess |
 | `src/equity_research/settings.py` | Config layering (global `config/*.toml` + optional `companies/<T>/overrides/`), window validation at 1–10 years, and the **one pricing table** with `PRICES_AS_OF`. Arrays replace wholesale on merge, including arrays of tables — `sections.toml` pattern order is load-bearing and element-wise merging would produce an order neither file describes. Also `CHARS_PER_TOKEN = 2.66`, the calibrated fallback for backends that cannot count tokens |
 | `src/equity_research/model_client.py` | **The model seam.** One interface, two backends: `claude_code` (default — needs a seat, no API key) and `api`. **Read its module docstring before changing anything about model calls** — it records eight measured findings, including that every headless call cache-*writes* its prompt at 2× input price, that an identical prompt does *not* cache, and that `--resume` preserves context while saving nothing. Several contradict the plan |
@@ -1011,6 +1072,84 @@ globbed `output/*.md`, which includes `timeline.md` — a file that legitimately
 re-stamps on every run. It reported "model output changed / something was spent"
 when nothing had. The check was too broad, not the pipeline wrong; `git diff`
 over `facts/`, both prose deliverables and `data/pack/` was empty.
+
+**4.4 and 4.5, `status` and `estimate`** (`a37fab3`, `9665ec2`). The interesting
+part of `status` is what it refuses to say: whether a deterministic stage is up
+to date. Eleven of thirteen cannot answer without doing their work, and the
+tempting substitute — mtimes — is wrong here, because every stage's own staleness
+logic is content-based precisely *because* an mtime says when a file was written
+and not what it was written from. A `status` that guessed from mtimes would
+contradict the stages on the cases that matter and agree everywhere else.
+
+`estimate` does the opposite of the gate on purpose. The gate refuses to price
+work that does not exist, because an unasked-for figure reads as an imminent
+charge; `estimate` prices it anyway, because there the figure is the question.
+That needed a fix to be true: the first version printed "the figures above are
+what a forced re-run would cost" above *no figures at all*, because
+`extract_facts --estimate` returns before pricing anything when every task is
+cached. It now forces when there is nothing outstanding and does not when there
+is — forcing then would quote a bigger number than the one about to be spent.
+
+The path-literal lint earned its keep on a case it was not written for. `status`
+had to name each stage's output, and the lint forbids `"data/…"` strings in
+`src/equity_research/` — so `cli.py` *could not* spell those paths, which pushed
+the question back to `paths.py` and made four missing properties fall out.
+
+**4.7, tests for the orchestrator** (`7b8884b`). 85 checks, pinning the two
+things nothing downstream can check: the stage ORDER (17 explicit
+producer-before-consumer edges, because a stage reading last run's manifest does
+not crash — it completes, reports success, and describes filings it did not
+read) and the MONEY (every answer that is not yes, including the one nobody
+types: a closed stdin). Ten planted faults, all caught by named checks — and
+three defects in the test file found that way, none by reading it. Two were
+unguarded indexing that turned a fault into a crash, taking sixty later checks
+with it. The third was the fault-prover matching any line starting with `FAIL`,
+which caught `run_chain`'s own `FAILED — exit 1` — a line the halting checks
+deliberately provoke — and reported a green 85-check suite as having one failure.
+
+**4.6, `init` and the template** (`8e07663`), plus the mistake it produced.
+`init` copies rather than generates because `company.toml` is 125 comment lines
+that no TOML writer preserves. Two enforcers keep the template honest, both
+proven against planted faults.
+
+The fixture pin went deeper than the diagnosis. Exporting a fixture `P` fixed
+nothing — every stage module resolves the ticker at *import* time, so
+`import equity_research.discover` is itself the ambiguous call. The fix is
+`tests/fixture.py` setting `EQR_TICKER` and being imported first.
+
+**Then I corrupted five test files.** Editing them with PowerShell string
+replacement round-tripped them through cp1252 — `Get-Content -Raw` reads that,
+not UTF-8 — and every non-ASCII character became mojibake, 7 to 34 sequences per
+file. The control-byte scan reported clean, because mojibake is not a control
+byte. What broke was three fixtures containing an ellipsis and curly quotes,
+which is to say those tests' ability to detect a misquotation. Restored from git,
+redone with Edit, and closed with a mojibake check and a rewritten CLAUDE.md rule
+2 (`5e5c1a1`). The check's signatures are *derived* by performing the corruption
+rather than typed, because spelling them out made the file flag itself.
+
+A fix I only found by being in the colleague's state: the template check was
+first written as one check per company, so the check COUNT moved from 20 to 21
+when a second company existed and the count gate failed. A number that moves when
+someone adds a company cannot catch checks disappearing. Now one aggregate check,
+verified stable at 395 with one company and with two.
+
+**4.8, the clock** (`7da59e9`). Eight committed files changed on every full run
+with no change of substance. Five deterministic stages were stamping
+`datetime.now()` inside artifacts that are pure functions of their inputs, so
+rule 4 could never hold. The clock moved to a gitignored run log rather than
+being deleted; five stages share that file, so `record_run` merges — proven by
+running one stage alone and confirming the other four survived.
+
+The one exemption is `as_of_utc` / `index_fetched_utc`, which record when EDGAR
+was *read* rather than when the script ran. `run_utc` moved out of
+`inventory.json` to the run log, and the D9 property is still tested — slightly
+more strongly, since the two values are no longer even in the same file.
+
+Verified directly rather than by proxy: two consecutive runs leave all eight
+byte-identical, and after committing the one-time change, `git status` on
+`companies/` is clean. That is Phase 4 gate 3 met in full for the first time —
+this session had run `git checkout -- companies/` about eight times to work
+around it.
 
 ### 2026-08-17 — Phase 3 finished: the id repair, rebuilt without the pack
 
