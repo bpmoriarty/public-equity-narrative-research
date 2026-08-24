@@ -1,6 +1,6 @@
 # Risk factor deltas
 
-Generated 2026-08-05T16:30:18Z. Deterministic — `rapidfuzz`, no model calls.
+Generated 2026-08-24T15:14:25Z. Deterministic — `rapidfuzz`, no model calls.
 
 Thresholds (config/sections.toml `[risk_diff]`): unchanged at 95, reworded at 60, body reworded below 90.
 

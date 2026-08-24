@@ -1,6 +1,6 @@
 # 8-K triage log — conditional items 7.01 / 8.01
 
-Generated 2026-08-05T19:30:25Z. MORN (Morningstar, Inc.), CIK 0001289419.
+Generated 2026-08-24T15:14:24Z. MORN (Morningstar, Inc.), CIK 0001289419.
 
 Deterministic: no model calls, so the same inputs always give the same decisions and every one can be checked by hand. `config/forms.toml` requires this log — "Log every triage decision; a silent drop here loses real events."
 

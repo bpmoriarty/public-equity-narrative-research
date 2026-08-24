@@ -324,7 +324,13 @@ def main() -> None:
                     "items": row["items"],
                     "doc_type": att["type"], "description": att["description"],
                     "filename": att["filename"],
-                    "path": str(dest.relative_to(ROOT)).replace("\\", "/"),
+                    # P.relative, NOT relative_to(ROOT). See THE MANIFEST
+                    # CONTRACT in paths.py: manifests store paths relative to
+                    # the COMPANY folder ("data/raw/..."), and P.resolve() is
+                    # what re-roots them. relative_to(ROOT) yields
+                    # "companies/MORN/data/raw/..." — which P.resolve rejects,
+                    # so every downstream stage dies on the first record.
+                    "path": P.relative(dest),
                     "bytes": size, "sha256": digest, "url": url, "status": status,
                     "fetched_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                 }

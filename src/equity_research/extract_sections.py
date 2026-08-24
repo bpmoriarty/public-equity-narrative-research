@@ -809,7 +809,10 @@ def main() -> None:
             if ok:
                 dest_dir.mkdir(parents=True, exist_ok=True)
                 (dest_dir / f"{key}.txt").write_text(text, encoding="utf-8")
-                row["out"] = str((dest_dir / f"{key}.txt").relative_to(ROOT)).replace("\\", "/")
+                # P.relative, NOT relative_to(ROOT) — see THE MANIFEST CONTRACT
+                # in paths.py. This path is what extract_facts, build_ledger,
+                # risk_diff and triage_8k all read to find the section text.
+                row["out"] = P.relative(dest_dir / f"{key}.txt")
                 if "factors" in sec:
                     (dest_dir / f"{key}.factors.json").write_text(
                         json.dumps(sec["factors"], indent=2), encoding="utf-8")

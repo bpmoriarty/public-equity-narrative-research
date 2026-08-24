@@ -322,7 +322,11 @@ def triage(cfg: dict, inv: dict, manifest: dict) -> list[dict]:
             docs.append({
                 "doc_type": r["doc_type"], "section_key": r["key"],
                 "is_body": is_body, "path": r["out"],
-                "trimmed_path": str(tp.relative_to(ROOT)).replace("\\", "/"),
+                # P.relative, NOT relative_to(ROOT) — see THE MANIFEST CONTRACT
+                # in paths.py. `path` above is copied straight from the sections
+                # manifest, so it is already in the right form; this one is
+                # built here and has to be converted.
+                "trimmed_path": P.relative(tp),
                 "raw_chars": len(raw), "content_chars": len(net),
                 # Over the cap is SKIPPED and RECORDED. Truncating would hand the
                 # model a partial document that reads as a complete one.

@@ -1,6 +1,6 @@
 # Year ledger
 
-Generated 2026-08-08T02:01:43Z. MORN (Morningstar, Inc.), CIK 0001289419.
+Generated 2026-08-24T15:14:42Z. MORN (Morningstar, Inc.), CIK 0001289419.
 
 Every fact carries its source filing, an exact quote from that filing, and a confidence marker. `low` means the source section's boundaries are unverified, or the quote could not be found verbatim — see `confidence_reason` on the fact. **Any claim in the outputs resting on a `low` fact must say so, or be dropped.**
 
@@ -56,7 +56,7 @@ Values the cited filing contradicts, overridden from `config/corrections.toml`. 
 
 ## Warnings
 
-- FY2021: extraction task 'letter' has no result file — run src/extract_facts.py --fy 2021 --task letter
+- FY2021: extraction task 'letter' has no result file — run `uv run python -m equity_research.extract_facts --fy 2021 --task letter`
 - FY2022 leadership: value corrected by 'desmond-2022-announcement' ({'change': 'departed'} -> {'change': 'departure_announced'})
 - FY2022 investor_qa: unverified quote (8-K_8-K_whole: not found in the source section)
 - FY2023 investor_qa: unverified quote (8-K_8-K_whole: diverges after 205 of 217 characters (94%) — the openin)

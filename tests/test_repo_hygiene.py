@@ -115,6 +115,116 @@ def path_literals() -> list[str]:
     return out
 
 
+# ---------------------------------------------------------------------------
+# THE MANIFEST-PATH LINT
+# ---------------------------------------------------------------------------
+# Manifests store paths relative to the COMPANY folder ("data/raw/..."), and
+# `P.resolve()` re-roots them. `P.relative()` is the one correct way to produce
+# one. `relative_to(ROOT)` produces "companies/MORN/data/raw/..." instead, which
+# P.resolve() rejects outright.
+#
+# Three writers were left using relative_to(ROOT) after the Phase 2 move:
+# fetch.py's manifest `path`, extract_sections.py's `out`, triage_8k.py's
+# `trimmed_path`. All three survived eleven days because none of those stages
+# had been re-run since the migration — every stage was reading manifests
+# written BEFORE the move, which were correct. The first full orchestrated run
+# hit all three at once.
+#
+# WHY THIS IS A SOURCE LINT AND NOT ONLY A DATA CHECK
+# The manifests on disk were correct for the entire time the bug existed. A
+# check that scanned the data would have passed every day and then failed only
+# after the damage was done. The bug lived in source, so the check has to look
+# at source to catch it early. The data scan below is the backstop, not the
+# primary.
+#
+# WHAT SEPARATES A BUG FROM A LEGITIMATE USE
+# There are twenty legitimate `relative_to(ROOT)` calls in the package and every
+# one of them builds a string for a HUMAN to read — inside an f-string in a
+# print() or a sys.exit(). The three bugs all built a string to STORE. So a line
+# is exempt if it is a print/exit call or the continuation of one (a line that
+# begins with an f-string literal), and suspect otherwise.
+#
+# This is a heuristic and it is worth being honest about the edge it cannot see:
+# a display-only use that is neither on a print/exit line nor starts with `f"`
+# will be flagged wrongly. That misfire is loud, appears the moment the line is
+# written, and its fix is usually `P.relative()` anyway. The alternative —
+# matching `str(` or `.replace(` — was tried first and misses
+# `dest.relative_to(ROOT).as_posix()`, which is the same bug spelled without a
+# str() call.
+ROOT_RELATIVE = re.compile(r"\.relative_to\(ROOT\)")
+
+
+def stores_root_relative_path(line: str) -> bool:
+    """True if this line looks like it STORES a relative_to(ROOT) path.
+
+    Kept as a function taking one line so it can be tested against both the
+    three real bug shapes and the legitimate display uses, rather than only
+    against the package as it currently stands. A lint that has only ever seen
+    correct input is untested (CLAUDE.md rule 3).
+    """
+    if not ROOT_RELATIVE.search(line):
+        return False
+    stripped = line.strip()
+    if stripped.startswith("#"):
+        return False
+    # Display uses: the call itself, or a continuation of its message.
+    if "print(" in line or "sys.exit(" in line:
+        return False
+    if stripped.startswith('f"') or stripped.startswith("f'"):
+        return False
+    return True
+
+
+def root_relative_offenders() -> list[str]:
+    """Every line in the package that stores a ROOT-relative path."""
+    src = ROOT / "src" / "equity_research"
+    out = []
+    for p in sorted(src.glob("*.py")):
+        for i, line in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
+            if stores_root_relative_path(line):
+                out.append(f"{p.name}:{i}: {line.strip()[:90]}")
+    return out
+
+
+def root_relative_total() -> int:
+    """How many relative_to(ROOT) calls exist at all, offending or not.
+
+    Non-vacuity. If this reaches zero the lint above is guarding nothing, and
+    the reason would be that the idiom was renamed rather than that the code got
+    safer.
+    """
+    src = ROOT / "src" / "equity_research"
+    return sum(len(ROOT_RELATIVE.findall(p.read_text(encoding="utf-8")))
+               for p in sorted(src.glob("*.py")))
+
+
+# Keys whose value is a path into the company folder. `url` is deliberately not
+# here (it is an EDGAR URL), and neither is anything from config.
+PATH_KEYS = ("path", "out", "trimmed_path")
+
+
+def manifest_path_values(doc) -> list[tuple[str, str]]:
+    """Every (key, value) in a manifest that is supposed to be a path.
+
+    Walks the whole document rather than naming the field per manifest: the
+    three bugs were in three different fields at three different nesting
+    depths, and an enumerated list of fields is one more thing to forget to
+    update when a fourth appears.
+    """
+    found = []
+    if isinstance(doc, dict):
+        for k, v in doc.items():
+            if isinstance(v, str) and v and (k in PATH_KEYS
+                                             or k.endswith("_path")):
+                found.append((k, v))
+            else:
+                found += manifest_path_values(v)
+    elif isinstance(doc, list):
+        for item in doc:
+            found += manifest_path_values(item)
+    return found
+
+
 def git(*args: str) -> subprocess.CompletedProcess:
     return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True)
 
@@ -222,6 +332,104 @@ def main() -> int:
           "\n".join(f"  {o}" for o in offenders) +
           "\nUse the matching CompanyPaths property (P.ledger, P.pack, P.output, "
           "...) or P.resolve() for a manifest-relative value.")
+
+    print()
+    print("MANIFEST PATHS ARE COMPANY-RELATIVE — relative_to(ROOT) is the bug")
+
+    # Both directions on the discriminator, on synthetic lines, so this lint is
+    # tested rather than merely unfired. The three "bug" lines below are the
+    # actual pre-fix source, verbatim.
+    bugs = [
+        '                    "path": str(dest.relative_to(ROOT)).replace("\\\\", "/"),',
+        '                row["out"] = str((dest_dir / f"{key}.txt").relative_to(ROOT)).replace("\\\\", "/")',
+        '                "trimmed_path": str(tp.relative_to(ROOT)).replace("\\\\", "/"),',
+        # The same bug without str(), which an earlier version of this lint missed.
+        '        rec["path"] = dest.relative_to(ROOT).as_posix()',
+    ]
+    caught = [b for b in bugs if stores_root_relative_path(b)]
+    check(f"all {len(bugs)} known bug shapes are flagged",
+          len(caught) == len(bugs),
+          "Not flagged:\n" + "\n".join(f"  {b.strip()}" for b in bugs
+                                       if b not in caught))
+
+    legit = [
+        '    print(f"wrote {(PACK_DIR / \'pack.json\').relative_to(ROOT)}, "',
+        '        sys.exit(f"FATAL: {CORRECTIONS.relative_to(ROOT)} is not usable")',
+        '              f"{CORRECTIONS.relative_to(ROOT)}")',
+        '    # row["out"] = str(x.relative_to(ROOT))  -- how this used to work',
+        '        return path.resolve().relative_to(self.company.resolve()).as_posix()',
+    ]
+    misfired = [l for l in legit if stores_root_relative_path(l)]
+    check(f"none of the {len(legit)} legitimate shapes are flagged",
+          not misfired,
+          "Wrongly flagged — this lint would be dismissed as noise:\n"
+          + "\n".join(f"  {l.strip()}" for l in misfired))
+
+    total = root_relative_total()
+    check(f"the lint has something to guard ({total} relative_to(ROOT) calls)",
+          total > 0,
+          "No relative_to(ROOT) anywhere in the package. Either the idiom was "
+          "renamed — in which case this lint now matches nothing and protects "
+          "nothing — or every use really is gone.")
+
+    offenders = root_relative_offenders()
+    check("no relative_to(ROOT) path is stored in src/equity_research/",
+          not offenders,
+          "These store a path relative to the REPOSITORY ROOT, but manifests "
+          "store paths relative to the COMPANY folder — so P.resolve() rejects "
+          "every one of them and the next stage dies on the first record. Note "
+          "the writer itself exits 0; the damage surfaces two stages later:\n"
+          + "\n".join(f"  {o}" for o in offenders)
+          + "\nUse P.relative(<path>) instead. See THE MANIFEST CONTRACT in "
+            "paths.py.")
+
+    print()
+    print("...AND THE MANIFESTS ON DISK AGREE — the backstop, after a stage runs")
+
+    # inventory.json and triage-8k.json are committed, so they are always here.
+    # fetch-manifest.json and sections-manifest.json are derived and gitignored:
+    # a fresh clone legitimately has neither, so they are scanned when present
+    # rather than required. Scanning zero manifests is still a failure.
+    manifests = {
+        "inventory.json": (P.inventory, True),
+        "triage-8k.json": (P.triage_json, True),
+        "fetch-manifest.json": (P.fetch_manifest, False),
+        "sections-manifest.json": (P.sections_manifest, False),
+    }
+    values: list[tuple[str, str, str]] = []   # (manifest, key, value)
+    for label, (path, committed) in manifests.items():
+        if not path.exists():
+            check(f"{label} is present", not committed,
+                  f"{label} is committed but missing from disk. A committed "
+                  f"record that is gone is not a clean checkout, it is a loss.")
+            continue
+        doc = json.loads(path.read_text(encoding="utf-8"))
+        values += [(label, k, v) for k, v in manifest_path_values(doc)]
+
+    check(f"the scan found manifest paths at all ({len(values)} across "
+          f"{len({v[0] for v in values})} manifest(s))",
+          len(values) > 0,
+          "No path-shaped values found in any manifest. Either the manifests "
+          "are empty or the field names changed, and this backstop is now "
+          "checking nothing.")
+
+    wrong = [f"{m}: {k} = {v}" for m, k, v in values
+             if not v.startswith(("data/", "output/"))]
+    check(f"all {len(values)} manifest path(s) are company-relative",
+          not wrong,
+          "P.resolve() raises on every one of these, so the stage that reads "
+          "them dies on its first record:\n"
+          + "\n".join(f"  {w}" for w in wrong[:10])
+          + ("\n  ..." if len(wrong) > 10 else ""))
+
+    backslashed = [f"{m}: {k} = {v}" for m, k, v in values if "\\" in v]
+    check(f"no manifest path contains a backslash",
+          not backslashed,
+          "A Windows separator in a stored path makes the manifest "
+          "platform-specific, so the same run on Linux produces a different "
+          "file (CLAUDE.md rule 4: run twice, diff nothing). P.relative() "
+          "always emits forward slashes:\n"
+          + "\n".join(f"  {b}" for b in backslashed[:10]))
 
     print()
     print("SECRETS MUST NOT BE TRACKED — the inverse of the rule above")

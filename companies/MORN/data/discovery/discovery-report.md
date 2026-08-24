@@ -4,7 +4,7 @@
 - Fiscal year end: **12-31**
 - Window: **FY2021–FY2025** = 2021-01-01 .. 2025-12-31
 - Submissions index as of: **2026-08-04T17:56:07Z** (cache file mtime — this document was cached before the fetch log existed, so its vintage is inferred, not recorded)
-- This report written: 2026-08-08T02:06:11Z — the index was **3.3 day(s) old** when it was read here
+- This report written: 2026-08-24T15:14:02Z — the index was **19.9 day(s) old** when it was read here
 - Total filings in index: 1000 (reaching back to 2019-07-26)
 
 No filing documents were downloaded. This is metadata only.
