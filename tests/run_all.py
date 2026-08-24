@@ -49,6 +49,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
@@ -80,11 +81,22 @@ def load_expected() -> dict[str, int]:
     return dict(doc["counts"])
 
 
+# The fixture company is named in tests/fixture.py, which the six test files
+# that read MORN's artifacts also import. One home for the answer to "which
+# company do the regression tests read?".
+#
+# Passed to every child as EQR_TICKER as well, so a test file that resolves
+# paths some other way still lands on the same company, and so does anything
+# those files shell out to.
+from fixture import FIXTURE_TICKER  # noqa: E402
+
+
 def run_one(path: Path) -> tuple[int | None, int | None, int, str]:
     """Return (passed, failed, exit_code, output). passed is None if unparseable."""
+    env = {**os.environ, "EQR_TICKER": FIXTURE_TICKER, "PYTHONUTF8": "1"}
     r = subprocess.run([sys.executable, str(path)], cwd=ROOT,
                        capture_output=True, text=True, encoding="utf-8",
-                       errors="replace")
+                       errors="replace", env=env)
     out = (r.stdout or "") + (r.stderr or "")
     hits = COUNT_RE.findall(out)
     if not hits:

@@ -30,6 +30,11 @@ for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
+# fixture FIRST, and that ordering is load-bearing: it sets EQR_TICKER, and the
+# stage modules below resolve the ticker at IMPORT time. `P` used to be bound
+# 220 lines further down, which worked only while MORN was the single company.
+# See tests/fixture.py.
+from fixture import P  # noqa: E402
 import equity_research.generate_outputs as g  # noqa: E402
 from equity_research import model_client  # noqa: E402
 
@@ -255,12 +260,6 @@ check("an id outside brackets is still not prose",
 
 print("\nthe id pattern tracks ledger_schema, so a new field cannot become uncheckable")
 from equity_research.ledger_schema import FIELD_CODES  # noqa: E402
-from equity_research.paths import paths  # noqa: E402
-
-# Every data/ and output/ path for the company this run operates on.
-# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
-# single company under companies/ -- see equity_research/paths.py.
-P = paths()
 check("every field code the ledger can mint is matched by ID_RE",
       sorted({code for code in FIELD_CODES.values()
               if not g.ID_RE.fullmatch(f"{code}-FY2023-0123abcd")}), [])

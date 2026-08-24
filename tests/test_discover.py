@@ -31,13 +31,12 @@ for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
+# fixture FIRST, and that ordering is load-bearing: it sets EQR_TICKER, and the
+# stage module below resolves the ticker at IMPORT time (its path constants are
+# module-level). Was `paths()`, which found MORN only because MORN was the single
+# company under companies/. See tests/fixture.py.
+from fixture import P  # noqa: E402
 import equity_research.discover as d  # noqa: E402
-from equity_research.paths import paths  # noqa: E402
-
-# Every data/ and output/ path for the company this run operates on.
-# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
-# single company under companies/ -- see equity_research/paths.py.
-P = paths()
 
 PASS = FAIL = 0
 

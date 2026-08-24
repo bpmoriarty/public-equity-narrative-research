@@ -1,0 +1,57 @@
+# Corrections to model-extracted values.
+#
+# ---------------------------------------------------------------------------
+# WHY THIS FILE EXISTS RATHER THAN AN EDIT TO data/ledger/facts/
+# ---------------------------------------------------------------------------
+# data/ledger/facts/ is the audit record of what the extraction model actually
+# returned. It is the reason every quote in the ledger is checkable after the
+# fact, and editing it would destroy exactly the property that makes the ledger
+# worth trusting — a corrected file and a correct-in-the-first-place file are
+# indistinguishable once you have overwritten it.
+#
+# So corrections live here instead: applied by src/equity_research/build_ledger.py after the raw
+# extraction is loaded and before the fact is constructed. The model's output
+# stays as it was, the correction is a separate, reviewable, version-controlled
+# artifact, and the fact carries a `correction` block recording both.
+#
+# ---------------------------------------------------------------------------
+# WHAT A CORRECTION IS AND IS NOT
+# ---------------------------------------------------------------------------
+# A correction fixes a value the CITED FILING CONTRADICTS. The `evidence` field
+# must quote the filing text that establishes it. That is the whole bar: this
+# file is not for improving a fact, disambiguating a judgment call, or importing
+# knowledge from outside the filings. If the filings do not settle it, the
+# project's rule is to say so in the output, not to correct it here.
+#
+# ---------------------------------------------------------------------------
+# EVERY CORRECTION MUST STILL MATCH SOMETHING
+# ---------------------------------------------------------------------------
+# `match` identifies the target by content, not by id, because correcting a value
+# CHANGES the id — `fact_id` hashes the value. A correction is required to match
+# exactly one fact; matching zero or several is fatal at build time. A stale
+# correction that silently no-ops would put the ledger back to the defective value
+# with nothing to show for it, which is the failure mode this project keeps
+# catching in other forms.
+
+# ---------------------------------------------------------------------------
+# TWO KINDS OF CORRECTION LIVE HERE
+# ---------------------------------------------------------------------------
+# [[correction]]          a value in the LEDGER, applied by src/equity_research/build_ledger.py.
+# [[document_correction]] a sentence in a GENERATED DOCUMENT, applied by
+#                         uv run python -m equity_research.generate_outputs --apply-corrections.
+#
+# The second exists because the deliverables are model-written prose that costs
+# ~$3.50 a pass and does not reproduce byte-for-byte. When one sentence is wrong,
+# regenerating the document to fix it throws away every other sentence that was
+# already verified — and produces a new document that has to be verified again from
+# scratch. So a sentence is corrected in place, and the mechanism refuses to let
+# that happen silently: `text` in data/pack/gen-<slug>.json keeps the model's own
+# words, `shipped_text` holds what was actually published, and
+# tests/test_generate_outputs.py checks the file on disk against `shipped_text` and
+# fails if a record claims a correction it cannot show the original for. A hand-edit
+# of output/*.md is still caught, which is the point.
+
+
+# No corrections yet. Add [[correction]] or [[document_correction]] blocks
+# here as review finds things; an empty file means zero corrections, which is
+# a valid and common state.

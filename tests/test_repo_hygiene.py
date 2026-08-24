@@ -43,6 +43,7 @@ import json
 import re
 import subprocess
 import sys
+import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -51,13 +52,15 @@ for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
-from equity_research.paths import paths  # noqa: E402
+# fixture FIRST: it sets EQR_TICKER, which every later paths() call reads.
+from fixture import P  # noqa: E402
+from equity_research.paths import known_tickers  # noqa: E402
 
 # ROOT stays: this file walks the WHOLE repository looking for paid model output,
 # which is a repo-level question, not a per-company one — a company folder added
 # tomorrow with ignored facts/ must fail this suite too. `P` is only for the
-# checks that name a specific company's artifacts.
-P = paths()
+# checks that name a specific company's artifacts, and comes from
+# tests/fixture.py so that a second company folder does not make it ambiguous.
 
 PASS = FAIL = 0
 
@@ -432,6 +435,171 @@ def main() -> int:
           "file (CLAUDE.md rule 4: run twice, diff nothing). P.relative() "
           "always emits forward slashes:\n"
           + "\n".join(f"  {b}" for b in backslashed[:10]))
+
+    print()
+    print("NO MOJIBAKE — the blind spot in the control-byte scan")
+
+    # tools/check_control_bytes.py enforces CLAUDE.md rule 2 by looking for raw
+    # control bytes, the signature of a regex escape mangled by a shell heredoc.
+    # It cannot see the OTHER way a shell corrupts source: an encoding round
+    # trip. Read a UTF-8 file as cp1252 and write it back as UTF-8 and every
+    # non-ASCII character becomes the two or three Latin-1 characters its bytes
+    # happen to mean in cp1252 — an ellipsis turns into an a-circumflex, a euro
+    # sign and a broken bar. The file still parses, still imports, and the
+    # control-byte scan still reports clean.
+    #
+    # Deliberately DESCRIBED rather than shown: spelling the corrupted form out
+    # here put mojibake in this file and made this very check fail on it. That is
+    # the check working, and it is also why the markers below are derived rather
+    # than typed.
+    #
+    # Not hypothetical. Five test files were edited with PowerShell string
+    # replacement during Phase 4.6; `Get-Content -Raw` reads as cp1252 in
+    # PowerShell 5.1, and all five came back with 7 to 34 corrupted sequences
+    # each. Three checks in test_generate_outputs.py failed — the ones whose
+    # fixtures contain an ellipsis and curly quotes — and the scan said clean.
+    # The corruption was in the test fixtures, so what it broke was the ability
+    # of those tests to detect a misquotation.
+    #
+    # The signatures are DERIVED by performing the corruption, not typed out.
+    # Typing them would make this file contain mojibake and flag itself — which
+    # it did, on the first run of this check. Deriving them also means the
+    # markers cannot be subtly wrong: they are whatever the real round trip
+    # produces.
+    def as_cp1252(s: str) -> str:
+        """What `s` becomes when its UTF-8 bytes are read as cp1252."""
+        return s.encode("utf-8").decode("cp1252", errors="replace")
+
+    # An em dash gives the two-character lead-in shared by every misread
+    # punctuation mark; a non-breaking space gives the one-character form.
+    # Neither occurs in correctly encoded English or code.
+    #
+    # Written as escapes, not as the characters themselves: the first version
+    # used a literal non-breaking space, which is indistinguishable from a
+    # normal one in an editor. A normal space derives the marker " ", which is
+    # present in every file ever written — both checks below failed, and
+    # neither said anything about why.
+    MOJIBAKE = (as_cp1252('—')[:2], as_cp1252(' ')[:1])
+
+    def mojibake_in(path: Path) -> list[str]:
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            return []
+        return [m for m in MOJIBAKE if m in text]
+
+    # Both directions, on synthetic input, so this is tested rather than merely
+    # unfired: a checker that has only seen clean files is not known to work.
+    clean_sample = ("an ellipsis … and a dash — and curly quotes "
+                    "“like this”, plus café, naïve and a "
+                    "non-breaking space")
+    check("the signature matches text that really has been round-tripped",
+          all(m in as_cp1252(clean_sample) for m in MOJIBAKE),
+          "The markers no longer match text that IS corrupted, so this check "
+          "protects nothing.")
+    check("correctly encoded punctuation is NOT flagged",
+          not any(m in clean_sample for m in MOJIBAKE),
+          "The markers fire on legitimate UTF-8, so this check would be "
+          "dismissed as noise on the day it was right.")
+
+    text_ext = {".py", ".md", ".toml", ".json", ".txt", ".cfg", ".yml", ".yaml"}
+    corrupted = []
+    for rel in sorted(tracked):
+        p = ROOT / rel
+        if p.suffix.lower() not in text_ext or not p.is_file():
+            continue
+        hits = mojibake_in(p)
+        if hits:
+            corrupted.append(f"{rel}: {', '.join(hits)}")
+    check(f"no tracked text file contains mojibake "
+          f"({len(tracked)} tracked, {len(text_ext)} extensions scanned)",
+          not corrupted,
+          "These were almost certainly written by a tool that read them in one "
+          "encoding and wrote them in another — PowerShell's Get-Content reads "
+          "cp1252 by default. Restore from git and redo the edit with a "
+          "UTF-8-aware editor:\n"
+          + "\n".join(f"  {c}" for c in corrupted[:10]))
+
+    print()
+    print("THE TEMPLATE MUST NOT FALL BEHIND — a missing key fails on a new company")
+
+    # companies/_template/ is a hand-maintained copy of a company's config,
+    # because company.toml is 125 comment lines that no TOML writer can preserve
+    # (see the note above cmd_init in cli.py). The cost of hand-maintained is
+    # drift: add a [generation] setting, update MORN, forget the template, and
+    # `pipeline init TSLA` produces a config missing a key. The failure then
+    # lands on whoever starts the next company rather than on whoever changed the
+    # schema, which is the worst place for it.
+    #
+    # Compared as TABLES and KEYS, never values — the template's values are
+    # deliberately blank or placeholder, which is the whole point of it.
+    template = ROOT / "companies" / "_template" / "company.toml"
+    check("companies/_template/company.toml exists", template.exists(),
+          "`pipeline init` copies this file; without it no new company can be "
+          "created.")
+
+    def key_shape(path: Path) -> set[str]:
+        """{"table.key"} for every setting, ignoring values."""
+        doc = tomllib.loads(path.read_text(encoding="utf-8"))
+        out = set()
+        for table, body in doc.items():
+            if isinstance(body, dict):
+                out |= {f"{table}.{k}" for k in body}
+            else:
+                out.add(table)
+        return out
+
+    if template.exists():
+        want = key_shape(template)
+        # Non-vacuity: an empty key set would make every comparison below pass
+        # by agreeing about nothing.
+        check(f"the template declares settings at all ({len(want)} keys)",
+              len(want) > 0,
+              "No tables or keys parsed out of the template, so the comparisons "
+              "below are vacuous.")
+        # ONE check across every company, not one check per company.
+        #
+        # The per-company version was written first and is wrong here: it made
+        # this file's check COUNT depend on how many company folders happen to
+        # exist, so `pipeline init` for a second company took it from 20 to 21
+        # and the count gate failed. That gate exists to catch checks
+        # disappearing; a number that moves when someone adds a company is a
+        # number that cannot do that job. Caught by running the suite with a
+        # throwaway company present, which is the state a colleague is in.
+        tickers = known_tickers()
+        problems = []
+        for t in tickers:
+            cfg = ROOT / "companies" / t / "company.toml"
+            if not cfg.exists():
+                problems.append(f"{t}: no company.toml at all")
+                continue
+            diff = key_shape(cfg) ^ want
+            if diff:
+                problems.append(
+                    f"{t}: only in {t} {sorted(key_shape(cfg) - want)}; "
+                    f"only in template {sorted(want - key_shape(cfg))}")
+        # The three fields that must arrive EMPTY in a new company. `cik` and
+        # `resolved_name` are tripwires: discovery resolves the CIK from the
+        # ticker and stops if a value disagrees. A template that shipped a real
+        # CIK would scaffold a config pointing at the wrong company, and every
+        # stage would then run perfectly on another company's filings — the
+        # failure this project guards against hardest, arriving by the one route
+        # nobody would think to check.
+        tmpl = tomllib.loads(template.read_text(encoding="utf-8"))
+        blanks = {k: tmpl.get("company", {}).get(k)
+                  for k in ("ticker", "cik", "resolved_name")}
+        check("the template's ticker, cik and resolved_name are all empty",
+              all(v == "" for v in blanks.values()),
+              f"Got {blanks}. Whoever refreshed this template left a real "
+              f"company's values in it.")
+
+        check(f"all {len(tickers)} company config(s) agree with the template "
+              f"on every key",
+              not problems,
+              "\n".join(problems)
+              + "\nAdd the setting to both, or the next `pipeline init` "
+                "scaffolds a config that is missing it. Keys are compared, "
+                "never values — the template's values are deliberately blank.")
 
     print()
     print("SECRETS MUST NOT BE TRACKED — the inverse of the rule above")

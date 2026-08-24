@@ -531,5 +531,40 @@ try:
 finally:
     cli.probe_stage, cli.show_estimate = real_probe, real_estimate
 
+# ---------------------------------------------------------------------------
+print()
+print("INIT — creates a company or refuses; never writes into an existing one")
+# ---------------------------------------------------------------------------
+
+check("the template files init copies are present",
+      [f for f in cli.TEMPLATE_FILES
+       if not (cli.COMPANIES_DIR / "_template" / f).exists()], [])
+
+for good in ("TSLA", "brk.b", "RDS-A", "F", "A1B2C3D4E5"):
+    check(f"accepted as a ticker: {good}",
+          bool(cli.TICKER_RE.match(good)), True)
+for bad in ("", "1ABC", "not a ticker", "TOOLONGTICKER", "AB/CD", "AB CD"):
+    check(f"rejected as a ticker: {bad!r}",
+          bool(cli.TICKER_RE.match(bad)), False)
+
+
+def init(ticker: str) -> bool:
+    """True if init refused (SystemExit). Never allowed to create anything."""
+    before = set(cli.known_tickers())
+    refused = raises(lambda: cli.cmd_init(
+        type("A", (), {"ticker": ticker})()))
+    # A refusal that still left a directory behind would be worse than either
+    # outcome, so assert the company set did not move.
+    assert set(cli.known_tickers()) == before, (
+        f"init({ticker!r}) changed the set of companies while refusing")
+    return refused
+
+
+# MORN exists, so this exercises the refusal against a real folder — and the
+# assertion inside `init` proves the refusal did not touch it.
+check("refuses a company that already exists", init("MORN"), True)
+check("refuses a ticker that is not one", init("not a ticker"), True)
+check("refuses an empty ticker", init(""), True)
+
 print(f"\n{PASS} passed, {FAIL} failed")
 sys.exit(1 if FAIL else 0)

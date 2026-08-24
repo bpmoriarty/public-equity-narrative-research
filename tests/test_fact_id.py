@@ -27,14 +27,11 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+# fixture FIRST, and that ordering is load-bearing: it sets EQR_TICKER, which
+# every later paths() call reads. See tests/fixture.py.
+from fixture import P  # noqa: E402
 from equity_research.ledger_schema import (FactSource, LedgerFact,  # noqa: E402
                                            fact_id, risk_delta_id)
-from equity_research.paths import paths
-
-# Every data/ and output/ path for the company this run operates on.
-# `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
-# single company under companies/ -- see equity_research/paths.py.
-P = paths()
 
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):

@@ -107,12 +107,16 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
+import shutil
 import subprocess
 import sys
 import time
 from dataclasses import dataclass, field
 
-from equity_research.paths import known_tickers, paths, resolve_ticker
+from equity_research._bootstrap import ROOT
+from equity_research.paths import (COMPANIES_DIR, known_tickers, paths,
+                                   resolve_ticker)
 
 
 # ---------------------------------------------------------------------------
@@ -728,6 +732,121 @@ def cmd_status(args: argparse.Namespace) -> int:
     return 0
 
 
+# ---------------------------------------------------------------------------
+# init
+# ---------------------------------------------------------------------------
+#
+# WHY THIS COPIES A FILE INSTEAD OF GENERATING ONE
+# `company.toml` is 170 lines of which 125 are comments, and the comments are the
+# valuable part: they are why `cik` is a tripwire rather than an input, what the
+# difference between a fiscal and a filing year is, and what happens when a
+# company moves its year-end mid-window. Python's standard library can READ TOML
+# and cannot write it, and every TOML writer that exists serialises from a parsed
+# structure — which is to say, without comments. Generating this file would
+# produce 25 correct settings and destroy the 125 lines explaining them.
+#
+# So `companies/_template/` holds real files, hand-maintained, copied verbatim.
+# `init` is a copy, two mkdirs and a checklist. Nothing here writes TOML.
+#
+# The template is kept honest by tests/test_repo_hygiene.py, which asserts it has
+# the same tables and keys as every real company's config. Without that, adding a
+# setting to one and not the other produces a template missing a key, and the
+# failure lands on whoever starts the NEXT company rather than on whoever changed
+# the schema.
+
+TICKER_RE = re.compile(r"^[A-Za-z][A-Za-z0-9.\-]{0,9}$")
+
+# Copied into a new company. README.md is deliberately not here: it describes the
+# template itself, not a company.
+TEMPLATE_FILES = ("company.toml", "corrections.toml")
+
+
+def cmd_init(args: argparse.Namespace) -> int:
+    raw = args.ticker.strip()
+    if not TICKER_RE.match(raw):
+        raise SystemExit(
+            f"FATAL: {raw!r} does not look like a ticker.\n"
+            "Expected 1-10 characters, starting with a letter — letters, digits, "
+            "dots and hyphens\nafter that (BRK.B and RDS-A are both fine).")
+    ticker = raw.upper()
+
+    template = COMPANIES_DIR / "_template"
+    missing = [f for f in TEMPLATE_FILES if not (template / f).exists()]
+    if missing:
+        raise SystemExit(
+            f"FATAL: companies/_template/ is missing {', '.join(missing)}.\n"
+            "That directory is the source for every new company; it is committed, "
+            "so this means\nthe checkout is incomplete rather than that something "
+            "needs creating.")
+
+    dest = COMPANIES_DIR / ticker
+    if dest.exists():
+        # Never merge, never overwrite. The thing that would be overwritten is
+        # hand-authored config, and a half-reset company folder is worse than
+        # either a fresh one or the one that was already there.
+        raise SystemExit(
+            f"FATAL: companies/{ticker}/ already exists.\n"
+            f"`init` creates a company or refuses; it will not write into an "
+            f"existing one, because\nthe files it would replace are edited by "
+            f"hand. Delete the folder yourself if you\nmean to start over.")
+
+    existing = known_tickers()
+
+    dest.mkdir(parents=True)
+    for name in TEMPLATE_FILES:
+        shutil.copyfile(template / name, dest / name)
+    # The stages each create what they need, but an empty pair of directories
+    # makes the shape of a company obvious to someone looking at the folder.
+    (dest / "data").mkdir()
+    (dest / "output").mkdir()
+
+    # Spelled inline in the prints rather than assigned to a local, because the
+    # manifest-path lint in tests/test_repo_hygiene.py flags a
+    # `relative_to(ROOT)` that is not on a print or exit line — and it flagged
+    # this. That is the documented false positive of a deliberately narrow
+    # heuristic, and the lint is right to be narrow: `.relative_to(ROOT)
+    # .as_posix()` assigned to a variable is the exact shape one of the three
+    # real manifest bugs would have taken. Cheaper to write it twice than to
+    # widen the check that catches those.
+    print(f"Created {dest.relative_to(ROOT).as_posix()}/")
+    for name in TEMPLATE_FILES:
+        print(f"  {name}")
+    print(f"  data/    output/")
+    print()
+    print(f"BEFORE RUNNING ANYTHING, edit "
+          f"{dest.relative_to(ROOT).as_posix()}/company.toml:")
+    print(f"  1. ticker = \"{ticker}\"          — it is empty in the template")
+    print(f"  2. [window] first_fiscal_year and last_fiscal_year — both are 0")
+    print(f"  3. LEAVE cik AND resolved_name EMPTY. Discovery resolves the CIK "
+          f"from the")
+    print(f"     ticker and stops if a value here disagrees with it. They are "
+          f"tripwires, not")
+    print(f"     inputs — a CIK typed from memory returns a DIFFERENT company's "
+          f"filings and")
+    print(f"     every stage then runs perfectly on the wrong data.")
+    print()
+    print(f"And check EDGAR_IDENTITY is set in .env — the SEC blocks requests "
+          f"without it.")
+    print()
+    print(f"Then:  uv run pipeline status {ticker}")
+    print(f"       uv run pipeline {ticker}")
+
+    if existing:
+        # The moment a second company exists, every bare invocation becomes
+        # ambiguous and paths.py refuses to guess. Better said here than
+        # discovered as a hard error later.
+        print()
+        print(f"NOTE: there are now {len(existing) + 1} companies "
+              f"({', '.join(sorted([*existing, ticker]))}).")
+        print(f"Stage commands no longer infer which one you mean, so pass "
+              f"--ticker {ticker} or set")
+        print(f"EQR_TICKER. `pipeline {ticker}` already takes it as an "
+              f"argument. This is deliberate:")
+        print(f"silently picking a company would run every stage perfectly "
+              f"against the wrong filings.")
+    return 0
+
+
 def cmd_estimate(args: argparse.Namespace) -> int:
     """What the spending stages would cost, and whether they would run at all.
 
@@ -801,7 +920,7 @@ def cmd_run(args: argparse.Namespace) -> int:
 # Entry point
 # ---------------------------------------------------------------------------
 
-SUBCOMMANDS = ("run", "stages", "status", "estimate")
+SUBCOMMANDS = ("run", "stages", "status", "estimate", "init")
 
 
 def normalise_argv(argv: list[str]) -> list[str]:
@@ -857,6 +976,11 @@ def build_parser() -> argparse.ArgumentParser:
     e.add_argument("ticker", nargs="?", default=None,
                    help="company to price")
     e.set_defaults(func=cmd_estimate)
+
+    i = sub.add_parser("init",
+                       help="scaffold a new company from companies/_template/")
+    i.add_argument("ticker", help="ticker for the new company, e.g. TSLA")
+    i.set_defaults(func=cmd_init)
 
     return ap
 
