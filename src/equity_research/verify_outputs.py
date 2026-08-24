@@ -576,7 +576,7 @@ def main() -> None:
 
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     PACK_DIR.mkdir(parents=True, exist_ok=True)
-    (PACK_DIR / "verify-report.md").write_text(
+    P.verify_report.write_text(
         render_report(reports, sha, stamp), encoding="utf-8")
 
     total = sum(len(r.failures) for r in reports)
@@ -584,7 +584,7 @@ def main() -> None:
     # Printed from the real path rather than a literal: with the report now under
     # companies/<TICKER>/, a hardcoded "data/pack/..." would name a file that does
     # not exist and send a reader looking in the wrong place.
-    print(f"wrote {(PACK_DIR / 'verify-report.md').relative_to(ROOT).as_posix()}")
+    print(f"wrote {P.verify_report.relative_to(ROOT).as_posix()}")
     if total:
         sys.exit(f"\nFATAL: {total} hard check(s) failed across "
                  f"{sum(1 for r in reports if r.failures)} document(s).")

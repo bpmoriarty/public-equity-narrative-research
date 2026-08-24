@@ -574,7 +574,7 @@ def main() -> None:
         return
 
     PACK_DIR.mkdir(parents=True, exist_ok=True)
-    (PACK_DIR / "timeline-events.json").write_text(
+    P.timeline_events.write_text(
         json.dumps(block, indent=1, ensure_ascii=False, sort_keys=True), encoding="utf-8")
 
     print("Timeline events")
@@ -632,7 +632,7 @@ def main() -> None:
 
     print()
     print("=" * 72)
-    print(f"wrote {(PACK_DIR / 'timeline-events.json').relative_to(ROOT)}, timeline-report.md")
+    print(f"wrote {P.timeline_events.relative_to(ROOT)}, timeline-report.md")
 
 
 if __name__ == "__main__":

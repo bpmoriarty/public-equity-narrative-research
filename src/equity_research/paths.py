@@ -259,6 +259,31 @@ class CompanyPaths:
     def fetch_log(self) -> Path:
         return self.meta / "fetch-log.json"
 
+    # The four below were each spelled at their producing and consuming sites
+    # rather than here — `LEDGER_DIR / "risk-deltas.json"` in build_ledger and
+    # `OUT_DIR / "risk-deltas.json"` in risk_diff, for the same file. That is two
+    # answers to "where does this live", which is the thing this module exists to
+    # prevent, and it only stayed harmless because both spellings happened to
+    # agree. Added when `pipeline status` needed to name them: the path-literal
+    # lint in tests/test_repo_hygiene.py forbids cli.py from spelling them
+    # itself, which is what surfaced the gap.
+
+    @property
+    def risk_deltas(self) -> Path:
+        return self.ledger / "risk-deltas.json"
+
+    @property
+    def timeline_events(self) -> Path:
+        return self.pack / "timeline-events.json"
+
+    @property
+    def timeline_md(self) -> Path:
+        return self.output / "timeline.md"
+
+    @property
+    def verify_report(self) -> Path:
+        return self.pack / "verify-report.md"
+
     # -- the manifest contract ----------------------------------------------
 
     def resolve(self, rel: str | Path) -> Path:

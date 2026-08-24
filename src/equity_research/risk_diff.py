@@ -280,7 +280,7 @@ def main() -> None:
         "factor_counts": {str(y): len(data[y]["factors"]) for y in years},
         "years": results,
     }
-    (OUT_DIR / "risk-deltas.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    P.risk_deltas.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
     # --- human-readable report --------------------------------------------
     lines = ["# Risk factor deltas", "",

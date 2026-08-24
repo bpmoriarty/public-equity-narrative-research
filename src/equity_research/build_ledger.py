@@ -71,7 +71,7 @@ LEDGER_DIR = P.ledger
 FACTS_DIR = LEDGER_DIR / "facts"
 SECTIONS_MANIFEST = P.sections_manifest
 INVENTORY = P.inventory
-RISK_DELTAS = LEDGER_DIR / "risk-deltas.json"
+RISK_DELTAS = P.risk_deltas
 CORRECTIONS = P.corrections_toml
 
 # A literal backslash-u-XXXX sitting in stored text, rather than the character it

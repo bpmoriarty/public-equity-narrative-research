@@ -174,7 +174,7 @@ def render() -> str:
     # above recomputes the rows in memory, so the render itself does not need the file
     # — but the document records its input's hash, and a missing input must say which
     # stage produces it rather than raising a bare FileNotFoundError from a rebuild.
-    events = PACK_DIR / "timeline-events.json"
+    events = P.timeline_events
     if not events.exists():
         sys.exit(f"FATAL: {events.relative_to(ROOT)} not found.\n"
                  f"  Build it first: uv run python -m equity_research.merge_events")
@@ -311,7 +311,7 @@ def main() -> None:
         return
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    path = OUT_DIR / "timeline.md"
+    path = P.timeline_md
     path.write_text(text, encoding="utf-8")
 
     block = timeline_block(include_quotes=False)
