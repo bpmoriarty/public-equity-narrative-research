@@ -91,14 +91,28 @@ three times, each time to a different artifact, twice *after* the explanation
 had been written into `.gitignore` directly above.
 *Enforced by `tests/test_repo_hygiene.py`.*
 
-**2. Never write source through a shell heredoc.** Backslash escapes do not
-survive it: `\b` has arrived on disk as byte 0x08 and `\1` as 0x01, three times.
-The file still imports, still lints, still looks right in an editor — and the
-regex built on it silently matches nothing, so the check it powers reports green
-forever. Use Write/Edit. This is the worst failure shape available here: a
-checker that passes *because* it is broken.
+**2. Never edit source through the shell — not a heredoc, not string
+replacement, not any read-modify-write in PowerShell or bash.** Two distinct
+corruptions, both silent, both seen here.
+
+*Backslash escapes do not survive a heredoc*: `\b` has arrived on disk as byte
+0x08 and `\1` as 0x01, three times. The file still imports, still lints, still
+looks right in an editor — and the regex built on it silently matches nothing,
+so the check it powers reports green forever.
+
+*Encodings do not survive a round trip*: PowerShell 5.1's `Get-Content` reads
+cp1252, so reading a UTF-8 file and writing it back turns every non-ASCII
+character into two or three Latin-1 ones. Done to five test files in Phase 4.6,
+producing 7–34 corrupted sequences each. The control-byte scan reported clean —
+mojibake is not a control byte — and what broke was three fixtures containing an
+ellipsis and curly quotes, which is to say the ability of those tests to detect a
+misquotation.
+
+Use Write/Edit. If a change really needs scripting, script it in Python with
+`encoding="utf-8"` stated on both the read and the write.
 *Enforced by `tools/check_control_bytes.py` via `.githooks/pre-commit`, with an
-advisory `PreToolUse` hook in `.claude/settings.json`.*
+advisory `PreToolUse` hook in `.claude/settings.json`; the encoding half is
+enforced by the mojibake check in `tests/test_repo_hygiene.py`.*
 
 **3. Run every new hard check against something that fails it, before trusting
 it.** A check that has only ever seen correct input is untested — you have
