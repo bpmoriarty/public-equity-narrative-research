@@ -1,18 +1,542 @@
-"""Console-script entry point for the `pipeline` command.
+"""The `pipeline` command: run every stage for one company, in order.
 
-STUB — not implemented yet. The pipeline stages are currently run individually
-(`uv run python -m equity_research.discover`, `...fetch`, etc.); a single
-orchestrating `pipeline` command is planned for a later phase. This module
-exists now only so `[project.scripts] pipeline = "equity_research.cli:main"`
-resolves to something importable, without pretending the orchestration works.
+WHAT THIS IS
+------------
+Thirteen stages turn a ticker into three documents. Run by hand that is thirteen
+commands in an order you have to remember, and the order is not guessable — one
+stage reads a manifest another wrote four stages earlier. This module holds that
+order once, as data, and walks it.
+
+    uv run pipeline MORN            # every stage, in order
+    uv run pipeline stages          # what the stages are, without running them
+
+WHY A SUBPROCESS PER STAGE
+--------------------------
+Each stage is already a working program with its own `main()`, its own argparse,
+and its own idea of what counts as fatal. Importing them and calling `main()`
+in-process would mean either rewriting thirteen `main()` signatures to return an
+exit code, or catching `SystemExit` around each call and hoping none of them
+left global state behind.
+
+Running them as `python -m equity_research.<stage>` costs an interpreter start
+(about a fifth of a second) and buys three things outright:
+
+  1. **Failure reporting for free.** Every stage signals fatal errors with
+     `sys.exit("message")`, which is exit code 1 with the message on stderr.
+     A subprocess exit code is the whole contract; nothing here has to know how
+     a particular stage decided to give up.
+  2. **Real isolation.** A stage that leaves a module-level cache populated, or
+     reconfigures `sys.stdout`, cannot affect the next one.
+  3. **The stages stay runnable by hand.** Nothing in this file is a new entry
+     point into them. `uv run python -m equity_research.build_pack` does exactly
+     what this orchestrator does to `build_pack`, which means a stage can be
+     debugged on its own and the orchestrated run is not a separate code path
+     that can drift.
+
+Child stdout and stderr are inherited rather than captured, so output appears
+live and in the order the stage produced it. Capturing would buffer a
+twelve-minute stage into silence and then a wall of text.
+
+The child's working directory is inherited too, deliberately: a stage run
+through here behaves identically to the same stage run by hand from the same
+place. `ROOT` comes from `_bootstrap.py` (computed from `__file__`), so no path
+depends on the working directory anyway — but the `claude_code` backend's cost
+was *measured* against a particular working directory, and silently changing it
+for the two stages that spend money would make the orchestrated run cost
+something different from the hand run.
+
+HOW THE ORDER WAS DERIVED
+-------------------------
+Not from the plan. Each stage's module-level path constants say what it reads
+and what it writes, and the order below is a topological sort of that. Two
+results are worth knowing because they are not obvious:
+
+  - `build_pack` does NOT depend on `merge_events` having run. It imports
+    `timeline_block()` and recomputes the merge in memory from the ledger. The
+    chain is not a straight line, even though this list is.
+  - `render_timeline` DOES depend on `merge_events`, because it reads the
+    `pack/timeline-events.json` file that stage writes.
+
+So the sequence below is *a* valid order, not the only one. What matters is that
+every stage comes after the stages whose files it reads.
+
+WHAT HAPPENS AT A STAGE THAT SPENDS MONEY
+-----------------------------------------
+Two stages make model calls: `extract_facts` and `generate_outputs`. The cost
+gate that prompts before letting them run is a separate piece of work, and
+until it exists this orchestrator **stops** when it reaches one of them rather
+than running it.
+
+That is not caution for its own sake. `generate_outputs` has no cache and no
+freshness check: it regenerates both prose documents every time it is invoked,
+at roughly eight dollars, overwriting the committed deliverables. Those
+documents are the one artifact in this repository that a re-run does not
+reproduce (CLAUDE.md rule 1). An orchestrator that walks into that stage
+unattended is a one-command way to destroy them, so it does not walk into it.
+
+Pass `--skip-spending` to step over those stages and keep going. They are then
+reported as skipped and counted — never dropped silently.
+
+EXIT CODES
+----------
+    0   every selected stage completed
+    1   a stage failed; the chain stopped there
+    3   the chain stopped at a stage that spends money. Nothing was spent.
+
+3 rather than another 1 because "a stage is broken" and "there is a decision
+for you to make" need different answers from whatever is reading the code.
+
+This module writes no files. Every artifact is written by the stage that owns
+it, which is what keeps `pipeline run` and thirteen hand-run commands the same
+operation.
 """
 
 from __future__ import annotations
 
+import argparse
+import os
+import subprocess
+import sys
+import time
+from dataclasses import dataclass, field
 
-def main() -> int:
-    print("not implemented yet — see Phase 4")
-    return 1
+from equity_research.paths import known_tickers, resolve_ticker
+
+
+# ---------------------------------------------------------------------------
+# The registry
+# ---------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class Stage:
+    """One pipeline stage. Frozen: the registry is a fact, not state."""
+
+    name: str
+
+    # What the stage leaves behind, for the running commentary. Deliberately
+    # phrased as an artifact rather than an action ("the filing inventory", not
+    # "discovers filings"), because that is what the next stage needs and what
+    # a reader is looking for when a stage fails.
+    produces: str
+
+    # True for the two stages that make model calls. Read by `run_chain`, and
+    # the only thing standing between an unattended run and CLAUDE.md rule 1.
+    spends: bool = False
+
+    # Printed when this stage exits non-zero. Stages here fail for known,
+    # actionable reasons, and a generic "stage failed" wastes the fact that we
+    # know which stage it was.
+    remedy: str = ""
+
+
+# Dependency order. See HOW THE ORDER WAS DERIVED in the module docstring —
+# every stage sits after the stages whose files it reads.
+STAGES: tuple[Stage, ...] = (
+    Stage("discover",
+          "the filing inventory and gap analysis"),
+    Stage("fetch",
+          "cached filing documents and the fetch manifest"),
+    Stage("extract_sections",
+          "the target sections as cleaned text, and their manifest"),
+    Stage("triage_8k",
+          "a judgment on every conditional 7.01/8.01 8-K"),
+    Stage("risk_diff",
+          "year-over-year risk factor deltas"),
+    Stage("extract_facts",
+          "per-task extraction results in the facts cache",
+          spends=True,
+          remedy="A non-zero exit here is often NOT a crash. This stage stops "
+                 "deliberately when a cached result's source text has changed "
+                 "since it was extracted, because a stale result answers a "
+                 "question about a document that no longer exists in that "
+                 "form.\n"
+                 "  Read the stage's own output above: if it listed stale "
+                 "results, rebuild them with --refresh-stale (this COSTS "
+                 "TOKENS), or leave them and accept the gap knowingly."),
+    Stage("build_ledger",
+          "the per-year ledger, every quote verified"),
+    Stage("merge_events",
+          "merged timeline events, with duplicates and undated rows split out"),
+    Stage("render_timeline",
+          "output/timeline.md — deliverable 1 of 3"),
+    Stage("build_pack",
+          "the citable pack and its id index"),
+    Stage("generate_outputs",
+          "narrative-brief.md and discussion-points.md — deliverables 2 and 3",
+          spends=True,
+          remedy="This stage regenerates both documents from scratch every "
+                 "time; it has no cache. If it failed part way, the documents "
+                 "on disk may be from the previous run — check them against "
+                 "the pack sha256 in their provenance footer before trusting "
+                 "them."),
+    Stage("verify_outputs",
+          "verify-report.md, and a non-zero exit if any hard check failed",
+          remedy="The deliverables did not pass their own checks. This gates "
+                 "the PDF render on purpose — see the stage output above for "
+                 "which check failed, and generate_outputs' --fix-* flags for "
+                 "the repair passes."),
+    Stage("render_pdf",
+          "the three deliverables as PDF, each read back and verified"),
+)
+
+BY_NAME = {s.name: s for s in STAGES}
+
+
+# ---------------------------------------------------------------------------
+# Running one stage
+# ---------------------------------------------------------------------------
+
+def child_env(ticker: str) -> dict[str, str]:
+    """The environment a stage subprocess runs in.
+
+    Inherits everything — the stages need `EDGAR_IDENTITY`, `ANTHROPIC_API_KEY`
+    and `PATH`, and `.env` is loaded by each stage's own `_bootstrap` import —
+    and adds two variables.
+
+    `EQR_TICKER` is how the company reaches the child. It cannot be passed as
+    `--ticker` from here, or rather it could, but the environment variable is
+    the mechanism `paths.py` was built for: it reads the ticker at *import*
+    time, before argparse runs, because the stages' module-level path constants
+    need it by then.
+
+    `PYTHONUTF8=1` is the last open item from Phase 0. Measured, it changes
+    nothing observable in the stages as they stand: all fourteen already
+    reconfigure their own stdout and stderr to UTF-8, and every `open()` in the
+    package either passes `encoding="utf-8"` or opens in binary mode for
+    tomllib. It is set anyway, because "nothing depends on the platform default
+    encoding" is a property that has to be re-verified on every future edit,
+    and this makes it true by construction instead.
+    """
+    env = dict(os.environ)
+    env["EQR_TICKER"] = ticker
+    env["PYTHONUTF8"] = "1"
+    return env
+
+
+def stage_command(stage: Stage) -> list[str]:
+    """The argv for a stage. `sys.executable`, so the venv python is used."""
+    return [sys.executable, "-m", f"equity_research.{stage.name}"]
+
+
+def run_stage(stage: Stage, ticker: str) -> int:
+    """Run one stage to completion; return its exit code.
+
+    stdout and stderr are inherited, not captured — see the module docstring.
+
+    THE FLUSH IS LOAD-BEARING. The child inherits this process's stdout handle
+    and writes to it directly and immediately. Our own `print()` calls go
+    through Python's buffer, which is line-buffered only when stdout is a
+    terminal — redirect the run to a file (`pipeline MORN > run.log`) and the
+    buffer switches to block mode, so every header we printed is still sitting
+    in memory while the child writes underneath it. The log then reads as
+    thirteen stages of output followed by thirteen headers, in an order that
+    never happened.
+
+    Found by piping a real run through `Select-Object`, which is exactly the
+    shape of what a colleague saving a log would do.
+
+    One flush, before the spawn, is enough: it is the only moment at which
+    anything of ours is pending and something else is about to write. The
+    stage's own "ok" line and the next stage's header are both flushed by the
+    next spawn, and the final summary by interpreter exit.
+    """
+    sys.stdout.flush()
+    proc = subprocess.run(stage_command(stage), env=child_env(ticker))
+    return proc.returncode
+
+
+# ---------------------------------------------------------------------------
+# Running the chain
+# ---------------------------------------------------------------------------
+
+@dataclass
+class ChainResult:
+    """What a chain run did, in numbers that have to add up.
+
+    CLAUDE.md rule 5: counts reconcile across every stage boundary. A summary
+    saying "5 stages succeeded" describes what was attempted, not what a
+    thirteen-stage pipeline did. Every selected stage lands in exactly one of
+    these, and `reconciles()` is checked before the summary is believed.
+    """
+
+    selected: list[str] = field(default_factory=list)
+    ran: list[str] = field(default_factory=list)
+    skipped: list[str] = field(default_factory=list)
+    not_reached: list[str] = field(default_factory=list)
+    failed_at: str | None = None
+    stopped_at: str | None = None
+
+    @property
+    def accounted(self) -> int:
+        """How many selected stages have an outcome recorded."""
+        return (len(self.ran) + len(self.skipped) + len(self.not_reached)
+                + (1 if self.failed_at else 0) + (1 if self.stopped_at else 0))
+
+    def reconciles(self) -> bool:
+        return self.accounted == len(self.selected)
+
+    def exit_code(self) -> int:
+        if self.failed_at:
+            return 1
+        if self.stopped_at:
+            return 3
+        return 0
+
+
+def select(stages: tuple[Stage, ...], first: str | None,
+           only: str | None) -> list[Stage]:
+    """The stages to walk: all of them, one of them, or a suffix from `first`.
+
+    `--from` exists because the chain stops at the first stage that spends
+    money, so without it there is no way to exercise the seven stages that come
+    after `extract_facts` through this orchestrator at all.
+    """
+    if only:
+        if only not in BY_NAME:
+            raise SystemExit(unknown_stage(only))
+        return [BY_NAME[only]]
+    if first:
+        if first not in BY_NAME:
+            raise SystemExit(unknown_stage(first))
+        start = [s.name for s in stages].index(first)
+        return list(stages[start:])
+    return list(stages)
+
+
+def unknown_stage(name: str) -> str:
+    return (f"FATAL: no stage named {name!r}.\n"
+            f"Known stages, in order:\n"
+            + "\n".join(f"  {s.name}" for s in STAGES))
+
+
+def run_chain(stages: list[Stage], ticker: str, *, runner=run_stage,
+              skip_spending: bool = False,
+              dry_run: bool = False) -> ChainResult:
+    """Walk the stages in order. Stop at the first failure or spending stage.
+
+    `runner` is injected so the chain's own logic — ordering, halting, counting
+    — can be tested without launching thirteen subprocesses. It takes
+    `(stage, ticker)` and returns an exit code, exactly like `run_stage`.
+    """
+    result = ChainResult(selected=[s.name for s in stages])
+    total = len(stages)
+
+    for i, stage in enumerate(stages):
+        remaining = [s.name for s in stages[i + 1:]]
+
+        if stage.spends and skip_spending:
+            print(f"[{i + 1:2d}/{total}] {stage.name} — SKIPPED "
+                  f"(spends tokens; --skip-spending)")
+            result.skipped.append(stage.name)
+            continue
+
+        if stage.spends:
+            # The cost gate is not built yet. Until it is, this is where an
+            # unattended run stops — see the module docstring for why this
+            # matters more for generate_outputs than for extract_facts.
+            #
+            # `--dry-run` stops here too, rather than printing the command and
+            # walking on. A dry run exists to report what the real run would
+            # do; one that described a longer chain than the real run takes
+            # would be worse than not having it.
+            print()
+            print(f"[{i + 1:2d}/{total}] {stage.name} — STOPPED")
+            print(f"         This stage makes model calls, and the cost gate "
+                  f"that prompts first is not built yet.")
+            print(f"         Nothing has been spent.")
+            print()
+            print(f"         See what it would cost, for free:")
+            print(f"           uv run python -m equity_research.{stage.name} "
+                  f"--estimate --ticker {ticker}")
+            print(f"         Run it deliberately, then resume the chain:")
+            print(f"           uv run python -m equity_research.{stage.name} "
+                  f"--ticker {ticker}")
+            if remaining:
+                print(f"           uv run pipeline {ticker} "
+                      f"--from {remaining[0]}")
+            print(f"         Or step over the stages that spend:")
+            print(f"           uv run pipeline {ticker} --skip-spending")
+            result.stopped_at = stage.name
+            result.not_reached = remaining
+            return result
+
+        print()
+        print("-" * 72)
+        print(f"[{i + 1:2d}/{total}] {stage.name} — {stage.produces}")
+        print(f"         python -m equity_research.{stage.name}")
+        print("-" * 72)
+
+        if dry_run:
+            print("         (--dry-run: not executed)")
+            result.ran.append(stage.name)
+            continue
+
+        started = time.monotonic()
+        code = runner(stage, ticker)
+        took = time.monotonic() - started
+
+        if code != 0:
+            print()
+            print(f"         FAILED — exit {code} after {took:,.1f}s")
+            if stage.remedy:
+                print(f"         {stage.remedy}")
+            result.failed_at = stage.name
+            result.not_reached = remaining
+            return result
+
+        print(f"         ok ({took:,.1f}s)")
+        result.ran.append(stage.name)
+
+    return result
+
+
+def print_summary(result: ChainResult, ticker: str) -> None:
+    """The reconciled count. See ChainResult for why it is spelled out."""
+    print()
+    print("=" * 72)
+    print(f"pipeline — {ticker}")
+    print(f"  registry        : {len(STAGES)} stages")
+    print(f"  selected        : {len(result.selected)}")
+    print(f"  ran             : {len(result.ran)}")
+    if result.skipped:
+        print(f"  skipped         : {len(result.skipped)}  "
+              f"({', '.join(result.skipped)})")
+    if result.failed_at:
+        print(f"  FAILED at       : {result.failed_at}")
+    if result.stopped_at:
+        print(f"  stopped at      : {result.stopped_at}  "
+              f"(spends tokens; nothing spent)")
+    if result.not_reached:
+        print(f"  not reached     : {len(result.not_reached)}  "
+              f"({', '.join(result.not_reached)})")
+
+    if not result.reconciles():
+        # An orchestrator whose own counts do not add up is reporting on a run
+        # it did not actually track. Louder than the failure it is describing.
+        print()
+        print(f"  *** COUNTS DO NOT RECONCILE: {result.accounted} outcomes "
+              f"recorded for {len(result.selected)} selected stages. This is a "
+              f"bug in cli.py, not in the stages. ***")
+
+
+# ---------------------------------------------------------------------------
+# Ticker resolution
+# ---------------------------------------------------------------------------
+
+def resolve_company(explicit: str | None) -> str:
+    """The company to operate on, verified to exist on disk.
+
+    `resolve_ticker` handles precedence (argument, then `EQR_TICKER`, then the
+    single company) and upper-cases the result, but it does not check that the
+    folder exists — nothing before now needed it to, because a stage run by
+    hand fails on its first missing file.
+
+    Here it is worth checking up front. Without it, `pipeline MRON` launches
+    thirteen subprocesses that each fail separately on a company folder that
+    was never there, and the first useful line of output is thirteen stack
+    traces down.
+    """
+    ticker = resolve_ticker(explicit)
+    # Compared case-insensitively against the folder names, and the folder's
+    # own spelling is what gets passed on: `resolve_ticker` upper-cases, and a
+    # company directory is not required to be upper-case.
+    known = {t.upper(): t for t in known_tickers()}
+    if ticker.upper() not in known:
+        raise SystemExit(
+            f"FATAL: no company folder for {ticker!r}.\n"
+            f"Looked for companies/{ticker}/ .\n"
+            + (f"Known companies: {', '.join(sorted(known.values()))}"
+               if known else
+               "No company folders exist yet."))
+    return known[ticker.upper()]
+
+
+# ---------------------------------------------------------------------------
+# Subcommands
+# ---------------------------------------------------------------------------
+
+def cmd_stages(args: argparse.Namespace) -> int:
+    """Print the registry. Runs nothing, needs no company."""
+    print(f"{len(STAGES)} stages, in dependency order:")
+    print()
+    for i, s in enumerate(STAGES, 1):
+        flag = "  $$" if s.spends else "    "
+        print(f"{flag} {i:2d}. {s.name:18s} {s.produces}")
+    print()
+    print("  $$ marks the stages that make model calls. `pipeline run` stops "
+          "at these\n     rather than running them; --skip-spending steps "
+          "over them.")
+    return 0
+
+
+def cmd_run(args: argparse.Namespace) -> int:
+    ticker = resolve_company(args.ticker)
+    stages = select(STAGES, args.start_from, args.only)
+
+    print(f"pipeline run — {ticker}")
+    print(f"  {len(stages)} of {len(STAGES)} stages"
+          + (f", from {args.start_from}" if args.start_from else "")
+          + (f", only {args.only}" if args.only else ""))
+    if args.dry_run:
+        print("  --dry-run: commands are printed, nothing is executed")
+
+    result = run_chain(stages, ticker, skip_spending=args.skip_spending,
+                       dry_run=args.dry_run)
+    print_summary(result, ticker)
+    return result.exit_code()
+
+
+# ---------------------------------------------------------------------------
+# Entry point
+# ---------------------------------------------------------------------------
+
+SUBCOMMANDS = ("run", "stages")
+
+
+def normalise_argv(argv: list[str]) -> list[str]:
+    """Let `pipeline MORN` mean `pipeline run MORN`.
+
+    The ticker is the thing anyone actually wants to type, and `run` is the
+    only subcommand that takes one. Anything that is not a known subcommand and
+    does not look like an option is treated as a ticker for `run`.
+    """
+    if argv and argv[0] not in SUBCOMMANDS and not argv[0].startswith("-"):
+        return ["run", *argv]
+    return argv
+
+
+def build_parser() -> argparse.ArgumentParser:
+    ap = argparse.ArgumentParser(
+        prog="pipeline",
+        description="Run the filing pipeline for one company.",
+        epilog="exit codes: 0 complete, 1 a stage failed, 3 stopped at a "
+               "stage that spends money (nothing spent)")
+    sub = ap.add_subparsers(dest="command", required=True)
+
+    r = sub.add_parser("run", help="run the stages in order")
+    r.add_argument("ticker", nargs="?", default=None,
+                   help="company to run. Defaults to $EQR_TICKER, or to the "
+                        "single company under companies/ when there is one.")
+    r.add_argument("--from", dest="start_from", metavar="STAGE",
+                   help="start at this stage and continue to the end")
+    r.add_argument("--only", metavar="STAGE", help="run just this one stage")
+    r.add_argument("--skip-spending", action="store_true",
+                   help="step over the stages that make model calls, instead "
+                        "of stopping at them")
+    r.add_argument("--dry-run", action="store_true",
+                   help="print the stage commands without executing any")
+    r.set_defaults(func=cmd_run)
+
+    s = sub.add_parser("stages", help="list the stages and exit")
+    s.set_defaults(func=cmd_stages)
+
+    return ap
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = build_parser().parse_args(normalise_argv(
+        list(sys.argv[1:] if argv is None else argv)))
+    return args.func(args)
 
 
 if __name__ == "__main__":
