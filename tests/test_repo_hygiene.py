@@ -138,7 +138,9 @@ def path_literals() -> list[str]:
 # primary.
 #
 # WHAT SEPARATES A BUG FROM A LEGITIMATE USE
-# There are twenty legitimate `relative_to(ROOT)` calls in the package and every
+# The lint sees 21 `.relative_to(ROOT)` calls in the package and flags none of
+# them. (A plain text search finds 25: the other four are prose in comments
+# explaining this rule, which the leading `\.` in ROOT_RELATIVE excludes.) Every
 # one of them builds a string for a HUMAN to read — inside an f-string in a
 # print() or a sys.exit(). The three bugs all built a string to STORE. So a line
 # is exempt if it is a print/exit call or the continuation of one (a line that

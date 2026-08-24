@@ -26,8 +26,38 @@ remediated. **Productionizing:** the plan at
 `8a904df`, `fec3785`, `147a6ee`, `800a543`, `d6201dd`, `446ce88`). **Phase 3 is
 complete** (`0facceb`, `15bd33e`, `a7a5890`, `8296182`) — every model call in the
 pipeline now goes through one seam and runs on a Claude seat with no API key.
-**Next is Phase 4**, the `pipeline` orchestrator. The repository has a GitHub
-remote: https://github.com/bpmoriarty/public-equity-narrative-research
+**Phase 4 is half built**: 4.1 the orchestrator (`0ce6e3d`), 4.2 the cost gate
+(`45bf0b9`) and 4.3 the generation freshness check (`e2c8784`) are done, with a
+manifest-writer bug fix (`664bf6f`) and the scope document (`99b6b90`) alongside
+them. **`uv run pipeline MORN --yes` now runs all thirteen stages from cache in
+41 seconds and spends nothing.** Remaining in Phase 4: `status`, `estimate`,
+`init` + `companies/_template/`, tests for `cli.py`, and the timestamp churn.
+The repository has a GitHub remote:
+https://github.com/bpmoriarty/public-equity-narrative-research
+
+> **The orchestrator's first full run found three broken manifest writers.**
+> `fetch`, `extract_sections` and `triage_8k` were still using
+> `relative_to(ROOT)` after the Phase 2 move, producing
+> `companies/MORN/data/...` where the manifest contract requires the
+> company-relative `data/...`. All three survived eleven days because **none of
+> those stages had been re-run since the migration** — the pipeline was reading
+> manifests written *before* the move, which were correct. Phase 2's gate only
+> ever *read* manifests, so it could not have caught a broken writer. Every
+> corrupt write **exits 0**; the damage surfaces two stages later in a different
+> module. Fixed in `664bf6f` with a source lint, because the data on disk was
+> correct the whole time the bug existed — see Next Steps 25.
+
+> **What "already generated" means, and what it deliberately does not.** A
+> document needs regenerating only if it is missing or the pack it is stamped
+> with is not the pack on disk. The obvious design — compare the generation
+> record's inputs against today's — was measured first and is wrong here: the
+> committed records carry the *original* August pack and system prompt
+> (`adb27b53`, `f551b71d`) while the documents were later re-stamped against
+> `fd320ce5` by `--apply-corrections`. Comparing inputs would have declared both
+> deliverables stale and asked for ~$8 to replace documents that pass every hard
+> check. A changed system prompt means a re-run would produce something
+> *different*, not that what shipped is *wrong* — so drift is reported, `--force`
+> is offered, and neither spends.
 
 > **The seat-terms question is answered.** Headless Claude Code use fits the
 > org's terms and Opus is available on the seat. The operating assumption, from
@@ -76,7 +106,7 @@ remote: https://github.com/bpmoriarty/public-equity-narrative-research
 > reachable. Now reported as `malformed`, fatal at generation time, and a
 > `review` line in `verify_outputs` for one commit before it is promoted to hard.
 
-**Last Session:** 2026-08-17
+**Last Session:** 2026-08-24
 
 **Overall Health:** 🟢 Working — milestones 1–5 complete. **The full verification suite has been run and all nine of its findings are fixed.** 1,329 ledger facts, 1,425 citable ids, three deliverables passing 13 hard checks each. Quote census re-earned after the repairs at **1,326/1,326**. $7.21 spent on generation; remediation cost $0.00 in API calls
 
@@ -668,7 +698,11 @@ across 34 calls). Milestones 1–3 cost nothing.
         hacks removed (not the 11 the plan claimed). See the Session Log entry
 17. [ ] **Phases 3–5**, in order: 3 Claude Code model seam (**done**, `0facceb`,
         `15bd33e`, `a7a5890`, `8296182`) → **4 `pipeline` orchestrator + `init`
-        (next)** → 5 test split, model mix, pack subsets, docs.
+        (IN PROGRESS — 4.1/4.2/4.3 done in `0ce6e3d`, `45bf0b9`, `e2c8784`;
+        `status`, `estimate`, `init`, `cli.py` tests and the churn remain. The
+        item-by-item scope is `PHASE4_SCOPE.md`, written from the code before any
+        of it was built — read that rather than re-deriving it)** → 5 test split,
+        model mix, pack subsets, docs.
         The seat-terms blocker is cleared: headless use fits the terms, Opus is
         on the seat, and API keys are unavailable for almost all colleagues.
         **Two plan corrections found by executing Phase 1 — do not re-derive:**
@@ -700,15 +734,19 @@ across 34 calls). Milestones 1–3 cost nothing.
         to renames until `fec3785` (it filtered `--diff-filter=ACM`, which
         excludes `R`). Phase 2's migration commit was 107 renames out of 130
         files — it would have been almost entirely unscanned
-19. [ ] **Idempotency: two committed artifacts change on every re-run.**
-        Re-running `build_ledger` or `render_timeline` rewrites
-        `ledger-report.md` and `output/timeline.md` with a new generation
-        timestamp and *nothing else* — content, and `timeline.md`'s input sha,
-        are otherwise identical. Found during Phase 2 and restored so the commits
-        carry no churn, but it is the "run twice, diff nothing" case from
-        CLAUDE.md rule 4. **Phase 5 already plans idempotency tests; fix it
-        there**, either by dropping the timestamp or by moving it out of the
-        committed file
+19. [ ] **Idempotency: eight committed artifacts change on every full run —
+        timestamps only.** Now measured exactly, because `pipeline MORN` touches
+        every stage instead of the few you would run by hand: `discovery-report.md`,
+        `inventory.json`, `ledger-report.md`, `risk-deltas.json`,
+        `risk-diff-report.md`, `triage-8k.json`, `triage-report.md` and
+        `output/timeline.md` — 8 files, 8 changed lines, every one a clock reading.
+        **Smaller than it looked:** the five `FY*.json` ledger files are stable, and
+        `gen-*.json` churns only on `--apply-corrections`. So this is four or five
+        timestamp writers, not thirteen files. The orchestrator turns it from a
+        cosmetic annoyance into a structural one — every `pipeline run` now dirties
+        the tree — which is the "run twice, diff nothing" case from CLAUDE.md rule
+        4. Fix by dropping the timestamp or moving it out of the committed file.
+        Scoped as Phase 4.8; **still undecided whether it lands in Phase 4 or 5**
 20. [ ] **`DATA.md` still describes `data/` and `output/` as top-level.** Its
         `src/<module>.py` references were fixed in `d6201dd`, but the data-path
         narrative needs prose changes rather than a substitution. The plan puts
@@ -745,6 +783,32 @@ across 34 calls). Milestones 1–3 cost nothing.
         to seat users who cannot count. Worth re-checking whether exact counting
         has come back before treating any "estimated" figure as a limitation of
         the seat backend specifically
+25. [x] **The manifest-path bug class now has a mechanical enforcer.** Three
+        writers were producing repo-root-relative paths where the contract
+        requires company-relative ones (see the Current Status blockquote). Fixed
+        and enforced in `664bf6f`, 269 → 276 checks. The enforcer is a **source
+        lint**, not a data check, and that choice is the point: the manifests on
+        disk were correct for the whole eleven days the bug existed, so a data
+        scan would have passed every day and failed only after the damage. A line
+        with `relative_to(ROOT)` is an offender unless it is a `print`/`sys.exit`
+        or the continuation of one — which all 21 legitimate uses are. The
+        heuristic's blind spot is documented in `test_repo_hygiene.py`: a
+        display-only use on neither kind of line will misfire. A data scan over
+        all four manifests (662 path values) is the backstop
+26. [ ] **`pipeline init` will break five test files, and the fix is a decision.**
+        Five of the eight test files call `paths()` with no ticker and depend on
+        MORN being the *only* company; `resolve_ticker` hard-errors on two, by
+        design. So the moment `init` scaffolds a second company folder the suite
+        stops running. **Pin `EQR_TICKER=MORN` in `tests/run_all.py` and
+        `tests/suite_test.py`** — that is Phase 5's conftest work pulled forward
+        by one item, and it has to happen before or with Phase 4.6
+27. [ ] **One path the cost gate's proofs cannot cover: `--yes` against a stale
+        document.** Declining was proven four ways (closed stdin, `n`, `maybe`,
+        `--skip-spending`) and all four stop the chain having spent nothing. The
+        *approving* path ends in a real ~$8 generation call and there is no way to
+        exercise it for free, so it is covered only by injecting a fake gate into
+        `run_chain`. "The gate approves correctly" is an untested claim; the first
+        real stale run is the test. Worth doing deliberately, watched, once
 
 ---
 
@@ -757,7 +821,8 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `tests/run_all.py` | Runs every test file and compares each one's own count against `tests/expected_counts.json`, **failing in either direction**. Fewer checks than recorded is the failure it exists for: a test that stops testing still reports green |
 | `tests/suite_test.py` | The pytest front-end (`uv run pytest`). Asserts exit code, zero failures, **and the recorded check count** per file. Deliberately not `pytest --collect-only`, which counts test functions and so cannot see a file shrinking from 63 checks to 3. Named `suite_test.py`, not `test_suite.py`, because `run_all.py` globs `test_*.py` and would otherwise recurse |
 | `src/equity_research/_bootstrap.py` | `ROOT`, the Windows cert store, and `.env` — imported first by every stage, for its side effects as much as its value. **Do not delete as unused.** Exists because each module used to compute its own `ROOT` two directories up, which the Phase 1 move made silently wrong by one level |
-| `tests/test_repo_hygiene.py` | 10 checks. Every JSON carrying a top-level `usage.input_tokens` was paid for and must be tracked by git; `companies/MORN/output/*.md` likewise; and inversely, `.env` must not be. Also the **path-literal lint**: a `"data/…"` or `"output/…"` string in `src/equity_research/` outside `paths.py` resolves to the repo root instead of the company being run. Requires the literal to contain no whitespace, so prose *about* a path is not flagged |
+| `tests/test_repo_hygiene.py` | 17 checks. Every JSON carrying a top-level `usage.input_tokens` was paid for and must be tracked by git; `companies/MORN/output/*.md` likewise; and inversely, `.env` must not be. Also two path lints. The **path-literal lint**: a `"data/…"` or `"output/…"` string in `src/equity_research/` outside `paths.py` resolves to the repo root instead of the company being run. And the **manifest-path lint** (added `664bf6f`): `relative_to(ROOT)` used to build a stored value rather than a message for a human — the bug that broke three writers for eleven days. Read the comment above `stores_root_relative_path` before changing it; it records why the check reads source rather than data, and the one misfire it can produce |
+| `src/equity_research/cli.py` | **The `pipeline` orchestrator.** `uv run pipeline MORN` walks all thirteen stages in dependency order, one subprocess each; `pipeline stages` lists them. The order is a topological sort of what each module's own path constants say it reads and writes — **not** the plan's order, and note that `build_pack` does *not* depend on `merge_events` having run (it recomputes the merge in memory). The two spending stages go through a cost gate that asks the stage whether it has work before asking you to approve anything. Exit codes: 0 complete, 1 a stage failed, 3 a gate was not approved. Writes no files |
 | `src/equity_research/paths.py` | **Every filesystem path, resolved per company.** `CompanyPaths` owns the 49 joins that were spread across 15 modules. `resolve()` re-roots a manifest-relative string — the reason the MORN move rewrote no manifest and `pack.json` kept its sha256. Ticker order: `--ticker` → `EQR_TICKER` → the single company; two with no ticker is a **hard error**, never a first-match guess |
 | `src/equity_research/settings.py` | Config layering (global `config/*.toml` + optional `companies/<T>/overrides/`), window validation at 1–10 years, and the **one pricing table** with `PRICES_AS_OF`. Arrays replace wholesale on merge, including arrays of tables — `sections.toml` pattern order is load-bearing and element-wise merging would produce an order neither file describes. Also `CHARS_PER_TOKEN = 2.66`, the calibrated fallback for backends that cannot count tokens |
 | `src/equity_research/model_client.py` | **The model seam.** One interface, two backends: `claude_code` (default — needs a seat, no API key) and `api`. **Read its module docstring before changing anything about model calls** — it records eight measured findings, including that every headless call cache-*writes* its prompt at 2× input price, that an identical prompt does *not* cache, and that `--resume` preserves context while saving nothing. Several contradict the plan |
@@ -791,7 +856,7 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `companies/MORN/output/timeline.md` | **Deliverable 1 of 3.** Chronological reference table, every row carrying its fact id and filing |
 | `src/equity_research/verify_outputs.py` | Milestone 5f. Holds the deliverables to the pack's binding constraints — **13 hard checks and 4 review lists** per document; deterministic, free, non-zero exit on failure. The newest review line (citations naming a field code that does not exist) is due for promotion to hard — Next Step 23 |
 | `tests/test_verify_outputs.py` | 63 checks. Every hard check tested against a document that fails it as well as one that passes |
-| `src/equity_research/generate_outputs.py` | Milestone 5e. Writes both prose deliverables from the pack; checks and repairs ids and quotations. **Read the note above `repair_ids` before changing how repairs work** — it records why they carry an index slice rather than the pack, and what that gives up. Only `generate` sends the pack; all three repair kinds are self-contained |
+| `src/equity_research/generate_outputs.py` | Milestone 5e. Writes both prose deliverables from the pack; checks and repairs ids and quotations. **Read the note above `repair_ids` before changing how repairs work** — it records why they carry an index slice rather than the pack, and what that gives up. Only `generate` sends the pack; all three repair kinds are self-contained. **Also read the note above `DocStatus`** before changing what counts as up to date: it records the measurement that ruled out comparing the record's inputs, and why prompt drift is reported rather than spent on. `--check-fresh` answers "is there work?" for the cost gate at zero cost and without constructing a backend; `--force` overrides |
 | `companies/MORN/output/narrative-brief.md` | **Deliverable 2 of 3.** The five-year arc, 2,089 words, 126 citations |
 | `companies/MORN/output/discussion-points.md` | **Deliverable 3 of 3.** Observations, open questions, and stated-vs-paid-for priorities |
 | `tests/test_generate_outputs.py` | 91 checks on the citation, quotation, index-excerpt and repair-loop gates; fixtures are real strings from the first generation run. Covers that a clean document costs **zero** model calls and that a repair prompt is nowhere near pack-sized. Fails loudly if a committed generation record is missing rather than skipping itself |
@@ -836,6 +901,116 @@ across 34 calls). Milestones 1–3 cost nothing.
 ---
 
 ## Session Log
+
+### 2026-08-24 — Phase 4: one command, and the bug it found on its first walk
+
+**Scoped first, from the code.** `PHASE4_SCOPE.md` was written before anything
+was built, by reading the thirteen `main()` functions and their path constants
+rather than trusting the plan — which has now been wrong or silent about phase
+specifics several times. It recorded the stage graph, four things the plan did
+not know, a nine-item breakdown, and four open decisions. Committed verbatim
+(`99b6b90`) so the reasoning can be checked against what got built.
+
+**4.1, the orchestrator** (`0ce6e3d`). A thirteen-stage registry as data, one
+subprocess per stage, halt on non-zero. Two facts about the order are worth
+keeping: `build_pack` does *not* depend on `merge_events` having run — it imports
+`timeline_block()` and recomputes the merge in memory — while `render_timeline`
+does, because it reads the file that stage writes. So the chain is not a straight
+line even though the list is.
+
+Subprocess-per-stage was confirmed by reading rather than assumed: every `main()`
+is `-> None` and signals fatal errors with `sys.exit("message")`, so an exit code
+plus stderr is the whole contract and no stage needed a signature change. The
+child's working directory is inherited *deliberately* — the `claude_code`
+backend's cost was measured against a particular cwd, and an orchestrated run
+must not quietly cost something different from a hand run.
+
+Two things found while building it. `--dry-run` originally walked *past* spending
+stages, reporting a longer chain than the real run takes — a dry run that
+describes a different run than the real one is worse than not having it. And the
+flush before each spawn turned out to be load-bearing: the child inherits this
+process's stdout handle and writes immediately, while our own prints are
+block-buffered whenever stdout is not a terminal, so `pipeline MORN > run.log`
+produced thirteen stages of output followed by thirteen headers — an order that
+never happened. Found by piping a real run, which is exactly what a colleague
+saving a log would do.
+
+**The bug the first full walk found** (`664bf6f`). `fetch` rewrote
+`fetch-manifest.json` with `companies/MORN/data/raw/...` paths and
+`extract_sections` died on the first record. Three writers were still using
+`relative_to(ROOT)` after the Phase 2 move — `fetch`'s `path`,
+`extract_sections`' `out`, `triage_8k`'s `trimmed_path`, 201 / 230 / 115 records
+respectively. All three survived eleven days because **none of those stages had
+been re-run since the migration**: the pipeline was reading manifests written
+before the move, which were correct. Phase 2's gate only ever *read* manifests.
+
+The `fetch` bug was observed; the other two were inferred from an identical
+expression, so each was proven by reinstating it and reading what landed on disk.
+Every corrupt write **exits 0** — the damage surfaces two stages later, in a
+different module, which is why it reads as an `extract_sections` bug at first
+glance.
+
+Before re-running `extract_sections`, all 236 section files were fingerprinted:
+differing text would have staled the 88 cached extractions and demanded ~$32 of
+re-extraction. Byte-identical, so no exposure. The run also corrected stale
+provenance strings in the committed ledger and `timeline.md` that still named
+`src/ledger_schema.py` and `src/render_timeline.py`, the pre-Phase-1 paths — and
+accounted for a 202nd manifest record, an FY2026 8-K fetched once outside the
+window that never reached the sections manifest.
+
+The enforcer is a **source lint**, and that was the interesting decision: the
+manifests on disk were correct for the entire time the bug existed, so a data
+check would have passed every day and failed only after the damage was done. A
+line with `relative_to(ROOT)` is an offender unless it is a `print`/`sys.exit`
+or the continuation of one — which all 21 legitimate uses are. An earlier version
+matched `str(` and missed `dest.relative_to(ROOT).as_posix()`, the same bug
+without the `str()`. 269 → 276 checks, each proven against a planted fault.
+
+**4.3, freshness** (`e2c8784`) — and the measurement that changed the design. The
+recommendation on the table was to compare the generation record's inputs against
+today's. Measured on the committed records, that is wrong: `pack_sha256` is
+`adb27b53` and `system_sha256` is `f551b71d`, both describing the *original*
+August generation, while the documents were later re-stamped against `fd320ce5`
+by `--apply-corrections`. Comparing inputs would have declared both deliverables
+stale and asked for ~$8 to replace documents that pass every hard check — the
+exact accident the feature exists to prevent. The discussion's ask is not even
+reproducible: it embeds the brief as a prior draft, and which spelling depends on
+how the stage was invoked.
+
+So the rule is one sentence: **a document needs regenerating only if it is
+missing, or the pack it is stamped with is not the pack on disk.** A changed
+system prompt means a re-run would produce something *different*, not that what
+shipped is *wrong*, so drift is printed and `--force` is offered. This also
+removed a duplication rather than adding one — `PACK_SHA_RE` now lives next to
+the function that writes the footer, and `verify_outputs` imports it instead of
+carrying its own copy of the same regex.
+
+**4.2, the cost gate** (`45bf0b9`). Two questions, in order, neither costing
+anything: *have you anything to do?* (`--check-fresh`, exit 0 or 4) then *what
+would it cost?* (`--estimate`, printed unparsed). The first is what stops the
+gate being a nuisance — on a cached re-run both stages answer "nothing", so a
+full run never prompts. Both answers come from the stage; the alternative was for
+`cli.py` to read other programs' print statements looking for "nothing to do".
+An unanswerable prompt — closed or piped stdin — counts as **no**, because
+treating a question nobody can answer as consent is how an unattended run
+overwrites documents that cannot be reproduced.
+
+Proven against a stage that actually had work, by pointing one footer at a pack
+that does not exist: closed stdin, `n`, and `maybe` each stopped the chain at
+exit 3 having spent nothing; `--skip-spending` continued and `verify_outputs`
+then failed, correctly. The estimate shown was ~$8.69, the real figure. **Not
+tested, and recorded as untested:** `--yes` against a stale document, which ends
+in a real call.
+
+**The gate met.** `uv run pipeline MORN --yes` — 41 seconds, 11 ran + 2
+nothing-to-do = 13, exit 0, **zero spent**, every facts record and both
+deliverables byte-identical, pack sha `fd320ce5`, verify green, PDFs read back.
+
+One self-inflicted false alarm worth recording: my own verification fingerprint
+globbed `output/*.md`, which includes `timeline.md` — a file that legitimately
+re-stamps on every run. It reported "model output changed / something was spent"
+when nothing had. The check was too broad, not the pipeline wrong; `git diff`
+over `facts/`, both prose deliverables and `data/pack/` was empty.
 
 ### 2026-08-17 — Phase 3 finished: the id repair, rebuilt without the pack
 
