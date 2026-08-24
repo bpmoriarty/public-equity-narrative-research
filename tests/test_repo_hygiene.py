@@ -437,6 +437,81 @@ def main() -> int:
           + "\n".join(f"  {b}" for b in backslashed[:10]))
 
     print()
+    print("COMMITTED ARTIFACTS CARRY NO WALL CLOCK — run twice, diff nothing")
+
+    # Five stages write committed artifacts that are pure functions of their
+    # inputs. Each used to stamp `datetime.now()` inside the artifact, so a
+    # re-run produced a diff in eight committed files with no change of
+    # substance. Harmless while stages were run by hand one at a time;
+    # structural once `pipeline` began touching all five every run — the tree
+    # was dirty after every single orchestrated run during Phase 4.
+    #
+    # DATES ARE FINE. A filing date is stable and belongs in these files. What
+    # may not appear is a wall CLOCK — a time of day — because only a clock
+    # changes between two runs over identical inputs. That is the distinction
+    # this check draws, and it is why it looks for HH:MM rather than for a date.
+    #
+    # Testing the property directly (run each stage twice, diff) would mean
+    # running five stages inside the suite, two of which need the gitignored
+    # sections on disk. Phase 5 plans that against small fixtures. This is the
+    # cheap static form: it cannot prove idempotency, but it catches the one way
+    # it has ever been broken here.
+    CLOCK_RE = re.compile(r"\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}")
+
+    # The exemption is the data vintage: when EDGAR was READ, as opposed to when
+    # a script ran. Stable across re-runs, and the value a coverage claim is
+    # checked against (VERIFICATION.md D9).
+    #
+    # Exempted by VALUE, not by key name. The first version matched the key
+    # `as_of_utc`, which works in inventory.json and not at all in
+    # discovery-report.md, where the same instant is rendered as "Submissions
+    # index as of: **2026-08-04T17:56:07Z**". Matching the value covers both
+    # spellings, and it is stricter: only that exact instant is allowed, so a
+    # different clock on the same line is still caught.
+    inv_p = P.inventory
+    vintage = set()
+    if inv_p.exists():
+        _inv = json.loads(inv_p.read_text(encoding="utf-8"))
+        vintage = {_inv.get(k) for k in ("as_of_utc", "index_fetched_utc")}
+        vintage.discard(None)
+
+    timestamped = []
+    for rel in ("data/discovery/inventory.json",
+                "data/discovery/discovery-report.md",
+                "data/ledger/risk-deltas.json",
+                "data/ledger/risk-diff-report.md",
+                "data/ledger/ledger-report.md",
+                "data/triage/triage-8k.json",
+                "data/triage/triage-report.md",
+                "output/timeline.md"):
+        path = P.company / rel
+        if not path.exists():
+            timestamped.append(f"{rel}: missing")
+            continue
+        for i, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            hits = [h for h in CLOCK_RE.findall(line)
+                    if not any(h in v for v in vintage)]
+            if hits:
+                timestamped.append(f"{rel}:{i}: {line.strip()[:80]}")
+
+    check(f"none of the 8 committed artifacts carries a wall clock",
+          not timestamped,
+          "A time of day in a file that is otherwise a pure function of its "
+          "inputs makes every re-run produce a diff, so `pipeline MORN` leaves "
+          "the tree dirty and nobody can tell a real change from a clock:\n"
+          + "\n".join(f"  {t}" for t in timestamped[:10])
+          + "\nPut it in data/_meta/run-log.json instead — see "
+            "settings.record_run.")
+
+    # Non-vacuity: the pattern has to be able to see a clock at all.
+    check("the clock pattern matches a timestamp",
+          bool(CLOCK_RE.search("written 2026-08-24T15:33:33Z")), True)
+    check("  and does not match a bare date",
+          not CLOCK_RE.search("filed 2024-02-29"),
+          "A filing date is stable across runs and belongs in these files; a "
+          "check that flagged it would be turned off within a day.")
+
+    print()
     print("NO MOJIBAKE — the blind spot in the control-byte scan")
 
     # tools/check_control_bytes.py enforces CLAUDE.md rule 2 by looking for raw

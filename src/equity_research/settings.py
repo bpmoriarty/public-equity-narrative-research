@@ -49,9 +49,11 @@ rather than silently producing a worse document.
 
 from __future__ import annotations
 
+import json
 import tomllib
 from collections.abc import Mapping
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -76,6 +78,43 @@ COMPANY_CONFIGS = ("company", "corrections")
 # corrections has no corrections.toml, and that is not an error — it means zero
 # corrections, which is the normal state for a company nobody has audited yet.
 OPTIONAL_CONFIGS = ("corrections",)
+
+
+# ---------------------------------------------------------------------------
+# The run log — where a deterministic stage's clock goes
+# ---------------------------------------------------------------------------
+
+def record_run(P: CompanyPaths, stage: str, **fields: Any) -> None:
+    """Note that `stage` just ran, in the gitignored run log.
+
+    Committed artifacts carry no wall-clock stamp (see `CompanyPaths.run_log`),
+    but "when did discovery last run" is still a real question. It is answered
+    here instead of inside the artifact.
+
+    MERGES, never clobbers (CLAUDE.md rule 4). Five stages write this one file,
+    and a stage that replaced it would erase the other four every time — which
+    is precisely the failure that rule was written for, in a file small enough
+    that nobody would look.
+    """
+    path = P.run_log
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    log: dict[str, Any] = {}
+    if path.exists():
+        try:
+            log = json.loads(path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            # A corrupt log is a diagnostic file, not data. Losing it must never
+            # stop a pipeline stage that had already done its real work.
+            log = {}
+
+    log[stage] = {
+        "run_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        **fields,
+    }
+    # Sorted so the file's own shape does not depend on the order stages ran.
+    path.write_text(json.dumps(dict(sorted(log.items())), indent=2) + "\n",
+                    encoding="utf-8")
 
 
 # ---------------------------------------------------------------------------

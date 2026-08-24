@@ -284,6 +284,23 @@ class CompanyPaths:
     def verify_report(self) -> Path:
         return self.pack / "verify-report.md"
 
+    @property
+    def run_log(self) -> Path:
+        """When each deterministic stage last ran. GITIGNORED, deliberately.
+
+        Committed artifacts carry no wall-clock stamp — a timestamp inside a
+        file that is otherwise a pure function of its inputs makes every run
+        produce a diff, so "run twice, diff nothing" (CLAUDE.md rule 4) can
+        never hold. The clock still exists; it lives here, where git does not
+        watch it.
+
+        Exempt from that rule: `as_of_utc` and `index_fetched_utc` in
+        inventory.json, which describe when the DATA was read from EDGAR rather
+        than when the script ran. Those are stable across re-runs and are what a
+        coverage claim gets checked against (VERIFICATION.md D9).
+        """
+        return self.data / "_meta" / "run-log.json"
+
     # -- the manifest contract ----------------------------------------------
 
     def resolve(self, rel: str | Path) -> Path:

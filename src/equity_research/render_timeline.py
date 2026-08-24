@@ -48,6 +48,7 @@ import tomllib
 from collections import Counter
 from datetime import datetime, timezone
 
+from equity_research import settings
 from equity_research._bootstrap import ROOT
 from equity_research.merge_events import timeline_block
 from equity_research.paths import add_ticker_arg, paths
@@ -289,9 +290,11 @@ def render() -> str:
           f"is not written."]
 
     L += ["", "---", "",
-          f"Generated {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')}Z by "
-          f"`src/equity_research/render_timeline.py` — deterministic, no model call, so this document "
-          f"contains nothing the ledger does not.",
+          f"Built by `src/equity_research/render_timeline.py` — deterministic, no "
+          f"model call, so this document contains nothing the ledger does not, and "
+          f"re-running reproduces it byte for byte. The provenance that matters is "
+          f"the input hash below, not a clock; when it last ran is recorded in "
+          f"`data/_meta/run-log.json`.",
           "",
           f"Input `data/pack/timeline-events.json` sha256 `{src_hash[:32]}`. "
           f"{s['name']}, CIK {s['cik']}.", ""]
@@ -313,6 +316,7 @@ def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     path = P.timeline_md
     path.write_text(text, encoding="utf-8")
+    settings.record_run(P, "render_timeline", chars=len(text))
 
     block = timeline_block(include_quotes=False)
     c = block["counts"]

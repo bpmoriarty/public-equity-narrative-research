@@ -631,12 +631,22 @@ def main() -> None:
         "as_of_utc": index_fetched or run_utc,
         "as_of_basis": vintage_basis,
         "index_fetched_utc": index_fetched,
-        "index_age_days_at_run": stale_days,
-        "run_utc": run_utc,
+        # `run_utc` and `index_age_days_at_run` used to sit here. They are
+        # properties of the RUN, not of the data, and they moved to the
+        # gitignored run log — inventory.json is committed, and a field that
+        # changes on every re-run makes it impossible for this stage to be
+        # idempotent (CLAUDE.md rule 4). Everything left here is stable across
+        # re-runs against the same cache.
+        #
+        # The distinction the two fields exist to draw is NOT weakened by the
+        # move: `as_of_utc` still says when EDGAR was read, and it is still
+        # checked against a clock it must not equal — that clock now being read
+        # from the run log. VERIFICATION.md D9.
         "as_of_note": "as_of_utc is when the submissions index was READ FROM EDGAR, "
                       "not when this script last ran — those differ on every "
                       "cache-first run, and it is the first that a coverage claim "
-                      "depends on. run_utc is when the artifact was written.",
+                      "depends on. When the artifact was written is recorded in "
+                      "data/_meta/run-log.json, which git does not track.",
         "ticker": ticker,
         "cik": cik,
         "company_name": name,
@@ -660,6 +670,12 @@ def main() -> None:
 
     report = build_report(inventory, catalogued, fy_range, fye)
     (OUT_DIR / "discovery-report.md").write_text(report, encoding="utf-8")
+
+    # The run's clock, and how stale the index was when this run read it — both
+    # descriptions of the run rather than of the data, and both kept out of the
+    # committed artifacts so those stay byte-identical across re-runs.
+    settings.record_run(P, "discover", index_age_days_at_run=stale_days,
+                        sec_requests_made=client.requests_made)
 
     print(report)
     print()
@@ -685,13 +701,16 @@ def build_report(inv: dict, rows: list[dict], fy_range: list[int], fye) -> str:
     add(f"- Fiscal year end: **{inv['fiscal_year_end_month_day']}**")
     add(f"- Window: **FY{inv['first_fiscal_year']}–FY{inv['last_fiscal_year']}** "
         f"= {inv['window_start_date']} .. {inv['window_end_date']}")
-    # Both, and labelled. "Index as of X, report written Y" is the only phrasing that
-    # lets a reader judge how current the coverage is on a cache-first run.
+    # The index vintage is stated; the run's own clock is not. "Index as of X"
+    # is what lets a reader judge how current the coverage is, and it is stable
+    # across re-runs. "Report written Y" used to sit beside it and was the only
+    # thing that changed when this report was regenerated, so it made a
+    # deterministic document produce a diff every time (CLAUDE.md rule 4). It
+    # now lives in data/_meta/run-log.json, which git does not track.
     add(f"- Submissions index as of: **{inv['as_of_utc']}** "
         f"({inv['as_of_basis']})")
-    add(f"- This report written: {inv['run_utc']}"
-        + (f" — the index was **{inv['index_age_days_at_run']} day(s) old** when it "
-           f"was read here" if inv.get("index_age_days_at_run") else ""))
+    add(f"- When this report was written, and how stale the index was at that "
+        f"moment: `data/_meta/run-log.json`")
     add(f"- Total filings in index: {inv['index_total_filings']} "
         f"(reaching back to {inv['index_earliest_filing']})")
     add("")

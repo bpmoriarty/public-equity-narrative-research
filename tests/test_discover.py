@@ -102,15 +102,34 @@ print("\nthe real inventory reports the data's vintage, not the run's clock")
 inv_p = P.inventory
 if inv_p.exists():
     inv = json.loads(inv_p.read_text(encoding="utf-8"))
-    check("as_of_utc and run_utc are both present and distinct fields",
-          bool(inv.get("as_of_utc")) and bool(inv.get("run_utc")), True)
+    check("as_of_utc is present", bool(inv.get("as_of_utc")), True)
     check("  as_of_utc equals the index fetch time, not the run time",
           inv["as_of_utc"], inv["index_fetched_utc"])
-    # The defect, stated as a test: on a cache-first run these MUST differ, and the
-    # old code made them equal by construction.
-    if inv.get("sec_requests_made") == 0:
-        check("  a zero-request run does not claim its own clock as the as-of date",
-              inv["as_of_utc"] != inv["run_utc"], True)
+    # `run_utc` moved OUT of inventory.json — it describes the run, not the data,
+    # and a field that changes every re-run made this committed file impossible
+    # to reproduce byte for byte. The D9 property is unchanged and still checked:
+    # the as-of date must not be the clock of the run that wrote it. The clock is
+    # now read from the gitignored run log.
+    check("  inventory.json no longer carries the run's own clock",
+          "run_utc" in inv, False)
+    log_p = P.run_log
+    if log_p.exists():
+        log = json.loads(log_p.read_text(encoding="utf-8"))
+        ran = log.get("discover", {})
+        check("  the run log records when discover last ran",
+              bool(ran.get("run_utc")), True)
+        # The defect, stated as a test: on a cache-first run these MUST differ,
+        # and the old code made them equal by construction.
+        if ran.get("sec_requests_made") == 0:
+            check("  a zero-request run does not claim its own clock as the "
+                  "as-of date", inv["as_of_utc"] != ran["run_utc"], True)
+        else:
+            check("  (the last run hit EDGAR, so the two legitimately coincide)",
+                  True, True)
+    else:
+        # Gitignored, so a clean checkout has none — but this file is a
+        # regression test against committed MORN artifacts and discover has run.
+        check("  the run log exists", False, True)
     check("  the basis of the as-of date is recorded, not assumed",
           bool(inv.get("as_of_basis")), True)
 else:

@@ -73,6 +73,7 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
+from equity_research import settings
 from equity_research._bootstrap import ROOT
 from equity_research.paths import add_ticker_arg, paths
 
@@ -376,8 +377,9 @@ def write_report(records: list[dict], cfg: dict, inv: dict) -> Path:
     dropped = [r for r in records if r["decision"] == "date_only"]
 
     L = ["# 8-K triage log — conditional items 7.01 / 8.01", "",
-         f"Generated {datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')}. "
-         f"{inv['ticker']} ({inv['company_name']}), CIK {inv['cik']}.", "",
+         f"{inv['ticker']} ({inv['company_name']}), CIK {inv['cik']}. "
+         f"When this last ran is in `data/_meta/run-log.json` — not here, so "
+         f"re-running reproduces this file byte for byte.", "",
          "Deterministic: no model calls, so the same inputs always give the same decisions "
          "and every one can be checked by hand. `config/forms.toml` requires this log — "
          "\"Log every triage decision; a silent drop here loses real events.\"", "",
@@ -476,7 +478,11 @@ def main() -> None:
 
     TRIAGE_DIR.mkdir(parents=True, exist_ok=True)
     out = {
-        "generated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        # No generated_utc: this file is committed — it is the record of what
+        # was excluded — and it is a pure function of the inventory, the
+        # sections and the config. A clock in it made every re-run produce a
+        # diff (CLAUDE.md rule 4). When it last ran is in the gitignored
+        # data/_meta/run-log.json.
         "ticker": inv["ticker"], "cik": inv["cik"],
         "headline_window_chars": cfg["tri"]["headline_window_chars"],
         "max_document_chars": cfg["tri"]["max_document_chars"],
@@ -506,6 +512,8 @@ def main() -> None:
     if over:
         print(f"  OVER CAP  : {len(over)} document(s) not read — see the report")
     print()
+    settings.record_run(P, "triage_8k", filings_triaged=len(records),
+                        read=len(read))
     print(f"wrote {(TRIAGE_DIR / 'triage-8k.json').relative_to(ROOT)}")
     print(f"wrote {report.relative_to(ROOT)}")
 

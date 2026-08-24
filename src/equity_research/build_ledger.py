@@ -52,6 +52,7 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
+from equity_research import settings
 from equity_research._bootstrap import ROOT
 from equity_research.ledger_schema import (FIELDS, ID_HEX, FactSource, LedgerFact,
                                            YearLedger, confidence_for, risk_delta_id,
@@ -746,8 +747,9 @@ def main() -> None:
 
     # --- report ------------------------------------------------------------
     lines = ["# Year ledger", "",
-             f"Generated {datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')}. "
-             f"{inv['ticker']} ({inv['company_name']}), CIK {inv['cik']}.", "",
+             f"{inv['ticker']} ({inv['company_name']}), CIK {inv['cik']}. "
+             f"When this last ran is in `data/_meta/run-log.json` — not here, so "
+             f"re-running reproduces this file byte for byte.", "",
              "Every fact carries its source filing, an exact quote from that filing, and a "
              "confidence marker. `low` means the source section's boundaries are unverified, "
              "or the quote could not be found verbatim — see `confidence_reason` on the fact. "
@@ -848,6 +850,7 @@ def main() -> None:
     if all_warnings:
         lines += ["", "## Warnings", ""] + [f"- {w}" for w in dict.fromkeys(all_warnings)]
     (LEDGER_DIR / "ledger-report.md").write_text("\n".join(lines), encoding="utf-8")
+    settings.record_run(P, "build_ledger", years=[str(l.fiscal_year) for l in built])
 
     print()
     print("=" * 72)

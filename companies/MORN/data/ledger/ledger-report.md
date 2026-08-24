@@ -1,6 +1,6 @@
 # Year ledger
 
-Generated 2026-08-24T15:14:42Z. MORN (Morningstar, Inc.), CIK 0001289419.
+MORN (Morningstar, Inc.), CIK 0001289419. When this last ran is in `data/_meta/run-log.json` — not here, so re-running reproduces this file byte for byte.
 
 Every fact carries its source filing, an exact quote from that filing, and a confidence marker. `low` means the source section's boundaries are unverified, or the quote could not be found verbatim — see `confidence_reason` on the fact. **Any claim in the outputs resting on a `low` fact must say so, or be dropped.**
 

@@ -64,6 +64,7 @@ from datetime import datetime, timezone
 
 from rapidfuzz import fuzz
 
+from equity_research import settings
 from equity_research._bootstrap import ROOT
 from equity_research.paths import add_ticker_arg, paths
 
@@ -274,7 +275,10 @@ def main() -> None:
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     payload = {
-        "generated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        # No generated_utc: this file is committed and is a pure function of the
+        # sections and the thresholds, so a clock in it made every re-run produce
+        # a diff (CLAUDE.md rule 4). When it last ran is in the gitignored
+        # data/_meta/run-log.json.
         "method": "rapidfuzz token_sort_ratio, one-to-one greedy matching, best score first",
         "thresholds": th,
         "factor_counts": {str(y): len(data[y]["factors"]) for y in years},
@@ -284,7 +288,9 @@ def main() -> None:
 
     # --- human-readable report --------------------------------------------
     lines = ["# Risk factor deltas", "",
-             f"Generated {payload['generated_utc']}. Deterministic — `rapidfuzz`, no model calls.",
+             "Deterministic — `rapidfuzz`, no model calls. Re-running reproduces "
+             "this file byte for byte; when it last ran is in "
+             "`data/_meta/run-log.json`.",
              "", f"Thresholds (config/sections.toml `[risk_diff]`): unchanged at "
              f"{th['unchanged_at']}, reworded at {th['reworded_at']}, "
              f"body reworded below {th['body_reworded_at']}.", ""]
@@ -334,6 +340,7 @@ def main() -> None:
             lines.append(f"  - FY{y}: {it['heading_now']}")
         lines.append("")
     (OUT_DIR / "risk-diff-report.md").write_text("\n".join(lines), encoding="utf-8")
+    settings.record_run(P, "risk_diff", years=[str(y) for y in years])
 
     print()
     print("=" * 72)

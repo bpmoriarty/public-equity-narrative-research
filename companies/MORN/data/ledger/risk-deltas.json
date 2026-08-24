@@ -1,5 +1,4 @@
 {
-  "generated_utc": "2026-08-24T15:14:25Z",
   "method": "rapidfuzz token_sort_ratio, one-to-one greedy matching, best score first",
   "thresholds": {
     "unchanged_at": 95,
