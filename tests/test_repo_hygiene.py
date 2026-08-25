@@ -73,7 +73,37 @@ SKIP_DIRS = {".git", ".venv", "__pycache__", ".pytest_cache", ".ruff_cache",
 MARKER = b'"input_tokens"'
 
 
-def check(name: str, ok: bool, detail: str = "") -> None:
+def require(name: str, ok: bool, detail: str = "") -> None:
+    """Record a verdict that is already decided, with an explanation on failure.
+
+    NOT NAMED `check`, AND THAT IS THE POINT — DO NOT RENAME IT BACK.
+    ----------------------------------------------------------------
+    Every other test file in this suite has `check(name, got, want)`: it takes
+    two values and decides. This one takes a decision. Both forms are reasonable
+    and this file genuinely wants this one — most of its questions are "is this
+    list of offenders empty, and if not, which files" rather than "does A equal
+    B", and printing the offenders as `want` would be nonsense.
+
+    What was not reasonable was calling both of them `check`. Under the old name
+    the two signatures were positionally compatible, so writing the wrong one
+    raised nothing:
+
+        check("...", got, want)     # meant as a comparison
+        -> require("...", ok=got, detail=want)
+
+    which passes whenever `got` is merely truthy, regardless of `want`. That is
+    a check that reports green without testing anything, in the one file whose
+    job is catching exactly that class of failure. It happened three times in a
+    single session (Phase 4), once producing a vacuous pass.
+
+    Renamed rather than reconciled, and `check` is deliberately left undefined
+    here: a stray `check(...)` in this file is now a NameError, the file crashes,
+    and run_all reports NO COUNT for it. Loud beats subtly-wrong. Defining a
+    compatible `check` as well would have been quieter and worse — it would have
+    made the mistake work.
+
+    Recorded as PROJECT_STATUS Next Steps 28.
+    """
     global PASS, FAIL
     if ok:
         PASS += 1
@@ -290,7 +320,7 @@ def main() -> int:
     # An empty result would make every check below vacuously pass, which is the
     # failure shape this whole file is about. Assert the detector found the
     # records we know exist.
-    check(f"the detector found model-output files at all "
+    require(f"the detector found model-output files at all "
           f"({len(found)} of {len(candidates)} json files scanned)",
           len(found) > 0,
           "No file carried a top-level usage.input_tokens. Either the records "
@@ -300,7 +330,7 @@ def main() -> int:
 
     if found:
         ignored = [r for r in rels if is_ignored(r)]
-        check(f"none of the {len(rels)} model-output file(s) are gitignored",
+        require(f"none of the {len(rels)} model-output file(s) are gitignored",
               not ignored,
               "GITIGNORED MODEL OUTPUT — this is the mistake that has been made "
               "three times:\n" + "\n".join(f"  {r}" for r in ignored) +
@@ -308,7 +338,7 @@ def main() -> int:
               "to .gitignore (see the data/pack/ block for the pattern).")
 
         untracked = [r for r in rels if r not in tracked]
-        check(f"all {len(rels)} model-output file(s) are tracked by git",
+        require(f"all {len(rels)} model-output file(s) are tracked by git",
               not untracked,
               "UNTRACKED MODEL OUTPUT — not ignored, just never added:\n" +
               "\n".join(f"  {r}" for r in untracked) +
@@ -317,19 +347,19 @@ def main() -> int:
     print()
     print("THE DELIVERABLES MUST BE TRACKED — model-written prose, ~$3.50 a pass")
     docs = sorted(P.output.glob("*.md"))
-    check("output/ contains generated documents", bool(docs),
+    require("output/ contains generated documents", bool(docs),
           "No .md files in output/. If the pipeline has not been run this is "
           "expected; if it has, the deliverables are missing.")
     for d in docs:
         rel = d.relative_to(ROOT).as_posix()
-        check(f"tracked: {rel}", rel in tracked,
+        require(f"tracked: {rel}", rel in tracked,
               f"{rel} is not tracked. It is the only artifact anyone outside "
               f"this repo reads, and every citation check runs against it.")
 
     print()
     print("PATHS COME FROM CompanyPaths — a literal here would find the wrong company")
     offenders = path_literals()
-    check("no hardcoded data/ or output/ path literals in src/equity_research/",
+    require("no hardcoded data/ or output/ path literals in src/equity_research/",
           not offenders,
           "These build a path from a string instead of asking paths.py, so they "
           "resolve to the repository root rather than to the company being run "
@@ -352,7 +382,7 @@ def main() -> int:
         '        rec["path"] = dest.relative_to(ROOT).as_posix()',
     ]
     caught = [b for b in bugs if stores_root_relative_path(b)]
-    check(f"all {len(bugs)} known bug shapes are flagged",
+    require(f"all {len(bugs)} known bug shapes are flagged",
           len(caught) == len(bugs),
           "Not flagged:\n" + "\n".join(f"  {b.strip()}" for b in bugs
                                        if b not in caught))
@@ -365,20 +395,20 @@ def main() -> int:
         '        return path.resolve().relative_to(self.company.resolve()).as_posix()',
     ]
     misfired = [l for l in legit if stores_root_relative_path(l)]
-    check(f"none of the {len(legit)} legitimate shapes are flagged",
+    require(f"none of the {len(legit)} legitimate shapes are flagged",
           not misfired,
           "Wrongly flagged — this lint would be dismissed as noise:\n"
           + "\n".join(f"  {l.strip()}" for l in misfired))
 
     total = root_relative_total()
-    check(f"the lint has something to guard ({total} relative_to(ROOT) calls)",
+    require(f"the lint has something to guard ({total} relative_to(ROOT) calls)",
           total > 0,
           "No relative_to(ROOT) anywhere in the package. Either the idiom was "
           "renamed — in which case this lint now matches nothing and protects "
           "nothing — or every use really is gone.")
 
     offenders = root_relative_offenders()
-    check("no relative_to(ROOT) path is stored in src/equity_research/",
+    require("no relative_to(ROOT) path is stored in src/equity_research/",
           not offenders,
           "These store a path relative to the REPOSITORY ROOT, but manifests "
           "store paths relative to the COMPANY folder — so P.resolve() rejects "
@@ -404,14 +434,14 @@ def main() -> int:
     values: list[tuple[str, str, str]] = []   # (manifest, key, value)
     for label, (path, committed) in manifests.items():
         if not path.exists():
-            check(f"{label} is present", not committed,
+            require(f"{label} is present", not committed,
                   f"{label} is committed but missing from disk. A committed "
                   f"record that is gone is not a clean checkout, it is a loss.")
             continue
         doc = json.loads(path.read_text(encoding="utf-8"))
         values += [(label, k, v) for k, v in manifest_path_values(doc)]
 
-    check(f"the scan found manifest paths at all ({len(values)} across "
+    require(f"the scan found manifest paths at all ({len(values)} across "
           f"{len({v[0] for v in values})} manifest(s))",
           len(values) > 0,
           "No path-shaped values found in any manifest. Either the manifests "
@@ -420,7 +450,7 @@ def main() -> int:
 
     wrong = [f"{m}: {k} = {v}" for m, k, v in values
              if not v.startswith(("data/", "output/"))]
-    check(f"all {len(values)} manifest path(s) are company-relative",
+    require(f"all {len(values)} manifest path(s) are company-relative",
           not wrong,
           "P.resolve() raises on every one of these, so the stage that reads "
           "them dies on its first record:\n"
@@ -428,7 +458,7 @@ def main() -> int:
           + ("\n  ..." if len(wrong) > 10 else ""))
 
     backslashed = [f"{m}: {k} = {v}" for m, k, v in values if "\\" in v]
-    check(f"no manifest path contains a backslash",
+    require(f"no manifest path contains a backslash",
           not backslashed,
           "A Windows separator in a stored path makes the manifest "
           "platform-specific, so the same run on Linux produces a different "
@@ -494,7 +524,7 @@ def main() -> int:
             if hits:
                 timestamped.append(f"{rel}:{i}: {line.strip()[:80]}")
 
-    check(f"none of the 8 committed artifacts carries a wall clock",
+    require(f"none of the 8 committed artifacts carries a wall clock",
           not timestamped,
           "A time of day in a file that is otherwise a pure function of its "
           "inputs makes every re-run produce a diff, so `pipeline MORN` leaves "
@@ -504,9 +534,9 @@ def main() -> int:
             "settings.record_run.")
 
     # Non-vacuity: the pattern has to be able to see a clock at all.
-    check("the clock pattern matches a timestamp",
+    require("the clock pattern matches a timestamp",
           bool(CLOCK_RE.search("written 2026-08-24T15:33:33Z")), True)
-    check("  and does not match a bare date",
+    require("  and does not match a bare date",
           not CLOCK_RE.search("filed 2024-02-29"),
           "A filing date is stable across runs and belongs in these files; a "
           "check that flagged it would be turned off within a day.")
@@ -568,11 +598,11 @@ def main() -> int:
     clean_sample = ("an ellipsis … and a dash — and curly quotes "
                     "“like this”, plus café, naïve and a "
                     "non-breaking space")
-    check("the signature matches text that really has been round-tripped",
+    require("the signature matches text that really has been round-tripped",
           all(m in as_cp1252(clean_sample) for m in MOJIBAKE),
           "The markers no longer match text that IS corrupted, so this check "
           "protects nothing.")
-    check("correctly encoded punctuation is NOT flagged",
+    require("correctly encoded punctuation is NOT flagged",
           not any(m in clean_sample for m in MOJIBAKE),
           "The markers fire on legitimate UTF-8, so this check would be "
           "dismissed as noise on the day it was right.")
@@ -586,7 +616,7 @@ def main() -> int:
         hits = mojibake_in(p)
         if hits:
             corrupted.append(f"{rel}: {', '.join(hits)}")
-    check(f"no tracked text file contains mojibake "
+    require(f"no tracked text file contains mojibake "
           f"({len(tracked)} tracked, {len(text_ext)} extensions scanned)",
           not corrupted,
           "These were almost certainly written by a tool that read them in one "
@@ -609,7 +639,7 @@ def main() -> int:
     # Compared as TABLES and KEYS, never values — the template's values are
     # deliberately blank or placeholder, which is the whole point of it.
     template = ROOT / "companies" / "_template" / "company.toml"
-    check("companies/_template/company.toml exists", template.exists(),
+    require("companies/_template/company.toml exists", template.exists(),
           "`pipeline init` copies this file; without it no new company can be "
           "created.")
 
@@ -628,7 +658,7 @@ def main() -> int:
         want = key_shape(template)
         # Non-vacuity: an empty key set would make every comparison below pass
         # by agreeing about nothing.
-        check(f"the template declares settings at all ({len(want)} keys)",
+        require(f"the template declares settings at all ({len(want)} keys)",
               len(want) > 0,
               "No tables or keys parsed out of the template, so the comparisons "
               "below are vacuous.")
@@ -663,12 +693,12 @@ def main() -> int:
         tmpl = tomllib.loads(template.read_text(encoding="utf-8"))
         blanks = {k: tmpl.get("company", {}).get(k)
                   for k in ("ticker", "cik", "resolved_name")}
-        check("the template's ticker, cik and resolved_name are all empty",
+        require("the template's ticker, cik and resolved_name are all empty",
               all(v == "" for v in blanks.values()),
               f"Got {blanks}. Whoever refreshed this template left a real "
               f"company's values in it.")
 
-        check(f"all {len(tickers)} company config(s) agree with the template "
+        require(f"all {len(tickers)} company config(s) agree with the template "
               f"on every key",
               not problems,
               "\n".join(problems)
@@ -681,10 +711,10 @@ def main() -> int:
     # .env holds EDGAR_IDENTITY and ANTHROPIC_API_KEY. gitignore only protects
     # files that were never added; once committed, a file stays tracked and the
     # ignore rule is silently irrelevant. That is worth asserting, not assuming.
-    check(".env is not tracked", ".env" not in tracked,
+    require(".env is not tracked", ".env" not in tracked,
           ".env is TRACKED. It holds ANTHROPIC_API_KEY. Untrack it now "
           "(git rm --cached .env) and rotate the key — it is in the history.")
-    check(".env is ignored", is_ignored(".env") or not (ROOT / ".env").exists(),
+    require(".env is ignored", is_ignored(".env") or not (ROOT / ".env").exists(),
           ".env exists but .gitignore does not cover it.")
 
     print()
