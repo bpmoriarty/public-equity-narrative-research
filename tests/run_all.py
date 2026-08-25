@@ -22,9 +22,12 @@ all. Every one of those reports success.
 
 WHAT THIS DOES
 --------------
-Runs each tests/test_*.py, reads the `N passed, M failed` line it prints, and
-compares N against tests/expected_counts.json. A mismatch fails **in either
-direction**:
+Runs each `test_*.py` found anywhere under tests/ — at any depth, so the
+tests/unit and tests/regression/morn split is visible to it — reads the
+`N passed, M failed` line each one prints, and compares N against
+tests/expected_counts.json. Files are recorded under their path relative to
+tests/, so a file that moves reads as one MISSING plus one UNREGISTERED rather
+than as silence. A mismatch fails **in either direction**:
 
   - FEWER checks than expected  — the shrink case above.
   - MORE checks than expected   — new checks were added and not recorded. Not a
@@ -69,7 +72,36 @@ COUNT_RE = re.compile(r"^(\d+) passed, (\d+) failed", re.MULTILINE)
 
 
 def discover() -> list[Path]:
-    return sorted(HERE.glob("test_*.py"))
+    """Every test file under tests/, at any depth.
+
+    RECURSIVE, and that is the whole point of this function existing rather than
+    a glob inline at the call site. Until Phase 5.1 this was
+    `HERE.glob("test_*.py")` — non-recursive — so the moment a test file moved
+    into tests/unit/ or tests/regression/morn/ it stopped being discovered.
+
+    A file that stops being discovered is the exact failure the count gate exists
+    to catch (VERIFICATION.md D7), so the gate has to be able to see the layout
+    it is about to be pointed at BEFORE anything moves. That is why this change
+    ships as its own commit, ahead of the split: with a flat tests/ directory
+    `key()` returns the bare filename, so the recorded counts are unchanged and
+    this commit is provably a capability change and nothing else.
+
+    __pycache__ is excluded because rglob would otherwise return compiled
+    artifacts on some layouts; they are not test files and cannot report a count.
+    """
+    return sorted(p for p in HERE.rglob("test_*.py")
+                  if "__pycache__" not in p.parts)
+
+
+def key(path: Path) -> str:
+    """The name a file is recorded under in expected_counts.json.
+
+    Relative to tests/ and always forward-slashed, so the recorded keys are
+    identical on Windows and POSIX — a backslash here would make the expectations
+    file platform-specific and every key would read as UNREGISTERED on the other
+    platform.
+    """
+    return path.relative_to(HERE).as_posix()
 
 
 def load_expected() -> dict[str, int]:
@@ -117,7 +149,8 @@ def main() -> int:
 
     files = discover()
     if not files:
-        print("FAIL  no test_*.py files found in tests/ — the suite has vanished.")
+        print("FAIL  no test_*.py files found anywhere under tests/ — the suite "
+              "has vanished.")
         return 1
 
     expected = {} if args.update else load_expected()
@@ -127,7 +160,7 @@ def main() -> int:
     print(f"Running {len(files)} test file(s)")
     print("=" * 74)
     for path in files:
-        name = path.name
+        name = key(path)
         passed, failed, code, out = run_one(path)
 
         if passed is None:
@@ -135,7 +168,7 @@ def main() -> int:
                 f"{name}: printed no 'N passed, M failed' line. Either it "
                 f"crashed before finishing, or it no longer reports a count — "
                 f"in which case this gate cannot protect it.")
-            print(f"  NO COUNT  {name:32s} exit={code}")
+            print(f"  NO COUNT  {name:40s} exit={code}")
             # Show the tail; a crash traceback is the usual cause.
             for line in out.strip().splitlines()[-6:]:
                 print(f"            {line}")
@@ -169,14 +202,19 @@ def main() -> int:
                 marks.append(f"expected {want}")
 
         status = "ok  " if not marks else "FAIL"
-        print(f"  {status}      {name:32s} {passed:3d} checks"
+        print(f"  {status}      {name:40s} {passed:3d} checks"
               + (f"   [{', '.join(marks)}]" if marks else ""))
 
-    # A file listed in the expectations but no longer on disk.
-    for name in sorted(set(expected) - {p.name for p in files}):
+    # A file listed in the expectations but no longer on disk. After the Phase 5.1
+    # split this is also what a *half-finished move* looks like: the file is gone
+    # from where it was recorded and its new path reads as UNREGISTERED above, so
+    # one rename shows up as one of each rather than as silence.
+    for name in sorted(set(expected) - {key(p) for p in files}):
         problems.append(f"{name}: listed in {EXPECTED.name} but no longer exists. "
-                        f"If it was deleted on purpose, remove it with --update.")
-        print(f"  MISSING   {name:32s}   (expected {expected[name]} checks)")
+                        f"If it was deleted on purpose, remove it with --update. "
+                        f"If it MOVED, record it under its new path — the key is "
+                        f"the path relative to tests/, not the bare filename.")
+        print(f"  MISSING   {name:40s}   (expected {expected[name]} checks)")
 
     total = sum(observed.values())
     print("=" * 74)

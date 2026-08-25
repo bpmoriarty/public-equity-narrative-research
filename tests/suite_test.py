@@ -2,9 +2,11 @@
 
 WHY THIS FILE IS `suite_test.py` AND NOT `test_suite.py`
 -------------------------------------------------------
-`run_all.py` discovers its work with `glob("test_*.py")`. A file named
+`run_all.py` discovers its work with `rglob("test_*.py")`. A file named
 `test_suite.py` would be picked up by that glob *and* import `run_all`, so
 run_all would run a file that runs run_all — recursively, once per test file.
+Now that discovery descends into subdirectories, that trap applies at any depth,
+so the `_test` suffix is the rule for this file wherever it sits.
 pytest collects both `test_*.py` and `*_test.py`, so the `_test` suffix lets
 pytest see this file while `run_all` stays blind to it.
 
@@ -36,9 +38,10 @@ RELATIONSHIP TO run_all.py
 --------------------------
 `run_all.py` remains the authoritative gate and the thing to run by hand; it
 gives a readable per-file table. This file exists so `uv run pytest` enforces
-exactly the same three properties, for CI and for the tests/unit vs
-tests/regression split in a later phase. Both call the same `run_one`, so they
-cannot drift apart in what they measure.
+exactly the same three properties, for CI and across the tests/unit vs
+tests/regression/morn split. Both call the same `discover`, `key` and `run_one`,
+so they cannot drift apart in what they measure or in what they call things —
+which matters more since the recorded key became a path rather than a filename.
 """
 
 from __future__ import annotations
@@ -49,7 +52,7 @@ import pytest
 # mode, no __init__.py in tests/), which is what makes `run_all` importable by
 # name. That is documented pytest behaviour, not a revival of the sys.path
 # hacks this phase removed.
-from run_all import discover, load_expected, run_one
+from run_all import discover, key, load_expected, run_one
 
 FILES = discover()
 EXPECTED = load_expected()
@@ -76,7 +79,7 @@ def test_expected_counts_reconciles_with_disk() -> None:
     expected_counts.json means a test stopped running; a file added without
     recording it means a test is running unmeasured.
     """
-    on_disk = {p.name for p in FILES}
+    on_disk = {key(p) for p in FILES}
     recorded = set(EXPECTED)
 
     missing = sorted(recorded - on_disk)
@@ -104,30 +107,31 @@ def test_expected_counts_reconciles_with_disk() -> None:
     )
 
 
-@pytest.mark.parametrize("path", FILES, ids=lambda p: p.name)
+@pytest.mark.parametrize("path", FILES, ids=key)
 def test_file_passes_and_ran_every_recorded_check(path) -> None:
     """Run one test file and assert it passed *and* did not shrink."""
     passed, failed, code, out = run_one(path)
+    name = key(path)
 
     assert passed is not None, (
-        f"{path.name} printed no 'N passed, M failed' line, so its check count "
+        f"{name} printed no 'N passed, M failed' line, so its check count "
         f"cannot be measured. Every test file must print one — that is how the "
         f"count is taken at the point of the check rather than scraped from "
         f"prose.\n\n--- output ---\n{out[-2000:]}"
     )
     assert failed == 0, (
-        f"{path.name} reported {failed} failed check(s).\n\n"
+        f"{name} reported {failed} failed check(s).\n\n"
         f"--- output ---\n{out[-4000:]}"
     )
     assert code == 0, (
-        f"{path.name} exited {code} despite reporting no failed checks - the "
+        f"{name} exited {code} despite reporting no failed checks - the "
         f"exit code and the summary line disagree, which means one of them is "
         f"lying.\n\n--- output ---\n{out[-2000:]}"
     )
 
-    expected = EXPECTED[path.name]
+    expected = EXPECTED[name]
     assert passed == expected, (
-        f"{path.name} ran {passed} checks, expected {expected}. "
+        f"{name} ran {passed} checks, expected {expected}. "
         + (
             "FEWER checks ran than recorded - this is the failure this gate "
             "exists for: a test that stops testing still reports green."
