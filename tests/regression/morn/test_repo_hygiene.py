@@ -439,12 +439,31 @@ def main() -> int:
     values: list[tuple[str, str, str]] = []   # (manifest, key, value)
     for label, (path, committed) in manifests.items():
         if not path.exists():
-            require(f"{label} is present", not committed,
-                  f"{label} is committed but missing from disk. A committed "
-                  f"record that is gone is not a clean checkout, it is a loss.")
             continue
         doc = json.loads(path.read_text(encoding="utf-8"))
         values += [(label, k, v) for k, v in manifest_path_values(doc)]
+
+    # ONE check for all four, not one per missing file, and the difference is the
+    # whole point. Emitting a check only when a manifest is ABSENT made this
+    # file's check COUNT depend on the environment: 27 here, 29 in a clean
+    # checkout where the two derived manifests have not been built. The count is
+    # the tripwire the whole suite is hung on (VERIFICATION.md D7), so a file
+    # whose count moves with the weather disarms it — and it disarms it in the
+    # direction that reads as "new checks were added", which invites a re-record
+    # rather than an investigation.
+    #
+    # Found by running this file in a clean worktree during the Phase 5.1 split,
+    # not by reading it. It is the same defect as the per-company check that
+    # moved the count from 20 to 21 in Phase 4.6, and it has the same fix:
+    # aggregate, so the number of checks is a property of the file and only their
+    # CONTENT is a property of the tree.
+    missing_committed = sorted(label for label, (path, committed)
+                               in manifests.items()
+                               if committed and not path.exists())
+    require("every committed manifest is on disk", not missing_committed,
+          f"{', '.join(missing_committed)} committed but missing. A committed "
+          f"record that is gone is not a clean checkout, it is a loss — restore "
+          f"it with `git checkout -- companies/`.")
 
     require(f"the scan found manifest paths at all ({len(values)} across "
           f"{len({v[0] for v in values})} manifest(s))",
