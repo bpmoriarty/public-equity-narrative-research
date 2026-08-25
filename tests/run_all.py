@@ -113,14 +113,33 @@ def load_expected() -> dict[str, int]:
     return dict(doc["counts"])
 
 
-# The fixture company is named in tests/fixture.py, which the six test files
-# that read MORN's artifacts also import. One home for the answer to "which
-# company do the regression tests read?".
+# The fixture company is named in tests/regression/morn/fixture.py, which the
+# regression files import directly. One home for the answer to "which company do
+# the regression tests read?".
 #
-# Passed to every child as EQR_TICKER as well, so a test file that resolves
-# paths some other way still lands on the same company, and so does anything
-# those files shell out to.
-from fixture import FIXTURE_TICKER  # noqa: E402
+# Passed to every child as EQR_TICKER, so a test file that resolves paths some
+# other way still lands on the same company, and so does anything those files
+# shell out to. Unit files get it too: they read no company data, but several of
+# them import stage modules, and a stage module resolves the ticker at import
+# time (module-level path constants), so importing one needs *a* company named.
+#
+# Loaded BY PATH, not by name. Phase 5.1 moved fixture.py out of tests/, and the
+# alternative — putting tests/regression/morn on sys.path — would quietly make
+# `fixture` importable from tests/unit/ as well, which is exactly the coupling
+# the split exists to remove.
+import importlib.util as _importlib_util  # noqa: E402
+
+_FIXTURE_PY = HERE / "regression" / "morn" / "fixture.py"
+if not _FIXTURE_PY.exists():
+    raise SystemExit(
+        f"FAIL  {_FIXTURE_PY.relative_to(ROOT).as_posix()} is missing. It names "
+        f"the company the regression tests read, and every child process is "
+        f"given that name — without it this runner cannot say which company it "
+        f"is testing.")
+_spec = _importlib_util.spec_from_file_location("eqr_test_fixture", _FIXTURE_PY)
+_fixture = _importlib_util.module_from_spec(_spec)
+_spec.loader.exec_module(_fixture)
+FIXTURE_TICKER = _fixture.FIXTURE_TICKER
 
 
 def run_one(path: Path) -> tuple[int | None, int | None, int, str]:

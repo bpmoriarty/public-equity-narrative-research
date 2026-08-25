@@ -22,14 +22,10 @@ invalidated every citation to them in an already-written brief.
 
 from __future__ import annotations
 
-import json
 import sys
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-# fixture FIRST, and that ordering is load-bearing: it sets EQR_TICKER, which
-# every later paths() call reads. See tests/fixture.py.
-from fixture import P  # noqa: E402
+# No `json` and no `pathlib` any more: reading the ledger off disk moved to
+# tests/regression/morn/. A unit test here builds its facts inline.
 from equity_research.ledger_schema import (FactSource, LedgerFact,  # noqa: E402
                                            fact_id, risk_delta_id)
 
@@ -202,37 +198,11 @@ def main() -> int:
         if not ok:
             failures.append(f"risk delta id: {label}")
 
-    # --- against the real ledger, if it has been built ---------------------
-    print()
-    print("THE BUILT LEDGER — every stored id must be reproducible from the fact itself")
-    # Not `paths` — that name belongs to the CompanyPaths factory imported above.
-    ledger_files = sorted(P.ledger.glob("FY*.json"))
-    if not ledger_files:
-        print("  SKIPPED  no ledger on disk — run "
-              "uv run python -m equity_research.build_ledger")
-    else:
-        n = bad = 0
-        for p in ledger_files:
-            d = json.loads(p.read_text(encoding="utf-8"))
-            for field, facts in d.items():
-                if not isinstance(facts, list) or not facts or not isinstance(facts[0], dict):
-                    continue
-                if "quote" not in facts[0]:
-                    continue
-                for x in facts:
-                    n += 1
-                    src = FactSource(**x["source"]) if x.get("source") else None
-                    if fact_id(x["field"], x["fiscal_year"], x["value"],
-                               src, x["quote"]) != x["id"]:
-                        bad += 1
-                        if bad <= 3:
-                            print(f"  MISMATCH {p.name} {x['id']}")
-        tally(not bad)
-        print(f"  {'PASS' if not bad else 'BROKEN':7s} {n} facts checked, {bad} id(s) "
-              f"not reproducible from their own stored content")
-        if bad:
-            failures.append(f"{bad} stored id(s) cannot be recomputed — the output "
-                            f"checker would reject valid citations")
+    # The same properties held against the REAL ledger — every stored id
+    # reproducible from the fact's own content — moved to
+    # tests/regression/morn/test_deliverables.py in Phase 5.1. It read
+    # companies/<T>/data/ledger/ and skipped itself when that was absent, which
+    # is the failure mode the split removes: there it is a hard error instead.
 
     print()
     print("=" * 74)

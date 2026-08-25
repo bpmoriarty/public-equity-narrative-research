@@ -37,14 +37,19 @@ import builtins
 import contextlib
 import io
 import os
+import shutil
 import sys
+import tempfile
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
+# ROOT from the package, not `Path(__file__).parent.parent` — this file reads the
+# stage modules' source below, and a depth-counting path breaks the moment the
+# file is moved. Phase 5.1 moved it into tests/unit/, which is exactly that.
+from equity_research.paths import ROOT  # noqa: E402
 from equity_research import cli  # noqa: E402
 
 PASS = FAIL = 0
@@ -160,7 +165,12 @@ check("every spending stage carries a remedy for a non-zero exit",
 # that exists but means something else would report the wrong file forever.
 from equity_research.paths import paths as _paths  # noqa: E402
 
-_P = _paths("MORN")
+# A FICTIONAL ticker, deliberately. This block asks whether an attribute NAME
+# exists on CompanyPaths and where it resolves to — questions about the class,
+# not about any company's data, and `paths()` touches no disk. Naming MORN here
+# would have made a unit test read as bound to the fixture company when it is
+# not; tests/regression/morn/ is where that binding belongs.
+_P = _paths("ZZ")
 check("every stage declares what it leaves behind",
       [s.name for s in cli.STAGES if not s.artifacts], [])
 check("every declared artifact is a real CompanyPaths attribute",
@@ -272,11 +282,23 @@ print()
 print("THE COMPANY — checked before thirteen subprocesses fail one at a time")
 # ---------------------------------------------------------------------------
 
-check("a known ticker resolves", cli.resolve_company("MORN"), "MORN")
+# Whichever company happens to be scaffolded, not MORN by name. These three
+# assert what `resolve_company` DOES — accepts a folder that exists, normalises
+# case to the folder's own spelling, refuses one that does not — and none of that
+# is a statement about a particular issuer. Taking the ticker from
+# `known_tickers()` also means the checks keep their meaning for a colleague
+# whose only company is the one they just ran `pipeline init` for.
+# `[0]` unguarded on purpose: with no company scaffolded at all this raises
+# IndexError here, the file crashes, and run_all reports NO COUNT with the
+# traceback. That is the right outcome and it needs no check of its own — a
+# conditional would turn a missing precondition into a silent skip, which is the
+# whole failure this split exists to remove.
+_a_company = cli.known_tickers()[0]
+check("a known ticker resolves", cli.resolve_company(_a_company), _a_company)
 check("a lower-cased ticker resolves to the folder's own spelling",
-      cli.resolve_company("morn"), "MORN")
+      cli.resolve_company(_a_company.lower()), _a_company)
 check("an unknown ticker is fatal before anything runs",
-      raises(lambda: cli.resolve_company("MRON")), True)
+      raises(lambda: cli.resolve_company("ZZNOSUCH")), True)
 
 # ---------------------------------------------------------------------------
 print()
@@ -492,12 +514,24 @@ print()
 print("STATUS — reports what is there, and does not guess at freshness")
 # ---------------------------------------------------------------------------
 
+# `describe` is asked about three KINDS of path — absent, a file, a directory —
+# and it does not care whose they are. It used to be handed MORN's inventory and
+# facts/, which made these three checks fail in any checkout without them while
+# testing nothing about MORN. A scratch directory says the same thing and says it
+# anywhere, which is what puts them in tests/unit/ rather than in regression.
+_scratch = Path(tempfile.mkdtemp(prefix="eqr-describe-"))
+(_scratch / "a-file.json").write_text('{"x": 1}', encoding="utf-8")
+(_scratch / "a-dir").mkdir()
+(_scratch / "a-dir" / "one.txt").write_text("x", encoding="utf-8")
+
 check("a missing artifact is reported as absent",
-      cli.describe(_P.company / "no-such-file.json"), "absent")
+      cli.describe(_scratch / "no-such-file.json"), "absent")
 check("a real file is reported by size",
-      cli.describe(_P.inventory).endswith("KB"), True)
+      cli.describe(_scratch / "a-file.json").endswith("KB"), True)
 check("a directory is reported by file count",
-      "file(s)" in cli.describe(_P.facts), True)
+      "file(s)" in cli.describe(_scratch / "a-dir"), True)
+
+shutil.rmtree(_scratch, ignore_errors=True)
 
 # The two spending stages are the only ones that can answer for themselves, so
 # they are the only ones `status` may speak for. If a third stage ever gains a
@@ -560,9 +594,10 @@ def init(ticker: str) -> bool:
     return refused
 
 
-# MORN exists, so this exercises the refusal against a real folder — and the
-# assertion inside `init` proves the refusal did not touch it.
-check("refuses a company that already exists", init("MORN"), True)
+# A company that exists, whichever one that is, so the refusal is exercised
+# against a real folder — and the assertion inside `init` proves the refusal did
+# not touch it.
+check("refuses a company that already exists", init(_a_company), True)
 check("refuses a ticker that is not one", init("not a ticker"), True)
 check("refuses an empty ticker", init(""), True)
 

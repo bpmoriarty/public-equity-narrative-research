@@ -27,16 +27,17 @@ from __future__ import annotations
 
 import sys
 import tomllib
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
-# fixture FIRST, and that ordering is load-bearing: it sets EQR_TICKER, and the
-# stage module below resolves the ticker at IMPORT time. See tests/fixture.py.
-from fixture import P  # noqa: E402
+# ROOT from the package rather than counted off __file__, so this file survives
+# being moved. The stage module below still resolves a ticker at IMPORT time from
+# EQR_TICKER — run_all supplies it — but nothing here reads that company's data;
+# `config/sections.toml` is global, shared by every company, which is why these
+# checks are unit checks and the manifest ones are not.
+from equity_research.paths import ROOT  # noqa: E402
 import equity_research.extract_sections as e  # noqa: E402
 
 PASS = FAIL = 0
@@ -53,7 +54,7 @@ def check(name: str, got, want) -> None:
 
 
 CFG = {"sections": tomllib.loads(
-    (P.config_dir / "sections.toml").read_text(encoding="utf-8"))}
+    (ROOT / "config" / "sections.toml").read_text(encoding="utf-8"))}
 FLOOR = CFG["sections"]["validation"]["min_substantive_words"]
 
 # THE DEFECT, verbatim from
@@ -119,27 +120,11 @@ check("  and reports the no-text problem, not only the character floor",
       any(p.startswith("NO USABLE TEXT") for p in problems3), True)
 
 
-print("\nthe manifest on disk records the class, if sections have been extracted")
-import json  # noqa: E402
-mp = P.sections_manifest
-if mp.exists():
-    man = json.loads(mp.read_text(encoding="utf-8"))
-    listed = man.get("sections_with_no_usable_text", [])
-    check("no-usable-text sections are a named category, not folded into failures",
-          isinstance(listed, list), True)
-    # Every row in that category must actually be marked not-ok, or the category is
-    # decorative and the section is still reachable by anything reading `ok`.
-    bad = [r for r in man["sections"]
-           if any(p.startswith("NO USABLE TEXT") for p in (r.get("problems") or []))
-           and r.get("ok")]
-    check("  and every one of them is ok=False, so nothing downstream can cite it",
-          bad, [])
-    check("  the category and the flagged rows agree",
-          len(listed),
-          sum(1 for r in man["sections"]
-              if any(p.startswith("NO USABLE TEXT") for p in (r.get("problems") or []))))
-else:
-    print("  --    no sections-manifest.json; skipped")
+# The three checks that read sections-manifest.json — that no-usable-text is a
+# named category, that every row in it is ok=False, and that the category and the
+# rows agree — moved to tests/regression/morn/test_cache.py in Phase 5.1. They
+# were guarded by `if mp.exists()` and printed "skipped" otherwise, so in a clean
+# checkout this file silently ran 14 checks instead of 17 and reported success.
 
 print(f"\n{PASS} passed, {FAIL} failed")
 sys.exit(1 if FAIL else 0)

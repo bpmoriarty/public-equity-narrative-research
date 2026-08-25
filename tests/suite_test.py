@@ -34,6 +34,18 @@ So each parametrized case below asserts three separate properties:
 
 Property 3 is the tripwire. Without it this file is decoration.
 
+SELECTING ONE HALF OF THE SUITE
+------------------------------
+`pytest tests/unit` collects nothing — this is the only pytest-visible file and
+it lives in tests/, by the naming rule above. Use the ids instead, which are the
+paths relative to tests/:
+
+    uv run pytest -k "unit/"          # the 8 files that read no company data
+    uv run pytest -k "regression/"    # the 3 that read MORN's artifacts
+
+That works because `key()` made the parametrize ids path-shaped, which was not
+the reason for the change but is the most useful thing to fall out of it.
+
 RELATIONSHIP TO run_all.py
 --------------------------
 `run_all.py` remains the authoritative gate and the thing to run by hand; it

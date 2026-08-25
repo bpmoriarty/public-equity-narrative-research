@@ -37,14 +37,33 @@ uv run python tools/check_control_bytes.py --all
 ### Running the tests
 
 ```bash
-uv run python tests/run_all.py          # every test file, with the count gate
-uv run python tests/test_<name>.py      # one file
-uv run pytest                           # the same gate, via pytest
+uv run python tests/run_all.py               # every test file, with the count gate
+uv run python tests/unit/test_<name>.py       # one file
+uv run pytest                                # the same gate, via pytest
+uv run pytest -k "unit/"                     # only the tests that need no company data
+uv run pytest -k "regression/"               # only the tests that read MORN's artifacts
 ```
+
+The suite is split by what a test reads, not by what it tests:
+
+| | reads | fails when a company's data is absent? |
+|---|---|---|
+| `tests/unit/` | nothing under `companies/` — inline fixtures and the global `config/` | no, by design |
+| `tests/regression/morn/` | MORN's committed ledger, documents, generation records and manifests | **yes, loudly** — see `require_artifacts` |
+
+That second row is the point of the split. Those checks used to sit at the end of
+the unit files behind `if artifact.exists():`, so a checkout without the
+artifacts ran fewer checks and still printed `0 failed`. A regression test with
+nothing to regress against is a failure, not a pass and not a skip.
+
+Unit tests still need *a* company to be scaffolded — several of them import a
+stage module, and a stage module resolves its ticker at import time — but they
+read none of that company's data.
 
 `run_all.py` compares each file's own `N passed, M failed` line against
 `tests/expected_counts.json` and fails if the number moved **in either
-direction**. Fewer checks than recorded is the failure this exists for: a test
+direction**. Files are recorded under their path relative to `tests/`, so a file
+that moves shows up as one MISSING plus one UNREGISTERED rather than vanishing. Fewer checks than recorded is the failure this exists for: a test
 that stops testing still reports green. More checks means new ones were added
 without recording them — re-record deliberately with `--update` and commit the
 result alongside the tests that caused it.

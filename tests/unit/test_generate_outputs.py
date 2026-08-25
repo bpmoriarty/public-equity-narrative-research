@@ -21,20 +21,16 @@ fixture below is a real string from the first run.
 
 from __future__ import annotations
 
-import json
 import sys
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
-# fixture FIRST, and that ordering is load-bearing: it sets EQR_TICKER, and the
-# stage modules below resolve the ticker at IMPORT time. `P` used to be bound
-# 220 lines further down, which worked only while MORN was the single company.
-# See tests/fixture.py.
-from fixture import P  # noqa: E402
+# The stage modules resolve the ticker at IMPORT time from EQR_TICKER, which
+# run_all supplies. No `P` any more: every check below runs against a document
+# written inline in this file. Reading the real documents is
+# tests/regression/morn/test_deliverables.py.
 import equity_research.generate_outputs as g  # noqa: E402
 from equity_research import model_client  # noqa: E402
 
@@ -460,76 +456,15 @@ check("the repair prompt carries the document", BROKEN in sent, True)
 check("  and names the broken id", "QA-FY2024-deadbeef" in sent, True)
 check("  and is nowhere near pack-sized", len(sent) < 200_000, True)
 
-print("\nthe real documents on disk")
-
-# THE SKIP THAT HID ITSELF.
+# The checks that read the real documents on disk — every id resolving, every
+# quotation verbatim, the rendered file matching the recorded body, and the
+# per-document count that catches a loop stopping early — moved to
+# tests/regression/morn/test_deliverables.py in Phase 5.1.
 #
-# This block used to `continue` when a generation record was missing, printing one
-# dim "skipped" line and then a green "29 passed, 0 failed". Six of the 35 checks
-# — every check that touches a document actually shipped — silently stopped
-# running, and the summary line said nothing was wrong. That is precisely the
-# false-assurance shape this file's own docstring warns about, one level up: a
-# suite that passes because it did not run is worse than a suite that fails.
-#
-# It went unnoticed because data/pack/ was gitignored, so the records existed in
-# the working tree and vanished in a clean checkout — the one place a green run
-# gets believed. gen-*.json are committed now (see .gitignore), so absence means
-# something is wrong rather than something is merely underived.
-#
-# The two causes are reported separately because they have different fixes:
-#   record missing -> a committed file has been deleted; restore it.
-#   index missing  -> the pack has not been built; one free, deterministic command.
-# Folding them together would print the wrong instruction half the time.
-n_docs = 0
-idx_p = P.pack / "index.json"
-idx = json.loads(idx_p.read_text(encoding="utf-8")) if idx_p.exists() else None
+# They are the original D7 case: this block used to `continue` past a missing
+# generation record, printing one dim "skipped" line and then a green
+# "29 passed, 0 failed" with six of 35 checks not running. The comment recording
+# that moved with them, because it is the reason they now hard-fail instead.
 
-for slug, d in g.DOCS.items():
-    rec_p = P.pack / f"gen-{slug}.json"
-    if not rec_p.exists():
-        FAIL += 1
-        print(f"  FAIL  {d['file']}: generation record {rec_p.relative_to(ROOT)} is "
-              f"MISSING.\n"
-              f"          It is a committed file — model output, the only copy of "
-              f"`text_before_repair`.\n"
-              f"          Restore it (`git checkout -- {rec_p.relative_to(ROOT)}`) or "
-              f"regenerate (~$3.50).\n"
-              f"          Without it the three checks below do not run, and this suite "
-              f"must not report green.")
-        continue
-    if idx is None:
-        FAIL += 1
-        print(f"  FAIL  {d['file']}: {idx_p.relative_to(ROOT)} is missing, so no id can "
-              f"be resolved.\n"
-              f"          The pack is derived and free to rebuild: "
-              f"uv run python -m equity_research.build_pack")
-        continue
-
-    n_docs += 1
-    rec = json.loads(rec_p.read_text(encoding="utf-8"))
-    # `shipped_text` is the body actually written to output/ — identical to `text`
-    # unless a recorded correction was applied after generation. See
-    # `apply_corrections` in src/equity_research/generate_outputs.py: a correction is data in this
-    # record, never a silent hand-edit of the document.
-    shipped = rec.get("shipped_text") or rec["text"]
-    check(f"{d['file']}: every id resolves",
-          g.check_citations(shipped, idx)["unknown"], [])
-    check(f"{d['file']}: every quotation is verbatim filing text",
-          [b["quote"] for b in g.check_quotes(shipped, idx)["bad"]], [])
-    check(f"{d['file']}: the rendered file matches the recorded body",
-          shipped.strip() in (P.output / d["file"]).read_text(encoding="utf-8"),
-          True)
-    # A correction that is not in the record is a hand-edit, which is the thing the
-    # check above exists to prevent. So the record must also be internally honest:
-    # if it claims corrections, it must carry the pre-correction text to diff against.
-    if rec.get("corrections"):
-        check(f"{d['file']}: every correction is recorded with the text it replaced",
-              bool(rec.get("text")) and shipped != rec["text"], True)
-
-# The count itself is asserted, so a document dropped from DOCS — or a loop that
-# quietly stops early — cannot pass by checking nothing.
-check("every configured document was checked", n_docs, len(g.DOCS))
-
-print(f"\n{PASS} passed, {FAIL} failed  ({n_docs} of {len(g.DOCS)} generated "
-      f"document(s) checked)")
+print(f"{PASS} passed, {FAIL} failed")
 sys.exit(1 if FAIL else 0)

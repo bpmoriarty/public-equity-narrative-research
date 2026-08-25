@@ -26,16 +26,15 @@ import os
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
-# fixture FIRST, and that ordering is load-bearing: it sets EQR_TICKER, and the
-# stage module below resolves the ticker at IMPORT time (its path constants are
-# module-level). Was `paths()`, which found MORN only because MORN was the single
-# company under companies/. See tests/fixture.py.
-from fixture import P  # noqa: E402
+# The stage module resolves the ticker at IMPORT time from EQR_TICKER, which
+# run_all supplies — its path constants are module-level. Nothing below reads that
+# company's cache: META_DIR and FETCH_LOG are redirected to a scratch directory a
+# few lines down, which is the point. Reading the real inventory is
+# tests/regression/morn/test_cache.py.
 import equity_research.discover as d  # noqa: E402
 
 PASS = FAIL = 0
@@ -98,42 +97,18 @@ ts2, how2 = client.vintage_of("recorded.json")
 check("a truncated log does not raise", bool(ts2), True)
 check("  and the fallback labels itself as inferred", "mtime" in how2, True)
 
-print("\nthe real inventory reports the data's vintage, not the run's clock")
-inv_p = P.inventory
-if inv_p.exists():
-    inv = json.loads(inv_p.read_text(encoding="utf-8"))
-    check("as_of_utc is present", bool(inv.get("as_of_utc")), True)
-    check("  as_of_utc equals the index fetch time, not the run time",
-          inv["as_of_utc"], inv["index_fetched_utc"])
-    # `run_utc` moved OUT of inventory.json — it describes the run, not the data,
-    # and a field that changes every re-run made this committed file impossible
-    # to reproduce byte for byte. The D9 property is unchanged and still checked:
-    # the as-of date must not be the clock of the run that wrote it. The clock is
-    # now read from the gitignored run log.
-    check("  inventory.json no longer carries the run's own clock",
-          "run_utc" in inv, False)
-    log_p = P.run_log
-    if log_p.exists():
-        log = json.loads(log_p.read_text(encoding="utf-8"))
-        ran = log.get("discover", {})
-        check("  the run log records when discover last ran",
-              bool(ran.get("run_utc")), True)
-        # The defect, stated as a test: on a cache-first run these MUST differ,
-        # and the old code made them equal by construction.
-        if ran.get("sec_requests_made") == 0:
-            check("  a zero-request run does not claim its own clock as the "
-                  "as-of date", inv["as_of_utc"] != ran["run_utc"], True)
-        else:
-            check("  (the last run hit EDGAR, so the two legitimately coincide)",
-                  True, True)
-    else:
-        # Gitignored, so a clean checkout has none — but this file is a
-        # regression test against committed MORN artifacts and discover has run.
-        check("  the run log exists", False, True)
-    check("  the basis of the as-of date is recorded, not assumed",
-          bool(inv.get("as_of_basis")), True)
-else:
-    print("  --    no inventory.json; skipped")
+# The six checks that read the real inventory and the run log — as_of_utc
+# present, as_of_utc equal to the index fetch time, no run_utc in the committed
+# file, the run log recording when discover last ran, a zero-request run not
+# claiming its own clock as the as-of date, and the as-of basis being recorded —
+# moved to tests/regression/morn/test_cache.py in Phase 5.1.
+#
+# They were wrapped in `if inv_p.exists():` with a "skipped" line in the else, so
+# a checkout without the inventory ran 8 of these 14 checks and reported success.
+# That is VERIFICATION.md D9's test disappearing quietly, which is worse than D9.
+#
+# Everything above this line runs against a scratch directory and needs no
+# company data at all.
 
-print(f"\n{PASS} passed, {FAIL} failed")
+print(f"{PASS} passed, {FAIL} failed")
 sys.exit(1 if FAIL else 0)

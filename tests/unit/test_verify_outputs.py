@@ -22,16 +22,15 @@ kept here as regression cases:
 from __future__ import annotations
 
 import sys
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
-# fixture FIRST, and that ordering is load-bearing: it sets EQR_TICKER, and the
-# stage module below resolves the ticker at IMPORT time. See tests/fixture.py.
-from fixture import P  # noqa: E402
+# The stage module resolves a ticker at IMPORT time from EQR_TICKER, which
+# run_all supplies. Nothing below reads that company's data: every check here
+# runs each gate against an inline document built to pass or fail it. Holding the
+# gates against the REAL deliverables is tests/regression/morn/.
 import equity_research.verify_outputs as v  # noqa: E402
 
 PASS = FAIL = 0
@@ -352,33 +351,13 @@ check("segment bases read off the pack's own constraint",
       (PF["segment_product_years"], PF["segment_reportable_years"]),
       ([2021, 2022], [2023]))
 
-print("\nthe real documents on disk, if they have been generated")
-n_docs = 0
-if (P.pack / "pack.json").exists():
-    payload, pack, index, cfg, _gen = v.load()
-    import hashlib
-    sha = hashlib.sha256(payload.encode("utf-8")).hexdigest()
-    pf = v.pack_facts(pack, index)
-    for doc in cfg["documents"]:
-        p = P.output / doc
-        if not p.exists():
-            print(f"  --    {doc} not generated; skipped")
-            continue
-        n_docs += 1
-        r = v.verify(doc, p.read_text(encoding="utf-8"), pack, index, pf, cfg, sha)
-        check(f"{doc}: every hard check passes",
-              [f["tag"] for f in r.failures], [])
-        # The numeric-evidence calibration, held where it is STABLE. The brief is
-        # asserted clean on both tiers — 19 figures, all in a cited fact's quote.
-        # discussion-points.md is deliberately NOT asserted at a count: it currently
-        # carries 2 unsourced (D3) and 17 thin (D2), and both numbers are supposed to
-        # move as those are fixed. A test pinned to today's defect count has to be
-        # edited every time a defect is fixed, which trains you to edit tests.
-        if doc == "narrative-brief.md":
-            ev = v.numeric_evidence(v.paragraphs(v.body_of(
-                p.read_text(encoding="utf-8"))), index, v.claim_numbers(pack))
-            check(f"  {doc}: every figure is in a cited fact's quote",
-                  ev, {"thin": [], "unsourced": []})
+# Holding the gates against the REAL deliverables — every hard check passing on
+# each generated document, and the brief's figures all evidenced in a cited
+# fact's quote — moved to tests/regression/morn/test_deliverables.py in Phase
+# 5.1. Two nested guards used to make those checks vanish: `if pack.json exists`
+# around the whole block, and `if not doc exists: continue` inside it. The
+# summary line carried "(N generated document(s) checked)", which was the only
+# hint that N could be zero while the file still reported 0 failed.
 
-print(f"\n{PASS} passed, {FAIL} failed  ({n_docs} generated document(s) checked)")
+print(f"\n{PASS} passed, {FAIL} failed")
 sys.exit(1 if FAIL else 0)

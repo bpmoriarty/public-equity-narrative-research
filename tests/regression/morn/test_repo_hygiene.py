@@ -46,15 +46,20 @@ import sys
 import tomllib
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-
 for _s in (sys.stdout, sys.stderr):
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
 
 # fixture FIRST: it sets EQR_TICKER, which every later paths() call reads.
 from fixture import P  # noqa: E402
-from equity_research.paths import known_tickers  # noqa: E402
+# ROOT from the package, NOT `Path(__file__).parent.parent`.
+#
+# That expression meant "the repository" while this file sat in tests/. Moving it
+# to tests/regression/morn/ silently redefined it as "tests/regression", and the
+# whole-repo walk below then reported every artifact as outside the tree. It is
+# how this file failed on its first run from its new home — a depth-counting path
+# is a landmine for any suite that can be reorganised, and this suite just was.
+from equity_research.paths import ROOT, known_tickers  # noqa: E402
 
 # ROOT stays: this file walks the WHOLE repository looking for paid model output,
 # which is a repo-level question, not a per-company one — a company folder added
