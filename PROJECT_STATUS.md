@@ -30,7 +30,10 @@ pipeline now goes through one seam and runs on a Claude seat with no API key.
 writers), `0ce6e3d` (4.1 orchestrator), `e2c8784` (4.3 freshness), `45bf0b9`
 (4.2 cost gate), `4ae2a9e` (status), `a37fab3` (paths), `9665ec2` (4.4/4.5),
 `7b8884b` (4.7 tests), `5e5c1a1` (rule 2), `8e07663` (4.6 init), `7da59e9`
-(4.8 the clock). **Next is Phase 5.** The repository has a GitHub remote:
+(4.8 the clock). **Phase 5 is scoped (`PHASE5_SCOPE.md`, `b01ceee`) and 5.1 is
+done** — `618c77a` (the path-aware gate), `7367a74` (one `check()`), `416901c`
+(the split), `0c0c21c` (a count that moved with the weather). The repository has
+a GitHub remote:
 https://github.com/bpmoriarty/public-equity-narrative-research
 
 ```
@@ -46,6 +49,36 @@ the last commit: `pipeline MORN --yes` runs end to end from cache in ~40
 seconds, spends nothing, verify green — and leaves `git status` clean. The test
 suite went **269 → 400** checks across the phase, with six new enforcers, each
 proven against planted faults.
+
+**Phase 5.1 split the suite by what a test reads.** `tests/unit/` (8 files, 351
+checks) reads nothing under `companies/`; `tests/regression/morn/` (3 files, 52)
+reads MORN's artifacts and **dies** without them. 400 → 403 checks, and the +3
+are three anti-vacuous guards added deliberately — every original check is
+accounted for per file in `416901c`'s message.
+
+> **The split's whole purpose was twenty-two skips, not two directories.** Those
+> checks sat at the ends of five unit files behind `if artifact.exists():` with a
+> "skipped" line in the else. That is VERIFICATION.md D7 in source form:
+> `test_generate_outputs.py` ran 35 checks in the working tree and 29 in a clean
+> checkout and printed "0 failed" both times, because `data/pack/` was gitignored
+> and the one place a green run gets believed was the one place six checks did
+> not run. Verified in a throwaway worktree: all 351 unit checks pass with no
+> pack, no sections, no manifests and no run log, and the two new regression
+> files exit 1 naming the missing files and the **free** command that rebuilds
+> them.
+
+> **A check count that moved with the weather.** `test_repo_hygiene` reported 27
+> checks here and **29 in a clean checkout** — it emitted one "is present" check
+> per *absent* manifest, and two of the four are gitignored. Worse than it
+> sounds: the per-file count is the tripwire the whole suite hangs on, and a
+> count that moves with the environment disarms it **in the direction that reads
+> as "new checks were added"**, inviting a re-record rather than an
+> investigation. Same defect as the per-company count that moved 20 → 21 in Phase
+> 4.6, same fix: aggregate, so the *number* of checks is a property of the file
+> and only their *content* is a property of the tree. Deliberately **not** fixed
+> by requiring the manifests up front — that file's most valuable checks need no
+> company data, and dying at the top would stop them running in exactly the
+> checkout where someone most wants them.
 
 > **Four of this phase's most valuable findings came from running things, not
 > reading them.** Three broken manifest writers, a freshness design overturned by
@@ -145,7 +178,7 @@ proven against planted faults.
 > reachable. Now reported as `malformed`, fatal at generation time, and a
 > `review` line in `verify_outputs` for one commit before it is promoted to hard.
 
-**Last Session:** 2026-08-24
+**Last Session:** 2026-08-25
 
 **Overall Health:** 🟢 Working — milestones 1–5 complete. **The full verification suite has been run and all nine of its findings are fixed.** 1,329 ledger facts, 1,425 citable ids, three deliverables passing 13 hard checks each. Quote census re-earned after the repairs at **1,326/1,326**. $7.21 spent on generation; remediation cost $0.00 in API calls
 
@@ -740,7 +773,9 @@ across 34 calls). Milestones 1–3 cost nothing.
         (**done** — twelve commits, see Current Status; the item-by-item scope is
         `PHASE4_SCOPE.md`, written from the code before any of it was built and
         kept verbatim so the reasoning can be checked against what got built) →
-        **5 test split, model knobs, docs — SCOPED, not started.**
+        **5 test split, model knobs, docs — SCOPED; 5.1 done, 5.2–5.6 open.**
+        5.1 (the test split, four commits, see Current Status) closed Next Steps
+        28 along the way and found a check count that varied by environment.
         `PHASE5_SCOPE.md`, written 2026-08-25 from the code and the committed
         usage records, same convention as Phase 4's. Three of the plan's five
         items were re-sized by measurement: **pack subsets are deferred** (the
@@ -861,13 +896,17 @@ across 34 calls). Milestones 1–3 cost nothing.
         exercise it for free, so it is covered only by injecting a fake gate into
         `run_chain`. "The gate approves correctly" is an untested claim; the first
         real stale run is the test. Worth doing deliberately, watched, once
-28. [ ] **`test_repo_hygiene.py`'s `check()` has a different signature from every
-        other test file's, and it caught me three times in one session.** It is
-        `check(name, ok: bool, detail: str)`; the other eight are
-        `check(name, got, want)`. Passing `want` as `detail` produces a check that
-        fails for the wrong reason, or worse, one that passes vacuously. Worth
-        unifying when Phase 5 splits the suite — the two forms are both
-        reasonable, but not in the same directory
+28. [x] **`check()` means one thing across the suite.** Done 2026-08-25 in
+        `7367a74`. `test_repo_hygiene`'s boolean helper is now `require(name, ok,
+        detail)`; 26 call sites, no semantic change. **The name was the bug, not
+        the signature** — the two forms were positionally *compatible*, so
+        `check(name, got, want)` silently became `require(name, ok=got,
+        detail=want)` and passed whenever `got` was merely truthy. Demonstrated
+        both ways: the old form printing `1 passed, 0 failed` while comparing
+        `[1]` against `[]`, and the new one raising `NameError` with the gate
+        reporting `NO COUNT`. `check` is deliberately left **undefined** there
+        rather than aliased — defining a compatible one would have made the
+        mistake work
 29. [ ] **A whole-company run makes no EDGAR requests, and that is worth
         re-testing when a new company is added.** Every `pipeline MORN` run in
         Phase 4 reported `sec_requests_made: 0` — the cache holds, exactly as
@@ -885,13 +924,14 @@ across 34 calls). Milestones 1–3 cost nothing.
 |------|--------------|
 | `CLAUDE.md` | Project rules — EDGAR access, extraction approach, traceability. Read first. Ends with **"Rules that have bitten us"**: the five doctrines whose violation recurred, each naming the check that now enforces it |
 | `tools/check_control_bytes.py` | Blocks a commit containing raw control bytes in a text file — the signature of a regex escape mangled by a shell heredoc (`\b` → 0x08). Run via `.githooks/pre-commit`; enable per clone with `git config core.hooksPath .githooks`. `--all` scans the whole tree. Selects staged files with `--diff-filter=ACMRT`; **the `R` is load-bearing** — it filtered `ACM` until `fec3785` and was therefore blind to renames, silently skipping every modified file in a `git mv` commit |
-| `tests/run_all.py` | Runs every test file and compares each one's own count against `tests/expected_counts.json`, **failing in either direction**. Fewer checks than recorded is the failure it exists for: a test that stops testing still reports green |
-| `tests/suite_test.py` | The pytest front-end (`uv run pytest`). Asserts exit code, zero failures, **and the recorded check count** per file. Deliberately not `pytest --collect-only`, which counts test functions and so cannot see a file shrinking from 63 checks to 3. Named `suite_test.py`, not `test_suite.py`, because `run_all.py` globs `test_*.py` and would otherwise recurse |
+| `tests/run_all.py` | Runs every test file **at any depth** and compares each one's own count against `tests/expected_counts.json`, **failing in either direction**. Fewer checks than recorded is the failure it exists for: a test that stops testing still reports green. Files are recorded under their path relative to `tests/`, so a file that moves reads as one MISSING plus one UNREGISTERED rather than vanishing. Loads `fixture.py` **by path** — putting `tests/regression/morn` on `sys.path` would make `fixture` importable from `tests/unit/`, which is the coupling the split removes |
+| `tests/suite_test.py` | The pytest front-end (`uv run pytest`). Asserts exit code, zero failures, **and the recorded check count** per file. Deliberately not `pytest --collect-only`, which counts test functions and so cannot see a file shrinking from 63 checks to 3. Named `suite_test.py`, not `test_suite.py`, because `run_all.py` globs `test_*.py` and would otherwise recurse — now true at any depth. `pytest tests/unit` collects **nothing** (this is the only pytest-visible file); use `-k "unit/"` or `-k "regression/"`, which works because the ids are path-shaped |
 | `src/equity_research/_bootstrap.py` | `ROOT`, the Windows cert store, and `.env` — imported first by every stage, for its side effects as much as its value. **Do not delete as unused.** Exists because each module used to compute its own `ROOT` two directories up, which the Phase 1 move made silently wrong by one level |
-| `tests/test_repo_hygiene.py` | 27 checks, and the home of most of this project's mechanical enforcers. **Its `check()` is `(name, ok, detail)` — every other test file's is `(name, got, want)`.** Every JSON carrying a top-level `usage.input_tokens` was paid for and must be tracked by git; `companies/MORN/output/*.md` likewise; and inversely, `.env` must not be. Then four lints: **no wall clock** in a committed artifact (dates are fine, a time of day is not — only a clock changes between two runs over identical inputs); **no mojibake** in any tracked text file, the blind spot the control-byte scan cannot see; the **template** must agree with every company config and carry no real CIK; and two path lints. The **path-literal lint**: a `"data/…"` or `"output/…"` string in `src/equity_research/` outside `paths.py` resolves to the repo root instead of the company being run. And the **manifest-path lint** (added `664bf6f`): `relative_to(ROOT)` used to build a stored value rather than a message for a human — the bug that broke three writers for eleven days. Read the comment above `stores_root_relative_path` before changing it; it records why the check reads source rather than data, and the one misfire it can produce |
+| `tests/regression/morn/test_repo_hygiene.py` | 28 checks, and the home of most of this project's mechanical enforcers. **Its boolean helper is `require(name, ok, detail)`, and `check` is deliberately undefined here** so the comparison form cannot be written by accident — it used to be, three times, once passing vacuously. Every JSON carrying a top-level `usage.input_tokens` was paid for and must be tracked by git; `companies/MORN/output/*.md` likewise; and inversely, `.env` must not be. Then four lints: **no wall clock** in a committed artifact (dates are fine, a time of day is not — only a clock changes between two runs over identical inputs); **no mojibake** in any tracked text file, the blind spot the control-byte scan cannot see; the **template** must agree with every company config and carry no real CIK; and two path lints. The **path-literal lint**: a `"data/…"` or `"output/…"` string in `src/equity_research/` outside `paths.py` resolves to the repo root instead of the company being run. And the **manifest-path lint** (added `664bf6f`): `relative_to(ROOT)` used to build a stored value rather than a message for a human — the bug that broke three writers for eleven days. Read the comment above `stores_root_relative_path` before changing it; it records why the check reads source rather than data, and the one misfire it can produce |
 | `src/equity_research/cli.py` | **The `pipeline` orchestrator** — `init`, `status`, `estimate`, `run`, `stages`. `uv run pipeline MORN` walks all thirteen stages in dependency order, one subprocess each. The order is a topological sort of what each module's own path constants say it reads and writes — **not** the plan's order, and note that `build_pack` does *not* depend on `merge_events` having run (it recomputes the merge in memory). The two spending stages go through a cost gate that asks the stage whether it has work (`--check-fresh`) before asking you to approve anything, so a cached re-run never prompts. **An unanswerable prompt — closed or piped stdin — counts as no, never as consent.** Exit codes: 0 complete, 1 a stage failed, 3 a gate was not approved. Writes no files |
 | `companies/_template/` | What `pipeline init` copies. Hand-maintained on purpose: `company.toml` is 170 lines of which 125 are comments, and no TOML writer preserves comments — generating it would produce 25 correct settings and destroy the 125 lines explaining them. Kept honest by two checks in `test_repo_hygiene.py`: it must agree with every real company's config on every key, and its `ticker`/`cik`/`resolved_name` must be **empty**, because a template shipping a real CIK would scaffold a config pointing at the wrong company |
-| `tests/fixture.py` | Names the fixture company (MORN) once, for the six test files that read its artifacts. **Sets `EQR_TICKER`, and must be imported before any stage module** — stage modules resolve the ticker at import time, so `import equity_research.discover` is itself an ambiguous call once a second company exists. Exporting `P` alone did not fix it; that is why this sets the environment variable |
+| `tests/regression/morn/fixture.py` | Names the fixture company (MORN) once, for the three files in its directory that read MORN's artifacts. **Sets `EQR_TICKER`, and must be imported before any stage module** — stage modules resolve the ticker at import time, so `import equity_research.discover` is itself an ambiguous call once a second company exists. Exporting `P` alone did not fix it; that is why this sets the environment variable. Also holds **`require_artifacts()`**, which declares what a regression file needs and **exits** if it is absent, naming each missing path and distinguishing "committed model output, restore from git" from "derived, free to rebuild". That function is the reason the directory exists |
+| `tests/unit/` vs `tests/regression/morn/` | Split by **what a test reads**, not by what it tests. Unit (8 files, 351 checks) reads nothing under `companies/` and passes in a checkout with no pack, sections, manifests or run log — measured, not assumed. Regression (3 files, 52) reads MORN's artifacts and dies without them. Unit tests still need *a* company scaffolded, because several import a stage module and a stage module resolves its ticker at import time; they read none of that company's data |
 | `src/equity_research/settings.py` | Config layering, window validation, the **one pricing table** with `PRICES_AS_OF`, and `record_run` — where a deterministic stage's clock goes now that committed artifacts carry none. Five stages write that one run log, so `record_run` **merges** rather than replacing (CLAUDE.md rule 4). Also `CHARS_PER_TOKEN = 2.66`, the calibrated fallback for backends that cannot count tokens |
 | `companies/MORN/data/_meta/run-log.json` | When each deterministic stage last ran. **Gitignored** — that is the whole point. Its contents used to live inside eight committed artifacts, which meant every re-run produced a diff with no change of substance |
 | `src/equity_research/paths.py` | **Every filesystem path, resolved per company.** `CompanyPaths` owns the 49 joins that were spread across 15 modules. `resolve()` re-roots a manifest-relative string — the reason the MORN move rewrote no manifest and `pack.json` kept its sha256. Ticker order: `--ticker` → `EQR_TICKER` → the single company; two with no ticker is a **hard error**, never a first-match guess |
@@ -900,8 +940,10 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `config/llm.toml` | Which engine model calls go through, and where the Claude Code binary is. `binary_path` is normally empty: discovery is PATH → this setting → the binary bundled inside the VS Code extension, newest version. `cache_ttl` applies to the API path only and its comment carries the arithmetic for why `1h` is barely worth it. Per-stage overrides let anyone holding an API key move just the token-heavy stage across |
 | `VERIFICATION.md` | **The independent review and its remediation log.** Nine findings D1–D9, what each turned out to be, how each was fixed, and what was verified against ground truth. Read before trusting any deliverable |
 | `companies/MORN/corrections.toml` | **Every human correction, as data.** `[[correction]]` (a ledger value), `[[document_correction]]` (a sentence), `[[id_remap]]` (a renumbered citation). Each carries its evidence and reviewer; each is fatal if it stops matching |
-| `tests/test_extract_sections.py` | 17 checks on the extraction guards. Pins both directions: an image-only document must fail, the legitimately short SEC letters must pass |
-| `tests/test_discover.py` | 12 checks on cache vintage — that an inferred as-of date labels itself, and that a zero-request run does not claim its own clock |
+| `tests/unit/test_extract_sections.py` | 14 checks on the extraction guards. Pins both directions: an image-only document must fail, the legitimately short SEC letters must pass. Reads the **global** `config/sections.toml`, which is why it is a unit test |
+| `tests/unit/test_discover.py` | 8 checks on cache vintage — that an inferred as-of date labels itself — all against a scratch directory, with `META_DIR` and `FETCH_LOG` both redirected (redirect one and not the other and a test like this writes to the real cache while appearing to pass) |
+| `tests/regression/morn/test_cache.py` | 9 checks that only a real cache can answer: the inventory reports the **data's** vintage and not the run's clock (VERIFICATION.md D9, now read across two files since the clock moved to the run log), and a section with no usable text is a named category whose every row is `ok=False`, so nothing downstream can cite it |
+| `tests/regression/morn/test_deliverables.py` | 15 checks: one question asked at four depths — ledger ids reproduce from their own content, the pack index resolves every citation, the generation record matches the file a reader opens, and every hard gate passes on both documents as shipped. Declares all seven artifacts it needs before reading any of them |
 | `companies/MORN/data/raw/_meta/fetch-log.json` | When each cached metadata document was actually read from EDGAR. Written at fetch time, because that is the only moment that knows. **Not present for MORN** — every document was cached before this log existed, which is why `discover.vintage_of()` falls back to the cache file's mtime and labels that vintage *inferred, not recorded*. It appears the first time a document is fetched. The separate `companies/MORN/data/raw/fetch-log.jsonl` is `fetch.py`'s own per-document log and does exist |
 | `src/equity_research/render_pdf.py` | Renders `companies/MORN/output/*.md` to `companies/MORN/output/pdf/*.pdf`. Deterministic, no model call. Reads each finished PDF back and fails if a word, fact id, heading or at-risk glyph did not survive |
 | `companies/MORN/output/pdf/` | The three deliverables as PDF. **Gitignored** — a pure function of the committed Markdown, the script and the `[pdf]` config, rebuilt in seconds with `uv run python -m equity_research.render_pdf` |
@@ -926,14 +968,14 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `src/equity_research/render_timeline.py` | Milestone 5d. Renders `companies/MORN/output/timeline.md`. Deterministic, no model call; asserts completeness before writing |
 | `companies/MORN/output/timeline.md` | **Deliverable 1 of 3.** Chronological reference table, every row carrying its fact id and filing |
 | `src/equity_research/verify_outputs.py` | Milestone 5f. Holds the deliverables to the pack's binding constraints — **13 hard checks and 4 review lists** per document; deterministic, free, non-zero exit on failure. The newest review line (citations naming a field code that does not exist) is due for promotion to hard — Next Step 23 |
-| `tests/test_verify_outputs.py` | 63 checks. Every hard check tested against a document that fails it as well as one that passes |
+| `tests/unit/test_verify_outputs.py` | 60 checks. Every hard check tested against a document that fails it as well as one that passes, all inline. Holding the gates against the **real** documents is `regression/morn/test_deliverables.py` |
 | `src/equity_research/generate_outputs.py` | Milestone 5e. Writes both prose deliverables from the pack; checks and repairs ids and quotations. **Read the note above `repair_ids` before changing how repairs work** — it records why they carry an index slice rather than the pack, and what that gives up. Only `generate` sends the pack; all three repair kinds are self-contained. **Also read the note above `DocStatus`** before changing what counts as up to date: it records the measurement that ruled out comparing the record's inputs, and why prompt drift is reported rather than spent on. `--check-fresh` answers "is there work?" for the cost gate at zero cost and without constructing a backend; `--force` overrides |
 | `companies/MORN/output/narrative-brief.md` | **Deliverable 2 of 3.** The five-year arc, 2,089 words, 126 citations |
 | `companies/MORN/output/discussion-points.md` | **Deliverable 3 of 3.** Observations, open questions, and stated-vs-paid-for priorities |
-| `tests/test_generate_outputs.py` | 91 checks on the citation, quotation, index-excerpt and repair-loop gates; fixtures are real strings from the first generation run. Covers that a clean document costs **zero** model calls and that a repair prompt is nowhere near pack-sized. Fails loudly if a committed generation record is missing rather than skipping itself |
+| `tests/unit/test_generate_outputs.py` | 82 checks on the citation, quotation, index-excerpt and repair-loop gates; fixtures are real strings from the first generation run. Covers that a clean document costs **zero** model calls and that a repair prompt is nowhere near pack-sized. The nine checks that read the shipped documents moved to `regression/morn/test_deliverables.py` — this file was the original D7 case, and the comment recording that moved with them |
 | `src/equity_research/merge_events.py` | Milestone 5c. Merges duplicate event records, splits undated ones out, tags routine governance. Deterministic. `--show merged|unclear|possible|routine` |
 | `config/outputs.toml` | Output-stage config: merge threshold, routine patterns and the material overrides. **Change behaviour here, not in code** |
-| `tests/test_merge_events.py` | Proves same-filing records never merge and the incentive-plan row is not tagged routine. Run after any threshold change |
+| `tests/unit/test_merge_events.py` | 44 checks. Proves same-filing records never merge and the incentive-plan row is not tagged routine. Run after any threshold change |
 | `src/equity_research/build_pack.py` | Milestone 5a. Assembles the citable pack from the ledger. Deterministic, no model calls. `--show constraints` prints the binding rules |
 | `companies/MORN/data/pack/pack.json` | The payload the writers read. Gitignored — reproducible from the ledger; its sha256 in `pack-report.md` is the audit link |
 | `companies/MORN/data/pack/index.json` | `{id → fact}`. What `verify_outputs.py` resolves citations through |
@@ -941,8 +983,8 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `config/forms.toml` `[eight_k.triage]` | Triage patterns, headline window, size cap. Change behaviour here, not in code |
 | `companies/MORN/data/triage/triage-8k.json` | Every triage decision with its evidence. Committed — it is the record of what was excluded |
 | `companies/MORN/data/triage/triage-report.md` | The auditable log, including the full drop list |
-| `tests/test_verify_quote.py` | Proves the grounding check can still reject. Run it after any change to `canon` |
-| `tests/test_fact_id.py` | Proves ids are stable against judgments and sensitive to content. Run it after any change to `fact_id` or `risk_delta_id` |
+| `tests/unit/test_verify_quote.py` | 13 checks. Proves the grounding check can still reject. Run it after any change to `canon` |
+| `tests/unit/test_fact_id.py` | 18 checks. Proves ids are stable against judgments and sensitive to content. Run it after any change to `fact_id` or `risk_delta_id` |
 | `../../.claude/skills/` | The `preflight`, `verification-suite` and other skills live TWO levels up, in the `Coding Projects` folder. Claude Code only auto-loads skills from the session's own directory and `~/.claude`, so they are **not** invocable as `/preflight` from this project — read `SKILL.md` by path and follow it |
 | `companies/MORN/data/discovery/inventory.json` | **Machine source of truth** for what's in scope. Later stages read this, not config |
 | `companies/MORN/data/discovery/discovery-report.md` | The human-readable inventory and gap analysis |
@@ -972,6 +1014,128 @@ across 34 calls). Milestones 1–3 cost nothing.
 ---
 
 ## Session Log
+
+### 2026-08-25 — Phase 5 scoped from the records, and the suite split by what a test reads
+
+**Phase 5 was scoped before anything was built** (`PHASE5_SCOPE.md`, `b01ceee`),
+the Phase 4 convention: written from the code and the committed usage records,
+kept verbatim so the reasoning can be checked against what gets built. Three of
+the plan's five items were re-sized by measuring rather than reading, and one was
+collapsed by something no measurement here could have said.
+
+**The measurement.** The 88 committed facts files carry their own `usage`, and
+they reconcile to the recorded `$11.33`. `investor_qa` is 54 of 88 calls and
+**$6.81 — 60% of extraction spend**; the plan's proposed switch (`votes` +
+`board` to Sonnet) is **$0.31**. So the plan had the cheap change unconditional
+and the valuable one behind a gate. Worse, those two tasks are the ones I would
+least want to downgrade: `votes` is the one task told to *copy the numbers
+exactly* and **nothing downstream re-checks a vote count against its 8-K** — the
+numeric-evidence checker audits documents, not the ledger — and `board` already
+holds 51 of the 54 low-confidence facts.
+
+**Then the user's observation, which decided it: MORN's written Reg FD investor
+Q&A is idiosyncratic.** Most issuers do not publish monthly written answers at
+all. That is domain knowledge rather than something measurable here, and it is
+decisive, because everything that made `investor_qa` worth optimising is
+downstream of a volume other companies will not have. Strip it and a company is
+**34 calls and $4.52**; moving *everything else* to Sonnet saves $1.80, of which
+**$1.33 comes out of the four tasks that are the product** (`business`, `mdna`,
+`comp`, `letter` — $3.33 → $2.00). And an A/B on MORN's Q&A would only ever have
+told us about MORN's Q&A. So 5.3 became: build the per-task knob, switch nothing,
+spend nothing, and record the trigger for running that A/B against the company
+that actually has the volume.
+
+**A hazard written down next to the knob rather than discovered by it.** The
+facts cache path is `FY<year>_<task>[_<accession>].json` — **the model is not in
+the key**. Any comparison run overwrites irreplaceable paid output at the same
+paths (CLAUDE.md rule 1). That needs deciding before the first call, not after.
+
+**Two deferrals, both the user's call.** Pack subsets: the timeline block is
+12,475 tokens, not the plan's 8,119 — 3.5% of the pack, ~$0.06 a call — and
+removing it changes `pack.json`, hence its sha, which is a **hard** check on both
+deliverables plus the input to the 4.3 freshness rule. **$8 to save $0.12.** And
+`pack-comp.json` would ship with zero consumers: the plan sized it for four
+generation calls and there are now two. Items 27 and 29, the two paths only a
+real run exercises, became **Phase 6** with a second real company. Phase 5 as
+scoped spends **$0** — an outcome, not a target.
+
+---
+
+**5.1, the test split, in four commits.** `tests/unit/` (8 files, 351 checks)
+reads nothing under `companies/`; `tests/regression/morn/` (3 files, 52) reads
+MORN's artifacts and dies without them.
+
+**The gate learned to see into subdirectories first, before anything moved**
+(`618c77a`). Discovery was `HERE.glob("test_*.py")` — non-recursive — so the
+first file moved into `tests/unit/` would have vanished from the suite while
+everything reported green, which is the exact failure the gate exists to catch.
+Keys became paths relative to `tests/`. With a flat layout those keys are
+byte-identical to the old ones, so that commit is provably a capability change
+and nothing else. Proven both ways: a planted file in a subdirectory was
+discovered and flagged UNREGISTERED, and moving a real file produced **one
+MISSING plus one UNREGISTERED** with the total still 400.
+
+**`check()` means one thing now** (`7367a74`, closing Next Steps 28). The name
+was the bug, not the signature: the two forms were positionally *compatible*, so
+`check(name, got, want)` silently became `require(name, ok=got, detail=want)` and
+passed whenever `got` was merely truthy. Demonstrated in both directions — the
+old form printing `1 passed, 0 failed` while comparing `[1]` against `[]`, the new
+one raising `NameError` with the gate reporting `NO COUNT`. `check` is left
+**undefined** there rather than aliased, because a compatible alias would have
+made the mistake work.
+
+**The split itself** (`416901c`). Twenty-two checks moved out of five unit files,
+every one of them behind `if artifact.exists():` with a "skipped" line in the
+else. Counts reconcile per file, 400 → 403, and the +3 are three anti-vacuous
+guards added deliberately — the same shape as the `DOCS` count assertion that was
+already there, which exists because a loop that quietly stops early otherwise
+passes by checking nothing.
+
+**Found by moving things, not by reading them:**
+
+- **`ROOT = Path(__file__).resolve().parent.parent` in eight files.** It meant
+  "the repository" at one depth and `tests/regression` at another, and
+  `test_repo_hygiene` crashed on it on its first run from the new home — the
+  whole-repo walk reported every artifact as outside the tree. Three real users
+  now import `ROOT` from the package; **five were dead assignments** left from the
+  `sys.path` hacks Phase 1 removed.
+- **`test_cli.py` hardcoded `paths("MORN")`** — the literal `fixture.py` exists to
+  keep in one place. It only ever asked whether an attribute *name* exists, so it
+  uses a fictional ticker and touches no disk. Two other checks needed a company
+  that exists rather than MORN specifically, and take it from
+  `known_tickers()[0]`, unguarded on purpose so an empty `companies/` raises
+  rather than turning a missing precondition into a silent skip.
+- **`cli.describe`'s three checks were handed MORN's inventory and `facts/`**
+  while testing only that it distinguishes absent / file / directory. A scratch
+  directory says the same thing anywhere, so they stayed in unit.
+
+**A check count that moved with the weather** (`0c0c21c`). Verifying the split in
+a clean worktree found `test_repo_hygiene` reporting **27 checks here and 29
+there**: it emitted one "is present" check per *absent* manifest, and two of the
+four are gitignored. The per-file count is the tripwire the whole suite hangs on,
+so a count that varies by environment disarms it — and disarms it in the
+direction that reads as "new checks were added", inviting a re-record rather than
+an investigation. Same defect as the per-company count that moved 20 → 21 in
+Phase 4.6, same fix: aggregate, so the *number* of checks is a property of the
+file and only their *content* is a property of the tree. Deliberately **not**
+fixed by requiring the manifests up front, tempting as that was now the file
+lives in `regression/` — its most valuable checks need no company data, and dying
+at the top would stop them running in exactly the checkout where someone most
+wants them.
+
+**What the worktree proved.** All 351 unit checks pass against a checkout with no
+pack, no sections, no manifests and no run log — measured, not asserted. The two
+new regression files exit 1 naming the missing files and the **free** command
+that rebuilds them, where before the split those same checks printed "skipped"
+and the file reported green.
+
+**One thing fell out for free.** Part 1's path-shaped ids make `pytest -k "unit/"`
+select 8 files and `-k "regression/"` select 3. `pytest tests/unit` still collects
+nothing, since `suite_test.py` is the only pytest-visible file — documented in
+both it and the README.
+
+**Verification:** 403 checks across 11 files, pytest 13 passed, control-byte scan
+clean over 170 files, no mojibake, working tree clean.
 
 ### 2026-08-24 — Phase 4: one command, and the bug it found on its first walk
 
