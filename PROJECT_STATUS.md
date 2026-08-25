@@ -740,7 +740,17 @@ across 34 calls). Milestones 1–3 cost nothing.
         (**done** — twelve commits, see Current Status; the item-by-item scope is
         `PHASE4_SCOPE.md`, written from the code before any of it was built and
         kept verbatim so the reasoning can be checked against what got built) →
-        **5 test split, model mix, pack subsets, docs (NEXT)**.
+        **5 test split, model knobs, docs — SCOPED, not started.**
+        `PHASE5_SCOPE.md`, written 2026-08-25 from the code and the committed
+        usage records, same convention as Phase 4's. Three of the plan's five
+        items were re-sized by measurement: **pack subsets are deferred** (the
+        de-dup half was an $8-to-save-$0.12 trade, because changing `pack.json`
+        changes the sha a hard check reads), **the model mix builds a knob and
+        switches nothing** (the plan's `votes`/`board` switch saves $0.31 and
+        targets the two weakest-audited fields; the $2.73 that made
+        `investor_qa` worth optimising is MORN-specific volume that will not
+        recur), and the two run-only tests (27, 29) become **Phase 6** with a
+        second real company. Phase 5 as scoped spends **$0**.
         The seat-terms blocker is cleared: headless use fits the terms, Opus is
         on the seat, and API keys are unavailable for almost all colleagues.
         **Two plan corrections found by executing Phase 1 — do not re-derive:**
