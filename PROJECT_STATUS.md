@@ -30,10 +30,15 @@ pipeline now goes through one seam and runs on a Claude seat with no API key.
 writers), `0ce6e3d` (4.1 orchestrator), `e2c8784` (4.3 freshness), `45bf0b9`
 (4.2 cost gate), `4ae2a9e` (status), `a37fab3` (paths), `9665ec2` (4.4/4.5),
 `7b8884b` (4.7 tests), `5e5c1a1` (rule 2), `8e07663` (4.6 init), `7da59e9`
-(4.8 the clock). **Phase 5 is scoped (`PHASE5_SCOPE.md`, `b01ceee`) and 5.1 is
-done** — `618c77a` (the path-aware gate), `7367a74` (one `check()`), `416901c`
-(the split), `0c0c21c` (a count that moved with the weather). The repository has
-a GitHub remote:
+(4.8 the clock). **Phase 5 is COMPLETE** — scoped in `PHASE5_SCOPE.md`
+(`b01ceee`), then 5.1 across `618c77a` (the path-aware gate), `7367a74` (one
+`check()`), `416901c` (the split), `0c0c21c` (a count that moved with the
+weather); 5.2 `c0038a5` (idempotency, run rather than linted); 5.3 `cc89900` (the
+per-task model knob, nothing switched); 5.5 `7a6ddbf` (the docs); 5.6 `dccdb44`
+(the two open checks). **5.4 was deliberately deferred, not skipped.** The test
+suite went **400 → 453** checks. **Phase 5 spent $0** — an outcome of the
+scoping, not a target. **Next is Phase 6**, which is the two things only a real
+run can test. The repository has a GitHub remote:
 https://github.com/bpmoriarty/public-equity-narrative-research
 
 ```
@@ -79,6 +84,34 @@ accounted for per file in `416901c`'s message.
 > by requiring the manifests up front — that file's most valuable checks need no
 > company data, and dying at the top would stop them running in exactly the
 > checkout where someone most wants them.
+
+> **The knob that switches nothing, and why that is the finding.** 5.3 built
+> per-task model selection and left the table **empty**. Measured from the 88
+> committed extractions: the plan's proposed switch (`votes` + `board` to Sonnet)
+> saves **$0.31 a company** and lands on the two weakest-audited fields — `votes`
+> is the one task told to copy numbers exactly and nothing downstream re-checks a
+> vote count against its 8-K, while `board` holds 51 of the 54 low-confidence
+> facts. `investor_qa` is 60% of extraction spend, but **MORN's monthly written
+> Reg FD investor Q&A is idiosyncratic** — the user's domain judgment, and it
+> decides the item. Strip it and a company is 34 calls and $4.52, where switching
+> everything else saves $1.80, $1.33 of it out of
+> `business`/`mdna`/`comp`/`letter`, which are the product. So the $2.73 does not
+> recur, and an A/B on MORN's Q&A would only ever describe MORN's Q&A. **The
+> durable part is the hazard:** the facts cache key is (fiscal year, task, filing)
+> with **no model in it**, so any comparison run overwrites the committed control
+> arm it is measuring against — decide where it writes before the first call.
+
+> **`count_tokens` came back, and the fallback stays anyway.** It returned 500 for
+> every request on 2026-08-16 including a two-word control; re-probed 2026-08-26
+> it answered six for six, sub-second. So "unavailable" was a service condition,
+> not a permanent one — and the conclusion that survives both observations is that
+> the labelled-estimate path must stay *usable* rather than merely present,
+> because it is a live path for API users on any bad day and nothing warns you
+> first. The re-probe also let `CHARS_PER_TOKEN = 2.66` be checked against exact
+> counts for the first time: the pack lands within 12 tokens and real filing prose
+> measures 2.88–3.76 chars/token, **every deviation high** — the direction that
+> refuses a borderline payload rather than waving it through. No change to the
+> constant.
 
 > **Four of this phase's most valuable findings came from running things, not
 > reading them.** Three broken manifest writers, a freshness design overturned by
@@ -178,7 +211,7 @@ accounted for per file in `416901c`'s message.
 > reachable. Now reported as `malformed`, fatal at generation time, and a
 > `review` line in `verify_outputs` for one commit before it is promoted to hard.
 
-**Last Session:** 2026-08-25
+**Last Session:** 2026-08-26
 
 **Overall Health:** 🟢 Working — milestones 1–5 complete. **The full verification suite has been run and all nine of its findings are fixed.** 1,329 ledger facts, 1,425 citable ids, three deliverables passing 13 hard checks each. Quote census re-earned after the repairs at **1,326/1,326**. $7.21 spent on generation; remediation cost $0.00 in API calls
 
@@ -768,14 +801,21 @@ across 34 calls). Milestones 1–3 cost nothing.
         a Sonnet subagent; the test-harness step and the review were done on
         Opus. All 15 modules moved with history preserved, 15 `sys.path.insert`
         hacks removed (not the 11 the plan claimed). See the Session Log entry
-17. [ ] **Phases 3–5**, in order: 3 Claude Code model seam (**done**, `0facceb`,
+17. [x] **Phases 3–5**, in order: 3 Claude Code model seam (**done**, `0facceb`,
         `15bd33e`, `a7a5890`, `8296182`) → 4 `pipeline` orchestrator + `init`
         (**done** — twelve commits, see Current Status; the item-by-item scope is
         `PHASE4_SCOPE.md`, written from the code before any of it was built and
         kept verbatim so the reasoning can be checked against what got built) →
-        **5 test split, model knobs, docs — SCOPED; 5.1 done, 5.2–5.6 open.**
-        5.1 (the test split, four commits, see Current Status) closed Next Steps
-        28 along the way and found a check count that varied by environment.
+        **5 test split, model knobs, docs — COMPLETE** (2026-08-26; see Current
+        Status for the commit list). It closed Next Steps 20, 23, 24 and 28 along
+        the way, and spent **$0**. **5.4, pack subsets, was deliberately deferred
+        rather than skipped:** the de-dup half was an $8-to-save-$0.12 trade,
+        because changing `pack.json` changes the sha a hard check reads, and
+        `pack-comp.json` would have shipped with zero consumers now that
+        generation makes two pack-carrying calls rather than the plan's four. The
+        trigger is recorded with era-chunking and QA quote-tiering: `warn_tokens`
+        firing on a real company. **Next is Phase 6** — items 27 and 29, the two
+        paths only a real run exercises, via a second real company at ~$18–20.
         `PHASE5_SCOPE.md`, written 2026-08-25 from the code and the committed
         usage records, same convention as Phase 4's. Three of the plan's five
         items were re-sized by measurement: **pack subsets are deferred** (the
@@ -830,10 +870,21 @@ across 34 calls). Milestones 1–3 cost nothing.
         broken, but it cannot *prove* idempotency. That needs the stages run
         twice against small fixtures — Phase 5 item 2, now better specified than
         when it was written
-20. [ ] **`DATA.md` still describes `data/` and `output/` as top-level.** Its
-        `src/<module>.py` references were fixed in `d6201dd`, but the data-path
-        narrative needs prose changes rather than a substitution. The plan puts
-        it in Phase 5 with the README and CLAUDE.md updates
+20. [x] **The docs describe the project that exists.** Done 2026-08-26 as Phase
+        5.5, `7a6ddbf`. `DATA.md` got a header blockquote establishing that its
+        paths are company-relative — which is what the ~10 bare `data/...`
+        references have needed since Phase 2 — plus the fiscal-window row
+        corrected to ten years and two new rows for which model and which backend
+        answered a given record. **One row was factually wrong rather than
+        stale:** the run date pointed at `inventory.json` `run_utc`, a key Phase
+        4.8 moved to the gitignored run log, so anyone auditing vintage would have
+        looked for a field that is not there. The README was rewritten (seven
+        wrongs, the worst being that it presented an API key as required when the
+        default backend needs none), `CLAUDE.md` gained a `## Model calls` section
+        and two rules gained the specific forms they took here, and
+        `VERIFICATION.md` got a dated-provenance note rather than a rewrite.
+        Verified: all 86 backticked path tokens in the live docs resolve, and
+        every command the README lists runs
 21. [x] **Finish Phase 3: rewire `generate_outputs`.** Done 2026-08-17,
         `a7a5890`. The id repair became self-contained and pack-free, carrying a
         (field, fiscal year) slice of the index — ~14,900 tokens on the largest
@@ -848,24 +899,31 @@ across 34 calls). Milestones 1–3 cost nothing.
         in the `model_client.py` module docstring. The five that contradicted
         the plan are the reason that docstring is long; read it before changing
         anything about how model calls are made
-23. [ ] **Promote the malformed-citation check in `verify_outputs` from `review`
-        to `hard`.** Added in `8296182` as a review line per CLAUDE.md rule 3 — a
-        new check gets its output read once before it is allowed to stop
-        anything. **Its output has now been read: 0 on both documents.** Change
-        `r.review("citations naming a field code that does not exist", …)` to an
-        `r.hard(...)` with a tag, and expect the check count to move. It is
-        already fatal in `generate_outputs.report_failures`, which is the gate
-        that runs before a document is ever written
-24. [ ] **`count_tokens` is not reliably available, even with an API key.** On
-        2026-08-16 it returned 500 for every request, including a two-word
-        control, while `messages.create` on the same key worked normally. Three
-        attempts, all failing inside a second. Both `build_pack` and
-        `generate_outputs` already fall back to `settings.CHARS_PER_TOKEN` and
-        **label the number as estimated**, so nothing broke — but this means the
-        labelled-estimate path is the live one for API users too, not a courtesy
-        to seat users who cannot count. Worth re-checking whether exact counting
-        has come back before treating any "estimated" figure as a limitation of
-        the seat backend specifically
+23. [x] **The malformed-citation check is `hard`.** Done 2026-08-26 as Phase 5.6,
+        `dccdb44`, tagged `ids_wellformed`. Its `review` output had been read (0 on
+        both documents), which is the bar rule 3 sets. The offenders go in
+        `detail` because a HARD row carries no items list, and that matters here
+        more than elsewhere: the whole defect is that the token *looks* like a
+        citation, so a failure that does not name it sends the reader hunting
+        through 3,500 words. Exercised in both directions, including the
+        distinction that justifies a separate check — `SP-FY2021-deadbeef` is a
+        real field code with an unknown hash and fails `ids_resolve`, while
+        `MDNA-FY2021-deadbeef` fails `ids_wellformed` and leaves `ids_resolve`
+        **passing**. Proven end to end as well: the shipped brief has no failures,
+        and one injected malformed citation yields a non-zero exit
+24. [x] **`count_tokens` is INTERMITTENT, and that is the finding.** Re-probed
+        2026-08-26 as Phase 5.6, `dccdb44`: six consecutive calls, all
+        sub-second, a two-word control and a 36,000-character payload. So the
+        2026-08-16 outage — a 500 on every request including the control — was a
+        service condition and not permanent. **No behaviour change, and the
+        fallback stays**: the conclusion that survives both observations is that
+        the labelled-estimate path must remain *usable* rather than merely
+        present, because it is a live path for API users on any bad day and
+        nothing warns you first. The docstring now says both dates and "do not
+        delete the fallback because this worked today". The re-probe also let
+        `CHARS_PER_TOKEN = 2.66` be checked against exact counts for the first
+        time — pack within 12 tokens, real prose 2.88–3.76 chars/token, every
+        deviation high, no change to the constant
 25. [x] **The manifest-path bug class now has a mechanical enforcer.** Three
         writers were producing repo-root-relative paths where the contract
         requires company-relative ones (see the Current Status blockquote). Fixed
@@ -922,7 +980,7 @@ across 34 calls). Milestones 1–3 cost nothing.
 
 | File | What It Does |
 |------|--------------|
-| `CLAUDE.md` | Project rules — EDGAR access, extraction approach, traceability. Read first. Ends with **"Rules that have bitten us"**: the five doctrines whose violation recurred, each naming the check that now enforces it |
+| `CLAUDE.md` | Project rules — EDGAR access, extraction approach, **model calls**, traceability. Read first. The `## Model calls` section (added 5.5) covers the seam, both backends, why the no-key path is not merely a default, the two questions a spending stage answers without spending, and what "already generated" means. Ends with **"Rules that have bitten us"**: the five doctrines whose violation recurred, each naming the check that now enforces it |
 | `tools/check_control_bytes.py` | Blocks a commit containing raw control bytes in a text file — the signature of a regex escape mangled by a shell heredoc (`\b` → 0x08). Run via `.githooks/pre-commit`; enable per clone with `git config core.hooksPath .githooks`. `--all` scans the whole tree. Selects staged files with `--diff-filter=ACMRT`; **the `R` is load-bearing** — it filtered `ACM` until `fec3785` and was therefore blind to renames, silently skipping every modified file in a `git mv` commit |
 | `tests/run_all.py` | Runs every test file **at any depth** and compares each one's own count against `tests/expected_counts.json`, **failing in either direction**. Fewer checks than recorded is the failure it exists for: a test that stops testing still reports green. Files are recorded under their path relative to `tests/`, so a file that moves reads as one MISSING plus one UNREGISTERED rather than vanishing. Loads `fixture.py` **by path** — putting `tests/regression/morn` on `sys.path` would make `fixture` importable from `tests/unit/`, which is the coupling the split removes |
 | `tests/suite_test.py` | The pytest front-end (`uv run pytest`). Asserts exit code, zero failures, **and the recorded check count** per file. Deliberately not `pytest --collect-only`, which counts test functions and so cannot see a file shrinking from 63 checks to 3. Named `suite_test.py`, not `test_suite.py`, because `run_all.py` globs `test_*.py` and would otherwise recurse — now true at any depth. `pytest tests/unit` collects **nothing** (this is the only pytest-visible file); use `-k "unit/"` or `-k "regression/"`, which works because the ids are path-shaped |
@@ -932,11 +990,10 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `companies/_template/` | What `pipeline init` copies. Hand-maintained on purpose: `company.toml` is 170 lines of which 125 are comments, and no TOML writer preserves comments — generating it would produce 25 correct settings and destroy the 125 lines explaining them. Kept honest by two checks in `test_repo_hygiene.py`: it must agree with every real company's config on every key, and its `ticker`/`cik`/`resolved_name` must be **empty**, because a template shipping a real CIK would scaffold a config pointing at the wrong company |
 | `tests/regression/morn/fixture.py` | Names the fixture company (MORN) once, for the three files in its directory that read MORN's artifacts. **Sets `EQR_TICKER`, and must be imported before any stage module** — stage modules resolve the ticker at import time, so `import equity_research.discover` is itself an ambiguous call once a second company exists. Exporting `P` alone did not fix it; that is why this sets the environment variable. Also holds **`require_artifacts()`**, which declares what a regression file needs and **exits** if it is absent, naming each missing path and distinguishing "committed model output, restore from git" from "derived, free to rebuild". That function is the reason the directory exists |
 | `tests/unit/` vs `tests/regression/morn/` | Split by **what a test reads**, not by what it tests. Unit (8 files, 351 checks) reads nothing under `companies/` and passes in a checkout with no pack, sections, manifests or run log — measured, not assumed. Regression (3 files, 52) reads MORN's artifacts and dies without them. Unit tests still need *a* company scaffolded, because several import a stage module and a stage module resolves its ticker at import time; they read none of that company's data |
-| `src/equity_research/settings.py` | Config layering, window validation, the **one pricing table** with `PRICES_AS_OF`, and `record_run` — where a deterministic stage's clock goes now that committed artifacts carry none. Five stages write that one run log, so `record_run` **merges** rather than replacing (CLAUDE.md rule 4). Also `CHARS_PER_TOKEN = 2.66`, the calibrated fallback for backends that cannot count tokens |
+| `src/equity_research/settings.py` | Config layering (global `config/*.toml` + optional `companies/<T>/overrides/`), window validation at 1–10 years, the **one pricing table** with `PRICES_AS_OF`, and `record_run` — where a deterministic stage's clock goes now that committed artifacts carry none. Five stages write that one run log, so `record_run` **merges** rather than replacing (CLAUDE.md rule 4), and it discards a corrupt log rather than raising: it is called last, so an exception there fails a run that had already done its work. Arrays replace wholesale on merge, including arrays of tables — `sections.toml` pattern order is load-bearing and element-wise merging would produce an order neither file describes. Also `CHARS_PER_TOKEN = 2.66`, the fallback for backends that cannot count tokens, **re-measured against exact counts in Phase 5.6**: the pack lands within 12 tokens, real prose runs 2.88–3.76 chars/token, and every deviation is high — the direction that refuses a borderline payload rather than waving it through |
 | `companies/MORN/data/_meta/run-log.json` | When each deterministic stage last ran. **Gitignored** — that is the whole point. Its contents used to live inside eight committed artifacts, which meant every re-run produced a diff with no change of substance |
 | `src/equity_research/paths.py` | **Every filesystem path, resolved per company.** `CompanyPaths` owns the 49 joins that were spread across 15 modules. `resolve()` re-roots a manifest-relative string — the reason the MORN move rewrote no manifest and `pack.json` kept its sha256. Ticker order: `--ticker` → `EQR_TICKER` → the single company; two with no ticker is a **hard error**, never a first-match guess |
-| `src/equity_research/settings.py` | Config layering (global `config/*.toml` + optional `companies/<T>/overrides/`), window validation at 1–10 years, and the **one pricing table** with `PRICES_AS_OF`. Arrays replace wholesale on merge, including arrays of tables — `sections.toml` pattern order is load-bearing and element-wise merging would produce an order neither file describes. Also `CHARS_PER_TOKEN = 2.66`, the calibrated fallback for backends that cannot count tokens |
-| `src/equity_research/model_client.py` | **The model seam.** One interface, two backends: `claude_code` (default — needs a seat, no API key) and `api`. **Read its module docstring before changing anything about model calls** — it records eight measured findings, including that every headless call cache-*writes* its prompt at 2× input price, that an identical prompt does *not* cache, and that `--resume` preserves context while saving nothing. Several contradict the plan |
+| `src/equity_research/model_client.py` | **The model seam.** One interface, two backends: `claude_code` (default — needs a seat, no API key) and `api`. **Read its module docstring before changing anything about model calls** — it records eight measured findings, including that every headless call cache-*writes* its prompt at 2× input price, that an identical prompt does *not* cache, and that `--resume` preserves context while saving nothing. Several contradict the plan. `count_tokens` is **intermittent**, not absent: a 500 on everything on 2026-08-16, working six-for-six on 2026-08-26. The labelled-estimate fallback stays for that reason — do not delete it because the endpoint works today |
 | `config/llm.toml` | Which engine model calls go through, and where the Claude Code binary is. `binary_path` is normally empty: discovery is PATH → this setting → the binary bundled inside the VS Code extension, newest version. `cache_ttl` applies to the API path only and its comment carries the arithmetic for why `1h` is barely worth it. Per-stage overrides let anyone holding an API key move just the token-heavy stage across |
 | `VERIFICATION.md` | **The independent review and its remediation log.** Nine findings D1–D9, what each turned out to be, how each was fixed, and what was verified against ground truth. Read before trusting any deliverable |
 | `companies/MORN/corrections.toml` | **Every human correction, as data.** `[[correction]]` (a ledger value), `[[document_correction]]` (a sentence), `[[id_remap]]` (a renumbered citation). Each carries its evidence and reviewer; each is fatal if it stops matching |
@@ -948,9 +1005,9 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `src/equity_research/render_pdf.py` | Renders `companies/MORN/output/*.md` to `companies/MORN/output/pdf/*.pdf`. Deterministic, no model call. Reads each finished PDF back and fails if a word, fact id, heading or at-risk glyph did not survive |
 | `companies/MORN/output/pdf/` | The three deliverables as PDF. **Gitignored** — a pure function of the committed Markdown, the script and the `[pdf]` config, rebuilt in seconds with `uv run python -m equity_research.render_pdf` |
 | `SPEC.md` | Document scope, extraction targets, ledger schema, output specs |
-| `DATA.md` | Provenance, as-of date, and 9 known limitations. Read before making any coverage claim |
+| `DATA.md` | Provenance, as-of date, and **16** known limitations. Read before making any coverage claim. Its paths are **company-relative** — a header blockquote says so, added in Phase 5.5 along with the correction that the run date lives in the gitignored run log and not in `inventory.json` |
 | `PROMPT.md` | The original kickoff prompt and its milestone gates |
-| `companies/MORN/company.toml` | Ticker, CIK, window, rate limits. **The only file to edit to retarget** |
+| `companies/MORN/company.toml` | Ticker, CIK, window, rate limits, model settings. **The only file to edit to retarget.** Its `[extraction.models]` table sets a model per extraction task and **ships empty**; the measured per-task costs and the reasons nothing is switched are in the comments above it. It must stay last in `[extraction]` — everything after a TOML sub-table header belongs to that sub-table |
 | `config/forms.toml` | In-scope forms, 8-K item filter, gap signals, scope-extension block |
 | `config/sections.toml` | Section boundary regexes, anchor phrases, validation rules |
 | `src/equity_research/discover.py` | Milestone 1. Inventory and gap analysis. No documents downloaded |
@@ -967,8 +1024,8 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `companies/MORN/data/ledger/facts/` | Cached per-task extraction results. A completed task is never re-run |
 | `src/equity_research/render_timeline.py` | Milestone 5d. Renders `companies/MORN/output/timeline.md`. Deterministic, no model call; asserts completeness before writing |
 | `companies/MORN/output/timeline.md` | **Deliverable 1 of 3.** Chronological reference table, every row carrying its fact id and filing |
-| `src/equity_research/verify_outputs.py` | Milestone 5f. Holds the deliverables to the pack's binding constraints — **13 hard checks and 4 review lists** per document; deterministic, free, non-zero exit on failure. The newest review line (citations naming a field code that does not exist) is due for promotion to hard — Next Step 23 |
-| `tests/unit/test_verify_outputs.py` | 60 checks. Every hard check tested against a document that fails it as well as one that passes, all inline. Holding the gates against the **real** documents is `regression/morn/test_deliverables.py` |
+| `src/equity_research/verify_outputs.py` | Milestone 5f. Holds the deliverables to the pack's binding constraints — **14 hard checks and 3 review lists** per document; deterministic, free, non-zero exit on failure. `ids_wellformed` became the 14th in Phase 5.6: a citation whose *field code* does not exist was read as prose by everything, because `ID_RE` is built from the real codes. A check is `hard` (decidable, gating) or `review` (known false positives, listed for a human, gating nothing) and never a blend — a check that fires on correct documents trains whoever reads the report to skip that line |
+| `tests/unit/test_verify_outputs.py` | 64 checks. Every hard check tested against a document that fails it as well as one that passes, all inline. Holding the gates against the **real** documents is `regression/morn/test_deliverables.py` |
 | `src/equity_research/generate_outputs.py` | Milestone 5e. Writes both prose deliverables from the pack; checks and repairs ids and quotations. **Read the note above `repair_ids` before changing how repairs work** — it records why they carry an index slice rather than the pack, and what that gives up. Only `generate` sends the pack; all three repair kinds are self-contained. **Also read the note above `DocStatus`** before changing what counts as up to date: it records the measurement that ruled out comparing the record's inputs, and why prompt drift is reported rather than spent on. `--check-fresh` answers "is there work?" for the cost gate at zero cost and without constructing a backend; `--force` overrides |
 | `companies/MORN/output/narrative-brief.md` | **Deliverable 2 of 3.** The five-year arc, 2,089 words, 126 citations |
 | `companies/MORN/output/discussion-points.md` | **Deliverable 3 of 3.** Observations, open questions, and stated-vs-paid-for priorities |
@@ -1136,6 +1193,108 @@ both it and the README.
 
 **Verification:** 403 checks across 11 files, pytest 13 passed, control-byte scan
 clean over 170 files, no mojibake, working tree clean.
+
+### 2026-08-26 — Phase 5 finished: 5.2, 5.3, 5.5, 5.6, and one deliberate deferral
+
+**5.2 — idempotency proved by running it, not by linting it** (`c0038a5`).
+Phase 4.8 moved the clock out of eight committed artifacts and added a lint
+forbidding a wall clock in one. That lint catches the only way this has ever
+broken here and **cannot prove the property**: an unsorted set, a differently
+formatted float, a dict built from `glob()` order would all pass it and still
+churn.
+
+`tests/unit/test_record_run.py` (17) covers the one shared-file writer.
+`CompanyPaths` takes `root` as a field, so a whole synthetic company exists
+wherever a temp directory does — nothing written under `companies/`, which is
+what keeps the check count from depending on how many companies exist.
+
+> **The defect writing that test found.** `record_run` promised a corrupt log
+> "must never stop a pipeline stage that had already done its real work" — it is
+> called last, after the real output is on disk. The guard was `except
+> (json.JSONDecodeError, OSError)`, which covers unparseable bytes but **not valid
+> JSON of the wrong shape**: `5`, `"x"`, `[]` and `null` all parse and then raise
+> TypeError on the item assignment. Four of six corruption shapes crashed the
+> stage. The realistic corruptions — truncation, an empty file — were already
+> handled; the point is the guard did not do what its own docstring said, and only
+> input designed to fail it showed that (rule 3).
+
+`tests/regression/morn/test_reruns_change_nothing.py` (8) re-runs the five
+deterministic stages **once each** and compares against the **committed** bytes
+rather than against a second run. Better on three counts and cheaper on the
+fourth: it compares against the record a reviewer sees as a diff (two fresh runs
+agreeing while both disagree with git is still a dirty tree), it costs one
+execution per stage instead of two, and the committed bytes were written under a
+different random `PYTHONHASHSEED`, so set-order churn is exercised for free. The
+seed is pinned to an unusual value here because **an in-process run-twice test
+shares one seed and structurally cannot see hash-order nondeterminism.**
+
+Artifacts come from `git ls-files` so one added later is covered the day it is
+committed, and attribution is a predicate per stage rather than a filename list —
+the ledger's one `FY*.json` per fiscal year would otherwise make the count depend
+on the window. Exactly one check per stage on every path, including the failure
+paths.
+
+Proven able to fail four ways: the wall clock reinstated in `render_timeline`
+(caught, and the tree came back clean), a committed artifact no stage claims, a
+stage exiting non-zero (its own named check, because "0 files differ" is true of a
+stage that never ran and would read as a pass), and a missing input. **And a
+defect in my own file**, visible only from a bare worktree: it read
+`inventory.json` for the CIK *before* `require_artifacts`, so a checkout with no
+artifacts died on `read_text` with a raw traceback — never a vacuous pass, but the
+designed message was bypassed by the first missing file.
+
+Cost: the suite went 23s → 44s, 20 of the 21 added seconds being `build_ledger`
+re-verifying 1,329 quotes. Deliberate — excluding it would leave 6 of 13
+artifacts uncovered.
+
+**5.3 — the knob that switches nothing** (`cc89900`). See the Current Status
+blockquote for the measurement and why the plan's proposed switch is not made.
+What the commit adds beyond the knob: per-task models made three things wrong
+that were previously merely latent, and all three are now right. The estimate
+**groups by model** — the comment on `price_for` had predicted this exact defect
+("a switch to Sonnet for some tasks would have left this estimate quietly quoting
+Opus rates"), and grouping makes it impossible rather than noted. The header names
+the overrides, because a header printing only the default is actively misleading
+on a mixed run. And a model switch is a **no-op on work already done** — staleness
+keys on the source text — so the run now reports how many cached results a
+different model produced, since otherwise "already cached: 88" reads as the config
+being ignored. Two silent config failures are rejected before the first call: a
+misspelled task, and an unpriced model.
+
+**5.4 — deferred, with the trigger recorded.** The de-dup half was an
+$8-to-save-$0.12 trade: the timeline block is 12,475 tokens (3.5% of the pack,
+~$0.06 a call) and removing it changes `pack.json`, hence its sha, which is a
+**hard** check on both deliverables plus the input to the 4.3 freshness rule. And
+`pack-comp.json` would have shipped with zero consumers — the plan sized it for
+four generation calls and there are now two.
+
+**5.5 — the docs described the pre-Phase-1 project** (`7a6ddbf`). The README is
+the first file a colleague opens and following it would have failed at step 3.
+Seven wrongs, the worst being that it presented `ANTHROPIC_API_KEY` as a required
+setup step when the default backend needs none — that belief is the one most
+likely to stop someone using this at all, so it is now the first paragraph.
+`DATA.md` closed Next Steps 20, and **one of its rows was factually wrong rather
+than stale**: the run date pointed at `inventory.json` `run_utc`, a key 4.8 moved
+to the gitignored run log, so anyone auditing vintage would have hunted for a
+field that is not there. `CLAUDE.md` gained a `## Model calls` section; rules 1 and
+4 gained the specific forms they took here (the cache key with no model in it; the
+wall clock). `VERIFICATION.md` got a dated-provenance note rather than a rewrite,
+because correcting a dated report misrepresents what was reviewed.
+
+Verified rather than asserted: **all 86 backticked path tokens** in the live docs
+resolve, checked with a throwaway script — after its first version produced 39
+false positives by not knowing the two conventions the docs themselves state.
+
+**5.6 — the two open checks** (`dccdb44`). The malformed-citation check is `hard`
+(Next Steps 23); `count_tokens` is intermittent rather than absent (24). Both are
+in Current Status blockquotes. The part worth repeating: the re-probe let
+`CHARS_PER_TOKEN` be checked against exact counts **for the first time**, and both
+claims its comment already made turned out to hold.
+
+**Verification:** 453 checks across 14 files, pytest 16 passed, control-byte scan
+clean over 173 files, all 368 unit checks pass in a worktree with `companies/MORN/
+data/` and `output/` deleted outright, `pipeline MORN --yes` exit 0 in 39s with
+both spending stages reporting nothing to do and no artifact churn.
 
 ### 2026-08-24 — Phase 4: one command, and the bug it found on its first walk
 
