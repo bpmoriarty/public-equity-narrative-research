@@ -101,12 +101,20 @@ def record_run(P: CompanyPaths, stage: str, **fields: Any) -> None:
 
     log: dict[str, Any] = {}
     if path.exists():
+        # A corrupt log is a diagnostic file, not data. Losing it must never stop
+        # a pipeline stage that had already done its real work — this function is
+        # called LAST, after the stage's real output is on disk.
         try:
-            log = json.loads(path.read_text(encoding="utf-8"))
+            loaded = json.loads(path.read_text(encoding="utf-8"))
         except (json.JSONDecodeError, OSError):
-            # A corrupt log is a diagnostic file, not data. Losing it must never
-            # stop a pipeline stage that had already done its real work.
-            log = {}
+            loaded = None
+        # Not just "did it parse" but "is it the shape we index into". `5`, `[]`,
+        # `"x"` and `null` all parse cleanly and then raise TypeError on the item
+        # assignment below — uncaught, which failed the run for the sake of a
+        # file nobody reads. The two exception classes above were the whole guard
+        # until tests/unit/test_record_run.py was written against input that
+        # fails it (CLAUDE.md rule 3).
+        log = loaded if isinstance(loaded, dict) else {}
 
     log[stage] = {
         "run_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
