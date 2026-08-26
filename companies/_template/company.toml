@@ -133,6 +133,39 @@ max_tokens = 16000
 # Raise to "high" if extraction quality proves weak on a specific task.
 effort = "medium"
 
+# PER-TASK MODEL OVERRIDES. Empty, and the right default for a new company.
+#
+# MUST STAY LAST IN [extraction]: in TOML everything after a sub-table header
+# belongs to that sub-table, so a scalar written below this line would become
+# `extraction.models.<key>` and silently stop being read as an extraction
+# setting. Same trap as [pdf.page] in config/outputs.toml.
+#
+# Every task uses `model` above unless named here. The eight tasks are not one
+# job — `comp` and `mdna` are cross-year reading, `votes` is transcription of
+# numbers off a table — so this is where that gets revisited per task, without a
+# code change.
+#
+# DO NOT COPY A MIX FROM ANOTHER COMPANY. Which task dominates spend is a fact
+# about the issuer's filing habits, not about the pipeline: on MORN, monthly
+# written Reg FD investor Q&A is 60% of extraction spend and most issuers publish
+# none at all. Run `--estimate`, which prints the per-model split, and decide from
+# this company's own numbers.
+#
+# BEFORE RUNNING ANY A/B, read `out_path` in src/equity_research/extract_facts.py.
+# The cache key is (fiscal year, task, filing) and does NOT include the model, so
+# a comparison run overwrites the results it is being compared against — and
+# extraction output is committed precisely because a re-run cannot reproduce it.
+#
+# Switching a task here does nothing to work already done: staleness keys on the
+# source TEXT, not the model, so cached answers stay cached and the run reports
+# how many were produced by a different model.
+#
+# Task names must be exact — a typo is rejected at startup rather than silently
+# meaning "no override". Valid: business, mdna, comp, board, letter, events_8k,
+# investor_qa, votes.
+[extraction.models]
+# votes = "claude-sonnet-5"
+
 [generation]
 # Milestone 5e — the two prose outputs. Separate from [extraction] because the
 # job is the opposite one: extraction reads one section closely and copies what

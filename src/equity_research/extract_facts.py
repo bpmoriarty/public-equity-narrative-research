@@ -541,10 +541,123 @@ def out_path(fy: int, task: str, unit: str | None = None) -> Path:
     Per-filing tasks get the accession in the filename, so each is cached and
     retried on its own. The accession is filesystem-safe as filed (digits and
     hyphens), so it is used verbatim — a sanitized name could collide.
+
+    THE MODEL IS NOT IN THIS KEY. READ THIS BEFORE RUNNING ANY A/B.
+    ---------------------------------------------------------------
+    (fiscal year, task, filing) identifies a unit of work. It does not identify
+    which model answered it. So the same unit re-run on a different model lands
+    on the SAME path and overwrites what is there.
+
+    What is there is irreplaceable. `data/ledger/facts/` is committed precisely
+    because a re-run buys *a* valid answer, not *the* answer the committed
+    documents cite (CLAUDE.md rule 1). An A/B comparison that forgets this
+    destroys the control arm it was measuring against, and `git checkout` is the
+    only way back.
+
+    Putting the model in the filename is NOT the fix: it would rename all 88
+    committed records, orphan every one of them, and present a $11.33 re-run as
+    a cache miss. The fix is that a comparison run writes somewhere else — decide
+    where BEFORE the first call, not after.
+
+    Switching a task's model in `[extraction.models]` is safe on its own, and
+    deliberately does nothing to existing results: staleness keys on the source
+    TEXT, not on the model, so a cached answer stays cached. `main` reports how
+    many cached records were produced by a different model than the one now
+    configured, so the no-op is visible rather than surprising.
     """
     if unit:
         return FACTS_DIR / f"FY{fy}_{task}_{unit}.json"
     return FACTS_DIR / f"FY{fy}_{task}.json"
+
+
+def model_for_task(ex: dict, task: str) -> str:
+    """Which model answers this task. `[extraction.models]`, else `[extraction] model`.
+
+    One model for all eight tasks was the only option until now, and it is still
+    the default and still what MORN uses. The knob exists because the tasks are
+    not one job: `comp` and `mdna` are cross-year reading, while `votes` is
+    transcription of numbers off a table.
+
+    MEASURED BEFORE BEING OFFERED, so the knob is not mistaken for advice.
+    From the usage records of the 88 committed extractions, Opus against Sonnet:
+
+        investor_qa   54 calls   $6.81 -> $4.08     60% of extraction spend
+        business       5 calls   $0.97 -> $0.58
+        mdna           5 calls   $1.02 -> $0.61
+        comp           5 calls   $0.88 -> $0.53
+        events_8k      5 calls   $0.43 -> $0.26
+        board          5 calls   $0.45 -> $0.27
+        letter         4 calls   $0.45 -> $0.27
+        votes          5 calls   $0.31 -> $0.18
+        TOTAL         88 calls  $11.33 -> $6.80
+
+    Nothing is switched, and the reasons are worth keeping next to the knob:
+
+      - `investor_qa` is the only task where the saving is real money, and MORN's
+        volume there is IDIOSYNCRATIC — it publishes written Reg FD answers to
+        investor questions roughly monthly and most issuers never do. Strip it
+        and a company is 34 calls and $4.52. So the $2.73 does not recur, and an
+        A/B on MORN's Q&A would only describe MORN's Q&A.
+      - `votes` + `board` is what the productionization plan proposed switching.
+        It saves $0.31 a company and lands on the two weakest-audited fields:
+        `votes` is the one task told to copy numbers exactly and NOTHING
+        downstream re-checks a vote count against its 8-K, while `board` already
+        holds 51 of the 54 low-confidence facts in the ledger.
+      - What is left is `business`, `mdna`, `comp` and `letter` — $3.33 against
+        $2.00. They are the product.
+
+    THE TRIGGER FOR REVISITING: a company whose own task mix puts one task above
+    roughly half of extraction spend. `--estimate` prints the per-model split, so
+    the answer is in front of whoever is about to spend the money. Run the A/B
+    against that company's material, not against MORN's.
+    """
+    return (ex.get("models") or {}).get(task) or ex["model"]
+
+
+def check_model_config(ex: dict) -> None:
+    """Reject a `[extraction.models]` table that cannot do what it says.
+
+    Both failures below are silent by default, which is why they are checked
+    eagerly rather than at the point of use:
+
+      - a misspelled task (`vote` for `votes`) simply never matches, so the run
+        proceeds on the default model while the config claims otherwise. Nobody
+        would see it: the header would print the default and look correct.
+      - an unknown model id reaches the backend, which fails per call after the
+        run has started — or worse, prices through `settings.price_for` and
+        raises during `--estimate` only.
+    """
+    overrides = ex.get("models") or {}
+    problems = []
+
+    for task in sorted(overrides):
+        if task not in TASKS:
+            problems.append(
+                f"  [extraction.models] {task!r} is not a task. "
+                f"Known tasks: {', '.join(sorted(TASKS))}")
+
+    # Membership rather than catching price_for's SystemExit: the same answer,
+    # but it collects every offender into one message instead of exiting on the
+    # first, and it does not nest one FATAL inside another.
+    priced = sorted(settings.MODEL_PRICES)
+    for label, model in ([(f"[extraction.models] {t}", m)
+                          for t, m in sorted(overrides.items())]
+                         # The default is checked too: it is the model most tasks
+                         # actually use, and an unpriced one there breaks
+                         # --estimate for every task at once.
+                         + [("[extraction] model", ex["model"])]):
+        if model not in settings.MODEL_PRICES:
+            problems.append(
+                f"  {label} = {model!r} has no price recorded. "
+                f"Priced models (as of {settings.PRICES_AS_OF}): "
+                f"{', '.join(priced)}")
+
+    if problems:
+        sys.exit("FATAL: the extraction model configuration is not usable:\n"
+                 + "\n".join(problems)
+                 + "\n\nAdd a model to MODEL_PRICES in "
+                   "src/equity_research/settings.py rather than hardcoding a "
+                   "number at a call site.")
 
 
 def run_one(backend: model_client.Backend, cfg: dict, unit: dict) -> dict:
@@ -562,7 +675,7 @@ def run_one(backend: model_client.Backend, cfg: dict, unit: dict) -> dict:
 
     try:
         resp = backend.generate(
-            model=ex["model"],
+            model=model_for_task(ex, task),
             system=SYSTEM,
             prompt=prompt,
             max_tokens=ex["max_tokens"],
@@ -671,6 +784,7 @@ def main() -> None:
     # it cannot see a substitution that preserves length — but it is what those
     # records have, and silently treating them as fresh would be worse.
     stale, cached = [], []
+    answered_by: dict[tuple, str | None] = {}
     if not args.force:
         for u in list(plan):
             p = out_path(u["fy"], u["task"], u.get("unit"))
@@ -691,10 +805,14 @@ def main() -> None:
                 # Nothing recorded at all — no basis on which to claim staleness.
                 is_stale, basis = False, "none"
             (stale if is_stale else cached).append((u, was_chars, basis))
+            # Which model actually answered this unit, for the drift report
+            # below. Records written before the field existed report None.
+            answered_by[(u["fy"], u["task"], u.get("unit"))] = rec.get("model")
         if args.refresh_stale:
             plan += [u for u, _, _ in stale]
 
     ex = cfg["extraction"]
+    check_model_config(ex)
 
     # Resolved before the header prints, so the header states the concurrency
     # and engine that will ACTUALLY be used. It previously printed
@@ -714,9 +832,40 @@ def main() -> None:
     print(f"Fact extraction — {ex['model']}, effort={ex['effort']}, "
           f"max_tokens={ex['max_tokens']}, concurrency={workers}, "
           f"backend={backend.name}")
+    # Named per task rather than folded into the line above. A header that
+    # printed only the default would be actively misleading on a mixed run, and
+    # this is the line someone reads to check that a switch took effect.
+    overrides = {t: m for t, m in sorted((ex.get("models") or {}).items())
+                 if m != ex["model"]}
+    if overrides:
+        print("  model overrides : "
+              + ", ".join(f"{t} -> {m}" for t, m in overrides.items()))
     print(f"  years           : {', '.join(f'FY{y}' for y in sorted(years))}")
     print(f"  tasks to run    : {len(plan)}")
     print(f"  already cached  : {len(cached)}" + ("  (use --force to redo)" if cached else ""))
+
+    # A model switch deliberately does NOT invalidate a cached result: staleness
+    # keys on the source text, so the answer stays cached and no money is spent.
+    # Correct, and surprising enough to be worth stating — otherwise someone
+    # switches a task, sees "already cached: 88", and concludes the config is
+    # being ignored. Records written before the `model` field existed report
+    # None and are not counted as drift, because nothing is known about them.
+    drifted: dict[tuple[str, str], int] = {}
+    for u, _, _ in cached:
+        was = answered_by.get((u["fy"], u["task"], u.get("unit")))
+        now = model_for_task(ex, u["task"])
+        if was and was != now:
+            drifted[(was, now)] = drifted.get((was, now), 0) + 1
+    if drifted:
+        total = sum(drifted.values())
+        print(f"  different model : {total} cached result(s) were produced by a "
+              f"model other than the one now configured")
+        for (was, now), n in sorted(drifted.items()):
+            print(f"      {n:>3d} answered by {was}, now configured as {now}")
+        print("      Left alone on purpose — a cached answer is not wrong "
+              "because the config changed.")
+        print("      Re-running them costs tokens: --force, and read "
+              "`out_path` first about where the output lands.")
     if empty:
         print(f"  no source       : {len(empty)}")
         for u in empty:
@@ -780,33 +929,52 @@ def main() -> None:
     # tokens cannot be counted in advance on either, so they are bounded by
     # max_tokens — a deliberate over-estimate, clearly labelled.
     if args.estimate:
-        total_in, exact = 0, True
+        # Accumulated PER MODEL, not in one total. A mixed run priced at one
+        # model's rates is wrong in whichever direction the mix goes, and the
+        # comment that used to sit on `price_for` below predicted exactly this:
+        # "a switch to Sonnet for some tasks would have left this estimate
+        # quietly quoting Opus rates". Grouping is what makes that impossible
+        # rather than merely noted.
+        per_model: dict[str, dict[str, int]] = {}
+        exact = True
         for u in plan:
+            model = model_for_task(ex, u["task"])
             prompt = build_prompt(u["task"], u["fy"], u["sources"])
-            n = backend.count_tokens(model=ex["model"], system=SYSTEM, prompt=prompt)
+            n = backend.count_tokens(model=model, system=SYSTEM, prompt=prompt)
             if n is None:
                 # The claude_code backend has no count-tokens endpoint. Fall back
                 # to the calibrated ratio and say so, rather than printing a
                 # number that looks measured.
                 exact = False
                 n = settings.estimate_tokens(prompt)
-            total_in += n
+            bucket = per_model.setdefault(model, {"calls": 0, "tokens": 0})
+            bucket["calls"] += 1
+            bucket["tokens"] += n
             label = u['task'] + (f" {u['unit']}" if u.get('unit') else '')
             print(f"  FY{u['fy']} {label:34s} {u['chars']:>9,d} chars  "
                   f"{'' if exact else '~'}{n:>8,d} tokens")
-        worst_out = len(plan) * ex["max_tokens"]
-        # Priced from the model the run will actually use, via the one table in
-        # settings.py. Previously PRICE_IN/PRICE_OUT were module constants of
-        # 5.00/25.00 here and again in generate_outputs.py, so a price change or
-        # a switch to Sonnet for some tasks would have left this estimate quietly
-        # quoting Opus rates.
-        price = settings.price_for(ex["model"])
+
         print()
-        print(f"input   : {total_in:,d} tokens  ->  ${total_in / 1e6 * price.input:,.2f}")
-        print(f"output  : at most {worst_out:,d} tokens (max_tokens x {len(plan)} calls)  ->  "
-              f"${worst_out / 1e6 * price.output:,.2f} worst case")
-        print(f"total   : ${total_in / 1e6 * price.input:,.2f} to "
-              f"${(total_in / 1e6 * price.input) + (worst_out / 1e6 * price.output):,.2f}")
+        low = high = 0.0
+        for model, b in sorted(per_model.items()):
+            # Priced via the one table in settings.py. PRICE_IN/PRICE_OUT were
+            # once module constants of 5.00/25.00 here and again in
+            # generate_outputs.py, so a price change had to be made twice.
+            price = settings.price_for(model)
+            worst_out = b["calls"] * ex["max_tokens"]
+            in_cost = b["tokens"] / 1e6 * price.input
+            out_cost = worst_out / 1e6 * price.output
+            low += in_cost
+            high += in_cost + out_cost
+            head = f"{model} x{b['calls']}"
+            print(f"  {head:34s} {b['tokens']:>9,d} in  ->  ${in_cost:,.2f}"
+                  f"   + at most ${out_cost:,.2f} out")
+        # Printed even when there is only one model, so the per-model line and
+        # the total always agree and neither has to be trusted alone.
+        print(f"\ntotal   : ${low:,.2f} to ${high:,.2f}"
+              f"   ({len(plan)} call(s) across {len(per_model)} model(s))")
+        print(f"output is bounded by max_tokens x calls, which is a deliberate "
+              f"over-estimate — it cannot be counted in advance on either backend.")
         print(f"\nestimate only — no extraction calls were made. "
               f"Prices as of {settings.PRICES_AS_OF}.")
         if not exact:
