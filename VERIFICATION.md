@@ -5,6 +5,17 @@ Run 2026-08-07 against commit `0547c37`, in an isolated git worktree
 `uv.lock`. The original tree was read-only throughout; every artifact written by
 this review lives outside it.
 
+> **Paths in this report are as they were on 2026-08-07 and are deliberately not
+> rewritten.** This is a dated record of what was found where, so correcting it
+> would misrepresent what was reviewed. Three moves have happened since, and the
+> translation is mechanical: modules moved from `src/<name>.py` to
+> `src/equity_research/<name>.py` (Phase 1); a company's `data/`, `output/`,
+> `company.toml` and `corrections.toml` moved under `companies/<TICKER>/`
+> (Phase 2); and test files moved from `tests/test_<name>.py` into
+> `tests/unit/` or `tests/regression/morn/` by whether they read company data
+> (Phase 5.1). Check counts quoted here are as-of the run and have since grown.
+> `PROJECT_STATUS.md` and `README.md` carry the current layout.
+
 **Headline.** The evidence layer is verified against ground truth and is sound:
 **1,326 of 1,326 ledger quotations are genuine filing text** (a census against the
 cached filings, not a sample), the pack rebuilds **byte-identically** from a clean

@@ -2,9 +2,13 @@
 
 Builds a five-year narrative history of a public company from its SEC filings.
 Input: a ticker and a fiscal-year range. Output: three Markdown documents plus
-the structured ledger they derive from.
+the structured ledger they derive from, with every claim traceable to a filing.
 
 Narrative and governance extraction — **not** financial statement extraction.
+
+**You do not need an API key.** By default the model calls run on a Claude seat
+through Claude Code, which is the path almost everyone here has. See
+[Model calls](#model-calls).
 
 ## Setup from a clean checkout
 
@@ -12,18 +16,29 @@ Narrative and governance extraction — **not** financial statement extraction.
 # 1. Build the environment (creates .venv from uv.lock — do not use pip)
 uv sync
 
-# 2. Create your secrets file, then fill in EDGAR_IDENTITY and ANTHROPIC_API_KEY
+# 2. Create your secrets file, then fill in EDGAR_IDENTITY
 cp .env.example .env          # Git Bash
 # Copy-Item .env.example .env # PowerShell
 
-# 3. Point the pipeline at a company
-#    Edit config/company.toml: set `ticker` and the [window] fiscal years.
-
-# 4. Enable the pre-commit checks (once per clone — git does not carry hooks)
+# 3. Enable the pre-commit checks (once per clone — git does not carry hooks)
 git config core.hooksPath .githooks
+
+# 4. Scaffold the company you want to research
+uv run pipeline init TSLA
 ```
 
-Step 4 is not optional housekeeping. The hook runs
+Only **`EDGAR_IDENTITY`** is required — the SEC blocks requests without a
+descriptive User-Agent. `ANTHROPIC_API_KEY` is needed only if you switch to the
+`api` backend.
+
+`pipeline init` copies `companies/_template/` to `companies/TSLA/` and prints
+what to edit — the ticker and the fiscal-year window. **Leave `cik` and
+`resolved_name` empty.** They are tripwires, not inputs: discovery resolves the
+CIK from the ticker and stops if a value there disagrees with it. A CIK typed
+from memory returns a different company's filings and every stage then runs
+perfectly on the wrong data.
+
+Step 3 is not optional housekeeping. The hook runs
 `tools/check_control_bytes.py`, which blocks a commit containing raw control
 bytes in a text file — the signature of a regex escape mangled by a shell
 heredoc (`\b` arriving as byte 0x08). That has happened three times here, and
@@ -34,36 +49,113 @@ everything still reported green. Run it over the whole tree at any time with:
 uv run python tools/check_control_bytes.py --all
 ```
 
-### Running the tests
+### Where to put the checkout
+
+Prefer a path **outside** OneDrive or any other syncing folder. The pipeline
+writes tens of thousands of cached files under `companies/<TICKER>/data/raw/`,
+and a sync client will either fight the writes or quietly upload 40 MB per
+company. Keep the nesting shallow too: Windows' 260-character path limit is not
+far off once accession numbers are in the path.
+
+**One analyst per checkout.** Two people working on two companies in one
+checkout is unsupported — take separate clones.
+
+## Running the pipeline
 
 ```bash
-uv run python tests/run_all.py               # every test file, with the count gate
-uv run python tests/unit/test_<name>.py       # one file
-uv run pytest                                # the same gate, via pytest
-uv run pytest -k "unit/"                     # only the tests that need no company data
-uv run pytest -k "regression/"               # only the tests that read MORN's artifacts
+uv run pipeline MORN            # all thirteen stages, in order
+uv run pipeline MORN --yes      # ...without stopping to confirm spending
+uv run pipeline status MORN     # what is on disk, per stage
+uv run pipeline estimate MORN   # what the two spending stages would cost
+uv run pipeline stages          # the registry, and which stages cost money
+uv run pipeline init TSLA       # scaffold a new company
 ```
 
-The suite is split by what a test reads, not by what it tests:
+Two of the thirteen stages make model calls. Before either runs, `pipeline` asks
+it whether it has any work, shows what that work would cost, and waits for a
+yes. An unanswerable prompt — a piped or closed stdin — counts as **no**; it is
+never read as consent.
 
-| | reads | fails when a company's data is absent? |
+Everything else is deterministic and free, and every stage no-ops when its output
+is already current, so re-running the whole pipeline over a finished company
+costs nothing and takes about forty seconds.
+
+A single stage can still be run on its own:
+
+```bash
+uv run python -m equity_research.<stage> --ticker MORN
+```
+
+## Model calls
+
+Every model call goes through one seam (`src/equity_research/model_client.py`)
+with two interchangeable backends, selected in `config/llm.toml`:
+
+| Backend | Needs | Notes |
 |---|---|---|
-| `tests/unit/` | nothing under `companies/` — inline fixtures and the global `config/` | no, by design |
-| `tests/regression/morn/` | MORN's committed ledger, documents, generation records and manifests | **yes, loudly** — see `require_artifacts` |
+| `claude_code` (default) | a Claude seat | Runs the Claude Code CLI headlessly. No API key. |
+| `api` | `ANTHROPIC_API_KEY` | The Anthropic SDK. Cheaper for extraction; see `config/llm.toml`. |
 
-That second row is the point of the split. Those checks used to sit at the end of
-the unit files behind `if artifact.exists():`, so a checkout without the
-artifacts ran fewer checks and still printed `0 failed`. A regression test with
-nothing to regress against is a failure, not a pass and not a skip.
+**Finding the CLI is the thing most likely to break on a new machine.** Most
+people use Claude Code through the VS Code extension and never install the CLI —
+but the extension *ships* it, at a path carrying the extension's version number,
+which moves on every update. Resolution order is: the `binary_path` setting, then
+`claude` on `PATH`, then the newest binary found inside an installed extension.
+If a run cannot find it, set `binary_path` in `config/llm.toml`.
 
-Unit tests still need *a* company to be scaffolded — several of them import a
-stage module, and a stage module resolves its ticker at import time — but they
-read none of that company's data.
+On a seat the dollar figures the pipeline prints are **notional** — what the API
+would have charged. They are still the right number to compare against, and they
+are what `estimate` reports.
+
+Which model answers which extraction task is configurable per task in
+`companies/<TICKER>/company.toml` under `[extraction.models]`. It ships empty:
+every task uses one model unless you say otherwise. Read the comments there
+before changing it — particularly the note on where a comparison run writes.
+
+## Layout
+
+```
+config/                GLOBAL defaults, company-neutral
+  forms.toml             in-scope forms, 8-K item filter, gap signals
+  sections.toml          section boundary regexes + validation rules
+  outputs.toml           pack budget, timeline rules, output constraint gates
+  llm.toml               which backend model calls go through
+companies/
+  _template/             copied by `pipeline init`
+  <TICKER>/
+    company.toml         ticker, fiscal window, model settings  <- the file you edit
+    corrections.toml     hand-verified corrections; optional
+    overrides/           optional per-company deltas to the global config
+    data/raw/            cached filings by year/form — never delete, never re-fetch
+    data/sections/       extracted target sections as cleaned text
+    data/ledger/         per-year structured JSON records, and the facts cache
+    data/pack/           the citable pack the output writers read
+    output/              the three deliverables
+src/equity_research/     pipeline modules (an installable package; run with -m)
+  _bootstrap.py            ROOT, the Windows cert store, and .env — imported first
+  paths.py                 every path, resolved per company
+tests/unit/              reads no company data; passes in a bare checkout
+tests/regression/morn/   reads MORN's committed artifacts; fails loudly without them
+```
+
+A company's whole world is one folder: its config, its corrections, its cached
+filings, its deliverables. `config/` holds only what is true for every company.
+
+Data directories are created by the stage that writes them, so the pipeline
+rebuilds from nothing.
+
+## Running the tests
+
+```bash
+uv run python tests/run_all.py                  # every test file, with the count gate
+uv run python tests/unit/test_<name>.py         # one file
+uv run pytest                                   # the same gate, via pytest
+uv run pytest -k "unit/"                        # only the tests that need no data
+```
 
 `run_all.py` compares each file's own `N passed, M failed` line against
 `tests/expected_counts.json` and fails if the number moved **in either
-direction**. Files are recorded under their path relative to `tests/`, so a file
-that moves shows up as one MISSING plus one UNREGISTERED rather than vanishing. Fewer checks than recorded is the failure this exists for: a test
+direction**. Fewer checks than recorded is the failure this exists for: a test
 that stops testing still reports green. More checks means new ones were added
 without recording them — re-record deliberately with `--update` and commit the
 result alongside the tests that caused it.
@@ -71,44 +163,33 @@ result alongside the tests that caused it.
 `uv run pytest` enforces exactly the same three properties per file — exit code,
 zero failed checks, and the recorded check *count*. It deliberately does not use
 `pytest --collect-only` for counting: that counts test functions, not checks, so
-a file falling from 63 checks to 3 would still collect as one test and pass. See
-the docstring in `tests/suite_test.py`.
+a file falling from eighty checks to three would still collect as one test and
+pass — which is not hypothetical, it is VERIFICATION.md D7. See
+the docstring in `tests/suite_test.py`. Note that `pytest tests/unit` collects
+nothing — `suite_test.py` is the only pytest-visible file — so select with
+`-k "unit/"` instead.
 
-## Running a stage
+**The split is by what a test reads, not by what it tests.** Everything in
+`tests/unit/` runs against inline fixtures and passes in a checkout with no
+company data at all. Everything in `tests/regression/morn/` reads MORN's
+committed artifacts and **exits non-zero** if they are absent, naming what is
+missing and whether it can be rebuilt for free. Neither ever skips: a regression
+test with nothing to regress against is a failure, not a pass.
 
-The pipeline is an installable package (`src/equity_research/`), so stages run as
-modules. Every command goes through uv, which activates the environment for you:
-
-```bash
-uv run python -m equity_research.<stage>     # e.g. ...equity_research.build_pack
-```
-
-## Layout
-
-```
-config/            company config, section patterns, 8-K item filters
-  company.toml       ticker, CIK, fiscal-year window, rate limits  <- the file you edit
-  forms.toml         in-scope forms, 8-K item filter, gap signals
-  sections.toml      section boundary regexes + validation rules
-src/equity_research/ pipeline modules (an installable package; run with -m)
-  _bootstrap.py      ROOT, the Windows cert store, and .env — imported first by every stage
-data/raw/            cached filings by year/form — never delete, never re-fetch
-data/sections/       extracted target sections as cleaned text
-data/ledger/         per-year structured JSON records
-output/              the three deliverables
-```
-
-`data/` and `output/` subdirectories are created by the stage that writes them
-(`mkdir(parents=True, exist_ok=True)`), so the pipeline rebuilds from nothing.
+One file is slow on purpose. `tests/regression/morn/test_reruns_change_nothing.py`
+re-runs the five deterministic stages and compares their output to the committed
+bytes, which takes about 28 seconds and is most of the suite's runtime. It is the
+only automated proof that a re-run leaves the tree clean.
 
 ## Read these before working on it
 
 | File | Why |
 |---|---|
-| `CLAUDE.md` | The rules: EDGAR access, extraction approach, traceability. **Read first** |
+| `CLAUDE.md` | The rules: EDGAR access, extraction approach, traceability, and the five doctrines whose violation recurred. **Read first** |
 | `SPEC.md` | Scope, extraction targets, ledger schema, output specs, milestones |
-| `PROJECT_STATUS.md` | Where the project currently stands and what's next |
+| `PROJECT_STATUS.md` | Where the project stands, what is next, and the Session Log |
 | `DATA.md` | Provenance and the source's known limitations |
+| `VERIFICATION.md` | The verification suite's findings and how each was remediated |
 | `PROMPT.md` | The kickoff prompt that drives the build, milestone by milestone |
 
 ## The two rules most easily broken

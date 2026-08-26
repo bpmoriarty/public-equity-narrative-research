@@ -14,14 +14,37 @@ narrative claim (revenue trajectory, headcount, segment mix, comp figures).
 
 ## Repository layout
 
+One company owns one directory. `config/` holds only what is true for every
+company; anything company-specific lives under `companies/<TICKER>/`.
+
 ```
-config/          # company config, section patterns, 8-K item filters
-src/             # pipeline modules
-data/raw/        # cached filings, by year/form — never delete, never re-fetch
-data/sections/   # extracted target sections as cleaned text
-data/ledger/     # per-year structured JSON records
-output/          # the three final deliverables
+config/                    # GLOBAL defaults: forms, section patterns, output
+                           #   gates, and which backend model calls go through
+companies/_template/       # copied by `pipeline init`
+companies/<TICKER>/
+  company.toml             # ticker, fiscal window, model settings
+  corrections.toml         # hand-verified corrections; optional
+  overrides/               # optional per-company deltas to the global config
+  data/raw/                # cached filings, by year/form — never delete, never re-fetch
+  data/sections/           # extracted target sections as cleaned text
+  data/ledger/             # per-year structured JSON records, and the facts cache
+  data/pack/               # the citable pack the output writers read
+  data/_meta/              # run log — gitignored, and where a stage's clock goes
+  output/                  # the three final deliverables
+src/equity_research/       # pipeline modules (installable package; run with -m)
+  paths.py                 # every path, resolved per company — the only place
+                           #   that spells a data/ or output/ segment
+tests/unit/                # reads no company data; passes in a bare checkout
+tests/regression/morn/     # reads MORN's artifacts; fails loudly without them
 ```
+
+Stages run as `uv run python -m equity_research.<stage> --ticker <TICKER>`, or
+all thirteen in order via `uv run pipeline <TICKER>`.
+
+**Never spell a `data/` or `output/` path segment outside `paths.py`.** A literal
+`"data/..."` resolves against the repository root instead of the company being
+run, which is a silent wrong-directory read. *Enforced by the path-literal lint
+in `tests/regression/morn/test_repo_hygiene.py`.*
 
 ## EDGAR access rules
 
@@ -53,6 +76,43 @@ output/          # the three final deliverables
   expected anchor phrases. Log failures loudly rather than silently emitting a
   truncated or over-captured section.
 - Preserve the accession number and filing date on every extracted artifact.
+
+## Model calls
+
+Every model call goes through one seam, `src/equity_research/model_client.py`,
+with two backends selected in `config/llm.toml`. Do not call the Anthropic SDK
+from a stage; the seam is what keeps the audit trail uniform and what let the
+engine change without touching the verification chain.
+
+- **`claude_code` is the default** and runs the Claude Code CLI headlessly on a
+  Claude seat, with **no API key**. This is not merely a default: the operating
+  assumption is that API keys are unavailable to almost everyone who will use
+  this, so it is the only path most people have. Anything that degrades to "not
+  checked" without a key is a bug — the budget check and the cost estimate were
+  both rebuilt to work without one.
+- **`api`** is the Anthropic SDK, and any single stage can be moved to it without
+  a code change. Extraction measured about half the cost through the API, because
+  the CLI always cache-*writes* the prompt and never reads it back.
+- On a seat, every dollar figure the pipeline prints is **notional** — what the
+  API would have charged. Say so wherever one is reported.
+- Read the `model_client.py` docstring before changing how calls are made. Eight
+  probes (V1–V8) answered questions the plan had guessed at, and five of the
+  answers contradicted it. That docstring is the record; do not re-run them.
+
+**Two questions a spending stage must answer without spending anything:**
+`--check-fresh` (exit 0 nothing to do, 4 work outstanding) and `--estimate`. The
+orchestrator asks both before offering to run the stage, and an unanswerable
+prompt — piped or closed stdin — counts as **no**. Never as consent.
+
+**"Already generated" means stamped with the pack on disk.** A document needs
+regenerating only if it is missing, or if the pack sha256 in its provenance
+footer is not the pack sha256 on disk. The obvious alternative — comparing the
+generation record's recorded inputs against today's — was measured and rejected:
+it declares both committed deliverables stale, because they were re-stamped by
+`--apply-corrections` after the fact, and would ask for ~$8 to replace documents
+that pass every hard check. A changed system prompt means a re-run would produce
+something *different*, not that what shipped is *wrong*. Report the drift, offer
+`--force`, spend nothing.
 
 ## Traceability
 
@@ -89,7 +149,14 @@ enforcer over remembering the rule; that is the entire point of building it.
 whatever else in the same directory is derived and ignored. Applied wrongly
 three times, each time to a different artifact, twice *after* the explanation
 had been written into `.gitignore` directly above.
-*Enforced by `tests/test_repo_hygiene.py`.*
+*Enforced by `tests/regression/morn/test_repo_hygiene.py`.*
+
+*Corollary, and the next place this will bite:* the facts cache key is
+`(fiscal year, task, filing)` and does **not** include the model. So re-running a
+unit on a different model overwrites the committed record it would be compared
+against. Any A/B writes somewhere else, decided before the first call — see
+`out_path` in `extract_facts.py`. Putting the model in the filename is not the
+fix; it orphans all 88 records and presents an $11.33 re-run as a cache miss.
 
 **2. Never edit source through the shell — not a heredoc, not string
 replacement, not any read-modify-write in PowerShell or bash.** Two distinct
@@ -112,7 +179,7 @@ Use Write/Edit. If a change really needs scripting, script it in Python with
 `encoding="utf-8"` stated on both the read and the write.
 *Enforced by `tools/check_control_bytes.py` via `.githooks/pre-commit`, with an
 advisory `PreToolUse` hook in `.claude/settings.json`; the encoding half is
-enforced by the mojibake check in `tests/test_repo_hygiene.py`.*
+enforced by the mojibake check in `tests/regression/morn/test_repo_hygiene.py`.*
 
 **3. Run every new hard check against something that fails it, before trusting
 it.** A check that has only ever seen correct input is untested — you have
@@ -127,6 +194,23 @@ reads the existing content and merges; if it writes its own, running it twice
 produces byte-identical output. Any run-to-run difference — a timestamp inside a
 payload, unsorted keys — is a bug, not cosmetic: `pack.json` deliberately holds
 no timestamp because prompt caching only hits on a byte-identical prefix.
+
+*The specific form this took, five times:* **a committed artifact carries no
+wall clock.** Five deterministic stages stamped `datetime.now()` inside files
+that are otherwise pure functions of their inputs, so the tree was dirty after
+every orchestrated run. Dates are fine — a filing date is stable and belongs in
+the record. A *time of day* is not, because only a clock changes between two runs
+over identical inputs. The clock still exists; it lives in the gitignored
+`data/_meta/run-log.json` via `settings.record_run`, which merges because five
+stages share that one file. **The one exemption** is `as_of_utc` /
+`index_fetched_utc` in `inventory.json`: they record when EDGAR was *read*, not
+when the script ran, they are stable across re-runs, and they are what a coverage
+claim is checked against. Stamping the run's clock on them is VERIFICATION.md D9.
+*Enforced by the wall-clock lint in `tests/regression/morn/test_repo_hygiene.py`,
+which exempts by VALUE rather than by key name — the same instant is rendered as
+prose in `discovery-report.md`, where a key-name exemption did nothing. The lint
+cannot prove idempotency; `tests/regression/morn/test_reruns_change_nothing.py`
+re-runs the stages and compares against the committed bytes.*
 
 **5. Counts must reconcile across every stage boundary.** A stage reporting
 "32/32 succeeded" is describing what it attempted, not what arrived. Eleven

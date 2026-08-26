@@ -3,6 +3,17 @@
 Recorded at intake so coverage and completeness claims are auditable rather than
 asserted. Update this file when the source, universe, or as-of date changes.
 
+> **Paths in this file are relative to the company folder.** Since Phase 2 each
+> company owns one directory — `companies/<TICKER>/` — holding its config, its
+> cached filings, its ledger and its deliverables. So `data/ledger/FY2023.json`
+> below means `companies/MORN/data/ledger/FY2023.json`, and `output/timeline.md`
+> means `companies/MORN/output/timeline.md`. They are written that way because
+> that is how the manifests store them: relative to the company, so the same
+> record reads correctly for any company. `config/forms.toml`, `sections.toml`,
+> `outputs.toml` and `llm.toml` have no prefix — they are global defaults shared
+> by every company, and a company overrides one by dropping a partial file in
+> `companies/<TICKER>/overrides/`.
+
 ## Source
 
 | Field | Value |
@@ -13,13 +24,15 @@ asserted. Update this file when the source, universe, or as-of date changes.
 | Documents | Filing HTML as filed, retrieved via `edgartools` |
 | Access library | `edgartools` (version pinned in `uv.lock`) |
 | As-of date (the **data**) | **2026-08-04T17:56:07Z** — when the submissions index was read from EDGAR. `inventory.json` `as_of_utc`. Documents fetched the same day |
-| Run date (the **artifact**) | `inventory.json` `run_utc` — when `discover.py` last wrote the inventory. Differs from the as-of date on every cache-first run, and `index_age_days_at_run` records the gap. Only the as-of date bears on how current the coverage is |
-| Universe | One company at a time, per `config/company.toml` |
-| **Fiscal window** | Five fiscal years, per `config/company.toml` `[window]`. FY2021–FY2025 = `2021-01-01 .. 2025-12-31` in calendar time (`inventory.json` `window_start_date` / `window_end_date`). **This bounds the fiscal years in scope, not the documents.** |
+| Run date (the **artifact**) | `data/_meta/run-log.json` → `discover.run_utc`, with `index_age_days_at_run` recording the gap. **Moved out of `inventory.json` in Phase 4.8**: a clock inside a file that is otherwise a pure function of its inputs made a committed artifact change on every run. The run log is gitignored. Only the as-of date bears on how current the coverage is, which is why the two live in different files now |
+| Universe | One company at a time, per `companies/<TICKER>/company.toml` |
+| **Fiscal window** | Up to ten fiscal years, per `companies/<TICKER>/company.toml` `[window]`; five for MORN. FY2021–FY2025 = `2021-01-01 .. 2025-12-31` in calendar time (`inventory.json` `window_start_date` / `window_end_date`). **This bounds the fiscal years in scope, not the documents.** |
 | **Document window** | The filing dates of the documents the ledger is actually drawn from, which run **past** the fiscal window end by construction — a 10-K, a proxy and an annual-meeting vote all report on a year after it closes. Measured, not asserted: `data/ledger/ledger-report.md` § *Document window*, and per year in `FY*.json` `data_quality.document_window` |
 | Subject | MORN / Morningstar, Inc., CIK 0001289419, FY2021–FY2025 |
 | Retrieved | 202 documents across 128 filings — see `data/raw/fetch-manifest.json` |
-| Extraction model | `claude-opus-5`, effort `medium`. The ledger as it stands represents **88 cached calls, 1,086,058 input / 235,841 output tokens ($11.33)** — 34 for the six core tasks, 54 for `investor_qa`. About $2.60 more was spent on 24 superseded first-pass results (see limitation 16) and one failed call, so total outlay was ~$14 |
+| Extraction model | `claude-opus-5`, effort `medium`, **for all eight tasks** — `[extraction.models]` in `company.toml` can set a model per task and ships empty. The ledger as it stands represents **88 cached calls, 1,086,058 input / 235,841 output tokens ($11.33)** — 34 for the six core tasks, 54 for `investor_qa`. About $2.60 more was spent on 24 superseded first-pass results (see limitation 16) and one failed call, so total outlay was ~$14 |
+| Which model answered what | Per record, in `data/ledger/facts/*.json` `model`. Read it there rather than from this table: the cache key is (fiscal year, task, filing) and does **not** include the model, so a mixed-model ledger is possible and this row would not show it. A model change never invalidates a cached result — staleness keys on the source text — so records can outlive the config that produced them |
+| Backend | `claude_code` (default, needs a Claude seat and no API key) or `api`, per `config/llm.toml`. Recorded per record in `data/ledger/facts/*.json` `backend`; **absent means `api`**, which is what the 88 records committed before the seam existed carry |
 
 ### One filing outside the FISCAL window, by name
 
@@ -413,7 +426,7 @@ Both are marked `low` with the reason on the fact, and their quotes are preserve
 for inspection.
 
 The rejection cases are a committed test rather than a claim:
-`uv run python tests/test_verify_quote.py` asserts that the check still refuses a
+`uv run python tests/unit/test_verify_quote.py` asserts that the check still refuses a
 fabricated quote, a paraphrased ending, a quote stitched from two passages, an
 inserted word, and a fragment too short to be evidence. A 100% pass rate means
 nothing on its own — a checker that returns `True` unconditionally produces the
@@ -510,7 +523,7 @@ buy-in, the 2020 senior notes, the 2020 repurchase authorisation). In-scope fili
 describe them, so they are real and sourced; they are marked *(predates the window)*
 rather than dropped.
 
-Locked in by `uv run python tests/test_merge_events.py` — 35 checks, fixtures drawn
+Locked in by `uv run python tests/unit/test_merge_events.py` — 44 checks, fixtures drawn
 from the real filings including every pair named above.
 
 ### Verifying the deliverables — what a check may and may not gate on
@@ -561,7 +574,7 @@ segment detector's hits. And the "investor_qa counts as a series" check ran on
 sentences while a year-by-year enumeration is written with semicolons and a colon, on
 which the splitter breaks; it found nothing until it was moved to paragraphs.
 
-`uv run python tests/test_verify_outputs.py` — 44 checks. Every hard check is exercised
+`uv run python tests/unit/test_verify_outputs.py` — 60 checks. Every hard check is exercised
 against a document that should fail it *and* one that should pass; a check tested only
 against passing input would still pass if its body were `return True`.
 
@@ -665,7 +678,7 @@ Two properties are enforced rather than assumed:
   on the item, an exclusion list rather than an include list, because a forgotten
   measurement key only causes visible churn while a forgotten identity key causes
   a silent collision.
-- **Reproducibility is tested.** `uv run python tests/test_fact_id.py` recomputes
+- **Reproducibility is tested.** `uv run python tests/unit/test_fact_id.py` recomputes
   all 1,329 ids from the facts' own stored content and asserts they match, then
   asserts the id moves for a changed claim, quote, section, filing or year — and
   does *not* move when confidence is downgraded or a quote is re-verified.
