@@ -350,16 +350,32 @@ def verify(doc: str, md: str, pack: dict, index: dict, pf: dict, cfg: dict,
     # was invisible to `ids_resolve` above and to the repair round that feeds it: a
     # reader saw a citation, every check saw a word.
     #
-    # REVIEW, NOT HARD, FOR THIS ONE COMMIT. CLAUDE.md rule 3 — a new check gets its
-    # output read once before it is allowed to stop anything, because roughly
-    # eighteen bugs in this project were in checkers rather than in what they
-    # checked. It is already fatal in generate_outputs.report_failures, which runs
-    # at generation time where a false positive costs a re-run rather than
-    # condemning a committed artifact. Promote to hard next commit.
-    r.review("citations naming a field code that does not exist", c["malformed"],
-             "Not the same as an unresolvable id: the field itself is not real, so "
-             "there is no slice of the index the claim could have meant. Expected "
-             "zero — this fired on nothing when it was added.")
+    # HARD as of Phase 5.6. It shipped as `review` for one commit under CLAUDE.md
+    # rule 3 — a new check gets its output read once before it is allowed to stop
+    # anything, because roughly eighteen bugs in this project were in checkers
+    # rather than in what they checked. That output has now been read: zero on
+    # both committed deliverables, and the check is exercised in both directions
+    # in tests/unit/test_verify_outputs.py.
+    #
+    # It was already fatal in generate_outputs.report_failures, so promoting it
+    # here closes the gap where a document written before the check existed could
+    # carry a malformed citation past `verify_outputs` as a review line nobody
+    # gates on.
+    #
+    # The offenders go in `detail` because a HARD row carries no items list. That
+    # matters more here than for most checks: the whole defect is that the token
+    # LOOKS like a citation, so a failure that does not name it sends the reader
+    # hunting through 3,500 words for something they cannot distinguish by eye.
+    r.hard("ids_wellformed",
+           "every bracketed citation names a field code that exists",
+           not c["malformed"],
+           ("Malformed: " + ", ".join(c["malformed"]) + ". "
+            if c["malformed"] else "")
+           + "Not the same as an unresolvable id: the FIELD is not real, so there "
+             "is no slice of the index the claim could have meant. ID_RE is built "
+             "from the real field codes, so before this check such a token was "
+             "read as prose — a reader saw a citation and every other check saw a "
+             "word.")
     q = check_quotes(body, index)
     r.hard("quotes_verbatim", "every quotation is verbatim in a fact cited in the same paragraph",
            not q["bad"] and not q["elsewhere"],

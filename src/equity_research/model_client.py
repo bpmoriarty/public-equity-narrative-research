@@ -479,15 +479,27 @@ class ApiBackend:
                          stop_reason=resp.stop_reason, parsed=parsed, raw=None)
 
     def count_tokens(self, *, model: str, system: str, prompt: str) -> int | None:
-        """Exact input tokens. Free, and NOT reliably available.
+        """Exact input tokens. Free, and INTERMITTENTLY available.
 
-        Observed on 2026-08-16: this endpoint returned 500 for every request,
-        including a two-word control, while `messages.create` on the same key
-        worked normally. So the callers' "fall back to an estimate and label it"
-        path is not a courtesy to seat users who cannot count — it is a live path
-        for API users too, and it has to stay usable rather than merely present.
-        No retry here: three consecutive attempts failed in under a second each,
-        and retrying a service-wide 500 only delays the fallback.
+        Two observations, ten days apart, and both matter:
+
+          2026-08-16 — returned 500 for every request, including a two-word
+            control, while `messages.create` on the same key worked normally.
+          2026-08-26 — working again. Six consecutive calls, all sub-second, a
+            two-word control and a 36,000-character payload.
+
+        So "not available" was a service condition and not a permanent one. The
+        conclusion that survives both is the one that matters: **the callers'
+        "fall back to an estimate and label it approximate" path must stay
+        usable, not merely present.** It is not a courtesy to seat users who
+        cannot count; it is a live path for API users on any day this endpoint is
+        having a bad one, and nothing warns you in advance.
+
+        Do not delete the fallback because this worked today.
+
+        No retry here. Three consecutive attempts failed in under a second each
+        in 2026-08-16's outage, so retrying a service-wide 500 only delays the
+        fallback — and the fallback is correct, just approximate.
         """
         return self.client.messages.count_tokens(
             model=model, system=system,

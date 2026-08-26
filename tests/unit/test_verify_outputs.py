@@ -158,6 +158,20 @@ check("a document written from a DIFFERENT pack fails",
 print("\nconstraint 5 — citations and quotations")
 check("an id that resolves to nothing fails",
       run(GOOD.replace("[SP-FY2021-11111111]", "[SP-FY2021-deadbeef]"))["ids_resolve"], False)
+# Promoted from `review` to `hard` in Phase 5.6. The two failures are distinct and
+# the second one used to be invisible: `SP-` is a real field code with an unknown
+# hash (ids_resolve catches it), while `MDNA-` is not a field code at all, so ID_RE
+# never matched the token and every check read it as prose.
+MALFORMED = GOOD.replace("[SP-FY2021-11111111]", "[MDNA-FY2021-deadbeef]")
+check("a citation naming a field code that does not exist fails",
+      run(MALFORMED)["ids_wellformed"], False)
+check("  and it is a DIFFERENT failure from an unresolvable id",
+      run(MALFORMED)["ids_resolve"], True)
+check("  the failure detail names the offending token, which no reader could spot",
+      "MDNA-FY2021-deadbeef" in next(
+          r["detail"] for r in v.verify("doc.md", MALFORMED + PROV, PACK, INDEX,
+                                        PF, CFG, SHA).rows
+          if r.get("tag") == "ids_wellformed"), True)
 check("a quotation matching no filing text fails",
       run(GOOD + '\n\nManagement called it "a resounding triumph" '
                  '[SP-FY2021-11111111].')["quotes_verbatim"], False)

@@ -197,6 +197,25 @@ CACHE_READ_MULTIPLIER = 0.10
 # accuracy on a number that is labelled approximate anyway, and 2.66 errs HIGH
 # on prose — which is the safe direction for a budget check and for a cost
 # estimate shown to someone deciding whether to spend.
+#
+# RE-MEASURED 2026-08-26 against exact counts, now that count_tokens answers
+# again (Next Steps 24). Four real payloads, ratio of estimate to exact:
+#
+#     pack.json               936,868 chars   352,194 exact   1.00x   (2.66 c/t)
+#     8-K EX-10.1 prose       621,878 chars   215,731 exact   1.08x   (2.88 c/t)
+#     ARS whole              507,273 chars   165,710 exact   1.15x   (3.06 c/t)
+#     ARS whole              621,612 chars   165,123 exact   1.42x   (3.76 c/t)
+#
+# Both claims above hold, and neither had been checked against exact counts
+# before: the pack lands within 12 tokens, and prose measures 2.88-3.76 chars per
+# token against the "nearer 2.92" this comment already claimed. Every deviation is
+# HIGH, which is the direction that refuses a borderline payload rather than
+# waving it through. No change to the constant.
+#
+# The 3.76 outlier is an ARS — a whole annual report, so tables and numbers rather
+# than the continuous prose of an exhibit. Worth knowing before anyone "fixes"
+# this ratio using one document: the spread across real filings is wide, and 2.66
+# is chosen to sit under all of it, not to sit in the middle.
 CHARS_PER_TOKEN = 2.66
 
 
