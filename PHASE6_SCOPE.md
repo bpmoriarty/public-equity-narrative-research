@@ -1,10 +1,11 @@
 *Scoping response recorded 2026-08-26. Nothing was built.*
 
 *Updated 2026-09-01: **6.1 is done** (`bbad3d5`) and **decision 1 is made — the
-company is Microsoft, MSFT**. See "6.2 decided" at the foot of this file for what
-was measured before accepting it, including two things that change items 6.3 and
-6.4. Decision 3 is answered by the same measurement; decisions 2 and 4 remain
-open.*
+company is Microsoft, MSFT, over FY2020–FY2025**. See "6.2 decided" at the foot of
+this file for what was measured before accepting it, including a correction to a
+claim about the shard loop that I committed earlier the same day and that the first
+real run contradicted. Decision 3 is answered by the same measurement; decisions 2
+and 4 remain open.*
 
 ---
 
@@ -320,25 +321,26 @@ and that remains the first thing to close if any deliverable becomes load-bearin
 
 ---
 
-# 6.2 decided — Microsoft (MSFT), FY2021–FY2025
+# 6.2 decided — Microsoft (MSFT), FY2020–FY2025
 
-*Recorded 2026-09-01. The company was chosen by the user; what follows is what was
-measured before accepting it, and the three places the measurement changes the
-plan above. Everything here came from four read-only EDGAR metadata requests —
-no document fetch, no model call, $0.*
+*Recorded 2026-09-01. The company was chosen by the user; the window was chosen
+from the measurement in finding 2. What follows is what was established before
+spending anything, and the three places it changes the plan above. All of it came
+from read-only EDGAR metadata plus one discovery run — no document fetch, no model
+call, $0.*
 
 ## The scorecard, measured rather than assumed
 
 | 6.2 criterion | MSFT | Verdict |
 |---|---|---|
-| Non-December fiscal year end | `fiscalYearEnd` = `0630` | **Yes.** FY2021–FY2025 is Jul 2020 – Jun 2025 |
+| Non-December fiscal year end | `fiscalYearEnd` = `0630` | **Yes.** FY2020–FY2025 is Jul 2019 – Jun 2025 |
 | Different filing agent | three prefixes: `0001564590` (FY20–22), `0000950170` (FY23–25), `0001193125` (8-Ks) vs MORN's dominant `0001289419` | **Better than asked.** The agent *changes mid-window*, so `sections.toml` meets two house styles inside one company |
-| Volume defeats the 1,000-filing index | recent index reaches 2020-04-30; window needs 2020-03-03 | **Yes** — the shard loop runs, for the first time ever. But see the caveat below |
-| Publishes a shareholder letter | ARS filed for FY2023, FY2024, FY2025 — **not** FY2021 or FY2022 | **Partly**, and the gap is itself a test |
+| Volume defeats the 1,000-filing index | recent index reaches 2020-04-30 | **Yes, but only at a six-year window.** This decided the window — see finding 2 |
+| Publishes a shareholder letter | ARS filed for FY2023, FY2024, FY2025 — **not** FY2020, FY2021 or FY2022 | **Partly**, and the gap is itself a test |
 | No written Reg FD investor Q&A | none | **Yes.** `investor_qa` will be empty for the first time |
 
-Counts: **3,001 filings indexed → 877 in the padded window → 57 in scope and
-inside it**, against MORN's 127. Fewer filings, larger ones.
+Counts: **3,001 filings indexed → 72 in scope and inside the FY2020–FY2025
+window**, against MORN's 127 over five years. Fewer filings, larger ones.
 
 ## Three findings that change the plan above
 
@@ -363,19 +365,50 @@ real money before anyone read it. The scope above argued 6.1 should go first on
 the grounds that the failure is "silent, consistent and invisible". That was a
 prediction; this is the measurement.
 
-### 2. The shard loop runs, and nothing it returns survives the window
+### 2. The shard loop was not exercised at five years, and that chose the window
 
-Worth stating plainly because it is easy to record as a win it is not. The loop
-pulls `CIK0000789019-submissions-001.json`, taking the index from 1,001 filings to
-3,001 and its reach from 2020-04-30 back to 2008-05-16. Of the 21 filings it adds
-inside the *padded* window, 3 are in-scope 8-Ks — 2020-03-13, 2020-03-31,
-2020-04-29 — and **all three assign to FY2020, which this window drops.**
+**This corrects my own claim, made and committed earlier the same day (`6a8716e`)
+before the first real run contradicted it.** Recorded rather than quietly fixed,
+because the mistake is instructive and the reasoning that replaced it is not
+written down anywhere else.
 
-So path 1 is *exercised* but not *load-bearing*: a silent-truncation bug in it
-would not reach the deliverables at this window. What the run genuinely proves is
-that the loop executes, terminates, fetches the right shard and merges without
-duplicating. That is worth having and it is less than "path 1 is now tested".
-**6.3 should state this explicitly rather than report a green shard check.**
+I probed the shard question with `need_back_to = window_start − filing_date_
+padding_days` and concluded the loop runs for MSFT. It does not. `discover` calls
+`fetch_all_filings(client, cik, window_start)` with the **unpadded** window start
+(`discover.py:637`), and the first real discovery run settled it: `sec_requests_
+made: 2`, no shard on disk, `index_total_filings: 1001`, index reaching 2020-04-30
+against a window starting 2020-07-01 — the loop broke before its first fetch,
+exactly as it always has for MORN.
+
+**The unpadded value is correct, and the asymmetry is the part worth keeping:** no
+filing filed before the window start can be assigned a fiscal year *inside* the
+window. A 10-K is dated by its period, which precedes its filing; a proxy by
+`most_recent_completed_fy`, which is at most `first_fy - 1`; an 8-K by
+`fy_containing(filing_date)`. So padding the *early* end could only ever fetch
+shards whose every contribution is dropped. The padding exists for the *late* end,
+where a 10-K lands 30–90 days after its year closes. Nothing said so, which is how
+a plausible-looking probe got it backwards.
+
+**So the window became a decision, and it was measured across every start year:**
+
+```
+          window   win start  loop  shards    idx  in-scope in window  from shard
+   FY2020-FY2025  2019-07-01   ran       1   3001            72 (6y)           5
+   FY2021-FY2025  2020-07-01  idle       0   1001            59 (5y)           0
+   FY2022-FY2025  2021-07-01  idle       0   1001            41 (4y)           0
+```
+
+**FY2020–FY2025 was chosen.** Five of FY2020's thirteen in-scope filings exist only
+in the shard: a 5.02 director change (2019-09-19), the FY2019 annual-meeting vote
+results (2019-12-05), and three more. So a silent truncation would leave FY2020
+visibly short of its own vote results rather than failing invisibly — which is the
+difference between *executing* path 1 and *testing* it. Cost of the sixth year:
+72 in-scope filings against 59, roughly +22%.
+
+A five-year window would have left path 1 in the same never-executed state Phase 6
+was written to clear, while a green discovery report said nothing was wrong —
+because nothing was wrong. **The check 6.3 proposes (earliest indexed filing vs
+window start) is right and would have passed; passing is not the same as covering.**
 
 ### 3. The window is bounded by disclosure, not by the calendar
 
@@ -390,9 +423,10 @@ anyone runs a pipeline the newest completed year is fully disclosed. **A June fi
 has a ~3.5-month window each year — late July to mid-October — in which the newest
 fiscal year has a 10-K and no proxy, and we are sitting inside it.**
 
-Hence FY2021–FY2025, recorded with its reasoning in
-`companies/MSFT/company.toml` rather than here, because that is the file whoever
-re-runs this will read. **A question for 6.3:** if someone set
+Hence the window **ends** at FY2025 — the start is finding 2's business. Both
+halves of the decision are recorded in `companies/MSFT/company.toml` as well as
+here, because that is the file whoever re-runs this will read. **A question for
+6.3:** if someone set
 `last_fiscal_year = 2026`, does discovery flag the missing proxy loudly, or does
 it report a fiscal year that is quietly short one form? The gap-reporting code
 exists; which way it falls has never been observed.
@@ -408,11 +442,12 @@ needs settling before any future A/B; nothing here spends against it.
 ## What this does to the cost estimate
 
 The $6–10 in the table above assumed a typical issuer, and MSFT is not typical in
-the direction that matters: **57 in-scope filings against MORN's 127, but a 10-K
-and a proxy several times the length.** Call count falls, per-call input rises, and
-the two do not obviously cancel. No number is asserted here — `pipeline estimate
-MSFT` prints the real one after 6.4, from this company's own section lengths, and
-that is the figure to compare the bill against. The $15 budget stands.
+the direction that matters: **72 in-scope filings over six years against MORN's
+127 over five, but a 10-K and a proxy several times the length.** Call count falls,
+per-call input rises, the sixth year adds ~22%, and none of that obviously cancels.
+No number is asserted here — `pipeline estimate MSFT` prints the real one after
+6.4, from this company's own section lengths, and that is the figure to compare the
+bill against. The $15 budget stands.
 
 ## Scaffolded
 

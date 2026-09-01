@@ -47,24 +47,18 @@ resolved_name = ""
 # because it is the provenance of the WINDOW, and a coverage claim is checked
 # against it later:
 #
-#   - The recent-1000 submissions index reaches back only to 2020-04-30, and this
-#     window needs 2020-03-03. So the SHARD LOOP in discover.fetch_all_filings
-#     runs for this company — it has never run for any company. It pulls
-#     CIK0000789019-submissions-001.json and takes the index from 1,001 filings
-#     to 3,001, reaching 2008-05-16.
-#   - The shard contributes 21 filings inside the padded window, of which 3 are
-#     in-scope 8-Ks (2020-03-13, 2020-03-31, 2020-04-29) — and all three assign
-#     to FY2020, which this window drops. Stated plainly because it matters for
-#     what the run PROVES: the loop is exercised for real, but nothing it returns
-#     survives the window filter, so a silent-truncation bug in it would not have
-#     shown up in the deliverables. That is a weaker test than it first looks.
+#   - The recent-1000 submissions index reaches back only to 2020-04-30, which is
+#     why the window starts at FY2020 — see the long note under
+#     `first_fiscal_year`. At FY2020 the SHARD LOOP in fetch_all_filings runs, for
+#     the first time for any company, and five in-window filings come only from
+#     the shard it pulls.
 #   - Three filing agents appear on the annual filings (accession prefixes
 #     0001564590 for FY2020-FY2022, 0000950170 for FY2023-FY2025, 0001193125 on
 #     the 8-Ks), and none is MORN's dominant 0001289419. The agent CHANGES inside
 #     the window, so config/sections.toml gets tested against two house styles in
 #     one company rather than one.
-#   - 3,001 filings indexed -> 877 in the padded window -> 57 in scope and inside
-#     it, against MORN's 127. Fewer filings, larger ones.
+#   - 3,001 filings indexed -> 72 in scope and inside the FY2020-FY2025 window,
+#     against MORN's 127 over five years. Fewer filings, larger ones.
 
 [window]
 # WHICH fiscal years to cover — two YEAR NUMBERS, inclusive on both ends
@@ -81,8 +75,55 @@ resolved_name = ""
 # These are FISCAL years, not FILING years — a FY2024 10-K is typically filed in
 # early 2025. Discovery reports the fiscal-to-filing-date mapping so you can
 # confirm the window covers the calendar period you intended.
-first_fiscal_year = 2021
+first_fiscal_year = 2020
 last_fiscal_year = 2025
+
+# WHY 2020 AND NOT 2021, WHICH WOULD MATCH MORN'S FIVE-YEAR SHAPE.
+#
+# Six years, chosen on 2026-09-01, to make `fetch_all_filings`'s SHARD LOOP a real
+# test rather than an idle branch. Measured, not reasoned:
+#
+#   window        window start   loop   in-scope in window   supplied by shard
+#   FY2021-FY2025 2020-07-01     idle             59                  0
+#   FY2020-FY2025 2019-07-01     RAN              72                  5
+#
+# The recent-1000 submissions index reaches back to 2020-04-30. A window starting
+# 2020-07-01 is therefore already covered and the loop breaks before its first
+# fetch — which is exactly what happened on the first discovery run here, and what
+# has always happened for MORN. Starting at 2019-07-01 puts the window start
+# before the index reach, so the loop runs, pulls
+# CIK0000789019-submissions-001.json, and the index goes 1,001 -> 3,001 filings.
+#
+# What makes it LOAD-BEARING rather than merely executed: five of FY2020's
+# thirteen in-scope filings exist only in that shard —
+#
+#   2019-09-19  8-K  5.02  a director change
+#   2019-12-05  8-K  5.07  the FY2019 annual meeting vote results
+#   2020-02-26  8-K  7.01
+#   2020-03-13  8-K  5.02
+#   2020-03-31  8-K  7.01
+#
+# so a silent truncation in the loop would leave FY2020 visibly short of its own
+# vote results and a board change, instead of failing invisibly. The loop's
+# docstring calls that "a silent-truncation bug: the early years of the window
+# would just appear to have no filings"; this is the window in which that claim
+# can actually be falsified.
+#
+# Cost of the sixth year: 72 in-scope filings against 59, so roughly +22% on
+# extraction and a similar increase in the pack. FY2020 is July 2019 - June 2020,
+# which also places the COVID inflection inside the narrative rather than just
+# before it.
+#
+# WHY THE EARLY END IS NOT PADDED, which is the thing that made this subtle.
+# `discover` calls fetch_all_filings(client, cik, window_start) with the UNPADDED
+# window start (discover.py:637), and that is correct: no filing filed before the
+# window start can be assigned a fiscal year inside it. A 10-K is dated by its
+# period, which precedes its filing; a proxy by most_recent_completed_fy, which is
+# at most first_fy - 1; an 8-K by fy_containing(filing_date). So padding the early
+# end could only ever fetch shards whose every contribution is dropped. The
+# padding below is for the LATE end, where a 10-K lands 30-90 days after its year
+# closes. Getting this backwards is what made a first probe here claim the shard
+# loop ran when it did not.
 
 # WHY 2025 AND NOT 2026, WHICH IS THE MORE RECENT COMPLETED FISCAL YEAR.
 #
@@ -107,8 +148,10 @@ last_fiscal_year = 2025
 # year has one and not the other. We are sitting inside it.
 #
 # REVISIT AFTER 2026-10-21, at which point FY2026 becomes complete and the window
-# can move to FY2022-FY2026 — at the cost of re-extracting, because the facts
-# cache is keyed on fiscal year.
+# could move to FY2021-FY2026. Two costs, both real: FY2026 is a fresh extraction,
+# and dropping FY2020 would drop the only years the shard loop supplies, so the
+# loop goes back to being an idle branch. Moving the start is a decision, not
+# bookkeeping.
 
 # OPTIONAL tripwire, as "MM-DD" (e.g. "12-31" for a December year-end, "09-28"
 # for Apple's late-September one). Discovery always reads the real value from the
