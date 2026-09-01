@@ -246,8 +246,19 @@ class Doc:
 # 10-K
 # ---------------------------------------------------------------------------
 
-def find_item_headings(doc: Doc) -> list[tuple[str, int]]:
-    """Every real 10-K item heading as (item number, node index). Format fact 3."""
+def find_item_heading_candidates(doc: Doc) -> list[tuple[str, int]]:
+    """EVERY node that reads as a 10-K item heading, in document order.
+
+    Deliberately unfiltered beyond two cheap structural rules — too long to be a
+    heading, or sitting inside a hyperlink. Choosing among the survivors is
+    `extract_10k`'s job, and it needs to see all of them to choose.
+
+    The hyperlink rule is the older of the two table-of-contents defences and it
+    is kept because it is free and correct where it applies: MORN's TOC is a list
+    of anchors, so this removes it outright. It is not sufficient — MSFT's TOC is
+    a plain table with no anchors at all — which is what span selection below is
+    for. Format fact 3.
+    """
     found = []
     for i, t in enumerate(doc.texts):
         if not t or len(t) > MAX_HEADING_CHARS:
@@ -257,23 +268,108 @@ def find_item_headings(doc: Doc) -> list[tuple[str, int]]:
             continue
         found.append((m.group(1).upper(), i))
     found.sort(key=lambda x: x[1])
-    # Keep the FIRST occurrence of each item number: some filings repeat a
-    # heading as a running page header further down.
+    return found
+
+
+def find_item_headings(doc: Doc) -> list[tuple[str, int]]:
+    """First surviving occurrence of each item number, in document order.
+
+    Retained with its original contract. `extract_10k` no longer uses it: taking
+    the first occurrence is precisely the table-of-contents bug (see below).
+    """
     seen, out = set(), []
-    for num, i in found:
+    for num, i in find_item_heading_candidates(doc):
         if num not in seen:
             seen.add(num)
             out.append((num, i))
     return out
 
 
-def extract_10k(doc: Doc) -> dict[str, dict]:
-    """Item 1, Item 1A and Item 7, each running to the next item heading."""
-    heads = find_item_headings(doc)
-    if not heads:
+def extract_10k(doc: Doc, min_section_chars: int) -> dict[str, dict]:
+    """Item 1, Item 1A and Item 7, each running to the next item heading.
+
+    THE TABLE-OF-CONTENTS TRAP, and why "first occurrence" was the wrong rule.
+
+    Every 10-K names each item at least twice: once in the table of contents and
+    once where the section actually begins. This used to take the first surviving
+    occurrence, which is right only when something else has already removed the
+    TOC. For MORN something had — its TOC is a list of hyperlinks, and
+    `find_item_heading_candidates` drops those — so the rule looked general for
+    five years and one company.
+
+    MSFT's TOC is a plain table with no anchors, so nothing removed it, and every
+    10-K section for six years came back as a TOC row:
+
+        'Item 1.\\nBusiness\\n3\\nExecutive Officers of the Registrant\\n17'
+
+    58 characters, page numbers included. It failed loudly — `min_chars` in
+    [validation] caught all eighteen — but failing loudly six times is not the
+    same as working.
+
+    WHAT REPLACED IT. Among the candidates for one item number, take the first
+    whose span reaches `min_section_chars`. That is the same floor validation
+    applies afterwards, moved to where it can DECIDE rather than only complain,
+    and it asks the question that actually matters: which of these occurrences
+    yields a real section? It needs no knowledge of what a TOC looks like, so it
+    also handles running page headers, cross-references and a TOC that is neither
+    a link nor a table. The separation it keys on is not marginal — in both
+    companies the TOC span is under 100 characters and the body span is over
+    55,000.
+
+    A provisional end (the next candidate of ANY item number) is used while
+    choosing, and the final end comes from the chosen set. The provisional span is
+    never longer than the final one, so a candidate that clears the floor
+    provisionally still clears it afterwards.
+
+    IF NO CANDIDATE CLEARS THE FLOOR, the one with the LARGEST span is used, and
+    that fallback is load-bearing rather than cosmetic. Most 10-K items are not
+    extracted here but every one of them is a TERMINATOR for the item before it,
+    and some are genuinely shorter than the floor — Item 7A is often a single
+    sensitivity table. Falling back to the *first* candidate picks such an item's
+    table-of-contents row, which sits before the preceding section's body heading
+    and therefore fails to end it: MSFT's Item 7 swallowed Item 7A that way, and
+    it was found by reading where the section stopped, not by any check. Largest
+    span picks the body heading, which terminates correctly.
+
+    Either way the chosen span is still validated afterwards, so a genuinely
+    unrecognised layout produces the same loud failure it did before rather than a
+    silent skip. CLAUDE.md: fail loudly, and never let a change to a boundary rule
+    turn a visible failure into an invisible one.
+    """
+    cands = find_item_heading_candidates(doc)
+    if not cands:
         return {}
-    index = {num: i for num, i in heads}
-    order = [i for _, i in heads]
+    positions = [i for _, i in cands]
+
+    by_num: dict[str, list[int]] = {}
+    for num, i in cands:
+        by_num.setdefault(num, []).append(i)
+
+    def provisional_span(i0: int) -> int:
+        nxt = next((j for j in positions if j > i0), len(doc.nodes))
+        return len(doc.text_span(i0, nxt))
+
+    # One heading per item number, chosen rather than assumed.
+    chosen: dict[str, int] = {}
+    basis: dict[str, str] = {}
+    for num, occurrences in by_num.items():
+        pick = next((i for i in occurrences if provisional_span(i) >= min_section_chars),
+                    None)
+        if pick is not None:
+            chosen[num] = pick
+            basis[num] = (f"first of {len(occurrences)} candidate(s) to reach "
+                          f"{min_section_chars:,} chars"
+                          if len(occurrences) > 1 else "sole candidate")
+        else:
+            # Largest, not first. See the docstring: a short item's TOC row would
+            # otherwise be chosen and would fail to terminate the item before it.
+            # max() with a key is stable on ties, so the earliest of equal spans
+            # wins and a re-run picks the same node.
+            chosen[num] = max(occurrences, key=provisional_span)
+            basis[num] = (f"largest of {len(occurrences)} candidate(s); none "
+                          f"reached {min_section_chars:,} chars")
+
+    order = sorted(chosen.values())
 
     wanted = {
         "1":  "10-K_item1_business",
@@ -282,17 +378,18 @@ def extract_10k(doc: Doc) -> dict[str, dict]:
     }
     out: dict[str, dict] = {}
     for num, key in wanted.items():
-        if num not in index:
-            out[key] = {"error": f"Item {num} heading not found among {sorted(index)}"}
+        if num not in chosen:
+            out[key] = {"error": f"Item {num} heading not found among {sorted(by_num)}"}
             continue
-        i0 = index[num]
+        i0 = chosen[num]
         later = [i for i in order if i > i0]
         i1 = later[0] if later else len(doc.nodes)
         out[key] = {
             "text": doc.text_span(i0, i1),
             "node_range": [i0, i1],
-            "boundary_basis": f"Item {num} heading -> next item heading",
-            "items_found": len(heads),
+            "boundary_basis": f"Item {num} heading -> next item heading "
+                              f"({basis[num]})",
+            "items_found": len(chosen),
         }
     return out
 
@@ -854,7 +951,11 @@ def main() -> None:
         try:
             if form == "10-K" and rec["doc_type"].upper() == "10-K":
                 doc = Doc(path)
-                sections = extract_10k(doc)
+                # The validation floor decides the boundary as well as judging it
+                # afterwards -- see the docstring. One more key in sections.toml
+                # that the code genuinely reads.
+                sections = extract_10k(
+                    doc, cfg["sections"]["validation"]["min_chars"])
                 # Risk factors additionally split into individual factors.
                 rf = sections.get("10-K_item1a_risk_factors")
                 if rf and "text" in rf:

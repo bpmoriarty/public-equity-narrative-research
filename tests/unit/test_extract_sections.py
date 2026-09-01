@@ -221,5 +221,132 @@ check("  and is case-insensitive about the suffix",
 # The empty case, because a --form/--fy filter can select nothing.
 check("no documents in, no documents out", e.choose_documents([]), ([], []))
 
+
+# ---------------------------------------------------------------------------
+# extract_10k — choosing among heading candidates
+# ---------------------------------------------------------------------------
+# Added Phase 6.4. The rule was "first surviving occurrence of each item number",
+# which is right only where something else already removed the table of contents.
+# MORN's TOC is a list of hyperlinks and `find_item_heading_candidates` drops
+# those, so the rule looked general for five years and one company. MSFT's TOC is
+# a plain table with no anchors, and every 10-K section for six years came back as
+# a TOC row of about 58 characters.
+#
+# Synthetic documents below, small enough to read. `FLOOR` is deliberately tiny so
+# the fixtures stay legible; the real floor is validation.min_chars.
+
+import tempfile  # noqa: E402
+from pathlib import Path  # noqa: E402
+
+FLOOR = 200
+_tmp = Path(tempfile.mkdtemp())
+_n = [0]
+
+
+def doc_from(html: str) -> "e.Doc":
+    """A parsed Doc from inline HTML. Doc takes a path, so write one."""
+    _n[0] += 1
+    p = _tmp / f"d{_n[0]}.htm"
+    p.write_text(f"<html><body>{html}</body></html>", encoding="utf-8")
+    return e.Doc(p)
+
+
+def body(item: str, title: str, words: int) -> str:
+    return (f"<p><b>Item {item}. {title}</b></p>"
+            + f"<p>{'substantive prose about the business ' * words}</p>")
+
+
+# MSFT's shape: a TOC built as a table, item number and title in separate cells,
+# page numbers alongside, and NOT hyperlinked.
+TOC_TABLE = (
+    "<table>"
+    "<tr><td>Item 1.</td><td>Business</td><td>3</td></tr>"
+    "<tr><td>Item 1A.</td><td>Risk Factors</td><td>19</td></tr>"
+    "<tr><td>Item 7.</td><td>Management's Discussion and Analysis</td><td>35</td></tr>"
+    "<tr><td>Item 7A.</td><td>Quantitative Disclosures</td><td>53</td></tr>"
+    "<tr><td>Item 8.</td><td>Financial Statements</td><td>55</td></tr>"
+    "</table>")
+
+print("\nextract_10k — the table-of-contents trap")
+
+msft_like = doc_from(
+    TOC_TABLE
+    + body("1", "Business", 40)
+    + body("1A", "Risk Factors", 40)
+    + body("7", "Management's Discussion and Analysis", 40)
+    + body("7A", "Quantitative Disclosures", 1)     # genuinely below the floor
+    + body("8", "Financial Statements", 40))
+got = e.extract_10k(msft_like, FLOOR)
+
+check("a non-hyperlinked TOC no longer wins Item 1",
+      got["10-K_item1_business"]["text"].startswith("Item 1. Business"), True)
+check("  and the captured span is the body, not a TOC row",
+      got["10-K_item1_business"]["chars"] if "chars" in got["10-K_item1_business"]
+      else len(got["10-K_item1_business"]["text"]) > FLOOR, True)
+check("  with no page number from the TOC row in it",
+      "19" in got["10-K_item1_business"]["text"][:40], False)
+check("Item 1A likewise", got["10-K_item1a_risk_factors"]["text"]
+      .startswith("Item 1A. Risk Factors"), True)
+check("Item 7 likewise", got["10-K_item7_mdna"]["text"]
+      .startswith("Item 7. Management"), True)
+check("the basis records that a choice was made, and on what",
+      "to reach" in got["10-K_item1_business"]["boundary_basis"], True)
+
+# THE FALLBACK, and why it is largest-span rather than first. Item 7A's real
+# section is one sentence, below the floor, so no candidate clears it. Choosing
+# 7A's TOC row would put the chosen node BEFORE Item 7's body heading, and Item 7
+# would then run past 7A into Item 8 — which is exactly what MSFT's MD&A did.
+# The span is [i0, i1), so the terminating heading is EXCLUDED — "stops at 7A"
+# means 7A's own heading node IS the end index, not that its text is included.
+_c7a = [i for num, i in e.find_item_heading_candidates(msft_like) if num == "7A"]
+check("Item 7A has both a TOC row and a body heading in this fixture",
+      len(_c7a), 2)
+check("Item 7 ends exactly AT 7A's BODY heading, below-floor or not",
+      got["10-K_item7_mdna"]["node_range"][1], max(_c7a))
+check("  which is NOT 7A's table-of-contents row",
+      got["10-K_item7_mdna"]["node_range"][1] == min(_c7a), False)
+check("  so 7A's own heading text is not inside Item 7",
+      "Quantitative Disclosures" in got["10-K_item7_mdna"]["text"], False)
+check("  and Item 7 does not reach Item 8",
+      "Financial Statements" in got["10-K_item7_mdna"]["text"], False)
+
+# MORN's shape: the TOC is a list of anchors, which is removed before selection.
+morn_like = doc_from(
+    "<div>"
+    '<a href="#i1">Item 1. Business</a>'
+    '<a href="#i1a">Item 1A. Risk Factors</a>'
+    '<a href="#i7">Item 7. Management\'s Discussion and Analysis</a>'
+    "</div>"
+    + body("1", "Business", 40)
+    + body("1A", "Risk Factors", 40)
+    + body("7", "Management's Discussion and Analysis", 40))
+got2 = e.extract_10k(morn_like, FLOOR)
+check("a hyperlinked TOC is still filtered before selection",
+      got2["10-K_item1_business"]["text"].startswith("Item 1. Business"), True)
+check("  and with one candidate left the basis says so",
+      got2["10-K_item1_business"]["boundary_basis"].endswith("(sole candidate)"),
+      True)
+
+# A missing item is reported, not silently skipped.
+partial = doc_from(body("1", "Business", 40) + body("2", "Properties", 40))
+got3 = e.extract_10k(partial, FLOOR)
+check("a missing item is an error, not an empty section",
+      "error" in got3["10-K_item1a_risk_factors"], True)
+check("  and the error names what WAS found",
+      "1" in got3["10-K_item1a_risk_factors"]["error"], True)
+check("a document with no item headings yields nothing at all",
+      e.extract_10k(doc_from("<p>no headings here</p>"), FLOOR), {})
+
+# Determinism: the same document twice gives the same node ranges.
+check("choosing twice gives the same boundaries",
+      [got[k]["node_range"] for k in sorted(got)],
+      [e.extract_10k(msft_like, FLOOR)[k]["node_range"] for k in sorted(got)])
+
+# find_item_headings keeps its old contract for any other caller.
+check("find_item_headings still returns first-occurrence-per-item",
+      [n for n, _ in e.find_item_headings(msft_like)][:3], ["1", "1A", "7"])
+check("find_item_heading_candidates returns MORE than one per item",
+      len([1 for n, _ in e.find_item_heading_candidates(msft_like) if n == "1"]), 2)
+
 print(f"\n{PASS} passed, {FAIL} failed")
 sys.exit(1 if FAIL else 0)
