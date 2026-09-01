@@ -14,10 +14,62 @@
 # THE TABLE-OF-CONTENTS TRAP — the single most common failure in 10-K parsing:
 # "Item 1A. Risk Factors" appears at least twice in every 10-K. The first hit is
 # the table of contents; the real section is later. Taking the first match
-# yields a section two lines long. Hence `min_chars` in [validation] and
-# `skip_toc_matches` below — both exist to catch exactly this.
+# yields a section two lines long. `min_chars` in [validation] catches that, and
+# on 2026-09-01 it did: MSFT's 10-K item1_business came back as 58 characters of
+# TOC row, six years running, and failed loudly. `skip_toc_matches` below was
+# meant to PREVENT it rather than catch it, and does not — see the next block.
+#
+# ===========================================================================
+# WHICH OF THIS FILE THE CODE ACTUALLY READS  (measured 2026-09-01)
+# ===========================================================================
+# Read this before editing anything here to fix a boundary. The three-step
+# description above is what the file was DESIGNED to drive; it is not what the
+# code does, and two planted faults failed to fire before this was noticed.
+#
+#   LIVE, read by src/equity_research/extract_sections.py:
+#     [validation] and [validation.*]   -> validate(), every section
+#     anchor_phrases                    -> validate(), every section
+#     start_patterns / end_patterns     -> ONLY for `letter_full_text`
+#     signature_tail_chars              -> ONLY for `letter_full_text`
+#     [risk_diff]                       -> risk_diff.py
+#
+#   INERT, read by nothing:
+#     the whole [defaults] table — case_insensitive, skip_toc_matches,
+#       normalize_whitespace: none of the three appears anywhere in src/
+#     start_patterns / end_patterns for the OTHER SEVEN sections
+#     label, extract_signals, take_full_document, preserve_tables,
+#       split_into_items, item_heading_selectors, outcome_source
+#
+# WHY: `extract_10k(doc)` and `find_proxy_sections(doc)` take no config argument,
+# so they cannot consult a pattern even in principle. They locate item headings
+# structurally, in code (`find_item_headings`). Only `extract_letter(text, cfg)`
+# is pattern-driven, because a shareholder letter is bounded by writing
+# convention rather than by SEC form structure.
+#
+# TWO CONSEQUENCES, and the second is the reason this note is here rather than
+# in a commit message:
+#
+#   1. A 10-K or proxy boundary CANNOT be fixed by editing this file — not
+#      globally, and not in `companies/<TICKER>/overrides/sections.toml` either.
+#      It is a code change in `extract_sections.py`. Editing patterns here to fix
+#      one is silent no-op work, which is what it looked like when it happened.
+#
+#   2. That accidentally limits how far extraction can be over-fitted to one
+#      company: the per-company override mechanism reaches the letter patterns,
+#      the anchor phrases and the validation thresholds, and nothing else. The
+#      boundaries themselves have to be fixed generally, in code, for every
+#      company at once. `tests/regression/morn/test_sections_are_stable.py` is
+#      what makes that safe — it re-extracts MORN's 231 sections and fails if one
+#      character moves, so a fix made for company B cannot quietly change
+#      company A. An OVER-CAPTURED section still passes every validation check
+#      here, so the byte comparison is the only thing that sees it.
+#
+# The inert keys are LEFT IN PLACE deliberately: they record the intended design,
+# several are accurate descriptions of what the code does structurally, and
+# deleting them would lose that. They are now labelled instead of implied.
 
 [defaults]
+# NOTHING BELOW IS READ. See the block above. Kept as the record of intent.
 # Ignore case and let . match across newlines when applying patterns.
 case_insensitive = true
 
