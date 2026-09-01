@@ -576,6 +576,86 @@ def whole_doc_forms(forms_cfg: list[dict]) -> set[str]:
     return out
 
 
+# ---------------------------------------------------------------------------
+# One document per role per filing
+# ---------------------------------------------------------------------------
+
+# Rendition preference. ONLY the HTML rule is a rule: CLAUDE.md's "HTML-first —
+# parse filing HTML with BeautifulSoup rather than the plain text renditions.
+# Table structure and section boundaries survive; in the text versions they
+# don't." Everything else ranks equal, deliberately, so that among non-HTML
+# candidates the manifest's own order decides and this function invents no
+# ordering it has not been measured against. Today the only collision that exists
+# anywhere is HTML vs PDF; a PDF-vs-text collision has never been observed, and
+# guessing at its ranking would be exactly the untested branch CLAUDE.md rule 3
+# warns about.
+HTML_SUFFIXES = {".htm", ".html", ".xhtml"}
+
+
+def rendition_rank(filename: str) -> int:
+    """0 for an HTML rendition, 1 for anything else. Lower wins."""
+    return 0 if Path(filename).suffix.lower() in HTML_SUFFIXES else 1
+
+
+def choose_documents(docs: list[dict]) -> tuple[list[dict], list[dict]]:
+    """Keep one document per (accession, doc_type). Returns (kept, dropped).
+
+    WHY THIS EXISTS, and it is a bug that reached a real company.
+
+    A filing can carry the SAME document twice in two renditions. Microsoft files
+    every DEF 14A as both a ~2 MB `.htm` and a ~9 MB `.pdf`, both with
+    `doc_type == "DEF 14A"`, both under one accession number. Morningstar never
+    did — zero such pairs across its five years — so nothing here was ever
+    exercised against one.
+
+    What happened without this function, on MSFT's FY2020 proxy:
+
+        [1/2] d31295ddef14a.htm    ok    DEF14A_cdna  73,566 chars   (+3 more)
+        [2/2] d31295ddef14a1.pdf   FAIL  no heading candidate found  (x4)
+        all stored: 4 sections, 0 ok, 4 failed
+
+    Both documents produce the same section KEYS under the same ACCESSION, and the
+    manifest merges on `(accession, key)` — so the PDF's four failures replaced the
+    HTML's four successes. The `.txt` files stayed on disk holding the good
+    extraction while the manifest recorded failure and named the PDF as the source.
+    `extract_facts` reads the manifest, so `comp`, `board` and `votes` would have
+    been empty for all six fiscal years, and any citation would have pointed at the
+    wrong document. CLAUDE.md rule 4: writers merge, never clobber — this is its
+    second recorded instance, and the first in a stage that had an explicit,
+    correct merge and still lost data because its KEY was too coarse.
+
+    PREFER, NEVER SKIP. The rule cannot be "ignore PDFs": MORN's FY2022 ARS is a
+    PDF with no HTML sibling and it extracts fine. A rendition is only dropped when
+    a better one exists for the same role in the same filing.
+
+    Grouping on (accession, doc_type) rather than accession alone is what keeps
+    the exhibits: a 10-K filing carries `10-K`, `EX-10.7` and `EX-10.8`, which are
+    three different roles and all three are wanted. Likewise an UPLOAD carries a
+    `LETTER` (PDF) and a `TEXT-EXTRACT` (TXT) — different doc_types, both kept,
+    exactly as before.
+    """
+    groups: dict[tuple[str, str], list[dict]] = {}
+    for r in docs:
+        groups.setdefault((r["accession"], r["doc_type"].upper().strip()), []).append(r)
+
+    kept, dropped = [], []
+    for _, members in groups.items():
+        if len(members) == 1:
+            kept.append(members[0])
+            continue
+        # Stable: equal ranks keep the order the manifest listed them in, so a
+        # re-run picks the same document (CLAUDE.md rule 4, run twice diff nothing).
+        ranked = sorted(members, key=lambda r: rendition_rank(r["filename"]))
+        kept.append(ranked[0])
+        dropped.extend(ranked[1:])
+
+    # Restore the caller's ordering rather than the grouping's.
+    order = {id(r): i for i, r in enumerate(docs)}
+    kept.sort(key=lambda r: order[id(r)])
+    dropped.sort(key=lambda r: order[id(r)])
+    return kept, dropped
+
+
 def extract_whole(path: Path) -> dict:
     """Short documents are taken entire — there is no section to locate."""
     suffix = path.suffix.lower()
@@ -741,10 +821,25 @@ def main() -> None:
     if args.fy:
         docs = [r for r in docs if r["fiscal_year"] == args.fy]
     docs.sort(key=lambda r: (r["fiscal_year"], r["form"], r["filing_date"]))
+
+    # One rendition per role per filing. See choose_documents: a filing that
+    # carries the same document as both HTML and PDF used to have the second one
+    # overwrite the first's manifest record.
+    targeted = len(docs)
+    docs, superseded = choose_documents(docs)
     if args.limit:
         docs = docs[:args.limit]
 
     print(f"Section extraction — {len(docs)} document(s)")
+    # Stated, not silent: CLAUDE.md rule 5 — a stage reporting what it attempted
+    # must account for the difference between that and what it was given.
+    if superseded:
+        print(f"  {targeted} target document(s) -> {len(docs)} after choosing one "
+              f"rendition per role, {len(superseded)} superseded:")
+        for r in superseded:
+            print(f"    FY{r['fiscal_year']} {r['form']:<8} {r['doc_type']:<10} "
+                  f"{r['filename']}  ({r['bytes']/1e6:.1f} MB) — superseded by the "
+                  f"HTML rendition of the same document")
     print()
 
     results: list[dict] = []
@@ -853,6 +948,16 @@ def main() -> None:
         "generated_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "last_run_filter": {"form": args.form, "fy": args.fy, "limit": args.limit},
         "last_run_documents": len(docs),
+        # Which renditions were NOT read, and in favour of what. Empty for a
+        # company that files each document once (MORN's is empty). Recorded rather
+        # than only printed, because "this section came from the HTML and not the
+        # PDF of the same proxy" is a provenance fact a coverage claim rests on.
+        "last_run_superseded": [
+            {"accession": r["accession"], "form": r["form"], "doc_type": r["doc_type"],
+             "fiscal_year": r["fiscal_year"], "filename": r["filename"],
+             "bytes": r["bytes"], "reason": "an HTML rendition of the same document "
+                                            "was read instead (CLAUDE.md: HTML-first)"}
+            for r in superseded],
         "sections_attempted": len(all_rows),
         "sections_written": ok_n, "sections_failed": len(all_rows) - ok_n,
         "sections_with_no_usable_text": [

@@ -126,5 +126,100 @@ check("  and reports the no-text problem, not only the character floor",
 # were guarded by `if mp.exists()` and printed "skipped" otherwise, so in a clean
 # checkout this file silently ran 14 checks instead of 17 and reported success.
 
+
+# ---------------------------------------------------------------------------
+# choose_documents — one rendition per role per filing
+# ---------------------------------------------------------------------------
+# Added Phase 6.4, after MSFT's FY2020 proxy demonstrated the defect live: the
+# `.htm` extracted four sections cleanly, the `.pdf` of the SAME document under
+# the SAME accession then failed all four, and because the manifest merges on
+# (accession, key) the failures replaced the successes. Manifest said
+# "0 ok, 4 failed" while the good text sat on disk.
+#
+# Named companies appear below only as the provenance of each shape; every input
+# is inline and nothing here reads a company's data.
+
+def doc(acc, doc_type, filename, form="DEF 14A", fy=2020, size=1_000_000):
+    return {"accession": acc, "doc_type": doc_type, "filename": filename,
+            "form": form, "fiscal_year": fy, "bytes": size,
+            "filing_date": f"{fy}-10-19"}
+
+
+print("\nchoose_documents — the HTML rendition wins, and only where there is a choice")
+
+# THE DEFECT'S EXACT SHAPE. MSFT FY2020, accession 0001193125-20-272025.
+pair = [doc("A1", "DEF 14A", "d31295ddef14a.htm", size=1_880_000),
+        doc("A1", "DEF 14A", "d31295ddef14a1.pdf", size=9_350_000)]
+kept, dropped = e.choose_documents(pair)
+check("two renditions of one proxy collapse to one document", len(kept), 1)
+check("  and it is the HTML one", kept[0]["filename"], "d31295ddef14a.htm")
+check("  with the PDF reported as superseded, not silently gone", len(dropped), 1)
+check("  naming the PDF", dropped[0]["filename"], "d31295ddef14a1.pdf")
+
+# Order in the manifest must not decide the outcome — the PDF is listed first
+# here, and MSFT's real manifest lists it first too (it is the larger file).
+kept2, _ = e.choose_documents(list(reversed(pair)))
+check("PDF-listed-first gives the same answer", kept2[0]["filename"],
+      "d31295ddef14a.htm")
+
+# PREFER, NEVER SKIP. MORN's FY2022 ARS is a PDF with no HTML sibling and it
+# extracts fine; dropping it would delete the shareholder letter for that year.
+solo_pdf = [doc("B1", "ARS", "tm2310844d1_ars.pdf", form="ARS", fy=2022)]
+kept3, dropped3 = e.choose_documents(solo_pdf)
+check("a PDF with no HTML sibling is KEPT", len(kept3), 1)
+check("  and nothing is reported superseded", dropped3, [])
+
+# Roles within one filing are distinct and all wanted: MSFT's FY2025 10-K
+# carries the 10-K plus EX-10.7 and EX-10.8.
+tenk = [doc("C1", "10-K", "msft-20250630.htm", form="10-K", fy=2025),
+        doc("C1", "EX-10.7", "msft-ex10_7.htm", form="10-K", fy=2025),
+        doc("C1", "EX-10.8", "msft-ex10_8.htm", form="10-K", fy=2025)]
+kept4, dropped4 = e.choose_documents(tenk)
+check("exhibits are separate roles and all survive", len(kept4), 3)
+check("  nothing superseded among them", dropped4, [])
+
+# An UPLOAD carries a LETTER (PDF) and a TEXT-EXTRACT (TXT) — different roles,
+# both kept, which is the behaviour MORN's committed ledger already depends on.
+upload = [doc("D1", "LETTER", "filename1.pdf", form="UPLOAD"),
+          doc("D1", "TEXT-EXTRACT", "filename2.txt", form="UPLOAD")]
+kept5, dropped5 = e.choose_documents(upload)
+check("an UPLOAD's PDF letter and text extract both survive", len(kept5), 2)
+check("  neither superseded, despite one being a PDF", dropped5, [])
+
+# Different accessions are different filings even for the same role: MSFT files
+# a DEF 14A and several DEFA14A supplements in the same month.
+two_filings = [doc("E1", "DEF 14A", "a.htm"), doc("E2", "DEF 14A", "b.htm")]
+kept6, dropped6 = e.choose_documents(two_filings)
+check("same role in DIFFERENT filings is not a collision", len(kept6), 2)
+check("  nothing superseded", dropped6, [])
+
+# Caller ordering is preserved, so the run log and the manifest stay readable
+# and a re-run picks the same document (CLAUDE.md rule 4).
+mixed = [doc("F1", "DEF 14A", "p.pdf", fy=2021), doc("F1", "DEF 14A", "h.htm", fy=2021),
+         doc("F2", "10-K", "k.htm", form="10-K", fy=2022)]
+kept7, _ = e.choose_documents(mixed)
+check("kept documents come back in the caller's order",
+      [r["filename"] for r in kept7], ["h.htm", "k.htm"])
+check("choosing twice gives an identical answer",
+      [r["filename"] for r in e.choose_documents(mixed)[0]],
+      [r["filename"] for r in kept7])
+
+# Non-HTML ranks equal on purpose: among two non-HTML candidates the manifest's
+# own order decides, and this function invents no ranking it was never measured
+# against. Pinned so a later "improvement" to rendition_rank has to face it.
+two_nonhtml = [doc("G1", "ARS", "first.pdf", form="ARS"),
+               doc("G1", "ARS", "second.txt", form="ARS")]
+check("two non-HTML candidates: the first listed wins, stably",
+      e.choose_documents(two_nonhtml)[0][0]["filename"], "first.pdf")
+
+check("rendition_rank ranks HTML above everything else",
+      [e.rendition_rank(f) for f in ("a.htm", "a.html", "a.xhtml", "a.pdf", "a.txt")],
+      [0, 0, 0, 1, 1])
+check("  and is case-insensitive about the suffix",
+      e.rendition_rank("A.HTM"), 0)
+
+# The empty case, because a --form/--fy filter can select nothing.
+check("no documents in, no documents out", e.choose_documents([]), ([], []))
+
 print(f"\n{PASS} passed, {FAIL} failed")
 sys.exit(1 if FAIL else 0)
