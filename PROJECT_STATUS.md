@@ -37,8 +37,13 @@ weather); 5.2 `c0038a5` (idempotency, run rather than linted); 5.3 `cc89900` (th
 per-task model knob, nothing switched); 5.5 `7a6ddbf` (the docs); 5.6 `dccdb44`
 (the two open checks). **5.4 was deliberately deferred, not skipped.** The test
 suite went **400 → 453** checks. **Phase 5 spent $0** — an outcome of the
-scoping, not a target. **Next is Phase 6**, which is the two things only a real
-run can test. The repository has a GitHub remote:
+scoping, not a target.
+
+**Phase 6 is scoped and started.** `PHASE6_SCOPE.md` (`af1b0d0`) frames it as
+**eight code paths MORN has never exercised** rather than as one task, and
+**6.1 is done** (`bbad3d5`) — the fiscal-year arithmetic, 453 → 484 checks, $0,
+and it found a real bug. **Next is 6.2, choosing the company**, which is a
+decision rather than a task. The repository has a GitHub remote:
 https://github.com/bpmoriarty/public-equity-narrative-research
 
 ```
@@ -100,6 +105,24 @@ accounted for per file in `416901c`'s message.
 > durable part is the hazard:** the facts cache key is (fiscal year, task, filing)
 > with **no model in it**, so any comparison run overwrites the committed control
 > arm it is measuring against — decide where it writes before the first call.
+
+> **MORN's December fiscal year end was hiding a bug in every proxy.** Phase 6.1
+> ran first precisely because a fiscal-year error is silent, consistent and
+> invisible — it moves every proxy-derived fact (`comp`, `board`, the letter's
+> `strategic_priorities`) by one year, together, and the output reads as correct.
+> `assign_fiscal_year`'s fallback was `filing_date.year - 1`, which is right
+> **only when the fiscal year end and the filing fall in different calendar
+> years** — always true for a December filer, false for 01-31, 03-31 and 06-30.
+> Correctness also depended on the filing *lag*, so a September filer that files
+> promptly was wrong too, and no stable symptom would have shown up. A second
+> defect was **not** December-specific: the function consulted `fy_from_period`
+> for proxies, whose `reportDate` is the annual meeting date and never a period
+> end, so any company meeting near its own year end had its proxy filed against a
+> year that had not finished — misfiring on all six year ends tested. **Safe to
+> fix for $0 because two properties were measured first:** old and new rules never
+> disagree for a December filer (all 366 days), and zero of MORN's 1,000 indexed
+> filings change fiscal year. Confirmed after: 21 filings changed their `fy_basis`
+> *label*, none changed its `fiscal_year`.
 
 > **`count_tokens` came back, and the fallback stays anyway.** It returned 500 for
 > every request on 2026-08-16 including a two-word control; re-probed 2026-08-26
@@ -211,7 +234,7 @@ accounted for per file in `416901c`'s message.
 > reachable. Now reported as `malformed`, fatal at generation time, and a
 > `review` line in `verify_outputs` for one commit before it is promoted to hard.
 
-**Last Session:** 2026-08-26
+**Last Session:** 2026-09-01
 
 **Overall Health:** 🟢 Working — milestones 1–5 complete. **The full verification suite has been run and all nine of its findings are fixed.** 1,329 ledger facts, 1,425 citable ids, three deliverables passing 13 hard checks each. Quote census re-earned after the repairs at **1,326/1,326**. $7.21 spent on generation; remediation cost $0.00 in API calls
 
@@ -1010,7 +1033,8 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `companies/MORN/company.toml` | Ticker, CIK, window, rate limits, model settings. **The only file to edit to retarget.** Its `[extraction.models]` table sets a model per extraction task and **ships empty**; the measured per-task costs and the reasons nothing is switched are in the comments above it. It must stay last in `[extraction]` — everything after a TOML sub-table header belongs to that sub-table |
 | `config/forms.toml` | In-scope forms, 8-K item filter, gap signals, scope-extension block |
 | `config/sections.toml` | Section boundary regexes, anchor phrases, validation rules |
-| `src/equity_research/discover.py` | Milestone 1. Inventory and gap analysis. No documents downloaded |
+| `src/equity_research/discover.py` | Milestone 1. Inventory and gap analysis. No documents downloaded. Holds the **fiscal-year arithmetic**, which is the subtlest step in the pipeline: `most_recent_completed_fy` is the proxy/ARS convention stated generally rather than as `filing_date.year - 1`, which was only ever right for a December filer. DEF 14A / DEFA14A deliberately do **not** consult `fy_from_period` — a proxy's `reportDate` is the annual meeting date, never a period end. Also `fetch_all_filings`, whose **shard loop has never executed**: MORN's recent-1000 index reaches back to 2019, so the early-year silent-truncation guard its docstring describes is untested (Phase 6, path 1) |
+| `tests/unit/test_fiscal_year.py` | 31 checks over six fiscal year ends, none of them MORN's, reading no artifact and naming no company. Exhaustive on the calendar tiling — every day of FY2024 for all six ends — plus the Feb 29 guard, `parse_fye`'s fallbacks, the 10-day tolerance in both directions, the proxy convention at three filing lags, and the December no-op property as an explicit test. **The reason 6.1 ran before choosing a company:** it found the bug for the cost of an afternoon rather than for the cost of an extraction bill and a ledger that looked fine |
 | `src/equity_research/fetch.py` | Milestone 2. Cache-first document downloader. `--dry-run`, `--limit` |
 | `src/equity_research/pdf_text.py` | PDF text extraction with subsetted-font glyph decoding. `--selftest` |
 | `src/equity_research/extract_sections.py` | Milestone 3. Section location + validation. **Read its KNOWN LIMITS docstring** before trusting any proxy section |
@@ -1071,6 +1095,172 @@ across 34 calls). Milestones 1–3 cost nothing.
 ---
 
 ## Session Log
+
+### 2026-09-01 — Phase 6 scoped, and 6.1 found what it was written to look for
+
+**The scope reframed the phase** (`PHASE6_SCOPE.md`, `af1b0d0`). The plan and
+`PHASE5_SCOPE.md` both describe Phase 6 as one thing — run a second real company.
+That is right about the shape and wrong about two numbers, and it is incomplete:
+the phase is really **eight code paths MORN has never exercised**, several of them
+guarding against failures their own docstrings name. Two corrections worth
+keeping:
+
+- **$18–20 was my own number and it was MORN's bill**, not a second company's.
+  Strip `investor_qa` — 54 of 88 calls, $6.81 — and extraction is 34 calls and
+  $4.52. MORN's pack is also dense (352,206 tokens, ~70K per fiscal year against
+  the plan's ~26K estimate) and its $7.21 generation included a $2.22
+  cache-expiry loss that `cache_ttl = "1h"` now prevents. A typical issuer is
+  **$6–10**.
+- **Phase 6 is not one item.** 6.1 retires the fiscal-year risk for $0 with no
+  company, no EDGAR request and no model call, and it had to go first.
+
+**6.1 justified that sequencing on its first run** (`bbad3d5`). The two defects
+are in the Current Status blockquote. What is worth recording here is the
+*method*, because it is the part that transfers:
+
+1. **Read the arithmetic and form a hypothesis** — `filing_date.year - 1` looks
+   like a convention and is actually a December-only special case.
+2. **Probe it before believing it.** A throwaway script tabulated the old rule
+   against the proposed one across six fiscal year ends. It was wrong on three of
+   six at one filing lag and on four of six at another — which is how the *lag
+   dependence* surfaced, and that was not part of the hypothesis.
+3. **Establish the safety property before writing any fix**, because the facts
+   cache key is (fiscal year, task, filing) and a moved filing costs $11.33. Two
+   measurements: the rules never disagree for a December filer across all 366
+   days, and zero of MORN's 1,000 indexed filings change fiscal year under the
+   new one, across all 15 form types present.
+4. **Write the tests, run them against the unfixed code** — 4 failures naming the
+   exact cases, including the meeting-date hijack on all six year ends — then fix.
+5. **Verify the safety property held in practice**, not only in the probe: 21
+   filings changed their `fy_basis` label and none changed its `fiscal_year`.
+
+Step 2 is the one that paid. The lag dependence means the old rule's correctness
+varied with how promptly a company filed its proxy, so there was no stable
+symptom to notice — and a reasoning-only review would have concluded "wrong for
+June, right for September" and stopped there.
+
+**Also proved the checks the real fix did not exercise.** The calendar-tiling
+checks passed both before and after, which means they were unproven; an
+off-by-one planted in `fy_containing` (`<` for `<=`) fired all three.
+
+**What 6.1 deliberately did not do:** name a company or read an artifact. The
+fiscal calendar is a property of a (month, day) pair, and testing it against
+MORN's inventory would only re-confirm the one case that already worked.
+
+**Next is 6.2 — choosing the company, which is a decision rather than a task.**
+Criteria, in the order they buy untested code: a non-December fiscal year end
+(now de-risked in unit tests, so a real run confirms rather than discovers),
+filing volume high enough that the 1,000-filing index does not reach back five
+years (the shard loop, never executed), a different filing agent from MORN's,
+publishes a shareholder letter, and ideally **no** written Reg FD investor Q&A —
+the normal case, which keeps the bill near $6–10 and makes `investor_qa` empty
+for the first time.
+
+**Verification:** 484 checks across 15 files, pytest 17 passed, control-byte scan
+clean over 174 files, `pipeline MORN --yes` exit 0 in 37s with both spending
+stages reporting nothing to do and every hard check passing.
+
+### 2026-08-26 — Phase 5 finished: 5.2, 5.3, 5.5, 5.6, and one deliberate deferral
+
+**5.2 — idempotency proved by running it, not by linting it** (`c0038a5`).
+Phase 4.8 moved the clock out of eight committed artifacts and added a lint
+forbidding a wall clock in one. That lint catches the only way this has ever
+broken here and **cannot prove the property**: an unsorted set, a differently
+formatted float, a dict built from `glob()` order would all pass it and still
+churn.
+
+`tests/unit/test_record_run.py` (17) covers the one shared-file writer.
+`CompanyPaths` takes `root` as a field, so a whole synthetic company exists
+wherever a temp directory does — nothing written under `companies/`, which is
+what keeps the check count from depending on how many companies exist.
+
+> **The defect writing that test found.** `record_run` promised a corrupt log
+> "must never stop a pipeline stage that had already done its real work" — it is
+> called last, after the real output is on disk. The guard was `except
+> (json.JSONDecodeError, OSError)`, which covers unparseable bytes but **not valid
+> JSON of the wrong shape**: `5`, `"x"`, `[]` and `null` all parse and then raise
+> TypeError on the item assignment. Four of six corruption shapes crashed the
+> stage. The realistic corruptions — truncation, an empty file — were already
+> handled; the point is the guard did not do what its own docstring said, and only
+> input designed to fail it showed that (rule 3).
+
+`tests/regression/morn/test_reruns_change_nothing.py` (8) re-runs the five
+deterministic stages **once each** and compares against the **committed** bytes
+rather than against a second run. Better on three counts and cheaper on the
+fourth: it compares against the record a reviewer sees as a diff (two fresh runs
+agreeing while both disagree with git is still a dirty tree), it costs one
+execution per stage instead of two, and the committed bytes were written under a
+different random `PYTHONHASHSEED`, so set-order churn is exercised for free. The
+seed is pinned to an unusual value here because **an in-process run-twice test
+shares one seed and structurally cannot see hash-order nondeterminism.**
+
+Artifacts come from `git ls-files` so one added later is covered the day it is
+committed, and attribution is a predicate per stage rather than a filename list —
+the ledger's one `FY*.json` per fiscal year would otherwise make the count depend
+on the window. Exactly one check per stage on every path, including the failure
+paths.
+
+Proven able to fail four ways: the wall clock reinstated in `render_timeline`
+(caught, and the tree came back clean), a committed artifact no stage claims, a
+stage exiting non-zero (its own named check, because "0 files differ" is true of a
+stage that never ran and would read as a pass), and a missing input. **And a
+defect in my own file**, visible only from a bare worktree: it read
+`inventory.json` for the CIK *before* `require_artifacts`, so a checkout with no
+artifacts died on `read_text` with a raw traceback — never a vacuous pass, but the
+designed message was bypassed by the first missing file.
+
+Cost: the suite went 23s → 44s, 20 of the 21 added seconds being `build_ledger`
+re-verifying 1,329 quotes. Deliberate — excluding it would leave 6 of 13
+artifacts uncovered.
+
+**5.3 — the knob that switches nothing** (`cc89900`). See the Current Status
+blockquote for the measurement and why the plan's proposed switch is not made.
+What the commit adds beyond the knob: per-task models made three things wrong
+that were previously merely latent, and all three are now right. The estimate
+**groups by model** — the comment on `price_for` had predicted this exact defect
+("a switch to Sonnet for some tasks would have left this estimate quietly quoting
+Opus rates"), and grouping makes it impossible rather than noted. The header names
+the overrides, because a header printing only the default is actively misleading
+on a mixed run. And a model switch is a **no-op on work already done** — staleness
+keys on the source text — so the run now reports how many cached results a
+different model produced, since otherwise "already cached: 88" reads as the config
+being ignored. Two silent config failures are rejected before the first call: a
+misspelled task, and an unpriced model.
+
+**5.4 — deferred, with the trigger recorded.** The de-dup half was an
+$8-to-save-$0.12 trade: the timeline block is 12,475 tokens (3.5% of the pack,
+~$0.06 a call) and removing it changes `pack.json`, hence its sha, which is a
+**hard** check on both deliverables plus the input to the 4.3 freshness rule. And
+`pack-comp.json` would have shipped with zero consumers — the plan sized it for
+four generation calls and there are now two.
+
+**5.5 — the docs described the pre-Phase-1 project** (`7a6ddbf`). The README is
+the first file a colleague opens and following it would have failed at step 3.
+Seven wrongs, the worst being that it presented `ANTHROPIC_API_KEY` as a required
+setup step when the default backend needs none — that belief is the one most
+likely to stop someone using this at all, so it is now the first paragraph.
+`DATA.md` closed Next Steps 20, and **one of its rows was factually wrong rather
+than stale**: the run date pointed at `inventory.json` `run_utc`, a key 4.8 moved
+to the gitignored run log, so anyone auditing vintage would have hunted for a
+field that is not there. `CLAUDE.md` gained a `## Model calls` section; rules 1 and
+4 gained the specific forms they took here (the cache key with no model in it; the
+wall clock). `VERIFICATION.md` got a dated-provenance note rather than a rewrite,
+because correcting a dated report misrepresents what was reviewed.
+
+Verified rather than asserted: **all 86 backticked path tokens** in the live docs
+resolve, checked with a throwaway script — after its first version produced 39
+false positives by not knowing the two conventions the docs themselves state.
+
+**5.6 — the two open checks** (`dccdb44`). The malformed-citation check is `hard`
+(Next Steps 23); `count_tokens` is intermittent rather than absent (24). Both are
+in Current Status blockquotes. The part worth repeating: the re-probe let
+`CHARS_PER_TOKEN` be checked against exact counts **for the first time**, and both
+claims its comment already made turned out to hold.
+
+**Verification:** 453 checks across 14 files, pytest 16 passed, control-byte scan
+clean over 173 files, all 368 unit checks pass in a worktree with `companies/MORN/
+data/` and `output/` deleted outright, `pipeline MORN --yes` exit 0 in 39s with
+both spending stages reporting nothing to do and no artifact churn.
 
 ### 2026-08-25 — Phase 5 scoped from the records, and the suite split by what a test reads
 
@@ -1193,108 +1383,6 @@ both it and the README.
 
 **Verification:** 403 checks across 11 files, pytest 13 passed, control-byte scan
 clean over 170 files, no mojibake, working tree clean.
-
-### 2026-08-26 — Phase 5 finished: 5.2, 5.3, 5.5, 5.6, and one deliberate deferral
-
-**5.2 — idempotency proved by running it, not by linting it** (`c0038a5`).
-Phase 4.8 moved the clock out of eight committed artifacts and added a lint
-forbidding a wall clock in one. That lint catches the only way this has ever
-broken here and **cannot prove the property**: an unsorted set, a differently
-formatted float, a dict built from `glob()` order would all pass it and still
-churn.
-
-`tests/unit/test_record_run.py` (17) covers the one shared-file writer.
-`CompanyPaths` takes `root` as a field, so a whole synthetic company exists
-wherever a temp directory does — nothing written under `companies/`, which is
-what keeps the check count from depending on how many companies exist.
-
-> **The defect writing that test found.** `record_run` promised a corrupt log
-> "must never stop a pipeline stage that had already done its real work" — it is
-> called last, after the real output is on disk. The guard was `except
-> (json.JSONDecodeError, OSError)`, which covers unparseable bytes but **not valid
-> JSON of the wrong shape**: `5`, `"x"`, `[]` and `null` all parse and then raise
-> TypeError on the item assignment. Four of six corruption shapes crashed the
-> stage. The realistic corruptions — truncation, an empty file — were already
-> handled; the point is the guard did not do what its own docstring said, and only
-> input designed to fail it showed that (rule 3).
-
-`tests/regression/morn/test_reruns_change_nothing.py` (8) re-runs the five
-deterministic stages **once each** and compares against the **committed** bytes
-rather than against a second run. Better on three counts and cheaper on the
-fourth: it compares against the record a reviewer sees as a diff (two fresh runs
-agreeing while both disagree with git is still a dirty tree), it costs one
-execution per stage instead of two, and the committed bytes were written under a
-different random `PYTHONHASHSEED`, so set-order churn is exercised for free. The
-seed is pinned to an unusual value here because **an in-process run-twice test
-shares one seed and structurally cannot see hash-order nondeterminism.**
-
-Artifacts come from `git ls-files` so one added later is covered the day it is
-committed, and attribution is a predicate per stage rather than a filename list —
-the ledger's one `FY*.json` per fiscal year would otherwise make the count depend
-on the window. Exactly one check per stage on every path, including the failure
-paths.
-
-Proven able to fail four ways: the wall clock reinstated in `render_timeline`
-(caught, and the tree came back clean), a committed artifact no stage claims, a
-stage exiting non-zero (its own named check, because "0 files differ" is true of a
-stage that never ran and would read as a pass), and a missing input. **And a
-defect in my own file**, visible only from a bare worktree: it read
-`inventory.json` for the CIK *before* `require_artifacts`, so a checkout with no
-artifacts died on `read_text` with a raw traceback — never a vacuous pass, but the
-designed message was bypassed by the first missing file.
-
-Cost: the suite went 23s → 44s, 20 of the 21 added seconds being `build_ledger`
-re-verifying 1,329 quotes. Deliberate — excluding it would leave 6 of 13
-artifacts uncovered.
-
-**5.3 — the knob that switches nothing** (`cc89900`). See the Current Status
-blockquote for the measurement and why the plan's proposed switch is not made.
-What the commit adds beyond the knob: per-task models made three things wrong
-that were previously merely latent, and all three are now right. The estimate
-**groups by model** — the comment on `price_for` had predicted this exact defect
-("a switch to Sonnet for some tasks would have left this estimate quietly quoting
-Opus rates"), and grouping makes it impossible rather than noted. The header names
-the overrides, because a header printing only the default is actively misleading
-on a mixed run. And a model switch is a **no-op on work already done** — staleness
-keys on the source text — so the run now reports how many cached results a
-different model produced, since otherwise "already cached: 88" reads as the config
-being ignored. Two silent config failures are rejected before the first call: a
-misspelled task, and an unpriced model.
-
-**5.4 — deferred, with the trigger recorded.** The de-dup half was an
-$8-to-save-$0.12 trade: the timeline block is 12,475 tokens (3.5% of the pack,
-~$0.06 a call) and removing it changes `pack.json`, hence its sha, which is a
-**hard** check on both deliverables plus the input to the 4.3 freshness rule. And
-`pack-comp.json` would have shipped with zero consumers — the plan sized it for
-four generation calls and there are now two.
-
-**5.5 — the docs described the pre-Phase-1 project** (`7a6ddbf`). The README is
-the first file a colleague opens and following it would have failed at step 3.
-Seven wrongs, the worst being that it presented `ANTHROPIC_API_KEY` as a required
-setup step when the default backend needs none — that belief is the one most
-likely to stop someone using this at all, so it is now the first paragraph.
-`DATA.md` closed Next Steps 20, and **one of its rows was factually wrong rather
-than stale**: the run date pointed at `inventory.json` `run_utc`, a key 4.8 moved
-to the gitignored run log, so anyone auditing vintage would have hunted for a
-field that is not there. `CLAUDE.md` gained a `## Model calls` section; rules 1 and
-4 gained the specific forms they took here (the cache key with no model in it; the
-wall clock). `VERIFICATION.md` got a dated-provenance note rather than a rewrite,
-because correcting a dated report misrepresents what was reviewed.
-
-Verified rather than asserted: **all 86 backticked path tokens** in the live docs
-resolve, checked with a throwaway script — after its first version produced 39
-false positives by not knowing the two conventions the docs themselves state.
-
-**5.6 — the two open checks** (`dccdb44`). The malformed-citation check is `hard`
-(Next Steps 23); `count_tokens` is intermittent rather than absent (24). Both are
-in Current Status blockquotes. The part worth repeating: the re-probe let
-`CHARS_PER_TOKEN` be checked against exact counts **for the first time**, and both
-claims its comment already made turned out to hold.
-
-**Verification:** 453 checks across 14 files, pytest 16 passed, control-byte scan
-clean over 173 files, all 368 unit checks pass in a worktree with `companies/MORN/
-data/` and `output/` deleted outright, `pipeline MORN --yes` exit 0 in 39s with
-both spending stages reporting nothing to do and no artifact churn.
 
 ### 2026-08-24 — Phase 4: one command, and the bug it found on its first walk
 
