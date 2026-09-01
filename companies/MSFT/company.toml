@@ -1,0 +1,267 @@
+# WHAT THIS FILE IS
+# The only file you edit to point the pipeline at a different company. Nothing
+# here may be duplicated into src/ — code reads these values, it never hardcodes
+# them. (CLAUDE.md: "ticker, CIK, and date range are configuration.")
+#
+# Read it in Python with the standard library, no package needed:
+#     import tomllib
+#     with open("config/company.toml", "rb") as f:   # note: "rb", binary mode
+#         cfg = tomllib.load(f)
+
+[company]
+# The ticker is the ONLY identifier you should have to supply. The CIK gets
+# resolved from the SEC company_tickers.json file and cached below.
+ticker = "MSFT"
+
+# OPTIONAL, and a TRIPWIRE rather than an input. Discovery always resolves the
+# CIK from the ticker itself; if a value is set here and the two disagree,
+# discovery stops with a hard error rather than picking one.
+#
+# Leave it empty on a new company and let discovery resolve it. Never type one
+# in from memory — a wrong CIK does not fail, it silently returns a DIFFERENT
+# company's filings and every downstream stage runs perfectly on wrong data.
+cik = ""
+
+# Same: informational, and cross-checked against the resolved company name.
+# Exists so a human reading this file can confirm the CIK belongs to the company
+# they meant.
+resolved_name = ""
+
+# PROVENANCE of the two values above (the template asks for this paragraph, and
+# leaving it as boilerplate is worse than deleting it).
+#
+#     Both are DELIBERATELY LEFT EMPTY, which is the template's own instruction
+#     for a new company, and the reason is worth stating rather than assumed: on
+#     2026-09-01 a read-only probe of
+#     https://www.sec.gov/files/company_tickers.json returned exactly one row for
+#     MSFT — CIK 0000789019, "MICROSOFT CORP" — so the resolution is known to be
+#     unambiguous. It is still not typed in here. Discovery resolves it from the
+#     ticker and writes it to data/discovery/inventory.json, which is the source
+#     of truth every later stage reads; a value here would only ever be a second
+#     copy to disagree with the first.
+#
+#     What IS recorded from that probe is the fiscal year end below, because that
+#     one is a tripwire against a mis-resolution rather than a duplicate of it.
+
+# WHAT THE PROBE ALSO ESTABLISHED, before any money was spent. Recorded here
+# because it is the provenance of the WINDOW, and a coverage claim is checked
+# against it later:
+#
+#   - The recent-1000 submissions index reaches back only to 2020-04-30, and this
+#     window needs 2020-03-03. So the SHARD LOOP in discover.fetch_all_filings
+#     runs for this company — it has never run for any company. It pulls
+#     CIK0000789019-submissions-001.json and takes the index from 1,001 filings
+#     to 3,001, reaching 2008-05-16.
+#   - The shard contributes 21 filings inside the padded window, of which 3 are
+#     in-scope 8-Ks (2020-03-13, 2020-03-31, 2020-04-29) — and all three assign
+#     to FY2020, which this window drops. Stated plainly because it matters for
+#     what the run PROVES: the loop is exercised for real, but nothing it returns
+#     survives the window filter, so a silent-truncation bug in it would not have
+#     shown up in the deliverables. That is a weaker test than it first looks.
+#   - Three filing agents appear on the annual filings (accession prefixes
+#     0001564590 for FY2020-FY2022, 0000950170 for FY2023-FY2025, 0001193125 on
+#     the 8-Ks), and none is MORN's dominant 0001289419. The agent CHANGES inside
+#     the window, so config/sections.toml gets tested against two house styles in
+#     one company rather than one.
+#   - 3,001 filings indexed -> 877 in the padded window -> 57 in scope and inside
+#     it, against MORN's 127. Fewer filings, larger ones.
+
+[window]
+# WHICH fiscal years to cover — two YEAR NUMBERS, inclusive on both ends
+# (SPEC.md section 1). Not dates. For example 2021 and 2025 means FY2021,
+# 2022, 2023, 2024, FY2025 — five years. One to ten years is supported; the
+# pipeline refuses more than ten, because the pack grows with the window.
+#
+# The zeros below are placeholders. Set them before running anything.
+#
+# Do not confuse these with the fiscal year END DATE (the month/day the books
+# close), which is `fiscal_year_end_month_day` below and is discovered from
+# EDGAR, never typed in.
+#
+# These are FISCAL years, not FILING years — a FY2024 10-K is typically filed in
+# early 2025. Discovery reports the fiscal-to-filing-date mapping so you can
+# confirm the window covers the calendar period you intended.
+first_fiscal_year = 2021
+last_fiscal_year = 2025
+
+# WHY 2025 AND NOT 2026, WHICH IS THE MORE RECENT COMPLETED FISCAL YEAR.
+#
+# This is the first thing a June fiscal year end changes about operating the
+# pipeline, and it is not visible from the calendar. On 2026-09-01:
+#
+#   most recently COMPLETED fiscal year   FY2026  (closed 2026-06-30)
+#   FY2026 10-K                           FILED   2026-07-29
+#   FY2026 proxy                          NOT FILED — MSFT files in mid-October
+#
+# So FY2026 is a HALF year to this project. `comp`, `board` and `votes` all read
+# the proxy, and the brief's most valuable comparison — stated priorities against
+# paid-for priorities — has nothing on the second side of it. Including FY2026
+# would produce a fiscal year whose extraction succeeds, whose checks pass, and
+# whose incentive record is simply absent, which is the failure mode this project
+# is most careful about elsewhere.
+#
+# MORN could not surface this. A December filer's proxy lands in April, so by the
+# time anyone runs a pipeline the newest completed year is fully disclosed. A June
+# filer has a roughly three-and-a-half month window each year (late July, when
+# the 10-K lands, to mid-October, when the proxy does) in which the newest fiscal
+# year has one and not the other. We are sitting inside it.
+#
+# REVISIT AFTER 2026-10-21, at which point FY2026 becomes complete and the window
+# can move to FY2022-FY2026 — at the cost of re-extracting, because the facts
+# cache is keyed on fiscal year.
+
+# OPTIONAL tripwire, as "MM-DD" (e.g. "12-31" for a December year-end, "09-28"
+# for Apple's late-September one). Discovery always reads the real value from the
+# SEC submissions API; set this only if you want a mismatch to raise a warning.
+#
+# It matters because it determines what the window above means in calendar time:
+# with a September year-end, FY2021-FY2025 covers Oct 2020 through Sep 2025, not
+# Jan 2021 through Dec 2025. Discovery also flags any CHANGE to this date inside
+# the window — a company that moves its year-end produces a short stub period,
+# which makes one "year" a few months long and breaks naive year-over-year
+# comparison.
+#
+# SET HERE, unlike the CIK, and the distinction is the point: this is a tripwire
+# that can CATCH a mis-resolution rather than a second copy of one. If the ticker
+# ever resolved to a different company, that company would almost certainly close
+# its books on a different day, and discovery would stop. 06-30 read off the
+# submissions API `fiscalYearEnd` field ("0630") on 2026-09-01.
+#
+# It is also what makes this company worth running: FY2021-FY2025 here covers
+# July 2020 through June 2025, not January 2021 through December 2025, and every
+# fiscal-year assignment this project had ever made before MSFT was for a
+# December filer. See tests/unit/test_fiscal_year.py.
+fiscal_year_end_month_day = "06-30"
+
+# ---------------------------------------------------------------------------
+# WHY NOTHING HERE IS WRITTEN BY CODE
+# ---------------------------------------------------------------------------
+# This file is human-authored and read-only to the pipeline. Python's standard
+# library can PARSE TOML (`tomllib`) but cannot WRITE it — and writing TOML
+# programmatically would strip every comment in this file, which is most of its
+# value. So discovery never edits config.
+#
+# Instead, discovery writes the machine-readable source of truth to
+#   data/discovery/inventory.json
+# and every later stage reads the resolved CIK, fiscal year end, and filing
+# inventory from THERE, not from here. That keeps one source of truth per fact
+# (CLAUDE.md: never hard-code a value another stage already computes).
+
+# A cushion, in days, added to each end of the EDGAR filing-date query. A 10-K
+# for the last fiscal year in the window lands roughly 60-90 days after
+# year-end, so querying on fiscal years alone would miss it.
+filing_date_padding_days = 120
+
+[edgar]
+# SEC requires a descriptive User-Agent on every request; requests without one
+# get blocked (CLAUDE.md). The real value lives in .env as EDGAR_IDENTITY so an
+# email address is not committed to git. This is the fallback shape only.
+identity_env_var = "EDGAR_IDENTITY"
+
+# Stay under 10 requests/second (CLAUDE.md). This is the deliberate delay
+# between requests, in seconds. 0.15s => under 7/sec, comfortably inside the
+# limit with room for clock jitter. Do not parallelize EDGAR fetches.
+request_delay_seconds = 0.15
+
+# Cache-first: if a document is already on disk, never re-request it. Set to
+# false ONLY to deliberately re-download a document you believe is corrupt.
+use_cache = true
+
+[extraction]
+# Model used for the narrative signal extraction (strategic priorities,
+# incentive metrics, notable language). Not used for section location — that is
+# deterministic HTML parsing, no model involved.
+model = "claude-opus-5"
+
+# Concurrency per the top-level CLAUDE.md API rule: 5 or fewer simultaneous
+# requests. Unchanged.
+max_concurrent_requests = 5
+
+# DELIBERATE DEVIATION from CLAUDE.md's 4096 default for long-document calls,
+# with the reason recorded so it is a decision rather than drift.
+#
+# On Claude Opus 5 thinking is ON BY DEFAULT, and max_tokens is a hard cap on
+# thinking PLUS the response — they share one budget. A 4096 ceiling here does
+# not produce a smaller answer; it truncates the response mid-JSON once thinking
+# has consumed most of the budget, and a truncated structured output is a failed
+# call, not a cheaper one.
+#
+# The intent behind the 4096 rule still holds and is enforced elsewhere: these
+# calls return a bounded list of extracted facts, not prose, so the response
+# itself stays small. The headroom is for the thinking the extraction needs.
+max_tokens = 16000
+
+# Thinking depth. `medium` because this is careful reading, not hard reasoning:
+# locate what the document states, quote it exactly, leave everything else out.
+# Opus 5 is strong at the lower effort levels and they cost materially less.
+# Raise to "high" if extraction quality proves weak on a specific task.
+effort = "medium"
+
+# PER-TASK MODEL OVERRIDES. Empty, and the right default for a new company.
+#
+# MUST STAY LAST IN [extraction]: in TOML everything after a sub-table header
+# belongs to that sub-table, so a scalar written below this line would become
+# `extraction.models.<key>` and silently stop being read as an extraction
+# setting. Same trap as [pdf.page] in config/outputs.toml.
+#
+# Every task uses `model` above unless named here. The eight tasks are not one
+# job — `comp` and `mdna` are cross-year reading, `votes` is transcription of
+# numbers off a table — so this is where that gets revisited per task, without a
+# code change.
+#
+# DO NOT COPY A MIX FROM ANOTHER COMPANY. Which task dominates spend is a fact
+# about the issuer's filing habits, not about the pipeline: on MORN, monthly
+# written Reg FD investor Q&A is 60% of extraction spend and most issuers publish
+# none at all. Run `--estimate`, which prints the per-model split, and decide from
+# this company's own numbers.
+#
+# BEFORE RUNNING ANY A/B, read `out_path` in src/equity_research/extract_facts.py.
+# The cache key is (fiscal year, task, filing) and does NOT include the model, so
+# a comparison run overwrites the results it is being compared against — and
+# extraction output is committed precisely because a re-run cannot reproduce it.
+#
+# Switching a task here does nothing to work already done: staleness keys on the
+# source TEXT, not the model, so cached answers stay cached and the run reports
+# how many were produced by a different model.
+#
+# Task names must be exact — a typo is rejected at startup rather than silently
+# meaning "no override". Valid: business, mdna, comp, board, letter, events_8k,
+# investor_qa, votes.
+[extraction.models]
+# votes = "claude-sonnet-5"
+
+[generation]
+# Milestone 5e — the two prose outputs. Separate from [extraction] because the
+# job is the opposite one: extraction reads one section closely and copies what
+# it says; generation reads 1,400 facts at once and looks for what none of them
+# says on its own.
+model = "claude-opus-5"
+
+# `high`, against extraction's `medium`. Extraction is careful reading; this is
+# cross-year synthesis over the whole pack, which is the only genuinely hard
+# reasoning in the pipeline and the one place the model is being paid for
+# judgment rather than transcription. The extra thinking tokens are output
+# tokens and cost real money — roughly $0.25-0.60 a call — which is small
+# against the pack's own input cost.
+effort = "high"
+
+# Effort for the two repair passes (unresolvable ids, non-verbatim quotations).
+# `medium`, not `high`: both are mechanical substitution against text supplied in
+# the prompt -- find the real id, or copy the real characters. Neither needs the
+# cross-year reasoning the documents themselves need, and the quote repair in
+# particular runs without the pack, so its whole call is a few thousand tokens.
+repair_effort = "medium"
+
+# SECOND DELIBERATE DEVIATION from CLAUDE.md's 4096 default, same reason as
+# [extraction] and more acute here. max_tokens caps thinking PLUS the response
+# out of one shared budget, and these documents ARE the response: a 2,500-word
+# brief with citations is roughly 5,000 tokens before any thinking at all.
+# A truncated document loses its last section and says nothing about it, so
+# `generate_outputs.py` treats stop_reason == "max_tokens" as a failed call.
+max_tokens = 32000
+
+# SPEC.md 4a: "Roughly 1,500-2,500 words". Kept here rather than in the prompt
+# so the target and the measurement come from one place -- the script counts
+# words excluding bracketed citations and reports against these.
+brief_words_min = 1500
+brief_words_max = 2500
