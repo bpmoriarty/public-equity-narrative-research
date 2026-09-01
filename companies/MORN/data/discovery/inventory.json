@@ -1528,7 +1528,7 @@
       "primary_doc": "a20-1992_3def14a.htm",
       "description": "DEF 14A",
       "fiscal_year": 2019,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEF 14A in scope",
       "in_window": false
@@ -1542,7 +1542,7 @@
       "primary_doc": "a20-1992_4defa14a.htm",
       "description": "DEFA14A",
       "fiscal_year": 2019,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEFA14A in scope",
       "in_window": false
@@ -1629,7 +1629,7 @@
       "primary_doc": "tm2016664-1_defa14a.htm",
       "description": "DEFA14A",
       "fiscal_year": 2019,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEFA14A in scope",
       "in_window": false
@@ -1643,7 +1643,7 @@
       "primary_doc": "tm2016664-2_defa14a.htm",
       "description": "DEFA14A",
       "fiscal_year": 2019,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEFA14A in scope",
       "in_window": false
@@ -3816,7 +3816,7 @@
       "primary_doc": "a21-2384_2def14a.htm",
       "description": "DEF 14A",
       "fiscal_year": 2020,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEF 14A in scope",
       "in_window": false
@@ -3830,7 +3830,7 @@
       "primary_doc": "a21-2384_3defa14a.htm",
       "description": "DEFA14A",
       "fiscal_year": 2020,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEFA14A in scope",
       "in_window": false
@@ -6373,7 +6373,7 @@
       "primary_doc": "d248717ddef14a.htm",
       "description": "DEF 14A",
       "fiscal_year": 2021,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEF 14A in scope",
       "in_window": true
@@ -6387,7 +6387,7 @@
       "primary_doc": "d248717ddefa14a.htm",
       "description": "DEFA14A",
       "fiscal_year": 2021,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEFA14A in scope",
       "in_window": true
@@ -8493,7 +8493,7 @@
       "primary_doc": "d364908ddef14a.htm",
       "description": "DEF 14A",
       "fiscal_year": 2022,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEF 14A in scope",
       "in_window": true
@@ -8507,7 +8507,7 @@
       "primary_doc": "d364908ddefa14a.htm",
       "description": "DEFA14A",
       "fiscal_year": 2022,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEFA14A in scope",
       "in_window": true
@@ -10479,7 +10479,7 @@
       "primary_doc": "d673923ddef14a.htm",
       "description": "DEF 14A",
       "fiscal_year": 2023,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEF 14A in scope",
       "in_window": true
@@ -10493,7 +10493,7 @@
       "primary_doc": "d673923ddefa14a.htm",
       "description": "DEFA14A",
       "fiscal_year": 2023,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEFA14A in scope",
       "in_window": true
@@ -10507,7 +10507,7 @@
       "primary_doc": "annualreport2023.htm",
       "description": "ARS",
       "fiscal_year": 2023,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "ARS in scope",
       "in_window": true
@@ -12447,7 +12447,7 @@
       "primary_doc": "tm2510342d2_defa14a.htm",
       "description": "DEFA14A",
       "fiscal_year": 2024,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEFA14A in scope",
       "in_window": true
@@ -12461,7 +12461,7 @@
       "primary_doc": "d895979ddef14a.htm",
       "description": "DEF 14A",
       "fiscal_year": 2024,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEF 14A in scope",
       "in_window": true
@@ -12475,7 +12475,7 @@
       "primary_doc": "d895979ddefa14a.htm",
       "description": "DEFA14A",
       "fiscal_year": 2024,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEFA14A in scope",
       "in_window": true
@@ -12489,7 +12489,7 @@
       "primary_doc": "a2024morningstarannualre.htm",
       "description": "ARS",
       "fiscal_year": 2024,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "ARS in scope",
       "in_window": true
@@ -13911,7 +13911,7 @@
       "primary_doc": "tm269740d2_defa14a.htm",
       "description": "DEFA14A",
       "fiscal_year": 2025,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEFA14A in scope",
       "in_window": true
@@ -13939,7 +13939,7 @@
       "primary_doc": "d36193ddef14a.htm",
       "description": "DEF 14A",
       "fiscal_year": 2025,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEF 14A in scope",
       "in_window": true
@@ -13953,7 +13953,7 @@
       "primary_doc": "d65355ddefa14a.htm",
       "description": "DEFA14A",
       "fiscal_year": 2025,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "DEFA14A in scope",
       "in_window": true
@@ -13967,7 +13967,7 @@
       "primary_doc": "a2025annualreport.htm",
       "description": "ARS",
       "fiscal_year": 2025,
-      "fy_basis": "filingDate.year - 1 (covers prior FY)",
+      "fy_basis": "most recently completed FY at filing",
       "disposition": "in_scope",
       "reason": "ARS in scope",
       "in_window": true

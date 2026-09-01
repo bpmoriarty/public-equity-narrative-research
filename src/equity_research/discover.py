@@ -362,21 +362,67 @@ def fy_from_period(d: date | None, fye: tuple[int, int], tol_days: int = 10) -> 
     return None
 
 
+def most_recent_completed_fy(d: date, fye: tuple[int, int]) -> int:
+    """The last fiscal year that had FINISHED by calendar date `d`.
+
+    This is the disclosure convention for a proxy or an annual report: whatever
+    the filing date, the compensation disclosed and the say-on-pay vote sought
+    cover the fiscal year that has just closed.
+
+    WHY THIS IS NOT `d.year - 1`, which is what it used to be
+    --------------------------------------------------------
+    `d.year - 1` encodes the December case only. It is correct exactly when the
+    fiscal year end and the filing fall in DIFFERENT calendar years — always true
+    for a December filer, whose year ends on 31 December and whose proxy goes out
+    the following spring, and false for a filer whose year ends mid-year, because
+    the proxy then goes out later in the same calendar year.
+
+    Measured across six fiscal year ends with a proxy filed 105 days after the
+    year closed: 12-31, 09-30 and 10-31 came out right, 01-31, 03-31 and 06-30
+    came out a full year early. Worse, the old rule's correctness depended on the
+    LAG as well as the year end — a September filer that files its proxy 75 days
+    out was also wrong — so nothing about the shape of the bug was stable enough
+    to notice.
+
+    A fiscal-year error here is silent, consistent and invisible: it moves every
+    proxy-derived fact — `comp`, `board`, and the shareholder letter's
+    `strategic_priorities` — by one year, together, and the output looks right.
+    `assign_fiscal_year`'s own docstring says getting this backwards "would
+    corrupt the single most valuable comparison this pipeline makes (stated
+    priorities vs. paid-for priorities)."
+
+    SAFE TO CHANGE because it is provably identical to the old rule for a
+    December filer: zero disagreements across all 366 days of a calendar year,
+    and zero of MORN's 1,000 indexed filings change fiscal year under it. That
+    mattered — the facts cache key is (fiscal year, task, filing), so one filing
+    moving would have restaled the committed ledger at $11.33 to rebuild.
+    """
+    return fy_containing(d, fye) - 1
+
+
 def assign_fiscal_year(row: dict, fye: tuple[int, int]) -> tuple[int | None, str]:
     """Map a filing to the fiscal year it DESCRIBES. Returns (fy, basis).
 
     The subtlest step in discovery, and the one most worth checking by hand,
     because each form relates to a fiscal year differently:
 
-    10-K    reportDate IS the fiscal year end. FY = reportDate.year.
-    DEF 14A A proxy filed in spring of year N solicits votes for the meeting
-            held in N, but the compensation it discloses and the say-on-pay
-            vote it seeks cover the fiscal year that just ENDED — FY N-1.
-            Getting this backwards misattributes every incentive metric by a
-            year, which would corrupt the single most valuable comparison this
-            pipeline makes (stated priorities vs. paid-for priorities).
-    ARS     Same off-by-one: the annual report filed in year N reports on FY N-1.
+    10-K    reportDate IS the fiscal year end, wherever it verifies as one.
+    DEF 14A A proxy solicits votes for a meeting held after the fiscal year
+            closes, but the compensation it discloses and the say-on-pay vote it
+            seeks cover the year that just ENDED — so FY = the most recently
+            completed fiscal year at the filing date. Getting this backwards
+            misattributes every incentive metric by a year, which would corrupt
+            the single most valuable comparison this pipeline makes (stated
+            priorities vs. paid-for priorities).
+    ARS     The same convention, except that an annual report DOES report on a
+            fiscal year, so a verified period end is preferred where present.
     8-K     Event-driven, no period. FY = the fiscal year containing filingDate.
+
+    "The most recently completed fiscal year" is stated that way rather than as
+    "filingDate.year - 1", which is what it used to say and which is only true
+    for a December filer. See `most_recent_completed_fy`, and
+    tests/unit/test_fiscal_year.py for the six fiscal year ends it is checked
+    against — none of which is MORN's, because MORN's is the case that worked.
     """
     form = base_form(row["form"])
     rd, fd = row["report_date"], row["filing_date"]
@@ -394,12 +440,25 @@ def assign_fiscal_year(row: dict, fye: tuple[int, int]) -> tuple[int | None, str
             return rd.year, "reportDate.year (period end is OFF-CYCLE — check)"
         return fy_containing(fd, fye), "filingDate (no reportDate)"
 
-    if form in ("DEF 14A", "DEFA14A", "ARS"):
+    if form in ("DEF 14A", "DEFA14A"):
+        # THE PERIOD BRANCH IS DELIBERATELY NOT CONSULTED HERE. A proxy's
+        # reportDate is the ANNUAL MEETING date by SEC convention — it is never a
+        # period end, so asking `fy_from_period` about it can only ever produce a
+        # false positive. It stayed harmless because a meeting normally falls
+        # months from the year end and so failed the 10-day tolerance; a company
+        # that meets NEAR its own fiscal year end had the meeting accepted as a
+        # period end and its proxy attributed to the year that had not finished
+        # yet. That misfired for all six fiscal year ends tested, **December
+        # included** — MORN only escapes it by meeting in May, 130 days out.
+        return most_recent_completed_fy(fd, fye), "most recently completed FY at filing"
+
+    if form == "ARS":
+        # Unlike a proxy, an annual report reports on a fiscal year, so a
+        # reportDate that verifies as a period end is real evidence and is
+        # preferred. It is often just the filing date again, hence the fallback.
         if period_fy is not None:
             return period_fy, "reportDate (verified period end)"
-        # reportDate was a meeting date or a copy of the filing date — useless.
-        # Fall back to the disclosure convention.
-        return fd.year - 1, "filingDate.year - 1 (covers prior FY)"
+        return most_recent_completed_fy(fd, fye), "most recently completed FY at filing"
 
     return fy_containing(fd, fye), "fiscal year containing filingDate"
 

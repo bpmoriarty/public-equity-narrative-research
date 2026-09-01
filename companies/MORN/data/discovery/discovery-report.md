@@ -33,20 +33,20 @@ No filing documents were downloaded. This is metadata only.
 
 | FY | Form | Filed | Period | Accession | FY assigned from |
 |---|---|---|---|---|---|
-| FY2021 | DEF 14A | 2022-04-01 | 2022-05-13 | `0001193125-22-092675` | filingDate.year - 1 (covers prior FY) |
-| FY2022 | DEF 14A | 2023-03-31 | — | `0001193125-23-086796` | filingDate.year - 1 (covers prior FY) |
-| FY2023 | DEF 14A | 2024-03-28 | 2024-05-10 | `0001193125-24-080640` | filingDate.year - 1 (covers prior FY) |
-| FY2024 | DEF 14A | 2025-03-28 | 2025-05-09 | `0001193125-25-067151` | filingDate.year - 1 (covers prior FY) |
-| FY2025 | DEF 14A | 2026-03-27 | 2026-05-07 | `0001193125-26-129081` | filingDate.year - 1 (covers prior FY) |
+| FY2021 | DEF 14A | 2022-04-01 | 2022-05-13 | `0001193125-22-092675` | most recently completed FY at filing |
+| FY2022 | DEF 14A | 2023-03-31 | — | `0001193125-23-086796` | most recently completed FY at filing |
+| FY2023 | DEF 14A | 2024-03-28 | 2024-05-10 | `0001193125-24-080640` | most recently completed FY at filing |
+| FY2024 | DEF 14A | 2025-03-28 | 2025-05-09 | `0001193125-25-067151` | most recently completed FY at filing |
+| FY2025 | DEF 14A | 2026-03-27 | 2026-05-07 | `0001193125-26-129081` | most recently completed FY at filing |
 
 ## Shareholder / annual reports
 
 | FY | Form | Filed | Period | Accession | FY assigned from |
 |---|---|---|---|---|---|
 | FY2022 | ARS | 2023-03-31 | 2022-12-31 | `0001104659-23-039633` | reportDate (verified period end) |
-| FY2023 | ARS | 2024-03-28 | 2024-03-28 | `0001289419-24-000022` | filingDate.year - 1 (covers prior FY) |
-| FY2024 | ARS | 2025-03-28 | 2025-03-28 | `0001289419-25-000062` | filingDate.year - 1 (covers prior FY) |
-| FY2025 | ARS | 2026-03-27 | 2026-03-27 | `0001289419-26-000017` | filingDate.year - 1 (covers prior FY) |
+| FY2023 | ARS | 2024-03-28 | 2024-03-28 | `0001289419-24-000022` | most recently completed FY at filing |
+| FY2024 | ARS | 2025-03-28 | 2025-03-28 | `0001289419-25-000062` | most recently completed FY at filing |
+| FY2025 | ARS | 2026-03-27 | 2026-03-27 | `0001289419-26-000017` | most recently completed FY at filing |
 
 ## Material 8-K filings (17)
 
