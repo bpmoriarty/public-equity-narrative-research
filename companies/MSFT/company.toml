@@ -303,8 +303,15 @@ repair_effort = "medium"
 # `generate_outputs.py` treats stop_reason == "max_tokens" as a failed call.
 max_tokens = 32000
 
-# SPEC.md 4a: "Roughly 1,500-2,500 words". Kept here rather than in the prompt
-# so the target and the measurement come from one place -- the script counts
-# words excluding bracketed citations and reports against these.
-brief_words_min = 1500
-brief_words_max = 2500
+# The brief's word range is NOT set here any more. It was `brief_words_min` /
+# `brief_words_max` = 1500 / 2500, which duplicated [verify.word_range] in
+# config/outputs.toml -- two copies that agreed only because neither had been
+# changed. It is now one rate PER FISCAL YEAR in config/outputs.toml under
+# [verify.words_per_fiscal_year], read by both the generation prompt and the
+# verify gate, so the target the writer is given is the range it is judged
+# against. MSFT is what forced it: six years could not fit a ceiling written for
+# five. `load_gen_config` REFUSES a company.toml that still sets either key
+# rather than ignoring it.
+#
+# To change the range for one company: override [verify.words_per_fiscal_year]
+# in companies/MSFT/overrides/outputs.toml.

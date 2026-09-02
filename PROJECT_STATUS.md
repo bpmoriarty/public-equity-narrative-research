@@ -1096,6 +1096,96 @@ across 34 calls). Milestones 1–3 cost nothing.
 
 ## Session Log
 
+### 2026-09-02 — Phase 6.5: MSFT end to end, and six findings a second company was the only way to reach
+
+**The pipeline ran all thirteen stages for a company it had never seen, and
+produced all three deliverables.** MSFT, FY2020–FY2025, 769 facts, 807 citable
+ids, 2 unverified quotes both excluded, three PDFs verified by read-back.
+**$19.98 API-equivalent across the day, $0 charged** — the seat.
+
+**What matters more than the run is what the run exposed.** Six findings, four
+of them cases where **MORN's committed artifacts look complete and the automated
+path does not reproduce them.** None was reachable with one company.
+
+**Finding 4 — `pipeline <TICKER>` cannot fetch the final year's vote 8-K.**
+`votes` reads the paired 8-K Item 5.07, and `gather_votes` correctly pairs on the
+proxy's *filing date*; for MSFT that resolved to a filing dated 2025-12-08,
+labelled **FY2026** with `in_window: false`. `fetch` builds its work list from
+`in_window` filings only, so it was never downloaded. **MORN's structurally
+identical filing is in MORN's cache because a human ran `fetch --accession` by
+hand during the pilot.** The override is documented at `fetch.py:254-262`;
+nothing in the orchestrator performs it. So every company run start-to-finish by
+`pipeline` silently loses its last year's say-on-pay and director-election vote,
+and MORN only looks right because it was driven manually — *worse than untested,
+because it left a passing example behind.* Closed for this run with the
+documented override; the fix needs a layering decision (the candidate makes
+`fetch` call an `extract_facts` helper) and was not taken mid-spend.
+
+**Finding 5 — the extraction estimate is ~25% low, and now it is measured.**
+Yesterday's `e28f57b` fixed the *multiplier*; the token *count* is a second,
+independent error in the same place. Fitting 42 real calls:
+`cache_creation = 0.36108 * source_chars + 6,959`, reproducing 906,344 exactly.
+**Not the divisor** — the fitted 2.77 chars/token is slightly *less* generous
+than the estimator's. The whole error is **~6,959 tokens a call of prompt
+overhead** (system prompt, JSON schema, the task's `ask`) that the estimate never
+counts, plus a concurrency effect: at `concurrency = 2` the scaffolding is
+cache-written **twice**, not once. Left unfixed *deliberately* — repairing an
+estimator against the very run it mispriced destroys the independence that made
+yesterday's $7.12-vs-$7.13 agreement mean anything.
+
+**Findings 8 and 9, both fixed, both re-parameterizations rather than judgements:**
+
+- **SPEC.md's word range is a five-year number.** `1,500/5 = 300`,
+  `2,500/5 = 500` — the spec's unit is words *per fiscal year*, and under a fixed
+  pair the ten-year window `MAX_WINDOW_YEARS` allows could never pass at any
+  density. MSFT's brief is **496 naive words a year against MORN's 518** — wider,
+  not padded. Now scaled, reproducing `[1500, 2500]` **exactly** at five years so
+  MORN is unaffected by construction. It also collapsed a duplicate that was one
+  edit from lying: the target lived in `company.toml`, the check in
+  `config/outputs.toml`, agreeing only because neither had been touched.
+- **A 188-character heading split across a page.** The read-back reported it
+  "MISSING" alongside *0 words lost, 6,549 in order* — which cannot both describe
+  loss. 145 of 154 characters matched, then the extracted text read
+  `discussion-points.md·rendered2`: the running footer, sitting between the
+  heading's halves. **The obvious fix does not exist** — xhtml2pdf supports
+  `page-break-before`/`-after` only, with no `page-break-inside` and no CSS3
+  `break-*`; all parse, none is honoured, and the re-render was unchanged.
+  Checked against the library reference after guessing wrong once. The working
+  property is `-pdf-keep-with-next`.
+
+**Finding 10, fixed — and it was caught by `git status`, not by a check.** The
+full thirteen-stage run left `ledger-report.md` **modified** over identical
+inputs: two FY2020 warnings had swapped places. `build_ledger.py:616` iterated a
+**set**, whose string order varies between processes, and `sorted()` had been
+applied to the JSON field on the very next line but *not* to the loop writing the
+Markdown — **so the JSON was stable and the Markdown was not**, which is exactly
+why every check stayed green. **MORN could never have caught it:** it needs two
+missing tasks in one fiscal year to have anything to reorder, and
+`test_reruns_change_nothing.py` would have passed forever. Verified across four
+`PYTHONHASHSEED` values: one sha256, byte-identical to the committed file.
+
+**The method that produced all seven is the same one 6.1 established: read the
+output, disbelieve the agreeable reading, probe.** `--check-fresh` said "no
+source: 4" while six vote sections sat on disk — both could not be true, and
+chasing that contradiction *before* approving $7 of spend is what surfaced
+finding 4. Twice a checker was right that something was wrong and wrong about
+what: the PDF heading, and `build_ledger` prescribing a paid command that reports
+"nothing to do" (finding 7).
+
+**All three of item 27's gate paths now have a real run behind them:** approved
+(`--only extract_facts --yes`), declined (a piped stdin, read as **no**, exit 3,
+nothing spent), and nothing-to-do (the final full run, no prompt at all).
+
+Left open on purpose: **finding 6**, the proxy `director_bios` span reaching the
+proxy ballot — 0/12 tenure and committees in all six years against MORN's 9–10/10
+— which needs code, because `find_proxy_sections(doc)` takes no `cfg` and so
+proxy boundaries are unreachable from `sections.toml`. It costs the brief its
+governance substance (72 pack facts, 9.4%, naming a director and nothing else)
+and 6.6 has to judge knowing that. Full detail for all nine findings is in
+`PHASE6_SCOPE.md`.
+
+**589 checks across 17 files**, up from 576; MORN byte-identical throughout.
+
 ### 2026-09-01 — Phase 6 scoped, and 6.1 found what it was written to look for
 
 **The scope reframed the phase** (`PHASE6_SCOPE.md`, `af1b0d0`). The plan and

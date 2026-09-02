@@ -196,8 +196,19 @@ repair_effort = "medium"
 # `generate_outputs.py` treats stop_reason == "max_tokens" as a failed call.
 max_tokens = 32000
 
-# SPEC.md 4a: "Roughly 1,500-2,500 words". Kept here rather than in the prompt
-# so the target and the measurement come from one place -- the script counts
-# words excluding bracketed citations and reports against these.
-brief_words_min = 1500
-brief_words_max = 2500
+# DO NOT set the brief's word range here. It was `brief_words_min` /
+# `brief_words_max` = 1500 / 2500, which duplicated [verify.word_range] in
+# config/outputs.toml -- two copies that agreed only because neither had been
+# changed. It is now one rate PER FISCAL YEAR in config/outputs.toml under
+# [verify.words_per_fiscal_year], read by both the generation prompt and the
+# verify gate, so the target the writer is given is the range it is judged
+# against. SPEC.md's "roughly 1,500-2,500 words" is that rate times a five-year
+# window; a fixed pair cannot be satisfied by the ten-year window
+# `settings.MAX_WINDOW_YEARS` allows.
+#
+# `load_gen_config` REFUSES a company.toml that still sets either key rather than
+# ignoring it, so copying an old file forward fails loudly instead of quietly
+# doing nothing.
+#
+# To change the range for one company: override [verify.words_per_fiscal_year]
+# in companies/<TICKER>/overrides/outputs.toml.

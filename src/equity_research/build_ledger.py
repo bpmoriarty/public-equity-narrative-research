@@ -613,8 +613,20 @@ def build_year(fy: int, inv: dict, texts: dict, risk: dict,
                  "record of what the model returned has to stay as it was.",
     }
 
-    missing_tasks = [t for t in {t for t, _, _ in FIELD_MAP} if not task_cache.get(t)]
-    dq["extraction_tasks_missing"] = sorted(missing_tasks)
+    # SORTED ONCE, AND USED SORTED — CLAUDE.md rule 4, "run twice, diff nothing".
+    # This read `[t for t in {t for t, _, _ in FIELD_MAP} if ...]` and iterated a
+    # SET, whose iteration order for strings differs between processes under hash
+    # randomization. `sorted()` was applied to the JSON field on the next line and
+    # not to the `warnings` loop below, so the JSON was stable and the Markdown was
+    # not: two same-year warnings swapped places between runs and `ledger-report.md`
+    # came back dirty from an otherwise identical re-run.
+    #
+    # Only visible with TWO missing tasks in ONE fiscal year, which MORN never had
+    # — so `tests/regression/morn/test_reruns_change_nothing.py` could not have
+    # caught it. MSFT's FY2020 is missing both `investor_qa` and `letter`.
+    missing_tasks = sorted(t for t in {t for t, _, _ in FIELD_MAP}
+                           if not task_cache.get(t))
+    dq["extraction_tasks_missing"] = missing_tasks
     for t in missing_tasks:
         warnings.append(f"FY{fy}: extraction task '{t}' has no result file — "
                         f"run `uv run python -m equity_research.extract_facts "

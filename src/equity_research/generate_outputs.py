@@ -374,11 +374,43 @@ def load_pack() -> tuple[str, dict, dict]:
 
 
 def load_gen_config() -> dict:
-    """Generation settings from config/company.toml, with the reasons alongside them."""
+    """Generation settings from config/company.toml, with the reasons alongside them.
+
+    `brief_words_min`/`brief_words_max` USED to live here and no longer do. The
+    word range is now a per-fiscal-year rate in config/outputs.toml, read through
+    `verify_outputs.word_range` so the writer's target and the gate's measurement
+    are one number. A company.toml still carrying the old keys is refused rather
+    than ignored: silently disregarding a number someone deliberately set is how
+    a config comes to mean nothing.
+    """
     cfg = tomllib.loads(P.company_toml.read_text(encoding="utf-8"))
     if "generation" not in cfg:
         sys.exit("FATAL: config/company.toml has no [generation] block.")
-    return cfg["generation"]
+    gen = cfg["generation"]
+    stale = [k for k in ("brief_words_min", "brief_words_max") if k in gen]
+    if stale:
+        sys.exit(
+            f"FATAL: {P.company_toml} [generation] still sets {', '.join(stale)}.\n"
+            "  Those keys are no longer read. The brief's word range is now a rate\n"
+            "  per fiscal year, set once in config/outputs.toml under\n"
+            "  [verify.words_per_fiscal_year], so the target the writer is given and\n"
+            "  the range the gate checks cannot drift apart.\n"
+            "  Delete both keys. To change the range for one company, override\n"
+            "  [verify.words_per_fiscal_year] in companies/<TICKER>/overrides/outputs.toml.")
+    return gen
+
+
+def load_verify_cfg() -> dict:
+    """The [verify] block, resolved for the company being run.
+
+    One loader, because `brief_ask` needs the word range for the PROMPT and the
+    constraint-repair path needs the whole block for the CHECKS, and two reads of
+    the same file drifting apart is the bug this whole change is about.
+    """
+    cfg = tomllib.loads((P.config_dir / "outputs.toml").read_text(encoding="utf-8"))
+    if "verify" not in cfg:
+        sys.exit("FATAL: config/outputs.toml has no [verify] block.")
+    return cfg["verify"]
 
 
 # ---------------------------------------------------------------------------
@@ -398,10 +430,26 @@ def cache_prefix(payload: str) -> str:
 
 
 def brief_ask(pack: dict, gen: dict) -> str:
+    """The brief's instruction, including the word range it will be JUDGED against.
+
+    The range comes from `verify_outputs.word_range` — the same function the gate
+    calls — rather than from `gen`, so the target and the measurement cannot come
+    apart. They used to be two copies (`brief_words_min`/`max` in company.toml,
+    `[verify.word_range]` in config/outputs.toml) that agreed at 1,500-2,500 only
+    because nobody had changed one; scaling per fiscal year is exactly the change
+    that would have broken that agreement silently, asking for 1,500-2,500 and
+    failing the result at 1,800-3,000.
+
+    `gen` is still taken because callers hold it and the signature is used
+    elsewhere; the word range is deliberately no longer read from it.
+    """
+    import equity_research.verify_outputs as v
+
     s = pack["subject"]
     fys = s["fiscal_years"]
+    lo, hi = v.word_range(load_verify_cfg(), pack, "narrative-brief.md")
     return BRIEF_ASK.format(ticker=s["ticker"], first=f"FY{min(fys)}", last=f"FY{max(fys)}",
-                            lo=gen["brief_words_min"], hi=gen["brief_words_max"])
+                            lo=lo, hi=hi)
 
 
 def discussion_ask(pack: dict, brief_md: str | None) -> str:
@@ -1967,8 +2015,7 @@ def constraint_failures(doc: str, body: str, pack: dict, index: dict, sha: str) 
     """
     import equity_research.verify_outputs as v
 
-    cfg = tomllib.loads((P.config_dir / "outputs.toml").read_text(encoding="utf-8"))
-    r = v.verify(doc, body, pack, index, v.pack_facts(pack, index), cfg["verify"], sha)
+    r = v.verify(doc, body, pack, index, v.pack_facts(pack, index), load_verify_cfg(), sha)
     # The two provenance checks are dropped: this path is handed the BODY, which has no
     # footer yet, so they would fail on every call and the repair would be asked to
     # write a sha256 into the prose. `write_doc` adds the real footer afterwards.

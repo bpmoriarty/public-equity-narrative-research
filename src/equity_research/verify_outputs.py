@@ -320,6 +320,43 @@ class Report:
         return [r for r in self.rows if r["kind"] == "HARD" and not r["ok"]]
 
 
+def window_years(pack: dict) -> int:
+    """How many fiscal years this pack covers.
+
+    Derived from the pack rather than from company.toml on purpose: the pack is
+    what the document was actually written from, and CLAUDE.md's pipeline rule is
+    to derive a value another stage already computed rather than restate it.
+    A pack with no subject window is a malformed pack, not a one-year window, so
+    this raises instead of defaulting to 1 — a silent 1 would scale every range
+    down to a single year's worth and fail every document.
+    """
+    fys = (pack.get("subject") or {}).get("fiscal_years")
+    if not fys:
+        raise KeyError("pack['subject']['fiscal_years'] is missing or empty; "
+                       "rebuild the pack with `build_pack`")
+    return len(set(fys))
+
+
+def word_range(cfg: dict, pack: dict, doc: str) -> tuple[int, int]:
+    """The document's word range, as a per-fiscal-year rate times the window.
+
+    See the long note above `[verify.words_per_fiscal_year]` in config/outputs.toml
+    for why this is a rate: SPEC.md's "1,500-2,500" is 300-500 words a year
+    multiplied by the five-year window that was the only one when it was written,
+    and a fixed pair is unsatisfiable across most of the range
+    `settings.MAX_WINDOW_YEARS` allows.
+
+    `generate_outputs.brief_ask` calls this too, so the number the writer is given
+    and the number it is judged against cannot drift apart.
+    """
+    rates = cfg.get("words_per_fiscal_year") or {}
+    if doc not in rates:
+        return (0, 10**9)
+    lo_rate, hi_rate = rates[doc]
+    n = window_years(pack)
+    return (lo_rate * n, hi_rate * n)
+
+
 def verify(doc: str, md: str, pack: dict, index: dict, pf: dict, cfg: dict,
            sha: str) -> Report:
     r = Report(doc)
@@ -458,7 +495,7 @@ def verify(doc: str, md: str, pack: dict, index: dict, pf: dict, cfg: dict,
     missing = [h for h in want if h.lower() not in body.lower()]
     r.hard("sections_present", "every required section is present", not missing, ", ".join(missing))
 
-    lo, hi = cfg["word_range"].get(doc, [0, 10**9])
+    lo, hi = word_range(cfg, pack, doc)
     words = word_count(body)
     r.hard("length", f"length is within {lo:,}–{hi:,} words", lo <= words <= hi, f"{words:,} words")
 

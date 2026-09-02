@@ -181,6 +181,26 @@ h1        {{ font-size: {font_pt * 1.85:.1f}pt; margin: 0 0 4pt 0; color: #0b0c0
 h2        {{ font-size: {font_pt * 1.30:.1f}pt; margin: 15pt 0 5pt 0; color: #0b0c0d;
              border-bottom: 0.6pt solid #b9bdc4; padding-bottom: 2pt; }}
 h3        {{ font-size: {font_pt * 1.10:.1f}pt; margin: 11pt 0 3pt 0; }}
+/* A HEADING MUST NOT SPLIT ACROSS A PAGE, and must not be the last thing on one.
+   Found by the read-back check on MSFT's discussion-points, whose headings are
+   whole analyst questions -- the longest is 188 characters. One broke across a
+   page boundary, leaving the single word "hardware?" at the top of the next page
+   with the running footer between the two halves.
+
+   `-pdf-keep-with-next` AND NOT `page-break-inside`. Checked against the
+   xhtml2pdf reference rather than assumed, after `page-break-inside: avoid` was
+   tried first and changed nothing: xhtml2pdf's supported-CSS list contains
+   `page-break-after` and `page-break-before` ONLY -- there is no
+   `page-break-inside`, and the CSS3 `break-*` spellings are not implemented
+   either. All three parse, none is honoured, and the PDF re-rendered
+   byte-identically with the same heading still broken. This is precisely what
+   `print_css`'s own docstring warns about ("keep to what it actually honours"),
+   and it cost a render to learn the second time.
+
+   Keeping the heading with the block that follows it moves the whole heading to
+   the next frame when it will not fit, which is what stops the mid-heading
+   split -- there is no property that makes a block unbreakable on its own. */
+h1, h2, h3 {{ -pdf-keep-with-next: true; }}
 p         {{ margin: 0 0 6pt 0; text-align: left; }}
 ul, ol    {{ margin: 0 0 6pt 14pt; }}
 li        {{ margin-bottom: 2.5pt; }}
@@ -251,6 +271,22 @@ def render_one(md_path: Path, cfg: dict, stamp: str) -> tuple[Path, dict]:
     want_ids = sorted(set(ID_RE.findall(md_text)))
     lost_ids = [i for i in want_ids if i.replace("-", "") not in flat.replace("-", "")]
 
+    # A heading counts as present only if its characters appear CONTIGUOUSLY in
+    # the extracted text. That is deliberate — it is what catches a heading that
+    # rendered as body text or lost its emphasis — but it means the check fires
+    # for a heading that is merely INTERRUPTED as well as for one that is gone,
+    # and the FATAL it raises says "do not contain everything their Markdown
+    # does", which in the interrupted case is untrue.
+    #
+    # Seen once, on MSFT's discussion-points: a 188-character heading split
+    # across a page boundary with the running footer landing between its halves.
+    # 145 of its 154 flattened characters matched, then the extracted text read
+    # "discussion-points.md·rendered2". Every word was present and in order and
+    # `lost_words` was empty, which is the pair of facts that identifies this
+    # case: WORDS ALL PRESENT + HEADING "MISSING" MEANS INTERRUPTED, NOT LOST.
+    # Fixed at the source — headings now carry page-break-inside/after: avoid —
+    # rather than by loosening this, because a heading broken over a page is a
+    # real defect in the PDF even though it is not a loss of content.
     want_heads = [h.strip("# ").strip() for h in HEADING_RE.findall(md_text)]
     lost_heads = [h for h in want_heads
                   if re.sub(r"\s+", "", re.sub(r"[*`]", "", h)) not in flat]

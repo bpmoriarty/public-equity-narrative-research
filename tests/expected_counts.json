@@ -1,6 +1,6 @@
 {
-  "note": "Expected check counts per test file. tests/run_all.py fails if any file's count differs in EITHER direction — fewer means checks silently disappeared (see VERIFICATION.md D7), more means new checks were added without recording them. Re-record with: uv run python tests/run_all.py --update",
-  "total": 576,
+  "note": "Expected check counts per test file. tests/run_all.py fails if any file's count differs in EITHER direction \u2014 fewer means checks silently disappeared (see VERIFICATION.md D7), more means new checks were added without recording them. Re-record with: uv run python tests/run_all.py --update",
+  "total": 589,
   "counts": {
     "regression/morn/test_cache.py": 9,
     "regression/morn/test_deliverables.py": 15,
@@ -17,7 +17,7 @@
     "unit/test_model_mix.py": 21,
     "unit/test_record_run.py": 17,
     "unit/test_seat_billing.py": 29,
-    "unit/test_verify_outputs.py": 64,
+    "unit/test_verify_outputs.py": 77,
     "unit/test_verify_quote.py": 13
   }
 }

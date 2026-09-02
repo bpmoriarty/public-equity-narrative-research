@@ -53,6 +53,8 @@ def check(name: str, got, want) -> None:
 SHA = "a" * 64
 
 PACK = {
+    # The window, which the word range is now a RATE against. Two fiscal years.
+    "subject": {"ticker": "TEST", "fiscal_years": [2021, 2022]},
     # FY2022 carries a `facts` block so the numeric-evidence tiers are reachable
     # end-to-end. `claim` is what the model was shown; `quote` is what a reader can
     # resolve. The vote fact below states 507,847 in BOTH (-> QUOTED) and 15,365 in
@@ -108,7 +110,13 @@ CFG = {
     "reg_fd_pattern": r"(?:regulation fd|reg fd|voluntary disclosure)",
     "qa_subject_pattern": r"(?:question|answer|investor q&a|reg fd|regulation fd)",
     "qa_majority_share": 0.5,
-    "word_range": {"doc.md": [5, 5000]},
+    # A RATE PER FISCAL YEAR, not an absolute pair. PACK covers two years, so
+    # this is an effective [6, 5000]: the ceiling is out of the way for every
+    # document below, and the floor still sits above the deliberately-too-short
+    # one in the `shape` block. Note the floor is 3*2 and not the 5 this used to
+    # be written as — a rate cannot express every absolute, and the check that
+    # depends on it says so where it is asserted.
+    "words_per_fiscal_year": {"doc.md": [3, 2500]},
     "required_headings": {"doc.md": ["## Observations"]},
 }
 
@@ -229,6 +237,11 @@ check("a missing required section fails",
       run(GOOD.replace("## Observations", "## Something else"))["sections_present"], False)
 check("a document under the word floor fails",
       run("## Observations\n\nToo short.")["length"], False)
+# The floor is 3 words/year x 2 years = 6, and the document above counts 4. Both
+# halves are stated because the bound is now DERIVED: if the rate or the fixture's
+# window changes, this check can stop testing anything without failing.
+check("  and the floor it fails against is the scaled one, not an absolute",
+      v.word_range(CFG, PACK, "doc.md"), (6, 5000))
 
 print("\nreview detectors — the regression cases they used to fire on wrongly")
 FALSE_POSITIVES = [
@@ -357,6 +370,57 @@ tags = [r["tag"] for r in
 check("no duplicate tags", len(tags), len(set(tags)))
 check("the two provenance tags the repair path skips are present",
       sorted(t for t in tags if t.startswith("prov_")), ["prov_matches", "prov_present"])
+
+print("\nthe word range is a rate per fiscal year, not an absolute pair")
+# WHY THIS EXISTS. SPEC.md says the brief is "roughly 1,500-2,500 words", written
+# when five years was the only window. 1500/5 = 300 and 2500/5 = 500: the real
+# unit is words per YEAR. MSFT's six-year brief landed at 2,690 while being LESS
+# dense per year than MORN's, and could not pass a five-year ceiling; at the
+# ten-year window settings.MAX_WINDOW_YEARS allows, a fixed 2,500 would mean 250
+# words a year and nothing could pass. Scaling must reproduce [1500, 2500]
+# EXACTLY at five years or it is a relaxed check rather than a re-parameterization.
+SPEC = {"words_per_fiscal_year": {"narrative-brief.md": [300, 500],
+                                  "discussion-points.md": [160, 1600]}}
+
+
+def pack_of(*years: int) -> dict:
+    return {"subject": {"ticker": "T", "fiscal_years": list(years)}}
+
+
+check("five years reproduces SPEC.md's 1,500-2,500 exactly",
+      v.word_range(SPEC, pack_of(2021, 2022, 2023, 2024, 2025), "narrative-brief.md"),
+      (1500, 2500))
+check("  so MORN's committed brief faces the range it always did",
+      v.word_range(SPEC, pack_of(2021, 2022, 2023, 2024, 2025), "narrative-brief.md")[1],
+      2500)
+check("six years gives 1,800-3,000",
+      v.word_range(SPEC, pack_of(2020, 2021, 2022, 2023, 2024, 2025), "narrative-brief.md"),
+      (1800, 3000))
+check("  which MSFT's measured 2,690 words clears",
+      1800 <= 2690 <= 3000, True)
+check("  and the old fixed ceiling did NOT — this is the bug, pinned",
+      2690 <= 2500, False)
+check("ten years gives 3,000-5,000, so the widest window is satisfiable",
+      v.word_range(SPEC, pack_of(*range(2016, 2026)), "narrative-brief.md"),
+      (3000, 5000))
+check("discussion-points scales too, from [800, 8000] at five years",
+      v.word_range(SPEC, pack_of(2021, 2022, 2023, 2024, 2025), "discussion-points.md"),
+      (800, 8000))
+check("a document with no configured rate is unbounded, not zero-width",
+      v.word_range(SPEC, pack_of(2021), "timeline.md"), (0, 10**9))
+check("duplicate fiscal years count once", v.window_years(pack_of(2021, 2021, 2022)), 2)
+
+# A malformed pack must RAISE. Defaulting to a one-year window would silently
+# scale every range down to 300-500 words and fail every real document, which is
+# the failure mode that looks like a content problem and is not.
+for bad, label in (({}, "no subject"),
+                   ({"subject": {}}, "subject without fiscal_years"),
+                   ({"subject": {"fiscal_years": []}}, "an empty window")):
+    try:
+        v.window_years(bad)
+        check(f"{label} raises rather than defaulting to 1", "no raise", "KeyError")
+    except KeyError:
+        check(f"{label} raises rather than defaulting to 1", "KeyError", "KeyError")
 
 print("\npack facts are derived, never named in source")
 check("letter years read off the index", PF["letter_years"], [2022, 2023])

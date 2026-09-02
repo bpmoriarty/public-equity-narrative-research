@@ -704,3 +704,124 @@ worth fixing: it sends an operator to a **paid** stage to chase a non-problem,
 and the warning cannot currently tell "extraction has not run yet" apart from
 "there was never anything to run". The second case should say *no source in this
 year's filings*, and say nothing about `extract_facts`.
+
+## Finding 8 (FIXED): SPEC.md's word range is a five-year number, and no wider window could pass
+
+The one hard check the repair could not clear. Fixed, because unlike findings 4,
+6 and 7 the fix is a re-parameterization that leaves MORN provably untouched
+rather than a judgement about extraction quality.
+
+**The arithmetic that settles it:** `1,500 ÷ 5 = 300` and `2,500 ÷ 5 = 500`.
+SPEC.md's "roughly 1,500–2,500 words" is **300–500 words per fiscal year**
+multiplied by the only window that existed when it was written. Under a fixed
+pair, `settings.MAX_WINDOW_YEARS = 10` would allow a window whose brief must fit
+250 words a year — **half MORN's density, so no document could pass.** The check
+was unsatisfiable by construction across most of the supported range.
+
+MSFT is not verbose; it is wider. **496 naive words per fiscal year against
+MORN's 518.**
+
+| window | range | result |
+|---|---|---|
+| MORN, 5y | 1,500–2,500 — *identical* | passes, as before |
+| MSFT, 6y | 1,800–3,000 | 2,690 passes |
+| 10y | 3,000–5,000 | satisfiable at last |
+
+**And it removed a duplicate that was one edit from lying.** The target lived in
+`company.toml` as `brief_words_min`/`brief_words_max` while the check lived in
+`config/outputs.toml` as `[verify.word_range]` — two copies agreeing at 1,500 /
+2,500 only because neither had been changed. Scaling one and not the other would
+have told the writer 1,500–2,500 while failing it at 1,800–3,000: asked for one
+thing, failed for another. Both now come from
+`verify_outputs.word_range(cfg, pack, doc)`, which `generate_outputs.brief_ask`
+calls for the prompt and `verify` calls for the gate. `load_gen_config` **refuses**
+a `company.toml` still carrying the old keys rather than ignoring them.
+
+Rule 3, exercised: reinstating `brief_words_min` produced the FATAL with the
+file path, the key and the remedy; a malformed pack raises rather than defaulting
+to a one-year window (which would scale every range to 300–500 and fail
+everything); and 13 new checks pin the arithmetic at 5, 6 and 10 years, including
+`2,690 <= 2500 is False` so the original bug stays pinned. **589 checks.**
+
+## Finding 9 (FIXED): a 188-character heading broke across a page, and the CSS to stop it does not exist
+
+`render_pdf`'s read-back refused `discussion-points.pdf`: 1 heading "MISSING",
+with **0 ids, 0 glyphs and 0 words lost, 6,549 words in order**. Those cannot
+both be descriptions of lost content.
+
+Measured rather than assumed: 145 of the heading's 154 flattened characters
+matched, then the extracted text read `discussion-points.md·rendered2` — the
+**running footer**. The heading split across a page boundary, leaving
+"hardware?" alone on the next page. Every word was present.
+
+**The pair of facts that identifies this class:** *words all present* + *heading
+"missing"* means **interrupted, not lost**. Recorded at the check itself, because
+its FATAL says "do not contain everything their Markdown does", which in this
+case is untrue.
+
+Fixed at the source rather than by loosening the check — a heading broken over a
+page is a real defect even though nothing is missing. **And the obvious fix does
+not exist:** `page-break-inside: avoid` was tried first and changed nothing.
+xhtml2pdf's supported-CSS reference lists `page-break-after` and
+`page-break-before` **only** — no `page-break-inside`, and no CSS3 `break-*`.
+All of them parse, none is honoured, and the PDF re-rendered with the same
+heading still broken. The working property is the vendor-specific
+**`-pdf-keep-with-next: true`**, which moves a heading wholesale to the next
+frame when it will not fit; there is no property making a block unbreakable on
+its own. `print_css`'s own docstring already said "keep to what it actually
+honours", which is the second time that warning has been earned.
+
+Both companies re-rendered clean: MSFT 3 PDFs, all 35 headings; MORN 3 PDFs
+unaffected.
+
+## Finding 10 (FIXED): a set iteration made `ledger-report.md` dirty on every re-run
+
+Caught by the full thirteen-stage run, from `git status` rather than from any
+check: `ledger-report.md` came back **modified** after a re-run over identical
+inputs. Two FY2020 warnings had swapped places. Rule 4 names this exactly —
+*"Any run-to-run difference — a timestamp inside a payload, unsorted keys — is a
+bug, not cosmetic."*
+
+`build_ledger.py:616` read:
+
+```python
+missing_tasks = [t for t in {t for t, _, _ in FIELD_MAP} if not task_cache.get(t)]
+dq["extraction_tasks_missing"] = sorted(missing_tasks)   # sorted HERE
+for t in missing_tasks:                                  # and NOT here
+    warnings.append(...)
+```
+
+It iterates a **set**, whose iteration order for strings differs between
+processes under hash randomization. `sorted()` was applied to the JSON field and
+not to the loop that writes the Markdown, so **the JSON was stable and the
+Markdown was not** — which is why every check stayed green while the working tree
+went dirty.
+
+**MORN could not have caught this.** It needs *two* missing tasks in *one* fiscal
+year to have anything to reorder, and MORN never had that;
+`tests/regression/morn/test_reruns_change_nothing.py` re-runs the stages and
+compares committed bytes, and would have passed forever. MSFT's FY2020 is missing
+both `investor_qa` and `letter`.
+
+Sorted once and used sorted. Verified across four values of `PYTHONHASHSEED`
+(1, 2, 7, 99): one distinct sha256, and byte-identical to the committed file. The
+failing case needed no construction — two consecutive real runs had already
+produced different bytes.
+
+## The full thirteen-stage run
+
+```
+registry : 13 stages     ran : 11     nothing to do : 2 (extract_facts, generate_outputs)
+```
+
+Exit 0. 13 selected = 11 ran + 2 no-ops, which reconciles. `verify_outputs`:
+every hard check passed on both documents. `render_pdf`: 3 PDFs, every word,
+fact id, heading and at-risk glyph present.
+
+**This completes item 27's three gate paths with a real run behind each:**
+
+| path | how it was reached |
+|---|---|
+| approved | `--only extract_facts --yes`, 42 calls |
+| declined | a piped stdin, read as **no** — exit 3, nothing spent |
+| nothing to do | the full run: both spending stages no-op, no prompt |

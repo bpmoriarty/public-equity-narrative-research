@@ -167,14 +167,43 @@ qa_subject_pattern = '(?:question|answer|investor q&a|reg fd|regulation fd)'
 # review as resting mostly on voluntary disclosure. Review only, never a failure.
 qa_majority_share = 0.5
 
-# SPEC.md 4a and 4c. The brief carries an explicit word target; discussion-points
-# does not, so its range is wide enough only to catch a truncated or runaway
-# document rather than to enforce a length. Sub-tables come last: in TOML,
-# everything after a [verify.x] header belongs to that sub-table, so a scalar
-# written below one would silently land in the wrong place.
-[verify.word_range]
-"narrative-brief.md" = [1500, 2500]
-"discussion-points.md" = [800, 8000]
+# SPEC.md 4a and 4c, PER FISCAL YEAR rather than per document.
+#
+# SPEC.md words the brief as "roughly 1,500-2,500 words", and that was written
+# when a five-year window was the only window. Divide it: 1,500/5 = 300 and
+# 2,500/5 = 500. The spec's real unit is 300-500 words a year, and the absolute
+# pair was that rate multiplied by the only n anyone had.
+#
+# WHY THIS HAD TO CHANGE. MSFT is six years. Its brief came in at 2,690 words —
+# 496 naive words a fiscal year against MORN's 518, so LESS dense than the
+# document the ceiling was calibrated on — and failed a 2,500 ceiling it could
+# not have passed while covering the window at the same depth. Three paid
+# `--fix-constraints` rounds moved it 2,882 -> 2,853 -> 2,733 -> 2,690: asked for
+# an 8% cut it gave ~0.5% a round, because compression fights the citations and
+# quotations it must keep. `settings.MAX_WINDOW_YEARS` allows 10, where a fixed
+# 2,500 would mean 250 words a year and NO document could pass. The check was
+# unsatisfiable by construction for most of the supported range.
+#
+# Scaling reproduces [1500, 2500] EXACTLY at five years, so MORN's committed
+# deliverables are unaffected by construction rather than by luck — which is the
+# only reason this is a re-parameterization and not a relaxed check.
+#
+# discussion-points has no target in SPEC.md; its range only catches a truncated
+# or runaway document, so it scales too: [800, 8000] / 5 = [160, 1600].
+#
+# ONE SOURCE OF TRUTH. These rates are also what the GENERATION prompt is built
+# from (`generate_outputs.brief_ask`). They used to be duplicated as
+# `brief_words_min`/`brief_words_max` in every company.toml, where they happened
+# to agree with the numbers here; scaling one copy and not the other would tell
+# the writer 1,500-2,500 while judging it at 1,800-3,000, which is how a document
+# gets asked for one thing and failed for another.
+#
+# Sub-tables come last: in TOML, everything after a [verify.x] header belongs to
+# that sub-table, so a scalar written below one would silently land in the wrong
+# place.
+[verify.words_per_fiscal_year]
+"narrative-brief.md" = [300, 500]
+"discussion-points.md" = [160, 1600]
 
 # SPEC.md 4a and 4c again: the sections each document must actually contain.
 # Matched case-insensitively as substrings, so the writer can phrase a heading
@@ -202,7 +231,7 @@ qa_majority_share = 0.5
 # survived. A PDF that silently dropped a citation would look perfectly fine.
 #
 # SCALARS FIRST, SUB-TABLES LAST. Same trap this file already documents under
-# [verify.word_range]: in TOML everything after a [pdf.page] header belongs to that
+# [verify.words_per_fiscal_year]: in TOML everything after a [pdf.page] header belongs to that
 # sub-table, so a scalar written below one lands somewhere it was never meant to and
 # nothing complains. Writing this block the wrong way round put `default_font_pt`
 # inside [pdf.page] on the first attempt.
