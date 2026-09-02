@@ -1865,6 +1865,13 @@ def main() -> None:
             # 1.25x or 2.0x depending on the engine, and no field in `usage` says
             # which one produced them.
             "backend": backend.name, "cache_ttl": backend.cache_ttl,
+            # Which credential paid. "seat" => `cost_usd` below is NOTIONAL.
+            # See LLMResult.billing in model_client.py for why `backend` alone
+            # could not answer this.
+            "billing": "seat" if backend.name == "claude_code" else "api_key",
+            "credentials_withheld": (
+                list(model_client.api_credentials_visible())
+                if backend.name == "claude_code" else []),
             "pack_sha256": sha, "pack_ids": len(index),
             "ask_sha256": hashlib.sha256(ask.encode("utf-8")).hexdigest(),
             "system_sha256": hashlib.sha256(SYSTEM.encode("utf-8")).hexdigest(),

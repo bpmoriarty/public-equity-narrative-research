@@ -11,9 +11,18 @@ __pycache__/
 Thumbs.db
 desktop.ini
 
-# Secrets — EDGAR_IDENTITY and ANTHROPIC_API_KEY live here, never in git.
-# .env.example IS committed as the template.
-.env
+# Secrets — never in git. `.env.example` IS committed, as the template.
+#
+# THE GLOB IS DELIBERATE, and it is a near-miss rather than tidiness. This read
+# `.env` alone. On 2026-09-02, moving the API key out of the auto-loaded `.env`
+# into an opt-in `.env.api`, `git check-ignore` reported `.env.api` — and
+# `.env.local`, and `secrets/.env.api` — as TRACKED. Creating the file first and
+# checking afterwards would have committed a live credential.
+#
+# So: every `.env*` is ignored, and the template is exempted back in. Adding a
+# new secrets file must not depend on remembering to add a new ignore line.
+.env*
+!.env.example
 
 # Claude Code persistent memory (local only)
 memory/

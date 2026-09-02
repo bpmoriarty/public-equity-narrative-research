@@ -719,6 +719,15 @@ def run_one(backend: model_client.Backend, cfg: dict, unit: dict) -> dict:
         # their absence means "api", which is what tests/test_repo_hygiene.py
         # relies on to keep recognising them as paid model output.
         "backend": resp.backend,
+        # WHICH CREDENTIAL PAID, which `backend` above does not say. "seat" means
+        # the dollars anyone derives from `usage` below are NOTIONAL — what the
+        # API would have charged, not what was billed. "api_key" means they are
+        # real. The two came apart once: with ANTHROPIC_API_KEY inherited by the
+        # CLI subprocess, a record stamped backend=claude_code could have been
+        # billed to a key. `credentials_withheld` is the evidence that the
+        # stripping happened rather than the assertion that it did.
+        "billing": resp.billing,
+        "credentials_withheld": list(resp.credentials_withheld),
         "effort": ex["effort"],
         "stop_reason": resp.stop_reason,
         # Kept whole rather than picking two keys: the claude_code backend

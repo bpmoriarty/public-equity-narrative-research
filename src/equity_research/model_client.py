@@ -109,12 +109,28 @@ class LLMResult:
     survives the engine change — a facts file written through Claude Code and
     one written through the API must be distinguishable after the fact, or
     "which engine produced this?" becomes unanswerable the moment both have run.
+
+    `billing` answers the question `backend` does NOT. `backend` records which
+    CODE PATH ran; it says nothing about which credential paid. Those came apart
+    once already: with ANTHROPIC_API_KEY inherited by the CLI subprocess, a record
+    stamped `claude_code` could have been billed to an API key while every dollar
+    printed alongside it was labelled notional. Recording it makes "this cost no
+    real money" a fact on the record rather than an inference from the config.
     """
 
     text: str
     usage: dict[str, Any]
     backend: str
     model: str
+    # "seat"  — the CLI ran with every API credential stripped from its
+    #           environment, so the dollars derived from `usage` are NOTIONAL.
+    # "api_key" — the anthropic SDK was used; the dollars are REAL.
+    # Set by the backend, never by a caller.
+    billing: str = "unknown"
+    # Credentials that existed in the parent process but were withheld from the
+    # call. Empty on a machine with no key. Non-empty is not a problem — it is
+    # the evidence that the withholding happened.
+    credentials_withheld: tuple[str, ...] = ()
     # Which write multiplier prices this record's cache_creation tokens. Carried
     # on the result rather than looked up later because a usage dict on its own
     # cannot say: the same numbers cost 1.25x or 2.0x depending on the engine
@@ -279,6 +295,50 @@ def _strip_fence(text: str) -> str:
     return t.rsplit("```", 1)[0].strip()
 
 
+# Credentials that would make the CLI authenticate as API traffic instead of
+# against the seat. Removed from the child's environment, not merely unused.
+API_CREDENTIAL_VARS = ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN")
+
+
+def seat_only_env() -> dict[str, str]:
+    """The parent environment with every API credential removed.
+
+    WHY THIS EXISTS, and it is the difference between a true statement and a
+    false one.
+
+    `backend = "claude_code"` selects the CLI, and the whole operating assumption
+    of this project is that the CLI runs on a seat with no API key -- so every
+    dollar figure the pipeline prints is NOTIONAL, what the API would have
+    charged. That claim was not enforced anywhere.
+
+    `_bootstrap` loads `.env` into `os.environ`, and `subprocess.run` without an
+    explicit `env=` hands the child everything. The Claude Code CLI treats
+    ANTHROPIC_API_KEY as an authentication method. So on any machine where a key
+    exists -- this one, because the MORN pilot used it -- the calls would very
+    likely authenticate as API traffic and bill the key, while every facts record
+    still stamped `backend: claude_code` and every printed dollar still said
+    "notional". The notional claim would have been false and the spend real.
+
+    Found before the first MSFT extraction call, by asking where the subprocess
+    gets its environment rather than trusting the docstring above.
+
+    NOT a workaround for having a key around: the `api` backend is a deliberate
+    fallback and still works when it is explicitly selected, because it reads the
+    key in-process through the SDK and never goes through here. This only stops a
+    credential leaking into a call that was asked to use the seat.
+
+    A LOUD FAILURE IS THE POINT. If seat auth is not configured, the call now
+    fails with an auth error instead of silently billing a key. That is the safe
+    direction, and the error is the diagnosis.
+    """
+    return {k: v for k, v in os.environ.items() if k not in API_CREDENTIAL_VARS}
+
+
+def api_credentials_visible() -> list[str]:
+    """Which API credentials are present in this process. For the audit record."""
+    return [k for k in API_CREDENTIAL_VARS if os.environ.get(k)]
+
+
 class ClaudeCodeBackend:
     """Headless `claude --print`. The default: needs a seat, not an API key."""
 
@@ -315,7 +375,7 @@ class ClaudeCodeBackend:
         try:
             proc = subprocess.run(cmd, input=prompt.encode("utf-8"),
                                   capture_output=True, cwd=self._cwd,
-                                  timeout=self.timeout_s)
+                                  env=seat_only_env(), timeout=self.timeout_s)
         except subprocess.TimeoutExpired:
             raise BackendError(
                 f"claude_code call exceeded {self.timeout_s}s and was killed."
@@ -374,6 +434,8 @@ class ClaudeCodeBackend:
                 usage=env.get("usage") or {},
                 backend=self.name,
                 model=model,
+                billing="seat",
+                credentials_withheld=tuple(api_credentials_visible()),
                 cache_ttl=self.cache_ttl,
                 stop_reason=env.get("stop_reason"),
                 cost_usd=env.get("total_cost_usd"),
@@ -395,6 +457,8 @@ class ClaudeCodeBackend:
                 continue
             return LLMResult(
                 text=text, usage=result.usage, backend=self.name, model=model,
+                billing="seat",
+                credentials_withheld=tuple(api_credentials_visible()),
                 cache_ttl=self.cache_ttl, stop_reason=result.stop_reason,
                 cost_usd=result.cost_usd, session_id=result.session_id,
                 parsed=parsed, raw=env,
@@ -474,8 +538,11 @@ class ApiBackend:
 
         text = "".join(b.text for b in resp.content if getattr(b, "type", None) == "text")
         usage = resp.usage.model_dump() if hasattr(resp.usage, "model_dump") else dict(resp.usage)
+        # billing="api_key": these dollars are REAL, not notional. The one place
+        # in the project where that is true, and it says so on every record.
         return LLMResult(text=text.strip(), usage=usage, backend=self.name,
-                         model=model, cache_ttl=self.cache_ttl,
+                         model=model, billing="api_key",
+                         cache_ttl=self.cache_ttl,
                          stop_reason=resp.stop_reason, parsed=parsed, raw=None)
 
     def count_tokens(self, *, model: str, system: str, prompt: str) -> int | None:
