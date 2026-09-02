@@ -1,0 +1,3251 @@
+{
+  "fiscal_year": 2022,
+  "ticker": "MSFT",
+  "cik": "0000789019",
+  "company_name": "MICROSOFT CORP",
+  "filings": [
+    {
+      "form": "8-K",
+      "accession": "0001193125-21-225746",
+      "filed": "2021-07-27",
+      "report_date": "2021-07-27",
+      "items": [
+        "2.02",
+        "9.01"
+      ],
+      "disposition": "date_only"
+    },
+    {
+      "form": "8-K",
+      "accession": "0001193125-21-307941",
+      "filed": "2021-10-26",
+      "report_date": "2021-10-26",
+      "items": [
+        "2.02",
+        "9.01"
+      ],
+      "disposition": "date_only"
+    },
+    {
+      "form": "8-K",
+      "accession": "0001193125-21-343711",
+      "filed": "2021-11-30",
+      "report_date": "2021-11-30",
+      "items": [
+        "5.07"
+      ],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "8-K",
+      "accession": "0001193125-22-017041",
+      "filed": "2022-01-25",
+      "report_date": "2022-01-25",
+      "items": [
+        "2.02",
+        "9.01"
+      ],
+      "disposition": "date_only"
+    },
+    {
+      "form": "8-K",
+      "accession": "0001193125-22-120207",
+      "filed": "2022-04-26",
+      "report_date": "2022-04-26",
+      "items": [
+        "2.02",
+        "9.01"
+      ],
+      "disposition": "date_only"
+    },
+    {
+      "form": "10-K",
+      "accession": "0001564590-22-026876",
+      "filed": "2022-07-28",
+      "report_date": "2022-06-30",
+      "items": [],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "DEF 14A",
+      "accession": "0001193125-22-270484",
+      "filed": "2022-10-27",
+      "report_date": "2022-12-13",
+      "items": [],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "DEFA14A",
+      "accession": "0001193125-22-270488",
+      "filed": "2022-10-27",
+      "report_date": null,
+      "items": [],
+      "disposition": "in_scope"
+    }
+  ],
+  "earnings_release_dates": [
+    "2021-07-27",
+    "2021-10-26",
+    "2022-01-25",
+    "2022-04-26"
+  ],
+  "strategic_priorities": [
+    {
+      "id": "SP-FY2022-f04e40de",
+      "field": "strategic_priorities",
+      "fiscal_year": 2022,
+      "value": {
+        "text": "Our research and development efforts focus on three interconnected ambitions: Reinvent productivity and business processes; Build the intelligent cloud and intelligent edge platform; Create more personal computing."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "To achieve our vision, our research and development efforts focus on three interconnected ambitions:\n\u2022\nReinvent productivity and business processes.\n\u2022\nBuild the intelligent cloud and intelligent edge platform.\n\u2022\nCreate more personal computing.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2022-d75fc989",
+      "field": "strategic_priorities",
+      "fiscal_year": 2022,
+      "value": {
+        "text": "Building a distributed computing fabric across cloud and the edge to help every organization build, run, and manage mission-critical workloads anywhere."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We are building a distributed computing fabric \u2013 across cloud and the edge \u2013 to help every organization build, run, and manage mission-critical workloads anywhere.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2022-7da446a1",
+      "field": "strategic_priorities",
+      "fiscal_year": 2022,
+      "value": {
+        "text": "Enabling metaverse experiences at all layers of our stack."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We are enabling metaverse experiences at all layers of our stack, so customers can more effectively model, automate, simulate, and predict changes within their industrial environments, feel a greater sense of presence in the new world of hybrid work, and create custom immersive worlds to enable new opportunities for connection and experimentation.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2022-c4294b1a",
+      "field": "strategic_priorities",
+      "fiscal_year": 2022,
+      "value": {
+        "text": "Transforming the workplace to deliver new modern, modular business applications, drive deeper insights, and improve how people communicate, collaborate, learn, work, play, and interact with one another."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Transforming the workplace to deliver new modern, modular business applications, drive deeper insights, and improve how people communicate, collaborate, learn, work, play, and interact with one another.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2022-fade413b",
+      "field": "strategic_priorities",
+      "fiscal_year": 2022,
+      "value": {
+        "text": "Building and running cloud-based services in ways that unleash new experiences and opportunities for businesses and individuals."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Building and running cloud-based services in ways that unleash new experiences and opportunities for businesses and individuals.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2022-5f521449",
+      "field": "strategic_priorities",
+      "fiscal_year": 2022,
+      "value": {
+        "text": "Applying AI to drive insights and act on our customer's behalf by understanding and interpreting their needs using natural methods of communication."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Applying AI to drive insights and act on our customer\u2019s behalf by understanding and interpreting their needs using natural methods of communication.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2022-e23fd499",
+      "field": "strategic_priorities",
+      "fiscal_year": 2022,
+      "value": {
+        "text": "Tackling security from all angles with our integrated, end-to-end solutions spanning security, compliance, identity, and management, across all clouds and platforms."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Tackling security from all angles with our integrated, end-to-end solutions spanning security, compliance, identity, and management, across all clouds and platforms.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2022-bc0540fb",
+      "field": "strategic_priorities",
+      "fiscal_year": 2022,
+      "value": {
+        "text": "Inventing new gaming experiences that bring people together around their shared love for games on any devices and pushing the boundaries of innovation with console and PC gaming."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Inventing new gaming experiences that bring people together around their shared love for games on any devices and pushing the boundaries of innovation with console and PC gaming by creating the next wave of entertainment.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2022-e374133a",
+      "field": "strategic_priorities",
+      "fiscal_year": 2022,
+      "value": {
+        "text": "Using Windows to fuel our cloud business, grow our share of the PC market, and drive increased engagement with our services."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Using Windows to fuel our cloud business, grow our share of the PC market, and drive increased engagement with our services like Microsoft 365 Consumer, Teams, Edge, Bing, Xbox Game Pass, and more.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2022-fb939754",
+      "field": "strategic_priorities",
+      "fiscal_year": 2022,
+      "value": {
+        "text": "Continued investment in high performance and sustainable computing to meet growing demand for Microsoft services provided by our cloud infrastructure and datacenters."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We continue to invest in high performance and sustainable computing to meet the growing demand for fast access to Microsoft services provided by our network of cloud computing infrastructure and datacenters.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2022-d9d8e5e7",
+      "field": "strategic_priorities",
+      "fiscal_year": 2022,
+      "value": {
+        "text": "Continued investment in gaming content, community, and cloud services, including announced plans to acquire Activision Blizzard."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In January 2022, we announced plans to acquire Activision Blizzard , Inc., a leader in game development and an interactive entertainment content publisher .",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2022-329922b7",
+      "field": "strategic_priorities",
+      "fiscal_year": 2022,
+      "value": {
+        "text": "Commitment to be carbon negative by 2030 and to remove by 2050 all the carbon emitted since founding in 1975, with $1 billion invested over four years in new climate technologies; plus commitments to be water positive by 2030, zero waste by 2030, and to protect ecosystems."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In January 2020, we announced a bold commitment and detailed plan to be carbon negative by 2030, and to remove from the environment by 2050 all the carbon we have emitted since our founding in 1975. This included a commitment to invest $1 billion over four years in new technologies and innovative climate solutions. We built on this pledge by adding commitments to be water positive by 2030, zero waste by 2030, and to protect ecosystems by developing a Planetary Computer.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2022-21f2d1ae",
+      "field": "strategic_priorities",
+      "fiscal_year": 2022,
+      "value": {
+        "text": "Racial Equity Initiative focused on three multi-year pillars, including a $150 million investment to strengthen inclusion and double the number of Black, African American, Hispanic, and Latinx leaders in the U.S. by 2025."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Increasing representation and strengthening inclusion: build on our momentum, adding a $150 million investment to strengthen inclusion and double the number of Black, African American, Hispanic, and Latinx leaders in the United States by 2025.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2022-8262d90e",
+      "field": "strategic_priorities",
+      "fiscal_year": 2022,
+      "value": {
+        "text": "Accelerating development of mixed reality solutions with new Azure services and devices."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We are accelerating our development of mixed reality solutions with new Azure services and devices.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2022-91419d16",
+      "field": "strategic_priorities",
+      "fiscal_year": 2022,
+      "value": {
+        "text": "Maintaining a long-term commitment to research and development across a wide spectrum of technologies, tools, and platforms spanning digital work and life experiences, cloud computing, AI, devices, and operating systems."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Based on our assessment of key technology trends, we maintain our long-term commitment to research and development across a wide spectrum of technologies, tools, and platforms spanning digital work and life experiences, cloud computing, AI, devices, and operating systems.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "segments": [
+    {
+      "id": "SEG-FY2022-aaf375f6",
+      "field": "segments",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Productivity and Business Processes",
+        "note": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We operate our business and report our financial performance using three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SEG-FY2022-90380afa",
+      "field": "segments",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Intelligent Cloud",
+        "note": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Our Intelligent Cloud segment consists of our public, private, and hybrid server products and cloud services that can power modern business and developers.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SEG-FY2022-1b0d3d98",
+      "field": "segments",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "More Personal Computing",
+        "note": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Our More Personal Computing segment consists of products and services that put customers at the center of the experience with our technology.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SEG-FY2022-5a5cf97b",
+      "field": "segments",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Intelligent Cloud",
+        "note": "Nuance, acquired March 4, 2022, is reported as part of the Intelligent Cloud segment and is included in all commercial metrics and the Server products and cloud services revenue growth metric."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In the third quarter of fiscal year 2022, we completed our acquisition of Nuance. Nuance is included in all commercial metrics and our Server products and cloud services revenue growth metric. Azure and other cloud services revenue includes Nuance cloud services, and Server products revenue includes Nuance on-premises offerings.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SEG-FY2022-77ccf0fc",
+      "field": "segments",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Microsoft Cloud",
+        "note": "Metric renamed \u2014 formerly reported as commercial cloud."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Microsoft Cloud (formerly commercial cloud) revenue increased 32% to $91.2 billion.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SEG-FY2022-b967fd1b",
+      "field": "segments",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Office Consumer and Server products and cloud services; Windows OEM and Search and news advertising",
+        "note": "Presentation and method of calculation for certain metrics updated in the first quarter of fiscal year 2022; company states no material impact on previously reported amounts."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In the first quarter of fiscal year 2022, we made updates to the presentation and method of calculation for certain metrics, most notably changes to incorporate all current and anticipated revenue streams within our Office Consumer and Server products and cloud services metrics and changes to align with how we manage our Windows OEM and Search and news advertising businesses. None of these changes had a material impact on previously reported amounts in our MD&A.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "headcount": [
+    {
+      "id": "HC-FY2022-e5fe1437",
+      "field": "headcount",
+      "fiscal_year": 2022,
+      "value": {
+        "value": 221000,
+        "as_stated": "approximately 221,000 people on a full-time basis, 122,000 in the U.S. and 99,000 internationally"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "As of June 30, 2022, we employed approximately 221,000 people on a full-time basis, 122,000 in the U.S. and 99,000 internationally.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "leadership": [
+    {
+      "id": "LEAD-FY2022-d791e48b",
+      "field": "leadership",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Carlos A. Rodriguez",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2021-11-30",
+        "stated_reason": null
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-21-343711",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-11-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Carlos A. Rodriguez\nElected\n99.78\n%\n5,187,710,712\n10,971,864\n7,204,737\n1,203,727,770",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LEAD-FY2022-2bc62493",
+      "field": "leadership",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Reid G. Hoffman",
+        "role": "Director",
+        "change": "other",
+        "date": "2021-11-30",
+        "stated_reason": null
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-21-343711",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-11-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Reid G. Hoffman\nRe-elected\n99.41\n%\n5,168,833,028\n30,179,393\n6,874,892\n1,203,727,770",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LEAD-FY2022-2d23f011",
+      "field": "leadership",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Satya Nadella",
+        "role": "Director",
+        "change": "other",
+        "date": "2021-11-30",
+        "stated_reason": null
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-21-343711",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-11-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Satya Nadella\nRe-elected\n94.72\n%\n4,904,391,102\n273,247,471\n28,248,740\n1,203,727,770",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LEAD-FY2022-63236262",
+      "field": "leadership",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "John W. Thompson",
+        "role": "Director",
+        "change": "other",
+        "date": "2021-11-30",
+        "stated_reason": null
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-21-343711",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-11-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "John W. Thompson\nRe-elected\n91.38\n%\n4,751,200,195\n448,003,714\n6,683,404\n1,203,727,770",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "board": [
+    {
+      "id": "BRD-FY2022-334969b5",
+      "field": "board",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Reid G. Hoffman",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "Election of Directors: (The Board recommends a vote FOR each nominee) For Against Abstain 01.Reid G. Hoffman 02. Hugh F. Johnston 03.Teri L. List 04. Satya Nadella 05. Sandra E. Peterson 06. Penny S. Pritzker 07. Carlos A. Rodriguez 08.Charles W. Scharf 09. John W. Stanton 10.John W. Thompson 11. Emma N. Walmsley 12.Padmasree Warrior",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2022-7878a268",
+      "field": "board",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Hugh F. Johnston",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "01.Reid G. Hoffman 02. Hugh F. Johnston 03.Teri L. List 04. Satya Nadella 05. Sandra E. Peterson 06. Penny S. Pritzker",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2022-04788e3e",
+      "field": "board",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Teri L. List",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "01.Reid G. Hoffman 02. Hugh F. Johnston 03.Teri L. List 04. Satya Nadella 05. Sandra E. Peterson 06. Penny S. Pritzker",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2022-dfe6e54e",
+      "field": "board",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Satya Nadella",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "The undersigned hereby appoints JOHN W. THOMPSON and SATYA NADELLA, and each of them, with full power of substitution, as proxies to vote all the shares the undersigned is entitled to vote at the Annual Shareholders Meeting of the Company",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2022-b54acabc",
+      "field": "board",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Sandra E. Peterson",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "04. Satya Nadella 05. Sandra E. Peterson 06. Penny S. Pritzker 07. Carlos A. Rodriguez 08.Charles W. Scharf",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2022-78913551",
+      "field": "board",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Penny S. Pritzker",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "05. Sandra E. Peterson 06. Penny S. Pritzker 07. Carlos A. Rodriguez 08.Charles W. Scharf 09. John W. Stanton",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2022-59c2f8cd",
+      "field": "board",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Carlos A. Rodriguez",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "06. Penny S. Pritzker 07. Carlos A. Rodriguez 08.Charles W. Scharf 09. John W. Stanton 10.John W. Thompson",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2022-c421a87d",
+      "field": "board",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Charles W. Scharf",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "07. Carlos A. Rodriguez 08.Charles W. Scharf 09. John W. Stanton 10.John W. Thompson 11. Emma N. Walmsley 12.Padmasree Warrior",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2022-1e6ee01d",
+      "field": "board",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "John W. Stanton",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "08.Charles W. Scharf 09. John W. Stanton 10.John W. Thompson 11. Emma N. Walmsley 12.Padmasree Warrior",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2022-ad530049",
+      "field": "board",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "John W. Thompson",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "The undersigned hereby appoints JOHN W. THOMPSON and SATYA NADELLA, and each of them, with full power of substitution, as proxies to vote all the shares the undersigned is entitled to vote at the Annual Shareholders Meeting of the Company",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2022-88e34ed1",
+      "field": "board",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Emma N. Walmsley",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "09. John W. Stanton 10.John W. Thompson 11. Emma N. Walmsley 12.Padmasree Warrior",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2022-a41e5e50",
+      "field": "board",
+      "fiscal_year": 2022,
+      "value": {
+        "name": "Padmasree Warrior",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "10.John W. Thompson 11. Emma N. Walmsley 12.Padmasree Warrior",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "incentive_metrics": [
+    {
+      "id": "INC-FY2022-18fa7fd3",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "Incentive Plan Revenue",
+        "plan": "Annual cash incentive (Executive Incentive Plan) \u2014 financial portion",
+        "weight": "35% (financial portion is 70% for CEO, 50% for other NEOs)",
+        "target_or_range": "FY22 Threshold $194.78B / Target $207.21B / Maximum $218.61B; FY22 Actual $206.67B"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "FY22 Incentive Plan Revenue\n$174.59\n$194.78\n$207.21\n$218.61\n$206.67\n18.37%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-de1fcd89",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "Incentive Plan Operating Income",
+        "plan": "Annual cash incentive (Executive Incentive Plan) \u2014 financial portion",
+        "weight": "35%",
+        "target_or_range": "FY22 Threshold $75.08B / Target $82.02B / Maximum $92.67B; FY22 Actual $86.73B"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "FY22 Incentive Plan Operating Income\n$71.53\n$75.08\n$82.02\n$92.67\n$86.73\n21.25%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-47b72051",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "Product & Strategy (operational assessment)",
+        "plan": "Annual cash incentive \u2014 operational portion (30% CEO / 50% other NEOs)",
+        "weight": "10% (CEO)",
+        "target_or_range": "Results out of a possible 200% in each category; Mr. Nadella scored 160%"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Product & Strategy (10%)\n160%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-8249b65c",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "Customers & Stakeholders (operational assessment)",
+        "plan": "Annual cash incentive \u2014 operational portion",
+        "weight": "10% (CEO)",
+        "target_or_range": "Mr. Nadella scored 170% (out of possible 200%)"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Customers & Stakeholders (10%)\n170%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-563b9714",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "Culture, Diversity & Sustainability (operational assessment)",
+        "plan": "Annual cash incentive \u2014 operational portion",
+        "weight": "10% (CEO)",
+        "target_or_range": "Mr. Nadella scored 165% (out of possible 200%)"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Culture, Diversity & Sustainability (10%)\n165%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-1404d593",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "Microsoft Cloud Revenue",
+        "plan": "Fiscal year 2022 performance stock awards (PSAs)",
+        "weight": "30%",
+        "target_or_range": "FY22 Target $91.49B / Actual $93.48B (payout 126.39%)"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Microsoft Cloud Revenue*\nRevenue from Azure and other cloud services, Office 365 Commercial, the commercial portion of LinkedIn, Dynamics 365, and other commercial cloud properties\n30%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-a06c8dae",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "Microsoft Cloud Subscribers Growth",
+        "plan": "Fiscal year 2022 performance stock awards (PSAs)",
+        "weight": "20%",
+        "target_or_range": "FY22 Target 26.44% / Actual 20.95% (payout 68.91%)"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Microsoft Cloud\nSubscribers Growth\nPaid seats for current or new per-user SaaS cloud services primarily in commercial customer segment\n20%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-a183794c",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "Teams Monthly Active Usage Growth",
+        "plan": "Fiscal year 2022 performance stock awards (PSAs)",
+        "weight": "20%",
+        "target_or_range": "FY22 Target 24.52% / Actual 3.82% (payout 50.92%)"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Teams Monthly Active Usage Growth\nUnique monthly active users of Teams in Enterprise, Corporate, Small and Medium Business, Education, and Consumer\n20%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-9bf6f950",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "Xbox Game Pass Subscribers Growth",
+        "plan": "Fiscal year 2022 performance stock awards (PSAs)",
+        "weight": "10%",
+        "target_or_range": "FY22 Target 72.88% / Actual 28.07% (payout 56.80%)"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Xbox Game Pass Subscribers Growth\nCurrent number of paid Game Pass Subscriptions (Console, PC, Ultimate)\n10%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-8caf228e",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "Windows OEM Revenue Growth",
+        "plan": "Fiscal year 2022 performance stock awards (PSAs)",
+        "weight": "10%",
+        "target_or_range": "FY22 Target 4.20% / Actual 11.10% (payout 191.15%)"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Windows OEM Revenue* Growth\nRevenue from sales of Windows Pro and non-Pro licenses sold through the OEM channel\n10%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-9f1d5b88",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "LinkedIn Sessions",
+        "plan": "Fiscal year 2022 performance stock awards (PSAs)",
+        "weight": "10%",
+        "target_or_range": "FY22 Target 64.98B sessions / Actual 64.13B (payout 90.66%)"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "LinkedIn Sessions\nMeasure of member visits as a leading indicator of the overall quality of the LinkedIn member experience and opportunity for members to realize their economic opportunity\n10%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-7cc92f3f",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "Three-year relative TSR modifier vs. the S&P 500",
+        "plan": "Performance stock awards (modifier applied to core metric results)",
+        "weight": "Modifier of 0.75\u20131.5x applied to PSA core metric payout",
+        "target_or_range": "Above 1x only if TSR positive and above the 60th percentile, up to 50% upside at the 80th percentile or above; up to 25% downside at the 20th percentile or below"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Relative TSR Modifier:\n\u2022 3-Year Relative TSR modifier (0.75\u2013 1.5x) as compared to the S&P 500\n\u2022 If Microsoft\u2019s TSR is positive and above the 60 th percentile, payout modifier is above 1x, with up to 50% upside at the 80 th percentile or above\n\u2022 If Microsoft\u2019s TSR is below the 40 th percentile, payout modifier is below 1x, with up to 25% downside at 20 th percentile or below",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-cd9622a8",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "Surface Revenue (FY20 and FY21 years of the FY2020 PSA; dropped for FY22)",
+        "plan": "Fiscal year 2020 performance stock awards (earlier performance years)",
+        "weight": "7% in FY20; 2.5% each half in FY21; N/A for FY22",
+        "target_or_range": "FY20 Target $6.40B / Actual $6.21B; FY21 H1 $2.87B / $3.51B, H2 $3.18B / $2.75B"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Surface Revenue\n7%\n$6.40B / $6.21B\nH1 - 2.5%\n$2.87B / $3.51B\nN/A\nN/A\nH2 - 2.5%\n$3.18B / $2.75B",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-f4ee9939",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "FY2020 PSA core metric performance (three-year average) and final payout",
+        "plan": "Fiscal year 2020 performance stock awards (completed performance period)",
+        "weight": "Average of FY20, FY21 and FY22 weighted performance",
+        "target_or_range": "Core metric performance 118.80%; relative TSR at 94th percentile produced maximum 150% multiplier, for payout of 178.20% of target shares"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Our TSR relative to the S&P 500 was at the 94 th percentile of the S&P 500, well in excess of the 80th percentile performance that was a condition to receiving the maximum 150% multiplier. Based on this result, the total payment percentage for the fiscal 2020 PSAs was increased by 50%, resulting in the payout to our Named Executives of 178.20% of the target fiscal 2020 PSA shares.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-73fe8b5b",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "Total FY22 annual cash incentive payout as percentage of target",
+        "plan": "Annual cash incentive (Executive Incentive Plan)",
+        "weight": "Financial 70% CEO / 50% other NEOs; operational 30% CEO / 50% other NEOs",
+        "target_or_range": "Financial results 121.03% for all NEOs; operational results 165.00% (Nadella, Hood, Smith), 163.34% (Althoff), 130.00% (Young); totals 134.22% / 143.02% / 142.19% / 143.02% / 125.52%"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Total FY22 cash incentive (% of target)\n134.22%\n143.02%\n142.19%\n143.02%\n125.52%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-eeaff402",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "Cash incentive award cap",
+        "plan": "Executive Incentive Plan",
+        "weight": null,
+        "target_or_range": "Limited to 200% of a target cash incentive award"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "\u2022 Cash incentive awards under the Incentive Plan are limited to 200% of a target cash incentive award",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-b732a749",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "Target cash incentive opportunity as percentage of base salary",
+        "plan": "Annual cash incentive (Executive Incentive Plan)",
+        "weight": null,
+        "target_or_range": "Nadella 300%; Hood 250%; Smith 250%; Young 200%; Althoff set at 250%"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "For fiscal year 2022, these opportunities were: Mr. Nadella \u2013 300%; Ms. Hood \u2013 250%; Mr. Smith \u2013 250%; and Mr. Young \u2013 200%. In connection with Mr. Althoff\u2019s appointment to Chief Commercial Officer the Compensation Committee set Mr. Althoff\u2019s target cash incentive opportunity at 250%.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2022-a87c69cd",
+      "field": "incentive_metrics",
+      "fiscal_year": 2022,
+      "value": {
+        "metric": "Equity mix between performance stock awards and time-vesting stock awards",
+        "plan": "Executive Incentive Plan equity incentives",
+        "weight": "CEO: 100% PSA / 0% SA; other NEOs: 50% PSA / 50% SA",
+        "target_or_range": "SAs vest 25% on August 31, 2023 and 12.5% each six months thereafter"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Equity incentives under the Incentive Plan were allocated 100% to target PSAs for our CEO. Equity incentives under the Incentive Plan were allocated 50% to target PSAs and 50% to stock awards with four-year vesting (\u201cSAs\u201d) for our other Named Executives.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "vote_results": [
+    {
+      "id": "VOTE-FY2022-fde78e49",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Election of director Reid G. Hoffman",
+        "votes_for": 5160882524,
+        "votes_against": 33174425,
+        "abstentions": 7489821,
+        "broker_non_votes": 1205617945,
+        "outcome": "Re-elected (99.36% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Reid G. Hoffman\nRe-elected\n99.36\n%\n5,160,882,524\n33,174,425\n7,489,821\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-09595072",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Election of director Hugh F. Johnston",
+        "votes_for": 5049948273,
+        "votes_against": 144383497,
+        "abstentions": 7215000,
+        "broker_non_votes": 1205617945,
+        "outcome": "Re-elected (97.22% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Hugh F. Johnston\nRe-elected\n97.22\n%\n5,049,948,273\n144,383,497\n7,215,000\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-63ca39a9",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Election of director Teri L. List",
+        "votes_for": 5096798624,
+        "votes_against": 97765350,
+        "abstentions": 6982796,
+        "broker_non_votes": 1205617945,
+        "outcome": "Re-elected (98.11% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Teri L. List\nRe-elected\n98.11\n%\n5,096,798,624\n97,765,350\n6,982,796\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-a430d52d",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Election of director Satya Nadella",
+        "votes_for": 4910653831,
+        "votes_against": 268298408,
+        "abstentions": 22594531,
+        "broker_non_votes": 1205617945,
+        "outcome": "Re-elected (94.81% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Satya Nadella\nRe-elected\n94.81\n%\n4,910,653,831\n268,298,408\n22,594,531\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-53235f27",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Election of director Sandra E. Peterson",
+        "votes_for": 5087619318,
+        "votes_against": 107175209,
+        "abstentions": 6752243,
+        "broker_non_votes": 1205617945,
+        "outcome": "Re-elected (97.93% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Sandra E. Peterson\nRe-elected\n97.93\n%\n5,087,619,318\n107,175,209\n6,752,243\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-b31e97c2",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Election of director Penny S. Pritzker",
+        "votes_for": 5175115956,
+        "votes_against": 19592685,
+        "abstentions": 6838129,
+        "broker_non_votes": 1205617945,
+        "outcome": "Re-elected (99.62% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Penny S. Pritzker\nRe-elected\n99.62\n%\n5,175,115,956\n19,592,685\n6,838,129\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-8545c71a",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Election of director Carlos A. Rodriguez",
+        "votes_for": 5170479184,
+        "votes_against": 23953746,
+        "abstentions": 7113840,
+        "broker_non_votes": 1205617945,
+        "outcome": "Re-elected (99.53% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Carlos A. Rodriguez\nRe-elected\n99.53\n%\n5,170,479,184\n23,953,746\n7,113,840\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-33e101d5",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Election of director Charles W. Scharf",
+        "votes_for": 5122800449,
+        "votes_against": 71604817,
+        "abstentions": 7141504,
+        "broker_non_votes": 1205617945,
+        "outcome": "Re-elected (98.62% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Charles W. Scharf\nRe-elected\n98.62\n%\n5,122,800,449\n71,604,817\n7,141,504\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-3c315c04",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Election of director John W. Stanton",
+        "votes_for": 5168492930,
+        "votes_against": 25964121,
+        "abstentions": 7089719,
+        "broker_non_votes": 1205617945,
+        "outcome": "Re-elected (99.50% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "John W. Stanton\nRe-elected\n99.50\n%\n5,168,492,930\n25,964,121\n7,089,719\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-c9481624",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Election of director John W. Thompson",
+        "votes_for": 5099883372,
+        "votes_against": 63367837,
+        "abstentions": 38295561,
+        "broker_non_votes": 1205617945,
+        "outcome": "Re-elected (98.77% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "John W. Thompson\nRe-elected\n98.77\n%\n5,099,883,372\n63,367,837\n38,295,561\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-2f9acfc8",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Election of director Emma N. Walmsley",
+        "votes_for": 5125070256,
+        "votes_against": 69672875,
+        "abstentions": 6803639,
+        "broker_non_votes": 1205617945,
+        "outcome": "Re-elected (98.65% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Emma N. Walmsley\nRe-elected\n98.65\n%\n5,125,070,256\n69,672,875\n6,803,639\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-c25ba705",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Election of director Padmasree Warrior",
+        "votes_for": 5124164692,
+        "votes_against": 70387897,
+        "abstentions": 6994181,
+        "broker_non_votes": 1205617945,
+        "outcome": "Re-elected (98.64% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Padmasree Warrior\nRe-elected\n98.64\n%\n5,124,164,692\n70,387,897\n6,994,181\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-b2f5ae1c",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Advisory Vote to Approve Named Executive Officer Compensation",
+        "votes_for": 4592889815,
+        "votes_against": 576592671,
+        "abstentions": 32064284,
+        "broker_non_votes": 1205617945,
+        "outcome": "Approved (88.84% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Advisory Vote to Approve Named Executive Officer Compensation\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nApproved\n88.84\n%\n4,592,889,815\n576,592,671\n32,064,284\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-a7eb7c67",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Ratification of Appointment of Deloitte & Touche LLP as Independent Auditor for Fiscal Year 2023",
+        "votes_for": 6090828328,
+        "votes_against": 295468078,
+        "abstentions": 20868309,
+        "broker_non_votes": null,
+        "outcome": "Approved (95.37% votes for); broker non-votes reported as N/A"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Ratification of Appointment of Independent Auditor for Fisal Year 2023\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nApproved\n95.37\n%\n6,090,828,328\n295,468,078\n20,868,309\nN/A",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-560d2d1a",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Shareholder Proposal: Cost/Benefit Analysis of Diversity and Inclusion",
+        "votes_for": 65452580,
+        "votes_against": 5096572869,
+        "abstentions": 39521321,
+        "broker_non_votes": 1205617945,
+        "outcome": "Not approved (1.26% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Shareholder Proposal: Cost/Benefit Analysis of Diversity and Inclusion\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n1.26\n%\n65,452,580\n5,096,572,869\n39,521,321\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-e3fa65ee",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Shareholder Proposal: Report on Hiring of Persons with Arrest or Incarceration Records",
+        "votes_for": 561881321,
+        "votes_against": 4575515870,
+        "abstentions": 64149579,
+        "broker_non_votes": 1205617945,
+        "outcome": "Not approved (10.93% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Shareholder Proposal: Report on Hiring of Persons with Arrest or Incarceration Records\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n10.93\n%\n561,881,321\n4,575,515,870\n64,149,579\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-250d751f",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Shareholder Proposal: Report on Investment of Retirement Funds in Companies Contributing to Climate Change",
+        "votes_for": 558833392,
+        "votes_against": 4423581196,
+        "abstentions": 219132182,
+        "broker_non_votes": 1205617945,
+        "outcome": "Not approved (11.21% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Shareholder Proposal: Report on Investment of Retirement Funds in Companies Contributing to Climate Change\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n11.21\n%\n558,833,392\n4,423,581,196\n219,132,182\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-5e20502e",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Shareholder Proposal: Report on Government Use of Microsoft Technology",
+        "votes_for": 1052632888,
+        "votes_against": 4099222359,
+        "abstentions": 49691523,
+        "broker_non_votes": 1205617945,
+        "outcome": "Not approved (20.43% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Shareholder Proposal: Report on Government Use of Microsoft Technology\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n20.43\n%\n1,052,632,888\n4,099,222,359\n49,691,523\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-4cc05e7a",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Shareholder Proposal: Report on Development of Products for Military",
+        "votes_for": 538430806,
+        "votes_against": 4575935372,
+        "abstentions": 87180592,
+        "broker_non_votes": 1205617945,
+        "outcome": "Not approved (10.52% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Shareholder Proposal: Report on Development of Products for Military\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n10.52\n%\n538,430,806\n4,575,935,372\n87,180,592\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2022-89727d0f",
+      "field": "vote_results",
+      "fiscal_year": 2022,
+      "value": {
+        "matter": "Shareholder Proposal: Report on Tax Transparency",
+        "votes_for": 1188222206,
+        "votes_against": 3982547802,
+        "abstentions": 30776762,
+        "broker_non_votes": 1205617945,
+        "outcome": "Not approved (22.97% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-306591",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2022-12-16"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Shareholder Proposal: Report on Tax Transparency\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n22.97\n%\n1,188,222,206\n3,982,547,802\n30,776,762\n1,205,617,945",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "events": [
+    {
+      "id": "EVT-FY2022-d82ea211",
+      "field": "events",
+      "fiscal_year": 2022,
+      "value": {
+        "type": "acquisition",
+        "description": "Completed acquisition of Nuance Communications, Inc. for a total purchase price of $18.8 billion, consisting primarily of cash; reported as part of Intelligent Cloud segment.",
+        "date": "2022-03-04"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "On March 4, 2022, we completed our acquisition of Nuance Communications, Inc. (\u201cNuance\u201d) for a total purchase price of $18.8 billion, consisting primarily of cash. Nuance is a cloud and artificial intelligence (\u201cAI\u201d) software provider with healthcare and enterprise AI experience, and the acquisition will build on our industry-specific cloud offerings.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2022-a94337e6",
+      "field": "events",
+      "fiscal_year": 2022,
+      "value": {
+        "type": "acquisition",
+        "description": "Definitive agreement to acquire Activision Blizzard, Inc. for $95.00 per share in an all-cash transaction valued at $68.7 billion; expected to close in fiscal year 2023 subject to regulatory approvals.",
+        "date": "2022-01-18"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "On January 18, 2022 , we entered into a definitive agreement to acquire Activision Blizzard , Inc. (\u201cActivision Blizzard\u201d ) for $ 95 .00 per share in an all-cash transaction valued at $ 68 .7 billion, inclusive of Activision Blizzard\u2019s net cash. The acquisition has been approved by Activision Blizzard\u2019s shareholders, and we expect it to close in fiscal year 2023, subject to the satisfaction of certain regulatory approvals and other customary closing conditions.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2022-e8bfc9ba",
+      "field": "events",
+      "fiscal_year": 2022,
+      "value": {
+        "type": "other",
+        "description": "Change in accounting estimate: useful lives of server and network equipment increased from four years to six years, effective fiscal year 2023, estimated to increase FY2023 operating income by $3.7 billion.",
+        "date": "2022-07-01"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In July 2022, we completed an assessment of the useful lives of our server and network equipment. Due to investments in software that increased efficiencies in how we operate our server and network equipment, as well as advances in technology, we determined we should increase the estimated useful lives of both server and network equipment from four years to six years.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2022-325f4f36",
+      "field": "events",
+      "fiscal_year": 2022,
+      "value": {
+        "type": "other",
+        "description": "Transfer of certain intangible properties from Puerto Rico subsidiary to the U.S., resulting in a $3.3 billion net income tax benefit in Q1 FY2022.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In the first quarter of fiscal year 2022, we transferred certain intangible properties from our Puerto Rico subsidiary to the U.S. The transfer of intangible properties resulted in a $3.3 billion net income tax benefit in the first quarter of fiscal year 2022, as the value of future U.S. tax deductions exceeds the current tax liability from the U.S. global intangible low-taxed income tax.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2022-95bf4115",
+      "field": "events",
+      "fiscal_year": 2022,
+      "value": {
+        "type": "other",
+        "description": "Share repurchases of 95 million shares for $28.0 billion in fiscal year 2022; $40.7 billion remained of the $60 billion program as of June 30, 2022.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "During fiscal years 2022 and 2021, we repurchased 95 million shares and 101 million shares of our common stock for $28.0 billion and $23.0 billion, respectively, through our share repurchase programs. All repurchases were made using cash resources. As of June 30, 2022, $40.7 billion remained of our $60 billion share repurchase program.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2022-d35c1783",
+      "field": "events",
+      "fiscal_year": 2022,
+      "value": {
+        "type": "other",
+        "description": "Board of Directors declared quarterly dividends of $0.62 per share during fiscal year 2022.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "During fiscal year 2022, our Board of Directors declared quarterly dividends of $0.62 per share. We intend to continue returning capital to shareholders in the form of dividends, subject to declaration by our Board of Directors.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2022-e79e4c21",
+      "field": "events",
+      "fiscal_year": 2022,
+      "value": {
+        "type": "other",
+        "description": "Microsoft held its 2021 Annual Shareholders Meeting; shareholders voted to elect each of the twelve nominees for director.",
+        "date": "2021-11-30"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-21-343711",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-11-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "On November 30, 2021, Microsoft Corporation (the \u201cCompany\u201d) held its 2021 Annual Shareholders Meeting (the \u201cAnnual Meeting\u201d). There were 7,507,897,348 shares of common stock entitled to be voted at the Annual Meeting, of which 6,409,615,083 were voted in person or by proxy.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2022-22ba4bb2",
+      "field": "events",
+      "fiscal_year": 2022,
+      "value": {
+        "type": "other",
+        "description": "Shareholders approved, on an advisory basis, the compensation of the Company's named executive officers (95.45% votes for).",
+        "date": "2021-11-30"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-21-343711",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-11-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "(2) Approved, on an advisory basis, the compensation of the Company\u2019s named executive officers.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2022-dda05e24",
+      "field": "events",
+      "fiscal_year": 2022,
+      "value": {
+        "type": "other",
+        "description": "Shareholders approved the Microsoft Employee Stock Purchase Plan (99.65% votes for).",
+        "date": "2021-11-30"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-21-343711",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-11-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "(3) Approved the Microsoft Employee Stock Purchase Plan",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2022-2a3da102",
+      "field": "events",
+      "fiscal_year": 2022,
+      "value": {
+        "type": "other",
+        "description": "Shareholders ratified the appointment of Deloitte & Touche LLP as the Company's independent registered public accounting firm for fiscal year 2022.",
+        "date": "2021-11-30"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-21-343711",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-11-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "(4) Voted to ratify the appointment of Deloitte & Touche LLP as the Company\u2019s independent registered public accounting firm for fiscal year 2022.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2022-4d399991",
+      "field": "events",
+      "fiscal_year": 2022,
+      "value": {
+        "type": "other",
+        "description": "Shareholders approved a shareholder proposal concerning a report on the effectiveness of workplace sexual harassment policies (77.97% votes for).",
+        "date": "2021-11-30"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-21-343711",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-11-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "(6) Approved a shareholder proposal concerning a report on the effectiveness of workplace sexual harassment policies.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2022-07e199cf",
+      "field": "events",
+      "fiscal_year": 2022,
+      "value": {
+        "type": "other",
+        "description": "Shareholders rejected a shareholder proposal concerning a report on median pay gaps across race and gender (40.04% votes for).",
+        "date": "2021-11-30"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-21-343711",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-11-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "(5) Rejected a shareholder proposal concerning a report on median pay gaps across race and gender.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2022-b9dad0bd",
+      "field": "events",
+      "fiscal_year": 2022,
+      "value": {
+        "type": "other",
+        "description": "Shareholders rejected a shareholder proposal to prohibit sales of facial recognition technology to all government entities (4.05% votes for).",
+        "date": "2021-11-30"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-21-343711",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-11-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "(7) Rejected a shareholder proposal to prohibit sales of facial recognition technology to all government entities.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2022-c3279315",
+      "field": "events",
+      "fiscal_year": 2022,
+      "value": {
+        "type": "other",
+        "description": "Shareholders rejected a shareholder proposal concerning a report on the implementation of the Fair Chance Business Pledge (13.83% votes for).",
+        "date": "2021-11-30"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-21-343711",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-11-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "(8) Rejected a shareholder proposal concerning a report on the implementation of the Fair Chance Business Pledge.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2022-a5ce12ef",
+      "field": "events",
+      "fiscal_year": 2022,
+      "value": {
+        "type": "other",
+        "description": "Shareholders rejected a shareholder proposal concerning a report on how lobbying activities align with Company policies (38.04% votes for).",
+        "date": "2021-11-30"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-21-343711",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2021-11-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "(9) Rejected a shareholder proposal concerning a report on how lobbying activities align with Company policies.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "notable_language": [
+    {
+      "id": "LANG-FY2022-fd0f8bad",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "A direct admission that ongoing investment is expected to raise costs and may compress margins \u2014 recurring but unusually plain language about a negative consequence."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The investments we are making in infrastructure and devices will continue to increase our operating costs and may decrease our operating margins.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-1a8939d2",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Hedged framing of macro and geopolitical exposure \u2014 \"remain dynamic\" as a euphemism for uncertainty in a year of macro deterioration."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Aggregate demand for our software, services, and devices is correlated to global macroeconomic and geopolitical factors, which remain dynamic.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-c01cc43e",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Management pre-frames slower Gaming growth as an artifact of a tough comparable and pandemic \"stay-at-home scenarios\" rather than demand weakness."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Gaming revenue increased $860 million or 6% on a strong prior year comparable that benefited from Xbox Series X|S launches and stay-at-home scenarios, driven by growth in Xbox hardware and Xbox content and services.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-fdd34974",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Reported margin declined, and the improvement is only visible after excluding a prior-year accounting estimate change \u2014 an important qualification on the margin narrative."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Gross margin percentage decreased slightly. Excluding the impact of the fiscal year 2021 change in accounting estimate for the useful lives of our server and network equipment, gross margin percentage increased 1 point driven by improvement in Productivity and Business Processes.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-1906933a",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Explicit supply-chain concentration admission: few qualified suppliers and limited near-term flexibility to substitute manufacturers."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Extended disruptions at these suppliers and/or manufacturers could lead to a similar disruption in our ability to manufacture devices on time to meet consumer demand.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-d8a32eb9",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "The recurring self-description/mission statement \u2014 the baseline phrasing against which year-over-year changes in self-characterisation are measured."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Microsoft is a technology company whose mission is to empower every person and every organization on the planet to achieve more. We strive to create local opportunity, growth, and impact in every country around the world.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-b1137d19",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Forward-looking commitment to rising capex, signaling sustained cloud infrastructure buildout."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2022-07-28"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We expect capital expenditures to increase in coming years to support growth in our cloud offerings.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-eedd3d56",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "States the rationale for the shift to 100% PSA for the CEO, and explicitly frames it as replacing the incentive lost when the 2014 promotion award finished vesting."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "After a thorough analysis of options, our independent Board members concluded that it would be best to deliver Mr. Nadella\u2019s compensation under our existing Executive Incentive Plan framework to ensure an ongoing strong alignment to the incentives of the senior leadership team, while delivering 100% of his equity compensation via performance stock awards (up from 70% in fiscal year 2021).",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-f47c8dc1",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Justifies a $50M target award by appeal to the CEO's 'extraordinary capabilities' and the company's 'extraordinary scale' rather than to a benchmarked figure \u2014 pay-level justification by superlative."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "For fiscal year 2022, Mr. Nadella\u2019s target performance stock award was set at $50,000,000, which our independent Board members concluded is the appropriate level of equity compensation for a leader with his extraordinary capabilities and responsibilities and for a company of Microsoft\u2019s extraordinary scale and complexity.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-32ba2901",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Explains a metric-category change as a renaming for clarity in response to investor requests, not a change in substance \u2014 a label change presented as ESG-linkage progress."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Beginning with fiscal year 2022, we renamed the Culture & Organizational Leadership category of the operational assessment component of the annual cash incentive as the Culture, Diversity & Sustainability category to enhance clarity on how ESG results affect the pay of our named executives.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-446342c4",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Pre-emptively reframes a below-target revenue result as evidence of goal rigor rather than of underperformance."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We note that our Incentive Plan Revenue result was at 99.7% of target while achieving a 18.37% fiscal year 2022 growth rate, demonstrating our commitment to rigorous goal setting.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-c169c1d6",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Recurring rigor claim; worth tracking against the FY22 PSA results where Teams usage paid 50.92% and Game Pass 56.80% against targets."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The Committee establishes rigorous goals for each metric that require significant year-over-year improvement in order for target awards to be earned",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-e3151f6f",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Attributes the impetus for a large CEO award to shareholder feedback, aligning investor voice with the board's own conclusion \u2014 key-man framing used to support pay quantum."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Mr. Nadella\u2019s criticality to Microsoft\u2019s ongoing success was a regular focus of feedback we received from shareholders, which is consistent with our independent Board members\u2019 high confidence in Mr. Nadella\u2019s exceptional leadership of Microsoft.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-95fed1ef",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Documents a benchmarking change \u2014 a single peer group split into primary technology and secondary large-cap general industry groups."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "For fiscal year 2022, the Compensation Committee reviewed the evolution of our business against our historical peer group, and as a result approved the use of two peer groups to better reflect the differentiated business, talent and, in some cases, pay models, across sectors:",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-f6f646ff",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Unusually direct admission that the peer groups understate the company's size and that this scale gap is used as an upward factor in pay setting."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Given Microsoft\u2019s significant scale and growth, Microsoft is larger than the typical company in both peer groups, which is a factor when we set executive pay.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-5344b8fb",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Market-condition language used to justify pay increases; the 'hyper-competitive' framing is a year-specific escalation worth tracking."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The current technology labor market is hyper-competitive with demand growing faster than the supply of specialized technical talent, resulting in significant increases in compensation at many of the companies with which we compete for this talent.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-a1f521f6",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Defends the practice of resetting PSA targets annually within a three-year period \u2014 a design that softens long-horizon risk, justified as more accurate."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Due to the dynamic nature of our business and the specificity in the performance metrics that are chosen under our PSA program, we believe that measuring performance annually over our three-year performance period and modifying awards based on our three-year relative TSR provides the most accurate assessment of Microsoft\u2019s long-term trajectory and performance achievements.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-e61b7fcf",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Disclosure hedge: prior-year absolute targets are withheld 'for competitive reasons' and restated as growth rates, reducing year-over-year comparability."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Metrics were established as unit of measure or dollar value before FY22. For competitive reasons, results for those years are expressed in terms of year-over-year growth. Beginning in FY22 metrics were defined as a growth percentage.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-d49a9eed",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "'No fault' clawback extending to nonfinancial performance restatements and to significant legal or compliance violations \u2014 broader than the statutory minimum."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Our Compensation Committee may seek to recover payments of incentive compensation if the performance results leading to a payment are later subject to a downward adjustment or restatement of financial or nonfinancial performance.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-303724c2",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Explicit disclaimer of percentile targeting, which preserves discretion while the disclosure elsewhere leans on peer-group scale comparisons."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We do not tie Named Executive compensation to specific market percentiles.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-77cc7d62",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "The only non-formulaic cash payment to an NEO in FY22, with a repayment condition on resignation or termination for misconduct."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In connection with his employment as our Executive Vice President, Business Development, Strategy, and Ventures on November 11, 2020, our Compensation Committee awarded Mr. Young an on-hire cash bonus with a second $1,500,000 installment payable within 30 days after the first anniversary of his employment start date.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2022-1aa8f96f",
+      "field": "notable_language",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "An explicit negative statement that no discretionary or off-plan awards were made \u2014 useful as a baseline against which any future special award would stand out."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-270484",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2022-10-27"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "During fiscal year 2022, the Compensation Committee and independent members of our Board awarded no other compensation to our Named Executives.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "investor_qa": [
+    {
+      "id": "QA-FY2022-b598943b",
+      "field": "investor_qa",
+      "fiscal_year": 2022,
+      "value": {
+        "topic": "Rationale for acquiring Activision Blizzard and its role in Microsoft's gaming strategy",
+        "stated_position": "The acquisition \"will accelerate the growth in Microsoft\u00b4s gaming business across mobile, PC, console, and cloud and will provide building blocks for the metaverse.\"",
+        "kind": "acquisition_or_divestiture"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-010667",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2022-01-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "This acquisition will accelerate the growth in Microsoft\u00b4s gaming business across mobile, PC, console, and cloud and will provide building blocks for the metaverse.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2022-8856672c",
+      "field": "investor_qa",
+      "fiscal_year": 2022,
+      "value": {
+        "topic": "Competitive position in gaming after the transaction",
+        "stated_position": "\"When the transaction closes, Microsoft will become the world's third-largest gaming company by revenue, behind Tencent and Sony.\"",
+        "kind": "competition_or_market"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-010667",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2022-01-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "When the transaction closes, Microsoft will become the world\u2019s third-largest gaming company by revenue, behind Tencent and Sony.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2022-43cbb0af",
+      "field": "investor_qa",
+      "fiscal_year": 2022,
+      "value": {
+        "topic": "Management and reporting structure of Activision Blizzard post-close",
+        "stated_position": "\"Bobby Kotick will continue to serve as CEO of Activision Blizzard, and he and his team will maintain their focus on driving efforts to further strengthen the company's culture and accelerate business growth. Once the deal closes, the Activision Blizzard business will report to Phil Spencer, CEO, Microsoft Gaming.\"",
+        "kind": "governance_or_management"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-010667",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2022-01-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Bobby Kotick will continue to serve as CEO of Activision Blizzard, and he and his team will maintain their focus on driving efforts to further strengthen the company\u2019s culture and accelerate business growth. Once the deal closes, the Activision Blizzard business will report to Phil Spencer, CEO, Microsoft Gaming.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2022-6c1d53b1",
+      "field": "investor_qa",
+      "fiscal_year": 2022,
+      "value": {
+        "topic": "Investment priorities stated by the CEO",
+        "stated_position": "Satya Nadella: \"We're investing deeply in world-class content, community, and the cloud to usher in a new era of gaming that puts players and creators first and makes gaming safe, inclusive, and accessible to all.\"",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-010667",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2022-01-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "\u201cWe\u2019re investing deeply in world-class content, community, and the cloud to usher in a new era of gaming that puts players and creators first and makes gaming safe, inclusive, and accessible to all.\u201d",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2022-eaeddb9e",
+      "field": "investor_qa",
+      "fiscal_year": 2022,
+      "value": {
+        "topic": "Mobile gaming as a strategic gap and opportunity",
+        "stated_position": "\"Mobile is the largest segment in gaming, with nearly 95% of all players globally enjoying games on mobile\" and \"Activision Blizzard\u00b4s mobile business represents a significant presence and opportunity for Microsoft in this fast-growing segment.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-010667",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2022-01-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "And with games like Candy Crush, Activision Blizzard\u00b4s mobile business represents a significant presence and opportunity for Microsoft in this fast-growing segment.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2022-3e414388",
+      "field": "investor_qa",
+      "fiscal_year": 2022,
+      "value": {
+        "topic": "Effect on Game Pass subscription strategy",
+        "stated_position": "The acquisition \"bolsters Microsoft's Game Pass portfolio with plans to launch Activision Blizzard games into Game Pass\" and \"will make Game Pass one of the most compelling and diverse line-ups of gaming content in the industry.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-010667",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2022-01-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The acquisition also bolsters Microsoft\u2019s Game Pass portfolio with plans to launch Activision Blizzard games into Game Pass, which has reached a new milestone of over 25 million subscribers.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2022-b4a4f441",
+      "field": "investor_qa",
+      "fiscal_year": 2022,
+      "value": {
+        "topic": "Consideration, closing conditions and expected timing",
+        "stated_position": "\"Microsoft will acquire Activision Blizzard for $95.00 per share, in an all-cash transaction valued at $68.7 billion, inclusive of Activision Blizzard's net cash\"; the deal \"is subject to customary closing conditions and completion of regulatory review and Activision Blizzard\u00b4s shareholder approval\" and \"is expected to close in Microsoft's fiscal year ending June 2023 and will be accretive to non-GAAP earnings per share upon close.\"",
+        "kind": "capital_allocation"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-010667",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2022-01-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The transaction is subject to customary closing conditions and completion of regulatory review and Activision Blizzard\u00b4s shareholder approval. The deal is expected to close in Microsoft\u2019s fiscal year ending June 2023 and will be accretive to non-GAAP earnings per share upon close.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2022-4b937813",
+      "field": "investor_qa",
+      "fiscal_year": 2022,
+      "value": {
+        "topic": "Scale of first-party development capability after close",
+        "stated_position": "\"Upon close, Microsoft will have 30 internal game development studios, along with additional publishing and esports production capabilities.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-010667",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2022-01-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Upon close, Microsoft will have 30 internal game development studios, along with additional publishing and esports production capabilities.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2022-961281fd",
+      "field": "investor_qa",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Nadella frames gaming as a metaverse platform play \u2014 an unusually strong strategic characterisation of a segment historically treated as peripheral to Microsoft's enterprise identity."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-010667",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2022-01-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Gaming is the most dynamic and exciting category in entertainment across all platforms today and will play a key role in the development of metaverse platforms",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2022-5403c692",
+      "field": "investor_qa",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "A market-size claim that recurs in the release (repeated in the 'Fast Facts' as '$200+ billion') and serves as the justifying premise for the largest acquisition in Microsoft's history."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-010667",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2022-01-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "gaming is now the largest and fastest-growing form of entertainment",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2022-47e33866",
+      "field": "investor_qa",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "An oblique reference to Activision Blizzard's workplace-culture controversies \u2014 'further strengthen the company's culture' is the only acknowledgment, and it is phrased as continuity rather than remediation, while retaining the incumbent CEO."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-010667",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2022-01-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "he and his team will maintain their focus on driving efforts to further strengthen the company\u2019s culture and accelerate business growth",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2022-e4f76957",
+      "field": "investor_qa",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Kotick's framing pairs 'inclusion' with competitive necessity, and concedes the industry is 'increasingly competitive' \u2014 a hedge notable alongside Microsoft's claim of moving to third-largest by revenue."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-010667",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2022-01-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "shared commitment to gaming and inclusion will help ensure our continued success in an increasingly competitive industry",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2022-1e237391",
+      "field": "investor_qa",
+      "fiscal_year": 2022,
+      "value": {
+        "why_notable": "Device-agnostic, subscription/cloud-first positioning from Phil Spencer \u2014 a shift away from console-exclusivity language toward distribution across platforms."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2022,
+        "accession": "0001193125-22-010667",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2022-01-18"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Together we will build a future where people can play the games they want, anywhere they want.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "risk_deltas": {
+    "fiscal_year": 2022,
+    "compared_to": 2021,
+    "deltas": {
+      "unchanged": [
+        {
+          "heading": "Competition in the technology sector",
+          "heading_similarity": 100.0,
+          "body_similarity": 100.0,
+          "id": "RISK-FY2022-d76b6c05"
+        },
+        {
+          "heading": "Competition among platform-based ecosystems",
+          "heading_similarity": 100.0,
+          "body_similarity": 100.0,
+          "id": "RISK-FY2022-3bd25442"
+        },
+        {
+          "heading": "Business model competition",
+          "heading_similarity": 100.0,
+          "body_similarity": 100.0,
+          "id": "RISK-FY2022-dcbe08b9"
+        },
+        {
+          "heading": "Security of our information technology",
+          "heading_similarity": 100.0,
+          "body_similarity": 95.9,
+          "id": "RISK-FY2022-a4102e13"
+        },
+        {
+          "heading": "Security of our products, services, devices, and customers\u2019 data",
+          "heading_similarity": 100.0,
+          "body_similarity": 99.6,
+          "id": "RISK-FY2022-2a05401a"
+        },
+        {
+          "heading": "Development and deployment of defensive measures",
+          "heading_similarity": 100.0,
+          "body_similarity": 99.9,
+          "id": "RISK-FY2022-488a3dc5"
+        }
+      ],
+      "reworded": [
+        {
+          "heading_now": "Advertising, professional, marketplace, and gaming platform abuses",
+          "heading_prior": "Advertising, professional, and social platform abuses",
+          "heading_similarity": 77.3,
+          "body_similarity": 69.3,
+          "changed": "heading and body",
+          "category_now": "Abuse of our platforms may harm our reputation or user engagement.",
+          "category_prior": "Abuse of our platforms may harm our reputation or user engagement.",
+          "id": "RISK-FY2022-1400c789"
+        }
+      ],
+      "added": [],
+      "removed": [
+        {
+          "heading": "Digital safety and service misuse",
+          "category": "Abuse of our platforms may harm our reputation or user engagement.",
+          "body_chars": 801,
+          "id": "RISK-FY2022-42e8c8b4"
+        }
+      ]
+    },
+    "counts": {
+      "unchanged": 6,
+      "reworded": 1,
+      "added": 0,
+      "removed": 1
+    },
+    "problems": [],
+    "source": {
+      "form": "10-K",
+      "fiscal_year": 2022,
+      "accession": "0001564590-22-026876",
+      "prior_accession": "0001564590-21-039151"
+    }
+  },
+  "data_quality": {
+    "strategic_priorities": {
+      "n": 15,
+      "populated": true,
+      "high_confidence": 15,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item1_business"
+      ]
+    },
+    "segments": {
+      "n": 6,
+      "populated": true,
+      "high_confidence": 6,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item1_business",
+        "10-K_item7_mdna"
+      ]
+    },
+    "headcount": {
+      "n": 1,
+      "populated": true,
+      "high_confidence": 1,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item1_business"
+      ]
+    },
+    "leadership": {
+      "n": 4,
+      "populated": true,
+      "high_confidence": 4,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "8-K_8-K_whole"
+      ]
+    },
+    "board": {
+      "n": 12,
+      "populated": true,
+      "high_confidence": 0,
+      "low_confidence": 12,
+      "unverified_quotes": 0,
+      "sources": [
+        "DEF14A_director_bios"
+      ]
+    },
+    "incentive_metrics": {
+      "n": 18,
+      "populated": true,
+      "high_confidence": 18,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "DEF14A_cdna"
+      ]
+    },
+    "vote_results": {
+      "n": 20,
+      "populated": true,
+      "high_confidence": 20,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "8-K_8-K_whole"
+      ]
+    },
+    "events": {
+      "n": 15,
+      "populated": true,
+      "high_confidence": 15,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item7_mdna",
+        "8-K_8-K_whole"
+      ]
+    },
+    "notable_language": {
+      "n": 22,
+      "populated": true,
+      "high_confidence": 22,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item7_mdna",
+        "DEF14A_cdna"
+      ]
+    },
+    "investor_qa": {
+      "n": 13,
+      "populated": true,
+      "high_confidence": 13,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "8-K_EX-99-1_whole"
+      ]
+    },
+    "risk_deltas": {
+      "populated": true,
+      "counts": {
+        "unchanged": 6,
+        "reworded": 1,
+        "added": 0,
+        "removed": 1
+      },
+      "unavailable_reason": null
+    },
+    "segments_basis": {
+      "filing_uses_reportable_segment_language": true,
+      "basis": "reportable segments as named by the filing"
+    },
+    "investor_qa_basis": {
+      "n": 13,
+      "source_register": "Regulation FD voluntary disclosure (8-K item 7.01)",
+      "basis": "management's written answers to questions submitted by investors, published roughly monthly. Same verification as every other fact \u2014 whole-document boundaries and a checked quote \u2014 but a different kind of evidence from a 10-K or proxy statement: unaudited, unprompted by any disclosure requirement, and responsive to whatever was asked. Corroborating; not a substitute for a filed disclosure.",
+      "filings": [
+        "0001193125-22-010667"
+      ]
+    },
+    "ids": {
+      "n_facts": 126,
+      "n_risk_deltas": 8,
+      "all_present": true,
+      "unique_within_year": true,
+      "basis": "content hash of the claim, its evidence and its source \u2014 see `fact_id` in src/equity_research/ledger_schema.py. Confidence and the verification result are NOT hashed, so re-verifying a fact does not renumber it. Cross-year uniqueness is enforced fatally at build time by `audit_ids`."
+    },
+    "document_window": {
+      "first_filing_date": "2021-11-30",
+      "last_filing_date": "2022-12-16",
+      "n_source_filings": 5,
+      "sourced_from_outside_the_fiscal_window": [],
+      "basis": "filing dates of the documents this year's facts are actually drawn from \u2014 NOT the fiscal window in inventory.json, which bounds the fiscal years in scope. Documents reporting on a fiscal year are filed after it ends, so this range extends past window_end_date by construction. Any accession listed above additionally belongs to a fiscal year outside the window and is used deliberately: an annual-meeting vote held in May of year N decides on year N-1."
+    },
+    "corrections": {
+      "n": 0,
+      "applied": [],
+      "basis": "config/corrections.toml \u2014 human corrections to model-extracted values that the cited filing contradicts, each carrying the filing text that establishes it. data/ledger/facts/ is never edited: the record of what the model returned has to stay as it was."
+    },
+    "extraction_tasks_missing": [
+      "letter"
+    ],
+    "board_metadata": {
+      "board_size": 12,
+      "committees": [
+        "Governance and Nominating Committee",
+        "Audit Committee"
+      ]
+    }
+  }
+}

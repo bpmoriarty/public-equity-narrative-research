@@ -1,0 +1,3564 @@
+{
+  "fiscal_year": 2025,
+  "ticker": "MSFT",
+  "cik": "0000789019",
+  "company_name": "MICROSOFT CORP",
+  "filings": [
+    {
+      "form": "8-K",
+      "accession": "0000950170-24-087835",
+      "filed": "2024-07-30",
+      "report_date": "2024-07-30",
+      "items": [
+        "2.02",
+        "9.01"
+      ],
+      "disposition": "date_only"
+    },
+    {
+      "form": "UPLOAD",
+      "accession": "0000000000-24-011502",
+      "filed": "2024-10-10",
+      "report_date": null,
+      "items": [],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "8-K",
+      "accession": "0000950170-24-118955",
+      "filed": "2024-10-30",
+      "report_date": "2024-10-30",
+      "items": [
+        "2.02",
+        "9.01"
+      ],
+      "disposition": "date_only"
+    },
+    {
+      "form": "8-K",
+      "accession": "0001193125-24-275524",
+      "filed": "2024-12-11",
+      "report_date": "2024-12-10",
+      "items": [
+        "5.07",
+        "7.01"
+      ],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "8-K",
+      "accession": "0001193125-25-010492",
+      "filed": "2025-01-22",
+      "report_date": "2025-01-22",
+      "items": [
+        "5.02"
+      ],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "8-K",
+      "accession": "0000950170-25-010484",
+      "filed": "2025-01-29",
+      "report_date": "2025-01-29",
+      "items": [
+        "2.02",
+        "9.01"
+      ],
+      "disposition": "date_only"
+    },
+    {
+      "form": "8-K",
+      "accession": "0000950170-25-061032",
+      "filed": "2025-04-30",
+      "report_date": "2025-04-30",
+      "items": [
+        "2.02",
+        "9.01"
+      ],
+      "disposition": "date_only"
+    },
+    {
+      "form": "10-K",
+      "accession": "0000950170-25-100235",
+      "filed": "2025-07-30",
+      "report_date": "2025-06-30",
+      "items": [],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "DEF 14A",
+      "accession": "0001193125-25-245150",
+      "filed": "2025-10-21",
+      "report_date": "2025-12-05",
+      "items": [],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "DEFA14A",
+      "accession": "0001193125-25-245169",
+      "filed": "2025-10-21",
+      "report_date": null,
+      "items": [],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "ARS",
+      "accession": "0001193125-25-245177",
+      "filed": "2025-10-21",
+      "report_date": "2025-06-30",
+      "items": [],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "DEFA14A",
+      "accession": "0001193125-25-260521",
+      "filed": "2025-10-31",
+      "report_date": null,
+      "items": [],
+      "disposition": "in_scope"
+    },
+    {
+      "form": "DEFA14A",
+      "accession": "0001193125-25-267270",
+      "filed": "2025-11-05",
+      "report_date": null,
+      "items": [],
+      "disposition": "in_scope"
+    }
+  ],
+  "earnings_release_dates": [
+    "2024-07-30",
+    "2024-10-30",
+    "2025-01-29",
+    "2025-04-30"
+  ],
+  "strategic_priorities": [
+    {
+      "id": "SP-FY2025-3fc3c5f9",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Reinvent productivity and business processes to help organizations and individuals work and collaborate more securely and efficiently."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Reinvent productivity and business processes to help organizations and individuals work and collaborate more securely and efficiently.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-608a10dc",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Build the intelligent cloud and intelligent edge platform to provide a foundation for our customers' digital workloads including hybrid consistency, developer productivity, data and AI capabilities, and trusted security and compliance."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Build the intelligent cloud and intelligent edge platform to provide a foundation for our customers\u2019 digital workloads including hybrid consistency, developer productivity, data and AI capabilities, and trusted security and compliance.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-eb3e3f15",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Create more personal computing to enable users to interact with technology in more intuitive, engaging, and dynamic ways."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Create more personal computing to enable users to interact with technology in more intuitive, engaging, and dynamic ways.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-59a68571",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Focused on helping customers use the breadth and depth of the Microsoft Cloud to get the most value out of their digital spend while leading the AI platform wave across our solution areas; goal is to lead the industry in several distinct areas of technology over the long term."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We are focused on helping customers use the breadth and depth of the Microsoft Cloud to get the most value out of their digital spend while leading the AI platform wave across our solution areas.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-0bb522fe",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Transforming the workplace to deliver new, modern, modular business applications, drive deeper insights, and improve how people communicate, collaborate, learn, work, and interact with one another."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Transforming the workplace to deliver new, modern, modular business applications, drive deeper insights, and improve how people communicate, collaborate, learn, work, and interact with one another.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-fefb3fe6",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Building and running cloud-based services in ways that utilize ubiquitous computing to unleash new experiences and opportunities for businesses and individuals."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Building and running cloud-based services in ways that utilize ubiquitous computing to unleash new experiences and opportunities for businesses and individuals.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-211cb141",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Applying AI and ambient intelligence to drive insights, revolutionize many types of work and business processes, and provide substantive productivity gains using Microsoft 365 Copilot and agents."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Applying AI and ambient intelligence to drive insights, revolutionize many types of work and business processes, and provide substantive productivity gains using Microsoft 365 Copilot and agents.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-4e621554",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Providing training on generative AI and greater access to digital learning and resources through skilling programs and initiatives, grants, and LinkedIn learning pathways."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Providing training on generative AI and greater access to digital learning and resources through skilling programs and initiatives, grants, and LinkedIn learning pathways.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-f533c369",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Inventing new gaming experiences that bring people together around their shared love for games on any device and pushing the boundaries of innovation with console and PC gaming."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Inventing new gaming experiences that bring people together around their shared love for games on any device and pushing the boundaries of innovation with console and PC gaming.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-8dbf5c6a",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Leveraging Windows to fuel our cloud business, grow our share of the PC market, and drive increased engagement with our services."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Leveraging Windows to fuel our cloud business, grow our share of the PC market, and drive increased engagement with our services like Microsoft Edge, Bing, Copilot, Microsoft Teams, Microsoft 365 Consumer, Xbox Game Pass, and more.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-b6d8c32b",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Tackling security from all angles with our integrated, end-to-end solutions spanning security, compliance, identity, and management, across all clouds and platforms."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Tackling security from all angles with our integrated, end-to-end solutions spanning security, compliance, identity, and management, across all clouds and platforms.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-b7139777",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "We prioritize security above all else and offer customers integrated AI-driven products addressing security, compliance, identity, management, and privacy."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We prioritize security above all else and we offer our customers integrated AI-driven products addressing security, compliance, identity, management, and privacy across customers\u2019 multi-cloud, application, and device assets.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-6b87f278",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Commitment to designing and deploying AI responsibly with safety and security from the outset."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We believe AI should be as empowering as it is powerful, and we\u2019re committed to designing and deploying AI responsibly with safety and security from the outset.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-85389ed5",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Sustainability: goals announced in 2020 to become a carbon negative, water positive, and zero waste company by 2030."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In 2020, we announced goals to become a carbon negative, water positive, and zero waste company by 2030.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-4f35bb40",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Plan to continue to make significant investments in a broad range of product research and development activities, coordinated across operating segments, including continuing to support fundamental research."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We plan to continue to make significant investments in a broad range of product research and development activities, and as appropriate, we will coordinate our research and development across operating segments and leverage the results across the company.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-d4e7fa58",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Continue to align our datacenter locations and server capacity to meet the evolving needs of our customers, particularly given the growing demand for AI services."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We continue to align our datacenter locations and server capacity to meet the evolving needs of our customers, particularly given the growing demand for AI services.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-b763003a",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Future growth depends on our ability to transcend current product category definitions, business models, and sales motions."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Our future growth depends on our ability to transcend current product category definitions, business models, and sales motions.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-93e18460",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "three core business priorities as our North Star: security, quality, and AI innovation"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "To deliver on our mission, we remain focused on three core business priorities as our North Star: security, quality, and\nAI innovation.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-bc2392f6",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Delivering current platforms at scale while building the next generation"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We are delivering our current platforms at scale while building the next generation, always striving to\ncreate more value for our customers, our partners, and the world.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-7ae64643",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Continue to lead the AI infrastructure wave \u2014 datacenter and capacity expansion"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We continue to lead the AI infrastructure wave. We opened new datacenters across six continents and now operate\nmore than 400 datacenters in 70 regions, more than any other cloud provider.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-a9ac2962",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Two foundational areas of AI innovation: Cloud and AI infrastructure, and the family of Copilots and agents"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "At the same time, we have made major advances in AI innovation, including across two foundational areas: our Cloud\nand AI infrastructure, and our family of Copilots and agents.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-18f626d5",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Investing in sovereign cloud offerings for data residency needs"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "And we continue to invest in sovereign cloud offerings to meet the unique data\nresidency needs of governments and industries worldwide.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-b6aad44f",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Being Customer Zero \u2014 applying AI to our own work and sharing the playbook"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We are focused on being Customer Zero, applying AI to reduce toil and improve flow in our own work while creating\na playbook we can share with the world.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-5d97596a",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "A new way of working that expands job scopes and reduces handoffs"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We\u2019re also embracing a new way of working\u2014one that expands job scopes, reduces handoffs, and gives teams tools\nto scale productivity in nonlinear ways.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-6d8b7c0f",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Skilling and opportunity commitment through Microsoft Elevate"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Over the next five\nyears, we will invest $4 billion in cash and AI cloud technology to schools, community and technical colleges, and\nnonprofit organizations.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-dad84080",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Driving responsible AI innovation and building safe and secure technology"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "That\u2019s why we are committed to driving\nresponsible AI innovation and building safe and secure technology. As we do, we are guided by our values of respect,\nintegrity, and accountability.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SP-FY2025-8d7086ec",
+      "field": "strategic_priorities",
+      "fiscal_year": 2025,
+      "value": {
+        "text": "Sustainability commitments: carbon negative, water positive, zero waste, protect more land than we use"
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "2025 also marked the midpoint in our journey to become a carbon negative, water positive, zero waste company,\nand to protect more land than we use.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "segments": [
+    {
+      "id": "SEG-FY2025-a58b79ff",
+      "field": "segments",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "Productivity and Business Processes",
+        "note": "Document states segment composition changes announced in August 2024, most notably bringing the commercial components of Microsoft 365 together in this segment, effective beginning fiscal year 2025."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "These changes align our segments with how we currently manage our business, most notably bringing the commercial components of Microsoft 365 together in the Productivity and Business Processes segment.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SEG-FY2025-0c3754fd",
+      "field": "segments",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "Intelligent Cloud",
+        "note": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We operate our business and report our financial performance using three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SEG-FY2025-c4c5b0c2",
+      "field": "segments",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "More Personal Computing",
+        "note": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Our More Personal Computing segment consists of products and services that put customers at the center of the experience with our technology.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SEG-FY2025-23694750",
+      "field": "segments",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "Productivity and Business Processes",
+        "note": "Commercial components of Microsoft 365 brought together in this segment beginning fiscal year 2025; prior period segment information recast."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "These changes align our segments with how we currently manage our business, most notably bringing the commercial components of Microsoft 365 together in the Productivity and Business Processes segment. Beginning in fiscal year 2025, the information that our chief operating decision maker is regularly provided and reviews for purposes of allocating resources and assessing performance reflects these segment changes. Prior period segment information has been recast to conform to the way we internally manage and monitor our business during fiscal year 2025.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SEG-FY2025-62225083",
+      "field": "segments",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "Windows OEM and Devices",
+        "note": "Windows OEM and Devices combined into a single revenue growth metric bringing PC market-driven businesses together."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Other changes include combining Windows OEM and Devices into a single revenue growth metric that brings revenue from PC market-driven businesses together, as well as elevating our cloud revenue growth metrics to align to our strategic focus on cloud growth.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "SEG-FY2025-434692ed",
+      "field": "segments",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "Intelligent Cloud",
+        "note": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We report our financial performance based on the following segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "headcount": [
+    {
+      "id": "HC-FY2025-8041c917",
+      "field": "headcount",
+      "fiscal_year": 2025,
+      "value": {
+        "value": 228000,
+        "as_stated": "approximately 228,000 people on a full-time basis, 125,000 in the U.S. and 103,000 internationally, as of June 30, 2025"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item1_business",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "As of June 30, 2025, we employed approximately 228,000 people on a full-time basis, 125,000 in the U.S. and 103,000 internationally.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "leadership": [
+    {
+      "id": "LEAD-FY2025-7123b34a",
+      "field": "leadership",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "Christopher D. Young",
+        "role": "Executive Vice President, Business Development, Strategy, and Ventures",
+        "change": "departed",
+        "date": "2025-01-22",
+        "stated_reason": null
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-010492",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-01-22"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "On January 22, 2025, Christopher D. Young informed Microsoft Corporation (the \u201cCompany\u201d) of his decision to resign from the Company. As a result, he will cease to serve as Executive Vice President, Business Development, Strategy, and Ventures, effective immediately. He will remain an employee of the Company to provide transition support and fulfill additional responsibilities until the end of March.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "board": [
+    {
+      "id": "BRD-FY2025-3860acd3",
+      "field": "board",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "Reid G. Hoffman",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "1. Election of Directors: For Against Abstain 1a. Reid G. Hoffman 1b. Hugh F. Johnston 1c. Teri L. List 1d. Catherine MacGregor 1e. Mark A. L. Mason 1f. Satya Nadella 1g. Sandra E. Peterson 1h. Penny S. Pritzker 1i. John David Rainey 1j. Charles W. Scharf 1k. John W. Stanton 1l. Emma N. Walmsley",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2025-2ea9ba02",
+      "field": "board",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "Hugh F. Johnston",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "1a. Reid G. Hoffman 1b. Hugh F. Johnston 1c. Teri L. List 1d. Catherine MacGregor",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2025-fa6dbbee",
+      "field": "board",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "Teri L. List",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "1b. Hugh F. Johnston 1c. Teri L. List 1d. Catherine MacGregor 1e. Mark A. L. Mason",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2025-cfca4526",
+      "field": "board",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "Catherine MacGregor",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "1c. Teri L. List 1d. Catherine MacGregor 1e. Mark A. L. Mason 1f. Satya Nadella",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2025-625ef780",
+      "field": "board",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "Mark A. L. Mason",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "1d. Catherine MacGregor 1e. Mark A. L. Mason 1f. Satya Nadella 1g. Sandra E. Peterson",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2025-1ca5f038",
+      "field": "board",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "Satya Nadella",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "1e. Mark A. L. Mason 1f. Satya Nadella 1g. Sandra E. Peterson 1h. Penny S. Pritzker",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2025-9c4f6d79",
+      "field": "board",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "Sandra E. Peterson",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "The undersigned hereby appoints SANDRA E. PETERSON and SATYA NADELLA, and each of them, with full power of substitution, as proxies to vote all the shares the undersigned is entitled to vote at the Annual Shareholders Meeting",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2025-11c6872a",
+      "field": "board",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "Penny S. Pritzker",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "1g. Sandra E. Peterson 1h. Penny S. Pritzker 1i. John David Rainey 1j. Charles W. Scharf",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2025-c0c260c9",
+      "field": "board",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "John David Rainey",
+        "role": "Nominee who is not a current director",
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "All of this year\u2019s nominees are current directors, except Mr. Rainey.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2025-d11f77a2",
+      "field": "board",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "Charles W. Scharf",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "1i. John David Rainey 1j. Charles W. Scharf 1k. John W. Stanton 1l. Emma N. Walmsley",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2025-c56789e2",
+      "field": "board",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "John W. Stanton",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "1j. Charles W. Scharf 1k. John W. Stanton 1l. Emma N. Walmsley",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "BRD-FY2025-a423175c",
+      "field": "board",
+      "fiscal_year": 2025,
+      "value": {
+        "name": "Emma N. Walmsley",
+        "role": null,
+        "director_since": null,
+        "committees": []
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_director_bios",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "low",
+      "confidence_reason": "boundary unverified: FY2025 is known to start at the front-of-proxy voting summary rather than the director biographies, and the other years are unchecked",
+      "quote": "1k. John W. Stanton 1l. Emma N. Walmsley",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "incentive_metrics": [
+    {
+      "id": "INC-FY2025-821ce6c6",
+      "field": "incentive_metrics",
+      "fiscal_year": 2025,
+      "value": {
+        "metric": "Incentive Plan Revenue (non-GAAP, constant dollar)",
+        "plan": "Annual cash incentive (Executive Incentive Plan) \u2013 financial portion",
+        "weight": "70% of annual cash incentive for CEO (50% for other NEOs), combined financial portion",
+        "target_or_range": "FY25 Threshold $273.20B / Target $290.64B / Maximum $306.63B; Actual $289.18B, 95.81% of target"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "FY25 Incentive Plan Revenue 2\n$250.98\n$273.20\n$290.64\n$306.63\n$289.18\n15.22%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2025-34b5e674",
+      "field": "incentive_metrics",
+      "fiscal_year": 2025,
+      "value": {
+        "metric": "Incentive Plan Operating Income (non-GAAP, constant dollar)",
+        "plan": "Annual cash incentive (Executive Incentive Plan) \u2013 financial portion",
+        "weight": "Part of the 70% CEO / 50% other NEO financial portion",
+        "target_or_range": "FY25 Threshold $112.31B / Target $122.75B / Maximum $138.70B; Actual $128.84B, 138.18% of target"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We note that our Incentive Plan Revenue result was 95.81% of target and Incentive Plan Operating Income result was 138.18% of target, which equated to a 15.22% and 17.80% fiscal year 2025 growth rate, respectively, further demonstrating our commitment to rigorous goal setting.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2025-224f0cb4",
+      "field": "incentive_metrics",
+      "fiscal_year": 2025,
+      "value": {
+        "metric": "Operational assessment \u2013 Security category",
+        "plan": "Annual cash incentive \u2013 operational portion",
+        "weight": "10% for CEO (operational portion is 30% for CEO / 50% for other NEOs)",
+        "target_or_range": "Nadella result 140%; results out of a possible 200% in each category"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Security (10%)\n140%\nMr. Nadella\u2019s thoughtful leadership has been instrumental in advancing Microsoft\u2019s core strategic focus on cybersecurity amid a rapidly evolving threat landscape, demonstrated through his personal commitment and clarity that security and quality are non-negotiable.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2025-dac9e562",
+      "field": "incentive_metrics",
+      "fiscal_year": 2025,
+      "value": {
+        "metric": "Operational assessment \u2013 Product, Customers & Stakeholders category",
+        "plan": "Annual cash incentive \u2013 operational portion",
+        "weight": "10% for CEO",
+        "target_or_range": "Nadella result 160% (out of possible 200%)"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Product, Customers & Stakeholders (10%)\n160%\nMr. Nadella continued to directly lead Microsoft\u2019s ongoing execution of our transformation to meet the needs of our growing customer and stakeholder base.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2025-904dc78b",
+      "field": "incentive_metrics",
+      "fiscal_year": 2025,
+      "value": {
+        "metric": "Operational assessment \u2013 Culture category",
+        "plan": "Annual cash incentive \u2013 operational portion",
+        "weight": "10% for CEO",
+        "target_or_range": "Nadella result 155% (out of possible 200%)"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Culture (10%)\n155%\nMr. Nadella furthered our high-performing culture while evolving responsible practices and upholding our commitments to inclusion and sustainability.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2025-848ed72b",
+      "field": "incentive_metrics",
+      "fiscal_year": 2025,
+      "value": {
+        "metric": "Azure and Other Cloud Services Revenue Growth",
+        "plan": "Performance stock awards (PSAs) \u2013 FY25 core metric",
+        "weight": "35%",
+        "target_or_range": "FY25 (year 3 of FY23 PSA): Threshold 29.23% / Target 36.76% / Maximum 44.28%; Actual 34.58%, payout 85.52%"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Azure and Other Cloud Services Revenue Growth 4\n35%\n29.23%\n36.76%\n44.28%\n34.58%\n85.52%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2025-bf0f915c",
+      "field": "incentive_metrics",
+      "fiscal_year": 2025,
+      "value": {
+        "metric": "Microsoft Cloud Revenue Growth, excluding Azure and Other Cloud Services",
+        "plan": "Performance stock awards (PSAs) \u2013 FY25 core metric",
+        "weight": "35%",
+        "target_or_range": "Threshold 8.09% / Target 14.38% / Maximum 20.67%; Actual 14.77%, payout 106.20%"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Microsoft Cloud Revenue Growth, excluding Azure and Other Cloud Services 5\n35%\n8.09%\n14.38%\n20.67%\n14.77%\n106.20%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2025-64d2afa8",
+      "field": "incentive_metrics",
+      "fiscal_year": 2025,
+      "value": {
+        "metric": "Consumer Services Revenue Growth (revenue from all consumer areas, excluding Xbox, device licensing, and devices)",
+        "plan": "Performance stock awards (PSAs) \u2013 FY25 core metric (new, replacing Search and News Advertising Revenue (ex TAC) Growth)",
+        "weight": "15%",
+        "target_or_range": "Threshold -0.01% / Target 11.09% / Maximum 22.20%; Actual 15.59%, payout 140.50%"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Consumer Services Revenue Growth 6\n15%\n-0.01%\n11.09%\n22.20%\n15.59%\n140.50%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2025-5d9888ed",
+      "field": "incentive_metrics",
+      "fiscal_year": 2025,
+      "value": {
+        "metric": "Xbox Content and Services Revenue Growth",
+        "plan": "Performance stock awards (PSAs) \u2013 FY25 core metric",
+        "weight": "15% (increased from 10% in FY24)",
+        "target_or_range": "Threshold -2.90% / Target 14.23% / Maximum 31.37%; Actual 14.81%, payout 103.38%"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Xbox Content and Services Revenue Growth 7\n15%\n-2.90%\n14.23%\n31.37%\n14.81%\n103.38%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2025-0036b3ef",
+      "field": "incentive_metrics",
+      "fiscal_year": 2025,
+      "value": {
+        "metric": "3-year relative TSR versus the S&P 500 (modifier on PSA core metric results)",
+        "plan": "Performance stock awards \u2013 relative TSR modifier",
+        "weight": "Modifier applied to 3-year core metric average",
+        "target_or_range": "75.00% at 20th percentile & below to 150.00% at 80th percentile & above; 100% between 40th and 60th percentile; absolute TSR must be positive for an above-target modifier"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "3-year Relative TSR Ranking 1\nModifier\n20 th Percentile & Below\n75.00%\n30 th Percentile\n87.50%\n40 th to 60 th Percentile\n100.00%\n70 th Percentile\n125.00%\n80 th Percentile & Above\n150.00%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2025-4b23bff4",
+      "field": "incentive_metrics",
+      "fiscal_year": 2025,
+      "value": {
+        "metric": "FY23 PSA final payout (three-year performance period ended June 30, 2025)",
+        "plan": "Performance stock awards \u2013 completed FY23 grant",
+        "weight": "Each of the three metric years weighted 1/3",
+        "target_or_range": "3-year core metric average 107.68% x 150.00% rTSR modifier = 161.52% final payout"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Based on this result, the total payment percentage for the fiscal year 2023 PSAs was increased by 50%, resulting in the payout to our Named Executives of 161.52% of the target fiscal 2023 PSA shares.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2025-df08c681",
+      "field": "incentive_metrics",
+      "fiscal_year": 2025,
+      "value": {
+        "metric": "LinkedIn Sessions (removed FY25 PSA metric; still a FY24 core metric weighted 10%)",
+        "plan": "Performance stock awards \u2013 FY24 metric set",
+        "weight": "10% in FY24; removed for FY25",
+        "target_or_range": "FY24 result payout 124.39%"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We also removed LinkedIn Sessions, as a portion of LinkedIn revenue is represented in both the Microsoft Cloud Revenue Growth, excluding Azure and Other Cloud Services, and Consumer Services Revenue Growth metrics.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2025-9c522363",
+      "field": "incentive_metrics",
+      "fiscal_year": 2025,
+      "value": {
+        "metric": "Total FY25 cash incentive payout as percentage of target",
+        "plan": "Annual cash incentive \u2013 overall result",
+        "weight": "Financial 70% CEO / 50% other NEOs; operational 30% CEO / 50% other NEOs",
+        "target_or_range": "Nadella 127.40%; Hood 136.84%; Althoff 136.84%; Numoto 128.50%; Smith 136.84%"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Total FY25 cash incentive (% of target)\n127.40%\n136.84%\n136.84%\n128.50%\n136.84%",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2025-102b793e",
+      "field": "incentive_metrics",
+      "fiscal_year": 2025,
+      "value": {
+        "metric": "Cash incentive award cap",
+        "plan": "Executive Incentive Plan \u2013 risk-limiting feature",
+        "weight": null,
+        "target_or_range": "Limited to 200% of target cash incentive award"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Cash incentive awards under the Incentive Plan are limited to 200% of a target cash incentive award",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "INC-FY2025-9201d054",
+      "field": "incentive_metrics",
+      "fiscal_year": 2025,
+      "value": {
+        "metric": "CEO equity mix \u2013 100% performance stock awards",
+        "plan": "Equity incentives under the Incentive Plan",
+        "weight": "100% PSAs for CEO; 50% PSAs / 50% four-year-vesting SAs for other NEOs",
+        "target_or_range": "Nadella FY25 aggregate target award value $50,000,000, 0 SAs"
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Equity incentives under the Incentive Plan were allocated 100% to target PSAs for our CEO. Equity incentives under the Incentive Plan were allocated 50% to target PSAs and 50% to stock awards with four-year vesting (\u201cSAs\u201d) for our other Named Executives.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "vote_results": [
+    {
+      "id": "VOTE-FY2025-af780671",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Election of director Reid G. Hoffman",
+        "votes_for": 5120225979,
+        "votes_against": 48294508,
+        "abstentions": 14934170,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (99.07% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Reid G. Hoffman\nRe-elected\n99.07\n5,120,225,979\n48,294,508\n14,934,170\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-09430b66",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Election of director Hugh F. Johnston",
+        "votes_for": 4733430707,
+        "votes_against": 437820499,
+        "abstentions": 12203451,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (91.53% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Hugh F. Johnston\nRe-elected\n91.53\n4,733,430,707\n437,820,499\n12,203,451\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-3a076cab",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Election of director Teri L. List",
+        "votes_for": 4999681887,
+        "votes_against": 175326264,
+        "abstentions": 8446506,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (96.61% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Teri L. List\nRe-elected\n96.61\n4,999,681,887\n175,326,264\n8,446,506\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-4cc5d101",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Election of director Catherine MacGregor",
+        "votes_for": 5148368340,
+        "votes_against": 26590734,
+        "abstentions": 8495583,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (99.49% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Catherine MacGregor\nRe-elected\n99.49\n5,148,368,340\n26,590,734\n8,495,583\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-555559cf",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Election of director Mark A. L. Mason",
+        "votes_for": 5122450020,
+        "votes_against": 52291857,
+        "abstentions": 8712780,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (98.99% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Mark A. L. Mason\nRe-elected\n98.99\n5,122,450,020\n52,291,857\n8,712,780\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-6aec6c40",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Election of director Satya Nadella",
+        "votes_for": 4815433908,
+        "votes_against": 337016790,
+        "abstentions": 31003959,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (93.46% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Satya Nadella\nRe-elected\n93.46\n4,815,433,908\n337,016,790\n31,003,959\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-ef80dacf",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Election of director Sandra E. Peterson",
+        "votes_for": 5004804899,
+        "votes_against": 166778650,
+        "abstentions": 11871108,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (96.78% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Sandra E. Peterson\nRe-elected\n96.78\n5,004,804,899\n166,778,650\n11,871,108\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-dfa801da",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Election of director Penny S. Pritzker",
+        "votes_for": 5147754253,
+        "votes_against": 27334798,
+        "abstentions": 8365606,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (99.47% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Penny S. Pritzker\nRe-elected\n99.47\n5,147,754,253\n27,334,798\n8,365,606\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-ab8a997b",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Election of director John David Rainey",
+        "votes_for": 5159803411,
+        "votes_against": 14709088,
+        "abstentions": 8942158,
+        "broker_non_votes": 1137975835,
+        "outcome": "Elected (99.72% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "John David Rainey\nElected\n99.72\n5,159,803,411\n14,709,088\n8,942,158\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-24c4a75c",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Election of director Charles W. Scharf",
+        "votes_for": 4947789084,
+        "votes_against": 227012006,
+        "abstentions": 8653567,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (95.61% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Charles W. Scharf\nRe-elected\n95.61\n4,947,789,084\n227,012,006\n8,653,567\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-3f52a5ea",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Election of director John W. Stanton",
+        "votes_for": 5056509391,
+        "votes_against": 118267836,
+        "abstentions": 8677430,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (97.71% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "John W. Stanton\nRe-elected\n97.71\n5,056,509,391\n118,267,836\n8,677,430\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-3c3f375f",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Election of director Emma N. Walmsley",
+        "votes_for": 5147102809,
+        "votes_against": 27909382,
+        "abstentions": 8442466,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (99.46% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Emma N. Walmsley\nRe-elected\n99.46\n5,147,102,809\n27,909,382\n8,442,466\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-0ba8bca8",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Advisory Vote to Approve Named Executive Officer Compensation",
+        "votes_for": 4744731533,
+        "votes_against": 415831135,
+        "abstentions": 22891989,
+        "broker_non_votes": 1137975835,
+        "outcome": "Approved (91.94% votes for); \"Approved, on an advisory basis, the compensation of the Company's named executive officers.\""
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Advisory Vote to Approve Named Executive Officer Compensation\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nApproved\n91.94\n4,744,731,533\n415,831,135\n22,891,989\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-cc1c9146",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Ratification of Appointment of Independent Auditor (Deloitte & Touche LLP) for Fiscal Year 2026",
+        "votes_for": 5897883259,
+        "votes_against": 408304657,
+        "abstentions": 15242576,
+        "broker_non_votes": 0,
+        "outcome": "Approved (93.53% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Ratification of Appointment of Independent Auditor for Fisal Year 2026\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nApproved\n93.53\n5,897,883,259\n408,304,657\n15,242,576\n0",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-7fbddc4b",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Approval of the Microsoft Corporation 2026 Stock Plan",
+        "votes_for": 5016063751,
+        "votes_against": 151618873,
+        "abstentions": 15772033,
+        "broker_non_votes": 1137975835,
+        "outcome": "Approved (97.07% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Approval of the Microsoft Corporation 2026 Stock Plan\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nApproved\n97.07\n5,016,063,751\n151,618,873\n15,772,033\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-a32cd673",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Shareholder Proposal: European Security Program Censorship Risk Audit",
+        "votes_for": 40404047,
+        "votes_against": 5102931493,
+        "abstentions": 40119117,
+        "broker_non_votes": 1137975835,
+        "outcome": "Not approved (0.79% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Shareholder Proposal: European Security Program Censorship Risk Audit\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n0.79\n40,404,047\n5,102,931,493\n40,119,117\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-ca6663b2",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Shareholder Proposal: Report on Risks of Censorship in Generative Artificial Intelligence",
+        "votes_for": 35508084,
+        "votes_against": 5104188603,
+        "abstentions": 43757970,
+        "broker_non_votes": 1137975835,
+        "outcome": "Not approved (0.69% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Shareholder Proposal: Report on Risks of Censorship in Generative Artificial Intelligence\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n0.69\n35,508,084\n5,104,188,603\n43,757,970\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-4876a0f8",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Shareholder Proposal: Report on AI Data Usage Oversight",
+        "votes_for": 683895858,
+        "votes_against": 4435809588,
+        "abstentions": 63749211,
+        "broker_non_votes": 1137975835,
+        "outcome": "Not approved (13.36% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Shareholder Proposal: Report on AI Data Usage Oversight\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n13.36\n683,895,858\n4,435,809,588\n63,749,211\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-1b4918ba",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Shareholder Proposal: Report on Data Operations in Human Rights Hotspots",
+        "votes_for": 1406735187,
+        "votes_against": 3712753371,
+        "abstentions": 63966099,
+        "broker_non_votes": 1137975835,
+        "outcome": "Not approved (27.48% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Shareholder Proposal: Report on Data Operations in Human Rights Hotspots\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n27.48\n1,406,735,187\n3,712,753,371\n63,966,099\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-ed16406a",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Shareholder Proposal: Report on Human Rights Due Diligence",
+        "votes_for": 1336945255,
+        "votes_against": 3738252211,
+        "abstentions": 108257191,
+        "broker_non_votes": 1137975835,
+        "outcome": "Not approved (26.34% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Shareholder Proposal: Report on Human Rights Due Diligence\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n26.34\n1,336,945,255\n3,738,252,211\n108,257,191\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "VOTE-FY2025-cb612cf9",
+      "field": "vote_results",
+      "fiscal_year": 2025,
+      "value": {
+        "matter": "Shareholder Proposal: Report on AI and Machine Learning Tools for Oil and Gas Development and Production",
+        "votes_for": 448005682,
+        "votes_against": 4671182894,
+        "abstentions": 64266081,
+        "broker_non_votes": 1137975835,
+        "outcome": "Not approved (8.75% votes for)"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-311196",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2025-12-08"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Shareholder Proposal: Report on AI and Machine Learning Tools for Oil and Gas Development and Production\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n8.75\n448,005,682\n4,671,182,894\n64,266,081\n1,137,975,835",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "events": [
+    {
+      "id": "EVT-FY2025-a527f1bf",
+      "field": "events",
+      "fiscal_year": 2025,
+      "value": {
+        "type": "segment_change",
+        "description": "Announced changes to segment composition, most notably bringing commercial components of Microsoft 365 into Productivity and Business Processes; effective beginning fiscal year 2025 with prior periods recast.",
+        "date": "2024-08"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In August 2024, we announced changes to the composition of our segments. These changes align our segments with how we currently manage our business, most notably bringing the commercial components of Microsoft 365 together in the Productivity and Business Processes segment.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2025-4dce8400",
+      "field": "events",
+      "fiscal_year": 2025,
+      "value": {
+        "type": "other",
+        "description": "Metric definition changes made in Q1 FY2025 in connection with the segment changes, including a new Microsoft 365 Commercial cloud revenue growth metric and combining Windows OEM and Devices into a single metric.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In the first quarter of fiscal year 2025, we made updates to our metrics in connection with the segment changes described above. These changes align our metrics with how we manage and monitor certain businesses. The key change was bringing the commercial components of Microsoft 365 together and creating a new Microsoft 365 Commercial cloud revenue growth metric.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2025-738145c1",
+      "field": "events",
+      "fiscal_year": 2025,
+      "value": {
+        "type": "acquisition",
+        "description": "Activision Blizzard acquisition affected Gaming revenue and operating expenses in fiscal year 2025.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Operating expenses increased $3.8 billion or 6% driven by investments in cloud and AI engineering and Gaming, including the impact of the Activision Blizzard acquisition.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2025-9d90f5b3",
+      "field": "events",
+      "fiscal_year": 2025,
+      "value": {
+        "type": "other",
+        "description": "Microsoft 365 Consumer price increase announced in January 2025 drove growth in revenue per user.",
+        "date": "2025-01"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Microsoft 365 Consumer cloud revenue grew 11% driven by Microsoft 365 Consumer subscriber growth of 8% to 89.0 million, as well as growth in revenue per user from the price increase announced in January 2025.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2025-b33b8831",
+      "field": "events",
+      "fiscal_year": 2025,
+      "value": {
+        "type": "other",
+        "description": "IRS Notices of Proposed Adjustment seeking $28.9 billion in additional tax plus penalties and interest for tax years 2004 to 2013, which Microsoft will contest.",
+        "date": "2023-09-26"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "With respect to the audit for tax years 2004 to 2013, on September 26, 2023, we received Notices of Proposed Adjustment (\u201cNOPAs\u201d) from the IRS. The primary issues in the NOPAs relate to intercompany transfer pricing. In the NOPAs, the IRS is seeking an additional tax payment of $28.9 billion plus penalties and interest.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2025-c26b2f68",
+      "field": "events",
+      "fiscal_year": 2025,
+      "value": {
+        "type": "other",
+        "description": "Enactment of the One Big Beautiful Bill Act, which Microsoft is assessing; provides a GILTI effective tax rate of 14% effective fiscal year 2027.",
+        "date": "2025-07-04"
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We are currently assessing the One Big Beautiful Bill Act (\u201cOBBBA\u201d) which was enacted on July 4, 2025. The OBBBA provides a U.S. global intangible low-taxed income effective tax rate of 14% effective fiscal year 2027 for Microsoft.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2025-92f42551",
+      "field": "events",
+      "fiscal_year": 2025,
+      "value": {
+        "type": "other",
+        "description": "Share repurchases of 31 million shares for $13.0 billion in fiscal year 2025, with $57.3 billion remaining of the $60 billion program.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "During fiscal years 2025 and 2024, we repurchased 31 million shares and 32 million shares of our common stock for $13.0 billion and $12.0 billion, respectively, through our share repurchase program. All repurchases were made using cash resources. As of June 30, 2025, $57.3 billion remained of our $60 billion share repurchase program.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2025-ed7423c8",
+      "field": "events",
+      "fiscal_year": 2025,
+      "value": {
+        "type": "other",
+        "description": "Eighth and final TCJA transition tax installment of $4.4 billion payable in the first quarter of fiscal year 2026.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "As of June 30, 2025, our eighth transition tax installment of $4.4 billion is short-term and payable in the first quarter of fiscal year 2026.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2025-8a4c8d0e",
+      "field": "events",
+      "fiscal_year": 2025,
+      "value": {
+        "type": "other",
+        "description": "Pillar Two global minimum tax legislation applies to Microsoft beginning in fiscal year 2025.",
+        "date": null
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Many countries have implemented or are in the process of implementing the Pillar Two legislation, which applies to Microsoft beginning in fiscal year 2025.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2025-5c9375b6",
+      "field": "events",
+      "fiscal_year": 2025,
+      "value": {
+        "type": "impairment",
+        "description": "Expected impairment charge of approximately $800 million in Q2 FY2025 on Microsoft's minority investment in Cruise, after GM announced its intent to realign its autonomous driving strategy and no longer fund Cruise's robotaxi development work; estimated negative impact of approximately $0.09 to second quarter diluted EPS, and not included in the second quarter guidance provided on October 30, 2024.",
+        "date": "2024-12-10"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-24-275524",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2024-12-11"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "On December 10, 2024, GM announced its intent to realign its autonomous driving strategy, no longer fund Cruise\u2019s robotaxi development work, and pursue the acquisition of minority investor shares. As a result, we expect to record an impairment charge of approximately $800 million in the second quarter of fiscal year 2025.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "EVT-FY2025-67d7a1cb",
+      "field": "events",
+      "fiscal_year": 2025,
+      "value": {
+        "type": "other",
+        "description": "2024 Annual Shareholders Meeting held; all 12 director nominees re-elected, say-on-pay approved on an advisory basis, and Deloitte & Touche LLP ratified as independent registered public accounting firm for fiscal year 2025; six shareholder proposals were not approved.",
+        "date": "2024-12-10"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-24-275524",
+        "section_key": "8-K_8-K_whole",
+        "filing_date": "2024-12-11"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "On December 10, 2024, Microsoft Corporation (the \u201cCompany\u201d or \u201cMicrosoft\u201d) held its 2024 Annual Shareholders Meeting (the \u201cAnnual Meeting\u201d). There were 7,434,436,393 shares of common stock entitled to be voted at the Annual Meeting, of which 6,417,206,480 were voted in person or by proxy.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "notable_language": [
+    {
+      "id": "LANG-FY2025-f7d8f90f",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Self-characterisation places AI at the centre of the company's identity and product framing, alongside the long-recurring mission statement."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Microsoft is a technology company committed to making digital technology and artificial intelligence (\u201cAI\u201d) available broadly and doing so responsibly, with a mission to empower every person and every organization on the planet to achieve more. We create platforms and tools, powered by AI, that deliver innovative solutions that meet the evolving needs of our customers.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-be24791c",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "An unusually direct admission that the AI capital cycle pressures costs and margins."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The investments we are making in cloud and AI infrastructure and devices will continue to increase our operating costs and may decrease our operating margins.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-c32e49cc",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Explicitly attributes a named margin decline to AI infrastructure scaling \u2014 a concrete cost of the AI build-out repeated across segments."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Microsoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-d38eef4d",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Frames physical constraints \u2014 land, energy, GPUs \u2014 as dependencies of the growth story, a comparatively new emphasis for a software company."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Our datacenters depend on the availability of permitted and buildable land, predictable energy, networking supplies, and servers, including graphics processing units (\u201cGPUs\u201d) and other components.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-ee136163",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "A dedicated description of the OpenAI relationship in Industry Trends, characterising IP rights, exclusivity and a right of first refusal in management's own terms."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Microsoft and OpenAI maintain a long-term strategic partnership originally established in 2019. Microsoft is a major investor in OpenAI, and the companies have reciprocal revenue-sharing arrangements. We hold rights to OpenAI\u2019s intellectual property, including models and infrastructure, for integration into our products.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-81175065",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Names OpenAI as a driver of a materially larger 'Other, net' loss \u2014 the partnership described as an opportunity also appearing as an earnings drag."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Other, net primarily reflects net recognized losses on equity method investments, including OpenAI.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-1aa54f85",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Explicit tariff and trade-policy language in the MD&A risk framing."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Further, global, regional, and local economic developments and changes in global trade policies such as restrictions on international trade, including tariffs and other controls on imports or exports, could result in increased supply chain challenges, cost volatility, and consumer and economic uncertainty which may adversely affect our results of operations.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-48edf2ad",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "A blunt, unhedged statement of a sharp decline in a first-party hardware business."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Xbox hardware revenue decreased 25% driven by lower volume of consoles sold.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-f128ed6c",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Justification language accompanying metric redefinitions \u2014 framing changed disclosure as transparency."
+      },
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "section_key": "10-K_item7_mdna",
+        "filing_date": "2025-07-30"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We disclose metrics to enable investors to evaluate progress against our ambitions, provide transparency into performance trends, and reflect the continued evolution of our products and services.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-535a4bf8",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "The committee frames two real metric changes (a new Security category and a reworked PSA metric set) inside a claim that nothing substantial changed."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "In evaluating our compensation practices in fiscal year 2025, our Compensation Committee was mindful of the support our shareholders expressed for our philosophy and practice of linking executive compensation to operational objectives and shareholder value creation and, other than refining our fiscal year 2025 operational cash incentive metrics to emphasize the importance of the SFI and updating our fiscal year 2025 performance stock award program metrics to further align with our key long term strategic priorities, our Compensation Committee did not make any substantial changes to our executive compensation program.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-646f92ff",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Explicit stated rationale for restructuring the operational assessment categories \u2014 security elevated to its own weighted bucket, with two prior categories collapsed into one."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "To emphasize the criticality of the contributions of our Senior Leadership Team members relating to cybersecurity, we refined our fiscal year 2025 Incentive Plan to combine Product & Strategy and Customers & Stakeholders into a single category and added a new category of Security.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-6b61d4a4",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Direct explanation of why a metric was broadened; broadening a narrow ad-revenue metric into a wider consumer basket changes what is being paid for and how it can be hit."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "For fiscal year 2025, we updated our PSA core metrics to further align with our key long term strategic priorities. Given the focus and investments in our Consumer business, we expanded Search and News Advertising Revenue (ex TAC) Growth to Consumer Services Revenue Growth, which includes revenue from all consumer areas with the exception of Xbox, device licensing, and devices.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-db99ecf2",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "A below-target revenue result is presented as evidence of goal rigor rather than a shortfall \u2014 defensive framing of a miss."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We note that our Incentive Plan Revenue result was 95.81% of target and Incentive Plan Operating Income result was 138.18% of target, which equated to a 15.22% and 17.80% fiscal year 2025 growth rate, respectively, further demonstrating our commitment to rigorous goal setting.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-842d6e27",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Benchmarking framework changed to two peer groups this year \u2014 a structural change to how pay levels are justified."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "For fiscal year 2025, the Compensation Committee reviewed the evolution of our business against our historical peer group, and as a result approved the use of two peer groups to better reflect the differentiated business, talent and, in some cases, pay models, across sectors:",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-273cd301",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Scale relative to peers is asserted as an upward justification for pay levels, a recurring rationale."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Microsoft is meaningfully larger than almost every company in both peer groups in terms of market capitalization and revenue. Our significant size, scale, and growth is a material factor when we set executive pay.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-1334c965",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Market-scarcity language used to justify competitive pay increases; the same rationale supports the individual raises granted this year."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The current technology labor market is hyper-competitive with demand growing faster than the supply of specialized technical talent, resulting in significant increases in compensation at many of the companies with which we compete for this talent.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-28b5264a",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "CEO target held flat while three NEO equity targets were leveled up to a common $19.5 million, attributed solely to a competitive market review."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We did not increase our target award values for Mr. Nadella . We increased our target award values for Ms. Hood from $17.5 million to $19.5 million, Mr. Althoff from $16.6 million to $19.5 million, and Mr. Smith from $15.5 million to $19.5 million, based on a competitive market review .",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-907774a9",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Restraint on CEO salary is highlighted even as CEO total compensation rose sharply through equity and bonus outcomes."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The independent members of our Board did not increase the base salary of Mr. Nadella, which it continued to believe was reasonable and appropriate given his role, capabilities, and experience, as well as the Company\u2019s relative scale and performance.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-b5f90b28",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "The 'leading indicators' and 'rigorous goals' framing recurs; notable because all four FY25 PSA metrics are revenue-growth measures rather than forward-looking indicators."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Management and our Compensation Committee discussed in detail the metrics that determine performance stock awards to ensure they are leading indicators that will drive long-term performance and value creation. The Committee establishes rigorous goals for each metric that require significant year-over-year improvement in order for target awards to be earned",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-ca72ae9f",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Personal security is carefully characterized as a business expense and risk management rather than a perquisite, alongside the company's 'No extraordinary perquisites' claim."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "The independent members of the Board decided that it was in the best interests of the Company and its stakeholders to provide personal security services to Mr. Nadella and Mr. Smith due to security considerations arising from their respective roles. We view the security services provided to Mr. Nadella and Mr. Smith as an integral part of our risk management program.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-2ac4b907",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Maximum modifier earned at exactly the 80th-percentile threshold \u2014 a precise cliff outcome driving a 50% uplift on the completed award."
+      },
+      "source": {
+        "form": "DEF 14A",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245150",
+        "section_key": "DEF14A_cdna",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Our absolute TSR for the performance period satisfied the PSA payout requirement that TSR be positive. Our TSR relative to the S&P 500 was at the 80 th percentile of the S&P 500, which meets the at least 80 th percentile performance condition required to receive the maximum 150.00% multiplier.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-b391d575",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "\"Think in decades but execute in quarters\" is the letter's signature refrain, repeated at least three times including the closing line \u2014 a deliberate framing device for balancing heavy AI capex against quarterly results."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "continue to think in decades but execute in quarters, approaching each day with the humility and curiosity required\nto continuously improve, while being guided by our bold vision for the future.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-5e3f656f",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "The headline success claim, stated with specific figures; the Azure $75 billion milestone recurs later in the letter's closing reflection."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Financially, it was a year of record performance. Revenue was $281.7 billion, up 15 percent. Operating income grew\n17 percent to $128.5 billion. And Azure surpassed $75 billion in revenue for the first time, up 34 percent.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-74486b90",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Frames the year as a generational platform shift and anchors it to the 50th anniversary \u2014 the letter's organizing premise."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Fifty years after our founding, Microsoft is once again at the heart of a generational moment in technology as we\nfind ourselves in the midst of the AI platform shift.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-5853a64b",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "An unusually direct acknowledgment of unfinished work on security and quality, and the elevation of quality (QEI) alongside security as a named initiative."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Security and quality are non-negotiable. Our infrastructure and services are mission critical for the world. This year,\nwe made significant progress across both our Secure Future Initiative (SFI) and Quality Excellence Initiative (QEI), but\nwe recognize our work here is never done.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-040c3fe7",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "A striking humility/legitimacy phrase \u2014 signals trust and regulatory standing as a live concern rather than an assumption."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We must earn our permission to operate every day,",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-1070cc82",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Success claim immediately hedged with a trust caveat \u2014 the tone pattern of the whole letter."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "These results reflect the growing demand for our platform and the trust customers are placing in us. We take neither for\ngranted.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-ad323cdc",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "A quantified security-investment claim stated in an unusual unit (\"equivalent of\" full-time engineers) rather than dollars."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Through SFI, we have dedicated the equivalent of 34,000 full-time engineers to our highest-priority security work.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-088dc86c",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "\"Renaissance of our engineering culture\" implies the prior culture had lapsed \u2014 a notable self-critical framing."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Together, these initiatives are laying the foundation for a renaissance of our engineering culture, where we build\nplanet-scale systems that power the world, with the security and quality they require.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-4ca0bc1b",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "The long-recurring \"growth mindset\"/\"learn-it-alls\" culture language, now qualified by the newer phrase \"guided by evaluations.\""
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Our growth mindset is essential to our ability to continue leading this AI era. It enables us to innovate both within\nMicrosoft and with those we serve. We must be learn-it-alls, willing to experiment, guided by evaluations, and\ncommitted to continuous improvement.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-ffbbe631",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "An explicit disclaimer that the new way of working is not about efficiency \u2014 notable given the year's workforce context; the denial itself is the tell."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "This isn\u2019t just about driving efficiency. It\u2019s about empowering our people to\ndream bigger and get to \u201cjob complete\u201d faster, with less friction and greater impact than ever before.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-ca2c1c15",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Superlative infrastructure claim with a forward-looking performance multiple \u2014 the kind of language to track year over year."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "And just last month, we announced the world\u2019s most powerful AI datacenter, Fairwater\nin southeastern Wisconsin, which will deliver 10x the performance of the world\u2019s fastest supercomputer today.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-a0a276cc",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Adoption-breadth claim of a type that recurs across the letter (100 million Copilot MAU, 20 million GitHub Copilot users, 230,000 Copilot Studio organizations) \u2014 usage metrics substituting for revenue disclosure."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Already,\n80 percent of the Fortune 500 use Foundry for their AI workloads.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-7736059a",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "The decades/quarters refrain applied to sustainability, softening the pace of progress on those targets."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Making progress on these commitments takes time. But here, too\u2014we are guided by a bold vision, thinking in\ndecades and executing in quarters.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "LANG-FY2025-1d80531e",
+      "field": "notable_language",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "A hedge: \"many\" targets on track, with the rest described only as accelerating \u2014 worth comparing to prior-year phrasing."
+      },
+      "source": {
+        "form": "ARS",
+        "fiscal_year": 2025,
+        "accession": "0001193125-25-245177",
+        "section_key": "letter_full_text",
+        "filing_date": "2025-10-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We are on track to meet many of our targets and continue to accelerate\nprogress for others.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "investor_qa": [
+    {
+      "id": "QA-FY2025-de2816c8",
+      "field": "investor_qa",
+      "fiscal_year": 2025,
+      "value": {
+        "topic": "Segment structure change bringing commercial Microsoft 365 revenue together in Productivity and Business Processes",
+        "stated_position": "Management says it \"brought revenue from the commercial components of Microsoft 365 together\" in the PBP segment \"to align to how the business is managed,\" pulling in EMS and Power BI per-user revenue previously reported in Azure within Intelligent Cloud and Windows Commercial products and cloud services revenue previously reported in Windows within More Personal Computing.",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-24-204403",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2024-08-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We have brought revenue from the commercial components of Microsoft 365 together in the Productivity and Business Processes (\u201cPBP\u201d) segment to align to how the business is managed.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2025-9cc5e7f2",
+      "field": "investor_qa",
+      "fiscal_year": 2025,
+      "value": {
+        "topic": "Elevation of cloud revenue growth metrics to KPIs",
+        "stated_position": "Management elevated cloud revenue growth metrics for Microsoft 365 Commercial, Microsoft 365 Consumer, Dynamics 365, and Azure to KPI status, replacing the former \"products and cloud services\" KPIs, stating that \"This elevation aligns to our strategic focus on cloud growth.\"",
+        "kind": "strategy"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-24-204403",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2024-08-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We elevated our cloud revenue growth metrics for Microsoft 365 Commercial, Microsoft 365 Consumer, Dynamics 365, and Azure to be KPIs, which have replaced the former \u201cproducts and cloud services\u201d KPIs. This elevation aligns to our strategic focus on cloud growth.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2025-946672a5",
+      "field": "investor_qa",
+      "fiscal_year": 2025,
+      "value": {
+        "topic": "Redefinition of the Azure metric around consumption",
+        "stated_position": "With EMS and Power BI per-user revenue moved out, management states the \"Azure metric now more closely aligns to consumption business.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-24-204403",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2024-08-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "With EMS revenue and Power BI per-user revenue moved into Microsoft 365 Commercial cloud metric, Azure metric now more closely aligns to consumption business",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2025-cac46938",
+      "field": "investor_qa",
+      "fiscal_year": 2025,
+      "value": {
+        "topic": "Combining Windows and Devices reporting",
+        "stated_position": "Windows revenue (now excluding Windows Commercial) and Devices revenue will be reported together \"to bring revenue from PC market-driven businesses together,\" with the separate Windows OEM and Devices growth metrics replaced by a single \"Windows OEM and Devices revenue growth\" metric \"to align to how the PC market-driven businesses are managed.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-24-204403",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2024-08-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Windows revenue (now excluding Windows Commercial revenue as noted above) and Devices revenue will now be reported together in SEC filings to bring revenue from PC market-driven businesses together",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2025-2dd3fa4a",
+      "field": "investor_qa",
+      "fiscal_year": 2025,
+      "value": {
+        "topic": "Copilot Pro reclassification and renaming of Office Consumer",
+        "stated_position": "Copilot Pro revenue moved from Office Consumer products and cloud services in PBP to Search and news advertising in MPC \"to align to how the business is managed,\" and \"Office Consumer products and cloud services\" was renamed \"Microsoft 365 Consumer products and cloud services\" \"given the current branding of the product.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-24-204403",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2024-08-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Copilot Pro revenue has moved from Office Consumer products and cloud services in our PBP segment to Search and news advertising in our MPC segment to align to how the business is managed. We then renamed \u201cOffice Consumer products and cloud services\u201d to \u201cMicrosoft 365 Consumer products and cloud services\u201d given the current branding of the product.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2025-85d9203c",
+      "field": "investor_qa",
+      "fiscal_year": 2025,
+      "value": {
+        "topic": "Nuance revenue reclassification between Intelligent Cloud and Productivity and Business Processes",
+        "stated_position": "Nuance Enterprise revenue moved from Server products and cloud services in Intelligent Cloud to Dynamics products and cloud services in PBP, while \"Nuance Healthcare revenue remains in Server products and cloud services,\" with management stating \"These changes better align to how the businesses are managed.\"",
+        "kind": "segment_or_product"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-24-204403",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2024-08-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Nuance Enterprise revenue has moved from Server products and cloud services in the IC segment to Dynamics products and cloud services in the PBP segment. Nuance Healthcare revenue remains in Server products and cloud services. These changes better align to how the businesses are managed.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2025-4eafd31c",
+      "field": "investor_qa",
+      "fiscal_year": 2025,
+      "value": {
+        "topic": "Purpose of Microsoft's supplemental disclosure framework",
+        "stated_position": "Management frames its supplemental disclosure as intended to \"Enable investors to evaluate progress against our ambitions,\" \"Provide transparency into performance trends,\" and \"Reflect the continued evolution of our products and services.\"",
+        "kind": "governance_or_management"
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-24-204403",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2024-08-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Enable investors to evaluate progress against our ambitions Provide transparency into performance trends Reflect the continued evolution of our products and services",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2025-3557cf6c",
+      "field": "investor_qa",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "An explicit statement of strategic priority attached to a reporting change \u2014 management names cloud growth as the strategic focus driving which metrics become KPIs."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-24-204403",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2024-08-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "This elevation aligns to our strategic focus on cloud growth.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2025-8fc0cbf5",
+      "field": "investor_qa",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "A phrase that recurs across nearly every segment and metric change in this presentation (Microsoft 365 Commercial, Copilot Pro, Nuance, Windows/Devices), functioning as the standing justification for restructuring disclosure."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-24-204403",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2024-08-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "to align to how the business is managed",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2025-d925f610",
+      "field": "investor_qa",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "Self-characterisation of the narrative the disclosure framework is meant to convey \u2014 'momentum and innovation' as the framing lens for investor communications."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-24-204403",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2024-08-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "Momentum and innovation from a product, customer, and partner perspective",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    },
+    {
+      "id": "QA-FY2025-dca2c1c3",
+      "field": "investor_qa",
+      "fiscal_year": 2025,
+      "value": {
+        "why_notable": "An unusually explicit hedge insisting the restated outlook reflects no change in underlying expectations \u2014 only 'mechanical updates' \u2014 pre-empting any read of the restructuring as a guidance revision."
+      },
+      "source": {
+        "form": "8-K",
+        "fiscal_year": 2025,
+        "accession": "0001193125-24-204403",
+        "section_key": "8-K_EX-99-1_whole",
+        "filing_date": "2024-08-21"
+      },
+      "confidence": "high",
+      "confidence_reason": null,
+      "quote": "We will report our FY25 Q1 results in the structure discussed on the prior slides. Therefore, we have provided mechanical updates only to our outlook as provided on July 30, 2024 for the changes discussed in this presentation.",
+      "quote_verified": true,
+      "quote_check": "verbatim match",
+      "correction": null
+    }
+  ],
+  "risk_deltas": {
+    "fiscal_year": 2025,
+    "compared_to": 2024,
+    "deltas": {
+      "unchanged": [
+        {
+          "heading": "Competition in the technology sector",
+          "heading_similarity": 100.0,
+          "body_similarity": 99.3,
+          "id": "RISK-FY2025-762f1c0f"
+        },
+        {
+          "heading": "Competition among platform-based ecosystems",
+          "heading_similarity": 100.0,
+          "body_similarity": 98.1,
+          "id": "RISK-FY2025-546683e4"
+        },
+        {
+          "heading": "Business model competition",
+          "heading_similarity": 100.0,
+          "body_similarity": 97.6,
+          "id": "RISK-FY2025-6b9df622"
+        },
+        {
+          "heading": "Security of our information technology",
+          "heading_similarity": 100.0,
+          "body_similarity": 93.5,
+          "id": "RISK-FY2025-03ce1160"
+        },
+        {
+          "heading": "Security of our products, services, devices, and customers\u2019 data",
+          "heading_similarity": 100.0,
+          "body_similarity": 95.0,
+          "id": "RISK-FY2025-93f5df41"
+        },
+        {
+          "heading": "Development and deployment of defensive measures",
+          "heading_similarity": 100.0,
+          "body_similarity": 95.0,
+          "id": "RISK-FY2025-33c72ed2"
+        },
+        {
+          "heading": "Advertising, professional, marketplace, and gaming platform abuses",
+          "heading_similarity": 100.0,
+          "body_similarity": 100.0,
+          "id": "RISK-FY2025-8e792034"
+        }
+      ],
+      "reworded": [
+        {
+          "heading_now": "Other digital safety abuses",
+          "heading_prior": "Other digital safety abuses",
+          "heading_similarity": 100.0,
+          "body_similarity": 78.8,
+          "changed": "body only",
+          "category_now": "Abuse of our platforms may harm our reputation or user engagement.",
+          "category_prior": "Abuse of our platforms may harm our reputation or user engagement.",
+          "id": "RISK-FY2025-a378afcf"
+        }
+      ],
+      "added": [],
+      "removed": []
+    },
+    "counts": {
+      "unchanged": 7,
+      "reworded": 1,
+      "added": 0,
+      "removed": 0
+    },
+    "problems": [],
+    "source": {
+      "form": "10-K",
+      "fiscal_year": 2025,
+      "accession": "0000950170-25-100235",
+      "prior_accession": "0000950170-24-087843"
+    }
+  },
+  "data_quality": {
+    "strategic_priorities": {
+      "n": 27,
+      "populated": true,
+      "high_confidence": 27,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item1_business",
+        "letter_full_text"
+      ]
+    },
+    "segments": {
+      "n": 6,
+      "populated": true,
+      "high_confidence": 6,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item1_business",
+        "10-K_item7_mdna"
+      ]
+    },
+    "headcount": {
+      "n": 1,
+      "populated": true,
+      "high_confidence": 1,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item1_business"
+      ]
+    },
+    "leadership": {
+      "n": 1,
+      "populated": true,
+      "high_confidence": 1,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "8-K_8-K_whole"
+      ]
+    },
+    "board": {
+      "n": 12,
+      "populated": true,
+      "high_confidence": 0,
+      "low_confidence": 12,
+      "unverified_quotes": 0,
+      "sources": [
+        "DEF14A_director_bios"
+      ]
+    },
+    "incentive_metrics": {
+      "n": 15,
+      "populated": true,
+      "high_confidence": 15,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "DEF14A_cdna"
+      ]
+    },
+    "vote_results": {
+      "n": 21,
+      "populated": true,
+      "high_confidence": 21,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "8-K_8-K_whole"
+      ]
+    },
+    "events": {
+      "n": 11,
+      "populated": true,
+      "high_confidence": 11,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item7_mdna",
+        "8-K_8-K_whole"
+      ]
+    },
+    "notable_language": {
+      "n": 35,
+      "populated": true,
+      "high_confidence": 35,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "10-K_item7_mdna",
+        "DEF14A_cdna",
+        "letter_full_text"
+      ]
+    },
+    "investor_qa": {
+      "n": 11,
+      "populated": true,
+      "high_confidence": 11,
+      "low_confidence": 0,
+      "unverified_quotes": 0,
+      "sources": [
+        "8-K_EX-99-1_whole"
+      ]
+    },
+    "risk_deltas": {
+      "populated": true,
+      "counts": {
+        "unchanged": 7,
+        "reworded": 1,
+        "added": 0,
+        "removed": 0
+      },
+      "unavailable_reason": null
+    },
+    "segments_basis": {
+      "filing_uses_reportable_segment_language": true,
+      "basis": "reportable segments as named by the filing"
+    },
+    "investor_qa_basis": {
+      "n": 11,
+      "source_register": "Regulation FD voluntary disclosure (8-K item 7.01)",
+      "basis": "management's written answers to questions submitted by investors, published roughly monthly. Same verification as every other fact \u2014 whole-document boundaries and a checked quote \u2014 but a different kind of evidence from a 10-K or proxy statement: unaudited, unprompted by any disclosure requirement, and responsive to whatever was asked. Corroborating; not a substitute for a filed disclosure.",
+      "filings": [
+        "0001193125-24-204403"
+      ]
+    },
+    "ids": {
+      "n_facts": 140,
+      "n_risk_deltas": 8,
+      "all_present": true,
+      "unique_within_year": true,
+      "basis": "content hash of the claim, its evidence and its source \u2014 see `fact_id` in src/equity_research/ledger_schema.py. Confidence and the verification result are NOT hashed, so re-verifying a fact does not renumber it. Cross-year uniqueness is enforced fatally at build time by `audit_ids`."
+    },
+    "document_window": {
+      "first_filing_date": "2024-08-21",
+      "last_filing_date": "2025-12-08",
+      "n_source_filings": 7,
+      "sourced_from_outside_the_fiscal_window": [
+        "0001193125-25-311196"
+      ],
+      "basis": "filing dates of the documents this year's facts are actually drawn from \u2014 NOT the fiscal window in inventory.json, which bounds the fiscal years in scope. Documents reporting on a fiscal year are filed after it ends, so this range extends past window_end_date by construction. Any accession listed above additionally belongs to a fiscal year outside the window and is used deliberately: an annual-meeting vote held in May of year N decides on year N-1."
+    },
+    "corrections": {
+      "n": 0,
+      "applied": [],
+      "basis": "config/corrections.toml \u2014 human corrections to model-extracted values that the cited filing contradicts, each carrying the filing text that establishes it. data/ledger/facts/ is never edited: the record of what the model returned has to stay as it was."
+    },
+    "extraction_tasks_missing": [],
+    "board_metadata": {
+      "board_size": 12,
+      "committees": [
+        "Governance and Nominating Committee",
+        "Compensation Committee",
+        "Audit Committee"
+      ]
+    }
+  }
+}

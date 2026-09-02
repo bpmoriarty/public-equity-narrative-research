@@ -625,3 +625,82 @@ run as held-out data.
   so three of six.
 - **FY2025 `votes`**, which exists only because finding 4 was closed first: 21
   vote results that `pipeline MSFT` would otherwise have dropped silently.
+
+## The free stages, and the gate declining under a piped stdin
+
+`build_ledger` → `merge_events` → `render_timeline` → `build_pack` all ran clean,
+then `generate_outputs` **declined itself** because stdin was not interactive:
+*"stdin is not interactive, so nothing approved it."* Exit 3, nothing spent,
+resume commands printed. That is the other half of item 27 — the path that
+treats an unanswerable question as **no** — and it now has a real run behind it
+rather than a unit test.
+
+| | |
+|---|---|
+| ledger | 769 facts over 6 years, 809 unique ids, no collisions at 8 hex |
+| unverified quotes | **2 of 769**, both excluded from the pack as unsourceable |
+| pack | 807 citable ids, 459,258 chars, **172,653 tokens** — 29% of the ceiling |
+| pack sha256 | `8692a1d7a9c76734…` |
+| timeline | `output/timeline.md`, 104 rows from 108 records (4 merged) |
+
+The two unverified quotes were **kept in the ledger and dropped from the pack**,
+which is the traceability rule behaving correctly: unsourceable means not
+citable. One diverges after 558 of 581 characters (96% — almost certainly
+punctuation), the other after 124 of 222 (56%, more substantive).
+
+MSFT's pack is **172,653 tokens against MORN's ~353,000**, for six years rather
+than five. The budget check's warning threshold was never approached, so the
+Phase 0 pack-budget machinery remains unexercised by a real company.
+
+## Finding 6: the proxy `director_bios` boundary does not survive a new filing agent
+
+Every MSFT `board` fact is name-only. Measured across both companies:
+
+| | `director_since` | `committees` | `role` | source size |
+|---|---|---|---|---|
+| **MSFT** | **0/12, all six years** | **0/12, all six years** | 0–4/12 | 16,137–57,761 ch |
+| MORN | 9–10/10 | 7–8/10 | 3–11/10 | 20,736–31,968 ch |
+
+Two independent signals that the span, not the model, is at fault:
+
+1. **A 3.5x size spread** for the same section of the same company's proxy
+   across six consecutive years. MORN's varies by 1.5x.
+2. **1–4 quotes per year are lifted from the proxy VOTING CARD** — "1. Election
+   of Directors: (The Board recommends a vote FOR each nominee) 01. Reid G.
+   Hoffman 02. Hugh F. Johnston…" — so the span reaches the ballot instead of
+   stopping at the bios.
+
+Consequence: **72 pack facts, 9.4% of everything citable, name a director with
+no tenure, no committee and usually no role.** Nothing is *wrong* — the names
+and quotes verify — but the governance half of the brief has almost no substance
+to draw on, and 6.6's judgment has to account for that rather than read it as a
+model failure.
+
+**This one cannot be fixed in config.** Per the 6.4 finding, `find_proxy_sections(doc)`
+takes no `cfg` argument, so proxy boundaries are not reachable from
+`sections.toml` — not globally and not in `companies/MSFT/overrides/`. It needs
+code, which is why it is recorded here rather than patched mid-run.
+
+`board` carrying `confidence: low` on all 72 is **not** part of this and not an
+MSFT problem: the board member schema has no confidence field at all, for either
+company (`None: 72` MSFT, `None: 51` MORN), so `low` is assigned downstream.
+MORN's committed ledger shows the same `high=0 low=n`.
+
+## Finding 7: `build_ledger` prescribes a paid command that has nothing to do
+
+For each missing task it prints, e.g.:
+
+> FY2020: extraction task 'investor_qa' has no result file — run
+> `uv run python -m equity_research.extract_facts --fy 2020 --task investor_qa`
+
+Run verbatim, that reports **`tasks to run: 0` … `nothing to do`** and exits 0.
+FY2020 has no `investor_qa` unit because triage routed no filing to it — there
+is nothing to extract, so the file's absence is correct and the instruction is a
+dead end. It fired for four of the eight warnings (FY2020/2023/2024
+`investor_qa`, and the three `letter` years are the same shape).
+
+Harmless in dollars, because the stage refuses to spend on an empty plan. Still
+worth fixing: it sends an operator to a **paid** stage to chase a non-problem,
+and the warning cannot currently tell "extraction has not run yet" apart from
+"there was never anything to run". The second case should say *no source in this
+year's filings*, and say nothing about `extract_facts`.
