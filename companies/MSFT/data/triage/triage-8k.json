@@ -1,0 +1,1357 @@
+{
+  "ticker": "MSFT",
+  "cik": "0000789019",
+  "headline_window_chars": 1200,
+  "max_document_chars": 120000,
+  "filings_triaged": 25,
+  "read": 25,
+  "date_only": 0,
+  "records": [
+    {
+      "accession": "0001193125-20-050232",
+      "filing_date": "2020-02-26",
+      "report_date": "2020-02-26",
+      "fiscal_year": 2020,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2020/8-K/0001193125-20-050232/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-050232/8-K_8-K_whole.txt",
+          "raw_chars": 3744,
+          "content_chars": 1428,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2020/8-K/0001193125-20-050232/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-050232/8-K_EX-99-1_whole.txt",
+          "raw_chars": 6280,
+          "content_chars": 6244,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 7672
+    },
+    {
+      "accession": "0001193125-20-091746",
+      "filing_date": "2020-03-31",
+      "report_date": "2020-03-28",
+      "fiscal_year": 2020,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2020/8-K/0001193125-20-091746/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-091746/8-K_8-K_whole.txt",
+          "raw_chars": 4547,
+          "content_chars": 2169,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2020/8-K/0001193125-20-091746/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-091746/8-K_EX-99-1_whole.txt",
+          "raw_chars": 7105,
+          "content_chars": 7069,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 9238
+    },
+    {
+      "accession": "0001193125-20-128779",
+      "filing_date": "2020-04-30",
+      "report_date": "2020-04-30",
+      "fiscal_year": 2020,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2020/8-K/0001193125-20-128779/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-128779/8-K_8-K_whole.txt",
+          "raw_chars": 3249,
+          "content_chars": 856,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2020/8-K/0001193125-20-128779/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-128779/8-K_EX-99-1_whole.txt",
+          "raw_chars": 20815,
+          "content_chars": 20779,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 21635
+    },
+    {
+      "accession": "0001193125-20-142890",
+      "filing_date": "2020-05-14",
+      "report_date": "2020-05-14",
+      "fiscal_year": 2020,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2020/8-K/0001193125-20-142890/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-142890/8-K_8-K_whole.txt",
+          "raw_chars": 3597,
+          "content_chars": 749,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2020/8-K/0001193125-20-142890/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-142890/8-K_EX-99-1_whole.txt",
+          "raw_chars": 10980,
+          "content_chars": 10944,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.2",
+          "section_key": "8-K_EX-99-2_whole",
+          "is_body": false,
+          "path": "data/sections/FY2020/8-K/0001193125-20-142890/8-K_EX-99-2_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-142890/8-K_EX-99-2_whole.txt",
+          "raw_chars": 14838,
+          "content_chars": 14802,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole",
+        "8-K_EX-99-2_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 26495
+    },
+    {
+      "accession": "0001193125-20-157234",
+      "filing_date": "2020-06-01",
+      "report_date": "2020-05-29",
+      "fiscal_year": 2020,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2020/8-K/0001193125-20-157234/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-157234/8-K_8-K_whole.txt",
+          "raw_chars": 6016,
+          "content_chars": 3143,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2020/8-K/0001193125-20-157234/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-157234/8-K_EX-99-1_whole.txt",
+          "raw_chars": 10240,
+          "content_chars": 10204,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 13347
+    },
+    {
+      "accession": "0001193125-20-180036",
+      "filing_date": "2020-06-26",
+      "report_date": "2020-06-26",
+      "fiscal_year": 2020,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2020/8-K/0001193125-20-180036/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-180036/8-K_8-K_whole.txt",
+          "raw_chars": 3730,
+          "content_chars": 1411,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2020/8-K/0001193125-20-180036/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-180036/8-K_EX-99-1_whole.txt",
+          "raw_chars": 7835,
+          "content_chars": 7799,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 9210
+    },
+    {
+      "accession": "0001193125-20-207517",
+      "filing_date": "2020-08-03",
+      "report_date": "2020-08-02",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "material signal (deal) matched outside the headline window, so it is a mention rather than an announcement \u2014 read, because only a reader can tell those apart",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001193125-20-207517/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-207517/8-K_8-K_whole.txt",
+          "raw_chars": 3939,
+          "content_chars": 1097,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "deal": {
+              "strength": "mention",
+              "first_at": 2686,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 2686,
+                  "matched": "to acquire",
+                  "pattern": "\\bto\\s+acquire\\b"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2021/8-K/0001193125-20-207517/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-207517/8-K_EX-99-1_whole.txt",
+          "raw_chars": 2530,
+          "content_chars": 2495,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 3592
+    },
+    {
+      "accession": "0001193125-20-250163",
+      "filing_date": "2020-09-21",
+      "report_date": "2020-09-21",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "strong material signal: deal",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001193125-20-250163/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-250163/8-K_8-K_whole.txt",
+          "raw_chars": 3846,
+          "content_chars": 1101,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2021/8-K/0001193125-20-250163/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-20-250163/8-K_EX-99-1_whole.txt",
+          "raw_chars": 9575,
+          "content_chars": 9540,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "deal": {
+              "strength": "strong",
+              "first_at": 66,
+              "n_patterns_matched": 2,
+              "evidence": [
+                {
+                  "at": 66,
+                  "matched": "to acquire",
+                  "pattern": "\\bto\\s+acquire\\b"
+                },
+                {
+                  "at": 1059,
+                  "matched": "plans to acquire",
+                  "pattern": "\\b(plans?|intends?|agreed|agrees)\\s+to\\s+acquire\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 10641
+    },
+    {
+      "accession": "0001193125-21-044940",
+      "filing_date": "2021-02-16",
+      "report_date": "2021-02-16",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001193125-21-044940/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-21-044940/8-K_8-K_whole.txt",
+          "raw_chars": 3208,
+          "content_chars": 812,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2021/8-K/0001193125-21-044940/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-21-044940/8-K_EX-99-1_whole.txt",
+          "raw_chars": 22146,
+          "content_chars": 22111,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 22923
+    },
+    {
+      "accession": "0001193125-21-065751",
+      "filing_date": "2021-03-02",
+      "report_date": "2021-03-02",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001193125-21-065751/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-21-065751/8-K_8-K_whole.txt",
+          "raw_chars": 3469,
+          "content_chars": 753,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2021/8-K/0001193125-21-065751/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-21-065751/8-K_EX-99-1_whole.txt",
+          "raw_chars": 12331,
+          "content_chars": 12295,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.2",
+          "section_key": "8-K_EX-99-2_whole",
+          "is_body": false,
+          "path": "data/sections/FY2021/8-K/0001193125-21-065751/8-K_EX-99-2_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-21-065751/8-K_EX-99-2_whole.txt",
+          "raw_chars": 16351,
+          "content_chars": 16315,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole",
+        "8-K_EX-99-2_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 29363
+    },
+    {
+      "accession": "0001193125-21-084239",
+      "filing_date": "2021-03-17",
+      "report_date": "2021-03-16",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001193125-21-084239/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-21-084239/8-K_8-K_whole.txt",
+          "raw_chars": 6306,
+          "content_chars": 3570,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2021/8-K/0001193125-21-084239/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-21-084239/8-K_EX-99-1_whole.txt",
+          "raw_chars": 10401,
+          "content_chars": 10365,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 13935
+    },
+    {
+      "accession": "0001193125-21-112687",
+      "filing_date": "2021-04-12",
+      "report_date": "2021-04-12",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: presentation",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001193125-21-112687/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-21-112687/8-K_8-K_whole.txt",
+          "raw_chars": 4157,
+          "content_chars": 1449,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "presentation": {
+              "strength": "mention",
+              "first_at": 3825,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 3825,
+                  "matched": "Investor Presentation",
+                  "pattern": "investor\\s+presentation"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2021/8-K/0001193125-21-112687/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-21-112687/8-K_EX-99-1_whole.txt",
+          "raw_chars": 13480,
+          "content_chars": 13444,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "deal": {
+              "strength": "mention",
+              "first_at": 11645,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 11645,
+                  "matched": "merger agreement",
+                  "pattern": "\\b(Termination|Tender\\s+Offer|Asset\\s+Purchase|Share\\s+Purchase|Merger)\\s+Agreement\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 14893
+    },
+    {
+      "accession": "0001193125-21-192783",
+      "filing_date": "2021-06-17",
+      "report_date": "2021-06-16",
+      "fiscal_year": 2021,
+      "form": "8-K",
+      "items": [
+        "8.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2021/8-K/0001193125-21-192783/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-21-192783/8-K_8-K_whole.txt",
+          "raw_chars": 2848,
+          "content_chars": 304,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [],
+      "stub_documents": [
+        "8-K"
+      ],
+      "content_chars": 0
+    },
+    {
+      "accession": "0001193125-21-210827",
+      "filing_date": "2021-07-08",
+      "report_date": "2021-07-08",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001193125-21-210827/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-21-210827/8-K_8-K_whole.txt",
+          "raw_chars": 4013,
+          "content_chars": 1364,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2022/8-K/0001193125-21-210827/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-21-210827/8-K_EX-99-1_whole.txt",
+          "raw_chars": 1417,
+          "content_chars": 1381,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 2745
+    },
+    {
+      "accession": "0001193125-22-010667",
+      "filing_date": "2022-01-18",
+      "report_date": "2022-01-18",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "material signal (deal) in a document that also carries narrative content (presentation)",
+      "routes_to": [
+        "events",
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001193125-22-010667/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-22-010667/8-K_8-K_whole.txt",
+          "raw_chars": 4251,
+          "content_chars": 1570,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "presentation": {
+              "strength": "mention",
+              "first_at": 3837,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 3837,
+                  "matched": "Investor Presentation",
+                  "pattern": "investor\\s+presentation"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2022/8-K/0001193125-22-010667/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-22-010667/8-K_EX-99-1_whole.txt",
+          "raw_chars": 14640,
+          "content_chars": 14604,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "deal": {
+              "strength": "strong",
+              "first_at": 67,
+              "n_patterns_matched": 3,
+              "evidence": [
+                {
+                  "at": 67,
+                  "matched": "to Acquire",
+                  "pattern": "\\bto\\s+acquire\\b"
+                },
+                {
+                  "at": 620,
+                  "matched": "plans to acquire",
+                  "pattern": "\\b(plans?|intends?|agreed|agrees)\\s+to\\s+acquire\\b"
+                },
+                {
+                  "at": 9338,
+                  "matched": "merger agreement",
+                  "pattern": "\\b(Termination|Tender\\s+Offer|Asset\\s+Purchase|Share\\s+Purchase|Merger)\\s+Agreement\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 16174
+    },
+    {
+      "accession": "0001193125-22-165839",
+      "filing_date": "2022-06-02",
+      "report_date": "2022-06-02",
+      "fiscal_year": 2022,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2022/8-K/0001193125-22-165839/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-22-165839/8-K_8-K_whole.txt",
+          "raw_chars": 4166,
+          "content_chars": 1991,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2022/8-K/0001193125-22-165839/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-22-165839/8-K_EX-99-1_whole.txt",
+          "raw_chars": 1856,
+          "content_chars": 1820,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 3811
+    },
+    {
+      "accession": "0001193125-23-009934",
+      "filing_date": "2023-01-18",
+      "report_date": "2023-01-18",
+      "fiscal_year": 2023,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "material signal (deal) matched outside the headline window, so it is a mention rather than an announcement \u2014 read, because only a reader can tell those apart",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2023/8-K/0001193125-23-009934/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-23-009934/8-K_8-K_whole.txt",
+          "raw_chars": 4501,
+          "content_chars": 2322,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2023/8-K/0001193125-23-009934/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-23-009934/8-K_EX-99-1_whole.txt",
+          "raw_chars": 3876,
+          "content_chars": 3840,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "deal": {
+              "strength": "mention",
+              "first_at": 1871,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 1871,
+                  "matched": "divesting",
+                  "pattern": "\\bdivest(iture|ed|ing)?\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 6162
+    },
+    {
+      "accession": "0001193125-23-254151",
+      "filing_date": "2023-10-11",
+      "report_date": "2023-10-11",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001193125-23-254151/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-23-254151/8-K_8-K_whole.txt",
+          "raw_chars": 4252,
+          "content_chars": 2073,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2024/8-K/0001193125-23-254151/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-23-254151/8-K_EX-99-1_whole.txt",
+          "raw_chars": 3572,
+          "content_chars": 3536,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 5609
+    },
+    {
+      "accession": "0001104659-23-109428",
+      "filing_date": "2023-10-16",
+      "report_date": "2023-10-16",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001104659-23-109428/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-109428/8-K_8-K_whole.txt",
+          "raw_chars": 8447,
+          "content_chars": 5915,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2024/8-K/0001104659-23-109428/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001104659-23-109428/8-K_EX-99-1_whole.txt",
+          "raw_chars": 14203,
+          "content_chars": 14144,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 20059
+    },
+    {
+      "accession": "0001193125-23-265616",
+      "filing_date": "2023-10-30",
+      "report_date": "2023-10-27",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001193125-23-265616/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-23-265616/8-K_8-K_whole.txt",
+          "raw_chars": 4929,
+          "content_chars": 2540,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2024/8-K/0001193125-23-265616/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-23-265616/8-K_EX-99-1_whole.txt",
+          "raw_chars": 13887,
+          "content_chars": 13851,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 16391
+    },
+    {
+      "accession": "0001193125-23-271376",
+      "filing_date": "2023-11-06",
+      "report_date": "2023-11-06",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "material signal (leadership) matched outside the headline window, so it is a mention rather than an announcement \u2014 read, because only a reader can tell those apart",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001193125-23-271376/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-23-271376/8-K_8-K_whole.txt",
+          "raw_chars": 15363,
+          "content_chars": 12989,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "leadership": {
+              "strength": "mention",
+              "first_at": 5175,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 5175,
+                  "matched": "successor to",
+                  "pattern": "\\bsuccessor\\s+to\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 12989
+    },
+    {
+      "accession": "0001193125-24-011295",
+      "filing_date": "2024-01-19",
+      "report_date": "2024-01-17",
+      "fiscal_year": 2024,
+      "form": "8-K",
+      "items": [
+        "1.05",
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K/0001193125-24-011295/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-24-011295/8-K_8-K_whole.txt",
+          "raw_chars": 5195,
+          "content_chars": 3016,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2024/8-K/0001193125-24-011295/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-24-011295/8-K_EX-99-1_whole.txt",
+          "raw_chars": 2916,
+          "content_chars": 2880,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 5896
+    },
+    {
+      "accession": "0001193125-24-062997",
+      "filing_date": "2024-03-08",
+      "report_date": "2024-01-17",
+      "fiscal_year": 2024,
+      "form": "8-K/A",
+      "items": [
+        "1.05",
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "no signal matched at all \u2014 unrecognised filings are read, never dropped, because a wrong drop is undetectable downstream",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K/A",
+          "section_key": "8-K-A_8-K-A_whole",
+          "is_body": true,
+          "path": "data/sections/FY2024/8-K-A/0001193125-24-062997/8-K-A_8-K-A_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-24-062997/8-K-A_8-K-A_whole.txt",
+          "raw_chars": 6280,
+          "content_chars": 3785,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K-A_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2024/8-K-A/0001193125-24-062997/8-K-A_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-24-062997/8-K-A_EX-99-1_whole.txt",
+          "raw_chars": 2574,
+          "content_chars": 2538,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K-A_8-K-A_whole",
+        "8-K-A_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 6323
+    },
+    {
+      "accession": "0001193125-24-204403",
+      "filing_date": "2024-08-21",
+      "report_date": "2024-08-21",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "7.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "narrative content: presentation",
+      "routes_to": [
+        "investor_qa"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0001193125-24-204403/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-24-204403/8-K_8-K_whole.txt",
+          "raw_chars": 3554,
+          "content_chars": 1331,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {
+            "presentation": {
+              "strength": "mention",
+              "first_at": 3110,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 3110,
+                  "matched": "Investor Presentation",
+                  "pattern": "investor\\s+presentation"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0001193125-24-204403/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0001193125-24-204403/8-K_EX-99-1_whole.txt",
+          "raw_chars": 17005,
+          "content_chars": 16969,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole",
+        "8-K_EX-99-1_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 18300
+    },
+    {
+      "accession": "0000950170-24-132722",
+      "filing_date": "2024-12-03",
+      "report_date": "2024-12-03",
+      "fiscal_year": 2025,
+      "form": "8-K",
+      "items": [
+        "8.01",
+        "9.01"
+      ],
+      "decision": "read",
+      "reason": "material signal (deal) matched outside the headline window, so it is a mention rather than an announcement \u2014 read, because only a reader can tell those apart",
+      "routes_to": [
+        "events"
+      ],
+      "documents": [
+        {
+          "doc_type": "8-K",
+          "section_key": "8-K_8-K_whole",
+          "is_body": true,
+          "path": "data/sections/FY2025/8-K/0000950170-24-132722/8-K_8-K_whole.txt",
+          "trimmed_path": "data/triage/text/0000950170-24-132722/8-K_8-K_whole.txt",
+          "raw_chars": 41614,
+          "content_chars": 3899,
+          "over_size_cap": false,
+          "size_cap_note": null,
+          "signals": {}
+        },
+        {
+          "doc_type": "EX-99.1",
+          "section_key": "8-K_EX-99-1_whole",
+          "is_body": false,
+          "path": "data/sections/FY2025/8-K/0000950170-24-132722/8-K_EX-99-1_whole.txt",
+          "trimmed_path": "data/triage/text/0000950170-24-132722/8-K_EX-99-1_whole.txt",
+          "raw_chars": 198090,
+          "content_chars": 198090,
+          "over_size_cap": true,
+          "size_cap_note": "content is 198,090 chars, over the 120,000 cap \u2014 not sent to a model",
+          "signals": {
+            "deal": {
+              "strength": "mention",
+              "first_at": 105981,
+              "n_patterns_matched": 1,
+              "evidence": [
+                {
+                  "at": 105981,
+                  "matched": "to acquire",
+                  "pattern": "\\bto\\s+acquire\\b"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "read_section_keys": [
+        "8-K_8-K_whole"
+      ],
+      "stub_documents": [],
+      "content_chars": 3899
+    }
+  ]
+}

@@ -1,0 +1,393 @@
+{
+  "method": "rapidfuzz token_sort_ratio, one-to-one greedy matching, best score first",
+  "thresholds": {
+    "unchanged_at": 95,
+    "reworded_at": 60,
+    "body_reworded_at": 90
+  },
+  "factor_counts": {
+    "2020": 7,
+    "2021": 8,
+    "2022": 7,
+    "2023": 8,
+    "2024": 8,
+    "2025": 8
+  },
+  "years": {
+    "2020": {
+      "fiscal_year": 2020,
+      "compared_to": null,
+      "deltas": null,
+      "unavailable_reason": "FY2019 is outside the extraction window, so FY2020 has no prior-year risk factor list to diff against. FY2020 is the baseline year; its factors are recorded but no change can be computed. This is a gap, not an absence of change.",
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2020,
+        "accession": "0001564590-20-034944"
+      }
+    },
+    "2021": {
+      "fiscal_year": 2021,
+      "compared_to": 2020,
+      "deltas": {
+        "unchanged": [
+          {
+            "heading": "Competition in the technology sector",
+            "heading_similarity": 100.0,
+            "body_similarity": 100.0
+          },
+          {
+            "heading": "Competition among platform-based ecosystems",
+            "heading_similarity": 100.0,
+            "body_similarity": 99.9
+          },
+          {
+            "heading": "Business model competition",
+            "heading_similarity": 100.0,
+            "body_similarity": 100.0
+          },
+          {
+            "heading": "Advertising, professional, and social platform abuses",
+            "heading_similarity": 100.0,
+            "body_similarity": 99.5
+          },
+          {
+            "heading": "Digital safety and service misuse",
+            "heading_similarity": 100.0,
+            "body_similarity": 100.0
+          }
+        ],
+        "reworded": [
+          {
+            "heading_now": "Security of our information technology",
+            "heading_prior": "Security of our information technology",
+            "heading_similarity": 100.0,
+            "body_similarity": 86.6,
+            "changed": "body only",
+            "category_now": "Cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to our reputation or competitive position.",
+            "category_prior": "competitive position."
+          },
+          {
+            "heading_now": "Security of our products, services, devices, and customers\u2019 data",
+            "heading_prior": "Security of our products, services, devices, and customers\u2019 data",
+            "heading_similarity": 100.0,
+            "body_similarity": 74.0,
+            "changed": "body only",
+            "category_now": "Cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to our reputation or competitive position.",
+            "category_prior": "competitive position."
+          }
+        ],
+        "added": [
+          {
+            "heading": "Development and deployment of defensive measures",
+            "category": "Cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to our reputation or competitive position.",
+            "body_chars": 2624
+          }
+        ],
+        "removed": []
+      },
+      "counts": {
+        "unchanged": 5,
+        "reworded": 2,
+        "added": 1,
+        "removed": 0
+      },
+      "problems": [],
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2021,
+        "accession": "0001564590-21-039151",
+        "prior_accession": "0001564590-20-034944"
+      }
+    },
+    "2022": {
+      "fiscal_year": 2022,
+      "compared_to": 2021,
+      "deltas": {
+        "unchanged": [
+          {
+            "heading": "Competition in the technology sector",
+            "heading_similarity": 100.0,
+            "body_similarity": 100.0
+          },
+          {
+            "heading": "Competition among platform-based ecosystems",
+            "heading_similarity": 100.0,
+            "body_similarity": 100.0
+          },
+          {
+            "heading": "Business model competition",
+            "heading_similarity": 100.0,
+            "body_similarity": 100.0
+          },
+          {
+            "heading": "Security of our information technology",
+            "heading_similarity": 100.0,
+            "body_similarity": 95.9
+          },
+          {
+            "heading": "Security of our products, services, devices, and customers\u2019 data",
+            "heading_similarity": 100.0,
+            "body_similarity": 99.6
+          },
+          {
+            "heading": "Development and deployment of defensive measures",
+            "heading_similarity": 100.0,
+            "body_similarity": 99.9
+          }
+        ],
+        "reworded": [
+          {
+            "heading_now": "Advertising, professional, marketplace, and gaming platform abuses",
+            "heading_prior": "Advertising, professional, and social platform abuses",
+            "heading_similarity": 77.3,
+            "body_similarity": 69.3,
+            "changed": "heading and body",
+            "category_now": "Abuse of our platforms may harm our reputation or user engagement.",
+            "category_prior": "Abuse of our platforms may harm our reputation or user engagement."
+          }
+        ],
+        "added": [],
+        "removed": [
+          {
+            "heading": "Digital safety and service misuse",
+            "category": "Abuse of our platforms may harm our reputation or user engagement.",
+            "body_chars": 801
+          }
+        ]
+      },
+      "counts": {
+        "unchanged": 6,
+        "reworded": 1,
+        "added": 0,
+        "removed": 1
+      },
+      "problems": [],
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2022,
+        "accession": "0001564590-22-026876",
+        "prior_accession": "0001564590-21-039151"
+      }
+    },
+    "2023": {
+      "fiscal_year": 2023,
+      "compared_to": 2022,
+      "deltas": {
+        "unchanged": [
+          {
+            "heading": "Competition in the technology sector",
+            "heading_similarity": 100.0,
+            "body_similarity": 100.0
+          },
+          {
+            "heading": "Competition among platform-based ecosystems",
+            "heading_similarity": 100.0,
+            "body_similarity": 100.0
+          },
+          {
+            "heading": "Security of our information technology",
+            "heading_similarity": 100.0,
+            "body_similarity": 93.9
+          },
+          {
+            "heading": "Security of our products, services, devices, and customers\u2019 data",
+            "heading_similarity": 100.0,
+            "body_similarity": 95.6
+          },
+          {
+            "heading": "Development and deployment of defensive measures",
+            "heading_similarity": 100.0,
+            "body_similarity": 99.6
+          }
+        ],
+        "reworded": [
+          {
+            "heading_now": "Business model competition",
+            "heading_prior": "Business model competition",
+            "heading_similarity": 100.0,
+            "body_similarity": 83.4,
+            "changed": "body only",
+            "category_now": "We face intense competition across all markets for our products and services, which may lead to lower revenue or operating margins.",
+            "category_prior": "We face intense competition across all markets for our products and services, which may lead to lower revenue or operating margins."
+          },
+          {
+            "heading_now": "Advertising, professional, marketplace, and gaming platform abuses",
+            "heading_prior": "Advertising, professional, marketplace, and gaming platform abuses",
+            "heading_similarity": 100.0,
+            "body_similarity": 69.2,
+            "changed": "body only",
+            "category_now": "Abuse of our platforms may harm our reputation or user engagement.",
+            "category_prior": "Abuse of our platforms may harm our reputation or user engagement."
+          }
+        ],
+        "added": [
+          {
+            "heading": "Other digital safety abuses",
+            "category": "Abuse of our platforms may harm our reputation or user engagement.",
+            "body_chars": 832
+          }
+        ],
+        "removed": []
+      },
+      "counts": {
+        "unchanged": 5,
+        "reworded": 2,
+        "added": 1,
+        "removed": 0
+      },
+      "problems": [],
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2023,
+        "accession": "0000950170-23-035122",
+        "prior_accession": "0001564590-22-026876"
+      }
+    },
+    "2024": {
+      "fiscal_year": 2024,
+      "compared_to": 2023,
+      "deltas": {
+        "unchanged": [
+          {
+            "heading": "Competition among platform-based ecosystems",
+            "heading_similarity": 100.0,
+            "body_similarity": 94.6
+          },
+          {
+            "heading": "Security of our products, services, devices, and customers\u2019 data",
+            "heading_similarity": 100.0,
+            "body_similarity": 94.9
+          },
+          {
+            "heading": "Development and deployment of defensive measures",
+            "heading_similarity": 100.0,
+            "body_similarity": 96.3
+          },
+          {
+            "heading": "Advertising, professional, marketplace, and gaming platform abuses",
+            "heading_similarity": 100.0,
+            "body_similarity": 90.6
+          },
+          {
+            "heading": "Other digital safety abuses",
+            "heading_similarity": 100.0,
+            "body_similarity": 96.8
+          }
+        ],
+        "reworded": [
+          {
+            "heading_now": "Competition in the technology sector",
+            "heading_prior": "Competition in the technology sector",
+            "heading_similarity": 100.0,
+            "body_similarity": 89.1,
+            "changed": "body only",
+            "category_now": "We face intense competition across all markets for our products and services, which may adversely affect our results of operations.",
+            "category_prior": "We face intense competition across all markets for our products and services, which may lead to lower revenue or operating margins."
+          },
+          {
+            "heading_now": "Business model competition",
+            "heading_prior": "Business model competition",
+            "heading_similarity": 100.0,
+            "body_similarity": 88.0,
+            "changed": "body only",
+            "category_now": "We face intense competition across all markets for our products and services, which may adversely affect our results of operations.",
+            "category_prior": "We face intense competition across all markets for our products and services, which may lead to lower revenue or operating margins."
+          },
+          {
+            "heading_now": "Security of our information technology",
+            "heading_prior": "Security of our information technology",
+            "heading_similarity": 100.0,
+            "body_similarity": 74.7,
+            "changed": "body only",
+            "category_now": "Cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to our reputation or competitive position.",
+            "category_prior": "Cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to our reputation or competitive position."
+          }
+        ],
+        "added": [],
+        "removed": []
+      },
+      "counts": {
+        "unchanged": 5,
+        "reworded": 3,
+        "added": 0,
+        "removed": 0
+      },
+      "problems": [],
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2024,
+        "accession": "0000950170-24-087843",
+        "prior_accession": "0000950170-23-035122"
+      }
+    },
+    "2025": {
+      "fiscal_year": 2025,
+      "compared_to": 2024,
+      "deltas": {
+        "unchanged": [
+          {
+            "heading": "Competition in the technology sector",
+            "heading_similarity": 100.0,
+            "body_similarity": 99.3
+          },
+          {
+            "heading": "Competition among platform-based ecosystems",
+            "heading_similarity": 100.0,
+            "body_similarity": 98.1
+          },
+          {
+            "heading": "Business model competition",
+            "heading_similarity": 100.0,
+            "body_similarity": 97.6
+          },
+          {
+            "heading": "Security of our information technology",
+            "heading_similarity": 100.0,
+            "body_similarity": 93.5
+          },
+          {
+            "heading": "Security of our products, services, devices, and customers\u2019 data",
+            "heading_similarity": 100.0,
+            "body_similarity": 95.0
+          },
+          {
+            "heading": "Development and deployment of defensive measures",
+            "heading_similarity": 100.0,
+            "body_similarity": 95.0
+          },
+          {
+            "heading": "Advertising, professional, marketplace, and gaming platform abuses",
+            "heading_similarity": 100.0,
+            "body_similarity": 100.0
+          }
+        ],
+        "reworded": [
+          {
+            "heading_now": "Other digital safety abuses",
+            "heading_prior": "Other digital safety abuses",
+            "heading_similarity": 100.0,
+            "body_similarity": 78.8,
+            "changed": "body only",
+            "category_now": "Abuse of our platforms may harm our reputation or user engagement.",
+            "category_prior": "Abuse of our platforms may harm our reputation or user engagement."
+          }
+        ],
+        "added": [],
+        "removed": []
+      },
+      "counts": {
+        "unchanged": 7,
+        "reworded": 1,
+        "added": 0,
+        "removed": 0
+      },
+      "problems": [],
+      "source": {
+        "form": "10-K",
+        "fiscal_year": 2025,
+        "accession": "0000950170-25-100235",
+        "prior_accession": "0000950170-24-087843"
+      }
+    }
+  }
+}
