@@ -27,9 +27,25 @@ git config core.hooksPath .githooks
 uv run pipeline init TSLA
 ```
 
-Only **`EDGAR_IDENTITY`** is required — the SEC blocks requests without a
-descriptive User-Agent. `ANTHROPIC_API_KEY` is needed only if you switch to the
-`api` backend.
+**`EDGAR_IDENTITY` is the only thing that belongs in `.env`** — the SEC blocks
+requests without a descriptive User-Agent.
+
+**Do not put an API key in `.env`.** Not a style rule: `_bootstrap` loads `.env`
+on every import, so a key there is *ambient* — present in every run whether or
+not that run wants it. The Claude Code CLI treats `ANTHROPIC_API_KEY` as an
+authentication method, so on the default `claude_code` backend the calls would
+bill the key while every record still said `backend: claude_code` and every
+printed dollar was still labelled "notional". That is a false claim and a real
+charge, and it was caught here on 2026-09-02 one commit before the first
+large extraction run.
+
+The `api` backend is still fully supported — it is **opt-in**. Put the key in
+`.env.api`, which nothing loads automatically, and supply it for one invocation
+only; `.env.example` carries the exact recipe. Two guards back this up, and
+neither replaces keeping the key out of `.env`: `seat_only_env()` strips every
+API credential from the CLI's environment, and every record carries
+`billing: "seat" | "api_key"` so "these dollars are notional" is a fact on the
+record rather than an inference from the config.
 
 `pipeline init` copies `companies/_template/` to `companies/TSLA/` and prints
 what to edit — the ticker and the fiscal-year window. **Leave `cik` and
@@ -75,6 +91,17 @@ Two of the thirteen stages make model calls. Before either runs, `pipeline` asks
 it whether it has any work, shows what that work would cost, and waits for a
 yes. An unanswerable prompt — a piped or closed stdin — counts as **no**; it is
 never read as consent.
+
+**`--yes` approves *both* spending stages, not the next one.** To approve
+extraction and still be asked about generation, scope it:
+
+```bash
+uv run pipeline run MSFT --only extract_facts --yes   # just this stage
+uv run pipeline run MSFT --from build_ledger          # resumes; stops at generation
+```
+
+The stages still run only if they have work, so `--yes` on a finished company
+spends nothing.
 
 Everything else is deterministic and free, and every stage no-ops when its output
 is already current, so re-running the whole pipeline over a finished company
@@ -127,9 +154,12 @@ companies/
     corrections.toml     hand-verified corrections; optional
     overrides/           optional per-company deltas to the global config
     data/raw/            cached filings by year/form — never delete, never re-fetch
+    data/discovery/      the filing inventory and the coverage report
     data/sections/       extracted target sections as cleaned text
+    data/triage/         the judgment on every conditional 7.01/8.01 8-K
     data/ledger/         per-year structured JSON records, and the facts cache
     data/pack/           the citable pack the output writers read
+    data/_meta/          the run log — gitignored, and where a stage's clock goes
     output/              the three deliverables
 src/equity_research/     pipeline modules (an installable package; run with -m)
   _bootstrap.py            ROOT, the Windows cert store, and .env — imported first
@@ -143,6 +173,12 @@ filings, its deliverables. `config/` holds only what is true for every company.
 
 Data directories are created by the stage that writes them, so the pipeline
 rebuilds from nothing.
+
+**`raw/`, `sections/` and `_meta/` are gitignored; everything else is committed.**
+That split is not about size. Anything that cost model tokens — the facts cache,
+`data/pack/gen-*.json`, `output/*.md` — is irreplaceable, because a re-run buys
+*a* valid answer and not *the* answer the committed documents cite. Cached
+filings and extracted sections are free to rebuild from EDGAR, so they are not.
 
 ## Running the tests
 
@@ -180,6 +216,47 @@ One file is slow on purpose. `tests/regression/morn/test_reruns_change_nothing.p
 re-runs the five deterministic stages and compares their output to the committed
 bytes, which takes about 28 seconds and is most of the suite's runtime. It is the
 only automated proof that a re-run leaves the tree clean.
+
+## Known limitations, and the one that needs a manual step
+
+**The final fiscal year's shareholder vote is not fetched automatically.** Check
+this on every new company — it is silent, and the run reports success.
+
+`votes` reads the 8-K Item 5.07 that reports the vote taken at the meeting
+*following* a fiscal year's proxy. That filing is dated months after the year it
+reports on, so for the **last** year in a window it carries the *next* fiscal
+year's label and `in_window: false` — and `fetch` builds its work list from
+in-window filings only. The section never exists, and `extract_facts` reports
+`FY<last> votes: no source`, which reads like an absent disclosure rather than a
+filing nobody asked for.
+
+Fix it before the extraction spend, because the facts cache is keyed per
+`(year, task, filing)` and adding it afterwards means a second paid call:
+
+```bash
+# The accession is already in the inventory discovery wrote — find the 5.07
+# filed just after the last year's DEF 14A:
+#   companies/MSFT/data/discovery/inventory.json  ->  "5.07" in items
+uv run python -m equity_research.fetch --ticker MSFT --accession 0001193125-25-311196
+uv run python -m equity_research.extract_sections --ticker MSFT
+```
+
+`--accession` is repeatable and adds exactly the filings named, nothing else. Do
+**not** widen the window instead: an extra year sweeps in that year's 10-Qs, Form
+4s and earnings 8-Ks and quietly changes what every coverage claim means.
+
+Counts should move by exactly one filing, and `no source` should drop by one.
+
+Two more worth knowing when reading the output:
+
+- **Proxy director biographies are captured with unverified boundaries.** For
+  some filing agents the span reaches the proxy voting card, so `board` facts can
+  name a director with no tenure, committee or role. They carry
+  `confidence: low` throughout for this reason, and the pack says so in its
+  `field_notes`.
+- **A shareholder letter exists only where the company filed an ARS.** Where it
+  did not, those years have no letter and the deliverables are required to name
+  the gap rather than pass over it.
 
 ## Read these before working on it
 
