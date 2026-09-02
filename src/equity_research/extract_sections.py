@@ -584,6 +584,19 @@ def find_proxy_sections(doc: Doc) -> dict[str, dict]:
 # Shareholder letter, inside the annual report
 # ---------------------------------------------------------------------------
 
+def _letter_bounds(cfg: dict) -> tuple[int, int]:
+    """The letter's own expected_chars range, or a wide default if unconfigured.
+
+    Read from [validation.expected_chars] rather than restated, so the number that
+    ACCEPTS a fallback boundary and the number that VALIDATES it afterwards cannot
+    drift apart (CLAUDE.md: never hard-code a value another stage already
+    computes).
+    """
+    want = (cfg["sections"].get("validation", {})
+            .get("expected_chars", {}).get("letter_full_text", {}))
+    return int(want.get("min", 1_000)), int(want.get("max", 80_000))
+
+
 def extract_letter(whole_text: str, cfg: dict) -> dict:
     """Locate the shareholder letter inside an annual report. Format fact 7.
 
@@ -607,24 +620,93 @@ def extract_letter(whole_text: str, cfg: dict) -> dict:
     starts.sort(key=lambda m: m.start())
     i0 = starts[0].start()
 
+    tail = int(spec.get("signature_tail_chars", 100))
+
     ends: list[re.Match] = []
     for pat in spec["end_patterns"]:
         ends += [m for m in re.finditer(pat, whole_text, re.I) if m.start() > i0]
-    if not ends:
-        return {"error": f"salutation at {i0} but no sign-off after it "
-                         f"(tried {spec['end_patterns']})"}
     ends.sort(key=lambda m: m.start())
-    # Keep a short tail past the sign-off so the signer's name survives — it is
-    # what identifies whose voice the letter is.
-    tail = int(spec.get("signature_tail_chars", 100))
-    i1 = min(ends[0].end() + tail, len(whole_text))
+
+    if ends:
+        # Keep a short tail past the sign-off so the signer's name survives — it
+        # is what identifies whose voice the letter is.
+        end_match, rule = ends[0], "sign-off"
+    else:
+        # NO FORMAL CLOSING. Not a defect in the document and not a company
+        # peculiarity: a modern CEO letter often ends on the signature alone.
+        # MSFT's three letters contain none of the four closings, across 276,000
+        # characters each. Fall back to the other universal convention — a letter
+        # is signed — and see `end_fallback_patterns` in config/sections.toml for
+        # the measurements.
+        #
+        # BOUNDED, because an unbounded signer search is worse than failing: MORN's
+        # FY2022 annual report has a signature at char 620,214 of 621,612, and
+        # taking it would capture the entire 10-K and the financial statements.
+        # Only a match whose span lands inside the section's own expected_chars
+        # range is accepted — the same rule that validates the span afterwards,
+        # used here to CHOOSE rather than only to complain.
+        lo, hi = _letter_bounds(cfg)
+        cands: list[re.Match] = []
+        for pat in spec.get("end_fallback_patterns", []):
+            cands += [m for m in re.finditer(pat, whole_text) if m.start() > i0]
+        cands.sort(key=lambda m: m.start())
+        end_match = next(
+            (m for m in cands if lo <= (min(m.end() + tail, len(whole_text)) - i0) <= hi),
+            None)
+        rule = "signature (no formal closing in the document)"
+        if end_match is None:
+            return {"error": f"salutation at {i0} but no sign-off after it "
+                             f"(tried {spec['end_patterns']}), and no signature "
+                             f"block yielding a {lo:,}-{hi:,} char letter "
+                             f"({len(cands)} signature candidate(s) considered)"}
+
+    i1 = min(end_match.end() + tail, len(whole_text))
+
+    # TRIM THE SIGNATURE TAIL AT A PAGE BREAK — ON THE FALLBACK PATH ONLY.
+    #
+    # The tail is a fixed character count, and the two paths need different
+    # amounts of it, which is the reason this is gated rather than global:
+    #
+    #   sign-off   the signer's name comes AFTER the match ("Best regards," ->
+    #              "Kunal"), so the tail has to REACH it. Trimming early would
+    #              cut the name, which is the one thing the tail exists for.
+    #   signature  the name is INSIDE the match, so the tail only has to finish
+    #              the title. The rest overshoots.
+    #
+    # MSFT's letters end "...Satya Nadella / Chairman and Chief Executive Officer
+    # / October 15, 2025" and the remaining tail then reached 45 characters into
+    # "ISSUER PURCHASES OF EQUITY SECURITIES" — the next section, and financial
+    # content, inside the one section whose whole purpose is to exclude it. Small
+    # in tokens; not small in traceability, because a quotation could then be
+    # drawn from a heading the letter never contained.
+    #
+    # A form feed is a real page boundary in text extracted from a PDF, and there
+    # is exactly one between the signature and the next heading. In HTML-derived
+    # text there is none and this does nothing — which is why it is the whole rule
+    # rather than the first of several: a blank-line-then-heading heuristic would
+    # be an unexercised branch (CLAUDE.md rule 3).
+    #
+    # KNOWN, MEASURED, AND DELIBERATELY NOT TAKEN: applying this to the sign-off
+    # path as well is a small improvement to MORN's FY2022 letter, whose last 50
+    # characters are the page footer "Morningstar, Inc. 2022 Annual Report / 21".
+    # It is not taken because that letter has two committed facts and both shipped
+    # deliverables cite FY2022 ids: moving the source text restales the unit, and a
+    # re-extraction buys *a* valid answer rather than *the* answer the deliverables
+    # cite (CLAUDE.md rule 1). Fifty characters of footer is not worth risking a
+    # citation in shipped work. Revisit if those documents are ever regenerated
+    # for another reason.
+    if not ends:
+        page_break = whole_text.find("\f", end_match.end(), i1)
+        if page_break != -1:
+            i1 = page_break
 
     return {
         "text": whole_text[i0:i1].strip(),
         "boundary_basis": (f"chars {i0}-{i1} of {len(whole_text):,d}: salutation "
                            f"{starts[0].group(0)!r} ({len(starts)} match(es) in document) "
-                           f"-> sign-off {ends[0].group(0)!r} "
-                           f"({len(ends)} match(es) after it) + {tail}-char signature tail"),
+                           f"-> {rule} {end_match.group(0)[:40]!r} "
+                           f"({len(ends)} sign-off match(es) after it) "
+                           f"+ {tail}-char signature tail"),
         "salutation_matches": len(starts),
         "signoff_matches_after_start": len(ends),
     }

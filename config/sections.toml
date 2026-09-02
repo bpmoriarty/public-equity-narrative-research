@@ -262,6 +262,41 @@ end_patterns = [
     'respectfully',
     'warm\s+regards',
 ]
+
+# TRIED ONLY IF NOTHING IN `end_patterns` MATCHES. Added 2026-09-02 after MSFT.
+#
+# The four closings above are the formal epistolary ones, and they were verified
+# against four documents from one company. Microsoft's letters contain NONE of
+# them — zero matches across 276,000 characters, three years running. Satya
+# Nadella closes on his own name and title and nothing else, which is ordinary for
+# a modern CEO letter and not a Microsoft peculiarity.
+#
+# So the fallback is the other universal convention: a letter is SIGNED. A
+# personal name alone on a line, followed by a line that begins with an office.
+# Measured against the real documents:
+#
+#     MSFT FY2023  signer at 28,897   -> a 28,897-char letter
+#     MSFT FY2024  signer at 28,501   -> a 28,501-char letter
+#     MSFT FY2025  signer at 17,276   -> a 17,276-char letter
+#     MORN FY2023-25  no signer match at all  (and none needed: `sincerely` hits)
+#     MORN FY2022     signer at 620,214 of 621,612  -> a 617,018-char "letter"
+#
+# THAT LAST ROW IS WHY THE FALLBACK IS BOUNDED. It is a signature somewhere in the
+# back of the annual report, and taking it would capture the entire 10-K plus the
+# financial statements — the exact failure this section's own note above describes
+# as costing ~150,000 tokens a year. `extract_letter` therefore accepts only the
+# first fallback match whose resulting span lands inside
+# [validation.expected_chars]."letter_full_text" (1,000-80,000 chars), which is the
+# same rule that validates the span afterwards, used to CHOOSE rather than only to
+# complain. MORN never reaches any of this: its sign-offs match, so the primary
+# path wins and the fallback is not consulted.
+#
+# Deliberately narrow. It requires a two-or-three-word capitalised name on its own
+# line AND an office word starting the next line, so it does not fire on ordinary
+# prose. If it matches nothing, the section fails loudly exactly as before.
+end_fallback_patterns = [
+    '\n[A-Z][a-z]+(?:\s+[A-Z]\.?)?\s+[A-Z][A-Za-z\-]+\s*\n\s*(Chair|Chief\s+Executive|President|Founder|Managing\s+Director)',
+]
 # Characters kept after the sign-off, to capture the signer's name.
 signature_tail_chars = 100
 anchor_phrases = ["dear", "shareholders", "fellow"]

@@ -348,5 +348,94 @@ check("find_item_headings still returns first-occurrence-per-item",
 check("find_item_heading_candidates returns MORE than one per item",
       len([1 for n, _ in e.find_item_heading_candidates(msft_like) if n == "1"]), 2)
 
+
+# ---------------------------------------------------------------------------
+# extract_letter — a letter that ends without a formal closing
+# ---------------------------------------------------------------------------
+# Added Phase 6.4. The four configured closings (best regards / sincerely /
+# respectfully / warm regards) were verified against four documents from ONE
+# company. MSFT's three letters contain none of them — zero matches across
+# 276,000 characters each — because a modern CEO letter often closes on the
+# signature alone. Uses the REAL config, so these exercise the shipped patterns
+# rather than a copy of them that could drift.
+
+print("\nextract_letter — no formal closing, and the bound on the fallback")
+
+LO, HI = e._letter_bounds(CFG)
+check("the fallback's bounds come from validation.expected_chars", (LO, HI),
+      (CFG["sections"]["validation"]["expected_chars"]["letter_full_text"]["min"],
+       CFG["sections"]["validation"]["expected_chars"]["letter_full_text"]["max"]))
+
+PROSE = "We are living through a time of historic challenge and opportunity. " * 40
+
+
+def letter(closing: str, after: str = "") -> str:
+    return f"Dear shareholders, colleagues, and partners:\n\n{PROSE}\n{closing}{after}"
+
+
+# MORN's shape: a formal closing, the name AFTER it.
+signed_off = letter("Best regards,\n\nKunal\n")
+got_a = e.extract_letter(signed_off, CFG)
+check("a letter with a formal closing still uses the sign-off path",
+      "-> sign-off" in got_a["boundary_basis"], True)
+check("  and the tail reaches the name that follows the closing",
+      "Kunal" in got_a["text"], True)
+
+# MSFT's shape: no closing at all, a signature block instead.
+NEXT_SECTION = "\f\nISSUER PURCHASES OF EQUITY SECURITIES, DIVIDENDS\n\nOur common stock"
+signed_only = letter("Satya Nadella\nChairman and Chief Executive Officer\n"
+                     "October 15, 2025\n\n5\n", NEXT_SECTION)
+got_b = e.extract_letter(signed_only, CFG)
+check("a letter with NO closing is still found, via the signature",
+      "error" in got_b, False)
+check("  and the basis says which rule fired",
+      "signature (no formal closing" in got_b["boundary_basis"], True)
+check("  the signer's name is inside the letter", "Satya Nadella" in got_b["text"],
+      True)
+check("  and the title too", "Chief Executive Officer" in got_b["text"], True)
+check("  the page break trims the next section back out",
+      "ISSUER PURCHASES" in got_b["text"], False)
+check("  so no financial-section heading leaks in",
+      "common stock" in got_b["text"], False)
+
+# THE BOUND, which is the whole reason the fallback is safe. MORN's FY2022 annual
+# report has a signature at char 620,214 of 621,612; accepting it would capture
+# the entire 10-K and the financial statements.
+far_away = (letter("") + "X" * (HI + 5_000)
+            + "\nKunal Kapoor\nChief Executive Officer\n")
+got_c = e.extract_letter(far_away, CFG)
+check("a signature far beyond the expected length is REJECTED", "error" in got_c,
+      True)
+check("  and the error says a signature was considered and why it lost",
+      "signature block yielding" in got_c["error"], True)
+
+# Nothing at all to end on.
+got_d = e.extract_letter(letter(""), CFG)
+check("no closing and no signature is still a loud failure", "error" in got_d, True)
+check("  naming the sign-off patterns that were tried",
+      "sincerely" in got_d["error"], True)
+
+# No salutation -> the earlier error, unchanged.
+got_e = e.extract_letter("Some annual report with no greeting at all. " * 20, CFG)
+check("no salutation reports that, not a signature problem",
+      got_e.get("error", "").startswith("no salutation found"), True)
+
+# The sign-off path must NOT be trimmed at a page break. This pins a DELIBERATE
+# DECISION rather than an ideal: MORN's FY2022 letter is the one PDF among its
+# four, its signature is followed by a form feed, and trimming there would drop
+# the trailing page footer — a real improvement of 50 characters that is NOT taken
+# because the unit has two committed facts and both shipped deliverables cite
+# FY2022 ids. See the comment in extract_letter.
+#
+# Asserting on the FOOTER, not on the signer's name: "Kunal" sits before the form
+# feed, so it survives either way and cannot tell the two behaviours apart. That
+# was this check's first form, and the MORN enforcer caught an ungated trim that
+# this file missed.
+pdf_signoff = letter("Best regards,\n\nKunal\n", "\f\nMorningstar, Inc. Annual Report")
+got_f = e.extract_letter(pdf_signoff, CFG)
+check("the signer's name survives the sign-off path", "Kunal" in got_f["text"], True)
+check("a form feed does NOT trim the sign-off path's tail",
+      "Morningstar, Inc. Annual Report" in got_f["text"], True)
+
 print(f"\n{PASS} passed, {FAIL} failed")
 sys.exit(1 if FAIL else 0)
