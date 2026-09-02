@@ -136,6 +136,65 @@ try:
     check("backend and billing are independent fields",
           (seat.backend, seat.billing) != (api.backend, api.billing), True)
 
+    # -----------------------------------------------------------------------
+    # How the backend says it charges — what `--estimate` must ask it
+    # -----------------------------------------------------------------------
+    # `extract_facts --estimate` priced input flat at 1.0x. The CLI cache-WRITES
+    # every prompt at a 1h TTL, which is 2.0x, so MSFT's estimate printed $3.24
+    # of input against a measured ~$7.13. Nothing was misreported as safe — the
+    # run stayed inside the printed $3.24-$19.64 band — but the headline figure
+    # is the one someone approves at the cost gate.
+    #
+    # `generate_outputs.estimate` had this right all along and said so in its
+    # docstring. The knowledge existed in one stage and not the other, which is
+    # the drift these two attributes exist to stop: both estimates now ask the
+    # backend instead of each carrying a rule.
+    from equity_research import settings  # noqa: E402
+
+    print("\nunshared_input_multiplier — asked of the backend, not assumed")
+    cc = mc.ClaudeCodeBackend.__new__(mc.ClaudeCodeBackend)   # no binary needed
+    cc.timeout_s = 1
+    check("claude_code prices a single-use prompt at the 1h WRITE multiplier",
+          cc.unshared_input_multiplier, settings.CACHE_WRITE_MULTIPLIER["1h"])
+    check("  which is 2.0x, not 1.0x", cc.unshared_input_multiplier, 2.0)
+    check("api prices a single-use prompt at plain input",
+          mc.ApiBackend.unshared_input_multiplier, 1.0)
+    # Derived from cache_ttl rather than hardcoded, so if the CLI ever offers a
+    # different TTL the multiplier follows instead of silently staying at 2.0.
+    cc.cache_ttl = "5m"
+    check("the multiplier FOLLOWS cache_ttl rather than being a literal 2.0",
+          cc.unshared_input_multiplier, settings.CACHE_WRITE_MULTIPLIER["5m"])
+    check("  which is a different number, so the check means something",
+          settings.CACHE_WRITE_MULTIPLIER["5m"] != 2.0, True)
+    cc.cache_ttl = mc.ClaudeCodeBackend.cache_ttl   # restore for what follows
+    check("  and restoring the TTL restores 2.0x", cc.unshared_input_multiplier, 2.0)
+
+    print("\nscaffolding_tokens — measured, and zero where it does not apply")
+    check("claude_code declares its measured scaffolding",
+          cc.scaffolding_tokens, 19_631)
+    check("api declares none", mc.ApiBackend.scaffolding_tokens, 0)
+    check("both attributes exist on both backends, so an estimate can ask "
+          "either without a name check",
+          all(hasattr(b, a) for b in (cc, mc.ApiBackend)
+              for a in ("scaffolding_tokens", "unshared_input_multiplier")),
+          True)
+
+    # The arithmetic the estimate performs, pinned against the measured run so a
+    # future change to either attribute has to face the number it produces.
+    print("\nthe estimate arithmetic, against the measured MSFT figures")
+    price = settings.price_for("claude-opus-5")
+    content_cost = 648_467 / 1e6 * price.input * cc.unshared_input_multiplier
+    reads = 41 * cc.scaffolding_tokens / 1e6 * price.input * settings.CACHE_READ_MULTIPLIER
+    cold = cc.scaffolding_tokens / 1e6 * price.input * cc.unshared_input_multiplier
+    check("MSFT's 648,467 content tokens price at $6.48, not $3.24",
+          round(content_cost, 2), 6.48)
+    check("  41 scaffolding reads add about $0.40", round(reads, 2), 0.40)
+    check("  one cold scaffolding write adds about $0.20", round(cold, 2), 0.20)
+    check("  input subtotal is $7.08",
+          round(content_cost + reads + cold, 2), 7.08)
+    check("  and the old flat-1.0x arithmetic gave $3.24 — half",
+          round(648_467 / 1e6 * price.input, 2), 3.24)
+
 finally:
     restore()
 

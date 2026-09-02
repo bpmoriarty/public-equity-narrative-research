@@ -350,6 +350,40 @@ class ClaudeCodeBackend:
     # here so the cost code can ask the backend instead of assuming.
     cache_ttl = "1h"
 
+    # Tokens of CLI scaffolding that precede every prompt, and how they are
+    # charged. MEASURED 2026-09-02, four calls, prompts from 7 to 87,392 chars:
+    #
+    #   call            cache_write   cache_read
+    #   A (7 chars)          25,034            0     <- cold: WRITES it
+    #   B (~22K chars)       11,806       19,631     <- reads it back
+    #   B' (identical to B)  11,130       19,631
+    #   C (~87K chars)       28,966       19,631
+    #
+    # So it is cached ON DISK and reused across separate invocations and separate
+    # session ids: written once when cold, then read for 0.1x. That is ~$0.01 a
+    # call rather than ~$0.22, and getting it backwards was a 20x error in the
+    # first reading of this data.
+    #
+    # This does NOT contradict the module docstring's note that the CLI never
+    # reads USER content back: B' was byte-identical to B and read the same
+    # 19,631 — the scaffolding — while re-writing its own content. There is still
+    # no prefix-sharing saving to design for.
+    scaffolding_tokens = 19_631
+
+    # A cost model reproducing the CLI's own total_cost_usd to within $0.016 on
+    # all four calls above: cache_write at 2.0x, cache_read at 0.1x.
+    @property
+    def unshared_input_multiplier(self) -> float:
+        """What one send of a NON-shared prompt costs, as a multiple of input price.
+
+        The CLI cache-writes the whole prompt every call with no opt-out, so a
+        single-use prompt costs the WRITE multiplier — 2.0x at the 1h TTL, not
+        1.0x. `extract_facts --estimate` priced it at 1.0x and so under-quoted
+        MSFT's extraction input by half ($3.24 against a measured ~$7.13).
+        Extraction is exactly the unshared case: each section goes to one task.
+        """
+        return settings.CACHE_WRITE_MULTIPLIER[self.cache_ttl]
+
     def __init__(self, binary: Path | None = None, *, configured: str | None = None,
                  timeout_s: int = DEFAULT_TIMEOUT_S, max_schema_retries: int = 1):
         self.binary = binary or find_binary(configured)
@@ -489,6 +523,17 @@ class ApiBackend:
     """The anthropic SDK path. Requires ANTHROPIC_API_KEY."""
 
     name = "api"
+
+    # No CLI scaffolding: the SDK sends exactly what it is given.
+    scaffolding_tokens = 0
+
+    # A single-use prompt is charged as plain input here — 1.0x. Caching on this
+    # backend is OPT-IN per call via `cache_prefix`, and extraction deliberately
+    # does not use it (see the COST CONTROL note in extract_facts.py: each
+    # section goes to exactly one task, so there is no repeated prefix and a
+    # cache write would be pure overhead). Generation does use it, and prices
+    # itself from the real usage record rather than from this.
+    unshared_input_multiplier = 1.0
 
     def __init__(self, client: Any | None = None, *, cache_ttl: str = "1h"):
         if client is None:

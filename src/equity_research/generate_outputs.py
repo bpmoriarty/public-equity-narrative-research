@@ -1718,6 +1718,22 @@ def estimate(backend: model_client.Backend, gen: dict, pack: dict, payload: str)
         print(f"  A RE-RUN after the {backend.cache_ttl} TTL expires pays a fresh cache "
               f"write ({approx}${write:.2f}), not a read.")
 
+    # Backend scaffolding that precedes every prompt. Zero on the API; ~19,631
+    # tokens on the CLI, cache-read at 0.1x after one cold write. Small here —
+    # two calls, so a few cents — and printed anyway, because the reason
+    # `extract_facts --estimate` was wrong by half is that it priced input by a
+    # rule of its own instead of asking the backend. Both estimates now read the
+    # same two attributes.
+    scaffold = getattr(backend, "scaffolding_tokens", 0)
+    if scaffold:
+        s_read = 2 * scaffold * price.input * settings.CACHE_READ_MULTIPLIER / 1e6
+        s_write = (scaffold * price.input
+                   * settings.CACHE_WRITE_MULTIPLIER[backend.cache_ttl] / 1e6)
+        print()
+        print(f"  {backend.name} scaffolding: {scaffold:,} tokens before every "
+              f"prompt — one cold write {approx}${s_write:.2f}, then "
+              f"{approx}${s_read:.2f} across both calls.")
+
     print()
     print(f"  Repair rounds do NOT resend the pack — id repair carries an index "
           f"excerpt of up to ~{EXCERPT_TOKEN_BUDGET:,} tokens, quote and constraint "

@@ -964,6 +964,23 @@ def main() -> None:
                   f"{'' if exact else '~'}{n:>8,d} tokens")
 
         print()
+        # HOW THE BACKEND CHARGES FOR ONE SEND OF AN UNSHARED PROMPT.
+        #
+        # This used to be `price.input`, flat — i.e. 1.0x — and that was wrong for
+        # the default backend by a factor of two. The Claude Code CLI cache-WRITES
+        # the whole prompt every call with no opt-out, at a 1-hour TTL, which
+        # costs 2.0x input. MSFT's extraction estimate printed $3.24 of input
+        # against a measured ~$7.13 (2026-09-02). Nothing was misreported as safe
+        # — the run still landed inside the printed $3.24-$19.64 band — but the
+        # headline figure is the one someone approves at the cost gate, so half
+        # the truth is not good enough.
+        #
+        # Asked of the BACKEND rather than branched on its name: the backend knows
+        # how it charges, and a name check here would have to be repeated wherever
+        # else an estimate is printed. Defaults keep a third-party backend working.
+        mult = getattr(backend, "unshared_input_multiplier", 1.0)
+        scaffold = getattr(backend, "scaffolding_tokens", 0)
+
         low = high = 0.0
         for model, b in sorted(per_model.items()):
             # Priced via the one table in settings.py. PRICE_IN/PRICE_OUT were
@@ -971,17 +988,39 @@ def main() -> None:
             # generate_outputs.py, so a price change had to be made twice.
             price = settings.price_for(model)
             worst_out = b["calls"] * ex["max_tokens"]
-            in_cost = b["tokens"] / 1e6 * price.input
+            in_cost = b["tokens"] / 1e6 * price.input * mult
+            # Scaffolding is READ on every call (0.1x); the single cold WRITE is
+            # added once below rather than per model, because it happens once per
+            # run whatever the mix.
+            scaffold_cost = (b["calls"] * scaffold / 1e6 * price.input
+                             * settings.CACHE_READ_MULTIPLIER)
             out_cost = worst_out / 1e6 * price.output
-            low += in_cost
-            high += in_cost + out_cost
+            low += in_cost + scaffold_cost
+            high += in_cost + scaffold_cost + out_cost
             head = f"{model} x{b['calls']}"
             print(f"  {head:34s} {b['tokens']:>9,d} in  ->  ${in_cost:,.2f}"
                   f"   + at most ${out_cost:,.2f} out")
+            if scaffold:
+                print(f"  {'':34s} {b['calls'] * scaffold:>9,d} "
+                      f"{backend.name} scaffolding, read at "
+                      f"{settings.CACHE_READ_MULTIPLIER:g}x  ->  "
+                      f"${scaffold_cost:,.2f}")
+        if scaffold:
+            # One cold write per run: the first call finds the cache empty.
+            cold = (scaffold / 1e6
+                    * settings.price_for(ex["model"]).input * mult)
+            low += cold
+            high += cold
+            print(f"  {'first call writes the scaffolding':34s} "
+                  f"{scaffold:>9,d} at {mult:g}x  ->  ${cold:,.2f}")
         # Printed even when there is only one model, so the per-model line and
         # the total always agree and neither has to be trusted alone.
         print(f"\ntotal   : ${low:,.2f} to ${high:,.2f}"
               f"   ({len(plan)} call(s) across {len(per_model)} model(s))")
+        if mult != 1.0:
+            print(f"input is priced at {mult:g}x because {backend.name} "
+                  f"cache-writes every prompt at a {backend.cache_ttl} TTL; a "
+                  f"single-use prompt never earns that back.")
         print(f"output is bounded by max_tokens x calls, which is a deliberate "
               f"over-estimate — it cannot be counted in advance on either backend.")
         print(f"\nestimate only — no extraction calls were made. "
