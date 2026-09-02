@@ -1,0 +1,148 @@
+{
+  "fiscal_year": 2021,
+  "task": "investor_qa",
+  "unit": "0001193125-21-112687",
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:34:21Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 12441,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2542,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 12441,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2542,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 12441,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 12441
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-21-112687",
+      "form": "8-K",
+      "filing_date": "2021-04-12",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001193125-21-112687",
+      "form": "8-K",
+      "filing_date": "2021-04-12",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 14893,
+  "source_sha256": "8afe8311266d84a159772c35c52404cbd3ad30d9eda3943910740d802166c3af",
+  "facts": {
+    "topics": [
+      {
+        "topic": "Rationale for acquiring Nuance and Microsoft's industry-specific cloud strategy",
+        "stated_position": "Microsoft frames the deal as \"the latest step in Microsoft's industry-specific cloud strategy,\" accelerating efforts \"to provide industry-specific cloud offerings to support customers and partners as they respond to disruption and new opportunities,\" building on the Microsoft Cloud for Healthcare introduced in 2020.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "Microsoft has accelerated its efforts to provide industry-specific cloud offerings to support customers and partners as they respond to disruption and new opportunities. These efforts include the Microsoft Cloud for Healthcare , introduced in 2020, which aims to address the comprehensive needs of the rapidly transforming and growing healthcare industry. Today\u2019s acquisition announcement represents the latest step in Microsoft\u2019s industry-specific cloud strategy."
+      },
+      {
+        "topic": "AI as a company-level priority and healthcare as its application",
+        "stated_position": "Satya Nadella: \"AI is technology's most important priority, and healthcare is its most urgent application,\" with the aim of putting \"advanced AI solutions into the hands of professionals everywhere\" alongside the partner ecosystem.",
+        "kind": "strategy",
+        "quote": "\u201cAI is technology\u2019s most important priority, and healthcare is its most urgent application. Together, with our partner ecosystem, we will put advanced AI solutions into the hands of professionals everywhere to drive better decision-making and create more meaningful connections, as we accelerate growth of Microsoft Cloud in Healthcare and Nuance.\u201d"
+      },
+      {
+        "topic": "Effect of the acquisition on total addressable market in healthcare",
+        "stated_position": "\"The acquisition will double Microsoft's total addressable market (TAM) in the healthcare provider space, bringing the company's TAM in healthcare to nearly $500 billion.\"",
+        "kind": "competition_or_market",
+        "quote": "The acquisition will double Microsoft\u2019s total addressable market (TAM) in the healthcare provider space, bringing the company\u2019s TAM in healthcare to nearly $500 billion."
+      },
+      {
+        "topic": "Capital allocation \u2014 impact on share repurchases and EPS",
+        "stated_position": "Microsoft expects the acquisition \"to be minimally dilutive (less than 1 percent) in fiscal year 2022 and to be accretive in fiscal year 2023 to non-GAAP earnings per share,\" and states it \"will not impact the completion of its existing share repurchase authorization.\"",
+        "kind": "capital_allocation",
+        "quote": "Microsoft expects the acquisition to be minimally dilutive (less than 1 percent) in fiscal year 2022 and to be accretive in fiscal year 2023 to non-GAAP earnings per share, based on the expected close timeframe. Non-GAAP excludes expected impact of purchase accounting adjustments, as well as integration and transaction-related expenses. The acquisition will not impact the completion of its existing share repurchase authorization."
+      },
+      {
+        "topic": "Governance and management of Nuance post-close, and segment reporting",
+        "stated_position": "\"Mark Benjamin will remain CEO of Nuance, reporting to Scott Guthrie, executive vice president of Cloud & AI at Microsoft,\" and \"Upon closing, Microsoft expects Nuance's financials to be reported as part of Microsoft's Intelligent Cloud segment.\"",
+        "kind": "governance_or_management",
+        "quote": "Mark Benjamin will remain CEO of Nuance, reporting to Scott Guthrie, executive vice president of Cloud & AI at Microsoft. The transaction is intended to close this calendar year."
+      },
+      {
+        "topic": "Deal terms, approvals and closing conditions",
+        "stated_position": "$56.00 per share, \"implying a 23% premium to the closing price of Nuance on Friday, April 9, in an all-cash transaction valued at $19.7 billion, inclusive of Nuance's net debt\"; unanimously approved by both boards and subject to Nuance shareholder and regulatory approvals.",
+        "kind": "acquisition_or_divestiture",
+        "quote": "The transaction has been unanimously approved by the Boards of Directors of both Nuance and Microsoft. The deal is intended to close by the end of this calendar year and is subject to approval by Nuance\u2019s shareholders, the satisfaction of certain regulatory approvals, and other customary closing conditions."
+      },
+      {
+        "topic": "Extension beyond healthcare into customer engagement across industries",
+        "stated_position": "Nuance's IVR, virtual assistant, digital and biometric expertise \"will come together with the breadth and depth of Microsoft's cloud, including Azure, Teams, and Dynamics 365, to deliver next-generation customer engagement and security solutions.\"",
+        "kind": "segment_or_product",
+        "quote": "Beyond healthcare, Nuance provides AI expertise and customer engagement solutions across Interactive Voice Response (IVR), virtual assistants, and digital and biometric solutions to companies around the world across all industries. This expertise will come together with the breadth and depth of Microsoft\u2019s cloud, including Azure, Teams, and Dynamics 365, to deliver next-generation customer engagement and security solutions."
+      },
+      {
+        "topic": "Commitments to partner ecosystem and to privacy, security and compliance",
+        "stated_position": "\"Nuance and Microsoft will deepen their existing commitments to the extended partner ecosystem, as well as the highest standards of data privacy, security and compliance.\"",
+        "kind": "strategy",
+        "quote": "Nuance and Microsoft will deepen their existing commitments to the extended partner ecosystem, as well as the highest standards of data privacy, security and compliance."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "\u201cAI is technology\u2019s most important priority, and healthcare is its most urgent application.",
+        "why_notable": "Unusually absolute framing from the CEO \u2014 ranks AI above all other corporate priorities, a formulation worth tracking against later years' language."
+      },
+      {
+        "quote": "Nuance solutions are currently used by more than 55% of physicians and 75% of radiologists in the U.S., and used in 77% of U.S. hospitals.",
+        "why_notable": "Competitive-position claim stated as installed-base penetration statistics \u2014 the basis for the market-power narrative that later drew regulatory attention."
+      },
+      {
+        "quote": "Microsoft\u2019s acquisition of Nuance builds upon the successful existing partnership between the companies that was announced in 2019 .",
+        "why_notable": "Characterizes the deal as an extension of an existing relationship rather than a new bet \u2014 de-risking language."
+      },
+      {
+        "quote": "\u201cOver the past three years, Nuance has streamlined its portfolio to focus on the healthcare and enterprise AI segments, where there has been accelerated demand for advanced conversational AI and ambient solutions,\u201d",
+        "why_notable": "The target CEO's own account of a multi-year portfolio narrowing \u2014 explains why the asset was purchasable in this form."
+      },
+      {
+        "quote": "At the same time, this combination offers a critical opportunity to deliver meaningful and certain value to our shareholders who have driven and supported us on this journey.\u201d",
+        "why_notable": "\"Meaningful and certain value\" is deal-side hedging language \u2014 emphasizes certainty of cash consideration over standalone prospects."
+      },
+      {
+        "quote": "Its mission is to empower every person and every organization on the planet to achieve more.",
+        "why_notable": "The recurring boilerplate mission statement, repeated verbatim across filings \u2014 a baseline for detecting any change in self-description."
+      }
+    ]
+  }
+}

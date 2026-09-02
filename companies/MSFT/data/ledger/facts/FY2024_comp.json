@@ -1,0 +1,213 @@
+{
+  "fiscal_year": 2024,
+  "task": "comp",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:38:58Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 42819,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 4445,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 42819,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 4445,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 42819,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 42819
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "DEF14A_cdna",
+      "accession": "0001193125-24-242883",
+      "form": "DEF 14A",
+      "filing_date": "2024-10-24"
+    },
+    {
+      "key": "DEF14A_incentive_tables",
+      "accession": "0001193125-24-242883",
+      "form": "DEF 14A",
+      "filing_date": "2024-10-24"
+    }
+  ],
+  "source_chars": 100007,
+  "source_sha256": "b5a7d96000dfefed95c0e4932b34ac4422f9f9b0cb41aa896489b5ea12afb078",
+  "facts": {
+    "incentive_metrics": [
+      {
+        "metric": "Incentive Plan Revenue (non-GAAP, constant dollar)",
+        "plan": "Annual cash incentive (Executive Incentive Plan) \u2013 financial portion",
+        "weight": "35% for CEO / 25% for NEOs",
+        "target_or_range": "FY24 Threshold $228.86B / Target $243.47B / Maximum $256.86B; FY24 Actual $246.12B, 119.79% of target",
+        "quote": "FY24 Incentive Plan Revenue 2\n$216.96\n$228.86\n$243.47\n$256.86\n$246.12\n13.44%"
+      },
+      {
+        "metric": "Incentive Plan Operating Income (non-GAAP, constant dollar)",
+        "plan": "Annual cash incentive (Executive Incentive Plan) \u2013 financial portion",
+        "weight": "35% for CEO / 25% for NEOs",
+        "target_or_range": "FY24 Threshold $94.52B / Target $103.30B / Maximum $116.73B; FY24 Actual $110.87B, 156.37% of target",
+        "quote": "We note that our Incentive Plan Revenue result was 119.79% of target and Incentive Plan Operating Income result was 156.37% of target, which equated to a 13.44% and 24.32% fiscal year 2024 growth rate, respectively, further demonstrating our commitment to rigorous goal setting."
+      },
+      {
+        "metric": "Operational assessment \u2013 Product & Strategy",
+        "plan": "Annual cash incentive \u2013 operational portion",
+        "weight": "10% for CEO / 16.67% for NEOs",
+        "target_or_range": "Results out of a possible 200% in each category; Mr. Nadella scored 150%",
+        "quote": "Product & Strategy (10%)\n150%"
+      },
+      {
+        "metric": "Operational assessment \u2013 Customers & Stakeholders",
+        "plan": "Annual cash incentive \u2013 operational portion",
+        "weight": "10% for CEO / 16.67% for NEOs",
+        "target_or_range": "Mr. Nadella scored 160% out of a possible 200%",
+        "quote": "Customers & Stakeholders (10%)\n160%"
+      },
+      {
+        "metric": "Operational assessment \u2013 Culture, Diversity & Sustainability",
+        "plan": "Annual cash incentive \u2013 operational portion",
+        "weight": "10% for CEO / 16.66% for NEOs",
+        "target_or_range": "Mr. Nadella scored 145% out of a possible 200%",
+        "quote": "Culture, Diversity & Sustainability (10%)\n145%"
+      },
+      {
+        "metric": "Azure and Other Cloud Services Revenue Growth",
+        "plan": "Performance stock awards (PSAs), FY24 metrics",
+        "weight": "35%",
+        "target_or_range": "FY24 (year 3 of FY22 PSA): Threshold 18.92%, Target 25.89%, Maximum 32.88%, Actual 29.15%, payout 146.64%",
+        "quote": "Azure and Other Cloud Services Revenue Growth 4\n35.00%\n18.92%\n25.89%\n32.88%\n29.15%\n146.64%"
+      },
+      {
+        "metric": "Microsoft Cloud Revenue Growth, excluding Azure and Other Cloud Services",
+        "plan": "Performance stock awards (PSAs), FY24 metrics",
+        "weight": "35%",
+        "target_or_range": "Threshold 7.65%, Target 15.40%, Maximum 22.82%, Actual 15.75%, payout 104.72%",
+        "quote": "Microsoft Cloud Revenue Growth, excluding Azure and Other Cloud Services 5\n35.00%\n7.65%\n15.40%\n22.82%\n15.75%\n104.72%"
+      },
+      {
+        "metric": "Search and News Advertising Revenue (ex TAC) Growth",
+        "plan": "Performance stock awards (PSAs), FY24 metrics",
+        "weight": "10%",
+        "target_or_range": "Threshold -0.26%, Target 10.82%, Maximum 21.91%, Actual 11.73%, payout 108.21%",
+        "quote": "Search and News Advertising Revenue (ex TAC) Growth 6\n10.00%\n-0.26%\n10.82%\n21.91%\n11.73%\n108.21%"
+      },
+      {
+        "metric": "Xbox Content and Services Revenue Growth",
+        "plan": "Performance stock awards (PSAs), FY24 metrics",
+        "weight": "10%",
+        "target_or_range": "Threshold -5.67%, Target 10.97%, Maximum 27.62%, Actual 5.83%, payout 84.56%",
+        "quote": "Xbox Content and Services Revenue Growth 7\n10.00%\n-5.67%\n10.97%\n27.62%\n5.83%\n84.56%"
+      },
+      {
+        "metric": "LinkedIn Sessions",
+        "plan": "Performance stock awards (PSAs), FY24 metrics",
+        "weight": "10%",
+        "target_or_range": "Threshold 76.78, Target 82.56, Maximum 88.34, Actual 83.97, payout 124.39%",
+        "quote": "LinkedIn Sessions\n10.00%\n76.78\n82.56\n88.34\n83.97\n124.39%"
+      },
+      {
+        "metric": "Relative total shareholder return vs. S&P 500 (3-year modifier on PSAs)",
+        "plan": "Performance stock awards \u2013 relative TSR modifier",
+        "weight": "Modifier applied to core metric result (75%\u2013150%)",
+        "target_or_range": "20th percentile & below 75.00%; 40th to 60th 100.00%; 80th percentile & above 150.00%; FY22\u2013FY24 result 87th percentile = 150.00%; absolute TSR must be positive for above-target modifier",
+        "quote": "3-year Relative TSR Ranking 1\nModifier\n20 th Percentile & Below\n75.00%\n30 th Percentile\n87.50%\n40 th to 60 th Percentile\n100.00%\n70 th Percentile\n125.00%\n80 th Percentile & Above\n150.00%"
+      },
+      {
+        "metric": "Time-based stock awards (SAs) \u2013 four-year vesting",
+        "plan": "Long-term incentive (Incentive Plan / 2017 Stock Plan)",
+        "weight": "50% of equity incentives for NEOs other than CEO (0% for CEO)",
+        "target_or_range": "Vest 25% on August 31, 2024 and 12.5% each six months thereafter",
+        "quote": "Equity incentives under the Incentive Plan were allocated 100% to target PSAs for our CEO. Equity incentives under the Incentive Plan were allocated 50% to target PSAs and 50% to stock awards with four-year vesting (\u201cSAs\u201d) for our other Named Executives."
+      },
+      {
+        "metric": "Target cash incentive opportunity as a percentage of base salary",
+        "plan": "Annual cash incentive",
+        "weight": null,
+        "target_or_range": "Nadella 300%; Hood 250%; Althoff 250%; Smith 250%; Young 200%; awards capped at 200% of target",
+        "quote": "For fiscal year 2024, these opportunities were: Mr. Nadella \u2013 300%; Ms. Hood \u2013 250%; Mr. Althoff \u2013 250%; Mr. Smith \u2013 250%; and Mr. Young \u2013 200%."
+      },
+      {
+        "metric": "FY25 new operational category \u2013 Security",
+        "plan": "FY25 annual cash incentive \u2013 operational portion",
+        "weight": "10% for CEO / 16.67% for NEOs",
+        "target_or_range": "Replaces separate Product & Strategy and Customers & Stakeholders categories, which are combined",
+        "quote": "To emphasize the importance of this initiative, we refined our fiscal year 2025 Incentive Plan, to combine Product & Strategy and Customers & Stakeholders into a single category and add a new category of Security to assess the contributions of our Senior Leadership Team members to the SFI."
+      },
+      {
+        "metric": "FY25 PSA metric \u2013 Consumer Services Revenue Growth",
+        "plan": "FY25 performance stock awards",
+        "weight": "15%",
+        "target_or_range": "Xbox Content and Services Revenue Growth also raised to 15%; LinkedIn Sessions removed",
+        "quote": "FY25 PSA Metrics\nWeights\nAzure and Other Cloud Services Revenue Growth\n35%\nMicrosoft Cloud Revenue Growth, excluding Azure and Other Cloud Services\n35%\nConsumer Services Revenue Growth\n15%\nXbox Content and Services Revenue Growth\n15%"
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "Mr. Nadella proposed, and the Board agreed, that given the focus and speed required for the changes that today\u2019s cybersecurity threat landscape showed were necessary, it was appropriate to reduce Mr. Nadella\u2019s cash incentive award. The Board approved a fiscal year 2024 cash incentive of $5.2 million, which represents more than a 50% reduction from the $10.66 million he would have been awarded based on the combined assessment of strong financial and operational performance.",
+        "why_notable": "Explicit negative discretion on the CEO's bonus, framed as CEO-proposed and tied to cybersecurity, while simultaneously insisting formulaic performance was strong."
+      },
+      {
+        "quote": "For fiscal year 2024, we updated our PSA core metrics to further align with our key long term strategic priorities. The approved fiscal 2024 PSA metrics reflect a significant business shift to AI through key product focus areas represented by Azure and Other Cloud Services Revenue Growth, Microsoft Cloud Revenue Growth, excluding Azure and Other Cloud Services, and Search and News Advertising Revenue, excluding Traffic Acquisition Costs (\u201cTAC\u201d) Growth while removing Windows 10/11 Monthly Active Device (\u201cMAD\u201d) Growth and Teams Monthly Active Usage Growth",
+        "why_notable": "The committee's stated rationale for dropping Windows device and Teams usage metrics: an explicit 'significant business shift to AI'."
+      },
+      {
+        "quote": "In response to the evolving and challenging cybersecurity threat landscape, Microsoft launched the Secure Future Initiative (\u201cSFI\u201d) in November 2023 and expanded the scope of SFI in May 2024, making security our top priority and committing us to continuous improvement by ensuring that security underpins every layer of our tech stack.",
+        "why_notable": "'Security our top priority' is new framing that carries into pay design; the SFI expansion is dated, implying escalation during the year."
+      },
+      {
+        "quote": "We have instilled accountability to the SFI by making security a dimension of rewards decisions across the Company, including for our senior leadership team.",
+        "why_notable": "Directly ties a non-financial priority to pay company-wide \u2014 the justification for adding the FY25 Security category."
+      },
+      {
+        "quote": "We also removed LinkedIn Sessions, as a portion of LinkedIn revenue is represented in both the Microsoft Cloud Revenue, excluding Azure and Other Cloud Services, and Consumer Services Revenue metrics.",
+        "why_notable": "A double-counting rationale for removing an engagement metric rather than a strategic one \u2014 worth tracking against prior-year emphasis on LinkedIn sessions."
+      },
+      {
+        "quote": "The current technology labor market is hyper-competitive with demand growing faster than the supply of specialized technical talent, resulting in significant increases in compensation at many of the companies with which we compete for this talent. The same conditions exist in the market for executive-level talent that can provide innovative leadership in a rapidly evolving AI environment while managing at a global scale across several complex businesses.",
+        "why_notable": "Recurring 'hyper-competitive' talent-market framing used to justify pay levels, now explicitly AI-flavored."
+      },
+      {
+        "quote": "Our Compensation Committee then determines thresholds, maximums, and interim payout levels after considering historical data, upside/downside scenarios, sensitivity analysis, and year-over-year growth comparisons, to ensure rigorous alignment of payouts to performance.",
+        "why_notable": "Standing defense of goal rigor; paired with the separate assertion that FY24 results 'further demonstrat[e] our commitment to rigorous goal setting' despite payouts well above target."
+      },
+      {
+        "quote": "In evaluating our compensation practices in fiscal year 2024, our Compensation Committee was mindful of the support our shareholders expressed for our philosophy and practice of linking executive compensation to operational objectives and shareholder value creation and did not make any substantial changes to our executive compensation program.",
+        "why_notable": "Uses 93% say-on-pay support as justification for making no substantial changes \u2014 a continuity claim that sits alongside the metric changes described elsewhere."
+      },
+      {
+        "quote": "The independent members of our Board did not increase the base salary of Mr. Nadella, which it continued to believe was reasonable and appropriate given his role, capabilities, and experience, as well as the Company\u2019s relative scale and performance.",
+        "why_notable": "Repeated year-over-year justification for holding CEO salary flat, leaning on 'relative scale'."
+      },
+      {
+        "quote": "Microsoft is meaningfully larger than almost every company in both peer groups in terms of market capitalization and revenue. Our significant size, scale, and growth is a material factor when we set executive pay.",
+        "why_notable": "Scale-versus-peers argument used as an upward pay factor, alongside the new two-tier peer group structure."
+      }
+    ]
+  }
+}

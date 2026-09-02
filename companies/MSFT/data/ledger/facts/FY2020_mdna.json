@@ -1,0 +1,135 @@
+{
+  "fiscal_year": 2020,
+  "task": "mdna",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:31:44Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 49123,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 2001,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 49123,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2001,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 49123,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 49123
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "10-K_item7_mdna",
+      "accession": "0001564590-20-034944",
+      "form": "10-K",
+      "filing_date": "2020-07-30"
+    }
+  ],
+  "source_chars": 65203,
+  "source_sha256": "f189e5b07310133f7f7a41f720ae724378f78b2a30b0cd2fb4742d942ac5fc24",
+  "facts": {
+    "events": [
+      {
+        "type": "financing",
+        "description": "June 2020 debt exchange: exchanged a portion of existing debt at premium for cash and new debt with longer maturities",
+        "date": "2020-06",
+        "quote": "In June 2020, we exchanged a portion of our existing debt at premium for cash and new debt with longer maturities to take advantage of favorable financing rates in the debt markets, reflecting our credit rating and the low interest rate environment."
+      },
+      {
+        "type": "restructuring",
+        "description": "Charges associated with the closing of Microsoft Store physical locations, increasing general and administrative expenses",
+        "date": null,
+        "quote": "General and administrative expenses increased $226 million or 5%, driven by charges associated with the closing of our Microsoft Store physical locations, offset in part by a reduction in business taxes and legal expenses."
+      },
+      {
+        "type": "other",
+        "description": "Change in accounting estimate completed July 2020 extending useful lives of server equipment (three to four years) and network equipment (two to four years), effective FY2021, estimated to increase FY2021 operating income by $2.7 billion",
+        "date": "2020-07",
+        "quote": "In July 2020, we completed an assessment of the useful lives of our server and network equipment and determined we should increase the estimated useful life of server equipment from three years to four years and increase the estimated useful life of network equipment from two years to four years. This change in accounting estimate will be effective beginning fiscal year 2021."
+      },
+      {
+        "type": "other",
+        "description": "IRS commenced audit for tax years 2014 to 2017 in April 2020; company remains under audit for tax years 2004 to 2013",
+        "date": "2020-04",
+        "quote": "We remain under audit for tax years 2004 to 2013. In April 2020, the IRS commenced the audit for tax years 2014 to 2017."
+      },
+      {
+        "type": "other",
+        "description": "Payment of $3.7 billion during fiscal year 2020 related to the FY2019 transfer of intangible properties; $1.2 billion of TCJA transition tax paid in FY2020",
+        "date": null,
+        "quote": "We have paid transition tax of $3.2 billion, which included $1.2 billion for fiscal year 2020. The remaining transition tax of $15.2 billion is payable over the next six years with a final payment in fiscal year 2026. During fiscal year 2020, we also paid $3.7 billion related to the transfer of intangible properties that occurred in the fourth quarter of fiscal year 2019."
+      },
+      {
+        "type": "other",
+        "description": "$1.2 billion in other investing to facilitate the purchase of components; $19.7 billion of share repurchases (126 million shares) in fiscal year 2020",
+        "date": null,
+        "quote": "For fiscal years 2020, 2019, and 2018, we repurchased 126 million shares, 150 million shares, and 99 million shares of our common stock for $19.7 billion, $16.8 billion, and $8.6 billion, respectively, through our share repurchase programs."
+      }
+    ],
+    "segment_changes": [],
+    "notable_language": [
+      {
+        "quote": "The COVID-19 pandemic may continue to impact our business operations and financial operating results, and there is substantial uncertainty in the nature and degree of its continued effects over time.",
+        "why_notable": "Unusually direct admission of substantial uncertainty about the pandemic's continued effects \u2014 new language for FY2020."
+      },
+      {
+        "quote": "In the Productivity and Business Processes and Intelligent Cloud segments, cloud usage and demand increased as customers shifted to work and learn from home. We also experienced a slowdown in transactional licensing, particularly in small and medium businesses, and LinkedIn was negatively impacted by the weak job market and reductions in advertising spend.",
+        "why_notable": "Explicit two-sided characterization of COVID's effects, naming specific businesses that were hurt rather than only the tailwinds."
+      },
+      {
+        "quote": "The extent to which the COVID-19 pandemic impacts our business going forward will depend on numerous evolving factors we cannot reliably predict, including the duration and scope of the pandemic; governmental, business, and individuals' actions in response to the pandemic; and the impact on economic activity including the possibility of recession or financial market instability.",
+        "why_notable": "Management states outright it cannot reliably predict key factors, and names the possibility of recession or financial market instability."
+      },
+      {
+        "quote": "This uncertainty also affects management\u2019s accounting estimates and assumptions, which could result in greater variability in a variety of areas that depend on these estimates and assumptions, including investments, receivables, and forward-looking guidance.",
+        "why_notable": "A hedge on the reliability of its own estimates and forward-looking guidance \u2014 a step back from previously plainly stated estimates."
+      },
+      {
+        "quote": "Microsoft is a technology company whose mission is to empower every person and every organization on the planet to achieve more. We strive to create local opportunity, growth, and impact in every country around the world.",
+        "why_notable": "The recurring self-description/mission statement whose wording is worth tracking year over year."
+      },
+      {
+        "quote": "We must continue to evolve and adapt over an extended time in pace with this changing environment. The investments we are making in infrastructure and devices will continue to increase our operating costs and may decrease our operating margins.",
+        "why_notable": "Standing admission that its own investment strategy may compress operating margins \u2014 worth comparing across years."
+      },
+      {
+        "quote": "We disclose metrics to enable investors to evaluate progress against our ambitions, provide transparency into performance trends, and reflect the continued evolution of our products and services.",
+        "why_notable": "Framing of the metrics disclosure as progress against \"our ambitions\" \u2014 a shift in how the company characterizes its disclosure choices."
+      },
+      {
+        "quote": "We expect capital expenditures to increase in coming years to support growth in our cloud offerings.",
+        "why_notable": "A forward-looking commitment to rising capex, signaling continued cloud buildout."
+      },
+      {
+        "quote": "As of June 30, 2020, the primary unresolved issues for the IRS audits relate to transfer pricing, which could have a material impact in our consolidated financial statements when the matters are resolved.",
+        "why_notable": "Direct acknowledgment that unresolved transfer pricing issues could be material."
+      }
+    ]
+  }
+}

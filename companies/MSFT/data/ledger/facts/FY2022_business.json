@@ -1,0 +1,142 @@
+{
+  "fiscal_year": 2022,
+  "task": "business",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:34:51Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 30421,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2223,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 30421,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2223,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 30421,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 30421
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "10-K_item1_business",
+      "accession": "0001564590-22-026876",
+      "form": "10-K",
+      "filing_date": "2022-07-28"
+    }
+  ],
+  "source_chars": 77619,
+  "source_sha256": "672801d06b24e2e3c4c2ca765917465639271388f1ce260a9c3f02a1a9b74cff",
+  "facts": {
+    "strategic_priorities": [
+      {
+        "text": "Our research and development efforts focus on three interconnected ambitions: Reinvent productivity and business processes; Build the intelligent cloud and intelligent edge platform; Create more personal computing.",
+        "quote": "To achieve our vision, our research and development efforts focus on three interconnected ambitions:\n\u2022\nReinvent productivity and business processes.\n\u2022\nBuild the intelligent cloud and intelligent edge platform.\n\u2022\nCreate more personal computing."
+      },
+      {
+        "text": "Building a distributed computing fabric across cloud and the edge to help every organization build, run, and manage mission-critical workloads anywhere.",
+        "quote": "We are building a distributed computing fabric \u2013 across cloud and the edge \u2013 to help every organization build, run, and manage mission-critical workloads anywhere."
+      },
+      {
+        "text": "Enabling metaverse experiences at all layers of our stack.",
+        "quote": "We are enabling metaverse experiences at all layers of our stack, so customers can more effectively model, automate, simulate, and predict changes within their industrial environments, feel a greater sense of presence in the new world of hybrid work, and create custom immersive worlds to enable new opportunities for connection and experimentation."
+      },
+      {
+        "text": "Transforming the workplace to deliver new modern, modular business applications, drive deeper insights, and improve how people communicate, collaborate, learn, work, play, and interact with one another.",
+        "quote": "Transforming the workplace to deliver new modern, modular business applications, drive deeper insights, and improve how people communicate, collaborate, learn, work, play, and interact with one another."
+      },
+      {
+        "text": "Building and running cloud-based services in ways that unleash new experiences and opportunities for businesses and individuals.",
+        "quote": "Building and running cloud-based services in ways that unleash new experiences and opportunities for businesses and individuals."
+      },
+      {
+        "text": "Applying AI to drive insights and act on our customer's behalf by understanding and interpreting their needs using natural methods of communication.",
+        "quote": "Applying AI to drive insights and act on our customer\u2019s behalf by understanding and interpreting their needs using natural methods of communication."
+      },
+      {
+        "text": "Tackling security from all angles with our integrated, end-to-end solutions spanning security, compliance, identity, and management, across all clouds and platforms.",
+        "quote": "Tackling security from all angles with our integrated, end-to-end solutions spanning security, compliance, identity, and management, across all clouds and platforms."
+      },
+      {
+        "text": "Inventing new gaming experiences that bring people together around their shared love for games on any devices and pushing the boundaries of innovation with console and PC gaming.",
+        "quote": "Inventing new gaming experiences that bring people together around their shared love for games on any devices and pushing the boundaries of innovation with console and PC gaming by creating the next wave of entertainment."
+      },
+      {
+        "text": "Using Windows to fuel our cloud business, grow our share of the PC market, and drive increased engagement with our services.",
+        "quote": "Using Windows to fuel our cloud business, grow our share of the PC market, and drive increased engagement with our services like Microsoft 365 Consumer, Teams, Edge, Bing, Xbox Game Pass, and more."
+      },
+      {
+        "text": "Continued investment in high performance and sustainable computing to meet growing demand for Microsoft services provided by our cloud infrastructure and datacenters.",
+        "quote": "We continue to invest in high performance and sustainable computing to meet the growing demand for fast access to Microsoft services provided by our network of cloud computing infrastructure and datacenters."
+      },
+      {
+        "text": "Continued investment in gaming content, community, and cloud services, including announced plans to acquire Activision Blizzard.",
+        "quote": "In January 2022, we announced plans to acquire Activision Blizzard , Inc., a leader in game development and an interactive entertainment content publisher ."
+      },
+      {
+        "text": "Commitment to be carbon negative by 2030 and to remove by 2050 all the carbon emitted since founding in 1975, with $1 billion invested over four years in new climate technologies; plus commitments to be water positive by 2030, zero waste by 2030, and to protect ecosystems.",
+        "quote": "In January 2020, we announced a bold commitment and detailed plan to be carbon negative by 2030, and to remove from the environment by 2050 all the carbon we have emitted since our founding in 1975. This included a commitment to invest $1 billion over four years in new technologies and innovative climate solutions. We built on this pledge by adding commitments to be water positive by 2030, zero waste by 2030, and to protect ecosystems by developing a Planetary Computer."
+      },
+      {
+        "text": "Racial Equity Initiative focused on three multi-year pillars, including a $150 million investment to strengthen inclusion and double the number of Black, African American, Hispanic, and Latinx leaders in the U.S. by 2025.",
+        "quote": "Increasing representation and strengthening inclusion: build on our momentum, adding a $150 million investment to strengthen inclusion and double the number of Black, African American, Hispanic, and Latinx leaders in the United States by 2025."
+      },
+      {
+        "text": "Accelerating development of mixed reality solutions with new Azure services and devices.",
+        "quote": "We are accelerating our development of mixed reality solutions with new Azure services and devices."
+      },
+      {
+        "text": "Maintaining a long-term commitment to research and development across a wide spectrum of technologies, tools, and platforms spanning digital work and life experiences, cloud computing, AI, devices, and operating systems.",
+        "quote": "Based on our assessment of key technology trends, we maintain our long-term commitment to research and development across a wide spectrum of technologies, tools, and platforms spanning digital work and life experiences, cloud computing, AI, devices, and operating systems."
+      }
+    ],
+    "segments": [
+      {
+        "name": "Productivity and Business Processes",
+        "note": null,
+        "quote": "We operate our business and report our financial performance using three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing."
+      },
+      {
+        "name": "Intelligent Cloud",
+        "note": null,
+        "quote": "Our Intelligent Cloud segment consists of our public, private, and hybrid server products and cloud services that can power modern business and developers."
+      },
+      {
+        "name": "More Personal Computing",
+        "note": null,
+        "quote": "Our More Personal Computing segment consists of products and services that put customers at the center of the experience with our technology."
+      }
+    ],
+    "headcount": {
+      "value": 221000,
+      "as_stated": "approximately 221,000 people on a full-time basis, 122,000 in the U.S. and 99,000 internationally",
+      "quote": "As of June 30, 2022, we employed approximately 221,000 people on a full-time basis, 122,000 in the U.S. and 99,000 internationally."
+    }
+  }
+}

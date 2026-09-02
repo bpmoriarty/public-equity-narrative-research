@@ -1,0 +1,238 @@
+{
+  "fiscal_year": 2021,
+  "task": "events_8k",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:33:58Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 14229,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2144,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 14229,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2144,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 14229,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 14229
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-20-184744",
+      "form": "8-K",
+      "filing_date": "2020-07-01",
+      "items": [
+        "5.02"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-20-188481",
+      "form": "8-K",
+      "filing_date": "2020-07-07",
+      "items": [
+        "5.02"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-20-310549",
+      "form": "8-K",
+      "filing_date": "2020-12-04",
+      "items": [
+        "5.07"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-21-167940",
+      "form": "8-K",
+      "filing_date": "2021-05-20",
+      "items": [
+        "5.02"
+      ]
+    }
+  ],
+  "source_chars": 15823,
+  "source_sha256": "ae59279496ecada58ca930e283d387d49ba29e5ccc85f06f9cff2adf33d9d039",
+  "facts": {
+    "leadership": [
+      {
+        "name": "Frank H. Brod",
+        "role": "Corporate Vice President, Finance and Administration and Chief Accounting Officer",
+        "change": "departure_announced",
+        "date": "2020-07-01",
+        "stated_reason": "retiring from his position",
+        "quote": "On July 1, 2020 the Company announced that Frank H. Brod, Corporate Vice President, Finance and Administration and Chief Accounting Officer, is retiring from his position. Mr. Brod will step down from his role as Chief Accounting Officer (the Company\u2019s principal accounting officer) on July 31, 2020, but will remain with the Company through September 30, 2020 to assist in transition of the Company\u2019s new Chief Accounting Officer."
+      },
+      {
+        "name": "Alice L. Jolla",
+        "role": "Corporate Vice President and Chief Accounting Officer",
+        "change": "appointed",
+        "date": "2020-07-31",
+        "stated_reason": null,
+        "quote": "On July 1, 2020 the Company also announced that Alice L. Jolla, age 54, will become Corporate Vice President and Chief Accounting Officer effective July 31, 2020."
+      },
+      {
+        "name": "Margaret L. Johnson",
+        "role": "Executive Vice President, Business Development",
+        "change": "departed",
+        "date": "2020-07-01",
+        "stated_reason": null,
+        "quote": "On July 1, 2020 Margaret L. Johnson, Executive Vice President, Business Development, informed the Company that she was resigning from her position at the Company, effective July 1, 2020. Her last day with the Company will be July 7, 2020."
+      },
+      {
+        "name": "Jean-Phillipe Courtois",
+        "role": "Executive Vice President and President, National Transformation Partnerships",
+        "change": "role_changed",
+        "date": "2021-07-01",
+        "stated_reason": null,
+        "quote": "Effective July 1, 2021, Jean-Phillipe Courtois will begin a new role within Microsoft as Executive Vice President and President, National Transformation Partnerships. As of June 30, 2021, he will no longer be an executive officer."
+      },
+      {
+        "name": "Reid G. Hoffman",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2020-12-02",
+        "stated_reason": null,
+        "quote": "Reid G. Hoffman\nRe-elected\n99.52"
+      },
+      {
+        "name": "Hugh F. Johnston",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2020-12-02",
+        "stated_reason": null,
+        "quote": "Hugh F. Johnston\nRe-elected\n99.62"
+      },
+      {
+        "name": "Teri L. List-Stoll",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2020-12-02",
+        "stated_reason": null,
+        "quote": "Teri L. List-Stoll\nRe-elected\n99.35"
+      },
+      {
+        "name": "Satya Nadella",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2020-12-02",
+        "stated_reason": null,
+        "quote": "Satya Nadella\nRe-elected\n99.89"
+      },
+      {
+        "name": "Sandra E. Peterson",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2020-12-02",
+        "stated_reason": null,
+        "quote": "Sandra E. Peterson\nRe-elected\n98.89"
+      },
+      {
+        "name": "Penny S. Pritzker",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2020-12-02",
+        "stated_reason": null,
+        "quote": "Penny S. Pritzker\nRe-elected\n99.80"
+      },
+      {
+        "name": "Charles W. Scharf",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2020-12-02",
+        "stated_reason": null,
+        "quote": "Charles W. Scharf\nRe-elected\n99.11"
+      },
+      {
+        "name": "Arne M. Sorenson",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2020-12-02",
+        "stated_reason": null,
+        "quote": "Arne M. Sorenson\nRe-elected\n99.88"
+      },
+      {
+        "name": "John W. Stanton",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2020-12-02",
+        "stated_reason": null,
+        "quote": "John W. Stanton\nRe-elected\n99.85"
+      },
+      {
+        "name": "John W. Thompson",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2020-12-02",
+        "stated_reason": null,
+        "quote": "John W. Thompson\nRe-elected\n99.10"
+      },
+      {
+        "name": "Emma N. Walmsley",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2020-12-02",
+        "stated_reason": null,
+        "quote": "Emma N. Walmsley\nRe-elected\n99.73"
+      },
+      {
+        "name": "Padmasree Warrior",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2020-12-02",
+        "stated_reason": null,
+        "quote": "Padmasree Warrior\nRe-elected\n99.74"
+      }
+    ],
+    "events": [
+      {
+        "type": "leadership_transition",
+        "description": "In connection with her appointment as Chief Accounting Officer, Alice L. Jolla will receive a stock award of $1.5 million under the Microsoft Corporation 2017 Stock Plan, vesting 6.25% every quarter subject to continuous employment.",
+        "date": "2020-07-01",
+        "quote": "In connection with her appointment as Chief Accounting Officer, Ms. Jolla will receive a stock award of $1.5 million under the Microsoft Corporation 2017 Stock Plan, which will vest 6.25% every quarter, provided Ms. Jolla remains continuously employed."
+      },
+      {
+        "type": "other",
+        "description": "Microsoft held its 2020 Annual Shareholders Meeting on December 2, 2020; shareholders elected all twelve director nominees, approved named executive officer compensation on an advisory basis, ratified Deloitte & Touche LLP as independent auditor for fiscal year 2021, and rejected a shareholder proposal concerning a report on employee representation on the Board.",
+        "date": "2020-12-02",
+        "quote": "On December 2, 2020, Microsoft Corporation (the \u201cCompany\u201d) held its 2020 Annual Shareholders Meeting (the \u201cAnnual Meeting\u201d). There were 7,562,826,058 shares of common stock entitled to be voted at the Annual Meeting, of which 6,566,836,176 were voted in person or by proxy."
+      },
+      {
+        "type": "other",
+        "description": "Shareholders rejected a shareholder proposal concerning a report on employee representation on the Board of Directors, with 5.15% votes for.",
+        "date": "2020-12-02",
+        "quote": "(4) Rejected a shareholder proposal concerning a report on employee representation on the Board of Directors."
+      }
+    ]
+  }
+}

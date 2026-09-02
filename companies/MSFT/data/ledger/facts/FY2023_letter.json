@@ -1,0 +1,166 @@
+{
+  "fiscal_year": 2023,
+  "task": "letter",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:37:46Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 16094,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2781,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 16094,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2781,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 16094,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 16094
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "letter_full_text",
+      "accession": "0001193125-23-259254",
+      "form": "ARS",
+      "filing_date": "2023-10-19"
+    }
+  ],
+  "source_chars": 28968,
+  "source_sha256": "a930838ad26de9a227e7447b9d867790b7074221ccd081c63c1ab6851161fe22",
+  "facts": {
+    "strategic_priorities": [
+      {
+        "text": "Maintain lead as the top commercial cloud while innovating in consumer categories, from gaming to professional social networks",
+        "quote": "First, we will maintain our lead as the top commercial\ncloud while innovating in consumer categories, from gaming to professional social networks."
+      },
+      {
+        "text": "Invest to accelerate our lead in AI by infusing this technology across every layer of the tech stack, because maximum enterprise value gets created during platform shifts",
+        "quote": "Second, because we\nknow that maximum enterprise value gets created during platform shifts like this one, we will invest to accelerate our\nlead in AI by infusing this technology across every layer of the tech stack."
+      },
+      {
+        "text": "Continue to drive operating leverage, aligning our cost structure with our revenue growth",
+        "quote": "And, finally, we will continue to drive\noperating leverage, aligning our cost structure with our revenue growth."
+      },
+      {
+        "text": "Constant mission to empower every person and every organization on the planet to achieve more, and to be the democratizing force for this new generation of technology while mitigating its risks",
+        "quote": "Amid this transformation, our mission to empower every person and every organization on the planet to\nachieve more remains constant. As a company, we believe we can be the democratizing force for this new\ngeneration of technology and the opportunity it will help unlock for every country, community, and individual, while\nmitigating its risks."
+      },
+      {
+        "text": "Build Copilot into all our most used products and experiences, as an everyday AI companion and standalone app",
+        "quote": "We are building Copilot into all our most used products and\nexperiences and allowing people to summon its power as a standalone app as well."
+      },
+      {
+        "text": "Reimagine every customer solution area and every layer of the tech stack for the AI era",
+        "quote": "Every customer solution area and every layer of our tech stack will be reimagined for the AI era."
+      },
+      {
+        "text": "Four enduring commitments: expand opportunity, earn trust, protect fundamental rights, advance sustainability",
+        "quote": "To do this, we\nfocus on four enduring commitments that are central to our mission and that take on even\ngreater importance in this new era."
+      },
+      {
+        "text": "Train and certify 10 million people by 2025 with the skills for jobs and livelihoods in an increasingly digital economy",
+        "quote": "That\u2019s why we aim to train and certify 10 million people by\n2025 with the skills for jobs and livelihoods in an increasingly digital economy."
+      },
+      {
+        "text": "Bring access to affordable high-speed internet to a quarter of a billion people, including 100 million in Africa, by end of 2025",
+        "quote": "That\u2019s why we\u2019ve expanded our commitment to bring access to\naffordable high-speed internet to a quarter of a billion people around the world, including 100 million people in\nAfrica, by the end of 2025."
+      },
+      {
+        "text": "Gaming ambition: be the first choice for people to play great games whenever, wherever, and however they want",
+        "quote": "In gaming, we are rapidly executing on our ambition to be the first choice for people to play great games whenever,\nwherever, and however they want."
+      },
+      {
+        "text": "Culture: embrace a growth mindset and confront fixed mindsets; innovate and collaborate as One Microsoft",
+        "quote": "We need to innovate and\ncollaborate as One Microsoft."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We are living through a time of historic challenge and opportunity. As I write this, the world faces ongoing economic,\nsocial, and geopolitical volatility. At the same time, we have entered a new age of AI that will fundamentally\ntransform productivity for every individual, organization, and industry on earth",
+        "why_notable": "Opening frame pairs acknowledged macro volatility with an unhedged claim that AI will transform every industry \u2014 sets the letter's dominant register."
+      },
+      {
+        "quote": "Forty-eight\nyears after its founding, Microsoft remains a consequential company because time and time again\u2014from PC/Server,\nto Web/Internet, to Cloud/Mobile\u2014we have adapted to technological paradigm shifts. Today, we are doing so once\nagain, as we lead this new era.",
+        "why_notable": "Historical-legitimacy argument: positions AI not as a new bet but as the latest in a series of survived platform shifts, and claims leadership of the era outright."
+      },
+      {
+        "quote": "As we make progress on these priorities, we delivered strong results in fiscal year 2023,\n$211 billion in revenue and over $88 billion in operating income.",
+        "why_notable": "The only financial claim in the letter, framed as 'record' and tied directly to the three priorities."
+      },
+      {
+        "quote": "This next generation of AI will reshape every software category and every business, including our own.",
+        "why_notable": "Unusually direct acknowledgment that the disruption applies to Microsoft itself, not only to customers."
+      },
+      {
+        "quote": "We believe AI should be as\nempowering across communities as it is powerful, and we\u2019re committed to ensuring it is responsibly built and\ndesigned, with safety in mind from the outset.",
+        "why_notable": "Responsibility framing placed immediately after the Copilot vision \u2014 safety language recurs throughout the letter."
+      },
+      {
+        "quote": "AI will displace some jobs, but it will also create new ones.",
+        "why_notable": "Rare plain admission of AI-driven job displacement, immediately balanced by an offsetting claim."
+      },
+      {
+        "quote": "Our commitment to responsible AI is not new. Since 2017, we\u2019ve worked to develop our responsible AI practice,\nrecognizing that trust is never given but earned through action.",
+        "why_notable": "Pre-emptive defense of AI credibility by dating the practice to 2017 \u2014 a recurring 'not new' construction."
+      },
+      {
+        "quote": "We have translated our AI principles into a core set of implementation processes, as well as tools, training, and\npractices to support compliance. But internal programs aren\u2019t enough.",
+        "why_notable": "Concedes the limits of self-governance and pivots to advocating external regulation \u2014 notable for a company on AI policy."
+      },
+      {
+        "quote": "In 2022, our overall carbon emissions declined by 0.5 percent while our\nbusiness grew. Addressing scope 3 emissions, which account for the vast majority of our emissions, is arguably our\nultimate challenge\u2014one we\u2019ll continue to tackle",
+        "why_notable": "An unusually candid sustainability disclosure: a very small emissions decline plus a named unresolved problem ('ultimate challenge')."
+      },
+      {
+        "quote": "In an economy where yesterday\u2019s exceptional is today\u2019s expected, all of us at Microsoft will need to embrace a\ngrowth mindset and, more importantly, confront our fixed mindsets as our culture evolves. It will take everyday\ncourage to reformulate what innovation, business models, and sales motions look like in this new era.",
+        "why_notable": "Culture section signals rising internal performance pressure and coming changes to business models and sales motions."
+      },
+      {
+        "quote": "Even as we navigated challenges this year, our company continued to be the most globally diverse it\u2019s ever been.",
+        "why_notable": "Oblique reference to 'challenges' (layoffs/cost discipline are never named directly) attached to a diversity claim."
+      },
+      {
+        "quote": "In closing, this is Microsoft\u2019s moment. We have an incredible opportunity to use this new era of AI to deliver\nmeaningful benefits for every person and every organization on the planet.",
+        "why_notable": "Peak rhetorical claim of the letter \u2014 'this is Microsoft's moment' \u2014 repeated in the following paragraph as 'our moment to show up'."
+      },
+      {
+        "quote": "If we do it well, the world will do well, and Microsoft will do\nwell too. I\u2019ve never been more confident that we will deliver on this promise together",
+        "why_notable": "Closing confidence statement subordinates shareholder outcome to societal outcome; 'never been more confident' is a superlative worth tracking year over year."
+      },
+      {
+        "quote": "Earlier this month, we were thrilled to close our acquisition of Activision Blizzard, and we look forward to sharing\nmore in the coming months about how, together, we will bring the joy of gaming to more people around the world.",
+        "why_notable": "The multi-year Activision deal gets only two sentences with no strategic detail \u2014 deferred to 'the coming months'."
+      },
+      {
+        "quote": "Although it\u2019s early in our journey, Bing users engaged in more than 1 billion chats and created more than 750 million\nimages over the past year",
+        "why_notable": "Hedged framing ('early in our journey') around Bing engagement metrics rather than share or revenue."
+      }
+    ]
+  }
+}

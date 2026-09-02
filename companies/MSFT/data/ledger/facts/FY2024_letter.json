@@ -1,0 +1,154 @@
+{
+  "fiscal_year": 2024,
+  "task": "letter",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:39:32Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 15255,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2345,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 15255,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2345,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 15255,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 15255
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "letter_full_text",
+      "accession": "0001193125-24-242888",
+      "form": "ARS",
+      "filing_date": "2024-10-24"
+    }
+  ],
+  "source_chars": 28572,
+  "source_sha256": "9d91241e65113b0195cfbb3d31e5160d125c530a365906cbc4cd511d443ebebf",
+  "facts": {
+    "strategic_priorities": [
+      {
+        "text": "Prioritizing fundamentals, with security above all else \u2014 launched the Secure Future Initiative (SFI)",
+        "quote": "Going forward, we are focused on three priorities: First, prioritizing fundamentals, with security above all else. We\nlaunched the Secure Future Initiative (SFI) this year, bringing together every part of our organization to advance\ncybersecurity protection."
+      },
+      {
+        "text": "Driving trustworthy AI innovation across our entire portfolio while continuing to scale our cloud business",
+        "quote": "Second,\ndriving trustworthy AI innovation across our entire portfolio while continuing to scale our cloud business."
+      },
+      {
+        "text": "Managing our cost structure dynamically to generate durable, long-term operating leverage",
+        "quote": "And, finally,\nmanaging our cost structure dynamically to generate durable,\nlong-term\noperating leverage."
+      },
+      {
+        "text": "Reinventing the company as tech paradigms shift, to stay relevant to customers, partners and employees",
+        "quote": "we have seized the opportunity to reinvent ourselves to stay relevant to\nour customers, our partners, and our employees. And that\u2019s what we are doing again today."
+      },
+      {
+        "text": "Building three leading platforms for the agentic era: Copilot, the Copilot stack, and Copilot devices",
+        "quote": "Microsoft has built three leading platforms to help our customers maximize their opportunity in this emerging\nagentic era: Copilot, which you can think of as the new UI for AI\u2014the human interface for this agentic world; the\nCopilot stack, which brings together infrastructure, data, and app services to help customers build their own copilots\nand agents for their own business processes; and a new category of Copilot devices that are purpose-built for this\nnew era, including the Copilot+ PCs we introduced this year."
+      },
+      {
+        "text": "Expanding cloud and AI capacity with new investments across five continents as long-term assets",
+        "quote": "This year, we expanded our cloud and AI capacity, announcing new investments across five continents. These are\nlong-term assets to drive new growth for the next decade and beyond"
+      },
+      {
+        "text": "Four enduring commitments: expanding opportunity, earning trust, protecting fundamental rights, advancing sustainability",
+        "quote": "And that\u2019s why we are focused on four\nenduring commitments. They keep us grounded, serving as a guide as we make decisions"
+      },
+      {
+        "text": "Expanding total addressable market by integrating Copilot into third-party systems",
+        "quote": "And we are expanding our total addressable market by integrating Copilot into third-party systems as well."
+      },
+      {
+        "text": "Growth mindset culture in continuous pursuit of high performance",
+        "quote": "Our growth mindset culture helps us in our continuous pursuit of high performance. It doesn\u2019t matter what we said\nabout our culture 10 years ago or even last year if we aren\u2019t practicing it today"
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "Fiscal year 2024 was a pivotal year for Microsoft. We entered our 50th year as a company and the second year of the\nAI platform shift.",
+        "why_notable": "Frames the year through two milestones \u2014 corporate longevity and an 'AI platform shift' now counted in years, a framing device likely to recur."
+      },
+      {
+        "quote": "I\u2019ve found myself reflecting on how Microsoft has remained a consequential\ncompany decade after decade in an industry with no franchise value.",
+        "why_notable": "Unusual candid framing of the industry as having 'no franchise value' \u2014 an implicit warning about fragility used to justify reinvention."
+      },
+      {
+        "quote": "Financially, the year was also marked by record performance. We delivered over $245 billion in annual revenue, up\n16 percent year-over-year, and over $109 billion in operating income, up 24 percent.",
+        "why_notable": "The headline success claim, stated as 'record performance' with approximate 'over' figures rather than exact numbers."
+      },
+      {
+        "quote": "This year, we moved from talking about AI to helping our customers translate it into real outcomes\u2014one person,\none organization, one institution, and one country at a time.",
+        "why_notable": "Explicit shift in emphasis from AI announcement to AI monetization/adoption \u2014 a change of register from prior-year rhetoric."
+      },
+      {
+        "quote": "But we have now started to see progress in AI performance double roughly every six months.",
+        "why_notable": "A hedged quantitative claim ('roughly') about scaling laws used to justify capital intensity."
+      },
+      {
+        "quote": "As part of this commitment, all Microsoft employees now have security as\na \u201ccore priority,\u201d holding each one of us accountable for building secure products and services.",
+        "why_notable": "Ties security to individual employee performance accountability \u2014 a concrete governance/compensation-adjacent change following security incidents."
+      },
+      {
+        "quote": "Our first SFI Progress Report highlights updates\nspanning culture, governance, technology, and operations, but we recognize that our work on security is never\ncomplete. We must and will do more.",
+        "why_notable": "Direct admission that security work is incomplete \u2014 an acknowledgment of a problem rather than a claim of success."
+      },
+      {
+        "quote": "Although we have made outstanding progress over the past year, we cannot take our permission to innovate\u2014let\nalone operate\u2014for granted. It is something we must earn.",
+        "why_notable": "'Permission to innovate\u2014let alone operate' is a notably defensive acknowledgment of regulatory and social license risk."
+      },
+      {
+        "quote": "We recognize that trust is earned, not given. And we remain committed to earning trust every day, spanning\ncybersecurity, trustworthy AI, privacy, and digital safety.",
+        "why_notable": "Recurring trust motif; the 'earned, not given' formulation is the letter's central defensive theme."
+      },
+      {
+        "quote": "But we also recognize the resource intensity of the infrastructure needed to yield these benefits, which is why we\u2019re\nadvancing the sustainability of AI, from design to construction to operations",
+        "why_notable": "Rare direct acknowledgment that AI infrastructure is resource-intensive, in tension with sustainability targets."
+      },
+      {
+        "quote": "Where we\u2019re not yet on track, we\u2019re mobilizing to accelerate our progress toward becoming carbon\nnegative, water positive, and zero waste, as well as to protect and preserve ecosystems.",
+        "why_notable": "Admission of being off track on some 2030 environmental commitments, softened by 'mobilizing to accelerate.'"
+      },
+      {
+        "quote": "and by actively seeking diversity and embracing inclusion\u2014to ensure our workforce represents the\nplanet we serve and the products we build always meet our customers\u2019 needs.",
+        "why_notable": "Diversity and inclusion still stated affirmatively as part of culture \u2014 language worth tracking year over year."
+      },
+      {
+        "quote": "Where the internet era put information at our\nfingertips, AI is putting expertise at our fingertips.",
+        "why_notable": "The letter's signature rhetorical formulation \u2014 'democratization of expertise' \u2014 a new framing of the AI thesis."
+      },
+      {
+        "quote": "We always say Microsoft will do well only if the world around us does well.",
+        "why_notable": "Recurring corporate-citizenship refrain, presented as a longstanding saying rather than a new commitment."
+      }
+    ]
+  }
+}

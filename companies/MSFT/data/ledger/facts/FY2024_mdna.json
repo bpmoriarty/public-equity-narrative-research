@@ -1,0 +1,137 @@
+{
+  "fiscal_year": 2024,
+  "task": "mdna",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:38:50Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 24016,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2363,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 24016,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2363,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 24016,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 24016
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "10-K_item7_mdna",
+      "accession": "0000950170-24-087843",
+      "form": "10-K",
+      "filing_date": "2024-07-30"
+    }
+  ],
+  "source_chars": 51634,
+  "source_sha256": "9f170a3386f3ab6c75a4176af9b142714e23ba98bf57f11e41b25a4c8a25224d",
+  "facts": {
+    "events": [
+      {
+        "type": "acquisition",
+        "description": "Completed acquisition of Activision Blizzard Inc. for a total purchase price of $75.4 billion, consisting primarily of cash; reported as part of More Personal Computing segment.",
+        "date": "2023-10-13",
+        "quote": "On October 13, 2023, we completed our acquisition of Activision Blizzard for a total purchase price of $75.4 billion, consisting primarily of cash. The financial results of Activision Blizzard have been included in our consolidated financial statements since the date of the acquisition. Activision Blizzard is reported as part of our More Personal Computing segment."
+      },
+      {
+        "type": "restructuring",
+        "description": "Prior-year (fiscal 2023 second quarter) $1.2 billion charge including employee severance, hardware portfolio impairment charges, and lease consolidation costs, excluded from non-GAAP measures.",
+        "date": null,
+        "quote": "Prior year non-GAAP financial measures exclude the impact of a $1.2 billion charge in the second quarter of fiscal year 2023 (\u201cQ2 charge\u201d), which included employee severance expenses, impairment charges resulting from changes to our hardware portfolio, and costs related to lease consolidation activities."
+      },
+      {
+        "type": "other",
+        "description": "Received IRS Notices of Proposed Adjustment for tax years 2004 to 2013 seeking an additional tax payment of $28.9 billion plus penalties and interest, primarily relating to intercompany transfer pricing; company disagrees and will contest.",
+        "date": "2023-09-26",
+        "quote": "With respect to the audit for tax years 2004 to 2013, on September 26, 2023, we received Notices of Proposed Adjustment (\u201cNOPAs\u201d) from the IRS. The primary issues in the NOPAs relate to intercompany transfer pricing. In the NOPAs, the IRS is seeking an additional tax payment of $28.9 billion plus penalties and interest."
+      },
+      {
+        "type": "financing",
+        "description": "Share repurchases of 32 million shares for $12.0 billion in fiscal year 2024, with $10.3 billion remaining of the $60 billion program.",
+        "date": null,
+        "quote": "During fiscal years 2024 and 2023, we repurchased 32 million shares and 69 million shares of our common stock for $12.0 billion and $18.4 billion, respectively, through our share repurchase program. All repurchases were made using cash resources. As of June 30, 2024, $10.3 billion remained of our $60 billion share repurchase program."
+      },
+      {
+        "type": "financing",
+        "description": "Board of Directors declared dividends totaling $22.3 billion in fiscal year 2024, up from $20.2 billion.",
+        "date": null,
+        "quote": "During fiscal years 2024 and 2023, our Board of Directors declared dividends totaling $22.3 billion and $20.2 billion, respectively."
+      },
+      {
+        "type": "other",
+        "description": "Change in accounting estimate increasing useful lives of server and network equipment from four to six years, effective beginning fiscal year 2023.",
+        "date": null,
+        "quote": "In July 2022, we completed an assessment of the useful lives of our server and network equipment. Due to investments in software that increased efficiencies in how we operate our server and network equipment, as well as advances in technology, we determined we should increase the estimated useful lives of both server and network equipment from four years to six years. This change in accounting estimate was effective beginning fiscal year 2023."
+      },
+      {
+        "type": "other",
+        "description": "Metric presentation changes in Q1 FY2024: Microsoft Cloud revenue metric revised to include revenue growth; Microsoft 365 Consumer subscribers metric expanded to include Microsoft 365 Basic subscribers.",
+        "date": null,
+        "quote": "In the first quarter of fiscal year 2024, we made updates to the presentation and method of calculation for certain metrics, revising our Microsoft Cloud revenue metric to include revenue growth and expanding our Microsoft 365 Consumer subscribers metric to include Microsoft 365 Basic subscribers, aligning with how we manage our business."
+      }
+    ],
+    "segment_changes": [],
+    "notable_language": [
+      {
+        "quote": "Microsoft is a technology company committed to making digital technology and artificial intelligence (\u201cAI\u201d) available broadly and doing so responsibly, with a mission to empower every person and every organization on the planet to achieve more. We create platforms and tools, powered by AI, that deliver innovative solutions that meet the evolving needs of our customers.",
+        "why_notable": "Self-characterization now leads with AI availability and responsibility; \"platforms and tools, powered by AI\" frames the whole company around AI."
+      },
+      {
+        "quote": "The investments we are making in cloud and AI infrastructure and devices will continue to increase our operating costs and may decrease our operating margins.",
+        "why_notable": "Unusually direct admission that the AI capex build will raise costs and could compress margins."
+      },
+      {
+        "quote": "Our datacenters depend on the availability of permitted and buildable land, predictable energy, networking supplies, and servers, including graphics processing units (\u201cGPUs\u201d) and other components.",
+        "why_notable": "New emphasis on physical constraints \u2014 land, energy, GPUs \u2014 as dependencies of the cloud business, a shift from software-oriented risk language."
+      },
+      {
+        "quote": "We expect capital expenditures to increase in coming years to support growth in our cloud offerings and our investments in AI infrastructure and training.",
+        "why_notable": "Forward-looking commitment to sustained capex escalation over multiple years, not just the coming period."
+      },
+      {
+        "quote": "Microsoft Cloud gross margin percentage decreased slightly to 71%. Excluding the impact of the change in accounting estimate, Microsoft Cloud gross margin percentage increased slightly driven by improvements in Azure and Office 365 Commercial, inclusive of scaling our AI infrastructure, offset in part by sales mix shift to Azure.",
+        "why_notable": "A reported margin decline is reframed as an increase via the accounting-estimate adjustment; \"inclusive of scaling our AI infrastructure\" hedges the cost of the AI buildout."
+      },
+      {
+        "quote": "We disagree with the proposed adjustments and will vigorously contest the NOPAs through the IRS\u2019s administrative appeals office and, if necessary, judicial proceedings. We do not expect a final resolution of these issues in the next 12 months.",
+        "why_notable": "Unusually combative language on a $28.9 billion tax claim, paired with an explicit statement that resolution is not near."
+      },
+      {
+        "quote": "Xbox content and services revenue increased 50% driven by 44 points of net impact from the Activision Blizzard acquisition. The net impact reflects the change of Activision Blizzard content from third-party to first-party.",
+        "why_notable": "Management explicitly quantifies how much of the headline growth is acquisition-driven rather than organic."
+      },
+      {
+        "quote": "Aggregate demand for our software, services, and devices is also correlated to global macroeconomic and geopolitical factors, which remain dynamic. We must continue to evolve and adapt over an extended time in pace with this changing environment.",
+        "why_notable": "Recurring hedge on demand tied to macro and geopolitical conditions, described as \"dynamic\" rather than quantified."
+      }
+    ]
+  }
+}

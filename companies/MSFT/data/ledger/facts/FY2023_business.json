@@ -1,0 +1,158 @@
+{
+  "fiscal_year": 2023,
+  "task": "business",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:36:44Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 29060,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2553,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 29060,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2553,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 29060,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 29060
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "10-K_item1_business",
+      "accession": "0000950170-23-035122",
+      "form": "10-K",
+      "filing_date": "2023-07-27"
+    }
+  ],
+  "source_chars": 72849,
+  "source_sha256": "1b1b77dc3fa9c4cb5578aef5f62413f67b56ca8b4d55e7b04bad555dbac18da8",
+  "facts": {
+    "strategic_priorities": [
+      {
+        "text": "Research and development efforts focus on three interconnected ambitions: reinvent productivity and business processes; build the intelligent cloud and intelligent edge platform; create more personal computing.",
+        "quote": "To achieve our vision, our research and development efforts focus on three interconnected ambitions:\n\u2022\nReinvent productivity and business processes.\n\u2022\nBuild the intelligent cloud and intelligent edge platform.\n\u2022\nCreate more personal computing."
+      },
+      {
+        "text": "Innovating and expanding the portfolio with AI capabilities, infusing generative AI into consumer and commercial offerings to deliver copilot capability for all services across the Microsoft Cloud.",
+        "quote": "Our investment in AI spans the entire company, from Microsoft Teams and Outlook, to Bing and Xbox, and we are infusing generative AI capability into our consumer and commercial offerings to deliver copilot capability for all services across the Microsoft Cloud."
+      },
+      {
+        "text": "Making the promise of AI real \u2013 and doing it responsibly, guided by principles of fairness, reliability and safety, privacy and security, inclusiveness, transparency, and accountability.",
+        "quote": "We're committed to making the promise of AI real \u2013 and doing it responsibly. Our work is guided by a core set of principles: fairness, reliability and safety, privacy and security, inclusiveness, transparency, and accountability."
+      },
+      {
+        "text": "Helping customers use the breadth and depth of the Microsoft Cloud to get the most value out of their digital spend while leading the new AI wave across solution areas; goal is to lead the industry in several distinct areas of technology over the long term.",
+        "quote": "We are focused on helping customers use the breadth and depth of the Microsoft Cloud to get the most value out of their digital spend while leading the new AI wave across our solution areas."
+      },
+      {
+        "text": "Transforming the workplace to deliver new modern, modular business applications, drive deeper insights, and improve how people communicate, collaborate, learn, work, and interact.",
+        "quote": "Transforming the workplace to deliver new modern, modular business applications, drive deeper insights, and improve how people communicate, collaborate, learn, work, and interact with one another."
+      },
+      {
+        "text": "Building and running cloud-based services in ways that utilize ubiquitous computing to unleash new experiences and opportunities.",
+        "quote": "Building and running cloud-based services in ways that utilize ubiquitous computing to unleash new experiences and opportunities for businesses and individuals."
+      },
+      {
+        "text": "Applying AI and ambient intelligence to drive insights, revolutionize many types of work, and provide substantive productivity gains.",
+        "quote": "Applying AI and ambient intelligence to drive insights, revolutionize many types of work, and provide substantive productivity gains using natural methods of communication."
+      },
+      {
+        "text": "Tackling security from all angles with integrated, end-to-end solutions spanning security, compliance, identity, and management, across all clouds and platforms.",
+        "quote": "Tackling security from all angles with our integrated, end-to-end solutions spanning security, compliance, identity, and management, across all clouds and platforms."
+      },
+      {
+        "text": "Inventing new gaming experiences and pushing the boundaries of innovation with console and PC gaming.",
+        "quote": "Inventing new gaming experiences that bring people together around their shared love for games on any devices and pushing the boundaries of innovation with console and PC gaming."
+      },
+      {
+        "text": "Using Windows to fuel the cloud business, grow share of the PC market, and drive increased engagement with services.",
+        "quote": "Using Windows to fuel our cloud business, grow our share of the PC market, and drive increased engagement with our services like Microsoft 365 Consumer, Microsoft Teams, Microsoft Edge, Bing, Xbox Game Pass, and more."
+      },
+      {
+        "text": "Future growth depends on the ability to transcend current product category definitions, business models, and sales motions.",
+        "quote": "Our future growth depends on our ability to transcend current product category definitions, business models, and sales motions."
+      },
+      {
+        "text": "Continuing to invest in high performance and sustainable computing, expanding datacenter locations and server capacity to meet the growing demand for AI services.",
+        "quote": "We continue to identify and evaluate opportunities to expand our datacenter locations and increase our server capacity to meet the evolving needs of our customers, particularly given the growing demand for AI services."
+      },
+      {
+        "text": "Long-term partnership with OpenAI, including increased investments in specialized supercomputing systems to accelerate OpenAI's research.",
+        "quote": "We have also increased our investments in the development and deployment of specialized supercomputing systems to accelerate OpenAI\u2019s research."
+      },
+      {
+        "text": "Announced plans to acquire Activision Blizzard, Inc.",
+        "quote": "In January 2022, we announced plans to acquire Activision Blizzard, Inc., a leader in game development and an interactive entertainment content publisher."
+      },
+      {
+        "text": "Commitment to being a carbon negative, water positive, and zero waste company by 2030.",
+        "quote": "In 2020, we committed to being a carbon negative, water positive, and zero waste company by 2030."
+      },
+      {
+        "text": "Racial Equity Initiative focused on three multi-year pillars, including a $150 million investment to strengthen inclusion and double the number of Black, African American, Hispanic, and Latinx leaders in the United States by 2025.",
+        "quote": "Increasing representation and strengthening inclusion: building on our momentum by adding a $150 million investment to strengthen inclusion and double the number of Black, African American, Hispanic, and Latinx leaders in the United States by 2025."
+      },
+      {
+        "text": "Launched a new AI Skills Initiative in June 2023 to help everyone learn how to harness the power of AI.",
+        "quote": "To address this, in June 2023 we launched a new AI Skills Initiative to help everyone learn how to harness the power of AI."
+      },
+      {
+        "text": "Managing costs in a dynamic, competitive environment by holding base salaries of salaried employees at fiscal year 2022 levels.",
+        "quote": "In order to manage our costs in a dynamic, competitive environment, in fiscal year 2023 we announced that base salaries of salaried employees would remain at fiscal year 2022 levels."
+      },
+      {
+        "text": "National campaign to help skill and recruit 250,000 people into the cybersecurity workforce by 2025, expanded to 27 additional countries.",
+        "quote": "We also launched a national campaign to help skill and recruit 250,000 people into the cybersecurity workforce by 2025, representing half of the country\u2019s workforce shortage."
+      }
+    ],
+    "segments": [
+      {
+        "name": "Productivity and Business Processes",
+        "note": null,
+        "quote": "We operate our business and report our financial performance using three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing."
+      },
+      {
+        "name": "Intelligent Cloud",
+        "note": "Enterprise Services within this segment includes \"Industry Solutions (formerly Microsoft Consulting Services)\" \u2014 a stated renaming of a business line, not of the segment itself.",
+        "quote": "Enterprise Services, including Enterprise Support Services, Industry Solutions (formerly Microsoft Consulting Services ), and Nuance professional services."
+      },
+      {
+        "name": "More Personal Computing",
+        "note": null,
+        "quote": "Our More Personal Computing segment consists of products and services that put customers at the center of the experience with our technology."
+      }
+    ],
+    "headcount": {
+      "value": 221000,
+      "as_stated": "approximately 221,000 people on a full-time basis, 120,000 in the U.S. and 101,000 internationally, as of June 30, 2023",
+      "quote": "As of June 30, 2023, we employed approximately 221,000 people on a full-time basis, 120,000 in the U.S. and 101,000 internationally."
+    }
+  }
+}

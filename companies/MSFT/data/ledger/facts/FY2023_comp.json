@@ -1,0 +1,192 @@
+{
+  "fiscal_year": 2023,
+  "task": "comp",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:37:11Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 39262,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 3862,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 39262,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 3862,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 39262,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 39262
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "DEF14A_cdna",
+      "accession": "0001193125-23-259247",
+      "form": "DEF 14A",
+      "filing_date": "2023-10-19"
+    },
+    {
+      "key": "DEF14A_incentive_tables",
+      "accession": "0001193125-23-259247",
+      "form": "DEF 14A",
+      "filing_date": "2023-10-19"
+    }
+  ],
+  "source_chars": 89423,
+  "source_sha256": "9ce0f0fd82cd77ef36399df8fe43429973cc1b6bafff03e80bfd64ed81447151",
+  "facts": {
+    "incentive_metrics": [
+      {
+        "metric": "Incentive Plan Revenue",
+        "plan": "Annual cash incentive (financial portion; 70% of CEO cash incentive, 50% for other NEOs)",
+        "weight": "70% CEO / 50% other NEOs (financial portion overall)",
+        "target_or_range": "FY23 Threshold $216.90B, Target $230.75B, Maximum $243.44B; FY23 Actual $220.08B (95.38% of target; 10.98% growth)",
+        "quote": "For fiscal year 2023, the financial portion of the annual cash incentives was determined based on meeting pre-established performance targets for Incentive Plan Revenue and Incentive Plan Operating Income. The fiscal year 2023 Incentive Plan Revenue and Incentive Plan Operating Income performance targets were based on meeting the Company\u2019s fiscal year 2023 internal operating budget."
+      },
+      {
+        "metric": "Incentive Plan Operating Income",
+        "plan": "Annual cash incentive (financial portion)",
+        "weight": null,
+        "target_or_range": "FY22 Actual $80.47B; FY23 Threshold $88.54B, Target $96.77B, Maximum $109.35B, Actual $91.13B, growth 13.25%",
+        "quote": "FY23 Incentive Plan Operating Income\n$80.47\n$88.54\n$96.77\n$109.35\n$91.13\n13.25%"
+      },
+      {
+        "metric": "Operational assessment across three performance categories (Product & Strategy; Customers & Stakeholders; Culture, Diversity & Sustainability)",
+        "plan": "Annual cash incentive (operational portion)",
+        "weight": "30% for CEO, 50% for other Named Executives (CEO: 10% each of three categories)",
+        "target_or_range": "Results out of a possible 200% in each category; FY23 operational results: Nadella 136.67%, Hood 120.00%, Althoff 123.34%, Smith 126.67%, Young 106.66%",
+        "quote": "Annual cash incentives were performance-based, with 70% determined formulaically based on achievement against pre-established financial targets for our CEO (50% for our other Named Executives) and 30% determined based on operational performance in three weighted performance categories for our CEO (50% for our other Named Executives)."
+      },
+      {
+        "metric": "Microsoft Cloud Revenue",
+        "plan": "Performance stock awards (PSAs), fiscal year 2023 metrics",
+        "weight": "30%",
+        "target_or_range": "FY23 (as year 3 of FY21 PSA): Threshold $107.64B, Target $116.51B, Maximum $125.69B, Actual $113.26B, payout 81.68%",
+        "quote": "Microsoft Cloud Revenue*\nRevenue from Azure and other cloud services, Office 365 Commercial, the commercial portion of LinkedIn, Dynamics 365, and other commercial cloud properties\n30%"
+      },
+      {
+        "metric": "Microsoft Cloud Subscribers Growth",
+        "plan": "Performance stock awards (PSAs), fiscal year 2023 metrics",
+        "weight": "20%",
+        "target_or_range": "Threshold 8.96%, Target 18.57%, Maximum 28.88%, Actual 14.12%, payout 76.85%",
+        "quote": "Microsoft Cloud Subscribers Growth\n20%\n8.96%\n18.57%\n28.88%\n14.12%\n76.85%"
+      },
+      {
+        "metric": "Teams Monthly Active Usage Growth",
+        "plan": "Performance stock awards (PSAs), fiscal year 2023 metrics",
+        "weight": "20%",
+        "target_or_range": "Threshold -12.80%, Target 5.58%, Maximum 22.14%, Actual 12.39%, payout 141.12%",
+        "quote": "Teams Monthly Active Usage Growth\n20%\n-12.80%\n5.58%\n22.14%\n12.39%\n141.12%"
+      },
+      {
+        "metric": "Xbox Content & Services Revenue Growth",
+        "plan": "Performance stock awards (PSAs), fiscal year 2023 metrics",
+        "weight": "10%",
+        "target_or_range": "Threshold -16.45%, Target 4.44%, Maximum 25.33%, Actual 0.70%, payout 91.05%",
+        "quote": "Xbox Content and Services Revenue Growth 3\n10%\n-16.45%\n4.44%\n25.33%\n0.70%\n91.05%"
+      },
+      {
+        "metric": "Windows 10/11 Monthly Active Devices (MAD) Growth",
+        "plan": "Performance stock awards (PSAs), fiscal year 2023 metrics",
+        "weight": "10%",
+        "target_or_range": "Threshold -4.90%, Target 5.67%, Maximum 12.01%, Actual 5.51%, payout 99.24%",
+        "quote": "Windows 10/11 Monthly Active Devices Growth\n10%\n-4.90%\n5.67%\n12.01%\n5.51%\n99.24%"
+      },
+      {
+        "metric": "LinkedIn Sessions",
+        "plan": "Performance stock awards (PSAs), fiscal year 2023 metrics",
+        "weight": "10%",
+        "target_or_range": "Threshold 68.59, Target 73.75, Maximum 78.91, Actual 75.05, payout 125.19%",
+        "quote": "LinkedIn Sessions\n10%\n68.59\n73.75\n78.91\n75.05\n125.19%"
+      },
+      {
+        "metric": "Three-year relative total shareholder return versus the S&P 500 (payout modifier on PSAs)",
+        "plan": "Performance stock awards (PSAs) modifier",
+        "weight": "Modifier applied to core metric results",
+        "target_or_range": "20th percentile & below 75.00%; 30th 87.50%; 40th\u201360th 100.00%; 70th 125.00%; 80th & above 150.00%; FY21 PSA result 72nd percentile = 128.95%",
+        "quote": "Performance stock awards include a relative TSR modifier to strengthen the alignment of the interests of our Named Executives with the long-term interests of our shareholders; in order for the TSR modifier to affect the performance stock awards positively, our relative TSR must be above the 60 th percentile of the S&P 500"
+      },
+      {
+        "metric": "Time-based stock awards (SAs) with four-year vesting",
+        "plan": "Executive Incentive Plan equity, NEOs other than the CEO",
+        "weight": "50% of equity incentives for NEOs other than Mr. Nadella (CEO receives 0%)",
+        "target_or_range": "Vest 25% on August 31, 2023 and 12.5% each six months thereafter",
+        "quote": "Equity incentives under the Incentive Plan were allocated 100% to target PSAs for our CEO. Equity incentives under the Incentive Plan were allocated 50% to target PSAs and 50% to stock awards with four-year vesting (\u201cSAs\u201d) for our other Named Executives."
+      },
+      {
+        "metric": "Target cash incentive opportunity as percentage of base salary",
+        "plan": "Annual cash incentive",
+        "weight": null,
+        "target_or_range": "Nadella \u2013 300%; Hood \u2013 250%; Althoff \u2013 250%; Smith \u2013 250%; Young \u2013 200%; awards capped at 200% of target",
+        "quote": "We did not increase our target cash incentive opportunities in fiscal year 2023 as a percentage of base salary for the same reasons that we did not increase base salaries. For fiscal year 2023, these opportunities were: Mr. Nadella \u2013 300%; Ms. Hood \u2013 250%; Mr. Althoff \u2013 250%; Mr. Smith \u2013 250%; and Mr. Young \u2013 200%."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We note that our Incentive Plan Revenue result was 95.38% of target, which equated to a 10.98% fiscal year 2023 growth rate, further demonstrating our commitment to rigorous goal setting.",
+        "why_notable": "The committee turns a below-target result into evidence of goal rigor rather than underperformance \u2014 a defensive framing of a miss."
+      },
+      {
+        "quote": "In evaluating our compensation practices in fiscal 2023, our Compensation Committee was mindful of the support our shareholders expressed for our philosophy and practice of linking executive compensation to operational objectives and shareholder value creation, and did not make any substantial changes to our executive compensation program.",
+        "why_notable": "Explicit statement of continuity: no substantial program changes, justified by say-on-pay support (over 88%)."
+      },
+      {
+        "quote": "For fiscal year 2023, the Compensation Committee reviewed the evolution of our business against our historical peer group, and as a result approved the use of two peer groups to better reflect the differentiated business, talent and, in some cases, pay models, across sectors:",
+        "why_notable": "A stated change in benchmarking methodology \u2014 splitting into Primary Technology and Secondary General Industry peer groups \u2014 with the committee's own rationale."
+      },
+      {
+        "quote": "We did not increase our target award values for our Named Executives, except in the case of Mr. Althoff whose target award value increased from $12,600,000 to $14,640,000 based on a competitive market review.",
+        "why_notable": "The single individualized pay increase of the year, with the stated reason being competitive market review rather than performance."
+      },
+      {
+        "quote": "The independent members of our Board did not increase the base salary of Mr. Nadella, which it continued to believe was reasonable and appropriate given his role, capabilities, and experience, as well as the Company\u2019s relative scale and performance.",
+        "why_notable": "Recurring justification for holding CEO salary flat; the appeal to 'relative scale and performance' is the committee's standing formula."
+      },
+      {
+        "quote": "The current technology labor market is hyper-competitive with demand growing faster than the supply of specialized technical talent, resulting in significant increases in compensation at many of the companies with which we compete for this talent.",
+        "why_notable": "Market-pressure framing used to pre-justify pay levels; language worth tracking year over year as labor conditions change."
+      },
+      {
+        "quote": "Due to the dynamic nature of our business and the specificity of the performance metrics that are chosen under our PSA program, we believe that measuring performance annually over our three-year performance period and modifying the actual awards eligible to be earned based on our three-year relative TSR provides the most accurate and holistic assessment of Microsoft\u2019s long-term trajectory and performance achievements.",
+        "why_notable": "Defense of annually reset goals inside a three-year LTI period \u2014 a design shareholders often criticize as short-term; the committee addresses it directly."
+      },
+      {
+        "quote": "After considering the recommendation of our Compensation Committee, the independent members of our Board approved Mr. Nadella\u2019s base salary, target cash incentive, and target performance stock award, providing no time-based stock awards for fiscal year 2023.",
+        "why_notable": "Explicit note that the CEO receives no time-based equity, positioning 100% of his equity as performance-based."
+      },
+      {
+        "quote": "While Microsoft was not immune to the workforce reductions experienced by many technology organizations, Mr. Nadella\u2019s leadership encouraged a focus on dignity and respect for impacted employees throughout the process.",
+        "why_notable": "Layoffs surface in the CEO's operational assessment as a leadership credit rather than a negative \u2014 the category still paid 110%."
+      },
+      {
+        "quote": "Our Compensation Committee sets cash incentive and performance stock award (\u201cPSA\u201d) metric targets at the levels established, after review and engagement by the Board, for internal budgeting purposes. These targets are intended to be challenging but achievable.",
+        "why_notable": "Discloses that incentive targets equal the internal operating budget \u2014 the mechanism linking pay to management's own plan."
+      }
+    ]
+  }
+}

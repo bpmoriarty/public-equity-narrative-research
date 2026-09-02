@@ -465,3 +465,163 @@ second company present — the Phase 5.1 aggregation holding against exactly the
 drift that bit Phase 4.6; and `git add --dry-run` confirms `data/pack/gen-*.json`
 would be tracked for MSFT while `pack.json` is ignored, matching MORN, so rule 1's
 enforcement generalizes to a new company.
+
+---
+
+# 6.5 — the spending stages
+
+## Finding 4: the orchestrator cannot fetch the final year's vote 8-K
+
+**This is the sharpest thing Phase 6 has found, because MORN looks complete and
+is not — it was completed by hand.**
+
+`extract_facts --check-fresh` reported `no source: 4` before the gate was
+approved, and three of the four were expected (see below). The fourth, **FY2025
+`votes`**, contradicted the disk: six proxy vote sections were sitting in
+`data/sections/`. Both statements could not be true.
+
+**What `votes` actually reads is not the proxy.** It reads the paired **8-K Item
+5.07**. A DEF 14A for year N is filed months after that year closes and solicits
+votes at the meeting that follows, so the *result* is a filing dated roughly a
+year after the year it reports on. `gather_votes` therefore pairs on the
+**proxy's filing date** and takes the first 5.07 filed after it — deliberately,
+because pairing on the fiscal-year label would attach every vote to the wrong
+year. That logic is correct, and it resolved all six MSFT years:
+
+| fiscal year | proxy filed | paired 5.07 | section on disk |
+|---|---|---|---|
+| FY2020 | 2020-10-19 | 2020-12-04 | yes |
+| FY2021 | 2021-10-14 | 2021-11-30 | yes |
+| FY2022 | 2022-10-27 | 2022-12-16 | yes |
+| FY2023 | 2023-10-19 | 2023-12-08 | yes |
+| FY2024 | 2024-10-24 | 2024-12-11 | yes |
+| **FY2025** | 2025-10-21 | **2025-12-08** | **no** |
+
+The last one is `0001193125-25-311196`: filed 2025-12-08, labelled **FY2026**,
+`in_window: false`. `fetch` builds its work list from `in_window` filings only
+(`fetch.py:271`), so it was never downloaded and the section never existed.
+
+**Why this is a pipeline gap and not a property of where the window was cut.**
+MORN's structurally identical filing — `0001289419-26-000028`, also FY2026, also
+`in_window: false`, also items 5.02 + 5.07 — **is** in MORN's cache, and MORN
+shipped all five `votes` records including FY2025. It got there because a human
+ran `fetch --accession` by hand during the pilot. The override is documented at
+`fetch.py:254–262` and its reason is in `DATA.md`, but **nothing in `pipeline
+<TICKER>` performs it.**
+
+So the final fiscal year of every company run start-to-finish by the
+orchestrator silently loses its say-on-pay and director-election vote, and the
+only reason MORN looks complete is that the pilot was driven by hand. This is
+exactly what 6.5 was scoped to expose — "the paths only a real run exercises" —
+except the path in question is one MORN reached *manually*, which is worse than
+untested, because it left a passing example behind.
+
+**Closed for this run, not fixed in the pipeline.** MSFT's 8-K was fetched with
+the documented override and `extract_sections` re-run; counts reconciled
+(CLAUDE.md rule 5): fetch 132 → 133 documents, sections 147 → 148 rows and 145 →
+146 ok with the 2 known image-only EX-99-2 failures unchanged, tasks 41 → 42,
+`no source` 4 → 3. Nothing was committed because `data/raw/` and
+`data/sections/` are gitignored by design.
+
+**The decision this needs, and why it was not taken unilaterally.** Widening the
+window is the wrong shape — `fetch.py:259–262` already argues this, and it is
+right: a sixth year would sweep in 10-Qs, Form 4s and earnings 8-Ks and quietly
+change what every coverage claim means. The candidate fix is a **narrow
+look-ahead**: after building the work list, ask `gather_votes`'s own pairing rule
+for each in-window year and add just the accessions it names. That puts one
+function in charge of the question in both places instead of duplicating the
+rule, but it makes `fetch` depend on an `extract_facts` helper, which is a
+layering change worth deciding on rather than slipping in during a spend.
+
+### The three remaining gaps are real, and fetching cannot fix them
+
+FY2020, FY2021 and FY2022 `letter` have no source because **MSFT filed no ARS
+before FY2023** — there is no shareholder-letter document in EDGAR to extract.
+Confirmed against the inventory, not inferred from the failure. This is a
+coverage limitation of the company's filing habits and belongs in the
+deliverables as a stated gap, which is the outcome CLAUDE.md's traceability rule
+requires: *"If something can't be sourced, it doesn't go in."*
+
+Worth noting for 6.6: it also means the letter-signature fallback built in 6.4
+is exercised by only three years, all of them ARS-form.
+
+## The gate's approving path, exercised for the first time
+
+`pipeline run MSFT --only extract_facts --yes` — `--only` scopes approval to the
+one stage, so `generate_outputs` was never pre-approved. The probe reported 42
+outstanding, the estimate printed, and `--yes: approved without asking` recorded
+the decision in the log. Item 27's approving path had never run before this.
+
+**Estimate at approval: $7.12 to $23.92 notional across 42 calls** — the 42nd
+being the FY2025 `votes` task that finding 4 restored.
+
+## What the run did
+
+42 tasks, **0 failed**, 657.5s. Every record `stop_reason: end_turn` — no
+truncation, which is the failure that matters, because a structured response cut
+off at `max_tokens` is a failed call rather than a shorter one. All 42 stamped
+`backend: claude_code`, `billing: seat`, `model: claude-opus-5`.
+
+**Billing is the seat; $0 was charged.** Notional, at API rates:
+
+| | tokens | notional |
+|---|---|---|
+| cache write (1h, 2.0x) | 906,344 | $9.06 |
+| cache read (0.1x) | 805,680 | $0.40 |
+| plain input | 84 | $0.00 |
+| output (687 thinking) | 109,460 | $2.74 |
+| **actual** | | **$12.20** |
+
+Against the $15 budget, and inside the printed $7.12–$23.92 band.
+
+`credentials_withheld` is empty on all 42 records, which is the **intended** end
+state and not a regression: there is no API credential left in the environment
+to withhold. That is the colleague case pinned in
+`tests/unit/test_seat_billing.py`.
+
+## Finding 5: the estimate's token count is low by ~25%, and this measures it
+
+The run landed inside the band, but the **low end is the headline someone
+approves at**, and its input side was $7.12 estimated against $9.47 actual.
+`e28f57b` this morning fixed the *multiplier* (1.0x → 2.0x). The token **count**
+is a second, independent error in the same place. 42 calls of ground truth
+identify it exactly:
+
+```
+cache_creation = 0.36108 * source_chars + 6,959       per call
+                 (2.77 chars/token)
+
+predicted 906,344   vs   906,344 actual
+```
+
+**It is not the divisor.** The fitted 2.77 chars/token is slightly *less*
+generous than the estimator's own ratio, so that half was already conservative
+in the right direction. The entire error is the intercept: **~6,959 tokens per
+call of prompt overhead** — system prompt, JSON schema, the task's `ask` text —
+that the estimate never counts, because it prices `source_chars` and nothing
+else. Across 42 calls, ~292,000 tokens, $2.92 at the 2x write rate.
+
+**A second, smaller cause, and it is a concurrency effect.** The first two calls
+carry residuals of +24,331 and +22,249, far above the 6,959 intercept. At
+`concurrency = 2` both opened before either had written the scaffolding cache,
+so the 19,631-token scaffolding was cache-**written twice**. The estimate prints
+"first call writes the scaffolding" and charges it once; the honest rule is
+`min(concurrency, calls)` cold writes.
+
+**Deliberately not fixed in the same commit as the spend it mispriced.** Fixing
+an estimator immediately after using it to approve a run, using that run as the
+target, destroys the independence between the arithmetic and the thing it is
+checked against — and that independence is the only reason this morning's
+$7.12-against-$7.13 agreement carried any information. The constants above are
+recorded so the fix can be written against them and then verified against this
+run as held-out data.
+
+## Paths a real run exercised for the first time
+
+- **The cost gate's approving path** (item 27) — `--only extract_facts --yes`,
+  which scopes approval to one stage so `generate_outputs` was never
+  pre-approved.
+- **The 6.4 letter-signature fallback**, on FY2023/24/25 — the only ARS years,
+  so three of six.
+- **FY2025 `votes`**, which exists only because finding 4 was closed first: 21
+  vote results that `pipeline MSFT` would otherwise have dropped silently.

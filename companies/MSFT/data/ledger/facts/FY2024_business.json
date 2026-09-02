@@ -1,0 +1,154 @@
+{
+  "fiscal_year": 2024,
+  "task": "business",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:38:23Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 28012,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2577,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 28012,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2577,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 28012,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 28012
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "10-K_item1_business",
+      "accession": "0000950170-24-087843",
+      "form": "10-K",
+      "filing_date": "2024-07-30"
+    }
+  ],
+  "source_chars": 69515,
+  "source_sha256": "cadefc116d27347cb8055802113435965250c99f3095a2278d0e2979021a02da",
+  "facts": {
+    "strategic_priorities": [
+      {
+        "text": "Research and development efforts focus on three interconnected ambitions: reinvent productivity and business processes; build the intelligent cloud and intelligent edge platform; create more personal computing.",
+        "quote": "To achieve our vision, our research and development efforts focus on three interconnected ambitions:\n\u2022\nReinvent productivity and business processes.\n\u2022\nBuild the intelligent cloud and intelligent edge platform.\n\u2022\nCreate more personal computing."
+      },
+      {
+        "text": "Growth depends on securely delivering continuous innovation and advancing leading productivity and collaboration tools and services, including Microsoft 365, LinkedIn, and Dynamics 365.",
+        "quote": "Our growth depends on securely delivering continuous innovation and advancing our leading productivity and collaboration tools and services, including Microsoft 365, LinkedIn, and Dynamics 365."
+      },
+      {
+        "text": "Continue to invest in high performance and sustainable computing to meet growing demand for fast access to Microsoft services provided by its network of cloud computing and AI infrastructure and datacenters.",
+        "quote": "We continue to invest in high performance and sustainable computing to meet the growing demand for fast access to Microsoft services provided by our network of cloud computing and AI infrastructure and datacenters."
+      },
+      {
+        "text": "Increased investments in the development and deployment of specialized supercomputing systems to accelerate OpenAI's research, under a long-term partnership with OpenAI.",
+        "quote": "We have a long-term partnership with OpenAI, a leading AI research and deployment company. We deploy OpenAI\u2019s models across our consumer and enterprise products. As OpenAI\u2019s exclusive cloud provider, Azure powers all of OpenAI's workloads. We have also increased our investments in the development and deployment of specialized supercomputing systems to accelerate OpenAI\u2019s research."
+      },
+      {
+        "text": "Focused on helping customers use the breadth and depth of the Microsoft Cloud to get the most value out of their digital spend while leading the AI platform wave across solution areas.",
+        "quote": "We are focused on helping customers use the breadth and depth of the Microsoft Cloud to get the most value out of their digital spend while leading the AI platform wave across our solution areas."
+      },
+      {
+        "text": "Investing significant resources in transforming the workplace to deliver new modern, modular business applications, drive deeper insights, and improve how people communicate, collaborate, learn, work, and interact.",
+        "quote": "Transforming the workplace to deliver new modern, modular business applications, drive deeper insights, and improve how people communicate, collaborate, learn, work, and interact with one another."
+      },
+      {
+        "text": "Investing in building and running cloud-based services in ways that utilize ubiquitous computing to unleash new experiences and opportunities for businesses and individuals.",
+        "quote": "Building and running cloud-based services in ways that utilize ubiquitous computing to unleash new experiences and opportunities for businesses and individuals."
+      },
+      {
+        "text": "Investing in applying AI and ambient intelligence to drive insights, revolutionize many types of work and business processes, and provide substantive productivity gains.",
+        "quote": "Applying AI and ambient intelligence to drive insights, revolutionize many types of work and business processes, and provide substantive productivity gains using natural methods of communication."
+      },
+      {
+        "text": "Investing in tackling security from all angles with integrated, end-to-end solutions spanning security, compliance, identity, and management, across all clouds and platforms.",
+        "quote": "Tackling security from all angles with our integrated, end-to-end solutions spanning security, compliance, identity, and management, across all clouds and platforms."
+      },
+      {
+        "text": "Investing in inventing new gaming experiences that bring people together around their shared love for games on any devices and pushing the boundaries of innovation with console and PC gaming.",
+        "quote": "Inventing new gaming experiences that bring people together around their shared love for games on any devices and pushing the boundaries of innovation with console and PC gaming."
+      },
+      {
+        "text": "Using Windows to fuel the cloud business, grow share of the PC market, and drive increased engagement with services like Microsoft Edge, Bing, Microsoft Teams, Microsoft 365 Consumer, Xbox Game Pass.",
+        "quote": "Using Windows to fuel our cloud business, grow our share of the PC market, and drive increased engagement with our services like Microsoft Edge, Bing, Microsoft Teams, Microsoft 365 Consumer, Xbox Game Pass, and more."
+      },
+      {
+        "text": "Future growth depends on the ability to transcend current product category definitions, business models, and sales motions.",
+        "quote": "Our future growth depends on our ability to transcend current product category definitions, business models, and sales motions."
+      },
+      {
+        "text": "Committed to being a carbon negative, water positive, and zero waste company by 2030.",
+        "quote": "In 2020, we committed to being a carbon negative, water positive, and zero waste company by 2030."
+      },
+      {
+        "text": "Continuing to identify and evaluate opportunities to expand datacenter locations and increase server capacity to meet evolving customer needs, particularly given the growing demand for AI services.",
+        "quote": "We continue to identify and evaluate opportunities to expand our datacenter locations and increase our server capacity to meet the evolving needs of our customers, particularly given the growing demand for AI services."
+      },
+      {
+        "text": "Maintaining a long-term commitment to research and development across a wide spectrum of technologies, tools, and platforms spanning digital work and life experiences, cloud computing, AI, devices, and operating systems.",
+        "quote": "Based on our assessment of key technology trends, we maintain our long-term commitment to research and development across a wide spectrum of technologies, tools, and platforms spanning digital work and life experiences, cloud computing, AI, devices, and operating systems."
+      },
+      {
+        "text": "Established a regulatory governance framework with an initial focus on four domains: Responsible AI, Privacy, Digital Safety, and Cybersecurity.",
+        "quote": "To comply with the accelerating global regulatory obligations, we established a regulatory governance framework and to create a repeatable system-focused approach to regulatory governance with an initial focus on four domains: Responsible AI, Privacy, Digital Safety, and Cybersecurity."
+      },
+      {
+        "text": "Focused on growing the gaming platform and expanding to new ecosystems to engage as many gamers as possible.",
+        "quote": "We are focused on growing the platform and expanding to new ecosystems to engage as many gamers as possible."
+      },
+      {
+        "text": "Continuing to make progress toward the overall commitment to double the number of Black and African American and Hispanic and Latinx leaders in the U.S. by 2025.",
+        "quote": "We also continue to make progress toward our overall commitment to double the number of Black and African American and Hispanic and Latinx leaders in the U.S. by 2025."
+      }
+    ],
+    "segments": [
+      {
+        "name": "Productivity and Business Processes",
+        "note": null,
+        "quote": "We operate our business and report our financial performance using three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing."
+      },
+      {
+        "name": "Intelligent Cloud",
+        "note": null,
+        "quote": "Our Intelligent Cloud segment consists of our public, private, and hybrid server products and cloud services that can power modern business and developers."
+      },
+      {
+        "name": "More Personal Computing",
+        "note": null,
+        "quote": "Our More Personal Computing segment consists of products and services that put customers at the center of the experience with our technology."
+      }
+    ],
+    "headcount": {
+      "value": 228000,
+      "as_stated": "approximately 228,000 people on a full-time basis, 126,000 in the U.S. and 102,000 internationally",
+      "quote": "As of June 30, 2024, we employed approximately 228,000 people on a full-time basis, 126,000 in the U.S. and 102,000 internationally."
+    }
+  }
+}

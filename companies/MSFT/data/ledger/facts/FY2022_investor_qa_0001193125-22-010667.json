@@ -1,0 +1,144 @@
+{
+  "fiscal_year": 2022,
+  "task": "investor_qa",
+  "unit": "0001193125-22-010667",
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:36:15Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 13564,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2147,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 13564,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2147,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 13564,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 13564
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-22-010667",
+      "form": "8-K",
+      "filing_date": "2022-01-18",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_EX-99-1_whole",
+      "accession": "0001193125-22-010667",
+      "form": "8-K",
+      "filing_date": "2022-01-18",
+      "items": [
+        "7.01",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 16174,
+  "source_sha256": "070e3702c090e7bac9f2435d49fd675dfa96d51ffd626c5d240e38ede168dc0a",
+  "facts": {
+    "topics": [
+      {
+        "topic": "Rationale for acquiring Activision Blizzard and its role in Microsoft's gaming strategy",
+        "stated_position": "The acquisition \"will accelerate the growth in Microsoft\u00b4s gaming business across mobile, PC, console, and cloud and will provide building blocks for the metaverse.\"",
+        "kind": "acquisition_or_divestiture",
+        "quote": "This acquisition will accelerate the growth in Microsoft\u00b4s gaming business across mobile, PC, console, and cloud and will provide building blocks for the metaverse."
+      },
+      {
+        "topic": "Competitive position in gaming after the transaction",
+        "stated_position": "\"When the transaction closes, Microsoft will become the world's third-largest gaming company by revenue, behind Tencent and Sony.\"",
+        "kind": "competition_or_market",
+        "quote": "When the transaction closes, Microsoft will become the world\u2019s third-largest gaming company by revenue, behind Tencent and Sony."
+      },
+      {
+        "topic": "Management and reporting structure of Activision Blizzard post-close",
+        "stated_position": "\"Bobby Kotick will continue to serve as CEO of Activision Blizzard, and he and his team will maintain their focus on driving efforts to further strengthen the company's culture and accelerate business growth. Once the deal closes, the Activision Blizzard business will report to Phil Spencer, CEO, Microsoft Gaming.\"",
+        "kind": "governance_or_management",
+        "quote": "Bobby Kotick will continue to serve as CEO of Activision Blizzard, and he and his team will maintain their focus on driving efforts to further strengthen the company\u2019s culture and accelerate business growth. Once the deal closes, the Activision Blizzard business will report to Phil Spencer, CEO, Microsoft Gaming."
+      },
+      {
+        "topic": "Investment priorities stated by the CEO",
+        "stated_position": "Satya Nadella: \"We're investing deeply in world-class content, community, and the cloud to usher in a new era of gaming that puts players and creators first and makes gaming safe, inclusive, and accessible to all.\"",
+        "kind": "strategy",
+        "quote": "\u201cWe\u2019re investing deeply in world-class content, community, and the cloud to usher in a new era of gaming that puts players and creators first and makes gaming safe, inclusive, and accessible to all.\u201d"
+      },
+      {
+        "topic": "Mobile gaming as a strategic gap and opportunity",
+        "stated_position": "\"Mobile is the largest segment in gaming, with nearly 95% of all players globally enjoying games on mobile\" and \"Activision Blizzard\u00b4s mobile business represents a significant presence and opportunity for Microsoft in this fast-growing segment.\"",
+        "kind": "segment_or_product",
+        "quote": "And with games like Candy Crush, Activision Blizzard\u00b4s mobile business represents a significant presence and opportunity for Microsoft in this fast-growing segment."
+      },
+      {
+        "topic": "Effect on Game Pass subscription strategy",
+        "stated_position": "The acquisition \"bolsters Microsoft's Game Pass portfolio with plans to launch Activision Blizzard games into Game Pass\" and \"will make Game Pass one of the most compelling and diverse line-ups of gaming content in the industry.\"",
+        "kind": "segment_or_product",
+        "quote": "The acquisition also bolsters Microsoft\u2019s Game Pass portfolio with plans to launch Activision Blizzard games into Game Pass, which has reached a new milestone of over 25 million subscribers."
+      },
+      {
+        "topic": "Consideration, closing conditions and expected timing",
+        "stated_position": "\"Microsoft will acquire Activision Blizzard for $95.00 per share, in an all-cash transaction valued at $68.7 billion, inclusive of Activision Blizzard's net cash\"; the deal \"is subject to customary closing conditions and completion of regulatory review and Activision Blizzard\u00b4s shareholder approval\" and \"is expected to close in Microsoft's fiscal year ending June 2023 and will be accretive to non-GAAP earnings per share upon close.\"",
+        "kind": "capital_allocation",
+        "quote": "The transaction is subject to customary closing conditions and completion of regulatory review and Activision Blizzard\u00b4s shareholder approval. The deal is expected to close in Microsoft\u2019s fiscal year ending June 2023 and will be accretive to non-GAAP earnings per share upon close."
+      },
+      {
+        "topic": "Scale of first-party development capability after close",
+        "stated_position": "\"Upon close, Microsoft will have 30 internal game development studios, along with additional publishing and esports production capabilities.\"",
+        "kind": "segment_or_product",
+        "quote": "Upon close, Microsoft will have 30 internal game development studios, along with additional publishing and esports production capabilities."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "Gaming is the most dynamic and exciting category in entertainment across all platforms today and will play a key role in the development of metaverse platforms",
+        "why_notable": "Nadella frames gaming as a metaverse platform play \u2014 an unusually strong strategic characterisation of a segment historically treated as peripheral to Microsoft's enterprise identity."
+      },
+      {
+        "quote": "gaming is now the largest and fastest-growing form of entertainment",
+        "why_notable": "A market-size claim that recurs in the release (repeated in the 'Fast Facts' as '$200+ billion') and serves as the justifying premise for the largest acquisition in Microsoft's history."
+      },
+      {
+        "quote": "he and his team will maintain their focus on driving efforts to further strengthen the company\u2019s culture and accelerate business growth",
+        "why_notable": "An oblique reference to Activision Blizzard's workplace-culture controversies \u2014 'further strengthen the company's culture' is the only acknowledgment, and it is phrased as continuity rather than remediation, while retaining the incumbent CEO."
+      },
+      {
+        "quote": "shared commitment to gaming and inclusion will help ensure our continued success in an increasingly competitive industry",
+        "why_notable": "Kotick's framing pairs 'inclusion' with competitive necessity, and concedes the industry is 'increasingly competitive' \u2014 a hedge notable alongside Microsoft's claim of moving to third-largest by revenue."
+      },
+      {
+        "quote": "Together we will build a future where people can play the games they want, anywhere they want.",
+        "why_notable": "Device-agnostic, subscription/cloud-first positioning from Phil Spencer \u2014 a shift away from console-exclusivity language toward distribution across platforms."
+      }
+    ]
+  }
+}

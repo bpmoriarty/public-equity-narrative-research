@@ -1,0 +1,197 @@
+{
+  "fiscal_year": 2020,
+  "task": "votes",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:32:44Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 9624,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2431,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9624,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2431,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 9624,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9624
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-20-310549",
+      "form": "8-K",
+      "filing_date": "2020-12-04",
+      "proxy_accession": "0001193125-20-272025",
+      "proxy_filed": "2020-10-19"
+    }
+  ],
+  "source_chars": 5331,
+  "source_sha256": "429f882882b73b45add373aa419354b72ac86cadff5c3c1fd0891219354f4cd2",
+  "facts": {
+    "results": [
+      {
+        "matter": "Election of director Reid G. Hoffman",
+        "votes_for": 5215758348,
+        "votes_against": 25314092,
+        "abstentions": 8400114,
+        "broker_non_votes": 1317363622,
+        "outcome": "Re-elected (99.52% votes for)",
+        "quote": "Reid G. Hoffman\nRe-elected\n99.52\n%\n5,215,758,348\n25,314,092\n8,400,114\n1,317,363,622"
+      },
+      {
+        "matter": "Election of director Hugh F. Johnston",
+        "votes_for": 5221269096,
+        "votes_against": 19816684,
+        "abstentions": 8386774,
+        "broker_non_votes": 1317363622,
+        "outcome": "Re-elected (99.62% votes for)",
+        "quote": "Hugh F. Johnston\nRe-elected\n99.62\n%\n5,221,269,096\n19,816,684\n8,386,774\n1,317,363,622"
+      },
+      {
+        "matter": "Election of director Teri L. List-Stoll",
+        "votes_for": 5205028542,
+        "votes_against": 34076281,
+        "abstentions": 10367731,
+        "broker_non_votes": 1317363622,
+        "outcome": "Re-elected (99.35% votes for)",
+        "quote": "Teri L. List-Stoll\nRe-elected\n99.35\n%\n5,205,028,542\n34,076,281\n10,367,731\n1,317,363,622"
+      },
+      {
+        "matter": "Election of director Satya Nadella",
+        "votes_for": 5237186585,
+        "votes_against": 5546598,
+        "abstentions": 6739371,
+        "broker_non_votes": 1317363622,
+        "outcome": "Re-elected (99.89% votes for)",
+        "quote": "Satya Nadella\nRe-elected\n99.89\n%\n5,237,186,585\n5,546,598\n6,739,371\n1,317,363,622"
+      },
+      {
+        "matter": "Election of director Sandra E. Peterson",
+        "votes_for": 5183197017,
+        "votes_against": 58262215,
+        "abstentions": 8013322,
+        "broker_non_votes": 1317363622,
+        "outcome": "Re-elected (98.89% votes for)",
+        "quote": "Sandra E. Peterson\nRe-elected\n98.89\n%\n5,183,197,017\n58,262,215\n8,013,322\n1,317,363,622"
+      },
+      {
+        "matter": "Election of director Penny S. Pritzker",
+        "votes_for": 5228709230,
+        "votes_against": 10536931,
+        "abstentions": 10226393,
+        "broker_non_votes": 1317363622,
+        "outcome": "Re-elected (99.80% votes for)",
+        "quote": "Penny S. Pritzker\nRe-elected\n99.80\n%\n5,228,709,230\n10,536,931\n10,226,393\n1,317,363,622"
+      },
+      {
+        "matter": "Election of director Charles W. Scharf",
+        "votes_for": 5194031476,
+        "votes_against": 46902053,
+        "abstentions": 8539025,
+        "broker_non_votes": 1317363622,
+        "outcome": "Re-elected (99.11% votes for)",
+        "quote": "Charles W. Scharf\nRe-elected\n99.11\n%\n5,194,031,476\n46,902,053\n8,539,025\n1,317,363,622"
+      },
+      {
+        "matter": "Election of director Arne M. Sorenson",
+        "votes_for": 5234800897,
+        "votes_against": 6336694,
+        "abstentions": 8334963,
+        "broker_non_votes": 1317363622,
+        "outcome": "Re-elected (99.88% votes for)",
+        "quote": "Arne M. Sorenson\nRe-elected\n99.88\n%\n5,234,800,897\n6,336,694\n8,334,963\n1,317,363,622"
+      },
+      {
+        "matter": "Election of director John W. Stanton",
+        "votes_for": 5233415375,
+        "votes_against": 7605399,
+        "abstentions": 8451780,
+        "broker_non_votes": 1317363622,
+        "outcome": "Re-elected (99.85% votes for)",
+        "quote": "John W. Stanton\nRe-elected\n99.85\n%\n5,233,415,375\n7,605,399\n8,451,780\n1,317,363,622"
+      },
+      {
+        "matter": "Election of director John W. Thompson",
+        "votes_for": 5194357510,
+        "votes_against": 46935033,
+        "abstentions": 8180011,
+        "broker_non_votes": 1317363622,
+        "outcome": "Re-elected (99.10% votes for)",
+        "quote": "John W. Thompson\nRe-elected\n99.10\n%\n5,194,357,510\n46,935,033\n8,180,011\n1,317,363,622"
+      },
+      {
+        "matter": "Election of director Emma N. Walmsley",
+        "votes_for": 5227399222,
+        "votes_against": 13970088,
+        "abstentions": 8103244,
+        "broker_non_votes": 1317363622,
+        "outcome": "Re-elected (99.73% votes for)",
+        "quote": "Emma N. Walmsley\nRe-elected\n99.73\n%\n5,227,399,222\n13,970,088\n8,103,244\n1,317,363,622"
+      },
+      {
+        "matter": "Election of director Padmasree Warrior",
+        "votes_for": 5227546888,
+        "votes_against": 13598261,
+        "abstentions": 8327405,
+        "broker_non_votes": 1317363622,
+        "outcome": "Re-elected (99.74% votes for)",
+        "quote": "Padmasree Warrior\nRe-elected\n99.74\n%\n5,227,546,888\n13,598,261\n8,327,405\n1,317,363,622"
+      },
+      {
+        "matter": "Advisory Vote to Approve Named Executive Officer Compensation",
+        "votes_for": 4956043006,
+        "votes_against": 276520958,
+        "abstentions": 16908590,
+        "broker_non_votes": 1317363622,
+        "outcome": "Approved (94.72% votes for), on an advisory basis",
+        "quote": "Advisory Vote to Approve Named Executive Officer Compensation\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker\nNon-Votes\nApproved\n94.72\n%\n4,956,043,006\n276,520,958\n16,908,590\n1,317,363,622"
+      },
+      {
+        "matter": "Ratification of the appointment of Deloitte & Touche LLP as the Company's independent registered public accounting firm for fiscal year 2021",
+        "votes_for": 6296749497,
+        "votes_against": 258680123,
+        "abstentions": 11406556,
+        "broker_non_votes": null,
+        "outcome": "Approved (96.05% votes for)",
+        "quote": "Ratification of Appointment of Independent Auditor\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker\nNon-Votes\nApproved\n96.05\n%\n6,296,749,497\n258,680,123\n11,406,556\nN/A"
+      },
+      {
+        "matter": "Shareholder Proposal Concerning Report on Employee Representation on Board of Directors",
+        "votes_for": 268964933,
+        "votes_against": 4957295213,
+        "abstentions": 23212408,
+        "broker_non_votes": 1317363622,
+        "outcome": "Rejected (5.15% votes for)",
+        "quote": "Shareholder Proposal Concerning Report on Employee Representation on Board of Directors\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker\nNon-Votes\nRejected\n5.15\n%\n268,964,933\n4,957,295,213\n23,212,408\n1,317,363,622"
+      }
+    ]
+  }
+}

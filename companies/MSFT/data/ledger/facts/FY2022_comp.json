@@ -1,0 +1,254 @@
+{
+  "fiscal_year": 2022,
+  "task": "comp",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:35:16Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 42485,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 5382,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 42485,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 5382,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 42485,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 42485
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "DEF14A_cdna",
+      "accession": "0001193125-22-270484",
+      "form": "DEF 14A",
+      "filing_date": "2022-10-27"
+    },
+    {
+      "key": "DEF14A_incentive_tables",
+      "accession": "0001193125-22-270484",
+      "form": "DEF 14A",
+      "filing_date": "2022-10-27"
+    }
+  ],
+  "source_chars": 94587,
+  "source_sha256": "b963bb53b3df58e769b76fcccbe8af4e9fafc85f42630b4d8ce00fea0d8109b7",
+  "facts": {
+    "incentive_metrics": [
+      {
+        "metric": "Incentive Plan Revenue",
+        "plan": "Annual cash incentive (Executive Incentive Plan) \u2014 financial portion",
+        "weight": "35% (financial portion is 70% for CEO, 50% for other NEOs)",
+        "target_or_range": "FY22 Threshold $194.78B / Target $207.21B / Maximum $218.61B; FY22 Actual $206.67B",
+        "quote": "FY22 Incentive Plan Revenue\n$174.59\n$194.78\n$207.21\n$218.61\n$206.67\n18.37%"
+      },
+      {
+        "metric": "Incentive Plan Operating Income",
+        "plan": "Annual cash incentive (Executive Incentive Plan) \u2014 financial portion",
+        "weight": "35%",
+        "target_or_range": "FY22 Threshold $75.08B / Target $82.02B / Maximum $92.67B; FY22 Actual $86.73B",
+        "quote": "FY22 Incentive Plan Operating Income\n$71.53\n$75.08\n$82.02\n$92.67\n$86.73\n21.25%"
+      },
+      {
+        "metric": "Product & Strategy (operational assessment)",
+        "plan": "Annual cash incentive \u2014 operational portion (30% CEO / 50% other NEOs)",
+        "weight": "10% (CEO)",
+        "target_or_range": "Results out of a possible 200% in each category; Mr. Nadella scored 160%",
+        "quote": "Product & Strategy (10%)\n160%"
+      },
+      {
+        "metric": "Customers & Stakeholders (operational assessment)",
+        "plan": "Annual cash incentive \u2014 operational portion",
+        "weight": "10% (CEO)",
+        "target_or_range": "Mr. Nadella scored 170% (out of possible 200%)",
+        "quote": "Customers & Stakeholders (10%)\n170%"
+      },
+      {
+        "metric": "Culture, Diversity & Sustainability (operational assessment)",
+        "plan": "Annual cash incentive \u2014 operational portion",
+        "weight": "10% (CEO)",
+        "target_or_range": "Mr. Nadella scored 165% (out of possible 200%)",
+        "quote": "Culture, Diversity & Sustainability (10%)\n165%"
+      },
+      {
+        "metric": "Microsoft Cloud Revenue",
+        "plan": "Fiscal year 2022 performance stock awards (PSAs)",
+        "weight": "30%",
+        "target_or_range": "FY22 Target $91.49B / Actual $93.48B (payout 126.39%)",
+        "quote": "Microsoft Cloud Revenue*\nRevenue from Azure and other cloud services, Office 365 Commercial, the commercial portion of LinkedIn, Dynamics 365, and other commercial cloud properties\n30%"
+      },
+      {
+        "metric": "Microsoft Cloud Subscribers Growth",
+        "plan": "Fiscal year 2022 performance stock awards (PSAs)",
+        "weight": "20%",
+        "target_or_range": "FY22 Target 26.44% / Actual 20.95% (payout 68.91%)",
+        "quote": "Microsoft Cloud\nSubscribers Growth\nPaid seats for current or new per-user SaaS cloud services primarily in commercial customer segment\n20%"
+      },
+      {
+        "metric": "Teams Monthly Active Usage Growth",
+        "plan": "Fiscal year 2022 performance stock awards (PSAs)",
+        "weight": "20%",
+        "target_or_range": "FY22 Target 24.52% / Actual 3.82% (payout 50.92%)",
+        "quote": "Teams Monthly Active Usage Growth\nUnique monthly active users of Teams in Enterprise, Corporate, Small and Medium Business, Education, and Consumer\n20%"
+      },
+      {
+        "metric": "Xbox Game Pass Subscribers Growth",
+        "plan": "Fiscal year 2022 performance stock awards (PSAs)",
+        "weight": "10%",
+        "target_or_range": "FY22 Target 72.88% / Actual 28.07% (payout 56.80%)",
+        "quote": "Xbox Game Pass Subscribers Growth\nCurrent number of paid Game Pass Subscriptions (Console, PC, Ultimate)\n10%"
+      },
+      {
+        "metric": "Windows OEM Revenue Growth",
+        "plan": "Fiscal year 2022 performance stock awards (PSAs)",
+        "weight": "10%",
+        "target_or_range": "FY22 Target 4.20% / Actual 11.10% (payout 191.15%)",
+        "quote": "Windows OEM Revenue* Growth\nRevenue from sales of Windows Pro and non-Pro licenses sold through the OEM channel\n10%"
+      },
+      {
+        "metric": "LinkedIn Sessions",
+        "plan": "Fiscal year 2022 performance stock awards (PSAs)",
+        "weight": "10%",
+        "target_or_range": "FY22 Target 64.98B sessions / Actual 64.13B (payout 90.66%)",
+        "quote": "LinkedIn Sessions\nMeasure of member visits as a leading indicator of the overall quality of the LinkedIn member experience and opportunity for members to realize their economic opportunity\n10%"
+      },
+      {
+        "metric": "Three-year relative TSR modifier vs. the S&P 500",
+        "plan": "Performance stock awards (modifier applied to core metric results)",
+        "weight": "Modifier of 0.75\u20131.5x applied to PSA core metric payout",
+        "target_or_range": "Above 1x only if TSR positive and above the 60th percentile, up to 50% upside at the 80th percentile or above; up to 25% downside at the 20th percentile or below",
+        "quote": "Relative TSR Modifier:\n\u2022 3-Year Relative TSR modifier (0.75\u2013 1.5x) as compared to the S&P 500\n\u2022 If Microsoft\u2019s TSR is positive and above the 60 th percentile, payout modifier is above 1x, with up to 50% upside at the 80 th percentile or above\n\u2022 If Microsoft\u2019s TSR is below the 40 th percentile, payout modifier is below 1x, with up to 25% downside at 20 th percentile or below"
+      },
+      {
+        "metric": "Surface Revenue (FY20 and FY21 years of the FY2020 PSA; dropped for FY22)",
+        "plan": "Fiscal year 2020 performance stock awards (earlier performance years)",
+        "weight": "7% in FY20; 2.5% each half in FY21; N/A for FY22",
+        "target_or_range": "FY20 Target $6.40B / Actual $6.21B; FY21 H1 $2.87B / $3.51B, H2 $3.18B / $2.75B",
+        "quote": "Surface Revenue\n7%\n$6.40B / $6.21B\nH1 - 2.5%\n$2.87B / $3.51B\nN/A\nN/A\nH2 - 2.5%\n$3.18B / $2.75B"
+      },
+      {
+        "metric": "FY2020 PSA core metric performance (three-year average) and final payout",
+        "plan": "Fiscal year 2020 performance stock awards (completed performance period)",
+        "weight": "Average of FY20, FY21 and FY22 weighted performance",
+        "target_or_range": "Core metric performance 118.80%; relative TSR at 94th percentile produced maximum 150% multiplier, for payout of 178.20% of target shares",
+        "quote": "Our TSR relative to the S&P 500 was at the 94 th percentile of the S&P 500, well in excess of the 80th percentile performance that was a condition to receiving the maximum 150% multiplier. Based on this result, the total payment percentage for the fiscal 2020 PSAs was increased by 50%, resulting in the payout to our Named Executives of 178.20% of the target fiscal 2020 PSA shares."
+      },
+      {
+        "metric": "Total FY22 annual cash incentive payout as percentage of target",
+        "plan": "Annual cash incentive (Executive Incentive Plan)",
+        "weight": "Financial 70% CEO / 50% other NEOs; operational 30% CEO / 50% other NEOs",
+        "target_or_range": "Financial results 121.03% for all NEOs; operational results 165.00% (Nadella, Hood, Smith), 163.34% (Althoff), 130.00% (Young); totals 134.22% / 143.02% / 142.19% / 143.02% / 125.52%",
+        "quote": "Total FY22 cash incentive (% of target)\n134.22%\n143.02%\n142.19%\n143.02%\n125.52%"
+      },
+      {
+        "metric": "Cash incentive award cap",
+        "plan": "Executive Incentive Plan",
+        "weight": null,
+        "target_or_range": "Limited to 200% of a target cash incentive award",
+        "quote": "\u2022 Cash incentive awards under the Incentive Plan are limited to 200% of a target cash incentive award"
+      },
+      {
+        "metric": "Target cash incentive opportunity as percentage of base salary",
+        "plan": "Annual cash incentive (Executive Incentive Plan)",
+        "weight": null,
+        "target_or_range": "Nadella 300%; Hood 250%; Smith 250%; Young 200%; Althoff set at 250%",
+        "quote": "For fiscal year 2022, these opportunities were: Mr. Nadella \u2013 300%; Ms. Hood \u2013 250%; Mr. Smith \u2013 250%; and Mr. Young \u2013 200%. In connection with Mr. Althoff\u2019s appointment to Chief Commercial Officer the Compensation Committee set Mr. Althoff\u2019s target cash incentive opportunity at 250%."
+      },
+      {
+        "metric": "Equity mix between performance stock awards and time-vesting stock awards",
+        "plan": "Executive Incentive Plan equity incentives",
+        "weight": "CEO: 100% PSA / 0% SA; other NEOs: 50% PSA / 50% SA",
+        "target_or_range": "SAs vest 25% on August 31, 2023 and 12.5% each six months thereafter",
+        "quote": "Equity incentives under the Incentive Plan were allocated 100% to target PSAs for our CEO. Equity incentives under the Incentive Plan were allocated 50% to target PSAs and 50% to stock awards with four-year vesting (\u201cSAs\u201d) for our other Named Executives."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "After a thorough analysis of options, our independent Board members concluded that it would be best to deliver Mr. Nadella\u2019s compensation under our existing Executive Incentive Plan framework to ensure an ongoing strong alignment to the incentives of the senior leadership team, while delivering 100% of his equity compensation via performance stock awards (up from 70% in fiscal year 2021).",
+        "why_notable": "States the rationale for the shift to 100% PSA for the CEO, and explicitly frames it as replacing the incentive lost when the 2014 promotion award finished vesting."
+      },
+      {
+        "quote": "For fiscal year 2022, Mr. Nadella\u2019s target performance stock award was set at $50,000,000, which our independent Board members concluded is the appropriate level of equity compensation for a leader with his extraordinary capabilities and responsibilities and for a company of Microsoft\u2019s extraordinary scale and complexity.",
+        "why_notable": "Justifies a $50M target award by appeal to the CEO's 'extraordinary capabilities' and the company's 'extraordinary scale' rather than to a benchmarked figure \u2014 pay-level justification by superlative."
+      },
+      {
+        "quote": "Beginning with fiscal year 2022, we renamed the Culture & Organizational Leadership category of the operational assessment component of the annual cash incentive as the Culture, Diversity & Sustainability category to enhance clarity on how ESG results affect the pay of our named executives.",
+        "why_notable": "Explains a metric-category change as a renaming for clarity in response to investor requests, not a change in substance \u2014 a label change presented as ESG-linkage progress."
+      },
+      {
+        "quote": "We note that our Incentive Plan Revenue result was at 99.7% of target while achieving a 18.37% fiscal year 2022 growth rate, demonstrating our commitment to rigorous goal setting.",
+        "why_notable": "Pre-emptively reframes a below-target revenue result as evidence of goal rigor rather than of underperformance."
+      },
+      {
+        "quote": "The Committee establishes rigorous goals for each metric that require significant year-over-year improvement in order for target awards to be earned",
+        "why_notable": "Recurring rigor claim; worth tracking against the FY22 PSA results where Teams usage paid 50.92% and Game Pass 56.80% against targets."
+      },
+      {
+        "quote": "Mr. Nadella\u2019s criticality to Microsoft\u2019s ongoing success was a regular focus of feedback we received from shareholders, which is consistent with our independent Board members\u2019 high confidence in Mr. Nadella\u2019s exceptional leadership of Microsoft.",
+        "why_notable": "Attributes the impetus for a large CEO award to shareholder feedback, aligning investor voice with the board's own conclusion \u2014 key-man framing used to support pay quantum."
+      },
+      {
+        "quote": "For fiscal year 2022, the Compensation Committee reviewed the evolution of our business against our historical peer group, and as a result approved the use of two peer groups to better reflect the differentiated business, talent and, in some cases, pay models, across sectors:",
+        "why_notable": "Documents a benchmarking change \u2014 a single peer group split into primary technology and secondary large-cap general industry groups."
+      },
+      {
+        "quote": "Given Microsoft\u2019s significant scale and growth, Microsoft is larger than the typical company in both peer groups, which is a factor when we set executive pay.",
+        "why_notable": "Unusually direct admission that the peer groups understate the company's size and that this scale gap is used as an upward factor in pay setting."
+      },
+      {
+        "quote": "The current technology labor market is hyper-competitive with demand growing faster than the supply of specialized technical talent, resulting in significant increases in compensation at many of the companies with which we compete for this talent.",
+        "why_notable": "Market-condition language used to justify pay increases; the 'hyper-competitive' framing is a year-specific escalation worth tracking."
+      },
+      {
+        "quote": "Due to the dynamic nature of our business and the specificity in the performance metrics that are chosen under our PSA program, we believe that measuring performance annually over our three-year performance period and modifying awards based on our three-year relative TSR provides the most accurate assessment of Microsoft\u2019s long-term trajectory and performance achievements.",
+        "why_notable": "Defends the practice of resetting PSA targets annually within a three-year period \u2014 a design that softens long-horizon risk, justified as more accurate."
+      },
+      {
+        "quote": "Metrics were established as unit of measure or dollar value before FY22. For competitive reasons, results for those years are expressed in terms of year-over-year growth. Beginning in FY22 metrics were defined as a growth percentage.",
+        "why_notable": "Disclosure hedge: prior-year absolute targets are withheld 'for competitive reasons' and restated as growth rates, reducing year-over-year comparability."
+      },
+      {
+        "quote": "Our Compensation Committee may seek to recover payments of incentive compensation if the performance results leading to a payment are later subject to a downward adjustment or restatement of financial or nonfinancial performance.",
+        "why_notable": "'No fault' clawback extending to nonfinancial performance restatements and to significant legal or compliance violations \u2014 broader than the statutory minimum."
+      },
+      {
+        "quote": "We do not tie Named Executive compensation to specific market percentiles.",
+        "why_notable": "Explicit disclaimer of percentile targeting, which preserves discretion while the disclosure elsewhere leans on peer-group scale comparisons."
+      },
+      {
+        "quote": "In connection with his employment as our Executive Vice President, Business Development, Strategy, and Ventures on November 11, 2020, our Compensation Committee awarded Mr. Young an on-hire cash bonus with a second $1,500,000 installment payable within 30 days after the first anniversary of his employment start date.",
+        "why_notable": "The only non-formulaic cash payment to an NEO in FY22, with a repayment condition on resignation or termination for misconduct."
+      },
+      {
+        "quote": "During fiscal year 2022, the Compensation Committee and independent members of our Board awarded no other compensation to our Named Executives.",
+        "why_notable": "An explicit negative statement that no discretionary or off-plan awards were made \u2014 useful as a baseline against which any future special award would stand out."
+      }
+    ]
+  }
+}

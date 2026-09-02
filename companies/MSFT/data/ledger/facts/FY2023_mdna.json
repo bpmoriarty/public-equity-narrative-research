@@ -1,0 +1,147 @@
+{
+  "fiscal_year": 2023,
+  "task": "mdna",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:37:01Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 24986,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2489,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 24986,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2489,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 24986,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 24986
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "10-K_item7_mdna",
+      "accession": "0000950170-23-035122",
+      "form": "10-K",
+      "filing_date": "2023-07-27"
+    }
+  ],
+  "source_chars": 55637,
+  "source_sha256": "e325c7e84ee40d46a38f9adc12b39c1368707c306b713e6e3e340d896ea0d16e",
+  "facts": {
+    "events": [
+      {
+        "type": "restructuring",
+        "description": "Announced cost-structure alignment decisions resulting in a $1.2 billion Q2 charge including $800 million employee severance, hardware portfolio impairment charges, and lease consolidation costs; workforce reduced by approximately 10,000 jobs through Q3 FY2023 (less than 5% of total employee base).",
+        "date": "2023-01-18",
+        "quote": "On January 18, 2023, we announced decisions we made to align our cost structure with our revenue and customer demand, prioritize our investments in strategic areas, and consolidate office space. As a result, we recorded a $1.2 billion charge in the second quarter of fiscal year 2023 (\u201cQ2 charge\u201d), which included employee severance expenses of $800 million, impairment charges resulting from changes to our hardware portfolio, and costs related to lease consolidation activities."
+      },
+      {
+        "type": "other",
+        "description": "Change in accounting estimate effective FY2023: useful lives of server and network equipment increased from four years to six years, increasing operating income by $3.7 billion and net income by $3.0 billion ($0.40 per share).",
+        "date": "2022-07",
+        "quote": "In July 2022, we completed an assessment of the useful lives of our server and network equipment. Due to investments in software that increased efficiencies in how we operate our server and network equipment, as well as advances in technology, we determined we should increase the estimated useful lives of both server and network equipment from four years to six years."
+      },
+      {
+        "type": "acquisition",
+        "description": "Pending acquisition of Activision Blizzard for $95.00 per share, all cash, valued at $68.7 billion; merger agreement jointly extended through October 18, 2023 to resolve remaining regulatory concerns.",
+        "date": "2022-01-18",
+        "quote": "On January 18, 2022, we entered into a definitive agreement to acquire Activision Blizzard, Inc. (\u201cActivision Blizzard\u201d) for $95.00 per share in an all-cash transaction valued at $68.7 billion, inclusive of Activision Blizzard\u2019s net cash. The acquisition has been approved by Activision Blizzard\u2019s shareholders."
+      },
+      {
+        "type": "other",
+        "description": "General and administrative expenses increased in part due to a charge related to a non-public preliminary draft decision provided by the Irish Data Protection Commission.",
+        "date": null,
+        "quote": "General and administrative expenses increased $1.7 billion or 28% driven by employee severance expenses and a charge related to a non-public preliminary draft decision provided by the Irish Data Protection Commission."
+      },
+      {
+        "type": "other",
+        "description": "Share repurchases of 69 million shares for $18.4 billion in FY2023, with $22.3 billion remaining of the $60 billion share repurchase program.",
+        "date": null,
+        "quote": "During fiscal years 2023 and 2022, we repurchased 69 million shares and 95 million shares of our common stock for $18.4 billion and $28.0 billion, respectively, through our share repurchase programs. All repurchases were made using cash resources. As of June 30, 2023, $22.3 billion remained of our $60 billion share repurchase program."
+      },
+      {
+        "type": "other",
+        "description": "Board of Directors declared quarterly dividends of $0.68 per share in FY2023, totaling $20.2 billion, up from $0.62 per share and $18.6 billion in FY2022.",
+        "date": null,
+        "quote": "During fiscal year 2023 and 2022, our Board of Directors declared quarterly dividends of $0.68 per share and $0.62 per share, totaling $20.2 billion and $18.6 billion, respectively."
+      }
+    ],
+    "segment_changes": [
+      {
+        "name": "Productivity and Business Processes, Intelligent Cloud, and More Personal Computing",
+        "note": "Prior period amounts recast to conform to internal management and monitoring of the business.",
+        "quote": "We report our financial performance based on the following segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing. The segment amounts included in MD&A are presented on a basis consistent with our internal management reporting. We have recast certain prior period amounts to conform to the way we internally manage and monitor our business."
+      },
+      {
+        "name": "Devices",
+        "note": "Surface metric expanded into a broader Devices metric in Q1 FY2023 to incorporate additional revenue streams.",
+        "quote": "In the first quarter of fiscal year 2023, we made updates to the presentation and method of calculation for certain metrics, most notably expanding our Surface metric into a broader Devices metric to incorporate additional revenue streams, along with other minor changes to align with how we manage our businesses."
+      },
+      {
+        "name": "Industry Solutions",
+        "note": "Formerly named Microsoft Consulting Services.",
+        "quote": "Enterprise Services revenue increased $315 million or 4% driven by growth in Enterprise Support Services, offset in part by a decline in Industry Solutions (formerly Microsoft Consulting Services)."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "We are creating the platforms and tools, powered by artificial intelligence (\u201cAI\u201d), that deliver better, faster, and more effective solutions to support small and large business competitiveness, improve educational and health outcomes, grow public-sector efficiency, and empower human ingenuity.",
+        "why_notable": "The overview now centers the company's self-description on AI-powered platforms and tools, a framing shift in how management characterizes what Microsoft creates."
+      },
+      {
+        "quote": "The investments we are making in cloud and AI infrastructure and devices will continue to increase our operating costs and may decrease our operating margins.",
+        "why_notable": "An unusually direct admission that the AI/cloud investment cycle raises costs and may compress margins."
+      },
+      {
+        "quote": "Our datacenters depend on the availability of permitted and buildable land, predictable energy, networking supplies, and servers, including graphics processing units (\u201cGPUs\u201d) and other components.",
+        "why_notable": "New, concrete dependency language naming land, energy, and GPUs as constraints on datacenter expansion."
+      },
+      {
+        "quote": "We expect capital expenditures to increase in coming years to support growth in our cloud offerings and our investments in AI infrastructure.",
+        "why_notable": "A forward-looking commitment to rising capex explicitly tied to AI infrastructure."
+      },
+      {
+        "quote": "While we eliminated roles in some areas, we will continue to hire in key strategic areas. Second, we are allocating both our capital and talent to areas of secular growth and long-term competitiveness, while divesting in other areas.",
+        "why_notable": "Management pairs the layoff disclosure with 'divesting in other areas' \u2014 an explicit statement of selective retrenchment alongside continued hiring."
+      },
+      {
+        "quote": "Windows OEM revenue decreased 25% as elevated channel inventory levels continued to drive additional weakness beyond declining PC demand.",
+        "why_notable": "Direct attribution of the decline to channel inventory on top of underlying PC demand weakness \u2014 candid about two compounding negatives."
+      },
+      {
+        "quote": "Third, we are consolidating our leases to create higher density across our workspaces, which impacted our financial results through the remainder of fiscal year 2023, and we may make similar decisions in future periods as we continue to evaluate our real estate needs.",
+        "why_notable": "Hedged forward language signaling possible additional real-estate charges in future periods."
+      },
+      {
+        "quote": "Aggregate demand for our software, services, and devices is also correlated to global macroeconomic and geopolitical factors, which remain dynamic.",
+        "why_notable": "Hedging phrase 'which remain dynamic' used in place of a plainer statement about macro and geopolitical risk."
+      }
+    ]
+  }
+}

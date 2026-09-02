@@ -1,0 +1,221 @@
+{
+  "fiscal_year": 2025,
+  "task": "comp",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:40:38Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 39993,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 4831,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 39993,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 4831,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 39993,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 39993
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "DEF14A_cdna",
+      "accession": "0001193125-25-245150",
+      "form": "DEF 14A",
+      "filing_date": "2025-10-21"
+    },
+    {
+      "key": "DEF14A_incentive_tables",
+      "accession": "0001193125-25-245150",
+      "form": "DEF 14A",
+      "filing_date": "2025-10-21"
+    }
+  ],
+  "source_chars": 92021,
+  "source_sha256": "ea86f1fdac6563b55fd7a033c7c05943a2afc7f390d5ffc09d47517f4090efa3",
+  "facts": {
+    "incentive_metrics": [
+      {
+        "metric": "Incentive Plan Revenue (non-GAAP, constant dollar)",
+        "plan": "Annual cash incentive (Executive Incentive Plan) \u2013 financial portion",
+        "weight": "70% of annual cash incentive for CEO (50% for other NEOs), combined financial portion",
+        "target_or_range": "FY25 Threshold $273.20B / Target $290.64B / Maximum $306.63B; Actual $289.18B, 95.81% of target",
+        "quote": "FY25 Incentive Plan Revenue 2\n$250.98\n$273.20\n$290.64\n$306.63\n$289.18\n15.22%"
+      },
+      {
+        "metric": "Incentive Plan Operating Income (non-GAAP, constant dollar)",
+        "plan": "Annual cash incentive (Executive Incentive Plan) \u2013 financial portion",
+        "weight": "Part of the 70% CEO / 50% other NEO financial portion",
+        "target_or_range": "FY25 Threshold $112.31B / Target $122.75B / Maximum $138.70B; Actual $128.84B, 138.18% of target",
+        "quote": "We note that our Incentive Plan Revenue result was 95.81% of target and Incentive Plan Operating Income result was 138.18% of target, which equated to a 15.22% and 17.80% fiscal year 2025 growth rate, respectively, further demonstrating our commitment to rigorous goal setting."
+      },
+      {
+        "metric": "Operational assessment \u2013 Security category",
+        "plan": "Annual cash incentive \u2013 operational portion",
+        "weight": "10% for CEO (operational portion is 30% for CEO / 50% for other NEOs)",
+        "target_or_range": "Nadella result 140%; results out of a possible 200% in each category",
+        "quote": "Security (10%)\n140%\nMr. Nadella\u2019s thoughtful leadership has been instrumental in advancing Microsoft\u2019s core strategic focus on cybersecurity amid a rapidly evolving threat landscape, demonstrated through his personal commitment and clarity that security and quality are non-negotiable."
+      },
+      {
+        "metric": "Operational assessment \u2013 Product, Customers & Stakeholders category",
+        "plan": "Annual cash incentive \u2013 operational portion",
+        "weight": "10% for CEO",
+        "target_or_range": "Nadella result 160% (out of possible 200%)",
+        "quote": "Product, Customers & Stakeholders (10%)\n160%\nMr. Nadella continued to directly lead Microsoft\u2019s ongoing execution of our transformation to meet the needs of our growing customer and stakeholder base."
+      },
+      {
+        "metric": "Operational assessment \u2013 Culture category",
+        "plan": "Annual cash incentive \u2013 operational portion",
+        "weight": "10% for CEO",
+        "target_or_range": "Nadella result 155% (out of possible 200%)",
+        "quote": "Culture (10%)\n155%\nMr. Nadella furthered our high-performing culture while evolving responsible practices and upholding our commitments to inclusion and sustainability."
+      },
+      {
+        "metric": "Azure and Other Cloud Services Revenue Growth",
+        "plan": "Performance stock awards (PSAs) \u2013 FY25 core metric",
+        "weight": "35%",
+        "target_or_range": "FY25 (year 3 of FY23 PSA): Threshold 29.23% / Target 36.76% / Maximum 44.28%; Actual 34.58%, payout 85.52%",
+        "quote": "Azure and Other Cloud Services Revenue Growth 4\n35%\n29.23%\n36.76%\n44.28%\n34.58%\n85.52%"
+      },
+      {
+        "metric": "Microsoft Cloud Revenue Growth, excluding Azure and Other Cloud Services",
+        "plan": "Performance stock awards (PSAs) \u2013 FY25 core metric",
+        "weight": "35%",
+        "target_or_range": "Threshold 8.09% / Target 14.38% / Maximum 20.67%; Actual 14.77%, payout 106.20%",
+        "quote": "Microsoft Cloud Revenue Growth, excluding Azure and Other Cloud Services 5\n35%\n8.09%\n14.38%\n20.67%\n14.77%\n106.20%"
+      },
+      {
+        "metric": "Consumer Services Revenue Growth (revenue from all consumer areas, excluding Xbox, device licensing, and devices)",
+        "plan": "Performance stock awards (PSAs) \u2013 FY25 core metric (new, replacing Search and News Advertising Revenue (ex TAC) Growth)",
+        "weight": "15%",
+        "target_or_range": "Threshold -0.01% / Target 11.09% / Maximum 22.20%; Actual 15.59%, payout 140.50%",
+        "quote": "Consumer Services Revenue Growth 6\n15%\n-0.01%\n11.09%\n22.20%\n15.59%\n140.50%"
+      },
+      {
+        "metric": "Xbox Content and Services Revenue Growth",
+        "plan": "Performance stock awards (PSAs) \u2013 FY25 core metric",
+        "weight": "15% (increased from 10% in FY24)",
+        "target_or_range": "Threshold -2.90% / Target 14.23% / Maximum 31.37%; Actual 14.81%, payout 103.38%",
+        "quote": "Xbox Content and Services Revenue Growth 7\n15%\n-2.90%\n14.23%\n31.37%\n14.81%\n103.38%"
+      },
+      {
+        "metric": "3-year relative TSR versus the S&P 500 (modifier on PSA core metric results)",
+        "plan": "Performance stock awards \u2013 relative TSR modifier",
+        "weight": "Modifier applied to 3-year core metric average",
+        "target_or_range": "75.00% at 20th percentile & below to 150.00% at 80th percentile & above; 100% between 40th and 60th percentile; absolute TSR must be positive for an above-target modifier",
+        "quote": "3-year Relative TSR Ranking 1\nModifier\n20 th Percentile & Below\n75.00%\n30 th Percentile\n87.50%\n40 th to 60 th Percentile\n100.00%\n70 th Percentile\n125.00%\n80 th Percentile & Above\n150.00%"
+      },
+      {
+        "metric": "FY23 PSA final payout (three-year performance period ended June 30, 2025)",
+        "plan": "Performance stock awards \u2013 completed FY23 grant",
+        "weight": "Each of the three metric years weighted 1/3",
+        "target_or_range": "3-year core metric average 107.68% x 150.00% rTSR modifier = 161.52% final payout",
+        "quote": "Based on this result, the total payment percentage for the fiscal year 2023 PSAs was increased by 50%, resulting in the payout to our Named Executives of 161.52% of the target fiscal 2023 PSA shares."
+      },
+      {
+        "metric": "LinkedIn Sessions (removed FY25 PSA metric; still a FY24 core metric weighted 10%)",
+        "plan": "Performance stock awards \u2013 FY24 metric set",
+        "weight": "10% in FY24; removed for FY25",
+        "target_or_range": "FY24 result payout 124.39%",
+        "quote": "We also removed LinkedIn Sessions, as a portion of LinkedIn revenue is represented in both the Microsoft Cloud Revenue Growth, excluding Azure and Other Cloud Services, and Consumer Services Revenue Growth metrics."
+      },
+      {
+        "metric": "Total FY25 cash incentive payout as percentage of target",
+        "plan": "Annual cash incentive \u2013 overall result",
+        "weight": "Financial 70% CEO / 50% other NEOs; operational 30% CEO / 50% other NEOs",
+        "target_or_range": "Nadella 127.40%; Hood 136.84%; Althoff 136.84%; Numoto 128.50%; Smith 136.84%",
+        "quote": "Total FY25 cash incentive (% of target)\n127.40%\n136.84%\n136.84%\n128.50%\n136.84%"
+      },
+      {
+        "metric": "Cash incentive award cap",
+        "plan": "Executive Incentive Plan \u2013 risk-limiting feature",
+        "weight": null,
+        "target_or_range": "Limited to 200% of target cash incentive award",
+        "quote": "Cash incentive awards under the Incentive Plan are limited to 200% of a target cash incentive award"
+      },
+      {
+        "metric": "CEO equity mix \u2013 100% performance stock awards",
+        "plan": "Equity incentives under the Incentive Plan",
+        "weight": "100% PSAs for CEO; 50% PSAs / 50% four-year-vesting SAs for other NEOs",
+        "target_or_range": "Nadella FY25 aggregate target award value $50,000,000, 0 SAs",
+        "quote": "Equity incentives under the Incentive Plan were allocated 100% to target PSAs for our CEO. Equity incentives under the Incentive Plan were allocated 50% to target PSAs and 50% to stock awards with four-year vesting (\u201cSAs\u201d) for our other Named Executives."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "In evaluating our compensation practices in fiscal year 2025, our Compensation Committee was mindful of the support our shareholders expressed for our philosophy and practice of linking executive compensation to operational objectives and shareholder value creation and, other than refining our fiscal year 2025 operational cash incentive metrics to emphasize the importance of the SFI and updating our fiscal year 2025 performance stock award program metrics to further align with our key long term strategic priorities, our Compensation Committee did not make any substantial changes to our executive compensation program.",
+        "why_notable": "The committee frames two real metric changes (a new Security category and a reworked PSA metric set) inside a claim that nothing substantial changed."
+      },
+      {
+        "quote": "To emphasize the criticality of the contributions of our Senior Leadership Team members relating to cybersecurity, we refined our fiscal year 2025 Incentive Plan to combine Product & Strategy and Customers & Stakeholders into a single category and added a new category of Security.",
+        "why_notable": "Explicit stated rationale for restructuring the operational assessment categories \u2014 security elevated to its own weighted bucket, with two prior categories collapsed into one."
+      },
+      {
+        "quote": "For fiscal year 2025, we updated our PSA core metrics to further align with our key long term strategic priorities. Given the focus and investments in our Consumer business, we expanded Search and News Advertising Revenue (ex TAC) Growth to Consumer Services Revenue Growth, which includes revenue from all consumer areas with the exception of Xbox, device licensing, and devices.",
+        "why_notable": "Direct explanation of why a metric was broadened; broadening a narrow ad-revenue metric into a wider consumer basket changes what is being paid for and how it can be hit."
+      },
+      {
+        "quote": "We note that our Incentive Plan Revenue result was 95.81% of target and Incentive Plan Operating Income result was 138.18% of target, which equated to a 15.22% and 17.80% fiscal year 2025 growth rate, respectively, further demonstrating our commitment to rigorous goal setting.",
+        "why_notable": "A below-target revenue result is presented as evidence of goal rigor rather than a shortfall \u2014 defensive framing of a miss."
+      },
+      {
+        "quote": "For fiscal year 2025, the Compensation Committee reviewed the evolution of our business against our historical peer group, and as a result approved the use of two peer groups to better reflect the differentiated business, talent and, in some cases, pay models, across sectors:",
+        "why_notable": "Benchmarking framework changed to two peer groups this year \u2014 a structural change to how pay levels are justified."
+      },
+      {
+        "quote": "Microsoft is meaningfully larger than almost every company in both peer groups in terms of market capitalization and revenue. Our significant size, scale, and growth is a material factor when we set executive pay.",
+        "why_notable": "Scale relative to peers is asserted as an upward justification for pay levels, a recurring rationale."
+      },
+      {
+        "quote": "The current technology labor market is hyper-competitive with demand growing faster than the supply of specialized technical talent, resulting in significant increases in compensation at many of the companies with which we compete for this talent.",
+        "why_notable": "Market-scarcity language used to justify competitive pay increases; the same rationale supports the individual raises granted this year."
+      },
+      {
+        "quote": "We did not increase our target award values for Mr. Nadella . We increased our target award values for Ms. Hood from $17.5 million to $19.5 million, Mr. Althoff from $16.6 million to $19.5 million, and Mr. Smith from $15.5 million to $19.5 million, based on a competitive market review .",
+        "why_notable": "CEO target held flat while three NEO equity targets were leveled up to a common $19.5 million, attributed solely to a competitive market review."
+      },
+      {
+        "quote": "The independent members of our Board did not increase the base salary of Mr. Nadella, which it continued to believe was reasonable and appropriate given his role, capabilities, and experience, as well as the Company\u2019s relative scale and performance.",
+        "why_notable": "Restraint on CEO salary is highlighted even as CEO total compensation rose sharply through equity and bonus outcomes."
+      },
+      {
+        "quote": "Management and our Compensation Committee discussed in detail the metrics that determine performance stock awards to ensure they are leading indicators that will drive long-term performance and value creation. The Committee establishes rigorous goals for each metric that require significant year-over-year improvement in order for target awards to be earned",
+        "why_notable": "The 'leading indicators' and 'rigorous goals' framing recurs; notable because all four FY25 PSA metrics are revenue-growth measures rather than forward-looking indicators."
+      },
+      {
+        "quote": "The independent members of the Board decided that it was in the best interests of the Company and its stakeholders to provide personal security services to Mr. Nadella and Mr. Smith due to security considerations arising from their respective roles. We view the security services provided to Mr. Nadella and Mr. Smith as an integral part of our risk management program.",
+        "why_notable": "Personal security is carefully characterized as a business expense and risk management rather than a perquisite, alongside the company's 'No extraordinary perquisites' claim."
+      },
+      {
+        "quote": "Our absolute TSR for the performance period satisfied the PSA payout requirement that TSR be positive. Our TSR relative to the S&P 500 was at the 80 th percentile of the S&P 500, which meets the at least 80 th percentile performance condition required to receive the maximum 150.00% multiplier.",
+        "why_notable": "Maximum modifier earned at exactly the 80th-percentile threshold \u2014 a precise cliff outcome driving a 50% uplift on the completed award."
+      }
+    ]
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "fiscal_year": 2021,
+  "task": "comp",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:33:37Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 41327,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 5242,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 41327,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 5242,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 41327,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 41327
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "DEF14A_cdna",
+      "accession": "0001193125-21-298757",
+      "form": "DEF 14A",
+      "filing_date": "2021-10-14"
+    },
+    {
+      "key": "DEF14A_incentive_tables",
+      "accession": "0001193125-21-298757",
+      "form": "DEF 14A",
+      "filing_date": "2021-10-14"
+    }
+  ],
+  "source_chars": 91423,
+  "source_sha256": "055dbfe4c20ce65be63bbc289d0717d0142ae85418dc70b94f2f96e6ea5e977e",
+  "facts": {
+    "incentive_metrics": [
+      {
+        "metric": "Incentive Plan Revenue",
+        "plan": "Annual Cash Incentive (financial portion), FY2021",
+        "weight": "35% (CEO); financial portion 70% for CEO, 50% for other Named Executives",
+        "target_or_range": "FY21 H1 target $68.55B (threshold $65.19B, maximum $71.57B), actual $74.12B; FY21 H2 target $90.67B (threshold $85.32B, maximum $95.57B), actual $96.42B",
+        "quote": "\u2022 Increased the weighting of the financial performance portion of the CEO\u2019s annual cash incentive from 50% to 70% for fiscal year 2021, split evenly between Incentive Plan Revenue (35%) and Incentive Plan Operating Income (35%)"
+      },
+      {
+        "metric": "Incentive Plan Operating Income",
+        "plan": "Annual Cash Incentive (financial portion), FY2021",
+        "weight": "35% (CEO)",
+        "target_or_range": "FY21 H1 target $27.39B (threshold $25.34B, maximum $30.68B), actual $32.81B; FY21 H2 target $30.00B (threshold $27.45B, maximum $33.90B), actual $34.34B",
+        "quote": "FY21 H1 Incentive Plan Operating Income\n$26.25\n$25.34\n$27.39\n$30.68\n$32.81\n24.99%"
+      },
+      {
+        "metric": "Operational assessment \u2013 Product & Strategy",
+        "plan": "Annual Cash Incentive (operational portion)",
+        "weight": "10% for CEO in FY21 (was 16.67% in FY20); 30% total operational for CEO, 50% for other Named Executives",
+        "target_or_range": "Results out of a possible 200%; Mr. Nadella scored 145%",
+        "quote": "1 Product & Strategy (10.0% weight)\n145%"
+      },
+      {
+        "metric": "Operational assessment \u2013 Customers & Stakeholders",
+        "plan": "Annual Cash Incentive (operational portion)",
+        "weight": "10% for CEO in FY21",
+        "target_or_range": "Results out of a possible 200%; Mr. Nadella scored 170%",
+        "quote": "2 Customers & Stakeholders (10.0% weight)\n170%"
+      },
+      {
+        "metric": "Operational assessment \u2013 Culture & Organizational Leadership",
+        "plan": "Annual Cash Incentive (operational portion)",
+        "weight": "10% for CEO in FY21",
+        "target_or_range": "Results out of a possible 200%; Mr. Nadella scored 180%",
+        "quote": "3 Culture & Organizational Leadership (10.0% weight)\n180%"
+      },
+      {
+        "metric": "Commercial Cloud Revenue",
+        "plan": "Performance Stock Awards (FY2021 PSA metrics)",
+        "weight": "33% (FY21); split H1 \u2013 16.5% / H2 \u2013 16.5% for the FY2020 and FY2021 PSA award tracking",
+        "target_or_range": "FY21 H1 target $30.78B, actual $31.19B (payout 121.69%); FY21 H2 target $34.58B, actual $35.75B (payout 157.07%)",
+        "quote": "Commercial Cloud Revenue*\nRevenue from our commercial cloud business, which includes Azure, Office 365 Commercial, the commercial portion of LinkedIn, Dynamics 365, and other commercial cloud properties\n33%"
+      },
+      {
+        "metric": "Commercial Cloud Subscribers",
+        "plan": "Performance Stock Awards (FY2021 PSA metrics)",
+        "weight": "32% (FY21), down from 34% (FY20)",
+        "target_or_range": "FY21 growth target 17.73%, actual 25.76%; FY21 payout 196.54%",
+        "quote": "Commercial Cloud Subscribers\nPaid seats for current or new per-user SaaS cloud services primarily in commercial customer segment\n32%"
+      },
+      {
+        "metric": "Teams Monthly Active Usage",
+        "plan": "Performance Stock Awards (FY2021 PSA metrics)",
+        "weight": "20% (FY21), up from 10% (FY20)",
+        "target_or_range": "FY21 growth target 64.22%, actual 54.53%; FY21 payout 81.36%",
+        "quote": "Teams Monthly Active Usage\nUnique monthly active users of Teams in Enterprise, Corporate, Small and Medium Business, and Education\n20%"
+      },
+      {
+        "metric": "Xbox Game Pass Subscribers",
+        "plan": "Performance Stock Awards (FY2021 PSA metrics)",
+        "weight": "5% (FY21), down from 7% (FY20)",
+        "target_or_range": "FY21 growth target 47.79%, actual 37.48%; FY21 payout 82.28%",
+        "quote": "Xbox Game Pass Subscribers\nCurrent number of paid Game Pass Subscriptions (Console, PC, Ultimate)\n5%"
+      },
+      {
+        "metric": "Surface Revenue",
+        "plan": "Performance Stock Awards (FY2021 PSA metrics)",
+        "weight": "5% (FY21), split H1 \u2013 2.5% / H2 \u2013 2.5%",
+        "target_or_range": "FY21 H1 target $2.87B, actual $3.51B (payout 200.00%); FY21 H2 target $3.18B, actual $2.75B (payout 0.00%)",
+        "quote": "Surface Revenue*\nRevenue from Surface devices and accessories\n5%"
+      },
+      {
+        "metric": "LinkedIn Sessions",
+        "plan": "Performance Stock Awards (FY2021 PSA metrics)",
+        "weight": "5% (FY21), down from 7% (FY20)",
+        "target_or_range": "FY21 target 49.59B sessions, actual 52.92B; FY21 payout 195.97%",
+        "quote": "LinkedIn Sessions\nMeasure of member visits as a leading indicator of the overall quality of the LinkedIn member experience and opportunity for members to realize their economic opportunity\n5%"
+      },
+      {
+        "metric": "Relative total shareholder return (TSR) versus the S&P 500 over the three-fiscal-year performance period",
+        "plan": "Performance Stock Award modifier",
+        "weight": "Modifier applied to core metric results (1\u20131.5x, with downside adjustment beginning with FY21 awards)",
+        "target_or_range": "FY2019 PSAs: TSR at 97th percentile, above the 80th percentile needed for the maximum 150% modifier, increasing payout by 50% to 187.14% of target shares; for FY21 awards, downside adjustment if relative TSR falls below the 40th percentile",
+        "quote": "Our TSR relative to the S&P 500 was at the 97 th percentile of the S&P 500, well in excess of the 80th percentile performance that was a condition to receiving the maximum 150% modifier. Based on this result, the total payment percentage for the fiscal 2019 PSAs was increased by 50%, resulting in the payout to our Named Executives of 187.14% of the target fiscal 2019 PSA shares."
+      },
+      {
+        "metric": "Relative TSR (CEO one-time long-term performance stock award, LTPSA)",
+        "plan": "One-time long-term performance-based stock award granted on Mr. Nadella's appointment as CEO",
+        "weight": "Payouts tied entirely to relative TSR over three overlapping five-year performance periods",
+        "target_or_range": "Shares earned per period: 150,000 at threshold, 600,000 at target, 900,000 at maximum; third period relative TSR at 97th percentile, earning the maximum 900,000 shares",
+        "quote": "For each of the three five-year performance periods, the number of shares earned at threshold is 150,000, at target 600,000, and at maximum 900,000. During the third five-year performance period, Microsoft\u2019s market capitalization increased $1,420 billion (from $413 billion to $1,833 billion). Microsoft\u2019s relative TSR over this 5-year period was in the 97 th percentile, resulting in Mr. Nadella earning and vesting in the maximum 900,000 shares."
+      },
+      {
+        "metric": "FY2021 total cash incentive payout as a percentage of target",
+        "plan": "Executive Incentive Plan annual cash incentive",
+        "weight": "Financial results 50% (70% for CEO); operational results 50% (30% for CEO)",
+        "target_or_range": "Financial results 200.00% for all Named Executives; total payouts: Nadella 189.50%, Hood 182.50%, Courtois 175.00%, Smith 182.50%, Young 165.00%; awards capped at 200% of target",
+        "quote": "Total FY21 cash incentive (% of target)\n189.50%\n182.50%\n175.00%\n182.50%\n165.00%"
+      },
+      {
+        "metric": "Stock awards (time-based)",
+        "plan": "Long-term equity under the Incentive Plan",
+        "weight": "30% of equity for CEO; 50% for other Named Executives",
+        "target_or_range": "Four-year ratable vesting: 25% on August 31, 2021 and 12.5% each six months thereafter",
+        "quote": "These stock awards vest over four years, with 25% vesting on August 31, 2021 (September 14, 2021 for Mr. Courtois) and 12.5% each six-months thereafter, to support long-term focus and align with shareholders\u2019 interests."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "Shareholders generally encouraged the Board to increase the proportion of compensation that is tied to pre-established metrics and to enhance disclosures of the process used to determine incentive compensation results.",
+        "why_notable": "Committee attributes the FY21 design changes directly to shareholder pressure for more formulaic pay and better disclosure \u2014 the stated cause of the metric reweighting."
+      },
+      {
+        "quote": "\u2022 Increased the performance stock award portion of our CEO\u2019s equity awards from 50% to 70% for fiscal year 2021\n\u2022 Revised the relative TSR modifier for fiscal year 2021 PSAs to include a downside adjustment on PSA payouts if relative TSR falls below the 40th percentile of the S&P 500",
+        "why_notable": "Explicit description of the two structural shifts in CEO pay: majority-performance equity and, for the first time, downside TSR exposure rather than upside-only."
+      },
+      {
+        "quote": "With the growing importance of Teams on our business strategy, we increased the weight for Teams Monthly Active Usage metric and redistributed weights for the other metrics in fiscal year 2021.",
+        "why_notable": "The only stated rationale for the PSA metric reweighting \u2014 Teams doubled from 10% to 20% while Xbox Game Pass, Surface and LinkedIn each fell, tying pay directly to the strategic narrative."
+      },
+      {
+        "quote": "For fiscal year 2021, we made a one-time decision to use semi-annual goals for the financial metrics used in both our cash incentive and performance stock award portions of our Executive Incentive Plan. This change was consistent with the goal-setting process used for our Company\u2019s broad-based sales incentive programs and was made to mitigate some of the uncertainty in the marketplace.",
+        "why_notable": "A COVID-era change to the measurement period, framed as one-time and justified by market uncertainty \u2014 a structural softening that is not a discretionary award but does change how goals are measured."
+      },
+      {
+        "quote": "We did not make other changes to our Executive Incentive Plan due to COVID-19, such as granting discretionary awards, shifting to more time-based awards, reducing target incentive opportunities, or adjusting previously granted awards.",
+        "why_notable": "Pre-emptive defense listing the pandemic accommodations the committee declined to make, immediately after describing the one it did make."
+      },
+      {
+        "quote": "Our Compensation Committee sets cash incentive and PSA metric targets at the levels established, after review and engagement by the Board, for internal budgeting purposes. These targets are intended to be challenging but achievable.",
+        "why_notable": "Targets are the internal operating budget rather than an independently calibrated stretch \u2014 a recurring rigor claim worth tracking year over year against the 200% financial payout actually delivered."
+      },
+      {
+        "quote": "We set thresholds that we believe are reasonably achievable and maximums that we believe can be reached only with exceptional performance.",
+        "why_notable": "Language about maximum payouts requiring 'exceptional performance' sits against a FY21 financial result that paid the full 200% maximum on all four financial goals."
+      },
+      {
+        "quote": "When achieved, these challenging goals have resulted in substantial shareholder value creation.",
+        "why_notable": "Circular justification of goal rigor by pointing to outcomes rather than to the goals' difficulty; repeated in near-identical form in the goal-setting discussion."
+      },
+      {
+        "quote": "This on-hire cash and stock award compensation was granted with consideration of Mr. Young\u2019s most recent position as CEO of global technology company McAfee and in response to competitive offers for chief executive officer roles to attract Mr. Young.",
+        "why_notable": "Unusually direct justification for a large ($5,000,000 cash plus $18,000,000 stock) on-hire package, citing competing CEO offers \u2014 the sole significant non-formulaic award of the year."
+      },
+      {
+        "quote": "The technology labor market is hyper-competitive with demand growing faster than the supply of technical talent, resulting in significant increases in compensation at the companies with whom we compete for this talent.",
+        "why_notable": "Market-heat framing used to pre-justify future pay increases; 'hyper-competitive' is notably strong phrasing to watch for recurrence."
+      },
+      {
+        "quote": "While this market analysis and supplemental data inform the decisions of the independent members of our Board and our Compensation Committee on the range of compensation opportunities, we do not tie executive officer compensation to specific market percentiles.",
+        "why_notable": "Explicit disclaimer of percentile benchmarking, giving the committee latitude while it simultaneously adopts two new peer groups."
+      },
+      {
+        "quote": "For fiscal year 2021, the Compensation Committee reviewed the evolution of our business against our historical peer group, and as a result approved the use of two peer groups with two components to better reflect the differentiated business, talent and, in some cases, pay models, across sectors:",
+        "why_notable": "A change in the comparison set itself \u2014 from one historical peer group to a primary technology plus secondary large-cap general industry structure \u2014 which reshapes the benchmark before any pay decision."
+      },
+      {
+        "quote": "Given Microsoft\u2019s significant scale and growth, Microsoft is larger than the typical company in both peer groups.",
+        "why_notable": "Candid admission that the company sits at the 85th percentile on revenue and 98th on market cap within its own chosen peers, limiting the benchmark's comparability."
+      },
+      {
+        "quote": "Our Compensation Committee and the independent members of our Board believed the 70/30 balance between PSAs and SAs for our CEO will strengthen the alignment of his pay and performance, while the 50/50 balance between PSAs and SAs appropriately supported our long-term business goals and long-term retention incentives for our other Named Executives.",
+        "why_notable": "Justifies a deliberate two-tier equity structure \u2014 the CEO more performance-weighted, other executives kept at 50/50 for retention."
+      },
+      {
+        "quote": "Under this policy, our Compensation Committee may seek to recover payments of incentive compensation if the performance results leading to a payment are later subject to a downward adjustment or restatement of financial or nonfinancial performance.",
+        "why_notable": "'No fault' clawback extends to nonfinancial performance restatements and subjective awards, broader than the typical financial-restatement trigger."
+      },
+      {
+        "quote": "Mr. Nadella and his senior leadership team\u2019s success in addressing these challenges supports compensation decisions made for fiscal year 2021 performance.",
+        "why_notable": "Explicit bridge from the narrative performance section to the pay outcome, framing the qualitative account as the justification for the operational payouts."
+      }
+    ]
+  }
+}

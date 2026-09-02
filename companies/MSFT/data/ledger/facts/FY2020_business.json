@@ -1,0 +1,146 @@
+{
+  "fiscal_year": 2020,
+  "task": "business",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:31:44Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 45209,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 2456,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 45209,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2456,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 45209,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 45209
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "10-K_item1_business",
+      "accession": "0001564590-20-034944",
+      "form": "10-K",
+      "filing_date": "2020-07-30"
+    }
+  ],
+  "source_chars": 60384,
+  "source_sha256": "4ee4720ede3c8202b61c2d4a05feb70da168443200a8c4b005132fd69e9db29c",
+  "facts": {
+    "strategic_priorities": [
+      {
+        "text": "We continue to transform our business to lead in the new era of the intelligent cloud and intelligent edge.",
+        "quote": "We continue to transform our business to lead in the new era of the intelligent cloud and intelligent edge. We bring technology and products together into experiences and solutions that unlock value for our customers."
+      },
+      {
+        "text": "Research and development efforts focus on three interconnected ambitions: Reinvent productivity and business processes; Build the intelligent cloud and intelligent edge platform; Create more personal computing.",
+        "quote": "To achieve our vision, our research and development efforts focus on three interconnected ambitions:\n\u2022\nReinvent productivity and business processes.\n\u2022\nBuild the intelligent cloud and intelligent edge platform.\n\u2022\nCreate more personal computing."
+      },
+      {
+        "text": "Growth depends on securely delivering continuous innovation and advancing our leading productivity and collaboration tools and services, including Office, Dynamics, and LinkedIn.",
+        "quote": "Our growth depends on securely delivering continuous innovation and advancing our leading productivity and collaboration tools and services, including Office, Dynamics, and LinkedIn."
+      },
+      {
+        "text": "Partnering with organizations on their digital transformation is one of our largest opportunities; aiming to become the strategic digital transformation platform and partner of choice.",
+        "quote": "Partnering with organizations on their digital transformation during this period is one of our largest opportunities and we are uniquely positioned to become the strategic digital transformation platform and partner of choice; their success is our success."
+      },
+      {
+        "text": "Our strategy requires continued investment in datacenters and other hybrid and edge infrastructure to support our services.",
+        "quote": "Our strategy requires continued investment in datacenters and other hybrid and edge infrastructure to support our services. Azure is a trusted cloud with comprehensive compliance coverage and AI-based security built in."
+      },
+      {
+        "text": "Accelerating innovation across the spectrum of intelligent edge devices, and accelerating development of mixed reality solutions with new Azure services and devices.",
+        "quote": "We see more emerging use cases and needs for compute and security at the edge and are accelerating our innovation across the spectrum of intelligent edge devices, from IoT sensors to gateway devices and edge hardware to build, manage, and secure edge workloads."
+      },
+      {
+        "text": "Accelerating adoption of AI innovations from research to products; the ability to convert data into AI drives our competitive advantage.",
+        "quote": "The ability to convert data into AI drives our competitive advantage. Azure SQL Database makes it possible for customers to take SQL Server from their on-premises datacenter to a fully managed instance in the cloud to utilize built-in AI. We are accelerating adoption of AI innovations from research to products."
+      },
+      {
+        "text": "Committed to designing and marketing first-party devices to help drive innovation, create new device categories, and stimulate demand in the Windows ecosystem.",
+        "quote": "We are committed to designing and marketing first-party devices to help drive innovation, create new device categories, and stimulate demand in the Windows ecosystem."
+      },
+      {
+        "text": "Continue to invest in content, community, and cloud services to pursue the expansive opportunity in the gaming industry, broadening our approach to gaming end-to-end.",
+        "quote": "To expand usage and deepen engagement, we continue to invest in content, community, and cloud services as we pursue the expansive opportunity in the gaming industry. We are broadening our approach to how we think about gaming end-to-end, from the way games are created and distributed to how they are played and viewed across PC, console, and mobile."
+      },
+      {
+        "text": "Goal to lead the industry in several distinct areas of technology over the long-term, investing significant resources in transforming the workplace, cloud-based services, applying AI, using Windows to fuel the cloud business and Microsoft 365 strategy, and inventing new gaming experiences.",
+        "quote": "Our goal is to lead the industry in several distinct areas of technology over the long-term, which we expect will translate to sustained growth. We are investing significant resources in:"
+      },
+      {
+        "text": "Future growth depends on our ability to transcend current product category definitions, business models, and sales motions.",
+        "quote": "Our future growth depends on our ability to transcend current product category definitions, business models, and sales motions. We have the opportunity to redefine what customers and partners can expect and are working to deliver new solutions that reflect the best of Microsoft."
+      },
+      {
+        "text": "A bold new environmental sustainability strategy focused on carbon, water, waste, and ecosystems, investing $1 billion over the next four years; carbon negative by 2030 and removing all historical carbon by 2050.",
+        "quote": "In January 2020, we announced a bold new environmental sustainability strategy focused on carbon, water, waste, and ecosystems. As part of our commitment, we are investing $1 billion over the next four years in new technologies and innovative climate solutions."
+      },
+      {
+        "text": "Committed to taking action to address racial injustice and inequity, including doubling the number of Black and African American people managers, senior individual contributors, and senior leaders in the United States by 2025.",
+        "quote": "These efforts include increasing our representation and culture of inclusion by doubling the number of Black and African American people managers, senior individual contributors, and senior leaders in the United States by 2025; engaging our ecosystem by using our balance sheet and engagement with suppliers and partners to extend the vision for societal change"
+      },
+      {
+        "text": "Expanding access to digital skills, with $20 million invested in key non-profit partnerships through Microsoft Philanthropies.",
+        "quote": "Our skills initiative brings together learning resources, certification opportunities, and job-seeker tools from LinkedIn, GitHub, and Microsoft Learn, and is built on data insights drawn from LinkedIn\u2019s Economic Graph. This is combined with $20 million we are investing in key non-profit partnerships through Microsoft Philanthropies."
+      },
+      {
+        "text": "Maintain our long-term commitment to research and development across a wide spectrum of technologies, tools, and platforms.",
+        "quote": "Based on our assessment of key technology trends, we maintain our long-term commitment to research and development across a wide spectrum of technologies, tools, and platforms spanning digital work and life experiences, cloud computing, AI, devices, and operating systems."
+      },
+      {
+        "text": "A strategic change in our retail operations, including closing our Microsoft Store physical locations.",
+        "quote": "In June 2020, we announced a strategic change in our retail operations, including closing our Microsoft Store physical locations."
+      }
+    ],
+    "segments": [
+      {
+        "name": "Productivity and Business Processes",
+        "note": null,
+        "quote": "We operate our business and report our financial performance using three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing."
+      },
+      {
+        "name": "Intelligent Cloud",
+        "note": null,
+        "quote": "Our Intelligent Cloud segment consists of our public, private, and hybrid server products and cloud services that can power modern business and developers."
+      },
+      {
+        "name": "More Personal Computing",
+        "note": null,
+        "quote": "Our More Personal Computing segment consists of products and services that put customers at the center of the experience with our technology."
+      }
+    ],
+    "headcount": {
+      "value": 163000,
+      "as_stated": "approximately 163,000 people on a full-time basis, 96,000 in the U.S. and 67,000 internationally",
+      "quote": "As of June 30, 2020, we employed approximately 163,000 people on a full-time basis, 96,000 in the U.S. and 67,000 internationally."
+    }
+  }
+}

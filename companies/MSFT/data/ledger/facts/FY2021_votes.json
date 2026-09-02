@@ -1,0 +1,242 @@
+{
+  "fiscal_year": 2021,
+  "task": "votes",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:34:35Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 9508,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 3325,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9508,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 3325,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 9508,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9508
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-21-343711",
+      "form": "8-K",
+      "filing_date": "2021-11-30",
+      "proxy_accession": "0001193125-21-298757",
+      "proxy_filed": "2021-10-14"
+    }
+  ],
+  "source_chars": 6668,
+  "source_sha256": "5f6c2200e0b07f22a127b5d72c51718dce3c5ec16cb03370c709dbc1abbf18f7",
+  "facts": {
+    "results": [
+      {
+        "matter": "Election of director Reid G. Hoffman",
+        "votes_for": 5168833028,
+        "votes_against": 30179393,
+        "abstentions": 6874892,
+        "broker_non_votes": 1203727770,
+        "outcome": "Re-elected",
+        "quote": "Reid G. Hoffman\nRe-elected\n99.41\n%\n5,168,833,028\n30,179,393\n6,874,892\n1,203,727,770"
+      },
+      {
+        "matter": "Election of director Hugh F. Johnston",
+        "votes_for": 5076209921,
+        "votes_against": 122729014,
+        "abstentions": 6948378,
+        "broker_non_votes": 1203727770,
+        "outcome": "Re-elected",
+        "quote": "Hugh F. Johnston\nRe-elected\n97.63\n%\n5,076,209,921\n122,729,014\n6,948,378\n1,203,727,770"
+      },
+      {
+        "matter": "Election of director Teri L. List",
+        "votes_for": 5141640172,
+        "votes_against": 57559318,
+        "abstentions": 6687823,
+        "broker_non_votes": 1203727770,
+        "outcome": "Re-elected",
+        "quote": "Teri L. List\nRe-elected\n98.89\n%\n5,141,640,172\n57,559,318\n6,687,823\n1,203,727,770"
+      },
+      {
+        "matter": "Election of director Satya Nadella",
+        "votes_for": 4904391102,
+        "votes_against": 273247471,
+        "abstentions": 28248740,
+        "broker_non_votes": 1203727770,
+        "outcome": "Re-elected",
+        "quote": "Satya Nadella\nRe-elected\n94.72\n%\n4,904,391,102\n273,247,471\n28,248,740\n1,203,727,770"
+      },
+      {
+        "matter": "Election of director Sandra E. Peterson",
+        "votes_for": 5141414641,
+        "votes_against": 57671072,
+        "abstentions": 6801600,
+        "broker_non_votes": 1203727770,
+        "outcome": "Re-elected",
+        "quote": "Sandra E. Peterson\nRe-elected\n98.89\n%\n5,141,414,641\n57,671,072\n6,801,600\n1,203,727,770"
+      },
+      {
+        "matter": "Election of director Penny S. Pritzker",
+        "votes_for": 5181299759,
+        "votes_against": 16483587,
+        "abstentions": 8103967,
+        "broker_non_votes": 1203727770,
+        "outcome": "Re-elected",
+        "quote": "Penny S. Pritzker\nRe-elected\n99.68\n%\n5,181,299,759\n16,483,587\n8,103,967\n1,203,727,770"
+      },
+      {
+        "matter": "Election of director Carlos A. Rodriguez",
+        "votes_for": 5187710712,
+        "votes_against": 10971864,
+        "abstentions": 7204737,
+        "broker_non_votes": 1203727770,
+        "outcome": "Elected",
+        "quote": "Carlos A. Rodriguez\nElected\n99.78\n%\n5,187,710,712\n10,971,864\n7,204,737\n1,203,727,770"
+      },
+      {
+        "matter": "Election of director Charles W. Scharf",
+        "votes_for": 5152497805,
+        "votes_against": 46347806,
+        "abstentions": 7041702,
+        "broker_non_votes": 1203727770,
+        "outcome": "Re-elected",
+        "quote": "Charles W. Scharf\nRe-elected\n99.10\n%\n5,152,497,805\n46,347,806\n7,041,702\n1,203,727,770"
+      },
+      {
+        "matter": "Election of director John W. Stanton",
+        "votes_for": 5185673312,
+        "votes_against": 12972721,
+        "abstentions": 7241280,
+        "broker_non_votes": 1203727770,
+        "outcome": "Re-elected",
+        "quote": "John W. Stanton\nRe-elected\n99.75\n%\n5,185,673,312\n12,972,721\n7,241,280\n1,203,727,770"
+      },
+      {
+        "matter": "Election of director John W. Thompson",
+        "votes_for": 4751200195,
+        "votes_against": 448003714,
+        "abstentions": 6683404,
+        "broker_non_votes": 1203727770,
+        "outcome": "Re-elected",
+        "quote": "John W. Thompson\nRe-elected\n91.38\n%\n4,751,200,195\n448,003,714\n6,683,404\n1,203,727,770"
+      },
+      {
+        "matter": "Election of director Emma N. Walmsley",
+        "votes_for": 5169213792,
+        "votes_against": 30122689,
+        "abstentions": 6550832,
+        "broker_non_votes": 1203727770,
+        "outcome": "Re-elected",
+        "quote": "Emma N. Walmsley\nRe-elected\n99.42\n%\n5,169,213,792\n30,122,689\n6,550,832\n1,203,727,770"
+      },
+      {
+        "matter": "Election of director Padmasree Warrior",
+        "votes_for": 5172040321,
+        "votes_against": 26974309,
+        "abstentions": 6872683,
+        "broker_non_votes": 1203727770,
+        "outcome": "Re-elected",
+        "quote": "Padmasree Warrior\nRe-elected\n99.48\n%\n5,172,040,321\n26,974,309\n6,872,683\n1,203,727,770"
+      },
+      {
+        "matter": "Advisory Vote to Approve Named Executive Officer Compensation",
+        "votes_for": 4942225490,
+        "votes_against": 235539076,
+        "abstentions": 28122747,
+        "broker_non_votes": 1203727770,
+        "outcome": "Approved",
+        "quote": "Advisory Vote to Approve Named Executive Officer Compensation\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker\nNon-Votes\nApproved\n95.45\n%\n4,942,225,490\n235,539,076\n28,122,747\n1,203,727,770"
+      },
+      {
+        "matter": "Approval of the Microsoft Employee Stock Purchase Plan",
+        "votes_for": 5177407530,
+        "votes_against": 18155823,
+        "abstentions": 10323960,
+        "broker_non_votes": 1203727770,
+        "outcome": "Approved",
+        "quote": "Approval of Employee Stock Purchase Plan\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker\nNon-Votes\nApproved\n99.65\n%\n5,177,407,530\n18,155,823\n10,323,960\n1,203,727,770"
+      },
+      {
+        "matter": "Ratification of the appointment of Deloitte & Touche LLP as independent registered public accounting firm for fiscal year 2022",
+        "votes_for": 6092539628,
+        "votes_against": 295871214,
+        "abstentions": 21204241,
+        "broker_non_votes": null,
+        "outcome": "Approved",
+        "quote": "Ratification of Appointment of Independent Auditor for Fisal Year 2022\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker\nNon-Votes\nApproved\n95.36\n%\n6,092,539,628\n295,871,214\n21,204,241\nN/A"
+      },
+      {
+        "matter": "Shareholder Proposal: Report on median pay gaps across race and gender",
+        "votes_for": 2057751139,
+        "votes_against": 3081216282,
+        "abstentions": 66919892,
+        "broker_non_votes": 1203727770,
+        "outcome": "Rejected",
+        "quote": "Shareholder Proposal: Report on median pay gaps across race and gender\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker\nNon-Votes\nRejected\n40.04\n%\n2,057,751,139\n3,081,216,282\n66,919,892\n1,203,727,770"
+      },
+      {
+        "matter": "Shareholder Proposal: Report on effectiveness of workplace sexual harassment policies",
+        "votes_for": 4024536340,
+        "votes_against": 1137075520,
+        "abstentions": 44275453,
+        "broker_non_votes": 1203727770,
+        "outcome": "Approved",
+        "quote": "Shareholder Proposal: Report on effectiveness of workplace sexual harassment policies\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker\nNon-Votes\nApproved\n77.97\n%\n4,024,536,340\n1,137,075,520\n44,275,453\n1,203,727,770"
+      },
+      {
+        "matter": "Shareholder Proposal: Prohibition on sales of facial recognition technology to all government entities",
+        "votes_for": 207459087,
+        "votes_against": 4908515776,
+        "abstentions": 89912450,
+        "broker_non_votes": 1203727770,
+        "outcome": "Rejected",
+        "quote": "Shareholder Proposal: Prohibition on sales of facial recognition technology to all government entities\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker\nNon-Votes\nRejected\n4.05\n%\n207,459,087\n4,908,515,776\n89,912,450\n1,203,727,770"
+      },
+      {
+        "matter": "Shareholder Proposal: Report on implementation of the Fair Chance Business Pledge",
+        "votes_for": 711044601,
+        "votes_against": 4427017754,
+        "abstentions": 67824958,
+        "broker_non_votes": 1203727770,
+        "outcome": "Rejected",
+        "quote": "Shareholder Proposal: Report on implementation of the Fair Chance Business Pledge\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker\nNon-Votes\nRejected\n13.83\n%\n711,044,601\n4,427,017,754\n67,824,958\n1,203,727,770"
+      },
+      {
+        "matter": "Shareholder Proposal: Report on how lobbying activities align with Company policies",
+        "votes_for": 1970895447,
+        "votes_against": 3209652916,
+        "abstentions": 25338950,
+        "broker_non_votes": 1203727770,
+        "outcome": "Rejected",
+        "quote": "Shareholder Proposal: Report on how lobbying activities align with Company policies\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker\nNon-Votes\nRejected\n38.04\n%\n1,970,895,447\n3,209,652,916\n25,338,950\n1,203,727,770"
+      }
+    ]
+  }
+}

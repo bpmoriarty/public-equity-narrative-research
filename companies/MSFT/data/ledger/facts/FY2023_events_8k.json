@@ -1,0 +1,179 @@
+{
+  "fiscal_year": 2023,
+  "task": "events_8k",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:37:57Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 10014,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 1636,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 10014,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 1636,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 10014,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 10014
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-22-306591",
+      "form": "8-K",
+      "filing_date": "2022-12-16",
+      "items": [
+        "5.07"
+      ]
+    }
+  ],
+  "source_chars": 6734,
+  "source_sha256": "7ec59d2c2b70809c413fc4bc8cca26cbff2d5d96a67ed8e33a982e70fa5155fb",
+  "facts": {
+    "leadership": [
+      {
+        "name": "Reid G. Hoffman",
+        "role": "Director",
+        "change": "other",
+        "date": "2022-12-13",
+        "stated_reason": null,
+        "quote": "Reid G. Hoffman\nRe-elected\n99.36"
+      },
+      {
+        "name": "Hugh F. Johnston",
+        "role": "Director",
+        "change": "other",
+        "date": "2022-12-13",
+        "stated_reason": null,
+        "quote": "Hugh F. Johnston\nRe-elected\n97.22"
+      },
+      {
+        "name": "Teri L. List",
+        "role": "Director",
+        "change": "other",
+        "date": "2022-12-13",
+        "stated_reason": null,
+        "quote": "Teri L. List\nRe-elected\n98.11"
+      },
+      {
+        "name": "Satya Nadella",
+        "role": "Director",
+        "change": "other",
+        "date": "2022-12-13",
+        "stated_reason": null,
+        "quote": "Satya Nadella\nRe-elected\n94.81"
+      },
+      {
+        "name": "Sandra E. Peterson",
+        "role": "Director",
+        "change": "other",
+        "date": "2022-12-13",
+        "stated_reason": null,
+        "quote": "Sandra E. Peterson\nRe-elected\n97.93"
+      },
+      {
+        "name": "Penny S. Pritzker",
+        "role": "Director",
+        "change": "other",
+        "date": "2022-12-13",
+        "stated_reason": null,
+        "quote": "Penny S. Pritzker\nRe-elected\n99.62"
+      },
+      {
+        "name": "Carlos A. Rodriguez",
+        "role": "Director",
+        "change": "other",
+        "date": "2022-12-13",
+        "stated_reason": null,
+        "quote": "Carlos A. Rodriguez\nRe-elected\n99.53"
+      },
+      {
+        "name": "Charles W. Scharf",
+        "role": "Director",
+        "change": "other",
+        "date": "2022-12-13",
+        "stated_reason": null,
+        "quote": "Charles W. Scharf\nRe-elected\n98.62"
+      },
+      {
+        "name": "John W. Stanton",
+        "role": "Director",
+        "change": "other",
+        "date": "2022-12-13",
+        "stated_reason": null,
+        "quote": "John W. Stanton\nRe-elected\n99.50"
+      },
+      {
+        "name": "John W. Thompson",
+        "role": "Director",
+        "change": "other",
+        "date": "2022-12-13",
+        "stated_reason": null,
+        "quote": "John W. Thompson\nRe-elected\n98.77"
+      },
+      {
+        "name": "Emma N. Walmsley",
+        "role": "Director",
+        "change": "other",
+        "date": "2022-12-13",
+        "stated_reason": null,
+        "quote": "Emma N. Walmsley\nRe-elected\n98.65"
+      },
+      {
+        "name": "Padmasree Warrior",
+        "role": "Director",
+        "change": "other",
+        "date": "2022-12-13",
+        "stated_reason": null,
+        "quote": "Padmasree Warrior\nRe-elected\n98.64"
+      }
+    ],
+    "events": [
+      {
+        "type": "other",
+        "description": "Microsoft held its 2022 Annual Shareholders Meeting on December 13, 2022; 6,407,164,715 of the 7,456,502,484 shares entitled to vote were voted in person or by proxy.",
+        "date": "2022-12-13",
+        "quote": "On December 13, 2022, Microsoft Corporation (the \u201cCompany\u201d) held its 2022 Annual Shareholders Meeting (the \u201cAnnual Meeting\u201d). There were 7,456,502,484 shares of common stock entitled to be voted at the Annual Meeting, of which 6,407,164,715 were voted in person or by proxy."
+      },
+      {
+        "type": "other",
+        "description": "Shareholders elected all twelve director nominees, approved named executive officer compensation on an advisory basis (88.84% votes for), and ratified Deloitte & Touche LLP as independent registered public accounting firm for fiscal year 2023 (95.37% votes for).",
+        "date": "2022-12-13",
+        "quote": "(1) Voted to elect each of the twelve (12) nominees for director.\n(2) Approved, on an advisory basis, the compensation of the Company\u2019s named executive officers.\n(3) Voted to ratify the appointment of Deloitte & Touche LLP as the Company\u2019s independent registered public accounting firm for fiscal year 2023."
+      },
+      {
+        "type": "other",
+        "description": "Six shareholder proposals were all not approved: cost/benefit analysis of diversity and inclusion, report on hiring of persons with arrest or incarceration records, report on investment of retirement funds in companies contributing to climate change, report on government use of Microsoft technology, report on development of products for the military, and report on tax transparency.",
+        "date": "2022-12-13",
+        "quote": "(4) Did not approve a shareholder proposal concerning a cost/benefit analysis of diversity and inclusion.\n(5) Did not approve a shareholder proposal concerning a report on hiring of persons with arrest or incarceration records.\n(6) Did not approve a shareholder proposal concerning a report on investment of retirement funds in companies contributing to climate change"
+      }
+    ]
+  }
+}

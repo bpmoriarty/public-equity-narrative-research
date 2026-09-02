@@ -1,0 +1,150 @@
+{
+  "fiscal_year": 2025,
+  "task": "business",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:40:03Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 20362,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2275,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 20362,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2275,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 20362,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 20362
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "10-K_item1_business",
+      "accession": "0000950170-25-100235",
+      "form": "10-K",
+      "filing_date": "2025-07-30"
+    }
+  ],
+  "source_chars": 48666,
+  "source_sha256": "09f71f792f0759a076b83e390e817b9ebadbb1eaa21f2347580e91dd37df98ab",
+  "facts": {
+    "strategic_priorities": [
+      {
+        "text": "Reinvent productivity and business processes to help organizations and individuals work and collaborate more securely and efficiently.",
+        "quote": "Reinvent productivity and business processes to help organizations and individuals work and collaborate more securely and efficiently."
+      },
+      {
+        "text": "Build the intelligent cloud and intelligent edge platform to provide a foundation for our customers' digital workloads including hybrid consistency, developer productivity, data and AI capabilities, and trusted security and compliance.",
+        "quote": "Build the intelligent cloud and intelligent edge platform to provide a foundation for our customers\u2019 digital workloads including hybrid consistency, developer productivity, data and AI capabilities, and trusted security and compliance."
+      },
+      {
+        "text": "Create more personal computing to enable users to interact with technology in more intuitive, engaging, and dynamic ways.",
+        "quote": "Create more personal computing to enable users to interact with technology in more intuitive, engaging, and dynamic ways."
+      },
+      {
+        "text": "Focused on helping customers use the breadth and depth of the Microsoft Cloud to get the most value out of their digital spend while leading the AI platform wave across our solution areas; goal is to lead the industry in several distinct areas of technology over the long term.",
+        "quote": "We are focused on helping customers use the breadth and depth of the Microsoft Cloud to get the most value out of their digital spend while leading the AI platform wave across our solution areas."
+      },
+      {
+        "text": "Transforming the workplace to deliver new, modern, modular business applications, drive deeper insights, and improve how people communicate, collaborate, learn, work, and interact with one another.",
+        "quote": "Transforming the workplace to deliver new, modern, modular business applications, drive deeper insights, and improve how people communicate, collaborate, learn, work, and interact with one another."
+      },
+      {
+        "text": "Building and running cloud-based services in ways that utilize ubiquitous computing to unleash new experiences and opportunities for businesses and individuals.",
+        "quote": "Building and running cloud-based services in ways that utilize ubiquitous computing to unleash new experiences and opportunities for businesses and individuals."
+      },
+      {
+        "text": "Applying AI and ambient intelligence to drive insights, revolutionize many types of work and business processes, and provide substantive productivity gains using Microsoft 365 Copilot and agents.",
+        "quote": "Applying AI and ambient intelligence to drive insights, revolutionize many types of work and business processes, and provide substantive productivity gains using Microsoft 365 Copilot and agents."
+      },
+      {
+        "text": "Providing training on generative AI and greater access to digital learning and resources through skilling programs and initiatives, grants, and LinkedIn learning pathways.",
+        "quote": "Providing training on generative AI and greater access to digital learning and resources through skilling programs and initiatives, grants, and LinkedIn learning pathways."
+      },
+      {
+        "text": "Inventing new gaming experiences that bring people together around their shared love for games on any device and pushing the boundaries of innovation with console and PC gaming.",
+        "quote": "Inventing new gaming experiences that bring people together around their shared love for games on any device and pushing the boundaries of innovation with console and PC gaming."
+      },
+      {
+        "text": "Leveraging Windows to fuel our cloud business, grow our share of the PC market, and drive increased engagement with our services.",
+        "quote": "Leveraging Windows to fuel our cloud business, grow our share of the PC market, and drive increased engagement with our services like Microsoft Edge, Bing, Copilot, Microsoft Teams, Microsoft 365 Consumer, Xbox Game Pass, and more."
+      },
+      {
+        "text": "Tackling security from all angles with our integrated, end-to-end solutions spanning security, compliance, identity, and management, across all clouds and platforms.",
+        "quote": "Tackling security from all angles with our integrated, end-to-end solutions spanning security, compliance, identity, and management, across all clouds and platforms."
+      },
+      {
+        "text": "We prioritize security above all else and offer customers integrated AI-driven products addressing security, compliance, identity, management, and privacy.",
+        "quote": "We prioritize security above all else and we offer our customers integrated AI-driven products addressing security, compliance, identity, management, and privacy across customers\u2019 multi-cloud, application, and device assets."
+      },
+      {
+        "text": "Commitment to designing and deploying AI responsibly with safety and security from the outset.",
+        "quote": "We believe AI should be as empowering as it is powerful, and we\u2019re committed to designing and deploying AI responsibly with safety and security from the outset."
+      },
+      {
+        "text": "Sustainability: goals announced in 2020 to become a carbon negative, water positive, and zero waste company by 2030.",
+        "quote": "In 2020, we announced goals to become a carbon negative, water positive, and zero waste company by 2030."
+      },
+      {
+        "text": "Plan to continue to make significant investments in a broad range of product research and development activities, coordinated across operating segments, including continuing to support fundamental research.",
+        "quote": "We plan to continue to make significant investments in a broad range of product research and development activities, and as appropriate, we will coordinate our research and development across operating segments and leverage the results across the company."
+      },
+      {
+        "text": "Continue to align our datacenter locations and server capacity to meet the evolving needs of our customers, particularly given the growing demand for AI services.",
+        "quote": "We continue to align our datacenter locations and server capacity to meet the evolving needs of our customers, particularly given the growing demand for AI services."
+      },
+      {
+        "text": "Future growth depends on our ability to transcend current product category definitions, business models, and sales motions.",
+        "quote": "Our future growth depends on our ability to transcend current product category definitions, business models, and sales motions."
+      }
+    ],
+    "segments": [
+      {
+        "name": "Productivity and Business Processes",
+        "note": "Document states segment composition changes announced in August 2024, most notably bringing the commercial components of Microsoft 365 together in this segment, effective beginning fiscal year 2025.",
+        "quote": "These changes align our segments with how we currently manage our business, most notably bringing the commercial components of Microsoft 365 together in the Productivity and Business Processes segment."
+      },
+      {
+        "name": "Intelligent Cloud",
+        "note": null,
+        "quote": "We operate our business and report our financial performance using three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing."
+      },
+      {
+        "name": "More Personal Computing",
+        "note": null,
+        "quote": "Our More Personal Computing segment consists of products and services that put customers at the center of the experience with our technology."
+      }
+    ],
+    "headcount": {
+      "value": 228000,
+      "as_stated": "approximately 228,000 people on a full-time basis, 125,000 in the U.S. and 103,000 internationally, as of June 30, 2025",
+      "quote": "As of June 30, 2025, we employed approximately 228,000 people on a full-time basis, 125,000 in the U.S. and 103,000 internationally."
+    }
+  }
+}

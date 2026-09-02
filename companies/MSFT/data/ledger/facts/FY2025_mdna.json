@@ -1,0 +1,169 @@
+{
+  "fiscal_year": 2025,
+  "task": "mdna",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:40:32Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 23448,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2898,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 23448,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2898,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 23448,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 23448
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "10-K_item7_mdna",
+      "accession": "0000950170-25-100235",
+      "form": "10-K",
+      "filing_date": "2025-07-30"
+    }
+  ],
+  "source_chars": 47898,
+  "source_sha256": "521f54848929d41023deab96213d361309e300684c5ca58068ea026da5da8baa",
+  "facts": {
+    "events": [
+      {
+        "type": "segment_change",
+        "description": "Announced changes to segment composition, most notably bringing commercial components of Microsoft 365 into Productivity and Business Processes; effective beginning fiscal year 2025 with prior periods recast.",
+        "date": "2024-08",
+        "quote": "In August 2024, we announced changes to the composition of our segments. These changes align our segments with how we currently manage our business, most notably bringing the commercial components of Microsoft 365 together in the Productivity and Business Processes segment."
+      },
+      {
+        "type": "other",
+        "description": "Metric definition changes made in Q1 FY2025 in connection with the segment changes, including a new Microsoft 365 Commercial cloud revenue growth metric and combining Windows OEM and Devices into a single metric.",
+        "date": null,
+        "quote": "In the first quarter of fiscal year 2025, we made updates to our metrics in connection with the segment changes described above. These changes align our metrics with how we manage and monitor certain businesses. The key change was bringing the commercial components of Microsoft 365 together and creating a new Microsoft 365 Commercial cloud revenue growth metric."
+      },
+      {
+        "type": "acquisition",
+        "description": "Activision Blizzard acquisition affected Gaming revenue and operating expenses in fiscal year 2025.",
+        "date": null,
+        "quote": "Operating expenses increased $3.8 billion or 6% driven by investments in cloud and AI engineering and Gaming, including the impact of the Activision Blizzard acquisition."
+      },
+      {
+        "type": "other",
+        "description": "Microsoft 365 Consumer price increase announced in January 2025 drove growth in revenue per user.",
+        "date": "2025-01",
+        "quote": "Microsoft 365 Consumer cloud revenue grew 11% driven by Microsoft 365 Consumer subscriber growth of 8% to 89.0 million, as well as growth in revenue per user from the price increase announced in January 2025."
+      },
+      {
+        "type": "other",
+        "description": "IRS Notices of Proposed Adjustment seeking $28.9 billion in additional tax plus penalties and interest for tax years 2004 to 2013, which Microsoft will contest.",
+        "date": "2023-09-26",
+        "quote": "With respect to the audit for tax years 2004 to 2013, on September 26, 2023, we received Notices of Proposed Adjustment (\u201cNOPAs\u201d) from the IRS. The primary issues in the NOPAs relate to intercompany transfer pricing. In the NOPAs, the IRS is seeking an additional tax payment of $28.9 billion plus penalties and interest."
+      },
+      {
+        "type": "other",
+        "description": "Enactment of the One Big Beautiful Bill Act, which Microsoft is assessing; provides a GILTI effective tax rate of 14% effective fiscal year 2027.",
+        "date": "2025-07-04",
+        "quote": "We are currently assessing the One Big Beautiful Bill Act (\u201cOBBBA\u201d) which was enacted on July 4, 2025. The OBBBA provides a U.S. global intangible low-taxed income effective tax rate of 14% effective fiscal year 2027 for Microsoft."
+      },
+      {
+        "type": "other",
+        "description": "Share repurchases of 31 million shares for $13.0 billion in fiscal year 2025, with $57.3 billion remaining of the $60 billion program.",
+        "date": null,
+        "quote": "During fiscal years 2025 and 2024, we repurchased 31 million shares and 32 million shares of our common stock for $13.0 billion and $12.0 billion, respectively, through our share repurchase program. All repurchases were made using cash resources. As of June 30, 2025, $57.3 billion remained of our $60 billion share repurchase program."
+      },
+      {
+        "type": "other",
+        "description": "Eighth and final TCJA transition tax installment of $4.4 billion payable in the first quarter of fiscal year 2026.",
+        "date": null,
+        "quote": "As of June 30, 2025, our eighth transition tax installment of $4.4 billion is short-term and payable in the first quarter of fiscal year 2026."
+      },
+      {
+        "type": "other",
+        "description": "Pillar Two global minimum tax legislation applies to Microsoft beginning in fiscal year 2025.",
+        "date": null,
+        "quote": "Many countries have implemented or are in the process of implementing the Pillar Two legislation, which applies to Microsoft beginning in fiscal year 2025."
+      }
+    ],
+    "segment_changes": [
+      {
+        "name": "Productivity and Business Processes",
+        "note": "Commercial components of Microsoft 365 brought together in this segment beginning fiscal year 2025; prior period segment information recast.",
+        "quote": "These changes align our segments with how we currently manage our business, most notably bringing the commercial components of Microsoft 365 together in the Productivity and Business Processes segment. Beginning in fiscal year 2025, the information that our chief operating decision maker is regularly provided and reviews for purposes of allocating resources and assessing performance reflects these segment changes. Prior period segment information has been recast to conform to the way we internally manage and monitor our business during fiscal year 2025."
+      },
+      {
+        "name": "Windows OEM and Devices",
+        "note": "Windows OEM and Devices combined into a single revenue growth metric bringing PC market-driven businesses together.",
+        "quote": "Other changes include combining Windows OEM and Devices into a single revenue growth metric that brings revenue from PC market-driven businesses together, as well as elevating our cloud revenue growth metrics to align to our strategic focus on cloud growth."
+      },
+      {
+        "name": "Intelligent Cloud",
+        "note": null,
+        "quote": "We report our financial performance based on the following segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "Microsoft is a technology company committed to making digital technology and artificial intelligence (\u201cAI\u201d) available broadly and doing so responsibly, with a mission to empower every person and every organization on the planet to achieve more. We create platforms and tools, powered by AI, that deliver innovative solutions that meet the evolving needs of our customers.",
+        "why_notable": "Self-characterisation places AI at the centre of the company's identity and product framing, alongside the long-recurring mission statement."
+      },
+      {
+        "quote": "The investments we are making in cloud and AI infrastructure and devices will continue to increase our operating costs and may decrease our operating margins.",
+        "why_notable": "An unusually direct admission that the AI capital cycle pressures costs and margins."
+      },
+      {
+        "quote": "Microsoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure.",
+        "why_notable": "Explicitly attributes a named margin decline to AI infrastructure scaling \u2014 a concrete cost of the AI build-out repeated across segments."
+      },
+      {
+        "quote": "Our datacenters depend on the availability of permitted and buildable land, predictable energy, networking supplies, and servers, including graphics processing units (\u201cGPUs\u201d) and other components.",
+        "why_notable": "Frames physical constraints \u2014 land, energy, GPUs \u2014 as dependencies of the growth story, a comparatively new emphasis for a software company."
+      },
+      {
+        "quote": "Microsoft and OpenAI maintain a long-term strategic partnership originally established in 2019. Microsoft is a major investor in OpenAI, and the companies have reciprocal revenue-sharing arrangements. We hold rights to OpenAI\u2019s intellectual property, including models and infrastructure, for integration into our products.",
+        "why_notable": "A dedicated description of the OpenAI relationship in Industry Trends, characterising IP rights, exclusivity and a right of first refusal in management's own terms."
+      },
+      {
+        "quote": "Other, net primarily reflects net recognized losses on equity method investments, including OpenAI.",
+        "why_notable": "Names OpenAI as a driver of a materially larger 'Other, net' loss \u2014 the partnership described as an opportunity also appearing as an earnings drag."
+      },
+      {
+        "quote": "Further, global, regional, and local economic developments and changes in global trade policies such as restrictions on international trade, including tariffs and other controls on imports or exports, could result in increased supply chain challenges, cost volatility, and consumer and economic uncertainty which may adversely affect our results of operations.",
+        "why_notable": "Explicit tariff and trade-policy language in the MD&A risk framing."
+      },
+      {
+        "quote": "Xbox hardware revenue decreased 25% driven by lower volume of consoles sold.",
+        "why_notable": "A blunt, unhedged statement of a sharp decline in a first-party hardware business."
+      },
+      {
+        "quote": "We disclose metrics to enable investors to evaluate progress against our ambitions, provide transparency into performance trends, and reflect the continued evolution of our products and services.",
+        "why_notable": "Justification language accompanying metric redefinitions \u2014 framing changed disclosure as transparency."
+      }
+    ]
+  }
+}

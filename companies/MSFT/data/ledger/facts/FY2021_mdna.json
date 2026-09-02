@@ -1,0 +1,151 @@
+{
+  "fiscal_year": 2021,
+  "task": "mdna",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:33:15Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 23964,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2377,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 23964,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2377,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 23964,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 23964
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "10-K_item7_mdna",
+      "accession": "0001564590-21-039151",
+      "form": "10-K",
+      "filing_date": "2021-07-29"
+    }
+  ],
+  "source_chars": 55583,
+  "source_sha256": "a9b991f6deef2fd5a57f54a3dcc82e43b9fe109ba071dd44ea2774bb0d781364",
+  "facts": {
+    "events": [
+      {
+        "type": "acquisition",
+        "description": "Completed acquisition of ZeniMax Media Inc., parent of Bethesda Softworks LLC, for $8.1 billion, reported in More Personal Computing segment.",
+        "date": "2021-03-09",
+        "quote": "On March 9, 2021, we completed our acquisition of ZeniMax Media Inc. (\u201cZeniMax\u201d), the parent company of Bethesda Softworks LLC, for a total purchase price of $8.1 billion, consisting primarily of cash. The purchase price included $768 million of cash and cash equivalents acquired."
+      },
+      {
+        "type": "acquisition",
+        "description": "Definitive agreement to acquire Nuance Communications, Inc. for $56.00 per share, all cash, valued at $19.7 billion, expected to close by end of calendar year 2021.",
+        "date": "2021-04-11",
+        "quote": "On April 11, 2021, we entered into a definitive agreement to acquire Nuance Communications, Inc. (\u201cNuance\u201d) for $56.00 per share in an all-cash transaction valued at $19.7 billion, inclusive of Nuance\u2019s net debt. The acquisition has been approved by Nuance\u2019s shareholders, and we expect it to close by the end of calendar year 2021, subject to the satisfaction of certain regulatory approvals and other customary closing conditions."
+      },
+      {
+        "type": "other",
+        "description": "Change in accounting estimate: useful life of server equipment increased from three to four years and network equipment from two to four years, effective fiscal year 2021, increasing operating income by $2.7 billion and net income by $2.3 billion.",
+        "date": "2020-07",
+        "quote": "In July 2020, we completed an assessment of the useful lives of our server and network equipment and determined we should increase the estimated useful life of server equipment from three years to four years and increase the estimated useful life of network equipment from two years to four years. This change in accounting estimate was effective beginning fiscal year 2021."
+      },
+      {
+        "type": "financing",
+        "description": "Debt exchange in March 2021: exchanged a portion of existing debt at a premium for cash and new debt with longer maturities.",
+        "date": "2021-03",
+        "quote": "In March 2021 and June 2020, we exchanged a portion of our existing debt at a premium for cash and new debt with longer maturities to take advantage of favorable financing rates in the debt markets, reflecting our credit rating and the low interest rate environment."
+      },
+      {
+        "type": "other",
+        "description": "Settlement of an additional portion of IRS audits for tax years 2004 to 2013 with a payment of $1.7 billion, including tax and interest, in the second quarter of fiscal year 2021.",
+        "date": null,
+        "quote": "In the second quarter of fiscal year 2021, we settled an additional portion of the IRS audits for tax years 2004 to 2013 and made a payment of $1.7 billion, including tax and interest. We remain under audit for tax years 2004 to 2017."
+      },
+      {
+        "type": "other",
+        "description": "Recorded a net income tax benefit of $620 million in Q3 FY2021 following the India Supreme Court decision on withholding taxes on software sales, covering fiscal years 1996 through 2016.",
+        "date": "2021-03",
+        "quote": "Therefore, we recorded a net income tax benefit of $620 million in the third quarter of fiscal year 2021 to reflect the results of the India Supreme Court decision impacting fiscal year 1996 through fiscal year 2016."
+      },
+      {
+        "type": "other",
+        "description": "Share repurchases of 101 million shares for $23.0 billion during fiscal year 2021 through share repurchase programs.",
+        "date": null,
+        "quote": "During fiscal years 2021 and 2020, we repurchased 101 million shares and 126 million shares of our common stock for $23.0 billion and $19.7 billion, respectively, through our share repurchase programs."
+      },
+      {
+        "type": "restructuring",
+        "description": "Reference to prior year charges associated with the closing of Microsoft Store physical locations, which reduced current-year operating expense comparisons.",
+        "date": null,
+        "quote": "Operating expenses decreased $752 million or 6% driven by prior year charges associated with the closing of our Microsoft Store physical locations and reductions in retail store expenses and marketing, offset in part by investments in Gaming."
+      }
+    ],
+    "segment_changes": [],
+    "notable_language": [
+      {
+        "quote": "Microsoft is a technology company whose mission is to empower every person and every organization on the planet to achieve more. We strive to create local opportunity, growth, and impact in every country around the world.",
+        "why_notable": "The recurring self-description/mission statement \u2014 the anchor phrasing to compare year over year."
+      },
+      {
+        "quote": "In fiscal year 2021, the COVID-19 pandemic continued to impact our business operations and financial results. Cloud usage and demand benefited as customers accelerate their digital transformation priorities.",
+        "why_notable": "Frames the pandemic as a net demand tailwind rather than a disruption \u2014 a shift in characterization from the prior year's emphasis on uncertainty."
+      },
+      {
+        "quote": "We saw improvement in customer advertising spend and savings in operating expenses related to COVID-19, but experienced weakness in transactional licensing.",
+        "why_notable": "Unusually direct admission of a specific weakness (transactional licensing) alongside the benefits."
+      },
+      {
+        "quote": "The COVID-19 pandemic may continue to impact our business operations and financial operating results, and there is uncertainty in the nature and degree of its continued effects over time.",
+        "why_notable": "Explicit hedge immediately following the benefit narrative \u2014 the company declines to project the direction of continued pandemic effects."
+      },
+      {
+        "quote": "The investments we are making in infrastructure and devices will continue to increase our operating costs and may decrease our operating margins.",
+        "why_notable": "A direct, recurring admission that investment spending may compress margins."
+      },
+      {
+        "quote": "Our success is highly dependent on our ability to attract and retain qualified employees.",
+        "why_notable": "Talent dependency stated as a stand-alone risk in MD&A rather than only in risk factors."
+      },
+      {
+        "quote": "We expect capital expenditures to increase in coming years to support growth in our cloud offerings.",
+        "why_notable": "Forward-looking commitment to rising capex \u2014 a signal of sustained cloud buildout."
+      },
+      {
+        "quote": "Excluding this impact, gross margin percentage decreased slightly driven by gross margin percentage reduction in More Personal Computing.",
+        "why_notable": "Concedes that, absent the useful-life accounting change, consolidated gross margin percentage actually declined."
+      },
+      {
+        "quote": "We disclose metrics to enable investors to evaluate progress against our ambitions, provide transparency into performance trends, and reflect the continued evolution of our products and services.",
+        "why_notable": "Explicit rationale for the metrics disclosure framework, framing metric selection as tracking 'our ambitions.'"
+      },
+      {
+        "quote": "If our customers choose to license cloud-based versions of our products and services rather than licensing transaction-based products and services, the associated revenue will shift from being recognized at the time of the transaction to being recognized over the subscription period or upon consumption, as applicable.",
+        "why_notable": "Standing caveat about the revenue-recognition consequence of the cloud transition, phrased conditionally despite the shift already being evident in results."
+      }
+    ]
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "fiscal_year": 2020,
+  "task": "board",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:32:11Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 11747,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 1080,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 11747,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 1080,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 11747,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 11747
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "DEF14A_director_bios",
+      "accession": "0001193125-20-272025",
+      "form": "DEF 14A",
+      "filing_date": "2020-10-19"
+    }
+  ],
+  "source_chars": 17930,
+  "source_sha256": "eefa5442ded7c96eb6590ac3c9cb72e40380a5ed0c3dd3d8c9ceeb50ecaefe19",
+  "facts": {
+    "board_size": 12,
+    "members": [
+      {
+        "name": "Reid G. Hoffman",
+        "role": null,
+        "director_since": null,
+        "committees": [],
+        "quote": "1. Election of Directors: (The Board recommends a vote FOR each nominee) 01. Reid G. Hoffman 02. Hugh F. Johnston 03. Teri L. List-Stoll 04. Satya Nadella"
+      },
+      {
+        "name": "Hugh F. Johnston",
+        "role": null,
+        "director_since": null,
+        "committees": [],
+        "quote": "01. Reid G. Hoffman 02. Hugh F. Johnston 03. Teri L. List-Stoll 04. Satya Nadella 05. Sandra E. Peterson"
+      },
+      {
+        "name": "Teri L. List-Stoll",
+        "role": null,
+        "director_since": null,
+        "committees": [],
+        "quote": "02. Hugh F. Johnston 03. Teri L. List-Stoll 04. Satya Nadella 05. Sandra E. Peterson 06. Penny S. Pritzker"
+      },
+      {
+        "name": "Satya Nadella",
+        "role": null,
+        "director_since": null,
+        "committees": [],
+        "quote": "03. Teri L. List-Stoll 04. Satya Nadella 05. Sandra E. Peterson 06. Penny S. Pritzker 07. Charles W. Scharf"
+      },
+      {
+        "name": "Sandra E. Peterson",
+        "role": null,
+        "director_since": null,
+        "committees": [],
+        "quote": "04. Satya Nadella 05. Sandra E. Peterson 06. Penny S. Pritzker 07. Charles W. Scharf 08. Arne M. Sorenson"
+      },
+      {
+        "name": "Penny S. Pritzker",
+        "role": null,
+        "director_since": null,
+        "committees": [],
+        "quote": "05. Sandra E. Peterson 06. Penny S. Pritzker 07. Charles W. Scharf 08. Arne M. Sorenson 09. John W. Stanton"
+      },
+      {
+        "name": "Charles W. Scharf",
+        "role": null,
+        "director_since": null,
+        "committees": [],
+        "quote": "06. Penny S. Pritzker 07. Charles W. Scharf 08. Arne M. Sorenson 09. John W. Stanton 10. John W. Thompson"
+      },
+      {
+        "name": "Arne M. Sorenson",
+        "role": null,
+        "director_since": null,
+        "committees": [],
+        "quote": "07. Charles W. Scharf 08. Arne M. Sorenson 09. John W. Stanton 10. John W. Thompson For Against Abstain"
+      },
+      {
+        "name": "John W. Stanton",
+        "role": null,
+        "director_since": null,
+        "committees": [],
+        "quote": "08. Arne M. Sorenson 09. John W. Stanton 10. John W. Thompson For Against Abstain"
+      },
+      {
+        "name": "John W. Thompson",
+        "role": null,
+        "director_since": null,
+        "committees": [],
+        "quote": "The undersigned hereby appoints JOHN W. THOMPSON and SATYA NADELLA, and each of them, with full power of substitution, as proxies to vote all the shares the undersigned is entitled to vote at the Annual Shareholders Meeting"
+      },
+      {
+        "name": "Emma N. Walmsley",
+        "role": null,
+        "director_since": null,
+        "committees": [],
+        "quote": "11. Emma N. Walmsley 12. Padmasree Warrior2. Advisory vote to approve named executive officer compensation"
+      },
+      {
+        "name": "Padmasree Warrior",
+        "role": null,
+        "director_since": null,
+        "committees": [],
+        "quote": "11. Emma N. Walmsley 12. Padmasree Warrior2. Advisory vote to approve named executive officer compensation"
+      }
+    ],
+    "committees": [
+      "Governance and Nominating Committee",
+      "Audit Committee"
+    ]
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "fiscal_year": 2020,
+  "task": "events_8k",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:32:26Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 12339,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 1327,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 12339,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 1327,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 12339,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 12339
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-19-249565",
+      "form": "8-K",
+      "filing_date": "2019-09-19",
+      "items": [
+        "5.02",
+        "9.01"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-19-307138",
+      "form": "8-K",
+      "filing_date": "2019-12-05",
+      "items": [
+        "5.07"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-20-073072",
+      "form": "8-K",
+      "filing_date": "2020-03-13",
+      "items": [
+        "5.02",
+        "9.01"
+      ]
+    }
+  ],
+  "source_chars": 11690,
+  "source_sha256": "cf8256ff1a5e433a382b54ac55d6035c6d60941ebe5750dcc4f1e1080b8ac9dc",
+  "facts": {
+    "leadership": [
+      {
+        "name": "Charles H. Noski",
+        "role": "Member of the Board of Directors",
+        "change": "departure_announced",
+        "date": "2019-09-19",
+        "stated_reason": null,
+        "quote": "(b) Director retirement. Charles H. Noski and Helmut Panke, each of whom has served on the Microsoft Board of Directors since 2003, have informed the Company they have decided to retire from the Board and will not seek re-election at the 2019 annual shareholders meeting on December 4, 2019. Their retirement will be effective on that date."
+      },
+      {
+        "name": "Helmut Panke",
+        "role": "Member of the Board of Directors",
+        "change": "departure_announced",
+        "date": "2019-09-19",
+        "stated_reason": null,
+        "quote": "Charles H. Noski and Helmut Panke, each of whom has served on the Microsoft Board of Directors since 2003, have informed the Company they have decided to retire from the Board and will not seek re-election at the 2019 annual shareholders meeting on December 4, 2019."
+      },
+      {
+        "name": "Emma N. Walmsley",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2019-12-04",
+        "stated_reason": null,
+        "quote": "Emma N. Walmsley\nElected\n99.89\n%\n5,385,958,687\n6,049,602\n256,567,454\n961,547,385"
+      },
+      {
+        "name": "William H. Gates III",
+        "role": "Director",
+        "change": "other",
+        "date": "2019-12-04",
+        "stated_reason": null,
+        "quote": "William H. Gates III\nRe-elected\n99.72\n%\n5,379,317,204\n14,898,746\n254,359,793\n961,547,385"
+      },
+      {
+        "name": "Satya Nadella",
+        "role": "Director",
+        "change": "other",
+        "date": "2019-12-04",
+        "stated_reason": null,
+        "quote": "Satya Nadella\nRe-elected\n99.91\n%\n5,388,999,838\n4,730,329\n254,845,576\n961,547,385"
+      },
+      {
+        "name": "Bill Gates",
+        "role": "co-founder and member of the Board of Directors",
+        "change": "departed",
+        "date": "2020-03-13",
+        "stated_reason": null,
+        "quote": "(b) Bill Gates, co-founder and member of the Board of Directors of Microsoft, resigned from the Board effective March 13, 2020. The Company\u2019s press release announcing Mr. Gates\u2019 plans is attached as Exhibit 99.1."
+      }
+    ],
+    "events": [
+      {
+        "type": "other",
+        "description": "2019 Annual Shareholders Meeting held; shareholders elected all thirteen director nominees, approved named executive officer compensation on an advisory basis (76.69% for), ratified Deloitte & Touche LLP as independent registered public accounting firm for fiscal year 2020, and rejected shareholder proposals on employee representation on the Board and on a gender pay gap report.",
+        "date": "2019-12-04",
+        "quote": "On December 4, 2019, Microsoft Corporation (the \u201cCompany\u201d) held its 2019 Annual Shareholders Meeting (the \u201cAnnual Meeting\u201d). There were 7,632,138,696 shares of common stock entitled to be voted at the Annual Meeting, of which 6,610,123,128 were voted in person or by proxy."
+      },
+      {
+        "type": "leadership_transition",
+        "description": "Announced retirement of two long-serving directors, Charles H. Noski and Helmut Panke, effective at the December 4, 2019 annual shareholders meeting; no reason stated.",
+        "date": "2019-09-19",
+        "quote": "have informed the Company they have decided to retire from the Board and will not seek re-election at the 2019 annual shareholders meeting on December 4, 2019. Their retirement will be effective on that date."
+      },
+      {
+        "type": "leadership_transition",
+        "description": "Resignation of co-founder Bill Gates from the Board of Directors, effective March 13, 2020; no reason stated in the 8-K body.",
+        "date": "2020-03-13",
+        "quote": "Bill Gates, co-founder and member of the Board of Directors of Microsoft, resigned from the Board effective March 13, 2020."
+      }
+    ]
+  }
+}

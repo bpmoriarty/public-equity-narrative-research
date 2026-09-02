@@ -1,0 +1,158 @@
+{
+  "fiscal_year": 2025,
+  "task": "letter",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:41:23Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 11554,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2457,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 11554,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2457,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 11554,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 11554
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "letter_full_text",
+      "accession": "0001193125-25-245177",
+      "form": "ARS",
+      "filing_date": "2025-10-21"
+    }
+  ],
+  "source_chars": 17347,
+  "source_sha256": "7b815dcb4c340c4b71c5fbca8b6c2fd121ffd58dd43d35121616dd5c79c68ae8",
+  "facts": {
+    "strategic_priorities": [
+      {
+        "text": "three core business priorities as our North Star: security, quality, and AI innovation",
+        "quote": "To deliver on our mission, we remain focused on three core business priorities as our North Star: security, quality, and\nAI innovation."
+      },
+      {
+        "text": "Delivering current platforms at scale while building the next generation",
+        "quote": "We are delivering our current platforms at scale while building the next generation, always striving to\ncreate more value for our customers, our partners, and the world."
+      },
+      {
+        "text": "Continue to lead the AI infrastructure wave \u2014 datacenter and capacity expansion",
+        "quote": "We continue to lead the AI infrastructure wave. We opened new datacenters across six continents and now operate\nmore than 400 datacenters in 70 regions, more than any other cloud provider."
+      },
+      {
+        "text": "Two foundational areas of AI innovation: Cloud and AI infrastructure, and the family of Copilots and agents",
+        "quote": "At the same time, we have made major advances in AI innovation, including across two foundational areas: our Cloud\nand AI infrastructure, and our family of Copilots and agents."
+      },
+      {
+        "text": "Investing in sovereign cloud offerings for data residency needs",
+        "quote": "And we continue to invest in sovereign cloud offerings to meet the unique data\nresidency needs of governments and industries worldwide."
+      },
+      {
+        "text": "Being Customer Zero \u2014 applying AI to our own work and sharing the playbook",
+        "quote": "We are focused on being Customer Zero, applying AI to reduce toil and improve flow in our own work while creating\na playbook we can share with the world."
+      },
+      {
+        "text": "A new way of working that expands job scopes and reduces handoffs",
+        "quote": "We\u2019re also embracing a new way of working\u2014one that expands job scopes, reduces handoffs, and gives teams tools\nto scale productivity in nonlinear ways."
+      },
+      {
+        "text": "Skilling and opportunity commitment through Microsoft Elevate",
+        "quote": "Over the next five\nyears, we will invest $4 billion in cash and AI cloud technology to schools, community and technical colleges, and\nnonprofit organizations."
+      },
+      {
+        "text": "Driving responsible AI innovation and building safe and secure technology",
+        "quote": "That\u2019s why we are committed to driving\nresponsible AI innovation and building safe and secure technology. As we do, we are guided by our values of respect,\nintegrity, and accountability."
+      },
+      {
+        "text": "Sustainability commitments: carbon negative, water positive, zero waste, protect more land than we use",
+        "quote": "2025 also marked the midpoint in our journey to become a carbon negative, water positive, zero waste company,\nand to protect more land than we use."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "continue to think in decades but execute in quarters, approaching each day with the humility and curiosity required\nto continuously improve, while being guided by our bold vision for the future.",
+        "why_notable": "\"Think in decades but execute in quarters\" is the letter's signature refrain, repeated at least three times including the closing line \u2014 a deliberate framing device for balancing heavy AI capex against quarterly results."
+      },
+      {
+        "quote": "Financially, it was a year of record performance. Revenue was $281.7 billion, up 15 percent. Operating income grew\n17 percent to $128.5 billion. And Azure surpassed $75 billion in revenue for the first time, up 34 percent.",
+        "why_notable": "The headline success claim, stated with specific figures; the Azure $75 billion milestone recurs later in the letter's closing reflection."
+      },
+      {
+        "quote": "Fifty years after our founding, Microsoft is once again at the heart of a generational moment in technology as we\nfind ourselves in the midst of the AI platform shift.",
+        "why_notable": "Frames the year as a generational platform shift and anchors it to the 50th anniversary \u2014 the letter's organizing premise."
+      },
+      {
+        "quote": "Security and quality are non-negotiable. Our infrastructure and services are mission critical for the world. This year,\nwe made significant progress across both our Secure Future Initiative (SFI) and Quality Excellence Initiative (QEI), but\nwe recognize our work here is never done.",
+        "why_notable": "An unusually direct acknowledgment of unfinished work on security and quality, and the elevation of quality (QEI) alongside security as a named initiative."
+      },
+      {
+        "quote": "We must earn our permission to operate every day,",
+        "why_notable": "A striking humility/legitimacy phrase \u2014 signals trust and regulatory standing as a live concern rather than an assumption."
+      },
+      {
+        "quote": "These results reflect the growing demand for our platform and the trust customers are placing in us. We take neither for\ngranted.",
+        "why_notable": "Success claim immediately hedged with a trust caveat \u2014 the tone pattern of the whole letter."
+      },
+      {
+        "quote": "Through SFI, we have dedicated the equivalent of 34,000 full-time engineers to our highest-priority security work.",
+        "why_notable": "A quantified security-investment claim stated in an unusual unit (\"equivalent of\" full-time engineers) rather than dollars."
+      },
+      {
+        "quote": "Together, these initiatives are laying the foundation for a renaissance of our engineering culture, where we build\nplanet-scale systems that power the world, with the security and quality they require.",
+        "why_notable": "\"Renaissance of our engineering culture\" implies the prior culture had lapsed \u2014 a notable self-critical framing."
+      },
+      {
+        "quote": "Our growth mindset is essential to our ability to continue leading this AI era. It enables us to innovate both within\nMicrosoft and with those we serve. We must be learn-it-alls, willing to experiment, guided by evaluations, and\ncommitted to continuous improvement.",
+        "why_notable": "The long-recurring \"growth mindset\"/\"learn-it-alls\" culture language, now qualified by the newer phrase \"guided by evaluations.\""
+      },
+      {
+        "quote": "This isn\u2019t just about driving efficiency. It\u2019s about empowering our people to\ndream bigger and get to \u201cjob complete\u201d faster, with less friction and greater impact than ever before.",
+        "why_notable": "An explicit disclaimer that the new way of working is not about efficiency \u2014 notable given the year's workforce context; the denial itself is the tell."
+      },
+      {
+        "quote": "And just last month, we announced the world\u2019s most powerful AI datacenter, Fairwater\nin southeastern Wisconsin, which will deliver 10x the performance of the world\u2019s fastest supercomputer today.",
+        "why_notable": "Superlative infrastructure claim with a forward-looking performance multiple \u2014 the kind of language to track year over year."
+      },
+      {
+        "quote": "Already,\n80 percent of the Fortune 500 use Foundry for their AI workloads.",
+        "why_notable": "Adoption-breadth claim of a type that recurs across the letter (100 million Copilot MAU, 20 million GitHub Copilot users, 230,000 Copilot Studio organizations) \u2014 usage metrics substituting for revenue disclosure."
+      },
+      {
+        "quote": "Making progress on these commitments takes time. But here, too\u2014we are guided by a bold vision, thinking in\ndecades and executing in quarters.",
+        "why_notable": "The decades/quarters refrain applied to sustainability, softening the pace of progress on those targets."
+      },
+      {
+        "quote": "We are on track to meet many of our targets and continue to accelerate\nprogress for others.",
+        "why_notable": "A hedge: \"many\" targets on track, with the rest described only as accelerating \u2014 worth comparing to prior-year phrasing."
+      }
+    ]
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "fiscal_year": 2021,
+  "task": "business",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:33:10Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 29476,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2355,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 29476,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2355,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 29476,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 29476
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "10-K_item1_business",
+      "accession": "0001564590-21-039151",
+      "form": "10-K",
+      "filing_date": "2021-07-29"
+    }
+  ],
+  "source_chars": 74769,
+  "source_sha256": "5322d9023b7f84b9f7f8269b97b9f8beebc62ee4c23da3ff3ffbec4f378391f2",
+  "facts": {
+    "strategic_priorities": [
+      {
+        "text": "Research and development efforts focus on three interconnected ambitions: reinvent productivity and business processes; build the intelligent cloud and intelligent edge platform; create more personal computing.",
+        "quote": "To achieve our vision, our research and development efforts focus on three interconnected ambitions:\n\u2022\nReinvent productivity and business processes.\n\u2022\nBuild the intelligent cloud and intelligent edge platform.\n\u2022\nCreate more personal computing."
+      },
+      {
+        "text": "Growth depends on securely delivering continuous innovation and advancing our leading productivity and collaboration tools and services, including Office, Dynamics, and LinkedIn.",
+        "quote": "Our growth depends on securely delivering continuous innovation and advancing our leading productivity and collaboration tools and services, including Office, Dynamics, and LinkedIn."
+      },
+      {
+        "text": "Partnering with organizations on their digital transformation is one of our largest opportunities; we aim to become the strategic digital transformation platform and partner of choice.",
+        "quote": "Partnering with organizations on their digital transformation during this period is one of our largest opportunities and we are uniquely positioned to become the strategic digital transformation platform and partner of choice; their success is our success."
+      },
+      {
+        "text": "Our strategy requires continued investment in datacenters and other hybrid and edge infrastructure to support our services.",
+        "quote": "Our strategy requires continued investment in datacenters and other hybrid and edge infrastructure to support our services."
+      },
+      {
+        "text": "Accelerating our innovation across the spectrum of intelligent edge devices, from IoT sensors to gateway devices and edge hardware.",
+        "quote": "We see more emerging use cases and needs for compute and security at the edge and are accelerating our innovation across the spectrum of intelligent edge devices, from IoT sensors to gateway devices and edge hardware to build, manage, and secure edge workloads."
+      },
+      {
+        "text": "Acquiring Nuance Communications to build on our industry-specific cloud offerings.",
+        "quote": "In April 2021, we entered into a definitive agreement to acquire Nuance Communications, Inc., a cloud and AI software provider with healthcare and enterprise AI experience. The acquisition will build on our industry-specific cloud offerings."
+      },
+      {
+        "text": "Accelerating development of mixed reality solutions with new Azure services and devices, merging the physical and digital worlds.",
+        "quote": "We are accelerating our development of mixed reality solutions with new Azure services and devices. Microsoft Mesh enables presence and shared experiences from anywhere through mixed reality applications."
+      },
+      {
+        "text": "Accelerating adoption of AI innovations from research to products; the ability to convert data into AI drives our competitive advantage.",
+        "quote": "The ability to convert data into AI drives our competitive advantage."
+      },
+      {
+        "text": "Committed to designing and marketing first-party devices to help drive innovation, create new device categories, and stimulate demand in the Windows ecosystem.",
+        "quote": "We are committed to designing and marketing first-party devices to help drive innovation, create new device categories, and stimulate demand in the Windows ecosystem."
+      },
+      {
+        "text": "Continuing to invest in content, community, and cloud services to expand usage and deepen engagement in gaming, including cloud gaming across PC, console, and mobile.",
+        "quote": "To expand usage and deepen engagement, we continue to invest in content, community, and cloud services as we pursue the expansive opportunity in the gaming industry. We have broadened our approach to how we think about gaming end-to-end, from the way games are created and distributed to how they are played, including cloud gaming so players can stream across PC, console, and mobile."
+      },
+      {
+        "text": "Windows 10 monetization ambition includes gaming, services, subscriptions, and search advertising.",
+        "quote": "Our ambition for Windows 10 monetization opportunities includes gaming, services, subscriptions, and search advertising."
+      },
+      {
+        "text": "Goal is to lead the industry in several distinct areas of technology over the long-term, investing significant resources in transforming the workplace; cloud-based services; applying AI; using Windows to fuel the cloud business; security end-to-end; and inventing new gaming experiences.",
+        "quote": "Our goal is to lead the industry in several distinct areas of technology over the long-term, which we expect will translate to sustained growth. We are investing significant resources in:"
+      },
+      {
+        "text": "Future growth depends on our ability to transcend current product category definitions, business models, and sales motions.",
+        "quote": "Our future growth depends on our ability to transcend current product category definitions, business models, and sales motions."
+      },
+      {
+        "text": "Commitment to be carbon negative by 2030 and remove all historically emitted carbon by 2050, with $1 billion over four years in climate technologies, plus water positive and zero waste by 2030.",
+        "quote": "In January 2020, we announced a bold commitment and detailed plan to be carbon negative by 2030, and to remove from the environment by 2050 all the carbon we have emitted since our founding in 1975. This included a commitment to invest $1 billion over four years in new technologies and innovative climate solutions. We built on this pledge by adding commitments to be water positive by 2030, zero waste by 2030, and to protect ecosystems by developing a Planetary Computer."
+      },
+      {
+        "text": "Doubling the number of Black and African American people managers, senior individual contributors, and senior leaders in the United States by 2025 as part of addressing racial injustice and inequity.",
+        "quote": "These efforts include increasing our representation and strengthening our culture of inclusion by doubling the number of Black and African American people managers, senior individual contributors, and senior leaders in the United States by 2025; evolving our ecosystem with our supply chain, banking partners, and partner ecosystem"
+      },
+      {
+        "text": "Maintaining long-term commitment to research and development across digital work and life experiences, cloud computing, AI, devices, and operating systems.",
+        "quote": "Based on our assessment of key technology trends, we maintain our long-term commitment to research and development across a wide spectrum of technologies, tools, and platforms spanning digital work and life experiences, cloud computing, AI, devices, and operating systems."
+      }
+    ],
+    "segments": [
+      {
+        "name": "Productivity and Business Processes",
+        "note": null,
+        "quote": "We operate our business and report our financial performance using three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing."
+      },
+      {
+        "name": "Intelligent Cloud",
+        "note": null,
+        "quote": "Our Intelligent Cloud segment consists of our public, private, and hybrid server products and cloud services that can power modern business and developers."
+      },
+      {
+        "name": "More Personal Computing",
+        "note": null,
+        "quote": "Our More Personal Computing segment consists of products and services that put customers at the center of the experience with our technology."
+      }
+    ],
+    "headcount": {
+      "value": 181000,
+      "as_stated": "approximately 181,000 people on a full-time basis, 103,000 in the U.S. and 78,000 internationally, as of June 30, 2021",
+      "quote": "As of June 30, 2021, we employed approximately 181,000 people on a full-time basis, 103,000 in the U.S. and 78,000 internationally."
+    }
+  }
+}

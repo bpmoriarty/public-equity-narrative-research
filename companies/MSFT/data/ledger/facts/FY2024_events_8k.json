@@ -1,0 +1,120 @@
+{
+  "fiscal_year": 2024,
+  "task": "events_8k",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:39:46Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 12789,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 1092,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 12789,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 1092,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 12789,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 12789
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-23-255762",
+      "form": "8-K",
+      "filing_date": "2023-10-13",
+      "items": [
+        "2.01"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-23-291720",
+      "form": "8-K",
+      "filing_date": "2023-12-08",
+      "items": [
+        "5.07"
+      ]
+    }
+  ],
+  "source_chars": 13565,
+  "source_sha256": "98af072cd723063515aadaddab1d2d42db54477462b2e1147aa53a395f769711",
+  "facts": {
+    "leadership": [
+      {
+        "name": "Catherine MacGregor",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2023-12-07",
+        "stated_reason": null,
+        "quote": "Catherine MacGregor\nElected\n99.77\n5,129,394,127\n11,706,923\n8,774,964\n1,191,099,632"
+      },
+      {
+        "name": "Mark A. L. Mason",
+        "role": "Director",
+        "change": "appointed",
+        "date": "2023-12-07",
+        "stated_reason": null,
+        "quote": "Mark A. L. Mason\nElected\n99.78\n5,129,864,831\n10,925,164\n9,086,019\n1,191,099,632"
+      }
+    ],
+    "events": [
+      {
+        "type": "acquisition",
+        "description": "Microsoft completed its previously announced acquisition of Activision Blizzard, Inc.; Merger Sub merged with and into Activision Blizzard, with Activision Blizzard surviving as a wholly owned subsidiary of Microsoft.",
+        "date": "2023-10-13",
+        "quote": "On October 13, 2023, Microsoft Corporation, a Washington corporation (\u201cMicrosoft\u201d), completed its previously announced acquisition of Activision Blizzard, Inc., a Delaware corporation (\u201cActivision Blizzard\u201d)."
+      },
+      {
+        "type": "acquisition",
+        "description": "Each outstanding share of Activision Blizzard common stock was cancelled and converted into the right to receive $95.00 in cash, without interest, subject to stated exceptions.",
+        "date": "2023-10-13",
+        "quote": "was cancelled and automatically converted into the right to receive $95.00 in cash (the \u201cPer Share Amount\u201d), without interest."
+      },
+      {
+        "type": "other",
+        "description": "Unvested Activision Blizzard options and stock-based awards were assumed by Microsoft and converted into corresponding Microsoft awards; vested awards were cashed out at the Per Share Amount.",
+        "date": "2023-10-13",
+        "quote": "In addition, at the Effective Time, subject to certain exceptions, unvested Activision Blizzard options and stock-based awards were assumed by Microsoft and converted into corresponding awards that are subject to shares of Microsoft common stock."
+      },
+      {
+        "type": "other",
+        "description": "Microsoft held its 2023 Annual Shareholders Meeting, at which twelve director nominees were elected, say-on-pay was approved on an advisory basis, an annual say-on-pay frequency was approved, Deloitte & Touche LLP was ratified as auditor for fiscal year 2024, and nine shareholder proposals were not approved.",
+        "date": "2023-12-07",
+        "quote": "On December 7, 2022, Microsoft Corporation (the \u201cCompany\u201d) held its 2023 Annual Shareholders Meeting (the \u201cAnnual Meeting\u201d). There were 7,429,030,596 shares of common stock entitled to be voted at the Annual Meeting, of which 6,340,975,646 were voted in person or by proxy."
+      },
+      {
+        "type": "other",
+        "description": "Shareholders ratified the appointment of Deloitte & Touche LLP as the Company's independent registered public accounting firm for fiscal year 2024.",
+        "date": "2023-12-07",
+        "quote": "(4) Voted to ratify the appointment of Deloitte & Touche LLP as the Company\u2019s independent registered public accounting firm for fiscal year 2024."
+      }
+    ]
+  }
+}

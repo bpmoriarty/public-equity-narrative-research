@@ -1,0 +1,95 @@
+{
+  "fiscal_year": 2025,
+  "task": "events_8k",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:41:32Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 12579,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 719,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 12579,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 719,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 12579,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 12579
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-24-275524",
+      "form": "8-K",
+      "filing_date": "2024-12-11",
+      "items": [
+        "5.07",
+        "7.01"
+      ]
+    },
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-25-010492",
+      "form": "8-K",
+      "filing_date": "2025-01-22",
+      "items": [
+        "5.02"
+      ]
+    }
+  ],
+  "source_chars": 11589,
+  "source_sha256": "86ce37a9cf05e5da3e131a11b98b7fa0d85f17dcc68a6fe08c06955fe9b3c2c9",
+  "facts": {
+    "leadership": [
+      {
+        "name": "Christopher D. Young",
+        "role": "Executive Vice President, Business Development, Strategy, and Ventures",
+        "change": "departed",
+        "date": "2025-01-22",
+        "stated_reason": null,
+        "quote": "On January 22, 2025, Christopher D. Young informed Microsoft Corporation (the \u201cCompany\u201d) of his decision to resign from the Company. As a result, he will cease to serve as Executive Vice President, Business Development, Strategy, and Ventures, effective immediately. He will remain an employee of the Company to provide transition support and fulfill additional responsibilities until the end of March."
+      }
+    ],
+    "events": [
+      {
+        "type": "impairment",
+        "description": "Expected impairment charge of approximately $800 million in Q2 FY2025 on Microsoft's minority investment in Cruise, after GM announced its intent to realign its autonomous driving strategy and no longer fund Cruise's robotaxi development work; estimated negative impact of approximately $0.09 to second quarter diluted EPS, and not included in the second quarter guidance provided on October 30, 2024.",
+        "date": "2024-12-10",
+        "quote": "On December 10, 2024, GM announced its intent to realign its autonomous driving strategy, no longer fund Cruise\u2019s robotaxi development work, and pursue the acquisition of minority investor shares. As a result, we expect to record an impairment charge of approximately $800 million in the second quarter of fiscal year 2025."
+      },
+      {
+        "type": "other",
+        "description": "2024 Annual Shareholders Meeting held; all 12 director nominees re-elected, say-on-pay approved on an advisory basis, and Deloitte & Touche LLP ratified as independent registered public accounting firm for fiscal year 2025; six shareholder proposals were not approved.",
+        "date": "2024-12-10",
+        "quote": "On December 10, 2024, Microsoft Corporation (the \u201cCompany\u201d or \u201cMicrosoft\u201d) held its 2024 Annual Shareholders Meeting (the \u201cAnnual Meeting\u201d). There were 7,434,436,393 shares of common stock entitled to be voted at the Annual Meeting, of which 6,417,206,480 were voted in person or by proxy."
+      }
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "fiscal_year": 2022,
+  "task": "mdna",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:35:09Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 23014,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 2535,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 23014,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 2535,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 23014,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 23014
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "10-K_item7_mdna",
+      "accession": "0001564590-22-026876",
+      "form": "10-K",
+      "filing_date": "2022-07-28"
+    }
+  ],
+  "source_chars": 54863,
+  "source_sha256": "482fa44ebdab009cff37bdb7e608941c1edd082e65747ef0ca459b3f6fab47e8",
+  "facts": {
+    "events": [
+      {
+        "type": "acquisition",
+        "description": "Completed acquisition of Nuance Communications, Inc. for a total purchase price of $18.8 billion, consisting primarily of cash; reported as part of Intelligent Cloud segment.",
+        "date": "2022-03-04",
+        "quote": "On March 4, 2022, we completed our acquisition of Nuance Communications, Inc. (\u201cNuance\u201d) for a total purchase price of $18.8 billion, consisting primarily of cash. Nuance is a cloud and artificial intelligence (\u201cAI\u201d) software provider with healthcare and enterprise AI experience, and the acquisition will build on our industry-specific cloud offerings."
+      },
+      {
+        "type": "acquisition",
+        "description": "Definitive agreement to acquire Activision Blizzard, Inc. for $95.00 per share in an all-cash transaction valued at $68.7 billion; expected to close in fiscal year 2023 subject to regulatory approvals.",
+        "date": "2022-01-18",
+        "quote": "On January 18, 2022 , we entered into a definitive agreement to acquire Activision Blizzard , Inc. (\u201cActivision Blizzard\u201d ) for $ 95 .00 per share in an all-cash transaction valued at $ 68 .7 billion, inclusive of Activision Blizzard\u2019s net cash. The acquisition has been approved by Activision Blizzard\u2019s shareholders, and we expect it to close in fiscal year 2023, subject to the satisfaction of certain regulatory approvals and other customary closing conditions."
+      },
+      {
+        "type": "other",
+        "description": "Change in accounting estimate: useful lives of server and network equipment increased from four years to six years, effective fiscal year 2023, estimated to increase FY2023 operating income by $3.7 billion.",
+        "date": "2022-07-01",
+        "quote": "In July 2022, we completed an assessment of the useful lives of our server and network equipment. Due to investments in software that increased efficiencies in how we operate our server and network equipment, as well as advances in technology, we determined we should increase the estimated useful lives of both server and network equipment from four years to six years."
+      },
+      {
+        "type": "other",
+        "description": "Transfer of certain intangible properties from Puerto Rico subsidiary to the U.S., resulting in a $3.3 billion net income tax benefit in Q1 FY2022.",
+        "date": null,
+        "quote": "In the first quarter of fiscal year 2022, we transferred certain intangible properties from our Puerto Rico subsidiary to the U.S. The transfer of intangible properties resulted in a $3.3 billion net income tax benefit in the first quarter of fiscal year 2022, as the value of future U.S. tax deductions exceeds the current tax liability from the U.S. global intangible low-taxed income tax."
+      },
+      {
+        "type": "other",
+        "description": "Share repurchases of 95 million shares for $28.0 billion in fiscal year 2022; $40.7 billion remained of the $60 billion program as of June 30, 2022.",
+        "date": null,
+        "quote": "During fiscal years 2022 and 2021, we repurchased 95 million shares and 101 million shares of our common stock for $28.0 billion and $23.0 billion, respectively, through our share repurchase programs. All repurchases were made using cash resources. As of June 30, 2022, $40.7 billion remained of our $60 billion share repurchase program."
+      },
+      {
+        "type": "other",
+        "description": "Board of Directors declared quarterly dividends of $0.62 per share during fiscal year 2022.",
+        "date": null,
+        "quote": "During fiscal year 2022, our Board of Directors declared quarterly dividends of $0.62 per share. We intend to continue returning capital to shareholders in the form of dividends, subject to declaration by our Board of Directors."
+      }
+    ],
+    "segment_changes": [
+      {
+        "name": "Intelligent Cloud",
+        "note": "Nuance, acquired March 4, 2022, is reported as part of the Intelligent Cloud segment and is included in all commercial metrics and the Server products and cloud services revenue growth metric.",
+        "quote": "In the third quarter of fiscal year 2022, we completed our acquisition of Nuance. Nuance is included in all commercial metrics and our Server products and cloud services revenue growth metric. Azure and other cloud services revenue includes Nuance cloud services, and Server products revenue includes Nuance on-premises offerings."
+      },
+      {
+        "name": "Microsoft Cloud",
+        "note": "Metric renamed \u2014 formerly reported as commercial cloud.",
+        "quote": "Microsoft Cloud (formerly commercial cloud) revenue increased 32% to $91.2 billion."
+      },
+      {
+        "name": "Office Consumer and Server products and cloud services; Windows OEM and Search and news advertising",
+        "note": "Presentation and method of calculation for certain metrics updated in the first quarter of fiscal year 2022; company states no material impact on previously reported amounts.",
+        "quote": "In the first quarter of fiscal year 2022, we made updates to the presentation and method of calculation for certain metrics, most notably changes to incorporate all current and anticipated revenue streams within our Office Consumer and Server products and cloud services metrics and changes to align with how we manage our Windows OEM and Search and news advertising businesses. None of these changes had a material impact on previously reported amounts in our MD&A."
+      }
+    ],
+    "notable_language": [
+      {
+        "quote": "The investments we are making in infrastructure and devices will continue to increase our operating costs and may decrease our operating margins.",
+        "why_notable": "A direct admission that ongoing investment is expected to raise costs and may compress margins \u2014 recurring but unusually plain language about a negative consequence."
+      },
+      {
+        "quote": "Aggregate demand for our software, services, and devices is correlated to global macroeconomic and geopolitical factors, which remain dynamic.",
+        "why_notable": "Hedged framing of macro and geopolitical exposure \u2014 \"remain dynamic\" as a euphemism for uncertainty in a year of macro deterioration."
+      },
+      {
+        "quote": "Gaming revenue increased $860 million or 6% on a strong prior year comparable that benefited from Xbox Series X|S launches and stay-at-home scenarios, driven by growth in Xbox hardware and Xbox content and services.",
+        "why_notable": "Management pre-frames slower Gaming growth as an artifact of a tough comparable and pandemic \"stay-at-home scenarios\" rather than demand weakness."
+      },
+      {
+        "quote": "Gross margin percentage decreased slightly. Excluding the impact of the fiscal year 2021 change in accounting estimate for the useful lives of our server and network equipment, gross margin percentage increased 1 point driven by improvement in Productivity and Business Processes.",
+        "why_notable": "Reported margin declined, and the improvement is only visible after excluding a prior-year accounting estimate change \u2014 an important qualification on the margin narrative."
+      },
+      {
+        "quote": "Extended disruptions at these suppliers and/or manufacturers could lead to a similar disruption in our ability to manufacture devices on time to meet consumer demand.",
+        "why_notable": "Explicit supply-chain concentration admission: few qualified suppliers and limited near-term flexibility to substitute manufacturers."
+      },
+      {
+        "quote": "Microsoft is a technology company whose mission is to empower every person and every organization on the planet to achieve more. We strive to create local opportunity, growth, and impact in every country around the world.",
+        "why_notable": "The recurring self-description/mission statement \u2014 the baseline phrasing against which year-over-year changes in self-characterisation are measured."
+      },
+      {
+        "quote": "We expect capital expenditures to increase in coming years to support growth in our cloud offerings.",
+        "why_notable": "Forward-looking commitment to rising capex, signaling sustained cloud infrastructure buildout."
+      }
+    ]
+  }
+}

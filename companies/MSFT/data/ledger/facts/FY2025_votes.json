@@ -1,0 +1,251 @@
+{
+  "fiscal_year": 2025,
+  "task": "votes",
+  "unit": null,
+  "ok": true,
+  "extracted_utc": "2026-09-02T16:41:56Z",
+  "model": "claude-opus-5",
+  "backend": "claude_code",
+  "billing": "seat",
+  "credentials_withheld": [],
+  "effort": "medium",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 2,
+    "cache_creation_input_tokens": 9890,
+    "cache_read_input_tokens": 20142,
+    "output_tokens": 3688,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 9890,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 3688,
+        "cache_read_input_tokens": 20142,
+        "cache_creation_input_tokens": 9890,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9890
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard"
+  },
+  "sources": [
+    {
+      "key": "8-K_8-K_whole",
+      "accession": "0001193125-25-311196",
+      "form": "8-K",
+      "filing_date": "2025-12-08",
+      "proxy_accession": "0001193125-25-245150",
+      "proxy_filed": "2025-10-21"
+    }
+  ],
+  "source_chars": 7633,
+  "source_sha256": "bcfe0d6d405d8748641e0a12b663df32d0693ba36783ec50c25be8e68a472c37",
+  "facts": {
+    "results": [
+      {
+        "matter": "Election of director Reid G. Hoffman",
+        "votes_for": 5120225979,
+        "votes_against": 48294508,
+        "abstentions": 14934170,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (99.07% votes for)",
+        "quote": "Reid G. Hoffman\nRe-elected\n99.07\n5,120,225,979\n48,294,508\n14,934,170\n1,137,975,835"
+      },
+      {
+        "matter": "Election of director Hugh F. Johnston",
+        "votes_for": 4733430707,
+        "votes_against": 437820499,
+        "abstentions": 12203451,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (91.53% votes for)",
+        "quote": "Hugh F. Johnston\nRe-elected\n91.53\n4,733,430,707\n437,820,499\n12,203,451\n1,137,975,835"
+      },
+      {
+        "matter": "Election of director Teri L. List",
+        "votes_for": 4999681887,
+        "votes_against": 175326264,
+        "abstentions": 8446506,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (96.61% votes for)",
+        "quote": "Teri L. List\nRe-elected\n96.61\n4,999,681,887\n175,326,264\n8,446,506\n1,137,975,835"
+      },
+      {
+        "matter": "Election of director Catherine MacGregor",
+        "votes_for": 5148368340,
+        "votes_against": 26590734,
+        "abstentions": 8495583,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (99.49% votes for)",
+        "quote": "Catherine MacGregor\nRe-elected\n99.49\n5,148,368,340\n26,590,734\n8,495,583\n1,137,975,835"
+      },
+      {
+        "matter": "Election of director Mark A. L. Mason",
+        "votes_for": 5122450020,
+        "votes_against": 52291857,
+        "abstentions": 8712780,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (98.99% votes for)",
+        "quote": "Mark A. L. Mason\nRe-elected\n98.99\n5,122,450,020\n52,291,857\n8,712,780\n1,137,975,835"
+      },
+      {
+        "matter": "Election of director Satya Nadella",
+        "votes_for": 4815433908,
+        "votes_against": 337016790,
+        "abstentions": 31003959,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (93.46% votes for)",
+        "quote": "Satya Nadella\nRe-elected\n93.46\n4,815,433,908\n337,016,790\n31,003,959\n1,137,975,835"
+      },
+      {
+        "matter": "Election of director Sandra E. Peterson",
+        "votes_for": 5004804899,
+        "votes_against": 166778650,
+        "abstentions": 11871108,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (96.78% votes for)",
+        "quote": "Sandra E. Peterson\nRe-elected\n96.78\n5,004,804,899\n166,778,650\n11,871,108\n1,137,975,835"
+      },
+      {
+        "matter": "Election of director Penny S. Pritzker",
+        "votes_for": 5147754253,
+        "votes_against": 27334798,
+        "abstentions": 8365606,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (99.47% votes for)",
+        "quote": "Penny S. Pritzker\nRe-elected\n99.47\n5,147,754,253\n27,334,798\n8,365,606\n1,137,975,835"
+      },
+      {
+        "matter": "Election of director John David Rainey",
+        "votes_for": 5159803411,
+        "votes_against": 14709088,
+        "abstentions": 8942158,
+        "broker_non_votes": 1137975835,
+        "outcome": "Elected (99.72% votes for)",
+        "quote": "John David Rainey\nElected\n99.72\n5,159,803,411\n14,709,088\n8,942,158\n1,137,975,835"
+      },
+      {
+        "matter": "Election of director Charles W. Scharf",
+        "votes_for": 4947789084,
+        "votes_against": 227012006,
+        "abstentions": 8653567,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (95.61% votes for)",
+        "quote": "Charles W. Scharf\nRe-elected\n95.61\n4,947,789,084\n227,012,006\n8,653,567\n1,137,975,835"
+      },
+      {
+        "matter": "Election of director John W. Stanton",
+        "votes_for": 5056509391,
+        "votes_against": 118267836,
+        "abstentions": 8677430,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (97.71% votes for)",
+        "quote": "John W. Stanton\nRe-elected\n97.71\n5,056,509,391\n118,267,836\n8,677,430\n1,137,975,835"
+      },
+      {
+        "matter": "Election of director Emma N. Walmsley",
+        "votes_for": 5147102809,
+        "votes_against": 27909382,
+        "abstentions": 8442466,
+        "broker_non_votes": 1137975835,
+        "outcome": "Re-elected (99.46% votes for)",
+        "quote": "Emma N. Walmsley\nRe-elected\n99.46\n5,147,102,809\n27,909,382\n8,442,466\n1,137,975,835"
+      },
+      {
+        "matter": "Advisory Vote to Approve Named Executive Officer Compensation",
+        "votes_for": 4744731533,
+        "votes_against": 415831135,
+        "abstentions": 22891989,
+        "broker_non_votes": 1137975835,
+        "outcome": "Approved (91.94% votes for); \"Approved, on an advisory basis, the compensation of the Company's named executive officers.\"",
+        "quote": "Advisory Vote to Approve Named Executive Officer Compensation\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nApproved\n91.94\n4,744,731,533\n415,831,135\n22,891,989\n1,137,975,835"
+      },
+      {
+        "matter": "Ratification of Appointment of Independent Auditor (Deloitte & Touche LLP) for Fiscal Year 2026",
+        "votes_for": 5897883259,
+        "votes_against": 408304657,
+        "abstentions": 15242576,
+        "broker_non_votes": 0,
+        "outcome": "Approved (93.53% votes for)",
+        "quote": "Ratification of Appointment of Independent Auditor for Fisal Year 2026\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nApproved\n93.53\n5,897,883,259\n408,304,657\n15,242,576\n0"
+      },
+      {
+        "matter": "Approval of the Microsoft Corporation 2026 Stock Plan",
+        "votes_for": 5016063751,
+        "votes_against": 151618873,
+        "abstentions": 15772033,
+        "broker_non_votes": 1137975835,
+        "outcome": "Approved (97.07% votes for)",
+        "quote": "Approval of the Microsoft Corporation 2026 Stock Plan\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nApproved\n97.07\n5,016,063,751\n151,618,873\n15,772,033\n1,137,975,835"
+      },
+      {
+        "matter": "Shareholder Proposal: European Security Program Censorship Risk Audit",
+        "votes_for": 40404047,
+        "votes_against": 5102931493,
+        "abstentions": 40119117,
+        "broker_non_votes": 1137975835,
+        "outcome": "Not approved (0.79% votes for)",
+        "quote": "Shareholder Proposal: European Security Program Censorship Risk Audit\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n0.79\n40,404,047\n5,102,931,493\n40,119,117\n1,137,975,835"
+      },
+      {
+        "matter": "Shareholder Proposal: Report on Risks of Censorship in Generative Artificial Intelligence",
+        "votes_for": 35508084,
+        "votes_against": 5104188603,
+        "abstentions": 43757970,
+        "broker_non_votes": 1137975835,
+        "outcome": "Not approved (0.69% votes for)",
+        "quote": "Shareholder Proposal: Report on Risks of Censorship in Generative Artificial Intelligence\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n0.69\n35,508,084\n5,104,188,603\n43,757,970\n1,137,975,835"
+      },
+      {
+        "matter": "Shareholder Proposal: Report on AI Data Usage Oversight",
+        "votes_for": 683895858,
+        "votes_against": 4435809588,
+        "abstentions": 63749211,
+        "broker_non_votes": 1137975835,
+        "outcome": "Not approved (13.36% votes for)",
+        "quote": "Shareholder Proposal: Report on AI Data Usage Oversight\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n13.36\n683,895,858\n4,435,809,588\n63,749,211\n1,137,975,835"
+      },
+      {
+        "matter": "Shareholder Proposal: Report on Data Operations in Human Rights Hotspots",
+        "votes_for": 1406735187,
+        "votes_against": 3712753371,
+        "abstentions": 63966099,
+        "broker_non_votes": 1137975835,
+        "outcome": "Not approved (27.48% votes for)",
+        "quote": "Shareholder Proposal: Report on Data Operations in Human Rights Hotspots\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n27.48\n1,406,735,187\n3,712,753,371\n63,966,099\n1,137,975,835"
+      },
+      {
+        "matter": "Shareholder Proposal: Report on Human Rights Due Diligence",
+        "votes_for": 1336945255,
+        "votes_against": 3738252211,
+        "abstentions": 108257191,
+        "broker_non_votes": 1137975835,
+        "outcome": "Not approved (26.34% votes for)",
+        "quote": "Shareholder Proposal: Report on Human Rights Due Diligence\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n26.34\n1,336,945,255\n3,738,252,211\n108,257,191\n1,137,975,835"
+      },
+      {
+        "matter": "Shareholder Proposal: Report on AI and Machine Learning Tools for Oil and Gas Development and Production",
+        "votes_for": 448005682,
+        "votes_against": 4671182894,
+        "abstentions": 64266081,
+        "broker_non_votes": 1137975835,
+        "outcome": "Not approved (8.75% votes for)",
+        "quote": "Shareholder Proposal: Report on AI and Machine Learning Tools for Oil and Gas Development and Production\nVote result\n% Votes For\nFor\nAgainst\nAbstain\nBroker Non-Votes\nNot approved\n8.75\n448,005,682\n4,671,182,894\n64,266,081\n1,137,975,835"
+      }
+    ]
+  }
+}
