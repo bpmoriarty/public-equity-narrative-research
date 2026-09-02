@@ -1,0 +1,255 @@
+{
+ "document": "discussion-points.md",
+ "generated_utc": "2026-09-02T17:00:37Z",
+ "model": "claude-opus-5",
+ "effort": "high",
+ "backend": "claude_code",
+ "cache_ttl": "1h",
+ "billing": "seat",
+ "credentials_withheld": [],
+ "pack_sha256": "8692a1d7a9c767344066031d6afa683b246a261407b382ea3b5abe42f2dfff07",
+ "pack_ids": 807,
+ "ask_sha256": "37c051bd951d2213c17310e319feacff67ceefe833df97d35526d04afbb6c3d3",
+ "system_sha256": "0cebb0531ce8b1e8320d1ce6b2c6a7fbf4f02c3dcd0e4790051f11b8c101c00a",
+ "usage": {
+  "input_tokens": 4,
+  "output_tokens": 32821,
+  "cache_creation_input_tokens": 231552,
+  "cache_read_input_tokens": 41608
+ },
+ "cost_usd": 3.1569,
+ "rounds": [
+  {
+   "round": 0,
+   "usage": {
+    "input_tokens": 2,
+    "output_tokens": 15730,
+    "cache_creation_input_tokens": 208258,
+    "cache_read_input_tokens": 20804
+   },
+   "checks": {
+    "citations": 307,
+    "distinct": 220,
+    "unknown": [],
+    "malformed": [],
+    "by_field": {
+     "events": 28,
+     "headcount": 6,
+     "incentive_metrics": 43,
+     "investor_qa": 10,
+     "leadership": 1,
+     "notable_language": 76,
+     "risk_deltas": 7,
+     "segments": 2,
+     "strategic_priorities": 27,
+     "vote_results": 20
+    },
+    "low_confidence": [],
+    "unverified_quote": []
+   }
+  },
+  {
+   "stage": "ids",
+   "rounds": [
+    {
+     "round": 0,
+     "checks": {
+      "citations": 307,
+      "distinct": 220,
+      "unknown": [],
+      "malformed": [],
+      "by_field": {
+       "events": 28,
+       "headcount": 6,
+       "incentive_metrics": 43,
+       "investor_qa": 10,
+       "leadership": 1,
+       "notable_language": 76,
+       "risk_deltas": 7,
+       "segments": 2,
+       "strategic_priorities": 27,
+       "vote_results": 20
+      },
+      "low_confidence": [],
+      "unverified_quote": []
+     }
+    }
+   ]
+  },
+  {
+   "stage": "quotes",
+   "rounds": [
+    {
+     "round": 0,
+     "checks": {
+      "checked": 76,
+      "ok": 72,
+      "elsewhere": [
+       {
+        "quote": "efficiency gains in Azure",
+        "cited": [],
+        "actual_source": [
+         "LANG-FY2025-c32e49cc"
+        ],
+        "actual_text": [
+         {
+          "id": "LANG-FY2025-c32e49cc",
+          "text": "Microsoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure."
+         }
+        ],
+        "permitted": []
+       },
+       {
+        "quote": "consumer",
+        "cited": [],
+        "actual_source": [
+         "EVT-FY2024-24da11a9",
+         "EVT-FY2025-9d90f5b3",
+         "INC-FY2022-a183794c",
+         "INC-FY2024-f812146c"
+        ],
+        "actual_text": [
+         {
+          "id": "EVT-FY2024-24da11a9",
+          "text": "In the first quarter of fiscal year 2024, we made updates to the presentation and method of calculation for certain metrics, revising our Microsoft Cloud revenue metric to include revenue growth and expanding our Microsoft 365 Consumer subscribers metric to include Microsoft 365 Basic subscribers, aligning with how we manage our business."
+         },
+         {
+          "id": "EVT-FY2025-9d90f5b3",
+          "text": "Microsoft 365 Consumer cloud revenue grew 11% driven by Microsoft 365 Consumer subscriber growth of 8% to 89.0 million, as well as growth in revenue per user from the price increase announced in January 2025."
+         },
+         {
+          "id": "INC-FY2022-a183794c",
+          "text": "Teams Monthly Active Usage Growth\nUnique monthly active users of Teams in Enterprise, Corporate, Small and Medium Business, Education, and Consumer\n20%"
+         },
+         {
+          "id": "INC-FY2024-f812146c",
+          "text": "FY25 PSA Metrics\nWeights\nAzure and Other Cloud Services Revenue Growth\n35%\nMicrosoft Cloud Revenue Growth, excluding Azure and Other Cloud Services\n35%\nConsumer Services Revenue Growth\n15%\nXbox Content and Services Revenue Growth\n15%"
+         }
+        ],
+        "permitted": []
+       }
+      ],
+      "bad": [
+       {
+        "quote": "may lead to lower revenue or operating margins",
+        "cited": [
+         "RISK-FY2021-b7b54d5f",
+         "RISK-FY2021-890685fc",
+         "RISK-FY2021-062e3342",
+         "RISK-FY2024-102d3e1b",
+         "RISK-FY2024-e85ac229",
+         "RISK-FY2024-8c35d5fc",
+         "RISK-FY2025-a378afcf",
+         "LANG-FY2023-db44cac3",
+         "LANG-FY2024-b07c6ef6",
+         "LANG-FY2025-d38eef4d",
+         "LANG-FY2025-1aa54f85"
+        ],
+        "permitted": [
+         {
+          "id": "RISK-FY2021-b7b54d5f",
+          "text": "Development and deployment of defensive measures"
+         },
+         {
+          "id": "RISK-FY2021-890685fc",
+          "text": "Security of our products, services, devices, and customers’ data"
+         },
+         {
+          "id": "RISK-FY2021-062e3342",
+          "text": "Security of our information technology"
+         },
+         {
+          "id": "RISK-FY2024-102d3e1b",
+          "text": "Security of our information technology"
+         },
+         {
+          "id": "RISK-FY2024-e85ac229",
+          "text": "Competition in the technology sector"
+         },
+         {
+          "id": "RISK-FY2024-8c35d5fc",
+          "text": "Business model competition"
+         },
+         {
+          "id": "RISK-FY2025-a378afcf",
+          "text": "Other digital safety abuses"
+         },
+         {
+          "id": "LANG-FY2023-db44cac3",
+          "text": "Our datacenters depend on the availability of permitted and buildable land, predictable energy, networking supplies, and servers, including graphics processing units (“GPUs”) and other components."
+         },
+         {
+          "id": "LANG-FY2024-b07c6ef6",
+          "text": "Our datacenters depend on the availability of permitted and buildable land, predictable energy, networking supplies, and servers, including graphics processing units (“GPUs”) and other components."
+         },
+         {
+          "id": "LANG-FY2025-d38eef4d",
+          "text": "Our datacenters depend on the availability of permitted and buildable land, predictable energy, networking supplies, and servers, including graphics processing units (“GPUs”) and other components."
+         },
+         {
+          "id": "LANG-FY2025-1aa54f85",
+          "text": "Further, global, regional, and local economic developments and changes in global trade policies such as restrictions on international trade, including tariffs and other controls on imports or exports, could result in increased supply chain challenges, cost volatility, and consumer and economic uncertainty which may adversely affect our results of operations."
+         }
+        ]
+       },
+       {
+        "quote": "not included in the second quarter guidance provided on October 30, 2024",
+        "cited": [
+         "EVT-FY2025-5c9375b6"
+        ],
+        "permitted": [
+         {
+          "id": "EVT-FY2025-5c9375b6",
+          "text": "On December 10, 2024, GM announced its intent to realign its autonomous driving strategy, no longer fund Cruise’s robotaxi development work, and pursue the acquisition of minority investor shares. As a result, we expect to record an impairment charge of approximately $800 million in the second quarter of fiscal year 2025."
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "round": 1,
+     "usage": {
+      "input_tokens": 2,
+      "output_tokens": 17091,
+      "cache_creation_input_tokens": 23294,
+      "cache_read_input_tokens": 20804
+     },
+     "checks": {
+      "checked": 72,
+      "ok": 72,
+      "elsewhere": [],
+      "bad": []
+     }
+    }
+   ]
+  }
+ ],
+ "citations": {
+  "citations": 309,
+  "distinct": 220,
+  "unknown": [],
+  "malformed": [],
+  "by_field": {
+   "events": 28,
+   "headcount": 6,
+   "incentive_metrics": 43,
+   "investor_qa": 10,
+   "leadership": 1,
+   "notable_language": 76,
+   "risk_deltas": 7,
+   "segments": 2,
+   "strategic_priorities": 27,
+   "vote_results": 20
+  },
+  "low_confidence": [],
+  "unverified_quote": []
+ },
+ "quotations": {
+  "checked": 72,
+  "ok": 72,
+  "elsewhere": [],
+  "bad": []
+ },
+ "text": "## Observations\n\n### The company's own accounting-life extensions, not just operating results, carry the margin story — and management says so each time it is asked to explain a margin move\n\nThe two useful-life changes are separated by two years and move in the same direction: server equipment three→four years and network equipment two→four years effective FY2021, worth an estimated $2.7 billion of operating income [EVT-FY2020-1e636757, EVT-FY2021-74348aa6]; then both four→six years effective FY2023, worth an estimated $3.7 billion of operating income and $0.40 per share [EVT-FY2022-e8bfc9ba, EVT-FY2023-2453e66e]. What is only visible across years is that the estimate change is invoked as the reconciling item in three separate margin explanations, each time converting a reported decline into an underlying improvement or the reverse: FY2021 gross margin percentage \"decreased slightly\" once the change is excluded [LANG-FY2021-78ab008f]; FY2022 gross margin percentage \"decreased slightly\" as reported and \"increased 1 point\" excluding the prior-year change [LANG-FY2022-fdd34974]; FY2024 Microsoft Cloud gross margin \"decreased slightly to 71%\" but \"increased slightly\" excluding the change [LANG-FY2024-62cc851d]. By FY2025 the adjustment is gone from the sentence and the decline stands unqualified: Microsoft Cloud gross margin \"decreased to 69% driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure\" [LANG-FY2025-c32e49cc]. Read in sequence, the FY2025 margin print is the first in the window that management does not bridge with an accounting-estimate adjustment — which is consistent with the useful-life lever having been used, not with the AI build being newly costly.\n\n### Management's operational-scorecard categories are rewritten more often than the metrics they score, and each rewrite follows a public problem\n\nThe three operational categories in the CEO's cash incentive are not stable. In FY2020 they are Product & Strategy, Customers & Stakeholders, and Culture & Organizational Leadership, each scored out of 200% [INC-FY2020-f1391aae, INC-FY2020-c10ebcae, INC-FY2020-26fa0bca]. In FY2022 the third becomes Culture, Diversity & Sustainability, and the committee's stated reason is a disclosure clarification rather than a change of substance — the rename was made \"to enhance clarity on how ESG results affect the pay of our named executives\" [LANG-FY2022-32ba2901, INC-FY2022-563b9714]. In FY2025 the first two are merged and a Security category is created, the committee stating it acted \"To emphasize the criticality of the contributions of our Senior Leadership Team members relating to cybersecurity\" [LANG-FY2025-646f92ff, INC-FY2025-224f0cb4, INC-FY2025-dac9e562]. Each restructuring is announced in the year after the pressure it answers: the ESG rename follows a shareholder-approved harassment-policy proposal at the November 30, 2021 meeting [VOTE-FY2021-efd1c5f5]; the Security category follows the SFI launch and the CEO bonus reduction [LANG-FY2024-a39aa42c, LANG-FY2024-cb5c341b]. The categories function as the discretionary, responsive half of the pay design — where the board records what it is currently worried about — while the formulaic half stays on revenue and operating income throughout [INC-FY2020-a86f8552, INC-FY2025-821ce6c6].\n\n### The financial half of the annual bonus paid the cap in the year of easiest comparison and has undershot on revenue in every year since — the committee has kept the same targets-equal-budget rule throughout\n\nTargets are set at the internal operating budget: \"Our Compensation Committee sets cash incentive and PSA metric targets at the levels established, after review and engagement by the Board, for internal budgeting purposes\" [LANG-FY2021-c9b8c6f8, LANG-FY2023-f6058745]. Under that unchanged rule the outcomes swing widely. FY2021 paid financial results at 200.00% for every named executive, the stated maximum [INC-FY2021-fb9e9487], against language that maximums \"can be reached only with exceptional performance\" [LANG-FY2021-63b32fd3]. FY2022 revenue came in at $206.67B against a $207.21B target [INC-FY2022-18fa7fd3]; FY2023 at 95.38% of target [LANG-FY2023-eeefb5a7]; FY2024 at 119.79% [INC-FY2024-9038f1b2]; FY2025 at 95.81% [LANG-FY2025-db99ecf2]. Three of the last four years missed the revenue target. In each of those years the committee presents the miss as proof of rigor rather than shortfall, in near-identical wording — \"demonstrating our commitment to rigorous goal setting\" [LANG-FY2022-446342c4], \"further demonstrating our commitment to rigorous goal setting\" [LANG-FY2023-eeefb5a7, LANG-FY2025-db99ecf2]. The construction is consistent enough across four proxies to read as standing template language rather than a year-specific judgment.\n\n### The relative-TSR modifier has paid the maximum on every completed award in the window, including one that landed exactly on the threshold\n\nThe modifier is described as a discriminator requiring TSR above the 60th percentile for any uplift and the 80th for the maximum [INC-FY2020-7fdeb476, INC-FY2022-7cc92f3f]. Every completed award disclosed in the pack cleared it: the FY2018 PSAs at the 99.57th percentile [INC-FY2020-2f65328d], FY2019 at the 97th [INC-FY2021-dd340dfb], FY2020 at the 94th [INC-FY2022-f4ee9939], FY2023 at exactly the 80th, which the proxy notes \"meets the at least 80 th percentile performance condition required to receive the maximum 150.00% multiplier\" [LANG-FY2025-2ac4b907, INC-FY2025-4b23bff4]. The one interruption is FY2021's award, which modified at the 72nd percentile for 128.95% [INC-FY2023-f6e6481b]. Two structural changes made during the window cut in opposite directions: a downside adjustment below the 40th percentile was added for FY2021 awards and later formalised as a 0.75–1.5x band [LANG-FY2020-b6feea13, LANG-FY2021-5cb1a563, INC-FY2022-7cc92f3f], while the underlying core metrics remained annually reset inside the three-year period, a design the committee defends in near-identical language across FY2020, FY2022 and FY2023 [LANG-FY2020-b3ac9dfb, LANG-FY2022-a1f521f6, LANG-FY2023-eae23b9a]. The downside band has never been tested in this window; the modifier has functioned only as an amplifier.\n\n### The pay-metric set was progressively purged of engagement measures in favour of revenue lines, and the committee gave a different reason each time\n\nFY2020 and FY2021 paid on Teams monthly active usage, Xbox Game Pass subscribers, Surface revenue and LinkedIn sessions alongside cloud metrics [INC-FY2020-c3add9b3, INC-FY2020-2aaaba97, INC-FY2020-a2fa7621, INC-FY2020-455c6902, INC-FY2021-868e1f64]. Surface disappears after FY2021 with no stated reason, the FY2022 table simply marking it \"N/A\" for that year [INC-FY2022-cd9622a8]. Teams usage and Windows monthly active devices are removed for FY2024, the stated reason being \"a significant business shift to AI\" [LANG-FY2024-ee0a5f0b]. LinkedIn sessions is removed for FY2025 on a technical rather than strategic ground — \"a portion of LinkedIn revenue is represented in both\" of two surviving revenue metrics [LANG-FY2024-4ac09c86, LANG-FY2025-6b61d4a4]. What remains for FY2025 is four revenue-growth measures with 70% concentrated on two cloud lines [INC-FY2025-848ed72b, INC-FY2025-bf0f915c, INC-FY2025-64d2afa8, INC-FY2025-5d9888ed]. The heterogeneity of the stated reasons — strategy, double-counting, and silence — makes the direction of travel clearer than any one year's rationale: usage and unit metrics, which can fall while revenue rises, were retired; revenue growth, which the annual cash incentive already pays on, was not.\n\n### Two of the retired metrics were retired shortly after they stopped paying\n\nTeams monthly active usage paid 200.00% in FY2020 against a growth target of 246.94% [INC-FY2020-c3add9b3], then 81.36% in FY2021 [INC-FY2021-868e1f64], then 50.92% in FY2022 on actual growth of 3.82% against a 24.52% target [INC-FY2022-a183794c], before recovering to 141.12% in FY2023 [INC-FY2023-a27746d8] and being removed for FY2024 [LANG-FY2024-ee0a5f0b]. Xbox Game Pass subscribers paid 147.95% in FY2020 [INC-FY2020-2aaaba97], 82.28% in FY2021 [INC-FY2021-aa600006] and 56.80% in FY2022 [INC-FY2022-9bf6f950] before being replaced by Xbox Content and Services revenue growth from FY2023 [INC-FY2023-39b2683b]. Surface paid 90.10% in FY2020 and, in FY2021's split halves, 200.00% then 0.00% [INC-FY2020-a2fa7621, INC-FY2021-5d1b1ef5] before disappearing. The filings state no causal link, and an innocent reading is available and plausible: the committee says the changes align metrics with strategy [LANG-FY2024-ee0a5f0b], and Teams weighting had earlier been *raised* to 20% precisely when it was strategically ascendant [LANG-FY2021-2c70b149]. But the pattern — three metrics that produced sub-target payouts in consecutive years, all gone within two years of doing so — is a question to put to the committee rather than a conclusion the filings settle.\n\n### Management's disclosure of the same competitive-labour rationale has been unchanged in substance for five years, through a hiring freeze, a layoff, and flat headcount\n\nThe proxies of FY2020, FY2021, FY2022, FY2023, FY2024 and FY2025 each carry a \"hyper-competitive\" technology labour-market sentence used to frame pay levels [LANG-FY2020-b8fd2f35, LANG-FY2021-677f2de9, LANG-FY2022-5344b8fb, LANG-FY2023-433325a8, LANG-FY2024-e3e4116e, LANG-FY2025-1334c965]. It persists through the year the company froze salaries — \"base salaries of salaried employees would remain at fiscal year 2022 levels\" [SP-FY2023-73c249dc] — and through the January 2023 reduction of approximately 10,000 roles [EVT-FY2023-7530a8cb]. The FY2024 version adds the only substantive change, extending the scarcity claim to executive talent \"that can provide innovative leadership in a rapidly evolving AI environment\" [LANG-FY2024-e3e4116e]. That standing rationale is the stated basis for the FY2025 levelling of three named executives' equity targets to a common $19.5 million \"based on a competitive market review\" while the CEO's was held flat [LANG-FY2025-28b5264a] — the same rationale that in FY2023 supported a single increase, for Mr. Althoff, from $12,600,000 to $14,640,000 [LANG-FY2023-92b4a0d4].\n\n### Say-on-pay support has never returned to its FY2021 peak, and the proxies stopped acknowledging shareholder feedback as a driver of design once it did\n\nThe FY2020 proxy is explicit that the FY2021 redesign answered investors: \"several key themes emerged in shareholders' feedback… implemented enhancements… that both respond directly to shareholder input\" [LANG-FY2020-4a365693], and that shareholders \"encouraged the Board to increase the proportion of compensation that is tied to pre-established metrics\" [LANG-FY2021-5989e1f9]. Support then ran 94.72% at the December 2, 2020 meeting and 95.45% at the November 30, 2021 meeting [VOTE-FY2020-1a34f291, VOTE-FY2021-3058cd7e], fell to 88.84% at the December 13, 2022 meeting [VOTE-FY2022-b2f5ae1c], and recovered only partially to 93.77% at the December 7, 2023 meeting, 91.34% at the December 10, 2024 meeting and 91.94% at the meeting reported in the 8-K filed December 8, 2025 [VOTE-FY2023-a4d26e68, VOTE-FY2024-7df37ae7, VOTE-FY2025-0ba8bca8]. From FY2023 the committee's framing inverts: shareholder support is cited as a reason to change nothing — \"did not make any substantial changes to our executive compensation program\" [LANG-FY2023-0be1a9ed, LANG-FY2024-4e23da4b], and in FY2025 the same sentence is retained with two material changes disclosed inside it [LANG-FY2025-535a4bf8]. Three consecutive years in the low nineties, against a mid-nineties peak, sit alongside a committee that describes its own program as settled.\n\n### The board's discretion in this window has been exercised downward once and upward never — and the one downward use is unexplained as to cause\n\nThe FY2022 proxy states flatly that \"During fiscal year 2022, the Compensation Committee and independent members of our Board awarded no other compensation to our Named Executives\" beyond the plan [LANG-FY2022-1aa8f96f]. The one non-formulaic cash items disclosed are on-hire awards to Mr. Young made on recruitment, explicitly justified \"in response to competitive offers for chief executive officer roles\" [LANG-FY2021-a9e11fe5, LANG-FY2022-77cc7d62] — and Mr. Young subsequently resigned on January 22, 2025 with no reason stated [LEAD-FY2025-7123b34a]. Against that background of near-total formulaism, the FY2024 reduction stands out: the CEO proposed and the board agreed to a cash incentive of $5.2 million, \"more than a 50% reduction from the $10.66 million he would have been awarded based on the combined assessment of strong financial and operational performance\" [LANG-FY2024-cb5c341b]. The clawback policy in force is broader than the statutory minimum, reaching downward adjustments \"of financial or nonfinancial performance\" [LANG-FY2021-ddf7cfa3, LANG-FY2022-d49a9eed], but the reduction is described as a forward-looking judgment about cybersecurity focus rather than a recovery. Two years of proxies name no incident, no cost and no scope.\n\n### Voluntary channels carry the substantive strategic and structural claims; the periodic reports carry the mechanics\n\nThis is a pattern in where information sits, not what it says. The two largest strategic assertions of the window appear in Regulation FD voluntary disclosure: on Nuance, that \"AI is technology's most important priority, and healthcare is its most urgent application\" [QA-FY2021-edfb4a6b], and on Activision, that the deal \"will accelerate the growth in Microsoft´s gaming business across mobile, PC, console, and cloud and will provide building blocks for the metaverse\" [QA-FY2022-b598943b]. The most operationally specific account of the FY2025 segment recomposition is likewise a Reg FD presentation, which states that with EMS and Power BI per-user revenue moved out, \"Azure metric now more closely aligns to consumption business\" [QA-FY2025-946672a5] — a characterisation of the headline growth metric's composition that the 10-K's own description does not supply [SEG-FY2025-62225083, EVT-FY2025-4dce8400]. The same presentation supplies the standing justification phrase applied to every reclassification, \"to align to how the business is managed\" [QA-FY2025-8fc0cbf5, QA-FY2025-de2816c8, QA-FY2025-2dd3fa4a, QA-FY2025-85d9203c]. These are unaudited management statements made at moments of the company's choosing; they carry weight in this pack by explicit decision, but an analyst should note that the sharpest characterisations of both deal logic and metric composition live outside the periodic reports.\n\n### Shareholder proposals on the same subject have been re-filed at declining support while a new AI-governance cluster forms\n\nData operations in human-rights hotspots ran 33.57% at the December 7, 2023 meeting, 32.03% at December 10, 2024, and 27.48% at the meeting reported December 8, 2025 [VOTE-FY2023-311fea9a, VOTE-FY2024-11ca5541, VOTE-FY2025-1b4918ba]. Weapons-development risk ran 15.19% then 15.26% across the first two of those [VOTE-FY2023-391cd8b8, VOTE-FY2024-74043833]. AI-related proposals show no such stability: AI misinformation ran 21.16% then 18.67% [VOTE-FY2023-5a8efc12, VOTE-FY2024-dff81eb6]; AI data-sourcing accountability drew 36.19% in one year [VOTE-FY2024-75e0b946]; AI data-usage oversight drew 13.36% the next [VOTE-FY2025-4876a0f8]; AI-and-oil-and-gas ran 9.71% then 8.75% [VOTE-FY2024-33d87b66, VOTE-FY2025-cb612cf9]. Earlier in the window the ballot was dominated by workforce and pay-gap subjects, one of which passed against management at 77.97% [VOTE-FY2021-efd1c5f5, VOTE-FY2021-2bd795b3, VOTE-FY2022-e3fa65ee]. The composition of dissent has rotated toward AI governance without consolidating on any single AI question.\n\n### Risk-factor language moved most on security in FY2021 and FY2024, and not at all on AI capital intensity in any year\n\nThe tracked Item 1A diffs are narrow — competition, security and platform-abuse factors — but within that set the movement is legible. FY2021 added a factor, \"Development and deployment of defensive measures,\" and reworded both security factors, one at 74.0% body similarity [RISK-FY2021-b7b54d5f, RISK-FY2021-890685fc, RISK-FY2021-062e3342]. FY2024's largest rewrite is again \"Security of our information technology\" at 74.7% body similarity [RISK-FY2024-102d3e1b], alongside two competition rewrites, of the technology-sector and business-model competition factors [RISK-FY2024-e85ac229, RISK-FY2024-8c35d5fc]. FY2025 adds and removes nothing and rewords one digital-safety factor [RISK-FY2025-a378afcf]. Across the same period the MD&A acquired entirely new dependency language on land, energy and GPUs [LANG-FY2023-db44cac3, LANG-FY2024-b07c6ef6, LANG-FY2025-d38eef4d] and new trade-policy and tariff language [LANG-FY2025-1aa54f85] without a corresponding heading in the tracked risk set. Where security produced structural risk-factor change, the AI build produced narrative MD&A change only.\n\n## Open questions\n\n### The FY2025 revenue target implies a growth assumption the company missed for a third time in four years — what was the budgeting judgment that set $290.64 billion?\n\nBecause targets equal the internal operating budget [LANG-FY2023-f6058745], the FY2025 target of $290.64 billion against an actual of $289.18 billion [INC-FY2025-821ce6c6] is a disclosed statement about management's own plan, not merely a pay outcome. Operating income beat by a wide margin — $128.84 billion against $122.75 billion, 138.18% of target [INC-FY2025-34b5e674]. The pattern of revenue near or below plan with operating income well above plan repeats FY2024 (119.79% and 156.37% respectively) [INC-FY2024-93193d03, INC-FY2024-9038f1b2]. Which line was budgeted first, and does the recurring revenue-under/income-over shape reflect a deliberately stretched top line, or cost outcomes running ahead of plan?\n\n### What is the composition of the \"efficiency gains in Azure\" [LANG-FY2025-c32e49cc] that partially offset the FY2025 Microsoft Cloud margin decline?\n\nThe FY2025 filing attributes the fall to 69% to \"the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure\" [LANG-FY2025-c32e49cc]. The FY2022 useful-life extension was itself justified by \"investments in software that increased efficiencies in how we operate our server and network equipment, as well as advances in technology\" [EVT-FY2022-e8bfc9ba]. Are the FY2025 efficiency gains of the same kind that previously supported a life extension — and if so, is a further useful-life reassessment under consideration, given that two have been completed within the window?\n\n### Azure and Other Cloud Services revenue growth carries 35% of the PSA weight and its target fell year over year — was the target reset for the metric's recomposition?\n\nThe FY2024 target for this metric was 25.89% growth with an actual of 29.15% [INC-FY2024-bfead9e0]; the FY2025 target is 36.76% with an actual of 34.58%, paying 85.52% [INC-FY2025-848ed72b]. Over the same boundary, the Azure metric itself was redefined — EMS and Power BI per-user revenue moved out, so it \"more closely aligns to consumption business\" [QA-FY2025-946672a5, EVT-FY2025-4dce8400]. A metric whose base changed and whose target rose by eleven points in one year is doing something more than measuring growth. Were the FY2025 threshold, target and maximum set on the recast base, and were the FY2024 attainments restated for comparability?\n\n### Why does the FY2025 10-K devote a dedicated passage to the OpenAI relationship for the first time, and what changed to warrant it?\n\nFY2024 describes OpenAI as a long-term partnership with Azure as exclusive cloud provider and increased investment in specialised supercomputing [SP-FY2024-98108cc9]. FY2025 adds a distinct characterisation of the commercial architecture: \"Microsoft is a major investor in OpenAI, and the companies have reciprocal revenue-sharing arrangements. We hold rights to OpenAI's intellectual property, including models and infrastructure, for integration into our products\" [LANG-FY2025-ee136163]. The same filing names OpenAI as a component of losses: \"Other, net primarily reflects net recognized losses on equity method investments, including OpenAI\" [LANG-FY2025-81175065]. Was the expanded description prompted by a change in the agreement itself, by the growth of the equity-method loss, or by disclosure review — and over what term do the IP rights and revenue-sharing arrangements run?\n\n### How much of the FY2025 $3.8 billion operating-expense increase is Activision, and what is the deal's revenue contribution?\n\nThe only quantified FY2025 statement touching the acquisition names it as one of several contributors: \"Operating expenses increased $3.8 billion or 6% driven by investments in cloud and AI engineering and Gaming, including the impact of the Activision Blizzard acquisition\" [EVT-FY2025-738145c1]. Nothing in the pack separates Activision's contribution from cloud and AI engineering, and no revenue effect is given. Against a $75.4 billion purchase price [EVT-FY2024-e9d208cf] and an announced value of $68.7 billion [EVT-FY2022-a94337e6], what does the first full fiscal year of ownership contribute to revenue and to operating income, and how does that compare to the underwriting case?\n\n### Xbox Content and Services revenue growth was weighted up to 15% for FY2025 in the same period that Xbox hardware fell 25% — is the metric intended to reward a mix shift away from hardware?\n\nThe weight moved from 10% in FY2024 to 15% in FY2025 [INC-FY2024-052fddd6, INC-FY2025-5d9888ed], and the FY2025 attainment was 14.81% against a 14.23% target [INC-FY2025-5d9888ed], while the same year's MD&A states \"Xbox hardware revenue decreased 25% driven by lower volume of consoles sold\" [LANG-FY2025-48edf2ad]. No metric in the FY2025 set pays on hardware, and the FY2020 priority of \"designing and marketing first-party devices to help drive innovation, create new device categories\" [SP-FY2020-38a2da99] no longer appears in the FY2025 strategic priorities extracted here. Is declining console volume an accepted consequence of the content-and-services strategy, or a problem the incentive design is silent on?\n\n### The Consumer Services Revenue Growth metric was created in FY2025 with a specified exclusion — why are Xbox, device licensing and devices carved out of the consumer metric?\n\nThe metric \"includes revenue from all consumer areas with the exception of Xbox, device licensing, and devices\" [LANG-FY2025-6b61d4a4] and paid 140.50% against an 11.09% target [INC-FY2025-64d2afa8]. It replaced Search and News Advertising Revenue (ex TAC) Growth [LANG-FY2025-6b61d4a4], into which Copilot Pro revenue had been moved the prior year [QA-FY2025-2dd3fa4a]. The construction pays on the consumer businesses that grew and excludes the consumer hardware businesses. What is the internal definition, and does the January 2025 Microsoft 365 Consumer price increase [EVT-FY2025-9d90f5b3] fall inside it?\n\n### What was the security event or exposure that made a more-than-50% CEO bonus reduction the appropriate response?\n\nThe board's language identifies a cause only in the abstract: \"the focus and speed required for the changes that today's cybersecurity threat landscape showed were necessary\" [LANG-FY2024-cb5c341b], with SFI launched November 2023 and expanded May 2024 [LANG-FY2024-a39aa42c]. The FY2024 letter states that \"our work on security is never complete. We must and will do more\" [LANG-FY2024-1b524896]. The FY2025 letter quantifies input rather than cause — \"the equivalent of 34,000 full-time engineers to our highest-priority security work\" [LANG-FY2025-ad323cdc]. What specific findings drove the May 2024 expansion of scope, what remediation cost has been incurred, and against what criteria will the board judge SFI complete enough to unwind the Security incentive category?\n\n### The Security category scored 140% in its first year — against what?\n\nThe category is scored out of a possible 200% [INC-FY2025-224f0cb4], and the proxy's supporting text is qualitative, citing \"personal commitment and clarity that security and quality are non-negotiable\" [INC-FY2025-224f0cb4]. Every other category in the operational assessment is likewise narrative [INC-FY2025-dac9e562, INC-FY2025-904dc78b], but Security is the one the board created specifically to hold leadership accountable [LANG-FY2024-b34a3e5a, LANG-FY2025-646f92ff]. Were there pre-established SFI milestones behind the 140%, and if so will they be disclosed — or is the category assessed wholly after the fact?\n\n### The FY2020 US/international headcount split has inverted its trend while total headcount plateaued — what is the geographic shape of the AI-era workforce?\n\nUS employment ran 96,000 of approximately 163,000 in FY2020 [HC-FY2020-e08216bd], 103,000 of 181,000 in FY2021 [HC-FY2021-b24eab72], 122,000 of 221,000 in FY2022 [HC-FY2022-e5fe1437], 120,000 of 221,000 in FY2023 [HC-FY2023-116418a0], 126,000 of 228,000 in FY2024 [HC-FY2024-3cda7ba5], and 125,000 of 228,000 in FY2025 [HC-FY2025-8041c917]. Total headcount has been flat for two years while the letter describes a way of working that \"expands job scopes, reduces handoffs\" [SP-FY2025-5d97596a]. Behind an unchanged total, what is the gross hiring and attrition, and where geographically is the datacenter and AI-engineering build being staffed?\n\n### The share-repurchase authorization balance rose without a disclosed authorizing event — when was the new program approved and what is its size?\n\n$10.3 billion remained of the $60 billion program at June 30, 2024 [EVT-FY2024-779b6ad5]; $57.3 billion remained of a $60 billion program at June 30, 2025 after $13.0 billion of repurchases [EVT-FY2025-92f42551]. No board authorization appears anywhere in the pack's events or timeline. Given repurchases fell from $28.0 billion in FY2022 to $12.0–13.0 billion in FY2024 and FY2025 [EVT-FY2022-95bf4115, EVT-FY2024-779b6ad5, EVT-FY2025-92f42551] while dividends rose from $18.6 billion to $22.3 billion [EVT-FY2023-acbab3d7, EVT-FY2024-2a84b3d4], what pace of repurchase does the new authorization contemplate against the AI capital plan?\n\n### The $28.9 billion IRS claim has been carried unchanged for two filings with no reserve or range disclosed — what has moved in the administrative appeal?\n\nThe notices were received September 26, 2023 [EVT-FY2024-2e0a47cf], the FY2024 language is that the company \"will vigorously contest the NOPAs\" and does \"not expect a final resolution of these issues in the next 12 months\" [LANG-FY2024-44cdda28], and the FY2025 filing repeats the amount and the primary transfer-pricing issue verbatim [EVT-FY2025-b33b8831]. The company had previously settled a portion of the same 2004–2013 audit period for $1.7 billion including interest [EVT-FY2021-1ae01eae], and had flagged as early as FY2020 that transfer pricing \"could have a material impact in our consolidated financial statements when the matters are resolved\" [LANG-FY2020-091e7421]. Has the appeal progressed, and does the FY2021 settlement establish any framework for valuing the remainder?\n\n### The expected ~$800 million Cruise impairment was disclosed in an 8-K — what was ultimately recorded?\n\nThe 8-K states an expected charge \"of approximately $800 million in the second quarter of fiscal year 2025\" [EVT-FY2025-5c9375b6]. No FY2025 filing in the pack records the final amount. What was booked, and does Microsoft retain any interest following GM's stated intent to pursue minority-investor shares [EVT-FY2025-5c9375b6]?\n\n### Was the FY2025 segment recast neutral to the metrics on which executives were paid?\n\nPrior periods were recast [EVT-FY2025-a527f1bf, SEG-FY2025-23694750], and the Reg FD presentation states the company provided \"mechanical updates only to our outlook\" [QA-FY2025-dca2c1c3]. Simultaneously, the FY2025 PSA metric set was rebuilt [LANG-FY2025-6b61d4a4] and two of its four metrics — Azure and Microsoft Cloud excluding Azure — sit precisely on the boundaries the recomposition moved [INC-FY2025-848ed72b, INC-FY2025-bf0f915c]. Were any in-flight PSA attainments recalculated on the recast basis, and if not, are FY2023 and FY2024 attainments within the completed FY2023 award [INC-FY2025-4b23bff4] measured on a different definition from FY2025's?\n\n## What management appears to prioritise\n\n### From `incentive_metrics` — what the company actually pays for\n\nThe FY2025 design is the clearest statement in the window. Cash: 70% of the CEO's annual incentive turns on two consolidated financial measures, Incentive Plan Revenue and Incentive Plan Operating Income [INC-FY2025-821ce6c6, INC-FY2025-34b5e674], with 30% split evenly across Security, Product/Customers & Stakeholders, and Culture [INC-FY2025-224f0cb4, INC-FY2025-dac9e562, INC-FY2025-904dc78b] and a hard 200% cap [INC-FY2025-102b793e]. Equity: 100% of CEO equity is performance-based [INC-FY2025-9201d054], and 70% of the PSA core weight sits on two cloud revenue-growth lines — Azure at 35% and Microsoft Cloud excluding Azure at 35% — with Consumer Services and Xbox Content and Services at 15% each [INC-FY2025-848ed72b, INC-FY2025-bf0f915c, INC-FY2025-64d2afa8, INC-FY2025-5d9888ed], modified by three-year relative TSR on a 75%–150% band [INC-FY2025-0036b3ef].\n\nThe paid-for priority set is therefore: cloud revenue growth first and by a wide margin, consumer and gaming services second, security third (through a 10% CEO operational slice), and shareholder return through the TSR modifier. Base salary has been held flat for the CEO across at least three consecutive years on identical stated reasoning [LANG-FY2023-54d35604, LANG-FY2024-ebfab2c3, LANG-FY2025-907774a9], so essentially the whole of CEO pay variability runs through these measures.\n\n### From repeated language in the letters and MD&A — what management emphasises in its own voice\n\nThree letters exist in this pack, FY2023–FY2025; no letter is available for FY2020–FY2022, so any apparent change of voice across that boundary may be a missing document rather than a change. Within the three, the ordering of priorities is explicit and it moves. FY2023: lead in commercial cloud while innovating in consumer categories; invest to accelerate the AI lead across every layer of the stack; drive operating leverage [SP-FY2023-8c9d9c14, SP-FY2023-6a507103, SP-FY2023-d99d40a9]. FY2024: \"prioritizing fundamentals, with security above all else,\" then trustworthy AI innovation with continued cloud scaling, then dynamic cost management for \"durable, long-term operating leverage\" [SP-FY2024-1330bf70, SP-FY2024-cfc5ae05, SP-FY2024-1238e7aa]. FY2025: \"three core business priorities as our North Star: security, quality, and AI innovation\" [SP-FY2025-93e18460]. Security enters at the top in FY2024 and stays; quality is added as a named initiative in FY2025 alongside an admission that \"our work here is never done\" [LANG-FY2025-5853a64b]; operating leverage, a stated priority in both FY2023 and FY2024, is not among the three named in FY2025.\n\nIn the 10-K's own voice the self-description migrated in the same period, and the FY2024 and FY2025 opening sentences are identical in placing AI in the first clause of what the company is [LANG-FY2024-ef3e7ad8, LANG-FY2025-f7d8f90f]. Item 1 in FY2025 states outright: \"We prioritize security above all else\" [SP-FY2025-b7139777].\n\nTwo recurring hedges deserve equal billing as emphasis. Management has warned in every year of the window that its own investment programme raises costs and may compress margins [LANG-FY2020-7f3daef6, LANG-FY2021-054e8cfc, LANG-FY2022-fd0f8bad, LANG-FY2023-aee9457e, LANG-FY2024-608e151b, LANG-FY2025-be24791c]. And the FY2025 letter's organising formula — \"think in decades but execute in quarters\" [LANG-FY2025-b391d575] — is applied not only to the AI build but to sustainability, where \"many\" targets are on track and progress on the rest is described only as accelerating [LANG-FY2025-7736059a, LANG-FY2025-1d80531e].\n\n### From capital allocation — where the money went\n\nAcquisitions escalated within a three-year span: ZeniMax at $8.1 billion into More Personal Computing, March 2021 [EVT-FY2021-5a713f8c]; Nuance at $18.8 billion into Intelligent Cloud, March 2022 [EVT-FY2022-d82ea211]; Activision Blizzard at a $75.4 billion purchase price into More Personal Computing, October 2023 [EVT-FY2024-e9d208cf, EVT-FY2024-c72a6719]. Two of the three are gaming. Distributions rebalanced across the same period: repurchases $19.7 billion, $23.0 billion, $28.0 billion, $18.4 billion, $12.0 billion, $13.0 billion FY2020–FY2025 [EVT-FY2020-93519ac9, EVT-FY2021-0550e421, EVT-FY2022-95bf4115, EVT-FY2023-e746c1c4, EVT-FY2024-779b6ad5, EVT-FY2025-92f42551], while declared dividends rose from $18.6 billion in FY2022 to $20.2 billion in FY2023 to $22.3 billion in FY2024 [EVT-FY2023-acbab3d7, EVT-FY2024-2a84b3d4]. Restructuring was one event of scale: the January 2023 $1.2 billion charge, $800 million of it severance, with roughly 10,000 roles removed [EVT-FY2023-7530a8cb]. Financing activity was opportunistic and early: debt exchanges in June 2020 and March 2021 for longer maturities at favourable rates [EVT-FY2020-f5e2468a, EVT-FY2021-e06678e0], with none disclosed thereafter in this pack.\n\nThe direction the money moved is toward gaming content and cloud/AI capacity, funded partly by a halving of buybacks from their FY2022 peak. The pack contains no capital-expenditure figure for any year, so the largest single component of the allocation story is asserted repeatedly [LANG-FY2020-be44cfd1, LANG-FY2023-8691640e, LANG-FY2024-424e1912] and never sized here.\n\n### Where stated and paid-for priorities diverge\n\n**Security: stated first, paid at 10%.** Item 1 says \"We prioritize security above all else\" [SP-FY2025-b7139777] and the letter names it the first of three North Star priorities [SP-FY2025-93e18460]. In the incentive plan it is a single operational category at 10% of the CEO's cash incentive [INC-FY2025-224f0cb4], and no PSA metric touches it [INC-FY2025-848ed72b, INC-FY2025-bf0f915c, INC-FY2025-64d2afa8, INC-FY2025-5d9888ed] — the CEO having no time-based equity, all of his equity therefore turns on revenue growth. Two facts qualify this. First, the board did impose a more-than-50% cash reduction on security grounds, which is a larger realised consequence than the 10% weight suggests [LANG-FY2024-cb5c341b]. Second, the company states security is \"a dimension of rewards decisions across the Company\" beyond the plan's stated weights [LANG-FY2024-b34a3e5a]. Still, the arithmetic gap between \"above all else\" in Item 1 and 10% of one component of pay is the sharpest stated-versus-paid divergence in the pack, and the discretionary reduction that closed it in FY2024 was a one-off, not a mechanism.\n\n**Quality: named as a top-three priority, paid nowhere.** The FY2025 letter elevates the Quality Excellence Initiative alongside SFI as co-equal in \"security and quality are non-negotiable\" [LANG-FY2025-5853a64b], and quality is one of the three North Star priorities [SP-FY2025-93e18460]. No incentive metric in FY2025 names quality [INC-FY2025-224f0cb4, INC-FY2025-dac9e562, INC-FY2025-904dc78b, INC-FY2025-848ed72b]. An innocent reading is available: QEI appears in the letter for the first time in the pack, and the Security category itself lagged the SFI launch by roughly a year [LANG-FY2024-a39aa42c, INC-FY2024-4e3b9f27], so a quality dimension may simply be a year behind. That is a testable prediction to put to management.\n\n**Responsible AI and trust: stated everywhere, paid for through nothing observable.** Responsible AI has been an Item 1 priority since FY2023 with named principles [SP-FY2023-68ee7a7d, SP-FY2025-6b87f278], a regulatory governance framework was established across four domains including Responsible AI [SP-FY2024-f738ef7f], and the letters return to trust repeatedly — \"we recognize that trust is earned, not given\" [LANG-FY2024-a406dc8a], \"We must earn our permission to operate every day\" [LANG-FY2025-040c3fe7]. It maps to no metric. The innocent explanation is genuine: an obligation of this kind resists annual quantification, and the Culture category is the natural home for it, scored at 155% in FY2025 with narrative support [INC-FY2025-904dc78b]. The reason it is worth raising anyway is that shareholders have repeatedly tabled AI-governance proposals and management has repeatedly opposed them [VOTE-FY2024-75e0b946, VOTE-FY2025-4876a0f8], so the absence of any pay linkage is a point on which management will be asked to explain what accountability exists.\n\n**Sustainability: a dated 2030 commitment with no metric, and category renaming rather than measurement.** Carbon negative, water positive and zero waste by 2030 has been an Item 1 commitment across the window [SP-FY2020-74c3b0af, SP-FY2021-cec4a55b, SP-FY2022-329922b7, SP-FY2023-93c89871, SP-FY2024-ea837b45, SP-FY2025-85389ed5]. The only pay linkage is the FY2022 renaming of an operational category to Culture, Diversity & Sustainability, which the committee itself described as clarifying \"how ESG results affect the pay\" rather than changing what is measured [LANG-FY2022-32ba2901], and the FY2025 categories drop the compound name back to \"Culture\" [INC-FY2025-904dc78b]. The letters concede uneven progress: emissions declined 0.5% in 2022 with scope 3 \"arguably our ultimate challenge\" [LANG-FY2023-11b8da43]; \"Where we're not yet on track, we're mobilizing to accelerate\" [LANG-FY2024-6c8756ba]; \"on track to meet many of our targets\" [LANG-FY2025-1d80531e]. Long-horizon targets are a legitimate reason not to pay annually. The divergence worth naming is narrower: the pay category that once carried the label has quietly lost it in the same year the letter concedes partial progress.\n\n**Operating leverage: stated as a priority for two years, then absent from the stated three — while the paid measure that captures it grew in importance.** Operating leverage was an explicit letter priority in FY2023 and FY2024 [SP-FY2023-d99d40a9, SP-FY2024-1238e7aa] and is not among the FY2025 North Star three [SP-FY2025-93e18460]. The incentive plan runs the other way: Incentive Plan Operating Income has been half of the financial portion throughout and delivered 156.37% and 138.18% of target in FY2024 and FY2025 [INC-FY2024-9038f1b2, INC-FY2025-34b5e674]. This is a divergence in which the pay design is the more reliable signal — the company is still being paid on margin discipline even after it stopped naming it.\n\n**A genuine convergence, stated for the record.** Cloud growth is the one priority where stated and paid are aligned without gap. Item 1 states the company is \"focused on helping customers use the breadth and depth of the Microsoft Cloud to get the most value out of their digital spend while leading the AI platform wave across our solution areas\" [SP-FY2025-59a68571, SP-FY2024-e61542e3, SP-FY2023-c5a7c531]; the Reg FD presentation states the metric elevation \"aligns to our strategic focus on cloud growth\" [QA-FY2025-3557cf6c, QA-FY2025-9cc5e7f2]; and 70% of PSA weight pays on exactly that [INC-FY2025-848ed72b, INC-FY2025-bf0f915c]. Gaming is a second, weaker convergence — a stated Item 1 priority throughout [SP-FY2020-fff648cd, SP-FY2022-bc0540fb, SP-FY2025-f533c369], the destination of two of three acquisitions [EVT-FY2021-5a713f8c, EVT-FY2024-e9d208cf], and a 15% PSA weight [INC-FY2025-5d9888ed] — though the paid metric is content and services only, with nothing paying on hardware in a year hardware fell 25% [LANG-FY2025-48edf2ad]."
+}
