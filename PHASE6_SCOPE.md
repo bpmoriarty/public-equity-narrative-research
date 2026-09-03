@@ -825,3 +825,48 @@ fact id, heading and at-risk glyph present.
 | approved | `--only extract_facts --yes`, 42 calls |
 | declined | a piped stdin, read as **no** — exit 3, nothing spent |
 | nothing to do | the full run: both spending stages no-op, no prompt |
+
+## Gate 6, closed properly
+
+The full run that found finding 10 was also the run that would have *closed*
+gate 6, so it could not do both. Re-run afterwards, as **separate invocations**:
+
+```
+PYTHONHASHSEED=''   (empty means randomized per process)
+
+CHECK 1  baseline, before any run   CLEAN
+CHECK 2  MSFT full run 1            CLEAN     ran: 11, nothing to do: 2
+CHECK 3  MSFT full run 2            CLEAN     ran: 11, nothing to do: 2
+CHECK 4  MORN full run 1            CLEAN     ran: 11, nothing to do: 2
+CHECK 5  MORN full run 2            CLEAN     ran: 11, nothing to do: 2
+
+5 tree checks, 0 dirty
+```
+
+Every run: both documents passed every hard check, 3 PDFs re-rendered and read
+back. Cleanliness is checked with `git diff --quiet` as well as
+`git status --porcelain`, because status can lean on stat info while `diff`
+compares bytes.
+
+**Separate invocations are the substance of this gate, not a detail.** `cli.py`
+does not pin `PYTHONHASHSEED` and it is unset in the environment, so each of the
+~14 stage subprocesses per run draws its own seed. An in-process "run the writer
+twice and compare" test shares one seed and **structurally cannot** see
+hash-order nondeterminism — which is precisely how finding 10 survived every
+green suite until today. This is memory finding 16 restated by a second example:
+`tests/regression/morn/test_reruns_change_nothing.py` compares one run against
+the *committed* bytes for exactly this reason, and that is still the right
+design.
+
+*Two faults of my own in the harness for this gate, both worth recording because
+each produced an answer that looked fine.* The first used a PowerShell function
+that both `Write-Output`s and returns a boolean — a function returns everything
+it writes, so the status strings joined the booleans in the results array: five
+checks reported as "10 tree checks" and every per-check line swallowed. The
+verdict was right and unevidenced, which is not good enough for a gate. The
+second died on a parse error at the last line of the file: PowerShell 5.1 reads
+a `.ps1` as cp1252 unless it has a BOM, and an em dash inside a double-quoted
+string is UTF-8 `E2 80 94`, whose third byte decodes to a curly right double
+quote — which PowerShell accepts as a string delimiter. CLAUDE.md rule 2 again,
+in a scratchpad script rather than in source. The third attempt is ASCII-only and
+was parser-checked before being run.

@@ -1184,6 +1184,19 @@ governance substance (72 pack facts, 9.4%, naming a director and nothing else)
 and 6.6 has to judge knowing that. Full detail for all nine findings is in
 `PHASE6_SCOPE.md`.
 
+**Gate 6 is closed, and separately from the run that found finding 10** — that
+run could not both expose the bug and certify the property. Re-run afterwards as
+separate invocations: baseline plus two consecutive full runs per company, **5
+tree checks, 0 dirty**, every run passing every hard check and re-rendering all
+three PDFs with read-back. Checked with `git diff --quiet` as well as
+`git status --porcelain`, since status can lean on stat info while `diff` compares
+bytes. Separate invocations are the substance: `cli.py` does not pin
+`PYTHONHASHSEED`, so each stage subprocess draws its own seed, and an in-process
+double-run cannot see hash-order nondeterminism at all.
+
+**Six of Phase 6's seven gates are met. Only gate 7 — the clean-checkout run —
+remains, and that is 6.7.**
+
 **589 checks across 17 files**, up from 576; MORN byte-identical throughout.
 
 ### 2026-09-01 — Phase 6 scoped, and 6.1 found what it was written to look for
