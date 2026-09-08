@@ -15,6 +15,7 @@ through Claude Code, which is the path almost everyone here has. See
 ```bash
 # 1. Build the environment (creates .venv from uv.lock — do not use pip)
 uv sync
+# If that fails with a hardlink error, use:  uv sync --link-mode=copy   (see below)
 
 # 2. Create your secrets file, then fill in EDGAR_IDENTITY
 cp .env.example .env          # Git Bash
@@ -26,6 +27,38 @@ git config core.hooksPath .githooks
 # 4. Scaffold the company you want to research
 uv run pipeline init TSLA
 ```
+
+### If `uv sync` fails on a hardlink error
+
+Found by doing exactly this, from a fresh clone, on a Windows machine with
+OneDrive present:
+
+```
+error: Failed to install: pytest-9.1.1-py3-none-any.whl (pytest==9.1.1)
+  Caused by: failed to hardlink file from <.venv> to <uv cache>:
+  The cloud operation cannot be performed on a file with incompatible
+  hardlinks. (os error 396)
+```
+
+`uv` populates `.venv` by hardlinking out of its own cache, and that fails when
+either end sits on a cloud-backed filesystem. Use the mode `uv` itself suggests:
+
+```bash
+uv sync --link-mode=copy
+```
+
+or set it once, so every later `uv run` and `uv add` behaves the same way:
+
+```powershell
+$env:UV_LINK_MODE = "copy"        # this session
+# or persist it:
+[Environment]::SetEnvironmentVariable("UV_LINK_MODE", "copy", "User")
+```
+
+It costs disk (real copies rather than links) and nothing else. Note this can
+happen **even with the checkout outside OneDrive**, because the *cache* end of
+the link is under your user profile — so it is worth knowing about before you
+conclude something is wrong with the project.
 
 **`EDGAR_IDENTITY` is the only thing that belongs in `.env`** — the SEC blocks
 requests without a descriptive User-Agent.

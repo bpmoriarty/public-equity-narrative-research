@@ -798,7 +798,13 @@ across 34 calls). Milestones 1–3 cost nothing.
     - d. [x] `output/timeline.md` — 76 rows, deterministic, $0.00. Surfaced four data problems before any prose was written
     - e. [x] `narrative-brief.md` (2,007 words) and `discussion-points.md` (3,527 words), $7.00. Found an 8-defect quotation rate the id check could not see
     - f. [x] `src/verify_outputs.py` — 12 hard checks + 2 review lists per document, 44 tests. Caught the brief's undisclosed FY2021 letter gap
-11. [ ] Optional, if the board narrative proves load-bearing: per-year verified
+11. [ ] **NO LONGER OPTIONAL — Phase 6 finding 6 answered the condition.** MSFT
+    gets 0/12 `director_since` and 0/12 `committees` in all six years against
+    MORN's 9–10/10, with a 3.5x source-size spread and 1–4 quotes a year lifted
+    from the proxy VOTING CARD. 72 pack facts (9.4%) name a director and nothing
+    else. Not fixable in config: `find_proxy_sections(doc)` takes no `cfg`, so
+    proxy boundaries are unreachable from `sections.toml`. Original wording
+    below. Per-year verified
         boundaries for `DEF14A_director_bios` and `DEF14A_proposals_and_votes`.
         The verification suite raised its priority — 51 low-confidence director-bio
         facts, and whether board-composition claims are usable is still the reader's
@@ -970,7 +976,13 @@ across 34 calls). Milestones 1–3 cost nothing.
         load-bearing and commented as such in all six files. Verified with a
         throwaway second company present: all nine files pass by hand as well as
         through the runner
-27. [ ] **One path the cost gate's proofs cannot cover: `--yes` against a stale
+27. [x] **DONE 2026-09-02 in Phase 6.5.** The approving path ran for real:
+    `pipeline run MSFT --only extract_facts --yes`, 42 tasks, 0 failed, $12.20
+    notional and $0 charged. All three gate paths now have a real run behind
+    them — approved, declined (a piped stdin read as **no**, exit 3, nothing
+    spent) and nothing-to-do (the full run, no prompt). `--only` is what scopes
+    approval to one stage; bare `--yes` approves both. Original wording below.
+    **One path the cost gate's proofs cannot cover: `--yes` against a stale
         document.** Declining was proven four ways (closed stdin, `n`, `maybe`,
         `--skip-spending`) and all four stop the chain having spent nothing. The
         *approving* path ends in a real ~$8 generation call and there is no way to
@@ -988,7 +1000,12 @@ across 34 calls). Milestones 1–3 cost nothing.
         reporting `NO COUNT`. `check` is deliberately left **undefined** there
         rather than aliased — defining a compatible one would have made the
         mistake work
-29. [ ] **A whole-company run makes no EDGAR requests, and that is worth
+29. [x] **DONE — both halves.** The new-company case ran watched in Phase 6.3
+    (MSFT `init` + `discover` + `fetch`, 72 filings, 132 documents, no 403/429,
+    the apparent regex hits being accession digits). The cached case was
+    re-verified in 6.7 from a fresh clone: `sec_requests_made: 0` for BOTH
+    companies with `raw/` restored. Original wording below.
+    **A whole-company run makes no EDGAR requests, and that is worth
         re-testing when a new company is added.** Every `pipeline MORN` run in
         Phase 4 reported `sec_requests_made: 0` — the cache holds, exactly as
         CLAUDE.md requires. A first run for a NEW company is the opposite case
@@ -1194,8 +1211,45 @@ bytes. Separate invocations are the substance: `cli.py` does not pin
 `PYTHONHASHSEED`, so each stage subprocess draws its own seed, and an in-process
 double-run cannot see hash-order nondeterminism at all.
 
-**Six of Phase 6's seven gates are met. Only gate 7 — the clean-checkout run —
-remains, and that is 6.7.**
+**6.7 is done (2026-09-08) and PHASE 6 IS COMPLETE — all seven gates met.**
+Fresh clone from GitHub into a 27-character path outside OneDrive, `raw/`
+restored, everything else rebuilt. **`git status` clean and both pack sha256s
+reproduced** (`fd320ce5…`, `8692a1d7…`), so the provenance footer in each
+committed deliverable still resolves against a pack rebuilt on a different
+machine path. Both paid stages `exit=0` with nothing to do — 88 and 42 cached —
+so the run cost **$0**. `sec_requests_made: 0` for both companies, which is item
+29's other half: with the cache restored, a whole-company run makes no EDGAR
+request at all. **589 checks in the clone.**
+
+Two documented claims were tested rather than assumed and both held: `tests/unit`
+is self-contained (12 files, 548 checks, no derived data), and
+`tests/regression/morn` **dies** instead of skipping, naming each missing
+artifact and distinguishing the free-to-rebuild ones from paid model output.
+
+**One deliberate deviation, which anyone re-running 6.7 should keep.** The plan
+says `pipeline <TICKER> --yes`; this used `--skip-spending` plus `--check-fresh`
+on both paid stages. `sections/` is gitignored and must rebuild in a fresh clone,
+and had it rebuilt one byte differently the committed facts cache would be stale
+— where `--yes` would have **approved ~$12 of real re-extraction**. The
+substitute proves the same property and turns a possible bill into a finding.
+
+**Finding 11, fixed in the README: `uv sync` fails at step 1.** On a clean clone
+it died with `failed to hardlink … The cloud operation cannot be performed on a
+file with incompatible hardlinks. (os error 396)`. `uv` populates `.venv` by
+hardlinking out of its cache and that fails when either end is cloud-backed.
+`uv sync --link-mode=copy` works; `UV_LINK_MODE=copy` makes it stick. **The
+non-obvious part: this happened with the checkout OUTSIDE OneDrive, exactly as
+the README advises, because the cache end of the link is under the user
+profile** — so someone who had read and followed the OneDrive warning would
+conclude the project was broken. Nothing else in Phase 6 could have found it;
+every other run reused an environment that already existed.
+
+**Bookkeeping corrected while checking what was open:** items 27 (the cost
+gate's approving path) and 29 (a new company's EDGAR traffic) were both
+completed by 6.5 and 6.3 and were still unticked; item 11 (per-year verified
+`DEF14A_director_bios` boundaries, "optional, if the board narrative proves load
+bearing") now has its answer — finding 6 proves it does, so it is no longer
+optional.
 
 **589 checks across 17 files**, up from 576; MORN byte-identical throughout.
 

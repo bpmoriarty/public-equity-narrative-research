@@ -870,3 +870,90 @@ string is UTF-8 `E2 80 94`, whose third byte decodes to a curly right double
 quote — which PowerShell accepts as a string delimiter. CLAUDE.md rule 2 again,
 in a scratchpad script rather than in source. The third attempt is ASCII-only and
 was parser-checked before being run.
+
+---
+
+# 6.7 — the clean-checkout run
+
+Done 2026-09-08. Fresh clone **from GitHub** (what a colleague actually does),
+into a 27-character path outside OneDrive as the README instructs. Gate 7 met,
+and with it all seven.
+
+**One deliberate deviation from the plan's script.** It says
+`pipeline <TICKER> --yes`; this used `--skip-spending` plus `--check-fresh` on
+both paid stages instead. `sections/` is gitignored and *must* rebuild in a fresh
+clone, and if it rebuilt one byte differently the committed facts cache would go
+stale — where `--yes` would **approve ~$12 of real re-extraction**. The
+substitute proves the same property and turns a possible bill into a finding.
+Anyone re-running 6.7 should keep that substitution.
+
+| check | result |
+|---|---|
+| `uv sync` (README step 1) | **FAILED** — see finding 11 |
+| `tests/unit` in a bare checkout | 12 files, 548 checks, pass |
+| regression tests with no derived data | **fail loudly**, all 4 named, exit 1 |
+| sections rebuilt from `raw/` alone | MORN 231, MSFT 148 — counts unchanged |
+| **pack sha256 reproduced** | `fd320ce5…`, `8692a1d7…` — **both match** |
+| `extract_facts --check-fresh` | exit 0, 88 and 42 cached, 0 to run |
+| `generate_outputs --check-fresh` | exit 0, both documents current |
+| `verify_outputs` | every hard check passed, both companies |
+| `render_pdf` | 3 + 3, read-back verified |
+| **`git status` in the clone** | **CLEAN** |
+| `sec_requests_made` | **0** for both companies |
+| full suite in the clone | **589 checks**, all passing |
+
+`git status` clean is the plan's central check, and it means more here than after
+an in-place run: the clone rebuilt every derived artifact from `raw/` alone and
+reproduced the committed bytes, **including both pack sha256s** — so the
+provenance footer in each committed deliverable still resolves against a pack
+built on a different machine path. `sec_requests_made: 0` is item 29's other
+half: with `raw/` restored, a whole-company run makes no EDGAR request at all,
+which is what CLAUDE.md's cache-once rule requires in its hardest case.
+
+Two documented claims were tested rather than assumed, and both held:
+`tests/unit` is genuinely self-contained, and `tests/regression/morn` **dies**
+instead of skipping, naming each missing artifact and saying which are free to
+rebuild and which are paid model output. That is VERIFICATION.md D7 working.
+
+## Finding 11 (FIXED in the README): `uv sync` fails at step 1 on a hardlink error
+
+The first command in the README, on a clean clone:
+
+```
+error: Failed to install: pytest-9.1.1-py3-none-any.whl (pytest==9.1.1)
+  Caused by: failed to hardlink file from <.venv> to <uv cache>:
+  The cloud operation cannot be performed on a file with incompatible
+  hardlinks. (os error 396)
+```
+
+`uv` populates `.venv` by hardlinking out of its cache, and that fails when
+either end is on a cloud-backed filesystem. `uv sync --link-mode=copy` —
+the mode `uv`'s own warning suggests — works, and `UV_LINK_MODE=copy` makes it
+stick.
+
+**The non-obvious part, and why it belongs in the README rather than in
+folklore:** this happened with the checkout **outside** OneDrive, exactly as the
+README advises, because the *cache* end of the link is under the user profile.
+Someone who had read the OneDrive warning and followed it would conclude the
+project was broken. Documented with the verbatim error so it is searchable.
+
+This is the whole justification for 6.7 as a separate item: nothing else in the
+phase could have found it, because every other run reused an environment that
+was already built.
+
+## All seven gates, closed
+
+| gate | how |
+|---|---|
+| 1 | 6.1's fiscal-year tests pass, and fail against a broken mapping |
+| 2 | MSFT's counts reconcile across four seams; the shard question answered |
+| 3 | every section validates or is a recorded failure (2 image-only exhibits) |
+| 4 | `pipeline estimate` ran before spending; the bill accounted against it — and finding 5 came out of that reconciliation |
+| 5 | both deliverables pass all 14 hard checks; 39/39 and 72/72 quotations verbatim |
+| 6 | two consecutive full runs per company, 5 tree checks, 0 dirty |
+| 7 | this section |
+
+**Phase 6 is complete.** What it leaves behind is eleven findings, four of them
+cases where MORN's committed artifacts look complete and the automated path does
+not reproduce them — findings 4 and 6 still open by decision, 5 and 7 open and
+recorded, the rest fixed.
