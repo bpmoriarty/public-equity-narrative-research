@@ -24,9 +24,24 @@ cp .env.example .env          # Git Bash
 # 3. Enable the pre-commit checks (once per clone — git does not carry hooks)
 git config core.hooksPath .githooks
 
-# 4. Scaffold the company you want to research
+# 4. Check this machine can actually run it (free, ~2 seconds, no model call)
+uv run pipeline doctor
+
+# 5. Scaffold the company you want to research
 uv run pipeline init TSLA
 ```
+
+**Run `doctor` before your first real run.** Everything it checks was already
+checked somewhere — but only at the moment it mattered, and for the model
+backend that is stage 6 of 13, *after* `discover` and `fetch` have made several
+hundred EDGAR requests. It reports the Python and package in use, whether every
+config parses (including any per-company override), your `EDGAR_IDENTITY`,
+whether the commit hook is wired, and — the reason it exists — **which Claude
+Code executable will be used, how it was found, and whether it actually runs.**
+
+Exit 0 means nothing there will stop a run. Add `--call` to make one trivial
+model call, which proves the backend is *authenticated* rather than merely
+present; on a seat that is about $0.20 notional and **$0 charged**.
 
 ### If `uv sync` fails on a hardlink error
 
@@ -118,6 +133,7 @@ uv run pipeline status MORN     # what is on disk, per stage
 uv run pipeline estimate MORN   # what the two spending stages would cost
 uv run pipeline stages          # the registry, and which stages cost money
 uv run pipeline init TSLA       # scaffold a new company
+uv run pipeline doctor          # can this machine run it? free, no model call
 ```
 
 Two of the thirteen stages make model calls. Before either runs, `pipeline` asks
@@ -162,6 +178,15 @@ but the extension *ships* it, at a path carrying the extension's version number,
 which moves on every update. Resolution order is: the `binary_path` setting, then
 `claude` on `PATH`, then the newest binary found inside an installed extension.
 If a run cannot find it, set `binary_path` in `config/llm.toml`.
+
+**`uv run pipeline doctor` answers this in two seconds**, printing the
+executable, which of those three routes found it, and whether it runs. Two
+consequences of that version-numbered path are worth knowing: a `binary_path`
+that was right last month breaks at the next extension update, and a machine
+where discovery happens to work **cannot test the failure for itself** — which
+is why the check is a command rather than a comment. If a stage's backend cannot
+be built, the cost gate now refuses to offer it for approval at all: `--yes`
+will not push past it, because approving cannot help.
 
 On a seat the dollar figures the pipeline prints are **notional** — what the API
 would have charged. They are still the right number to compare against, and they

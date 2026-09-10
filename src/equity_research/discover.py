@@ -68,11 +68,14 @@ META_DIR = P.meta
 FETCH_LOG = META_DIR / "fetch-log.json"
 OUT_DIR = P.discovery
 
-# The .env.example placeholder, so a copied-but-not-edited template fails here
-# rather than reaching the SEC as a fake User-Agent. Kept in sync with
-# .env.example by hand; the cost of drift is a missed warning, not a wrong run.
-PLACEHOLDER_RE = re.compile(r"(?i)\b(example\.(?:com|org|net)|your[._ ]?name|"
-                            r"your[._ ]?email|name@host)\b")
+# The .env.example placeholder lives in `settings` now, not here, and is
+# re-exported so this module's existing users are unaffected. It moved because
+# `pipeline doctor` performs the same check and cannot import this module: every
+# stage resolves its ticker at IMPORT time via the module-level `P`, so
+# `from equity_research.discover import PLACEHOLDER_RE` is itself an ambiguous
+# `paths()` call once two companies exist. `settings` is ticker-independent, so
+# there is still exactly one definition and no import hazard.
+PLACEHOLDER_RE = settings.IDENTITY_PLACEHOLDER_RE
 
 TICKER_MAP_URL = "https://www.sec.gov/files/company_tickers.json"
 SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK{cik}.json"

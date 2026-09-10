@@ -113,6 +113,7 @@ import subprocess
 import sys
 import time
 from dataclasses import dataclass, field
+from pathlib import Path
 
 from equity_research._bootstrap import ROOT
 from equity_research.paths import (COMPANIES_DIR, known_tickers, paths,
@@ -345,6 +346,44 @@ def confirm(question: str) -> bool:
 GATE_NOTHING = "nothing"     # the stage has no work; do not run it
 GATE_APPROVED = "approved"   # run it
 GATE_DECLINED = "declined"   # stop the chain, spend nothing
+# The stage cannot run at all — its model backend could not even be built. Kept
+# apart from DECLINED because nobody decided this, and apart from the probe's
+# "could not answer" because answering yes cannot help.
+GATE_UNAVAILABLE = "unavailable"
+
+
+def backend_health(stage_name: str, ticker: str) -> tuple[str | None, str]:
+    """Can this stage's model backend be BUILT? Returns (name, error).
+
+    Makes no model call and sends no prompt. Construction alone is a real test,
+    because `get_backend` resolves the Claude Code executable eagerly: a missing
+    binary, or a `[llm] binary_path` pointing at nothing, raises here rather than
+    at the first call.
+
+    Why this is asked before the gate prompts. Without it, a machine with no
+    discoverable CLI produces this sequence: `extract_facts --check-fresh` dies
+    (it builds the backend at extract_facts.py:831, before its --check-fresh
+    branch), `probe_stage` sees an exit code that is neither 0 nor 4 and returns
+    None, and `cost_gate` prints "the stage could not say whether it has work;
+    assuming it does" and goes on to ask whether to spend. That is a fatal
+    configuration error dressed as an ambiguous one, and answering yes just
+    fails again — after the operator has already sat through `discover` and
+    `fetch`.
+
+    The import is local on purpose: `pipeline stages` and `pipeline init` must
+    work without the model dependencies resolving, and cli.py is imported by
+    tests that construct no backend.
+    """
+    try:
+        from equity_research import model_client, settings
+        # Mirrors extract_facts.py exactly. `load_config("llm")` wraps by
+        # FILENAME and the file itself has an [llm] table, so the result is
+        # doubly nested: ["llm"] unwraps the filename layer and hands
+        # get_backend the mapping it expects to find "llm" inside.
+        cfg = settings.load_config("llm", P=paths(ticker))["llm"]
+        return model_client.get_backend(cfg, stage=stage_name).name, ""
+    except Exception as exc:                                   # noqa: BLE001
+        return None, str(exc)
 
 
 def cost_gate(stage: Stage, ticker: str, assume_yes: bool) -> str:
@@ -358,7 +397,26 @@ def cost_gate(stage: Stage, ticker: str, assume_yes: bool) -> str:
     that direction is an unnecessary prompt; the other direction silently skips
     a stage that had something to do, which is the failure this whole gate is
     here to prevent.
+
+    The backend check comes FIRST, before the probe, because the probe builds
+    the backend too — so on a machine that cannot run this stage the probe's
+    output is noise wrapped around the same error. One clean message instead.
     """
+    name, err = backend_health(stage.name, ticker)
+    if name is None:
+        print(f"         CANNOT RUN — {stage.name}'s model backend could not "
+              f"be built:")
+        for line in err.splitlines():
+            print(f"           {line}")
+        print()
+        print(f"         Nothing was spent and nothing was asked, because "
+              f"approving this could not help.")
+        print(f"         Diagnose it without starting a run:  "
+              f"uv run pipeline doctor")
+        print(f"         Or run the free stages only:          "
+              f"uv run pipeline {ticker} --skip-spending")
+        return GATE_UNAVAILABLE
+
     verdict = probe_stage(stage, ticker)
 
     if verdict == CHECK_FRESH_NOTHING:
@@ -518,6 +576,18 @@ def run_chain(stages: list[Stage], ticker: str, *, runner=run_stage,
                 print(f"         nothing to do — not run, nothing spent")
                 result.nothing_to_do.append(stage.name)
                 continue
+
+            # Counted as a FAILURE rather than as its own outcome: the stage
+            # cannot run, which is what `failed_at` means, and reusing it keeps
+            # rule 5's accounting invariant untouched. It is not `declined_at` —
+            # nobody decided anything.
+            if verdict == GATE_UNAVAILABLE:
+                print()
+                print(f"         STOPPING — {stage.name} cannot run on this "
+                      f"machine. Nothing spent.")
+                result.failed_at = stage.name
+                result.not_reached = remaining
+                return result
 
             if verdict == GATE_DECLINED:
                 print()
@@ -899,6 +969,210 @@ def cmd_estimate(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_doctor(args: argparse.Namespace) -> int:
+    """Is this machine able to run the pipeline? Answered in seconds, for free.
+
+    WHY THIS EXISTS. Everything it checks was already checked *somewhere* — but
+    only at the moment it mattered, which for the model backend is stage 6 of
+    13, after `discover` and `fetch` have made several hundred EDGAR requests.
+    The error there is specific and good; its timing is not. This asks the same
+    questions before the run starts.
+
+    Phase 6.7 is the reason the CLI check leads. Claude Code resolves, on the
+    machine this was written on, to a path containing the IDE extension's
+    VERSION NUMBER — which moves on every update. So the two likely failures are
+    "never installed the CLI" and "binary_path was correct last month", and
+    neither is visible on a machine where it happens to work. That is precisely
+    the class of thing a working machine cannot test for itself.
+
+    Makes no model call and sends no prompt, so it costs nothing and needs no
+    seat. `--call` opts into one trivial prompt, because a binary that resolves
+    is not yet a binary that is authenticated.
+    """
+    problems: list[str] = []
+    notes: list[str] = []
+
+    def ok(label: str, detail: str = "") -> None:
+        print(f"  ok    {label}" + (f"  {detail}" if detail else ""))
+
+    def bad(label: str, detail: str = "") -> None:
+        problems.append(label)
+        print(f"  FAIL  {label}" + (f"  {detail}" if detail else ""))
+
+    def warn(label: str, detail: str = "") -> None:
+        notes.append(label)
+        print(f"  warn  {label}" + (f"  {detail}" if detail else ""))
+
+    print("pipeline doctor")
+    print("  No model call, no prompt, no EDGAR request. Nothing is spent.")
+    print()
+
+    # --- the interpreter and the package -----------------------------------
+    print("environment")
+    ok("python", f"{sys.version.split()[0]}")
+    ok("package", f"equity_research imported from {Path(__file__).parent}")
+
+    # --- companies ----------------------------------------------------------
+    # Established before the config check, because config is layered per company
+    # (`companies/<T>/overrides/`) and a doctor that only read the globals would
+    # pass on a machine whose override is malformed.
+    print()
+    print("companies")
+    tickers = known_tickers()
+    if tickers:
+        ok(f"{len(tickers)} scaffolded", ", ".join(tickers))
+    else:
+        warn("none scaffolded", "run `uv run pipeline init <TICKER>`")
+
+    # --- config parses ------------------------------------------------------
+    print()
+    print("config")
+    from equity_research import settings
+    # `paths()` alone would raise when two companies exist and no ticker was
+    # given — correct for a stage, wrong here: doctor has to work before
+    # anything is scaffolded and without being told which company to care
+    # about. A name that cannot be a real ticker reads the globals with no
+    # overrides; a real one exercises that company's overrides too.
+    probes = [(t, paths(t)) for t in tickers] or [("(globals)", paths("ZZDOCTOR"))]
+    for label, P in probes:
+        for name in ("llm", "forms", "sections", "outputs"):
+            try:
+                settings.load_config(name, P=P)
+                ok(f"{name}.toml parses", f"as resolved for {label}")
+            except Exception as exc:                           # noqa: BLE001
+                bad(f"{name}.toml for {label}", str(exc)[:160])
+
+    # --- EDGAR identity -----------------------------------------------------
+    print()
+    print("EDGAR")
+    # From `settings`, not from `discover`: importing a stage module resolves a
+    # ticker at import time and dies when two companies exist and none was
+    # named. Same regex, one definition.
+    PLACEHOLDER_RE = settings.IDENTITY_PLACEHOLDER_RE
+    ident = os.getenv("EDGAR_IDENTITY", "").strip()
+    if not ident:
+        bad("EDGAR_IDENTITY is not set",
+            "copy .env.example to .env and fill it in")
+    elif "@" not in ident:
+        bad("EDGAR_IDENTITY has no email address in it", repr(ident))
+    elif PLACEHOLDER_RE.search(ident):
+        bad("EDGAR_IDENTITY is still the .env.example placeholder", repr(ident))
+    else:
+        ok("EDGAR_IDENTITY", ident)
+
+    # --- the model backend, which is the point ------------------------------
+    print()
+    print("model backend")
+    # Doubly nested: load_config wraps by FILENAME, and llm.toml's own top-level
+    # table is also called [llm]. Getting this wrong is silent — the fallbacks
+    # look like real settings — and it is what made an earlier reading of this
+    # code conclude the binary was resolved lazily when it is resolved eagerly.
+    llm = (settings.load_config("llm", P=probes[0][1])
+           .get("llm", {}).get("llm", {}))
+    configured = (llm.get("binary_path") or "").strip()
+    print(f"  --    [llm] backend = {llm.get('backend', 'claude_code')!r}, "
+          f"binary_path = {configured!r}")
+
+    from equity_research import model_client
+    # Report which of find_binary's three routes will answer, in its own order.
+    if configured:
+        how = "config [llm] binary_path"
+    elif shutil.which("claude"):
+        how = "`claude` on PATH"
+    else:
+        how = "IDE-extension discovery"
+    try:
+        binary = model_client.find_binary(configured or None)
+        ok(f"Claude Code executable, via {how}", str(binary))
+    except Exception as exc:                                   # noqa: BLE001
+        binary = None
+        bad("Claude Code executable not found")
+        for line in str(exc).splitlines():
+            print(f"          {line}")
+
+    # A resolvable path is not a runnable one. `--version` runs the binary and
+    # makes no model call, so it separates "the file is there" from "it works".
+    if binary is not None:
+        try:
+            proc = subprocess.run([str(binary), "--version"],
+                                  capture_output=True, text=True,
+                                  encoding="utf-8", errors="replace",
+                                  timeout=60)
+            if proc.returncode == 0:
+                ok("it executes", (proc.stdout or "").strip()[:80])
+            else:
+                bad("it does not execute", f"exit {proc.returncode}")
+        except Exception as exc:                               # noqa: BLE001
+            bad("it does not execute", str(exc)[:160])
+
+    # Per-stage construction, which is exactly what the cost gate now asks —
+    # and per COMPANY, because `[llm]` is layerable in
+    # `companies/<T>/overrides/llm.toml`. Checking only the first company would
+    # let a bad `binary_path` or a per-stage `backend = "api"` in a second
+    # company's override reach its own cost gate unreported, which is the
+    # failure this command exists to pre-empt.
+    ticker = tickers[0] if tickers else None
+    for t in tickers:
+        for stage in (s for s in STAGES if s.spends):
+            name, err = backend_health(stage.name, t)
+            if name:
+                ok(f"{t} {stage.name} backend builds", f"-> {name}")
+            else:
+                bad(f"{t} {stage.name} backend does not build",
+                    err.splitlines()[0][:140])
+
+    # --- the commit hook ----------------------------------------------------
+    print()
+    print("git")
+    try:
+        hp = subprocess.run(["git", "config", "core.hooksPath"],
+                            capture_output=True, text=True,
+                            encoding="utf-8", errors="replace", timeout=30)
+        got = (hp.stdout or "").strip()
+        if got == ".githooks":
+            ok("core.hooksPath", got)
+        else:
+            warn("core.hooksPath is not .githooks", repr(got) or "unset")
+            print("          the control-byte scan will not run on commit; "
+                  "fix with:")
+            print("          git config core.hooksPath .githooks")
+    except Exception as exc:                                   # noqa: BLE001
+        warn("could not read core.hooksPath", str(exc)[:120])
+
+    # --- optional: prove authentication, not just resolution ----------------
+    if args.call:
+        print()
+        print("one live call (opt-in via --call)")
+        if binary is None:
+            bad("skipped", "no executable to call")
+        else:
+            try:
+                b = model_client.get_backend(
+                    settings.load_config("llm", P=paths(ticker))["llm"]
+                    if ticker else None)
+                r = b.generate("Reply with the single word: ok")
+                ok("a real call returned", (r.text or "").strip()[:60])
+                print(f"          billing={getattr(r, 'billing', '?')} — on a "
+                      f"seat this is ~$0.20 notional and $0 charged, the cold "
+                      f"scaffolding write")
+            except Exception as exc:                           # noqa: BLE001
+                bad("the call failed", str(exc)[:200])
+
+    # --- verdict ------------------------------------------------------------
+    print()
+    print("=" * 72)
+    if problems:
+        print(f"  {len(problems)} problem(s): {', '.join(problems)}")
+        print(f"  The pipeline will not get past them. Fix and re-run "
+              f"`uv run pipeline doctor`.")
+        return 1
+    if notes:
+        print(f"  Ready, with {len(notes)} warning(s): {', '.join(notes)}")
+        return 0
+    print("  Ready. Nothing here will stop a run.")
+    return 0
+
+
 def cmd_run(args: argparse.Namespace) -> int:
     ticker = resolve_company(args.ticker)
     stages = select(STAGES, args.start_from, args.only)
@@ -920,7 +1194,7 @@ def cmd_run(args: argparse.Namespace) -> int:
 # Entry point
 # ---------------------------------------------------------------------------
 
-SUBCOMMANDS = ("run", "stages", "status", "estimate", "init")
+SUBCOMMANDS = ("run", "stages", "status", "estimate", "init", "doctor")
 
 
 def normalise_argv(argv: list[str]) -> list[str]:
@@ -981,6 +1255,15 @@ def build_parser() -> argparse.ArgumentParser:
                        help="scaffold a new company from companies/_template/")
     i.add_argument("ticker", help="ticker for the new company, e.g. TSLA")
     i.set_defaults(func=cmd_init)
+
+    d = sub.add_parser("doctor",
+                       help="can this machine run the pipeline? costs nothing, "
+                            "makes no model call — run it before a first run")
+    d.add_argument("--call", action="store_true",
+                   help="also make ONE trivial model call, to prove the backend "
+                        "is authenticated and not merely present. On a seat "
+                        "that is ~$0.20 notional and $0 charged.")
+    d.set_defaults(func=cmd_doctor)
 
     return ap
 

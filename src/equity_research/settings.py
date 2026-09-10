@@ -50,6 +50,7 @@ rather than silently producing a worse document.
 from __future__ import annotations
 
 import json
+import re
 import tomllib
 from collections.abc import Mapping
 from dataclasses import dataclass
@@ -379,6 +380,21 @@ def _require(path: Path, name: str) -> Path:
 # ---------------------------------------------------------------------------
 
 MAX_WINDOW_YEARS = 10
+
+# The .env.example placeholder, so a copied-but-not-edited template fails before
+# reaching the SEC as a fake User-Agent. Kept in sync with .env.example by hand;
+# the cost of drift is a missed warning, not a wrong run.
+#
+# It lives HERE rather than in discover.py, where it started, because two
+# unrelated callers need it and only this module is safe for both to import:
+# every stage module resolves its ticker at IMPORT time through a module-level
+# `paths()`, so `from equity_research.discover import ...` is itself an
+# ambiguous ticker resolution once a second company exists — which is exactly
+# how `pipeline doctor` first failed. `settings` is ticker-independent.
+# `discover.PLACEHOLDER_RE` re-exports this, so its existing users are unchanged.
+IDENTITY_PLACEHOLDER_RE = re.compile(
+    r"(?i)\b(example\.(?:com|org|net)|your[._ ]?name|"
+    r"your[._ ]?email|name@host)\b")
 
 
 def window(company_cfg: dict) -> tuple[int, int]:

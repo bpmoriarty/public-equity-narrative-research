@@ -482,8 +482,119 @@ try:
     check("an unanswerable probe is treated as work, not as nothing",
           verdict, cli.GATE_APPROVED)
     check("  and is priced", shown, ["extract_facts"])
+
+    # -----------------------------------------------------------------------
+    # A STAGE WHOSE BACKEND CANNOT BE BUILT MUST NOT BE OFFERED FOR APPROVAL
+    # -----------------------------------------------------------------------
+    # Found in 6.7's aftermath. `get_backend` resolves the Claude Code
+    # executable EAGERLY, and extract_facts builds the backend at line 831 —
+    # before its own --check-fresh branch. So on a machine with no discoverable
+    # CLI the probe dies, `probe_stage` returns None for an exit code that is
+    # neither 0 nor 4, and the gate used to print "the stage could not say
+    # whether it has work; assuming it does" and then ask whether to spend.
+    # A fatal configuration error dressed as an ambiguous one, where answering
+    # yes cannot help.
+    real_health = cli.backend_health
+    try:
+        cli.backend_health = lambda stage_name, ticker: (
+            None, "FATAL: [llm] binary_path points at nowhere.exe, which does "
+                  "not exist.\nFix the path, or remove the setting.")
+        shown.clear()
+        probed: list[str] = []
+        cli.probe_stage = lambda stage, ticker: probed.append(stage.name)
+
+        with quiet():
+            verdict = cli.cost_gate(cli.BY_NAME["extract_facts"], "MORN", False)
+        check("an unbuildable backend gives GATE_UNAVAILABLE",
+              verdict, cli.GATE_UNAVAILABLE)
+        check("  and it is NOT the same verdict as a human declining",
+              cli.GATE_UNAVAILABLE == cli.GATE_DECLINED, False)
+        check("  the stage is never probed — the probe would only re-raise it",
+              probed, [])
+        check("  and nothing is priced", shown, [])
+
+        # The property that matters most: a pre-approval cannot push past it.
+        with quiet():
+            verdict = cli.cost_gate(cli.BY_NAME["extract_facts"], "MORN", True)
+        check("--yes does NOT override an unbuildable backend",
+              verdict, cli.GATE_UNAVAILABLE)
+    finally:
+        cli.backend_health = real_health
 finally:
     cli.probe_stage, cli.show_estimate = real_probe, real_estimate
+
+# ---------------------------------------------------------------------------
+print()
+print("GATE_UNAVAILABLE stops the chain as a FAILURE, not as a decline")
+# ---------------------------------------------------------------------------
+
+result, runner, gate = chain(
+    gate=FakeGate({"extract_facts": cli.GATE_UNAVAILABLE}))
+check("the chain stops at the stage that cannot run",
+      result.failed_at, "extract_facts")
+check("  and records no decline — nobody decided this",
+      result.declined_at, None)
+check("  exit code is 1 (failure), not 3 (declined)", result.exit_code(), 1)
+check("  the stage did not run", "extract_facts" in runner.calls, False)
+check("  nor did anything after it",
+      [s for s in runner.calls if s in ("build_ledger", "build_pack")], [])
+check("  and the count still reconciles (CLAUDE.md rule 5)",
+      result.reconciles(), True)
+
+# ---------------------------------------------------------------------------
+print()
+print("backend_health — construction is a real test, and costs nothing")
+# ---------------------------------------------------------------------------
+
+# The shape trap this pins. `load_config("llm")` wraps by FILENAME and llm.toml's
+# own top-level table is ALSO [llm], so the result is doubly nested and
+# `["llm"]` hands get_backend the mapping it expects to find "llm" inside.
+# Passing the fully-unwrapped table instead silently yields every default —
+# which is how an earlier reading of this code concluded the binary was resolved
+# lazily when it is resolved eagerly.
+from equity_research import model_client, settings  # noqa: E402
+from equity_research.paths import paths as _paths  # noqa: E402
+
+_raw = settings.load_config("llm", P=_paths("MORN"))
+check("load_config('llm') is doubly nested",
+      sorted(_raw) == ["llm"] and sorted(_raw["llm"]) == ["llm"], True)
+check("  and the inner table is where the real settings are",
+      _raw["llm"]["llm"].get("backend"), "claude_code")
+
+_name, _err = cli.backend_health("extract_facts", "MORN")
+check("a healthy machine builds the backend and reports its name",
+      (_name, _err), ("claude_code", ""))
+
+# Proven able to fail, against a path that cannot exist (CLAUDE.md rule 3).
+_bad = model_client.get_backend
+try:
+    def _boom(cfg=None, *, stage=None):
+        raise model_client.BackendError(
+            "FATAL: [llm] binary_path points at nowhere.exe, which does not exist.")
+    model_client.get_backend = _boom
+    _name2, _err2 = cli.backend_health("extract_facts", "MORN")
+    check("an unbuildable backend reports None and the reason", _name2, None)
+    check("  and the reason names the setting to fix",
+          "binary_path" in _err2, True)
+finally:
+    model_client.get_backend = _bad
+
+# ---------------------------------------------------------------------------
+print()
+print("doctor is registered, and cannot spend anything by default")
+# ---------------------------------------------------------------------------
+
+check("`doctor` is a known subcommand", "doctor" in cli.SUBCOMMANDS, True)
+_args = cli.build_parser().parse_args(["doctor"])
+check("  it needs no ticker", getattr(_args, "ticker", None), None)
+check("  and --call is OFF unless asked for", _args.call, False)
+check("  --call is available for proving authentication",
+      cli.build_parser().parse_args(["doctor", "--call"]).call, True)
+check("  it routes to cmd_doctor", _args.func, cli.cmd_doctor)
+# `doctor` must not be swallowed by the bare-ticker shorthand, which turns an
+# unrecognised first word into `run <that word>`.
+check("`pipeline doctor` is not read as a ticker for `run`",
+      cli.normalise_argv(["doctor"]), ["doctor"])
 
 # ---------------------------------------------------------------------------
 print()
