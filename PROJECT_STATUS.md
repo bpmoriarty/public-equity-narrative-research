@@ -12,15 +12,33 @@ It is a **narrative and governance** tool, not a financial one. No XBRL, no
 financial statement reconstruction, no ratio analysis. Numbers appear only where
 they anchor a narrative claim.
 
-**Current subject:** MORN / Morningstar, Inc. (CIK 0001289419), FY2021–FY2025.
+**Companies run end to end:** MORN / Morningstar, Inc. (CIK 0001289419),
+FY2021–FY2025, and MSFT / Microsoft Corporation, FY2020–FY2025.
 
 ---
 
 ## Current Status
 
+**Phase:** **Productionization COMPLETE — Phases 0–6 done, all seven Phase 6
+gates met.** Now **preparing to share with other teams inside Morningstar**;
+see "What We're Doing Now" for exactly what stands in the way. Last commit
+`ca9420b` (2026-09-10, `pipeline doctor`), pushed, tree clean, **611 checks
+across 17 files, all passing.**
+
+**Content check for sharing, done 2026-10-01:** nothing in the tracked tree is
+Morningstar-proprietary. Every "Morningstar" occurrence traces to MORN's own
+public filings or to the analyst-is-an-employee disclosure in `DATA.md`; the
+only email addresses are placeholders; no internal URLs or hostnames. What
+remains is an **ownership** question, not a content one — the code is work
+product built on company equipment — and it is why the hosting decision below
+matters.
+
+*Everything from here to "Last Session" is the history of how it got here, kept
+as written.*
+
 **Phase:** Verified — build complete, independently reviewed, every finding
-remediated. **Productionizing:** the plan at
-`C:\Users\bmoriar\.claude\plans\modular-brewing-teapot.md` was approved
+remediated. **Productionizing:** the productionization plan (`modular-brewing-teapot.md`,
+kept in the author's local Claude Code plans folder, not in this repository) was approved
 2026-08-08. **Phases 0 (hardening tripwires), 1 (packaging) and 2 (the MORN move
 + paths/settings) are complete and pushed** (commits `3c78496`, `a6010bb`,
 `8a904df`, `fec3785`, `147a6ee`, `800a543`, `d6201dd`, `446ce88`). **Phase 3 is
@@ -39,14 +57,18 @@ per-task model knob, nothing switched); 5.5 `7a6ddbf` (the docs); 5.6 `dccdb44`
 suite went **400 → 453** checks. **Phase 5 spent $0** — an outcome of the
 scoping, not a target.
 
-**Phase 6 is scoped and started.** `PHASE6_SCOPE.md` (`af1b0d0`) frames it as
-**eight code paths MORN has never exercised** rather than as one task, and
-**6.1 is done** (`bbad3d5`) — the fiscal-year arithmetic, 453 → 484 checks, $0,
-and it found a real bug. **Next is 6.2, choosing the company**, which is a
-decision rather than a task. The repository has a GitHub remote:
+**Phase 6 is COMPLETE** (2026-09-08). `PHASE6_SCOPE.md` (`af1b0d0`) framed it
+as **eight code paths MORN has never exercised** rather than as one task. 6.1
+(`bbad3d5`) fixed the fiscal-year arithmetic before any company was chosen; 6.2
+chose MSFT; 6.3–6.5 ran it end to end ($19.98 notional, $0 charged) and surfaced
+findings 4–10; gate 6 (`2e72e5f`) proved two full runs per company leave the
+tree byte-clean; 6.7 (`1f83a7a`) ran from a fresh clone and found finding 11.
+After the phase, `ca9420b` added `pipeline doctor`. The repository is
+**private** on the author's personal GitHub account:
 https://github.com/bpmoriarty/public-equity-narrative-research
 
 ```
+uv run pipeline doctor          can this machine run it? free, no model call
 uv run pipeline init TSLA       scaffold a new company from companies/_template/
 uv run pipeline status MORN     what is on disk, per stage
 uv run pipeline estimate MORN   what the two spending stages would cost
@@ -234,9 +256,13 @@ accounted for per file in `416901c`'s message.
 > reachable. Now reported as `malformed`, fatal at generation time, and a
 > `review` line in `verify_outputs` for one commit before it is promoted to hard.
 
-**Last Session:** 2026-09-01
+**Last Session:** 2026-10-01
 
-**Overall Health:** 🟢 Working — milestones 1–5 complete. **The full verification suite has been run and all nine of its findings are fixed.** 1,329 ledger facts, 1,425 citable ids, three deliverables passing 13 hard checks each. Quote census re-earned after the repairs at **1,326/1,326**. $7.21 spent on generation; remediation cost $0.00 in API calls
+**Overall Health:** 🟢 Working — two companies end to end, 611 checks passing,
+a fresh clone rebuilds both packs byte-identically. 🟡 **Not yet shareable**:
+one silent data gap (finding 4), the hosting decision, and the user's own
+FY2020 hand-check are open. *Previous health line, as of milestone 5:*
+milestones 1–5 complete. **The full verification suite has been run and all nine of its findings are fixed.** 1,329 ledger facts, 1,425 citable ids, three deliverables passing 13 hard checks each. Quote census re-earned after the repairs at **1,326/1,326**. $7.21 spent on generation; remediation cost $0.00 in API calls
 
 ### What's Working
 
@@ -413,6 +439,37 @@ accounted for per file in `416901c`'s message.
 ---
 
 ## What We're Doing Now
+
+### Preparing to share inside Morningstar (as of 2026-10-01)
+
+The build is finished; what remains is mostly decisions and one human check.
+In the order they block sharing:
+
+1. **Finding 4 — the final year's vote 8-K is never fetched automatically**
+   (Next Steps 30). The one silent data gap. A colleague running a new company
+   would lose that year's say-on-pay and director-election results with no
+   warning. Documented in the README's "Known limitations"; **being fixed now.**
+2. **Where the repository lives** (Next Steps 31). Private on the author's
+   personal GitHub account; colleagues need individual invites, and company
+   work product on a personal account should be settled deliberately — the
+   alternative is a Morningstar GitHub org. A decision for the user, likely
+   after asking whoever runs that org about policy.
+3. **The user's FY2020 hand-check of MSFT** (Next Steps 32, Phase 6.6). The 28
+   figures the D2 review detector flags (8 brief / 20 discussion), how thin the
+   governance section is, and the 68 of 105 FY2020 facts neither document cites,
+   all against the 13 in-scope FY2020 filings. Nothing in the pipeline can do
+   this part.
+4. **Documentation** (Next Steps 33–34): a LICENSE (really a question of
+   Morningstar policy for internal code) and a prominent README caveat for item
+   13 — no independent different-model-family verification pass has been run.
+
+**Not blockers, documented:** finding 5 (cost estimate ~25% low, cause
+measured), finding 6 / item 11 (MSFT board facts are name-only — needs code in
+`find_proxy_sections`), finding 7 (`build_ledger` names a paid command that has
+nothing to do). **Suggested rollout:** one colleague first, as a pilot — a real
+fresh setup on someone else's machine is the case nothing here can simulate.
+
+### Earlier: milestone 4 → 5 (2026-08-05), kept as written
 
 The 8-K triage is done and FY2025's investor Q&A is extracted, at the review gate
 the user set: one year first, then decide about the other four.
@@ -1013,6 +1070,31 @@ across 34 calls). Milestones 1–3 cost nothing.
         of requests at the configured 0.15s delay. Watch the first `pipeline
         init` + run for a real second company before assuming the rate limiting
         behaves
+30. [ ] **Finding 4 — fetch the final window year's vote 8-K automatically.**
+    `votes` reads the 8-K Item 5.07 paired to each proxy by the proxy's
+    *filing date*; for the last window year that 8-K carries the next fiscal
+    year's label with `in_window: false`, and `fetch` builds its work list from
+    `in_window` only. MORN is complete only because it was fetched by hand with
+    `fetch --accession`. Candidate fix: `fetch` applies the same pairing rule
+    `gather_votes` uses. Detail in `PHASE6_SCOPE.md`
+31. [ ] **Decide where the repository lives before sharing** — the personal
+    account where it is now, or a Morningstar GitHub org. The content check
+    (2026-10-01) found nothing proprietary; the question is ownership of work
+    product, so ask whoever runs the org about policy
+32. [ ] **The user's FY2020 hand-check of MSFT (Phase 6.6).** Audit year drawn
+    with `random.Random(20260904)`. Check the 28 D2-flagged figures, governance
+    thinness, and the 68/105 uncited FY2020 facts against the 13 in-scope filings
+33. [ ] **LICENSE / usage terms** — what Morningstar's policy is for internal code
+34. [ ] **Put item 13's caveat in the README** where a colleague will see it: no
+    independent different-model-family verification pass has been run
+35. [x] **`pipeline doctor`, and a gate that refuses a stage that cannot run.**
+    Done 2026-09-10, `ca9420b`, 589 → 611 checks. `doctor` checks, for free,
+    every config per company, `EDGAR_IDENTITY`, which Claude Code binary will be
+    used and by which route, that it executes, and that every spending stage's
+    backend builds for every company. The cost gate now checks the backend
+    *before* probing and stops with `GATE_UNAVAILABLE` instead of asking to
+    spend; **`--yes` does not override it.** Proven end to end with a planted
+    bad `binary_path` override
 
 ---
 
@@ -1026,7 +1108,7 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `tests/suite_test.py` | The pytest front-end (`uv run pytest`). Asserts exit code, zero failures, **and the recorded check count** per file. Deliberately not `pytest --collect-only`, which counts test functions and so cannot see a file shrinking from 63 checks to 3. Named `suite_test.py`, not `test_suite.py`, because `run_all.py` globs `test_*.py` and would otherwise recurse — now true at any depth. `pytest tests/unit` collects **nothing** (this is the only pytest-visible file); use `-k "unit/"` or `-k "regression/"`, which works because the ids are path-shaped |
 | `src/equity_research/_bootstrap.py` | `ROOT`, the Windows cert store, and `.env` — imported first by every stage, for its side effects as much as its value. **Do not delete as unused.** Exists because each module used to compute its own `ROOT` two directories up, which the Phase 1 move made silently wrong by one level |
 | `tests/regression/morn/test_repo_hygiene.py` | 28 checks, and the home of most of this project's mechanical enforcers. **Its boolean helper is `require(name, ok, detail)`, and `check` is deliberately undefined here** so the comparison form cannot be written by accident — it used to be, three times, once passing vacuously. Every JSON carrying a top-level `usage.input_tokens` was paid for and must be tracked by git; `companies/MORN/output/*.md` likewise; and inversely, `.env` must not be. Then four lints: **no wall clock** in a committed artifact (dates are fine, a time of day is not — only a clock changes between two runs over identical inputs); **no mojibake** in any tracked text file, the blind spot the control-byte scan cannot see; the **template** must agree with every company config and carry no real CIK; and two path lints. The **path-literal lint**: a `"data/…"` or `"output/…"` string in `src/equity_research/` outside `paths.py` resolves to the repo root instead of the company being run. And the **manifest-path lint** (added `664bf6f`): `relative_to(ROOT)` used to build a stored value rather than a message for a human — the bug that broke three writers for eleven days. Read the comment above `stores_root_relative_path` before changing it; it records why the check reads source rather than data, and the one misfire it can produce |
-| `src/equity_research/cli.py` | **The `pipeline` orchestrator** — `init`, `status`, `estimate`, `run`, `stages`. `uv run pipeline MORN` walks all thirteen stages in dependency order, one subprocess each. The order is a topological sort of what each module's own path constants say it reads and writes — **not** the plan's order, and note that `build_pack` does *not* depend on `merge_events` having run (it recomputes the merge in memory). The two spending stages go through a cost gate that asks the stage whether it has work (`--check-fresh`) before asking you to approve anything, so a cached re-run never prompts. **An unanswerable prompt — closed or piped stdin — counts as no, never as consent.** Exit codes: 0 complete, 1 a stage failed, 3 a gate was not approved. Writes no files |
+| `src/equity_research/cli.py` | **The `pipeline` orchestrator** — `doctor`, `init`, `status`, `estimate`, `run`, `stages`. **`doctor`** (added `ca9420b`) is the free setup check a colleague runs first; `--call` adds one trivial model call to prove the seat is authenticated. The cost gate builds the stage's backend before anything else and, if it cannot, stops with `GATE_UNAVAILABLE` (counted as `failed_at`, not declined) — `--yes` does not override that. `uv run pipeline MORN` walks all thirteen stages in dependency order, one subprocess each. The order is a topological sort of what each module's own path constants say it reads and writes — **not** the plan's order, and note that `build_pack` does *not* depend on `merge_events` having run (it recomputes the merge in memory). The two spending stages go through a cost gate that asks the stage whether it has work (`--check-fresh`) before asking you to approve anything, so a cached re-run never prompts. **An unanswerable prompt — closed or piped stdin — counts as no, never as consent.** Exit codes: 0 complete, 1 a stage failed, 3 a gate was not approved. Writes no files |
 | `companies/_template/` | What `pipeline init` copies. Hand-maintained on purpose: `company.toml` is 170 lines of which 125 are comments, and no TOML writer preserves comments — generating it would produce 25 correct settings and destroy the 125 lines explaining them. Kept honest by two checks in `test_repo_hygiene.py`: it must agree with every real company's config on every key, and its `ticker`/`cik`/`resolved_name` must be **empty**, because a template shipping a real CIK would scaffold a config pointing at the wrong company |
 | `tests/regression/morn/fixture.py` | Names the fixture company (MORN) once, for the three files in its directory that read MORN's artifacts. **Sets `EQR_TICKER`, and must be imported before any stage module** — stage modules resolve the ticker at import time, so `import equity_research.discover` is itself an ambiguous call once a second company exists. Exporting `P` alone did not fix it; that is why this sets the environment variable. Also holds **`require_artifacts()`**, which declares what a regression file needs and **exits** if it is absent, naming each missing path and distinguishing "committed model output, restore from git" from "derived, free to rebuild". That function is the reason the directory exists |
 | `tests/unit/` vs `tests/regression/morn/` | Split by **what a test reads**, not by what it tests. Unit (8 files, 351 checks) reads nothing under `companies/` and passes in a checkout with no pack, sections, manifests or run log — measured, not assumed. Regression (3 files, 52) reads MORN's artifacts and dies without them. Unit tests still need *a* company scaffolded, because several import a stage module and a stage module resolves its ticker at import time; they read none of that company's data |
@@ -1066,7 +1148,7 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `src/equity_research/render_timeline.py` | Milestone 5d. Renders `companies/MORN/output/timeline.md`. Deterministic, no model call; asserts completeness before writing |
 | `companies/MORN/output/timeline.md` | **Deliverable 1 of 3.** Chronological reference table, every row carrying its fact id and filing |
 | `src/equity_research/verify_outputs.py` | Milestone 5f. Holds the deliverables to the pack's binding constraints — **14 hard checks and 3 review lists** per document; deterministic, free, non-zero exit on failure. `ids_wellformed` became the 14th in Phase 5.6: a citation whose *field code* does not exist was read as prose by everything, because `ID_RE` is built from the real codes. A check is `hard` (decidable, gating) or `review` (known false positives, listed for a human, gating nothing) and never a blend — a check that fires on correct documents trains whoever reads the report to skip that line |
-| `tests/unit/test_verify_outputs.py` | 64 checks. Every hard check tested against a document that fails it as well as one that passes, all inline. Holding the gates against the **real** documents is `regression/morn/test_deliverables.py` |
+| `tests/unit/test_verify_outputs.py` | 77 checks (13 added in `9ec7368` pin the per-fiscal-year word range at 5, 6 and 10 years). Every hard check tested against a document that fails it as well as one that passes, all inline. Holding the gates against the **real** documents is `regression/morn/test_deliverables.py` |
 | `src/equity_research/generate_outputs.py` | Milestone 5e. Writes both prose deliverables from the pack; checks and repairs ids and quotations. **Read the note above `repair_ids` before changing how repairs work** — it records why they carry an index slice rather than the pack, and what that gives up. Only `generate` sends the pack; all three repair kinds are self-contained. **Also read the note above `DocStatus`** before changing what counts as up to date: it records the measurement that ruled out comparing the record's inputs, and why prompt drift is reported rather than spent on. `--check-fresh` answers "is there work?" for the cost gate at zero cost and without constructing a backend; `--force` overrides |
 | `companies/MORN/output/narrative-brief.md` | **Deliverable 2 of 3.** The five-year arc, 2,089 words, 126 citations |
 | `companies/MORN/output/discussion-points.md` | **Deliverable 3 of 3.** Observations, open questions, and stated-vs-paid-for priorities |
@@ -1112,6 +1194,32 @@ across 34 calls). Milestones 1–3 cost nothing.
 ---
 
 ## Session Log
+
+### 2026-09-10 → 2026-10-01 — `pipeline doctor`, and getting ready to share
+
+**`ca9420b` (2026-09-10): `pipeline doctor`, and a cost gate that will not offer
+a stage that cannot run.** 589 → 611 checks, $0. A correction came first: I had
+reported the Claude Code binary as resolved *lazily*, so a missing CLI would
+surface only after a spend was approved. Wrong — my probe passed `get_backend` a
+flat dict, so `binary_path` was never read. `load_config("llm")` is **doubly
+nested** (it wraps by filename, and `llm.toml`'s own table is also `[llm]`), so
+`load_config("llm", P=P)["llm"]` is the right shape and resolution is **eager**.
+Two checks now pin that shape. What *was* real: the failure landed at stage 6,
+after `discover` and `fetch`, and `probe_stage` turned the crash into "could not
+say whether it has work; assuming it does" and **asked whether to spend**. Now
+the gate builds the backend first and stops with `GATE_UNAVAILABLE`; `--yes`
+does not override it. Proven end to end with a planted bad `binary_path` in an
+MSFT override (doctor: MORN healthy, MSFT failing, exit 1 — caught only because
+doctor checks *every* company), and against the tests (disabling the branch
+fires 4 of the 22 new checks). Side effect: `discover`'s placeholder regex moved
+to `settings.IDENTITY_PLACEHOLDER_RE`, because importing any stage module
+resolves a ticker at import time and is ambiguous once two companies exist.
+
+**2026-10-01: status and sharing readiness.** Content check of every tracked
+file for anything Morningstar-proprietary — none found (see Current Status). The
+remaining sharing work is listed under "What We're Doing Now" and as Next Steps
+30–34. This file's two absolute paths to the plan file were replaced with a
+description, since they resolve only on the author's machine. Next: finding 4.
 
 ### 2026-09-02 — Phase 6.5: MSFT end to end, and six findings a second company was the only way to reach
 
@@ -2304,7 +2412,8 @@ for Opus, with Sonnet acceptable on the phases the plan marks as mechanical).
   balanced cost stance (~$12/company expected on the API path vs $21 measured,
   ~$0 marginal on subscription); process hardening ships as executable tasks.
 - **The approved plan** — six phases, each with a hard verification gate — is at
-  `C:\Users\bmoriar\.claude\plans\modular-brewing-teapot.md`. Phase 0 builds
+  `modular-brewing-teapot.md` in the author's local Claude Code plans folder
+  (not in this repository). Phase 0 builds
   the tripwires that close the three recurring mistake classes; Phase 2's
   central check is that `pack.json`'s sha256 reproduces after the MORN move
   (manifest paths are relative, so the restructure must change zero bytes);
