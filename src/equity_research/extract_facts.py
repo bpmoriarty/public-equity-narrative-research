@@ -64,7 +64,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 
-from equity_research import model_client, settings
+from equity_research import model_client, settings, vote_pairing
 from equity_research._bootstrap import ROOT
 from equity_research.ledger_schema import TASK_MODELS
 from equity_research.paths import add_ticker_arg, paths
@@ -328,21 +328,15 @@ def gather_votes(sections: list[dict], inv: dict, fy: int) -> list[dict]:
     year — the same class of error as trusting `reportDate` on a proxy, which in
     milestone 1 misdated every proxy by a year. So the pairing is done on the
     PROXY'S FILING DATE: take the first 5.07 filed after the DEF 14A for year N.
-    """
-    proxy = next((r for r in inv["filings"]
-                  if r["form"] == "DEF 14A" and r["fiscal_year"] == fy
-                  and r["disposition"] == "in_scope"), None)
-    if not proxy:
-        return []
 
-    candidates = sorted(
-        (r for r in inv["filings"]
-         if r["form"].startswith("8-K") and "5.07" in r.get("items", [])
-         and r["filing_date"] > proxy["filing_date"]),
-        key=lambda r: r["filing_date"])
-    if not candidates:
+    The rule itself lives in `vote_pairing`, because `fetch` must apply exactly
+    the same one to download the filing — see that module for what went wrong
+    while only this function knew it.
+    """
+    proxy, vote = vote_pairing.paired_vote_filing(inv["filings"], fy)
+    if not proxy or not vote:
         return []
-    vote_acc = candidates[0]["accession"]
+    vote_acc = vote["accession"]
 
     out = []
     for r in sections:

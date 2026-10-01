@@ -30,7 +30,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import re
 import sys
 import time
 import tomllib
@@ -40,8 +39,10 @@ from pathlib import Path
 import httpx
 import os
 
+from equity_research import vote_pairing
 from equity_research._bootstrap import ROOT
 from equity_research.paths import add_ticker_arg, paths
+from equity_research.settings import IDENTITY_PLACEHOLDER_RE
 
 # Every data/ and output/ path for the company this run operates on.
 # `paths()` resolves the ticker from --ticker, then EQR_TICKER, then the
@@ -62,9 +63,9 @@ ATTACH_CACHE = RAW_DIR / "_meta" / "attachments"
 INVENTORY = P.inventory
 LOG_PATH = RAW_DIR / "fetch-log.jsonl"
 
-# See the note on the identical constant in src/equity_research/discover.py.
-PLACEHOLDER_RE = re.compile(r"(?i)\b(example\.(?:com|org|net)|your[._ ]?name|"
-                            r"your[._ ]?email|name@host)\b")
+# The .env.example placeholder detector. One definition, in settings, shared with
+# discover and `pipeline doctor` — this used to be a hand-copied duplicate.
+PLACEHOLDER_RE = IDENTITY_PLACEHOLDER_RE
 
 ARCHIVE_URL = "https://www.sec.gov/Archives/edgar/data/{cik}/{nodash}/{filename}"
 
@@ -222,6 +223,62 @@ class Downloader:
 
 
 # ---------------------------------------------------------------------------
+# The work list
+# ---------------------------------------------------------------------------
+
+def build_work_list(inv: dict, accessions: list[str] | None
+                    ) -> tuple[list[dict], list[dict], list[str]]:
+    """Which filings to fetch: (work, vote_added, vote_notes).
+
+    `vote_added` is the part of `work` that sits outside the window, and
+    `vote_notes` names any window year whose vote has not been filed yet. A
+    function rather than inline in main() so the look-ahead is testable without
+    a network (tests/unit/test_vote_pairing.py).
+
+    The work list comes from the inventory, which is the single source of truth
+    for what is in scope (CLAUDE.md: don't recompute what another stage owns).
+    """
+    vote_added: list[dict] = []
+    vote_notes: list[str] = []
+    if accessions:
+        # EXPLICIT OVERRIDE: fetch exactly the accessions named, even outside the
+        # window, and nothing else. It used to be the ONLY way to get the final
+        # year's vote 8-K (see the look-ahead below, which now does that
+        # automatically); it remains for any other one-off filing.
+        #
+        # Named accessions rather than a widened window on purpose. Extending the
+        # window by a year would sweep in the 10-Qs, Form 4s and earnings 8-Ks of
+        # an extra year and quietly change what every coverage claim means.
+        want = set(accessions)
+        work = [r for r in inv["filings"] if r["accession"] in want]
+        missing = want - {r["accession"] for r in work}
+        if missing:
+            sys.exit(f"FATAL: accession(s) not in the inventory: {sorted(missing)}\n"
+                     "Check the accession number, or re-run `uv run python -m equity_research.discover` if the "
+                     "filing is newer than the inventory's as-of date.")
+    else:
+        work = [r for r in inv["filings"]
+                if r["in_window"] and r["disposition"] in ("in_scope", "triage")]
+
+        # THE VOTE LOOK-AHEAD (PHASE6_SCOPE.md, finding 4). The 8-K reporting the
+        # vote on the LAST window year's proxy is filed after that year, so it is
+        # labelled one year past the window and the line above never selects it.
+        # Without this, every company run through `pipeline` silently lost its
+        # final year's say-on-pay and director-election results.
+        #
+        # This asks the same rule `extract_facts.gather_votes` uses — one function
+        # in vote_pairing.py — for the filings the window's `votes` tasks will
+        # read, and adds whichever are not already listed. It adds exactly those
+        # filings and nothing else, so the window itself is unchanged.
+        have = {r["accession"] for r in work}
+        vote_rows, vote_notes = vote_pairing.vote_filings_for_window(inv)
+        vote_added = [r for r in vote_rows if r["accession"] not in have]
+        work.extend(vote_added)
+    work.sort(key=lambda r: (r["fiscal_year"], r["form"], r["filing_date"]))
+    return work, vote_added, vote_notes
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -248,35 +305,23 @@ def main() -> None:
     delay = edgar_cfg["request_delay_seconds"]
     use_cache = edgar_cfg["use_cache"]
 
-    # The work list comes from the inventory, which is the single source of truth
-    # for what is in scope (CLAUDE.md: don't recompute what another stage owns).
-    if args.accession:
-        # EXPLICIT OVERRIDE for a filing that sits outside the window but reports on
-        # a period inside it. The motivating case: an 8-K Item 5.07 reports the vote
-        # taken at the annual meeting, which for the FY2025 proxy happened in May
-        # 2026 — so the FY2025 say-on-pay result lives in a 2026-dated filing.
-        #
-        # Named accessions rather than a widened window on purpose. Extending the
-        # window to 2026 would sweep in the 10-Qs, Form 4s and earnings 8-Ks of a
-        # sixth year and quietly change what every coverage claim means. This adds
-        # exactly the documents asked for, and the reason is recorded in DATA.md.
-        want = set(args.accession)
-        work = [r for r in inv["filings"] if r["accession"] in want]
-        missing = want - {r["accession"] for r in work}
-        if missing:
-            sys.exit(f"FATAL: accession(s) not in the inventory: {sorted(missing)}\n"
-                     "Check the accession number, or re-run `uv run python -m equity_research.discover` if the "
-                     "filing is newer than the inventory's as-of date.")
-    else:
-        work = [r for r in inv["filings"]
-                if r["in_window"] and r["disposition"] in ("in_scope", "triage")]
-    work.sort(key=lambda r: (r["fiscal_year"], r["form"], r["filing_date"]))
+    work, vote_added, vote_notes = build_work_list(inv, args.accession)
     if args.limit:
         work = work[:args.limit]
 
     print(f"Fetch — {inv['ticker']} ({company}), FY{inv['first_fiscal_year']}-FY{inv['last_fiscal_year']}")
     print(f"  inventory as of : {inv['as_of_utc']}")
     print(f"  filings to process: {len(work)}")
+    # Rule 5: say where the number came from, so "in-window + N" is visible
+    # rather than an unexplained count that differs from the inventory's.
+    if vote_added:
+        print(f"    of which outside the window: {len(vote_added)} vote 8-K(s) the window's "
+              f"`votes` tasks read")
+        for r in vote_added:
+            print(f"      {r['accession']}  filed {r['filing_date']}, labelled "
+                  f"FY{r['fiscal_year']}")
+    for note in vote_notes:
+        print(f"  NOTE: {note}")
     print(f"  rate limit      : {delay}s between requests ({1/delay:.1f}/sec)")
     print(f"  mode            : {'DRY RUN — nothing will be downloaded' if args.dry_run else 'fetching'}")
     print()
@@ -396,6 +441,8 @@ def main() -> None:
         # everything cached. Conflating the two produced nonsense on filtered runs.
         "last_run_filter": {"accession": args.accession, "limit": args.limit},
         "last_run_filings": len(work),
+        # The filings in last_run_filings that sit outside the window, and why.
+        "last_run_vote_lookahead": sorted(r["accession"] for r in vote_added),
         "last_run_documents": len(records),
         "documents": len(all_records),
         "downloaded_this_run": dl.fetched,

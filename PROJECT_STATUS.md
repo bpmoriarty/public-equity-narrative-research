@@ -22,8 +22,7 @@ FY2021–FY2025, and MSFT / Microsoft Corporation, FY2020–FY2025.
 **Phase:** **Productionization COMPLETE — Phases 0–6 done, all seven Phase 6
 gates met.** Now **preparing to share with other teams inside Morningstar**;
 see "What We're Doing Now" for exactly what stands in the way. Last commit
-`ca9420b` (2026-09-10, `pipeline doctor`), pushed, tree clean, **611 checks
-across 17 files, all passing.**
+2026-10-01 (finding 4 fixed), **635 checks across 18 files, all passing.**
 
 **Content check for sharing, done 2026-10-01:** nothing in the tracked tree is
 Morningstar-proprietary. Every "Morningstar" occurrence traces to MORN's own
@@ -258,10 +257,10 @@ accounted for per file in `416901c`'s message.
 
 **Last Session:** 2026-10-01
 
-**Overall Health:** 🟢 Working — two companies end to end, 611 checks passing,
+**Overall Health:** 🟢 Working — two companies end to end, 635 checks passing,
 a fresh clone rebuilds both packs byte-identically. 🟡 **Not yet shareable**:
-one silent data gap (finding 4), the hosting decision, and the user's own
-FY2020 hand-check are open. *Previous health line, as of milestone 5:*
+the hosting decision and the user's own FY2020 hand-check are open (finding 4,
+the one silent data gap, was fixed 2026-10-01). *Previous health line, as of milestone 5:*
 milestones 1–5 complete. **The full verification suite has been run and all nine of its findings are fixed.** 1,329 ledger facts, 1,425 citable ids, three deliverables passing 13 hard checks each. Quote census re-earned after the repairs at **1,326/1,326**. $7.21 spent on generation; remediation cost $0.00 in API calls
 
 ### What's Working
@@ -445,10 +444,9 @@ milestones 1–5 complete. **The full verification suite has been run and all ni
 The build is finished; what remains is mostly decisions and one human check.
 In the order they block sharing:
 
-1. **Finding 4 — the final year's vote 8-K is never fetched automatically**
-   (Next Steps 30). The one silent data gap. A colleague running a new company
-   would lose that year's say-on-pay and director-election results with no
-   warning. Documented in the README's "Known limitations"; **being fixed now.**
+1. ~~**Finding 4 — the final year's vote 8-K is never fetched automatically**~~
+   **FIXED 2026-10-01** (Next Steps 30). `fetch` now adds it by the same rule
+   `votes` reads it with, and says so in its output.
 2. **Where the repository lives** (Next Steps 31). Private on the author's
    personal GitHub account; colleagues need individual invites, and company
    work product on a personal account should be settled deliberately — the
@@ -1070,13 +1068,13 @@ across 34 calls). Milestones 1–3 cost nothing.
         of requests at the configured 0.15s delay. Watch the first `pipeline
         init` + run for a real second company before assuming the rate limiting
         behaves
-30. [ ] **Finding 4 — fetch the final window year's vote 8-K automatically.**
-    `votes` reads the 8-K Item 5.07 paired to each proxy by the proxy's
-    *filing date*; for the last window year that 8-K carries the next fiscal
-    year's label with `in_window: false`, and `fetch` builds its work list from
-    `in_window` only. MORN is complete only because it was fetched by hand with
-    `fetch --accession`. Candidate fix: `fetch` applies the same pairing rule
-    `gather_votes` uses. Detail in `PHASE6_SCOPE.md`
+30. [x] **Finding 4 — fetch the final window year's vote 8-K automatically.**
+    Done 2026-10-01. The pairing rule moved to `vote_pairing.py`, shared by
+    `gather_votes` and `fetch.build_work_list`, which adds exactly the vote 8-Ks
+    the window needs (MORN +1, MSFT +1 — the two once fetched by hand) and
+    nothing else. Also bounded by the next proxy, closing a borrowed-vote bug
+    seen in MSFT's pre-2010 years. No shipped fact moved; 611 → 635 checks.
+    Detail in `PHASE6_SCOPE.md` under finding 4
 31. [ ] **Decide where the repository lives before sharing** — the personal
     account where it is now, or a Morningstar GitHub org. The content check
     (2026-10-01) found nothing proprietary; the question is ownership of work
@@ -1219,7 +1217,19 @@ resolves a ticker at import time and is ambiguous once two companies exist.
 file for anything Morningstar-proprietary — none found (see Current Status). The
 remaining sharing work is listed under "What We're Doing Now" and as Next Steps
 30–34. This file's two absolute paths to the plan file were replaced with a
-description, since they resolve only on the author's machine. Next: finding 4.
+description, since they resolve only on the author's machine.
+
+**Finding 4 fixed, same day.** The layering question resolved itself once the
+rule was moved rather than shared: `vote_pairing.py` holds it, ticker-free, and
+both `fetch` and `gather_votes` call it, so neither stage depends on the other.
+`fetch` now adds the final year's vote 8-K and prints it as "outside the
+window"; on the real inventories it adds exactly the two filings that had been
+fetched by hand, and the work list now equals each fetch manifest. Writing the
+tests exposed a second defect in the same rule — no upper bound, so a missing
+vote borrowed the next year's — which had actually happened to MSFT FY2008/09.
+Bounded by the next proxy; every in-window year pairs identically, so nothing
+shipped moved. 24 new checks (611 → 635), failing 9 and 3 against the two
+pre-fix behaviours. $0, zero EDGAR requests.
 
 ### 2026-09-02 — Phase 6.5: MSFT end to end, and six findings a second company was the only way to reach
 

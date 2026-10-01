@@ -275,35 +275,33 @@ re-runs the five deterministic stages and compares their output to the committed
 bytes, which takes about 28 seconds and is most of the suite's runtime. It is the
 only automated proof that a re-run leaves the tree clean.
 
-## Known limitations, and the one that needs a manual step
+## Known limitations
 
-**The final fiscal year's shareholder vote is not fetched automatically.** Check
-this on every new company — it is silent, and the run reports success.
+**The final fiscal year's vote is reported in a filing dated after the window —
+and `fetch` now gets it automatically.** `votes` reads the 8-K Item 5.07 that
+reports the vote taken at the meeting *following* a fiscal year's proxy, so for
+the **last** year in a window that filing carries the *next* fiscal year's label
+and `in_window: false`. `fetch` adds exactly those vote 8-Ks to its work list and
+says so:
 
-`votes` reads the 8-K Item 5.07 that reports the vote taken at the meeting
-*following* a fiscal year's proxy. That filing is dated months after the year it
-reports on, so for the **last** year in a window it carries the *next* fiscal
-year's label and `in_window: false` — and `fetch` builds its work list from
-in-window filings only. The section never exists, and `extract_facts` reports
-`FY<last> votes: no source`, which reads like an absent disclosure rather than a
-filing nobody asked for.
-
-Fix it before the extraction spend, because the facts cache is keyed per
-`(year, task, filing)` and adding it afterwards means a second paid call:
-
-```bash
-# The accession is already in the inventory discovery wrote — find the 5.07
-# filed just after the last year's DEF 14A:
-#   companies/MSFT/data/discovery/inventory.json  ->  "5.07" in items
-uv run python -m equity_research.fetch --ticker MSFT --accession 0001193125-25-311196
-uv run python -m equity_research.extract_sections --ticker MSFT
+```
+  filings to process: 73
+    of which outside the window: 1 vote 8-K(s) the window's `votes` tasks read
+      0001193125-25-311196  filed 2025-12-08, labelled FY2026
 ```
 
-`--accession` is repeatable and adds exactly the filings named, nothing else. Do
-**not** widen the window instead: an extra year sweeps in that year's 10-Qs, Form
-4s and earnings 8-Ks and quietly changes what every coverage claim means.
+Nothing else from beyond the window is fetched, so coverage claims still mean
+the window. (Until 2026-10 this needed a manual `fetch --accession`; see
+`PHASE6_SCOPE.md`, finding 4.) If the last year's annual meeting has **not
+happened yet** when `discover` ran, `fetch` prints a `NOTE:` naming the year and
+that year's `votes` reports no source — expected, and fixed by re-running
+`discover` once the vote is filed. Do that before the extraction spend, because
+the facts cache is keyed per `(year, task, filing)`.
 
-Counts should move by exactly one filing, and `no source` should drop by one.
+`fetch --accession <ACC>` (repeatable) is still there for any other one-off
+filing outside the window. Do **not** widen the window instead: an extra year
+sweeps in that year's 10-Qs, Form 4s and earnings 8-Ks and quietly changes what
+every coverage claim means.
 
 Two more worth knowing when reading the output:
 

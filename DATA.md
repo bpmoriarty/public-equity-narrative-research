@@ -59,7 +59,9 @@ year (`src/equity_research/discover.py`), and the filing's own fiscal year is 20
 is correct — reaching forward is the only way to apply one consistent rule to all
 five years — but the flag reads as an exclusion and is not one.
 
-Fetched by explicit accession (`uv run python -m equity_research.fetch --accession`), not by widening the
+Originally fetched by explicit accession (`uv run python -m equity_research.fetch --accession`); since
+2026-10 `fetch` adds it automatically, by the same pairing rule `votes` uses
+(`src/equity_research/vote_pairing.py`) — either way, not by widening the
 window: extending the window into 2026 would have swept in a sixth year of 10-Qs,
 Form 4s and earnings 8-Ks and quietly changed what every coverage claim in this
 file means. Coverage claims therefore remain "FY2021–FY2025, plus one named 8-K

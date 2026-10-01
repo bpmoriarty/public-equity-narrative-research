@@ -533,6 +533,38 @@ function in charge of the question in both places instead of duplicating the
 rule, but it makes `fetch` depend on an `extract_facts` helper, which is a
 layering change worth deciding on rather than slipping in during a spend.
 
+### Fixed 2026-10-01: one rule, in its own module, and a bound it never had
+
+**The layering question was answered by moving the rule rather than sharing a
+caller.** The pairing logic left `gather_votes` for a new, ticker-independent
+`src/equity_research/vote_pairing.py`; `gather_votes` and `fetch` both call it,
+so the downloader does not depend on the paid extraction stage and the two can
+never apply different rules. `fetch.build_work_list` adds every vote 8-K the
+window's `votes` tasks will read that its in-window list lacks, prints them as
+"outside the window: N", records them in the manifest as
+`last_run_vote_lookahead`, and prints a `NOTE:` for any year with a proxy but no
+vote yet — distinguishing the final year (meeting may not have happened) from a
+middle one (it should have).
+
+**Measured on both real inventories, no network:** the new work list adds
+exactly `0001289419-26-000028` for MORN (127 → 128 filings) and
+`0001193125-25-311196` for MSFT (72 → 73) — the two filings humans fetched by
+hand — and now equals each company's fetch manifest exactly. Real `fetch` runs:
+202 and 133 documents, **0 downloaded**. `extract_facts --check-fresh` exits 0
+for both, and full `pipeline` runs left the tree byte-clean.
+
+**Found while writing the tests: the rule had no upper bound.** "The first 5.07
+after this proxy" with one year's vote missing takes the *next* year's, and
+attributes one vote to two fiscal years. It had happened in real data, outside
+any window: MSFT's FY2008 and FY2009 proxies both paired with
+`0001193125-10-265243`, the FY2010 vote (8-K item 5.07 began in 2010). Now
+bounded by the next proxy's filing date. Every in-window year of both companies
+pairs identically under both rules, so no shipped fact moves.
+
+`tests/unit/test_vote_pairing.py`, 24 checks, synthetic inventory. Proven
+against both pre-fix behaviours, patched in memory: no look-ahead fails 9, no
+bound fails 3.
+
 ### The three remaining gaps are real, and fetching cannot fix them
 
 FY2020, FY2021 and FY2022 `letter` have no source because **MSFT filed no ARS
