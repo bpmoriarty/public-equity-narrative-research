@@ -10,6 +10,40 @@ Narrative and governance extraction — **not** financial statement extraction.
 through Claude Code, which is the path almost everyone here has. See
 [Model calls](#model-calls).
 
+## Before you rely on the output
+
+The documents are a **research aid, not a finished analysis**. Check any claim
+that matters against the filing it cites before using it.
+
+What has been checked, and how:
+
+- **Mechanically, on every run.** Every quotation is re-matched
+  character-for-character against the cached filing, every citation resolves to
+  a fact with a filing behind it, and counts reconcile from stage to stage. These
+  checks are deterministic code, not model judgment. Separately, a rebuild from a
+  fresh clone was shown to reproduce both companies' evidence packs byte for byte.
+- **By a structured verification pass**, recorded in `VERIFICATION.md`: data
+  integrity, pipeline, and claims against evidence. It found nine problems, all
+  fixed. It was run by Claude too, so it is a second look, not an independent one.
+
+What has **not** been checked:
+
+- **No second model family has independently checked any of it.** The same
+  family of models (Claude) extracted the facts, wrote the documents, reviewed
+  them, and repaired what the review found. The mechanical checks above prove a
+  quotation is real and a citation resolves. They do **not** prove that a fact
+  says what the filing *means*, that the documents chose the right facts, or that
+  nothing important was left out. An independent pass by a different model
+  family, or a person, is what would catch that, and it has not been run.
+- **Human review so far is targeted, and MORN-only.** Specific items were checked
+  by hand: the corrections in `companies/MORN/corrections.toml` marked
+  `verified_by = "human review"`, and the 10-K section boundaries. Nobody has read
+  every claim against its filing. A hand-check of one MSFT year is in progress.
+  A new company you run has had the mechanical checks and nothing else.
+
+See [Known limitations](#known-limitations) for specific gaps in what the
+pipeline extracts.
+
 ## Setup from a clean checkout
 
 ```bash
@@ -331,3 +365,13 @@ Two more worth knowing when reading the output:
    cache thereafter. Downstream stages get re-run constantly.
 2. **Every claim traces to `(form, fiscal year, accession number)`.** If it
    can't be sourced, it doesn't go in the output.
+
+## License
+
+MIT, copyright Morningstar, Inc. See [`LICENSE`](LICENSE).
+
+The license covers this repository's code and documentation. The SEC filings it
+downloads are public records from EDGAR and are not covered by it. The generated
+documents are built from those filings, and the caveats in
+[Before you rely on the output](#before-you-rely-on-the-output) apply to them
+whatever the license says.

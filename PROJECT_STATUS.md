@@ -255,7 +255,7 @@ accounted for per file in `416901c`'s message.
 > reachable. Now reported as `malformed`, fatal at generation time, and a
 > `review` line in `verify_outputs` for one commit before it is promoted to hard.
 
-**Last Session:** 2026-10-01
+**Last Session:** 2026-10-02
 
 **Overall Health:** 🟢 Working — two companies end to end, 635 checks passing,
 a fresh clone rebuilds both packs byte-identically. 🟡 **Not yet shareable**:
@@ -457,9 +457,9 @@ In the order they block sharing:
    governance section is, and the 68 of 105 FY2020 facts neither document cites,
    all against the 13 in-scope FY2020 filings. Nothing in the pipeline can do
    this part.
-4. **Documentation** (Next Steps 33–34): a LICENSE (really a question of
-   Morningstar policy for internal code) and a prominent README caveat for item
-   13 — no independent different-model-family verification pass has been run.
+4. ~~**Documentation** (Next Steps 33–34)~~ **DONE 2026-10-02**: MIT LICENSE,
+   copyright Morningstar, Inc., and the README's "Before you rely on the output"
+   section stating plainly what has and has not been verified.
 
 **Not blockers, documented:** finding 5 (cost estimate ~25% low, cause
 measured), finding 6 / item 11 (MSFT board facts are name-only — needs code in
@@ -1082,9 +1082,19 @@ across 34 calls). Milestones 1–3 cost nothing.
 32. [ ] **The user's FY2020 hand-check of MSFT (Phase 6.6).** Audit year drawn
     with `random.Random(20260904)`. Check the 28 D2-flagged figures, governance
     thinness, and the 68/105 uncited FY2020 facts against the 13 in-scope filings
-33. [ ] **LICENSE / usage terms** — what Morningstar's policy is for internal code
-34. [ ] **Put item 13's caveat in the README** where a colleague will see it: no
-    independent different-model-family verification pass has been run
+33. [x] **LICENSE.** Done 2026-10-02: MIT, copyright **Morningstar, Inc.** — the
+    user's choice, matching the ownership reading (work product built on company
+    equipment) rather than a personal grant. Also declared in `pyproject.toml`
+    (`license = "MIT"`, PEP 639); a test wheel carries `License-Expression: MIT`
+    and the file, and `uv lock --check` still passes
+34. [x] **Item 13's caveat is in the README**, done 2026-10-02, as a "Before you
+    rely on the output" section directly under the intro. It separates what is
+    checked mechanically on every run from what is not checked: no second model
+    family, and human review that is targeted and MORN-only. Writing it caught
+    two overstatements in my own first draft, both fixed before commit: the
+    `VERIFICATION.md` pass called "independent" when Claude ran it too, and the
+    one-off fresh-clone rebuild described as happening "on every run". Item 13
+    itself stays open; this documents it, it does not close it
 35. [x] **`pipeline doctor`, and a gate that refuses a stage that cannot run.**
     Done 2026-09-10, `ca9420b`, 589 → 611 checks. `doctor` checks, for free,
     every config per company, `EDGAR_IDENTITY`, which Claude Code binary will be
@@ -1230,6 +1240,11 @@ vote borrowed the next year's — which had actually happened to MSFT FY2008/09.
 Bounded by the next proxy; every in-window year pairs identically, so nothing
 shipped moved. 24 new checks (611 → 635), failing 9 and 3 against the two
 pre-fix behaviours. $0, zero EDGAR requests.
+
+**2026-10-02: LICENSE and the README caveat** (Next Steps 33–34). MIT,
+copyright Morningstar, Inc., also declared in `pyproject.toml`. The README now
+opens with what has and has not been verified. **What is left before sharing is
+now only the user's:** the hosting decision (31) and the FY2020 hand-check (32).
 
 ### 2026-09-02 — Phase 6.5: MSFT end to end, and six findings a second company was the only way to reach
 

@@ -12,6 +12,9 @@ name = "public-equity-research"
 version = "0.1.0"
 description = "Five-year narrative history of a public company from its SEC filings: narrative brief, timeline, discussion points"
 requires-python = ">=3.13"
+# SPDX license expression (PEP 639); the full text is in LICENSE at the repo root.
+license = "MIT"
+license-files = ["LICENSE"]
 
 dependencies = [
     # --- EDGAR access ---
