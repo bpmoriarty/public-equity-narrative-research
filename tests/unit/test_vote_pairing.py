@@ -4,7 +4,7 @@ Run:  uv run python tests/unit/test_vote_pairing.py
 
 WHY THIS FILE EXISTS
 --------------------
-PHASE6_SCOPE.md finding 4. `votes` reads the 8-K Item 5.07 that reports the
+docs/history/PHASE6_SCOPE.md finding 4. `votes` reads the 8-K Item 5.07 that reports the
 vote held at the meeting a fiscal year's proxy called. That 8-K is filed in the
 FOLLOWING fiscal year, so for the last year of a window it is labelled one year
 past the window, `in_window: false` — and `fetch` downloaded in-window filings

@@ -12,7 +12,7 @@ and 4 remain open.*
 I read `discover.fetch_all_filings`, `triage_8k.strip_boilerplate`, the fiscal-year
 arithmetic in `discover`, `config/sections.toml`, `config/forms.toml`, the empty-input
 branches in `verify_outputs`, and MORN's own inventory and fetch manifest, rather
-than working from the plan. The plan and `PHASE5_SCOPE.md` both describe Phase 6 as
+than working from the plan. The plan and `docs/history/PHASE5_SCOPE.md` both describe Phase 6 as
 one thing — run a second real company — and that is right about the shape and
 wrong about two of the numbers. It is also incomplete: **part of Phase 6's risk can
 be retired for $0 before any company is chosen**, and that part should go first.
@@ -39,7 +39,7 @@ end to end: a clean checkout, `uv sync`, and a full pipeline from nothing.
 
 ## Correcting my own estimate first
 
-`PHASE5_SCOPE.md` put this at **~$18–20**. That number is MORN's own bill
+`docs/history/PHASE5_SCOPE.md` put this at **~$18–20**. That number is MORN's own bill
 ($11.33 extraction + $7.21 generation = $18.54) and it is the wrong reference for
 almost any other company, for the reason the 5.3 measurement established:
 `investor_qa` is 54 of MORN's 88 calls and $6.81 of its $11.33, and MORN's monthly

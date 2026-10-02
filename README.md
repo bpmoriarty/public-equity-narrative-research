@@ -258,6 +258,8 @@ src/equity_research/     pipeline modules (an installable package; run with -m)
   paths.py                 every path, resolved per company
 tests/unit/              reads no company data; passes in a bare checkout
 tests/regression/morn/   reads MORN's committed artifacts; fails loudly without them
+docs/history/            how it was built: the kickoff prompt and the Phase 4-6
+                           scoping records, with the findings PROJECT_STATUS.md cites
 ```
 
 A company's whole world is one folder: its config, its corrections, its cached
@@ -326,7 +328,7 @@ says so:
 
 Nothing else from beyond the window is fetched, so coverage claims still mean
 the window. (Until 2026-10 this needed a manual `fetch --accession`; see
-`PHASE6_SCOPE.md`, finding 4.) If the last year's annual meeting has **not
+`docs/history/PHASE6_SCOPE.md`, finding 4.) If the last year's annual meeting has **not
 happened yet** when `discover` ran, `fetch` prints a `NOTE:` naming the year and
 that year's `votes` reports no source — expected, and fixed by re-running
 `discover` once the vote is filed. Do that before the extraction spend, because
@@ -357,7 +359,7 @@ Two more worth knowing when reading the output:
 | `PROJECT_STATUS.md` | Where the project stands, what is next, and the Session Log |
 | `DATA.md` | Provenance and the source's known limitations |
 | `VERIFICATION.md` | The verification suite's findings and how each was remediated |
-| `PROMPT.md` | The kickoff prompt that drives the build, milestone by milestone |
+| `docs/history/` | How it was built, kept for the reasoning rather than for running it: `PROMPT.md` (the kickoff prompt and its milestone gates) and `PHASE4_SCOPE.md`–`PHASE6_SCOPE.md` (each phase scoped from the code before building, plus what testing found — `PHASE6_SCOPE.md` holds the full write-ups of findings 4–11, several still open) |
 
 ## The two rules most easily broken
 

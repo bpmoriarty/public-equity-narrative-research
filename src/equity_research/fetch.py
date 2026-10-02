@@ -260,7 +260,7 @@ def build_work_list(inv: dict, accessions: list[str] | None
         work = [r for r in inv["filings"]
                 if r["in_window"] and r["disposition"] in ("in_scope", "triage")]
 
-        # THE VOTE LOOK-AHEAD (PHASE6_SCOPE.md, finding 4). The 8-K reporting the
+        # THE VOTE LOOK-AHEAD (docs/history/PHASE6_SCOPE.md, finding 4). The 8-K reporting the
         # vote on the LAST window year's proxy is filed after that year, so it is
         # labelled one year past the window and the line above never selects it.
         # Without this, every company run through `pipeline` silently lost its

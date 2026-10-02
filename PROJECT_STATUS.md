@@ -47,7 +47,7 @@ pipeline now goes through one seam and runs on a Claude seat with no API key.
 writers), `0ce6e3d` (4.1 orchestrator), `e2c8784` (4.3 freshness), `45bf0b9`
 (4.2 cost gate), `4ae2a9e` (status), `a37fab3` (paths), `9665ec2` (4.4/4.5),
 `7b8884b` (4.7 tests), `5e5c1a1` (rule 2), `8e07663` (4.6 init), `7da59e9`
-(4.8 the clock). **Phase 5 is COMPLETE** — scoped in `PHASE5_SCOPE.md`
+(4.8 the clock). **Phase 5 is COMPLETE** — scoped in `docs/history/PHASE5_SCOPE.md`
 (`b01ceee`), then 5.1 across `618c77a` (the path-aware gate), `7367a74` (one
 `check()`), `416901c` (the split), `0c0c21c` (a count that moved with the
 weather); 5.2 `c0038a5` (idempotency, run rather than linted); 5.3 `cc89900` (the
@@ -56,7 +56,7 @@ per-task model knob, nothing switched); 5.5 `7a6ddbf` (the docs); 5.6 `dccdb44`
 suite went **400 → 453** checks. **Phase 5 spent $0** — an outcome of the
 scoping, not a target.
 
-**Phase 6 is COMPLETE** (2026-09-08). `PHASE6_SCOPE.md` (`af1b0d0`) framed it
+**Phase 6 is COMPLETE** (2026-09-08). `docs/history/PHASE6_SCOPE.md` (`af1b0d0`) framed it
 as **eight code paths MORN has never exercised** rather than as one task. 6.1
 (`bbad3d5`) fixed the fiscal-year arithmetic before any company was chosen; 6.2
 chose MSFT; 6.3–6.5 ran it end to end ($19.98 notional, $0 charged) and surfaced
@@ -888,7 +888,7 @@ across 34 calls). Milestones 1–3 cost nothing.
 17. [x] **Phases 3–5**, in order: 3 Claude Code model seam (**done**, `0facceb`,
         `15bd33e`, `a7a5890`, `8296182`) → 4 `pipeline` orchestrator + `init`
         (**done** — twelve commits, see Current Status; the item-by-item scope is
-        `PHASE4_SCOPE.md`, written from the code before any of it was built and
+        `docs/history/PHASE4_SCOPE.md`, written from the code before any of it was built and
         kept verbatim so the reasoning can be checked against what got built) →
         **5 test split, model knobs, docs — COMPLETE** (2026-08-26; see Current
         Status for the commit list). It closed Next Steps 20, 23, 24 and 28 along
@@ -900,7 +900,7 @@ across 34 calls). Milestones 1–3 cost nothing.
         trigger is recorded with era-chunking and QA quote-tiering: `warn_tokens`
         firing on a real company. **Next is Phase 6** — items 27 and 29, the two
         paths only a real run exercises, via a second real company at ~$18–20.
-        `PHASE5_SCOPE.md`, written 2026-08-25 from the code and the committed
+        `docs/history/PHASE5_SCOPE.md`, written 2026-08-25 from the code and the committed
         usage records, same convention as Phase 4's. Three of the plan's five
         items were re-sized by measurement: **pack subsets are deferred** (the
         de-dup half was an $8-to-save-$0.12 trade, because changing `pack.json`
@@ -1074,7 +1074,7 @@ across 34 calls). Milestones 1–3 cost nothing.
     the window needs (MORN +1, MSFT +1 — the two once fetched by hand) and
     nothing else. Also bounded by the next proxy, closing a borrowed-vote bug
     seen in MSFT's pre-2010 years. No shipped fact moved; 611 → 635 checks.
-    Detail in `PHASE6_SCOPE.md` under finding 4
+    Detail in `docs/history/PHASE6_SCOPE.md` under finding 4
 31. [ ] **Decide where the repository lives before sharing** — the personal
     account where it is now, or a Morningstar GitHub org. The content check
     (2026-10-01) found nothing proprietary; the question is ownership of work
@@ -1136,7 +1136,7 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `companies/MORN/output/pdf/` | The three deliverables as PDF. **Gitignored** — a pure function of the committed Markdown, the script and the `[pdf]` config, rebuilt in seconds with `uv run python -m equity_research.render_pdf` |
 | `SPEC.md` | Document scope, extraction targets, ledger schema, output specs |
 | `DATA.md` | Provenance, as-of date, and **16** known limitations. Read before making any coverage claim. Its paths are **company-relative** — a header blockquote says so, added in Phase 5.5 along with the correction that the run date lives in the gitignored run log and not in `inventory.json` |
-| `PROMPT.md` | The original kickoff prompt and its milestone gates |
+| `docs/history/PROMPT.md` | The original kickoff prompt and its milestone gates |
 | `companies/MORN/company.toml` | Ticker, CIK, window, rate limits, model settings. **The only file to edit to retarget.** Its `[extraction.models]` table sets a model per extraction task and **ships empty**; the measured per-task costs and the reasons nothing is switched are in the comments above it. It must stay last in `[extraction]` — everything after a TOML sub-table header belongs to that sub-table |
 | `config/forms.toml` | In-scope forms, 8-K item filter, gap signals, scope-extension block |
 | `config/sections.toml` | Section boundary regexes, anchor phrases, validation rules |
@@ -1173,7 +1173,7 @@ across 34 calls). Milestones 1–3 cost nothing.
 | `companies/MORN/data/triage/triage-report.md` | The auditable log, including the full drop list |
 | `tests/unit/test_verify_quote.py` | 13 checks. Proves the grounding check can still reject. Run it after any change to `canon` |
 | `tests/unit/test_fact_id.py` | 18 checks. Proves ids are stable against judgments and sensitive to content. Run it after any change to `fact_id` or `risk_delta_id` |
-| `../../.claude/skills/` | The `preflight`, `verification-suite` and other skills live TWO levels up, in the `Coding Projects` folder. Claude Code only auto-loads skills from the session's own directory and `~/.claude`, so they are **not** invocable as `/preflight` from this project — read `SKILL.md` by path and follow it |
+| *(not in this repository)* | The `preflight` and `verification-suite` checklists that were run on this project are the author's own Claude Code skills, kept outside the repository, so a colleague's clone will not have them. **Nothing here depends on them**: what they found and how each finding was fixed is recorded in `VERIFICATION.md` and in this file's Session Log |
 | `companies/MORN/data/discovery/inventory.json` | **Machine source of truth** for what's in scope. Later stages read this, not config |
 | `companies/MORN/data/discovery/discovery-report.md` | The human-readable inventory and gap analysis |
 | `companies/MORN/data/raw/FY*/…` | Cached documents by fiscal year and form. Never delete — rebuilding means re-hitting EDGAR for all 201 |
@@ -1245,6 +1245,21 @@ pre-fix behaviours. $0, zero EDGAR requests.
 copyright Morningstar, Inc., also declared in `pyproject.toml`. The README now
 opens with what has and has not been verified. **What is left before sharing is
 now only the user's:** the hosting decision (31) and the FY2020 hand-check (32).
+
+**2026-10-02: tidied for colleagues.** `PROMPT.md` and `PHASE4/5/6_SCOPE.md`
+moved to `docs/history/` with `git mv` (history follows them); all 19
+references re-pointed, including those in `fetch.py`, `vote_pairing.py`, the
+vote test and `config/forms.toml`. `SPEC.md` stays at the top: ~79 references
+across source, config and tests treat it as the live definition of the outputs.
+The two references to the author's local skills folder were rewritten to say
+the skills are outside the repository and nothing depends on them. **Personal
+information scan:** the current tree has none (no local paths, no real emails,
+no keys). Git history keeps two things — the author's name and work email in
+`.env.example` from 2026-08-04 to 08-08 (removed in `a6010bb`), and four
+`C:\Users\...` plan-file paths in 3 commits — plus the author line on every
+commit. Deliberately **not** rewritten: it would change every commit hash this
+file cites. Revisit only if the repository moves to an org and a scrub is
+wanted then.
 
 ### 2026-09-02 — Phase 6.5: MSFT end to end, and six findings a second company was the only way to reach
 
@@ -1332,7 +1347,7 @@ proxy ballot — 0/12 tenure and committees in all six years against MORN's 9–
 proxy boundaries are unreachable from `sections.toml`. It costs the brief its
 governance substance (72 pack facts, 9.4%, naming a director and nothing else)
 and 6.6 has to judge knowing that. Full detail for all nine findings is in
-`PHASE6_SCOPE.md`.
+`docs/history/PHASE6_SCOPE.md`.
 
 **Gate 6 is closed, and separately from the run that found finding 10** — that
 run could not both expose the bug and certify the property. Re-run afterwards as
@@ -1388,8 +1403,8 @@ optional.
 
 ### 2026-09-01 — Phase 6 scoped, and 6.1 found what it was written to look for
 
-**The scope reframed the phase** (`PHASE6_SCOPE.md`, `af1b0d0`). The plan and
-`PHASE5_SCOPE.md` both describe Phase 6 as one thing — run a second real company.
+**The scope reframed the phase** (`docs/history/PHASE6_SCOPE.md`, `af1b0d0`). The plan and
+`docs/history/PHASE5_SCOPE.md` both describe Phase 6 as one thing — run a second real company.
 That is right about the shape and wrong about two numbers, and it is incomplete:
 the phase is really **eight code paths MORN has never exercised**, several of them
 guarding against failures their own docstrings name. Two corrections worth
@@ -1554,7 +1569,7 @@ both spending stages reporting nothing to do and no artifact churn.
 
 ### 2026-08-25 — Phase 5 scoped from the records, and the suite split by what a test reads
 
-**Phase 5 was scoped before anything was built** (`PHASE5_SCOPE.md`, `b01ceee`),
+**Phase 5 was scoped before anything was built** (`docs/history/PHASE5_SCOPE.md`, `b01ceee`),
 the Phase 4 convention: written from the code and the committed usage records,
 kept verbatim so the reasoning can be checked against what gets built. Three of
 the plan's five items were re-sized by measuring rather than reading, and one was
@@ -1676,7 +1691,7 @@ clean over 170 files, no mojibake, working tree clean.
 
 ### 2026-08-24 — Phase 4: one command, and the bug it found on its first walk
 
-**Scoped first, from the code.** `PHASE4_SCOPE.md` was written before anything
+**Scoped first, from the code.** `docs/history/PHASE4_SCOPE.md` was written before anything
 was built, by reading the thirteen `main()` functions and their path constants
 rather than trusting the plan — which has now been wrong or silent about phase
 specifics several times. It recorded the stage graph, four things the plan did
@@ -2618,8 +2633,8 @@ $0.00 in API spend.**
   until now they could not say which year they belonged to
 - Fixed a contradiction in DATA.md: it still claimed "no fabricated or paraphrased
   quote has yet been found" fifty lines below the paraphrase found last session
-- **Ran the preflight checklist** (`.claude/skills/Preflight Check/SKILL.md`, two
-  levels up in `Coding Projects`). Verdict GO, after two real findings:
+- **Ran the preflight checklist** (the author's own Claude Code skill, kept outside
+  this repository). Verdict GO, after two real findings:
   - **`output/` was gitignored.** The three deliverables would have been absent from
     a clean checkout. The stated reason — "regenerates from data/ledger/" — is false
     in the way that matters: they are model-written prose, cost ~$3.50 a pass, and do

@@ -245,7 +245,7 @@ exhibit_head = '(?i)^EX-99\.\d\s+\d+\s+\S+\.htm\s+EX(HIBIT)?[\s-]*99[.-]\d\s*(Ex
 image_placeholder = '\S+\.jpg\b'
 
 # ---------------------------------------------------------------------------
-# Gap-analysis signals (PROMPT.md milestone 1)
+# Gap-analysis signals (docs/history/PROMPT.md milestone 1)
 # ---------------------------------------------------------------------------
 # Forms NOT processed for content, but whose mere presence in the window must be
 # surfaced during discovery because it reframes everything else. An S-4 in the

@@ -5,7 +5,7 @@ ONE RULE, TWO CALLERS
 `extract_facts.gather_votes` needs this to choose what the `votes` task reads.
 `fetch` needs it to make sure that filing is on disk. Before this module existed
 only the first asked, and the two disagreed silently for the last year of every
-window (PHASE6_SCOPE.md, finding 4):
+window (docs/history/PHASE6_SCOPE.md, finding 4):
 
   - A DEF 14A for fiscal year N is filed after year N closes, and solicits votes
     at the annual meeting that follows. The 8-K Item 5.07 reporting the RESULT
